@@ -75,8 +75,8 @@
                     "imgUrl": "/img/img1.jpg"
                 },
                 "totalPrice": 160,
-                "startDate": 9898989,
-                "endDate": 9898999,
+                "startDate": "2025/10/15",
+                "endDate": "2025/10/17",
                 "guests": {
                     "adults": 2,
                     "kids": 1
@@ -94,22 +94,17 @@
                 "_id": "u101",
                 "fullname": "User 1",
                 "imgUrl": "/img/img1.jpg",
-                "isHost": false,
+                "isAdmin": false,
                 "username": "user1",
-                "password": "secret",
-                "emailAddress":"user1@gmail.com",
-                "notifications":[],
-                "orders":[],
-                "myStays":[]
+                "password": "secret"
             },
             {
                 "_id": "u102",
                 "fullname": "User 2",
                 "imgUrl": "/img/img2.jpg",
-                "isHost": false,
+                "isAdmin": false,
                 "username": "user2",
-                "password": "secret",
-                "emailAddress":"user2@gmail.com"
+                "password": "secret"
             }
         ]
     }
