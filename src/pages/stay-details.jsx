@@ -87,7 +87,7 @@ class _StayDetails extends React.Component {
                                 <p>{`${stay.assetType} hosted by ${stay.host.fullname}`}</p>
                             </div>
                             <div className="asset-info">
-                                <p>{`${stay.capacity} guests`}<span>•</span>{`${stay.capacity} guests`}<span>•</span>{`${stay.capacity} guests`}<span>•</span>{`${stay.capacity} guests`} </p>
+                                <p>{`${stay.capacity} guests`}<span>•</span>{`${stay.capacity} bedrooms`}<span>•</span>{`${stay.capacity} beds`}<span>•</span>{`${stay.capacity} baths`} </p>
                             </div>
                         </div>
                         <div className="host-img-container">
