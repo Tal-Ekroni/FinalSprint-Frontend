@@ -1,6 +1,6 @@
 import { userService } from "../services/user.service.js";
 import { showErrorMsg } from '../services/event-bus.service.js'
-import { socketService, SOCKET_EMIT_USER_WATCH, SOCKET_EVENT_USER_UPDATED } from "../services/socket.service.js";
+// import { socketService, SOCKET_EMIT_USER_WATCH, SOCKET_EVENT_USER_UPDATED } from "../services/socket.service.js";
 
 export function loadUsers() {
     return async dispatch => {
@@ -78,13 +78,13 @@ export function loadAndWatchUser(userId) {
     return async (dispatch) => {
         try {
             const user = await userService.getById(userId);
-            dispatch({ type: 'SET_WATCHED_USER', user })
-            socketService.emit(SOCKET_EMIT_USER_WATCH, userId)
-            socketService.off(SOCKET_EVENT_USER_UPDATED)
-            socketService.on(SOCKET_EVENT_USER_UPDATED, user => {
-                console.log('USER UPADTED FROM SOCKET');
-                dispatch({ type: 'SET_WATCHED_USER', user })
-            })
+            // dispatch({ type: 'SET_WATCHED_USER', user })
+            // socketService.emit(SOCKET_EMIT_USER_WATCH, userId)
+            // socketService.off(SOCKET_EVENT_USER_UPDATED)
+            // socketService.on(SOCKET_EVENT_USER_UPDATED, user => {
+            //     console.log('USER UPADTED FROM SOCKET');
+            //     dispatch({ type: 'SET_WATCHED_USER', user })
+            // })
         } catch (err) {
             showErrorMsg('Cannot load user')
             console.log('Cannot load user', err)

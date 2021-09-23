@@ -1,7 +1,6 @@
 import { httpService } from './http.service'
 import { storageService } from './async-storage.service'
 import {userService} from './user.service'
-import { socketService, SOCKET_EVENT_REVIEW_ADDED } from './socket.service'
 
 export const reviewService = {
   add,
@@ -44,10 +43,10 @@ async function add(review) {
   window.addEventListener('storage', async () => {
     console.log('Storage updated');
     const freshReviews = await storageService.query('review')
-    if (freshReviews.length === reviews.length + 1 ){
-      console.log('Review Added - localStorage updated from another browser')
-      socketService.emit(SOCKET_EVENT_REVIEW_ADDED, freshReviews[freshReviews.length-1])
-    }
+    // if (freshReviews.length === reviews.length + 1 ){
+    //   console.log('Review Added - localStorage updated from another browser')
+    //   socketService.emit(SOCKET_EVENT_REVIEW_ADDED, freshReviews[freshReviews.length-1])
+    // }
     reviews = freshReviews
   });
 })()

@@ -1,6 +1,6 @@
 import { storageService } from './async-storage.service'
 import { httpService } from './http.service'
-import { socketService, SOCKET_EVENT_USER_UPDATED } from './socket.service'
+// import { socketService, SOCKET_EVENT_USER_UPDATED } from './socket.service'
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
 var gWatchedUser = null;
 
@@ -104,10 +104,10 @@ function getLoggedinUser() {
         const freshUsers = await storageService.query('user')
         const watchedUser = freshUsers.find(u => u._id === gWatchedUser._id)
         if (!watchedUser) return;
-        if (gWatchedUser.score !== watchedUser.score) {
-            console.log('Watched user score changed - localStorage updated from another browser')
-            socketService.emit(SOCKET_EVENT_USER_UPDATED, watchedUser)
-        }
+        // if (gWatchedUser.score !== watchedUser.score) {
+        //     console.log('Watched user score changed - localStorage updated from another browser')
+        //     socketService.emit(SOCKET_EVENT_USER_UPDATED, watchedUser)
+        // }
         gWatchedUser = watchedUser
     })
 })();
