@@ -29,7 +29,7 @@ class _AppHeader extends React.Component {
                         <NavLink to="/"> <FaAirbnb size={30} color="#FF5A5F" /></NavLink>
                     </div>
                     <div className="nav-bar-container flex space-between">
-                        <NavLink to="/">Explore</NavLink>
+                        <NavLink to="/stay">Explore</NavLink>
                         <NavLink to="/">Become a host</NavLink>
                     </div>
                     <div className="user-img-container flex">
