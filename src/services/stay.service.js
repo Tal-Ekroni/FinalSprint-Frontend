@@ -13,13 +13,13 @@ export const stayService = {
     remove,
     getEmptyStay,
     subscribe
-    
+
 }
 window.cs = stayService;
 
-
 function query() {
-    return storageService.query(STORAGE_KEY)
+    const stays = storageService.query(STORAGE_KEY) 
+    return stays
 }
 function getById(stayId) {
     return storageService.get(STORAGE_KEY, stayId)
@@ -61,7 +61,7 @@ window.addEventListener('storage', () => {
     query()
         .then(stays => {
             _notifySubscribersStaysChanged(stays)
-        }) 
+        })
 })
 
 // TEST DATA
