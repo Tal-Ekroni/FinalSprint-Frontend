@@ -1,0 +1,14 @@
+.stay-preview{
+    & .preview-img {
+        // max-width: 300px;
+        // max-height: 300px;
+        border-radius: 13px;
+    }
+    @include for-narrow-layout {
+        .preview-img {
+            // max-width: 250px;
+            // max-height: 250px;
+            border-radius: 13px;
+        } 
+    }
+}

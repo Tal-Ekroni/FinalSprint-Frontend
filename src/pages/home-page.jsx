@@ -13,12 +13,27 @@ class _HomePage extends React.Component {
     }
 
     render() {
-        const { count } = this.props
         return (
-            <section>
-                <h2>
-           Air Bnb
-                </h2 >
+            <section className="home-page flex column">
+                <div className="hero">
+                </div>
+                <div className="sug-loc">
+                    <h2>Suggested locations:</h2>
+                    <div className="locations flex space-between">
+                        <div className="loc-section">
+                            <img src="" alt="" />
+                            <h1>New-York</h1>
+                        </div>
+                        <div className="loc-section">
+                            <img src="" alt="" />
+                            <h1>Paris</h1>
+                        </div>
+                        <div className="loc-section">
+                            <img src="" alt="" />
+                            <h1>Tokyo</h1>
+                        </div>
+                    </div>
+                </div>
             </section >
         )
     }

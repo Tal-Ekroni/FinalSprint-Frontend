@@ -2,6 +2,11 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link, NavLink } from 'react-router-dom'
 import { FaAirbnb } from 'react-icons/fa'
+import 'react-dates/initialize';
+import { DateRangePicker } from 'react-dates';
+import 'react-dates/lib/css/_datepicker.css';
+
+
 
 import routes from '../routes'
 
@@ -10,6 +15,10 @@ import { onLogin, onLogout, onSignup, loadUsers, removeUser } from '../store/use
 import { LoginSignup } from './login-signup.jsx'
 
 class _AppHeader extends React.Component {
+    state = {
+        startDate: null,
+        endDate: null
+    }
     onLogin = (credentials) => {
         this.props.onLogin(credentials)
     }
@@ -23,7 +32,7 @@ class _AppHeader extends React.Component {
     render() {
         const { user } = this.props
         return (
-            <header className="app-header">
+            <header className="main-container app-header">
                 <nav className="user-header-section flex space-between align-center" >
                     <div className="logo-container">
                         <NavLink to="/"> <FaAirbnb size={30} color="#FF5A5F" /></NavLink>
@@ -35,16 +44,31 @@ class _AppHeader extends React.Component {
                     <div className="user-img-container flex">
                         <button className="user-btn flex space-between">
                             <div className="btn-section flex space-between">
-                            <p className="menu-btn">☰</p>
-                            <div className="user-logo-container">
-                                <div className="user-header-logo">
-                            <p >I</p>
+                                <p className="menu-btn">☰</p>
+                                <div className="user-logo-container">
+                                    <div className="user-header-logo">
+                                        <p >I</p>
+                                    </div>
                                 </div>
-                            </div>
                             </div>
                         </button>
                     </div>
                 </nav>
+                <div className="search-bar-container">
+                    <input type="text" />
+                    <DateRangePicker
+                        startDate={this.state.startDate} // momentPropTypes.momentObj or null,
+                        startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
+                        startDatePlaceholderText="Check-in"
+                        endDatePlaceholderText="Check-out"
+                        endDate={this.state.endDate} // momentPropTypes.momentObj or null,
+                        endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
+                        onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
+                        focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
+                        onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
+                    />
+                    <input type="text" />
+                </div>
             </header>
         )
     }
