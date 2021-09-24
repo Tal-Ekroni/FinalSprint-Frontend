@@ -5,7 +5,6 @@ header {
         height: 75px;
         // width: 1120px;
         // margin: 0 auto;
-
     }
 
     .logo-container {
@@ -38,9 +37,18 @@ header {
         background-color: #ddd;
         text-align: center;
     }
-//     .search-bar-container {
-//         & .CalendarDay__selected_span {
-
-//         }
-//     }
+    .search-bar-container {
+        background-color: white;
+        width: 800px;
+        border-radius:3rem;
+        gap:10px;
+    }
+    & input{
+        border-radius:3rem;
+    }
+    & .search-btn{
+        color:white;
+        background-color:$clr8;
+        border-radius:3rem;
+    }
 }

@@ -54,8 +54,11 @@ class _AppHeader extends React.Component {
                         </button>
                     </div>
                 </nav>
-                <div className="search-bar-container">
-                    <input type="text" />
+                <div className="search-bar-container flex justify-center">
+                    <div className="flex column">
+                        <label htmlFor="location">Location:</label>
+                        <input type="text" name="location" />
+                    </div>
                     <DateRangePicker
                         startDate={this.state.startDate} // momentPropTypes.momentObj or null,
                         startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
@@ -67,7 +70,11 @@ class _AppHeader extends React.Component {
                         focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
                         onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
                     />
-                    <input type="text" />
+                    <div className="flex column">
+                        <label htmlFor="guests">Guests:</label>
+                        <input type="text" name="guests" />
+                    </div>
+                    <button className="search-btn">Search</button>
                 </div>
             </header>
         )

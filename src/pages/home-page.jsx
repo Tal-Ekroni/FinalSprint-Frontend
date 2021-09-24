@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+
 import logo from '../assets/img/logo.png'
 
 class _HomePage extends React.Component {
@@ -20,17 +21,17 @@ class _HomePage extends React.Component {
                 <div className="sug-loc">
                     <h2>Suggested locations:</h2>
                     <div className="locations flex space-between">
-                        <div className="loc-section">
-                            <img src="" alt="" />
-                            <h1>New-York</h1>
+                        <div className="loc-section flex justify-center ">
+                            <img src="../../public/img/location-preview.png" />
+                            <h1 className="flex align-center">New-York</h1>
                         </div>
-                        <div className="loc-section">
-                            <img src="" alt="" />
-                            <h1>Paris</h1>
+                        <div className="loc-section flex justify-center">
+                            <img src="../../public/img/location-preview.png" alt="" />
+                            <h1 className="flex align-center" >Paris</h1>
                         </div>
-                        <div className="loc-section">
-                            <img src="" alt="" />
-                            <h1>Tokyo</h1>
+                        <div className="loc-section flex justify-center">
+                            <img src="../../public/img/location-preview.png" alt="" />
+                            <h1 className="flex align-center">Tokyo</h1>
                         </div>
                     </div>
                 </div>
