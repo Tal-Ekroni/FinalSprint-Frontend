@@ -1,0 +1,16 @@
+.stay-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px,1fr));
+    gap: 17px;
+    @include for-narrow-layout {
+        grid-template-columns: repeat(auto-fit, minmax(190px,1fr));
+    }
+    @include for-normal-layout {
+        grid-template-columns: repeat(auto-fit, minmax(230px,1fr));
+
+    }
+    @include for-wide-layout {
+        grid-template-columns: repeat(auto-fit, minmax(270px,1fr));
+
+    }
+}
