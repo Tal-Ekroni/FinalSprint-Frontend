@@ -1,13 +1,12 @@
 import React from 'react'
 
 export class AssetAmenities extends React.Component {
-    componentDidMount() {
-        console.log('amen', this.props);
-    }
     getAmenitiesIcons = (amenity) => {
         console.log(amenity);
     }
     render() {
+        const amenities =  this.props
+        console.log('123',amenities);
         return (
             <div>
                 AssetAmenities
