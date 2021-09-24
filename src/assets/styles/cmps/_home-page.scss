@@ -1,0 +1,17 @@
+.home-page {
+    & .hero {
+        background-image: url(../../img/hero.png);
+        object-fit: cover;
+        height: 80vh;
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+
+    & .sug-loc {
+        & .locations {
+            & .loc-section {
+                
+            }
+        }
+    }
+}

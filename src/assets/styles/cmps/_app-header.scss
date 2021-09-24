@@ -5,38 +5,41 @@ header {
         height: 75px;
         width: 1120px;
         margin: 0 auto;
-
     }
-    
+
     .logo-container {
         height: 35px;
     }
-    
+
     .nav-bar-container {
         height: 50px;
         width: 200px;
     }
-    
 
-    .user-btn{
+    .user-btn {
         border: none;
         text-align: inherit;
         height: 45px;
         width: 75px;
         border-radius: 21px;
-        border: 1px solid #DDD;
+        border: 1px solid #ddd;
         font-size: 1.2rem;
         line-height: 1.43;
         color: #484848;
     }
-    .btn-section{
+    .btn-section {
         width: 60px;
     }
-    .user-logo-container{
+    .user-logo-container {
         height: 30px;
         width: 30px;
         border-radius: 15px;
-        background-color: #DDD;
+        background-color: #ddd;
         text-align: center;
     }
+//     .search-bar-container {
+//         & .CalendarDay__selected_span {
+
+//         }
+//     }
 }
