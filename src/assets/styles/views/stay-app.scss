@@ -1,16 +1,10 @@
-.car-list {
-    list-style: none;
+.main-list-map {
+}
+.main-list-content {
     display: flex;
-    flex-wrap: wrap;
+    justify-content: space-between;
 }
-.car-preview {
-    background-color: $clr7;
-    color: whitesmoke;
-    border-radius: .2em;
-    margin: 5px;
-    text-align: center;
-    padding: 5px;
-}
+
 .car-preview span {
     color: pink;
 }

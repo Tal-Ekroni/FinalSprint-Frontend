@@ -33,7 +33,7 @@ class _StayApp extends React.Component {
         const { stays } = this.props
         if (!stays.length) return <div>loading</div>
         return (
-            <main>
+            <main className="main-container">
                 {stays.length && <StaysList stays={stays} /> }
             </main>
         )
