@@ -3,7 +3,7 @@ import { Fa } from 'react-icons'
 import { FaAirFreshener, FaApple, FaDog, FaSmoking, FaSmokingBan, FaTv, FaWifi } from 'react-icons/fa';
 export class AssetAmenities extends React.Component {
     getAmenitiesIcons = (amenity) => {
-        console.log(amenity);
+        // console.log(amenity);
         switch (amenity) {
             case 'TV':
                 return <FaTv />
@@ -27,7 +27,7 @@ export class AssetAmenities extends React.Component {
     }
     render() {
         const { amenities } = this.props
-        console.log('123', amenities);
+        // console.log('123', amenities);
         return (
             <ul className="amenities-list flex space-between">
                 {amenities && amenities.map(amenity => {
