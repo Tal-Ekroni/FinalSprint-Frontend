@@ -1,10 +1,10 @@
 import { StayPreview } from "./stay-preview";
 
-export function StaysList({stays}) {
+export function StaysList({stays,history}) {
     return (
-        <div className="stay-list  ">
+        <div className="stay-list">
             {stays.map((stay, idx) =>
-                <StayPreview key={idx} stay={stay} />
+                <StayPreview key={idx} stay={stay} history={history} />
 )}
         </div>)
 }

@@ -1,14 +1,31 @@
 .stay-preview{
+    font-weight: 400;
+    font-size: 18px;
+    text-decoration: none;
+    
+    cursor: pointer;
+    & a:hover{
+        text-decoration: none;
+    }
     & .preview-img {
-        // max-width: 300px;
-        // max-height: 300px;
         border-radius: 13px;
     }
-    @include for-narrow-layout {
-        .preview-img {
-            // max-width: 250px;
-            // max-height: 250px;
-            border-radius: 13px;
-        } 
+    & .stay-name {
+        color: $clr9;
     }
+    & .preview-price{
+        color: $clr9;
+    }
+    & .preview-rating{
+        padding-top: 7px;
+        gap: 4px;
+        color: $clr9;
+    }
+    & .stay-style{
+        padding-top: 7px;
+        gap: 4px;
+        color: $clr9;
+    }
+
 }
+

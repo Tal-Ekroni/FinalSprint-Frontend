@@ -19,7 +19,7 @@ class _StayDetails extends React.Component {
         stayReviews: []
     }
     componentDidMount() {
-        localStorage.setItem('stay', JSON.stringify([stay]))
+        // localStorage.setItem('stay', JSON.stringify([stay]))
         const { stayId } = this.props.match.params
         if (!stayId) this.props.history.push('/')
         else {
