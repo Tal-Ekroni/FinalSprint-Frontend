@@ -36,14 +36,14 @@ export function BasicInfo({ stay }) {
                 </section>
             </section>
             <section className="asset-imgs-container flex ">
-                <div className="primary-img"><img src={stay.imgUrls[0]} alt="" /></div>
+                <div className="primary-img square-ratio"><img src={stay.imgUrls[0]} alt="" /></div>
                 <div className="imgs-container flex">
-                    <div className="asset-img"><img src={stay.imgUrls[0]} alt="" /></div>
-                    <div className="asset-img"><img src={stay.imgUrls[0]} alt="" /></div>
+                    <div className="asset-img square-ratio"><img src={stay.imgUrls[0]} alt="" /></div>
+                    <div className="asset-img square-ratio"><img src={stay.imgUrls[0]} alt="" /></div>
                 </div>
                 <div className="imgs-container flex">
-                    <div className="asset-img"><img src={stay.imgUrls[0]} alt="" /></div>
-                    <div className="asset-img"><img src={stay.imgUrls[0]} alt="" /></div>
+                    <div className="asset-img square-ratio"><img src={stay.imgUrls[0]} alt="" /></div>
+                    <div className="asset-img square-ratio"><img src={stay.imgUrls[0]} alt="" /></div>
                 </div>
             </section>
         </section>

@@ -9,17 +9,17 @@ import { onEditStay, onRemoveStay, addToCart } from '../store/stay.actions.js'
 import { BasicInfo } from '../cmps/details-base-info'
 import { AssetSum } from '../cmps/details-asset-sum'
 import { AssetAmenities } from '../cmps/details-amenities'
-// import * as data from '../data/air-data.json';
+import * as data from '../data/air-data.json';
 // import img from '../assets/img/1.jpg'
 // const stay = data.stay;
-// var stay = data.default[0].stay[0]
+var stay = data.default[0].stay[0]
 class _StayDetails extends React.Component {
     state = {
         stay: null,
         stayReviews: []
     }
     componentDidMount() {
-        // localStorage.setItem('stay', JSON.stringify([stay]))
+        localStorage.setItem('stay', JSON.stringify([stay]))
         const { stayId } = this.props.match.params
         if (!stayId) this.props.history.push('/')
         else {
