@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 
 import { loadStays, onAddStay, onEditStay, onRemoveStay, addToCart } from '../store/stay.actions.js'
 import { showSuccessMsg } from '../services/event-bus.service.js'
+import {StaysList} from '../cmps/stays-list.jsx'
 
 class _StayApp extends React.Component {
     state = {
@@ -16,7 +17,7 @@ class _StayApp extends React.Component {
         this.props.onRemoveStay(stayId)
     }
     onAddStay = () => {
-       this.props.onAddStay()
+        this.props.onAddStay()
     }
     onEditStay = (stay) => {
         const price = +prompt('New price?')
@@ -30,13 +31,11 @@ class _StayApp extends React.Component {
     }
     render() {
         const { stays } = this.props
+        if (!stays.length) return <div>loading</div>
         return (
-            <div>
-                <h3>Stays App</h3>
-                <main>
-                    <div>List Of Stays</div>
-                </main>
-            </div>
+            <main>
+                {stays.length && <StaysList stays={stays} /> }
+            </main>
         )
     }
 }
