@@ -5,7 +5,6 @@ export function loadStays(filterBy = null) {
     return async (dispatch) => {
         try {
             const stays = await stayService.query(filterBy)
-            console.log(stays);
             dispatch({
                 type: 'SET_STAYS',
                 stays

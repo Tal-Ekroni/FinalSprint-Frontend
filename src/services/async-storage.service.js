@@ -294,7 +294,6 @@ let gStays =
 }]
 // _save('stay',gStays)
 function query(entityType, delay = 200) {
-    
     var entities = JSON.parse(localStorage.getItem(entityType)) || gStays
     // var entities = JSON.parse(localStorage.getItem(entityType)) 
 
