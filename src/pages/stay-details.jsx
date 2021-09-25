@@ -4,18 +4,19 @@ import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { stayService } from '../services/stay.service'
 import { showSuccessMsg } from '../services/event-bus.service.js'
-import { FaHome, FaBroom, FaDoorClosed, FaKey } from 'react-icons/fa'
+import { FaHome, FaBroom, FaDoorClosed, FaKey, FaFlag } from 'react-icons/fa'
 import { onEditStay, onRemoveStay, addToCart } from '../store/stay.actions.js'
 import { BasicInfo } from '../cmps/details-base-info'
 import { AssetSum } from '../cmps/details-asset-sum'
 import { AssetAmenities } from '../cmps/details-amenities'
 import 'react-dates/initialize'
-import { DateRangePicker, DayPickerRangeController ,SingleDatePicker} from 'react-dates';
+import { DateRangePicker, DayPickerRangeController, SingleDatePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
 import * as data from '../data/air-data.json';
 import { ErrorMessage, Field, Form, Formik } from 'formik'
 import { Button, TextField } from '@material-ui/core'
-import Select from 'react-select'
+
+import { CheckoutForm } from '../cmps/details-checkout-form'
 
 // import img from '../assets/img/1.jpg'
 // const stay = data.stay;
@@ -24,12 +25,17 @@ var trip = data.default[0].trip
 class _StayDetails extends React.Component {
     state = {
         stay: null,
-        stayReviews: [], 
-        
+        stayReviews: [],
+        trip: {
+            startDate: '',
+            endDate: '',
+            guests: { adults: 1, kids: 0 }
+
+        }
+
     }
     componentDidMount() {
         // localStorage.setItem('stay', JSON.stringify([stay]))
-        console.log(trip);
         const { stayId } = this.props.match.params
         if (!stayId) this.props.history.push('/')
         else {
@@ -37,10 +43,20 @@ class _StayDetails extends React.Component {
             stayService.getById(stayId)
                 .then(stay => {
                     currStay = stay
-                    console.log('currStay', currStay);
-                    this.setState({ stay: currStay })
+                    // console.log('currStay', currStay);
+                    this.setState({
+                        stay: currStay,
+                        trip: {
+                            startDate: '',
+                            endDate: '',
+                            guests: { adults: 1, kids: 0 },
+
+                        }
+                    })
                 })
+
         }
+
     }
     onRemoveStay = (stayId) => {
         this.props.onRemoveStay(stayId)
@@ -52,11 +68,11 @@ class _StayDetails extends React.Component {
         const TextFieldOutlined = (props) => <TextField {...props} variant={'outlined'} color={'primary'} />
         const initialValues = {}
         return (
-            <section className="stay-details-section">
+            <section className="stay-details-section main-layout">
                 {stay && <div className="stay-details-container">
                     <BasicInfo stay={stay} />
                     <section className="flex">
-                        <div >
+                        <div className="details-left-container">
                             <section className="host-info-container flex align-center space-between">
                                 <div className="asset-short-info flex">
                                     <div className="host-by">
@@ -92,15 +108,23 @@ class _StayDetails extends React.Component {
                                     <h3>Select check-in date</h3>
                                     <p>Add your travel dates for exact pricing</p>
                                 </div>
-                                {/* <DateRangePicker /> */}
+                                <DateRangePicker />
                                 <div className="flex">
-                                    {/* <DayPickerRangeController /> */}
-                                    {/* <DayPickerRangeController /> */}
+                                    <DayPickerRangeController />
+                                    <DayPickerRangeController />
                                 </div>
                             </section>
                         </div>
                         {/* TODO */}
-                        <section className="checkout-container"></section>
+                        <div className="details-right-container">
+                            <section className="checkout-container flex">
+                                <CheckoutForm stay={stay} />
+                                <div className="report-container flex ">
+                                    <FaFlag />
+                                    <p>Report this listing</p>
+                                </div>
+                            </section>
+                        </div>
 
                     </section>
                 </div>}

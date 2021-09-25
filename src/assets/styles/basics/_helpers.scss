@@ -1,16 +1,29 @@
 // Font Sizes
-.fs12 { font-size: rem(12px); }
-.fs14 { font-size: rem(14px); }
-.fs18 { font-size: rem(18px); }
-.fs20 { font-size: rem(20px); }
-.fs24 { font-size: rem(24px); }
-.fs28 { font-size: rem(28px); }
-.fs30 { font-size: rem(30px); }
+.fs12 {
+    font-size: rem(12px);
+}
+.fs14 {
+    font-size: rem(14px);
+}
+.fs18 {
+    font-size: rem(18px);
+}
+.fs20 {
+    font-size: rem(20px);
+}
+.fs24 {
+    font-size: rem(24px);
+}
+.fs28 {
+    font-size: rem(28px);
+}
+.fs30 {
+    font-size: rem(30px);
+}
 
 // flex helpers
 
 .flex {
-
     display: flex;
 
     > *.full {
@@ -22,21 +35,21 @@
     &.justify-center {
         justify-content: center;
     }
-    &.space-between{
+    &.space-between {
         justify-content: space-between;
     }
     &.align-center {
         align-items: center;
     }
-    &.align-end{
+    &.align-end {
         align-items: flex-end;
     }
 }
 
-.main-layout{
-    max-width: 1020px;
-    margin: 0 auto;
-}
+// .main-layout{
+//     max-width: 1020px;
+//     margin: 0 auto;
+// }
 // Media helpers
 
 .square-ratio {
@@ -47,4 +60,52 @@
 }
 .portrait-ratio {
     @include aspect-ratio(9, 16);
+}
+
+// Main Layout Helper
+// @media (max-width: $narrow-breakpoint) {
+//     .main-layout {
+//         width: 90%;
+//     }
+// }
+@media (max-width: $mobile-breakpoint) {
+    .main-layout {
+        width: 100%;
+    }
+}
+@media (min-width: $mobile-breakpoint) {
+    .main-layout {
+        width: 100%;
+    }
+}
+@media (min-width: $narrow-breakpoint) {
+    .main-layout {
+        min-width: 580px;
+        max-width: 888px;
+        width: 80%;
+        margin: 0 auto;
+    }
+}
+@media (min-width: $normal-breakpoint) {
+    .main-layout {
+        min-width: 888px;
+        max-width: 1200px;
+        margin: 0 auto;
+        width: 80%;
+    }
+}
+@media (min-width: $wide-breakpoint) {
+    .main-layout {
+        min-width: 1200px;
+        max-width: 1360px;
+        margin: 0 auto;
+        width: 80%;
+    }
+}
+@media (min-width: $wide-breakpoint) {
+    .main-layout {
+        min-width: 1360px;
+        margin: 0 auto;
+        width: 80%;
+    }
 }

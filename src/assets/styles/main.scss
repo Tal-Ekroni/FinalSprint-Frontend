@@ -11,7 +11,6 @@
 @import "basics/links";
 @import "basics/forms";
 
-
 // Views
 @import "views/about-us";
 @import "views/home-page";
@@ -25,10 +24,9 @@
 @import "cmps/user-msg";
 @import "cmps/home-page";
 @import "cmps/stay-list";
-@import "cmps/stay-preview"
-
-
-
-
-
-
+@import "cmps/stay-preview";
+@import "cmps/details-amenities.scss";
+@import "cmps/details-asset-sum.scss";
+@import "cmps/details-basic-info.scss";
+@import "cmps/details-dates.scss";
+@import "cmps/details-checkout.scss";

@@ -1,12 +1,12 @@
 import { FaStar, FaMedal, FaUpload, FaHeart } from 'react-icons/fa'
 export function BasicInfo({ stay }) {
     return (
-        <section>
+        <section className="info-imgs-container">
             <section className="stay-info">
                 <div className="stay-name-conatiner">
                     <h2>{stay.name}</h2>
                 </div>
-                <section className="flex space-between">
+                <section className="info-line flex space-between">
                     <div className="stay-info-conatiner flex">
                         <div className="stay-review-avg flex align-end">
                             <p><FaStar size={13} color="#FF5A5F" /></p>
@@ -35,7 +35,9 @@ export function BasicInfo({ stay }) {
                     </div>
                 </section>
             </section>
-            <section className="asset-imgs-container flex ">
+            <section className="asset-imgs-container flex  ">
+                <div className="asset-imgs flex">
+
                 <div className="primary-img square-ratio"><img src={stay.imgUrls[0]} alt="" /></div>
                 <div className="imgs-container flex">
                     <div className="asset-img square-ratio"><img src={stay.imgUrls[0]} alt="" /></div>
@@ -44,6 +46,7 @@ export function BasicInfo({ stay }) {
                 <div className="imgs-container flex">
                     <div className="asset-img square-ratio"><img src={stay.imgUrls[0]} alt="" /></div>
                     <div className="asset-img square-ratio"><img src={stay.imgUrls[0]} alt="" /></div>
+                </div>
                 </div>
             </section>
         </section>
