@@ -15,8 +15,8 @@ class _HomePage extends React.Component {
 
     render() {
         return (
-            <section className="home-page flex column">
-                <div className="hero">
+            <section className="home-page flex column main-container">
+                <div className="hero main-container full">
                 </div>
                 <div className="sug-loc">
                     <h2>Suggested locations:</h2>
@@ -45,7 +45,7 @@ class _HomePage extends React.Component {
                         </div>
                         <div className="live-card flex column">
                             <img src="" alt="" />
-                            <p>Allow dogs</p>
+                            <p>Pets Allowed</p>
                         </div>
                         <div className="live-card flex column">
                             <img src="" alt="" />
@@ -53,6 +53,11 @@ class _HomePage extends React.Component {
                         </div>
                     </div>
 
+                </div>
+                <div className="host-banner flex column justify-center">
+                    <h1>Try hosting</h1>
+                    <p>Earn extra income and unlock new opportunities by sharing your space</p>
+                    <button className="try-host-btn">Learn More</button>
                 </div>
             </section >
         )
