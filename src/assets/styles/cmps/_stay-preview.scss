@@ -1,31 +1,42 @@
-.stay-preview{
+.stay-preview {
+    font-size: 14px;
+    font-family: circular;
     font-weight: 400;
-    font-size: 18px;
+    color: $clr2;
+
     text-decoration: none;
-    
+
     cursor: pointer;
-    & a:hover{
+    & a:hover {
         text-decoration: none;
     }
     & .preview-img {
         border-radius: 13px;
+        & .preview-slider {
+            position: absolute;
+            top: 10px;
+            right: 0;
+        }
     }
-    & .stay-name {
-        color: $clr9;
-    }
-    & .preview-price{
-        color: $clr9;
-    }
-    & .preview-rating{
-        padding-top: 7px;
-        gap: 4px;
-        color: $clr9;
-    }
-    & .stay-style{
-        padding-top: 7px;
-        gap: 4px;
-        color: $clr9;
-    }
+  
+    // & p {
+    // }
 
+    & .stay-name h3 {
+        line-height: 1.25rem;
+        font-size: 0.875rem;
+    }
+    & .preview-price {
+        color: $clr9;
+    }
+    & .preview-rating {
+        padding-top: 7px;
+        gap: 4px;
+        color: $clr9;
+    }
+    & .stay-style {
+        padding-top: 7px;
+        gap: 4px;
+        color: $clr9;
+    }
 }
-
