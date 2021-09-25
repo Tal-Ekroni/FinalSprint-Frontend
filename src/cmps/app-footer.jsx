@@ -27,7 +27,8 @@ class _AppFooter extends React.Component {
         return (
             <footer className="app-footer main-container">
                 <p>
-                    coffeerights 2021  </p>
+                    © T.I.L
+                </p>
                 <UserMsg />
             </footer>
         )

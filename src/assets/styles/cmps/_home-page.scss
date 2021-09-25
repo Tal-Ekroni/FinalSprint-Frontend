@@ -1,9 +1,7 @@
 .home-page {
-    height:100vh;
     & .hero {
         background-image: url(../../img/hero.png);
-        height: 50%;
-        /* Position and center the image to scale nicely on all screens */
+        height: 100vh;
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -11,7 +9,8 @@
     }
 
     & .sug-loc {
-        margin: 15px;
+        margin-top:56px;
+        margin-bottom:56px;
         & .locations {
             margin: 10px;
             & .loc-section {
@@ -20,6 +19,35 @@
                 gap: 10px;
                 font-size: 0.6rem;
             }
+        }
+    }
+    & .live-any{
+        margin-bottom:56px;
+        & .live-loc{
+            margin-top:15px;
+        }
+    }
+    & .host-banner {
+        background-image: url(../../img/host-banner.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 500px;
+        color: white;
+        padding: 100px;
+        border-radius: 10px;
+        & p {
+            margin-top: 15px;
+            max-width: 270px;
+        }
+        & .try-host-btn {
+            background-color: $clr1;
+            color: $clr2;
+            height: 50px;
+            margin-top: 20px;
+            width: 120px;
+            text-align: center;
+            border-radius: 5%;
         }
     }
 }

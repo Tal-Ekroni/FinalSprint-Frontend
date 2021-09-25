@@ -78,9 +78,8 @@ class _AppHeader extends React.Component {
                         focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
                         onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
                     />
-                    <div className="flex column">
-                        <span onClick={this.onGuestMode}>Guests:</span>
-                        {/* <input type="text" name="guests" /> */}
+                    <div className="flex justify-center align-center">
+                        <span onClick={this.onGuestMode}>Guests</span>
                     </div>
                     <button className="search-btn">Search</button>
                 </div>
