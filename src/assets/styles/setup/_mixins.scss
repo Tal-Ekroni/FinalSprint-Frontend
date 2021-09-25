@@ -30,7 +30,7 @@
 }
 
 @mixin for-extra-wide-layout {
-    @media (min-width: $extra-wide-breakpoint + 40) {
+    @media (min-width: $extra-wide-breakpoint) {
         @content;
     }
 }

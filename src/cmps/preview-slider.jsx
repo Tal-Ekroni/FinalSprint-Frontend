@@ -1,37 +1,33 @@
-import React from 'react'
+import React, { Component } from "react";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 
-export class LazyLoad extends React.Component {
-    sliders=()=> {
-        return this.props.imgs.map(img => {
-            return (
-                <div key={img}>
-                    <img alt="image" src={img} />
-                </div>
-            )
-        });
-    }
+export default class LazyLoad extends Component {
 
     render() {
-        const settings = {
+        var settings = {
             dots: true,
-            lazyLoad: true,
             infinite: true,
-            fade: true,
             speed: 500,
             slidesToShow: 1,
             slidesToScroll: 1,
-            initialSlide: 2,
+            arrows: true,
+      
         };
 
         const { imgs } = this.props
 
         return (
-            <div >
-                <Slider {...settings}>
-                    {this.sliders()}
-                </Slider>
-            </div>
+            <Slider {...settings} className="preview-slider"  >
+                {imgs.map(img => {
+                    return (
+                        <div>
+                            <img src={img} alt="Preview img" />
+                        </div>
+                    )
+                })}
+            </Slider>
         );
     }
 }

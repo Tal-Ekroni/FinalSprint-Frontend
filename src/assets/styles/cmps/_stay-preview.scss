@@ -7,29 +7,76 @@
     text-decoration: none;
 
     cursor: pointer;
-    & a:hover {
+
+    a:hover {
         text-decoration: none;
     }
-    & .preview-img {
+    .preview-img {
         border-radius: 13px;
-        & .preview-slider {
+        //  .preview-slider {
+
+        // }
+    }
+
+    .slick-slider {
+        position: relative;
+        // height: calc(100% -100px);
+
+        &:hover {
+            .slick-prev {
+                opacity: 1;
+            }
+            .slick-next {
+                opacity: 1;
+            }
+        }
+
+        .slick-prev,
+        .slick-next {
             position: absolute;
-            top: 10px;
-            right: 0;
+            top: 50%;
+            left: 10px;
+            z-index: 5;
+            opacity: 0;
+            transform: translateY(-50%);
+        }
+        .slick-next {
+            right: 10px;
+            left: unset;
+        }
+
+        .slick-dots {
+            bottom: 10px;
+        }
+
+        div {
+            height: 100%;
+            width: 100%;
+            margin: 0 0;
+            padding: 0 0;
+            border-radius: 15px;
+
+            img {
+                height: 100%;
+                border-radius: 15px;
+                object-fit: cover;
+            }
         }
     }
-  
-    // & p {
-    // }
 
-    & .stay-name h3 {
+    .stay-name h3 {
         line-height: 1.25rem;
         font-size: 0.875rem;
     }
-    & .preview-price {
+
+    .preview-price {
         color: $clr9;
+        & h3 {
+            font-size: 14px;
+            line-height: 1rem;
+        }
     }
-    & .preview-rating {
+    .preview-rating {
         padding-top: 7px;
         gap: 4px;
         color: $clr9;
