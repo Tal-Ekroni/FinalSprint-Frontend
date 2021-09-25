@@ -5,6 +5,7 @@
     color: $clr2;
     font-family: circular;
     width: 1120px;
+    border-bottom: 0.5px solid lightgray;
     & .stay-info {
         width: 100%;
         margin-top: 25px;
@@ -65,15 +66,12 @@
         width: 1120px;
         height: 500px;
         gap: 8px;
-        border: 1px solid black;
         & .primary-img {
             height: 500px;
             width: 550px;
-            border: 1px solid black;
         }
     }
     & .imgs-container {
-        border: 1px solid black;
         flex-direction: column;
         width: 275px;
         height: 500px;
@@ -81,9 +79,7 @@
         & .asset-img {
             height: 245px;
             width: 100%;
-            border: 1px solid black;
         }
-
         img {
             width: 100%;
             height: 100%;
@@ -98,6 +94,7 @@
 
 .asset-sum-container {
     height: 335px;
+    width: 650px;
     border-bottom: 0.5px solid lightgray;
     & .asset-sum {
         padding: 30px 0;
@@ -114,4 +111,58 @@
         height: 23px;
         width: 23px;
     }
+}
+
+.amenities-container {
+    height: 420px;
+    width: 650px;
+    border-bottom: 0.5px solid lightgray;
+    & h4 {
+        padding-top: 45px;
+        padding-bottom: 24px;
+        line-height: 1.875rem;
+        font-size: 1.875rem;
+    }
+    & .amenities-list {
+        padding: 0;
+        height: 200px;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+    & .amenity-item {
+        height: 40px;
+        align-items: center;
+        justify-items: flex-start;
+    }
+    & .amenity-icon-container {
+        margin-inline-end: 15px;
+        & > * {
+            height: 24px;
+            width: 24px;
+        }
+    }
+    & .amenity-txt {
+        font-size: 1.2rem;
+        font-weight: 400;
+    }
+    & .amenities-btn {
+        min-width: 210px;
+        max-width: 100%;
+        height: 50px;
+        border: 1px solid $clr2;
+        color: $clr2;
+        font-size: 1rem;
+        line-height: 1.43rem;
+        font-weight: 600;
+        border-radius: 8px;
+        margin: 0;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+.dates-container {
+    width: 650px;
+    height: 560px;
 }
