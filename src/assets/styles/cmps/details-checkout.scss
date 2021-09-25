@@ -1,11 +1,6 @@
 .checkout-container {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 50px;
-    bottom: 25px;
-    margin-top: 50px;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: center;
     & .checkout-form-container {
         height: 275px;
         width: 80%;
@@ -37,9 +32,6 @@
 .dates-check-container {
     padding-top: 25px;
     height: 55px;
-    & * {
-        width: 100%;
-    }
 }
 .guests-check-container {
     margin-top: 18px;
@@ -60,21 +52,36 @@
     font-weight: 300;
     text-decoration: underline;
 }
+// .guests-popup {
+//     border-radius: 4px;
+//     margin-bottom: 16px;
+//     padding: 16px;
+//     position: absolute;
+//     text-align: left;
+//     width: 80%;
+//     z-index: 10;
+//     right: 0px;
+// }
+// .children-line {
+//     height: 32px;
+//     min-width: 200px;
+// }
+
 
 @media (max-width: $mobile-breakpoint) {
-    .checkout-container {
-        display: none;
-    }
 }
 @media (min-width: $mobile-breakpoint) {
-    .checkout-container {
-        display: none;
-    }
 }
 
 @media (min-width: $narrow-breakpoint) {
     .checkout-container {
         display: flex;
+        position: -webkit-sticky;
+        position: sticky;
+        top: 50px;
+        bottom: 25px;
+        margin-top: 50px;
+        align-items: flex-end;
     }
 }
 @media (min-width: $normal-breakpoint) {

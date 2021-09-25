@@ -10,13 +10,13 @@ import { BasicInfo } from '../cmps/details-base-info'
 import { AssetSum } from '../cmps/details-asset-sum'
 import { AssetAmenities } from '../cmps/details-amenities'
 import 'react-dates/initialize'
-import { DateRangePicker, DayPickerRangeController, SingleDatePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
 import * as data from '../data/air-data.json';
 import { ErrorMessage, Field, Form, Formik } from 'formik'
 import { Button, TextField } from '@material-ui/core'
-
 import { CheckoutForm } from '../cmps/details-checkout-form'
+import { DayPickerRangeController } from 'react-dates'
+
 
 // import img from '../assets/img/1.jpg'
 // const stay = data.stay;
@@ -71,7 +71,7 @@ class _StayDetails extends React.Component {
             <section className="stay-details-section main-layout">
                 {stay && <div className="stay-details-container">
                     <BasicInfo stay={stay} />
-                    <section className="flex">
+                    <section className=" details-main-conatiner flex">
                         <div className="details-left-container">
                             <section className="host-info-container flex align-center space-between">
                                 <div className="asset-short-info flex">
@@ -103,16 +103,22 @@ class _StayDetails extends React.Component {
                                 </div>
                                 <button className="amenities-btn">{`Show all ${stay.amenities.length} amenities`}</button>
                             </section>
-                            <section className="dates-container">
+                            <section className="dates-container flex">
                                 <div>
                                     <h3>Select check-in date</h3>
                                     <p>Add your travel dates for exact pricing</p>
+                                    <div className="calender-container">
+                                        <div className="checkin-calender">
+                                            <DayPickerRangeController />
+                                        </div>
+                                        <div className="checkout-calender">
+                                            <DayPickerRangeController />
+                                        </div>
+                                    </div>
+
+
                                 </div>
-                                <DateRangePicker />
-                                <div className="flex">
-                                    <DayPickerRangeController />
-                                    <DayPickerRangeController />
-                                </div>
+
                             </section>
                         </div>
                         {/* TODO */}
@@ -127,7 +133,7 @@ class _StayDetails extends React.Component {
                         </div>
 
                     </section>
-                </div>}
+                </div >}
             </section>
         )
     }
