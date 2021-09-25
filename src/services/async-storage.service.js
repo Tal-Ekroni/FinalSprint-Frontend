@@ -13,10 +13,12 @@ let gStays =
     name: "Ribeira Charming Duplex",
     assetType:"Entire duplex",
     imgUrls: [
+        "https://images.unsplash.com/photo-1484154218962-a197022b5858?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=874&q=80",
         "https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large",
-        "otherImg.jpg"
-    ],
-    price: 80.00,
+        "https://media.istockphoto.com/photos/modern-living-room-interior-3d-render-picture-id1293762741?s=612x612",
+
+'https://images.unsplash.com/photo-1493809842364-78817add7ffb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80'    ],
+    price: 90.00,
     summary: "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
     capacity: 8,
     amenities: [
@@ -62,8 +64,10 @@ let gStays =
     assetType:"Entire duplex",
     imgUrls: [
         "https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large",
-        "otherImg.jpg"
-    ],
+        "https://images.unsplash.com/photo-1484154218962-a197022b5858?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=874&q=80",
+        "https://media.istockphoto.com/photos/modern-living-room-interior-3d-render-picture-id1293762741?s=612x612",
+
+'https://images.unsplash.com/photo-1493809842364-78817add7ffb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80'    ],
     price: 80.00,
     summary: "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
     capacity: 8,
@@ -108,8 +112,7 @@ let gStays =
     name: "Taboola salad",
     assetType:"Entire duplex",
     imgUrls: [
-        "https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large",
-        "otherImg.jpg"
+        "https://images.unsplash.com/photo-1484154218962-a197022b5858?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=874&q=80",
     ],
     price: 80.00,
     summary: "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
@@ -156,7 +159,7 @@ let gStays =
     assetType:"Entire duplex",
     imgUrls: [
         "https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large",
-        "otherImg.jpg"
+        "https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large"
     ],
     price: 80.00,
     summary: "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
@@ -202,8 +205,7 @@ let gStays =
     name: "Baba Kababa",
     assetType:"Entire duplex",
     imgUrls: [
-        "https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large",
-        "otherImg.jpg"
+        "https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large"
     ],
     price: 80.00,
     summary: "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
@@ -249,8 +251,7 @@ let gStays =
     name: "Paris",
     assetType:"Entire island",
     imgUrls: [
-        "https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large",
-        "otherImg.jpg"
+        "https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large"
     ],
     price: 80.00,
     summary: "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
@@ -292,9 +293,9 @@ let gStays =
         "u102"
     ]
 }]
-// _save('stay',gStays)
+// _save('stay',gStays) 
 function query(entityType, delay = 200) {
-    var entities = JSON.parse(localStorage.getItem(entityType)) || gStays
+    var entities = JSON.parse(localStorage.getItem(entityType)) 
     // var entities = JSON.parse(localStorage.getItem(entityType)) 
 
     return new Promise((resolve, reject) => {

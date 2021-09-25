@@ -2,6 +2,15 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 24px;
+    & .stay-preview {
+        & .preview-img {
+            & .preview-slider {
+                & .slick-slider {
+                    // background-color: lightgray;
+                }
+            }
+        }
+    }
     @include for-narrow-layout {
         grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
     }

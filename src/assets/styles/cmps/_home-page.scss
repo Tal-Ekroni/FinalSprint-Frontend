@@ -1,16 +1,24 @@
 .home-page {
+    height:100vh;
     & .hero {
         background-image: url(../../img/hero.png);
-        object-fit: cover;
-        height: 80vh;
+        height: 50%;
+        /* Position and center the image to scale nicely on all screens */
+        background-position: center;
         background-repeat: no-repeat;
-        background-size: 100%;
+        background-size: cover;
+        position: relative;
     }
 
     & .sug-loc {
+        margin: 15px;
         & .locations {
+            margin: 10px;
             & .loc-section {
-                
+                height: 100px;
+                width: 100px;
+                gap: 10px;
+                font-size: 0.6rem;
             }
         }
     }

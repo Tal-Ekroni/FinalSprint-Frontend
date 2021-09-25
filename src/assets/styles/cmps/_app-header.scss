@@ -92,5 +92,19 @@ header {
         min-width: 1360px;
         margin: 0 auto;
         width: 80%;
+        .search-bar-container {
+            background-color: white;
+            width: 800px;
+            border-radius: 3rem;
+            gap: 10px;
+        }
+        & input {
+            border-radius: 3rem;
+        }
+        & .search-btn {
+            color: white;
+            background-color: $clr8;
+            border-radius: 3rem;
+        }
     }
 }
