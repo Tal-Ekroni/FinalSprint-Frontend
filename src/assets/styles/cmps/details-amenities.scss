@@ -1,0 +1,49 @@
+.amenities-container {
+    height: 420px;
+    width: 100%;
+    border-bottom: 0.5px solid lightgray;
+    & h4 {
+        padding-top: 45px;
+        padding-bottom: 24px;
+        line-height: 1.875rem;
+        font-size: 1.875rem;
+    }
+    & .amenities-list {
+        padding: 0;
+        height: 200px;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+    & .amenity-item {
+        height: 40px;
+        align-items: center;
+        justify-items: flex-start;
+    }
+    & .amenity-icon-container {
+        margin-inline-end: 15px;
+        & > * {
+            height: 24px;
+            width: 24px;
+        }
+    }
+    & .amenity-txt {
+        font-size: 1.2rem;
+        font-weight: 400;
+    }
+    & .amenities-btn {
+        min-width: 210px;
+        max-width: 100%;
+        height: 50px;
+        border: 1px solid $clr2;
+        color: $clr2;
+        font-size: 1rem;
+        line-height: 1.43rem;
+        font-weight: 600;
+        border-radius: 8px;
+        margin: 0;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}

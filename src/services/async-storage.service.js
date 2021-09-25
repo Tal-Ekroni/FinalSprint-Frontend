@@ -310,7 +310,7 @@ function query(entityType, delay = 200) {
 
 
 function get(entityType, entityId) {
-    console.log(entityType, entityId);
+    // console.log(entityType, entityId);
     return query(entityType)
         .then(entities => entities.find(entity => entity._id === entityId))
     // .then(entities =>)

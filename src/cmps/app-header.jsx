@@ -40,8 +40,8 @@ class _AppHeader extends React.Component {
     render() {
         const { user } = this.props
         return (
-            <header className="main-container app-header">
-                <nav className="user-header-section flex space-between align-center" >
+            <header className="app-header-conatiner">
+                <nav className="user-header-section flex space-between align-center main-layout"  >
                     <div className="logo-container">
                         <NavLink to="/"> <FaAirbnb size={30} color="#FF5A5F" /></NavLink>
                     </div>
