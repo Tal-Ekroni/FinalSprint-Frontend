@@ -1,0 +1,19 @@
+.guest-modal {
+    width: 300px;
+    background-color: $clr1;
+    position: absolute;
+    top: 132px;
+    right: 233px;
+    z-index: 3;
+    & .guest-card {
+        &.border-top {
+            border-top: 1px $clr2 solid;
+        }
+        & .guest-amount {
+            & .guest-btn {
+                color: $clr2;
+                border-radius: 50%;
+            }
+        }
+    }
+}

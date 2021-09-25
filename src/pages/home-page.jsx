@@ -35,6 +35,25 @@ class _HomePage extends React.Component {
                         </div>
                     </div>
                 </div>
+                <div className="live-any flex column">
+                    <h1>Live Anywhere:</h1>
+                    <div className="live-loc flex space-between">
+
+                        <div className="live-card flex column">
+                            <img src="" alt="" />
+                            <p>Near the city</p>
+                        </div>
+                        <div className="live-card flex column">
+                            <img src="" alt="" />
+                            <p>Allow dogs</p>
+                        </div>
+                        <div className="live-card flex column">
+                            <img src="" alt="" />
+                            <p>In the jungle</p>
+                        </div>
+                    </div>
+
+                </div>
             </section >
         )
     }

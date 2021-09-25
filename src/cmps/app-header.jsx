@@ -5,6 +5,7 @@ import { FaAirbnb } from 'react-icons/fa'
 import 'react-dates/initialize';
 import { DateRangePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
+import { GuestsModal } from './guests-modal';
 
 
 
@@ -17,7 +18,8 @@ import { LoginSignup } from './login-signup.jsx'
 class _AppHeader extends React.Component {
     state = {
         startDate: null,
-        endDate: null
+        endDate: null,
+        isGuestMode: false
     }
     onLogin = (credentials) => {
         this.props.onLogin(credentials)
@@ -27,6 +29,12 @@ class _AppHeader extends React.Component {
     }
     onLogout = () => {
         this.props.onLogout()
+    }
+    onGuestMode = () => {
+        this.setState(prevState => ({
+            isGuestMode: !prevState.isGuestMode
+        }));
+
     }
 
     render() {
@@ -71,11 +79,12 @@ class _AppHeader extends React.Component {
                         onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
                     />
                     <div className="flex column">
-                        <label htmlFor="guests">Guests:</label>
-                        <input type="text" name="guests" />
+                        <span onClick={this.onGuestMode}>Guests:</span>
+                        {/* <input type="text" name="guests" /> */}
                     </div>
                     <button className="search-btn">Search</button>
                 </div>
+                {this.state.isGuestMode && <GuestsModal />}
             </header>
         )
     }
