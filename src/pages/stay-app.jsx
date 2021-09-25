@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { loadStays, onAddStay, onEditStay, onRemoveStay, addToCart } from '../store/stay.actions.js'
 import { showSuccessMsg } from '../services/event-bus.service.js'
 import { StaysList } from '../cmps/stays-list.jsx'
+import { ExploreFilter } from '../cmps/explore-filter.jsx'
 
 class _StayApp extends React.Component {
     state = {
@@ -35,6 +36,7 @@ class _StayApp extends React.Component {
         return (
             <main className="main-container">
                 <p>{stays.length} stays</p>
+                <ExploreFilter/>
                 {stays.length && <StaysList stays={stays} history={this.props.history} />}
             </main>
         )
