@@ -47,6 +47,9 @@
 
         .slick-dots {
             bottom: 10px;
+            li.slick-active button::before {
+                color: whitesmoke;
+            }
         }
 
         div {

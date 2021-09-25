@@ -15,6 +15,7 @@ export function loadStays(filterBy = null) {
     }
 }
 
+
 export function onRemoveStay(stayId) {
     return async (dispatch, getState) => {
         try {
