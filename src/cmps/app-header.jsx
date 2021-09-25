@@ -5,6 +5,7 @@ import { FaAirbnb } from 'react-icons/fa'
 import 'react-dates/initialize';
 import { DateRangePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
+import { GuestsModal } from './guests-modal';
 
 
 
@@ -17,7 +18,8 @@ import { LoginSignup } from './login-signup.jsx'
 class _AppHeader extends React.Component {
     state = {
         startDate: null,
-        endDate: null
+        endDate: null,
+        isGuestMode: false
     }
     onLogin = (credentials) => {
         this.props.onLogin(credentials)
@@ -28,12 +30,18 @@ class _AppHeader extends React.Component {
     onLogout = () => {
         this.props.onLogout()
     }
+    onGuestMode = () => {
+        this.setState(prevState => ({
+            isGuestMode: !prevState.isGuestMode
+        }));
+
+    }
 
     render() {
         const { user } = this.props
         return (
-            <header className="main-container app-header">
-                <nav className="user-header-section flex space-between align-center" >
+            <header className="app-header-conatiner">
+                <nav className="user-header-section flex space-between align-center main-layout"  >
                     <div className="logo-container">
                         <NavLink to="/"> <FaAirbnb size={30} color="#FF5A5F" /></NavLink>
                     </div>
@@ -54,8 +62,11 @@ class _AppHeader extends React.Component {
                         </button>
                     </div>
                 </nav>
-                <div className="search-bar-container">
-                    <input type="text" />
+                <div className="search-bar-container flex justify-center">
+                    <div className="flex column">
+                        <label htmlFor="location">Location:</label>
+                        <input type="text" name="location" />
+                    </div>
                     <DateRangePicker
                         startDate={this.state.startDate} // momentPropTypes.momentObj or null,
                         startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
@@ -67,8 +78,13 @@ class _AppHeader extends React.Component {
                         focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
                         onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
                     />
-                    <input type="text" />
+                    <div className="flex column">
+                        <span onClick={this.onGuestMode}>Guests:</span>
+                        {/* <input type="text" name="guests" /> */}
+                    </div>
+                    <button className="search-btn">Search</button>
                 </div>
+                {this.state.isGuestMode && <GuestsModal />}
             </header>
         )
     }
