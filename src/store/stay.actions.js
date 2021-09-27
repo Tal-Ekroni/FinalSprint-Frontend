@@ -79,7 +79,7 @@ export function onBookTrip(trip) {
             // const user = await userService.getLoggedinUser()
             const user = await userService.getById(trip.user._id)
             const hostUser = await userService.getById(trip.stay.host._id)
-            const stay = await stayService.getById(trip.stay._id)
+            // const stay = await stayService.getById(trip.stay._id)
             hostUser.orders.push(trip)
             user.myTrips.push(trip)
             await userService.update(user)
