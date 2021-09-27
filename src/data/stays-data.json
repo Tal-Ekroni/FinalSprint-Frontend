@@ -43,6 +43,7 @@
             }
         }
     ],
+    "bookedDates":[],
     "likedByUserIds": [
         "u101",
         "u102"

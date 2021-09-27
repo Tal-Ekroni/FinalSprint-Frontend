@@ -3,6 +3,7 @@ import 'react-dates/initialize';
 import { DateRangePicker, DayPickerRangeController, SingleDatePicker } from 'react-dates'
 import { connect } from 'react-redux'
 import { onBookTrip } from '../store/stay.actions.js'
+
 import { Button } from '@material-ui/core'
 import 'react-dates/lib/css/_datepicker.css';
 class _CheckoutForm extends React.Component {

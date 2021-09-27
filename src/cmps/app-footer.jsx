@@ -3,6 +3,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import { onBookTrip, removeFromCart, checkout } from '../store/stay.actions'
+
 import { UserMsg } from './user-msg.jsx'
 
 class _AppFooter extends React.Component {
