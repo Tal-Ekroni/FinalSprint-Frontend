@@ -1,6 +1,6 @@
 const initialState = {
     stays: [],
-    bookedStay: null,
+    bookedTrip: null,
     currStay: null,
     review: null,
     lastRemovedStay: null
@@ -25,8 +25,8 @@ export function stayReducer(state = initialState, action) {
             stays = state.stays.map(stay => (stay._id === action.stay._id) ? action.stay : stay)
             newState = { ...state, stays }
             break
-        case 'Book-A-Stay':
-            newState = { ...state, bookedStay: action.stay }
+        case 'BOOK-A-TRIP':
+            newState = { ...state, bookedTrip: action.trip }
             break
         case 'REMOVE_FROM_CART':
             cart = state.cart.filter(stay => stay._id !== action.stayId)

@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 
-import { loadStays, onAddStay, onEditStay, onRemoveStay, addToCart } from '../store/stay.actions.js'
+import { loadStays, onAddStay, onEditStay, onRemoveStay, onBookTrip } from '../store/stay.actions.js'
 import { showSuccessMsg } from '../services/event-bus.service.js'
 import { StaysList } from '../cmps/stays-list.jsx'
 import { ExploreFilter } from '../cmps/explore-filter.jsx'
@@ -54,7 +54,7 @@ const mapDispatchToProps = {
     onRemoveStay,
     onAddStay,
     onEditStay,
-    addToCart
+    onBookTrip
 }
 
 

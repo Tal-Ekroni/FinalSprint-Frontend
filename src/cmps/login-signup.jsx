@@ -1,7 +1,8 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { userService } from '../services/user.service'
-
-export class LoginSignup extends React.Component {
+import {  onLogin, onLogout, onSignup } from '../store/user.actions'
+class _LoginSignup extends React.Component {
     state = {
         credentials: {
             username: '',
@@ -13,7 +14,7 @@ export class LoginSignup extends React.Component {
     }
     async componentDidMount() {
         const users = await userService.getUsers()
-        this.setState({users})        
+        this.setState({ users })
     }
     clearState = () => {
         const clearTemplate = {
@@ -123,3 +124,15 @@ export class LoginSignup extends React.Component {
         )
     }
 }
+function mapStateToProps(state) {
+    return {
+        user: state.userModule.user,
+    }
+}
+const mapDispatchToProps = {
+    onLogin,
+    onLogout,
+    onSignup
+}
+
+export const LoginSignup = connect(mapStateToProps, mapDispatchToProps)(_LoginSignup)

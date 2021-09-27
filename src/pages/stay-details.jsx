@@ -171,8 +171,7 @@ function mapStateToProps(state) {
 }
 const mapDispatchToProps = {
     onRemoveStay,
-    onEditStay,
-    onBookTrip
+    onEditStay
 }
 
 export const StayDetails = connect(mapStateToProps, mapDispatchToProps)(_StayDetails)

@@ -3,9 +3,7 @@ import 'react-dates/initialize';
 import { DateRangePicker, DayPickerRangeController, SingleDatePicker } from 'react-dates'
 import { connect } from 'react-redux'
 import { onBookTrip } from '../store/stay.actions.js'
-import Select from 'react-select'
 import { Button } from '@material-ui/core'
-import { Calendar } from 'react-date-range';
 import 'react-dates/lib/css/_datepicker.css';
 class _CheckoutForm extends React.Component {
 
@@ -33,26 +31,30 @@ class _CheckoutForm extends React.Component {
     }
 
     handleChange = ({ startDate, endDate }) => {
-        // const Moment  = startDate[Moment]
-        // console.log(startDate.Moment);
-        // console.log(dateType, date);
         if (startDate) {
             this.setState(prevState => ({ trip: { ...prevState.trip, startDate } }))
         }
         if (endDate) {
+
             this.setState(prevState => ({ trip: { ...prevState.trip, endDate } }))
         }
-        // const field = target.name
-        // const value = target.type === 'number' ? +target.value : target.value
-        // this.setState(prevState => ({ trip: { ...prevState.trip, [field]: value } }))
-        // console.log(this.props);
     }
+    toTimestamp = (strDate) => {
+        var datum = Date.parse(strDate);
+        return datum / 1000;
+    }
+    onBookTrip = (stay, trip) => {
 
-    onBookTrip = (stay,trip) => {
-        console.log(stay,'stay');
-        console.log(trip,'trip');
-        // const bookedTrip = { stay, status: 'pending' }
-        // this.props.onBookTrip(bookedTrip)
+        const { _id, fullname, imgUrl, username } = this.props.user
+        trip.user = { _id, fullname, imgUrl, username }
+        trip.startDate = this.toTimestamp(trip.startDate._d)
+        trip.endDate = this.toTimestamp(trip.endDate._d)
+        trip.stay = {
+            _id: stay._id,
+            host: stay.host
+        }
+        trip.status = 'pending'
+        this.props.onBookTrip(trip)
 
     }
 
@@ -84,7 +86,7 @@ class _CheckoutForm extends React.Component {
                         </div> */}
                     </div>
                     <div className="check-btn-container">
-                        <Button onClick={()=>this.onBookTrip(stay, trip)}>Check availabilty</Button>
+                        <Button onClick={() => this.onBookTrip(stay, trip)}>Check availabilty</Button>
                     </div>
                     {this.state.isGuestPopupOn && <div className="guests-popup-container ">~
                         <section className="guests-popup  ">

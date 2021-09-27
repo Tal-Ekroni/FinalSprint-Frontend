@@ -65,6 +65,7 @@ class _AppHeader extends React.Component {
                     </div>
                 </nav>
                 <SearchBar/>
+                <LoginSignup/>
                 {/* <div className="search-bar-container flex justify-center">
                     <div className="flex column">
                         <label htmlFor="location">Location:</label>
