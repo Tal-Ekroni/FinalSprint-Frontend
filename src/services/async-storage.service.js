@@ -11,18 +11,33 @@ export const storageService = {
 let gStays = stays.default;
 let gUsers = users.default;
 
-function query(entityType, delay = 200) {
+function query(entityType, delay, filterBy={}) {
     var entities;
     if (entityType === 'stay') entities = JSON.parse(localStorage.getItem(entityType)) || _save('stay', gStays);
     if (entityType === 'user') entities = JSON.parse(localStorage.getItem(entityType)) || _save('user', gUsers);
     // var entities = JSON.parse(localStorage.getItem(entityType)) 
+    if (filterBy) {
+        if (filterBy.cityName) {
+            const filteredEntities = entities.filter(entity => {
+                return entity.loc.address.includes(filterBy.cityName)
+            })
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    // reject('OOOOPs')
+                    resolve(filteredEntities)
+                }, delay)
+            })
+        } else {
 
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            // reject('OOOOPs')
-            resolve(entities)
-        }, delay)
-    })
+
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    // reject('OOOOPs')
+                    resolve(entities)
+                }, delay)
+            })
+        }
+    }
     // return Promise.resolve(entities)
 }
 

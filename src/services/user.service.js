@@ -20,6 +20,7 @@ window.userService = userService
 
 
 function getUsers() {
+    console.log(storageService.query('user'))
     return storageService.query('user')
     // return httpService.get(`user`)
 }
