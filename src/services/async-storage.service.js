@@ -294,18 +294,35 @@ let gStays =
         ]
     }]
 
-function query(entityType, delay = 200) {
-    var entities = JSON.parse(localStorage.getItem(entityType)) || _save('stay', gStays);
+function query(entityType, delay, filterBy) {
+    console.log('in async storage', filterBy)
+    let entities = JSON.parse(localStorage.getItem(entityType)) || _save('stay', gStays);
     // var entities = JSON.parse(localStorage.getItem(entityType)) 
+    if (filterBy) {
+        if (filterBy.cityName) {
+            let filteredEntities = entities.filter(entity => {
+                return entity.loc.address.includes(filterBy.cityName)
 
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            // reject('OOOOPs')
-            resolve(entities)
-        }, delay)
-    })
+            })
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    // reject('OOOOPs')
+                    resolve(filteredEntities)
+                }, delay)
+            })
+        }
+        else {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    // reject('OOOOPs')
+                    resolve(entities)
+                }, delay)
+            })
+        }
+    }
     // return Promise.resolve(entities)
 }
+// _save('stay',gStays)
 
 
 
