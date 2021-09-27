@@ -7,6 +7,7 @@ function FancyBox(props) {
         return <div className="fancy-box">
             <button style={{ float: 'right' }} onClick={props.onClose}>x</button>
             {props.children}
+{/* //loggiii// */}
         </div>
     }
     
