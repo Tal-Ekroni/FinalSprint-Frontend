@@ -2,29 +2,29 @@ import React from 'react'
 
 
 export class GuestsModal extends React.Component {
-    state = {
-        adultNumber: 0,
-        kidsNumber: 0
-    }
+
+   
     render() {
-        const { adultNumber, kidsNumber } = this.state
+        const { adultNumber, kidsNumber,onSelectAmount,onToggleModals } = this.props
         return (
             <div className="guest-modal">
+                <div className="screen" onClick={() => { onToggleModals('guestModal') }}>
+                </div>
                 <div className="guest-card flex space-between">
                     <p>Adults</p>
                     <div className="guest-amount flex">
-                        <button className="guest-btn">+</button>
+                        <button className="guest-btn" onClick={() => onSelectAmount('adultNumber', 1)}>+</button>
                         <p>{adultNumber}</p>
-                        <button className="guest-btn">-</button>
+                        <button className="guest-btn" onClick={() => onSelectAmount('adultNumber', -1)}>-</button>
                     </div>
 
                 </div>
                 <div className="guest-card flex space-between border-top">
                     <p>Kids</p>
                     <div className="guest-amount flex">
-                        <button className="guest-btn">+</button>
+                        <button className="guest-btn" onClick={() => onSelectAmount('kidsNumber', 1)}>+</button>
                         <p>{kidsNumber}</p>
-                        <button className="guest-btn">-</button>
+                        <button className="guest-btn" onClick={() => onSelectAmount('kidsNumber', -1)}>-</button>
                     </div>
                 </div>
 
