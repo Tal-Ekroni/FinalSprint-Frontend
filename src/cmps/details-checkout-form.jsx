@@ -81,7 +81,7 @@ class _CheckoutForm extends React.Component {
                     <div className="check-btn-container">
                         <Button onClick={this.onReservStay}>Check availabilty</Button>
                     </div>
-                    {this.state.isGuestPopupOn && <div className="guests-popup-container ">
+                    {this.state.isGuestPopupOn && <div className="guests-popup-container ">~
                         <section className="guests-popup  ">
                             <div className="adults-line">
 
