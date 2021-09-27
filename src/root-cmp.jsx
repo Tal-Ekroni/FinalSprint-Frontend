@@ -1,7 +1,7 @@
 import React from 'react'
 
 // const { Switch, Route } = ReactRouterDOM
-import { Switch, Route } from 'react-router'
+import { Switch, Route } from 'react-router-dom'
 
 import routes from './routes'
 
@@ -14,7 +14,7 @@ export class RootCmp extends React.Component {
     render() {
         return (
             <div>
-                <AppHeader />
+                <AppHeader  />
                 <main>
                     <Switch>
                         {routes.map(route=> <Route key={route.path} exact component={route.component} path={route.path} /> )}

@@ -2,6 +2,7 @@ import { userService } from "../services/user.service.js";
 import { showErrorMsg } from '../services/event-bus.service.js'
 // import { socketService, SOCKET_EMIT_USER_WATCH, SOCKET_EVENT_USER_UPDATED } from "../services/socket.service.js";
 
+
 export function loadUsers() {
     return async dispatch => {
         try {
@@ -26,6 +27,7 @@ export function removeUser(userId) {
         }
     }
 }
+
 
 export function onLogin(credentials) {
     return async (dispatch) => {

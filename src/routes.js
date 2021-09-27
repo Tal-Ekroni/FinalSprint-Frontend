@@ -1,25 +1,22 @@
-import {HomePage} from './pages/home-page.jsx'
-import {AboutUs} from './pages/about-us.jsx'
-import {StayApp} from './pages/stay-app.jsx'
-import {ReviewApp} from './pages/review-app.jsx'
+import { HomePage } from './pages/home-page.jsx'
+import { AboutUs } from './pages/about-us.jsx'
+import { StayApp } from './pages/stay-app.jsx'
+import { ReviewApp } from './pages/review-app.jsx'
 // import { ChatApp } from './pages/chat-app.jsx'
 import { AdminApp } from './pages/admin-app.jsx'
 import { StayDetails } from './pages/stay-details.jsx'
-import {SearchBar} from'./cmps/search-bar.jsx'
+import { SearchBar } from './cmps/search-bar.jsx'
 import { LoginPage } from './pages/login.jsx'
 
 // Routes accesible from the main navigation (in AppHeader)
 const routes = [
     {
-        path:'/',
+        path: '/',
         component: HomePage,
     },
     {
-        path:'/explore/:city?',
+        path: '/explore/',
         component: StayApp,
-    }, {
-        path:'/search',
-        component: SearchBar,
     },
     {
         path: '/stay/:stayId',
@@ -30,7 +27,7 @@ const routes = [
     //     component: StayEdit,
     // },
     {
-        path:'/review',
+        path: '/review',
         component: ReviewApp,
     },
     // {
@@ -38,16 +35,16 @@ const routes = [
     //     component: ChatApp,
     // },
     {
-        path:'/login',
-        component:LoginPage
+        path: '/login',
+        component: LoginPage
     },
     {
-        path:'/about',
+        path: '/about',
         component: AboutUs,
-      
+
     },
     {
-        path:'/admin',
+        path: '/admin',
         component: AdminApp,
     }
 ]

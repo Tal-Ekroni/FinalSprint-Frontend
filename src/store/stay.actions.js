@@ -2,7 +2,6 @@ import { stayService } from "../services/stay.service.js";
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { userService } from "../services/user.service.js";
 export function loadStays(filterBy=null) {
-    console.log('in service',filterBy)
     return async (dispatch) => {
         try {
             const stays = await stayService.query(filterBy)
@@ -52,6 +51,18 @@ export function onAddStay(stayToAdd) {
     }
 }
 
+export function setFilter(filterBy) {
+    return async (dispatch) => {
+        try {
+            await dispatch({
+                type: 'SET_FILTER',
+                filter: filterBy
+            })
+        } catch (err) {
+            console.log(err);
+        }
+    }
+}
 export function onEditStay(stayToSave) {
     // console.log('stay to ', stayToSave);
     return async (dispatch) => {

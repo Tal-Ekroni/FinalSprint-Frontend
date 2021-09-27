@@ -11,19 +11,29 @@ export const storageService = {
 let gStays = stays.default;
 let gUsers = users.default;
 
-function query(entityType, delay = 200) {
+function query(entityType, delay = 200, filterBy) {
     var entities;
+    var filterdEntities = []
     if (entityType === 'stay') entities = JSON.parse(localStorage.getItem(entityType)) || _save('stay', gStays);
     if (entityType === 'user') entities = JSON.parse(localStorage.getItem(entityType)) || _save('user', gUsers);
     // var entities = JSON.parse(localStorage.getItem(entityType)) 
+    if (filterBy) {
+        if (filterBy.location) {
+            console.log(filterBy.location);
+            const regex = new RegExp(filterBy.location, 'i');
+            filterdEntities = entities.filter(entity => regex.test(entity.loc.address.split(',')[0]))
+            return filterdEntities
+        }
 
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            // reject('OOOOPs')
-            resolve(entities)
-        }, delay)
-    })
-    // return Promise.resolve(entities)
+
+    }
+    // return new Promise((resolve, reject) => {
+    //     setTimeout(() => {
+    //         // reject('OOOOPs')
+    //         resolve(entities)
+    //     }, delay)
+    // })
+    return Promise.resolve(entities)
 }
 
 

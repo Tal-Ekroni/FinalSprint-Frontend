@@ -18,12 +18,12 @@ class _CheckoutForm extends React.Component {
 
     }
     componentDidMount() {
-        const { stay } = this.props
-        console.log(stay);
+        const { stay,filterBy } = this.props
+        console.log(filterBy);
         this.setState({
             trip: {
-                startDate: null,
-                endDate: null,
+                startDate: filterBy.startDate,
+                endDate: filterBy.endDate,
                 guests: { adults: 1, kids: 0, infants: 0 },
                 loc: stay.loc
             },
@@ -60,6 +60,7 @@ class _CheckoutForm extends React.Component {
     }
 
     render() {
+
         const { stay } = this.props
         const { trip } = this.state
         return (
@@ -122,6 +123,8 @@ function mapStateToProps(state) {
     return {
         user: state.userModule.user,
         currStay: state.stayModule.currStay,
+        filterBy: state.stayModule.filterBy,
+        
     }
 }
 const mapDispatchToProps = {
