@@ -72,12 +72,26 @@ export function onEditStay(stayToSave) {
 }
 
 
-export function addToCart(stay) {
-    return (dispatch) => {
-        dispatch({
-            type: 'ADD_TO_CART',
-            stay
-        })
+export function onBookTrip(trip) {
+    console.log('trip', trip);
+    return async (dispatch, getState) => {
+        try {
+            // const user = await userService.getLoggedinUser()
+            const user = await userService.getById(trip.user._id)
+            const hostUser = await userService.getById(trip.stay.host._id)
+            const stay = await stayService.getById(trip.stay._id)
+            hostUser.orders.push(trip)
+            user.myTrips.push(trip)
+            await userService.update(user)
+            await userService.update(hostUser)
+
+            dispatch({ type: 'BOOK-A-TRIP', trip })
+            showSuccessMsg('Stay Rserved ')
+            console.log('Reserved Succesfully!', user, hostUser);
+        } catch (err) {
+            showErrorMsg('Cannot reserve stay')
+            console.log('Cannot reserve stay', err)
+        }
     }
 }
 export function removeFromCart(carId) {
@@ -96,7 +110,7 @@ export function checkout() {
             const total = state.stayModule.cart.reduce((acc, stay) => acc + stay.price, 0)
             const score = await userService.changeScore(-total)
             dispatch({ type: 'SET_SCORE', score })
-            dispatch({ type: 'CLEAR_CART'})
+            dispatch({ type: 'CLEAR_CART' })
             showSuccessMsg('Charged you: $' + total.toLocaleString())
 
 

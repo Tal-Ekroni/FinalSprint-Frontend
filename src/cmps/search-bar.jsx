@@ -1,51 +1,85 @@
 import React from 'react'
-import 'react-dates/initialize';
-import { DateRangePicker } from 'react-dates';
-import 'react-dates/lib/css/_datepicker.css';
 import { GuestsModal } from './guests-modal';
 import { FaSearch } from 'react-icons/fa'
-
-
+import { DatesPicker } from './dates-picker';
 
 export class SearchBar extends React.Component {
     state = {
         startDate: null,
         endDate: null,
-        isGuestMode: false
+        guestModal: false,
+        datesModal: false,
+        location: '',
+        adultNumber: 0,
+        kidsNumber: 0
     }
-    onGuestMode = () => {
-        this.setState(prevState => ({
-            isGuestMode: !prevState.isGuestMode
-        }));
 
+    handleChange = (ev) => {
+        const value = ev.target.value;
+        this.setState({ location: value });
+    }
+    onSelectDates = ({ startDate, endDate }) => {
+        this.setState({ startDate, endDate })
+    }
+    onToggleModals = (modalSelect) => {
+        console.log(modalSelect);
+        switch (modalSelect) {
+            case 'guestModal':
+                this.setState(prevState => ({
+                    guestModal: !prevState.guestModal
+                }));
+                break;
+            case 'datesPicker':
+                this.setState(prevState => ({
+                    datesModal: !prevState.datesModal
+                }));
+                break;
+
+        }
+    }
+    onSelectAmount = (guestType, diff) => {
+        switch (guestType) {
+            case 'adultNumber':
+                if (this.state.adultNumber + diff >= 0) {
+                    this.setState(prevState => ({
+                        adultNumber: prevState.adultNumber + diff
+                    }));
+                }
+                break;
+            case 'kidsNumber':
+                if (this.state.kidsNumber + diff >= 0) {
+                    this.setState(prevState => ({
+                        kidsNumber: prevState.kidsNumber + diff
+                    }));
+                }
+                break;
+        }
     }
     render() {
+        const { location, adultNumber, kidsNumber, endDate, startDate, guestModal } = this.state
         return (
-               <div className="search-bar-container flex align-center">
-                    <div className="flex column">
-                        <label htmlFor="location">Location:</label>
-                        <input type="text" name="location" autoComplete="off" />
-                    </div>
-                    <DateRangePicker
-                    className="date-pick"
-                        startDate={this.state.startDate} // momentPropTypes.momentObj or null,
-                        startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
-                        startDatePlaceholderText="Check-in"
-                        endDatePlaceholderText="Check-out"
-                        endDate={this.state.endDate} // momentPropTypes.momentObj or null,
-                        endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
-                        onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
-                        focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
-                        onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
-                    />
-                    <div className="flex justify-center align-center">
-                        <span onClick={this.onGuestMode}>Guests</span>
-                    </div>
-                    {/* <button className="search-btn">Search</button>
-                     */}
-                     <FaSearch size={20} color="#FFF" style={{backgroundColor:"#FF5A5F"}} />
-                    {this.state.isGuestMode && <GuestsModal />}
+            <div className="search-bar-container flex align-center">
+
+                <div className="flex column">
+                    <label htmlFor="location">Location:</label>
+                    <input type="text" name="location" autoComplete="off" value={location} onChange={this.handleChange} />
                 </div>
+
+                <div className="flex justify-center align-center">
+                    <DatesPicker startDate={startDate} endDate={endDate} onSelectDates={this.onSelectDates} />
+                </div>
+                <div className="flex justify-center align-center" onClick={(ev) => {
+                    console.log(ev.target.getBoundingClientRect())
+                }}>
+                    <span onClick={() => { this.onToggleModals('guestModal') }}>Guests</span>
+                </div>
+                {guestModal && <GuestsModal onToggleModals={this.onToggleModals} adultNumber={adultNumber} kidsNumber={kidsNumber} onSelectAmount={this.onSelectAmount} />}
+                {/* <button className="search-btn">Search</button>
+                     */}
+                <div className="search-bar-search-btn-container flex align-center justify-center">
+                    <FaSearch className="search-bar-search-btn" size={16} />
+                </div>
+            </div>
         )
     }
 }

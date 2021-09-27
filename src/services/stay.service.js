@@ -33,12 +33,8 @@ function remove(stayId) {
     return storageService.remove(STORAGE_KEY, stayId)
 }
 function save(stay) {
-    if (stay._id) {
-        return storageService.put(STORAGE_KEY, stay)
-    } else {
-        stay.owner = userService.getLoggedinUser()
         return storageService.post(STORAGE_KEY, stay)
-    }
+
 }
 
 function getEmptyStay() {

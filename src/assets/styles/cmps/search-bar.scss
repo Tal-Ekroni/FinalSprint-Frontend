@@ -7,11 +7,23 @@
     div:nth-child(1) {
         border-right: 1px solid lightgray;
     }
-    input{
+    input {
         border: none;
         outline: none;
     }
     .DateRangePickerInput__withBorder {
         all: initial;
+    }
+
+    .search-bar-search-btn-container {
+        background-color: $clr8;
+        height: 47px;
+        width: 47px;
+        font-size: .875rem;
+        border-radius: 50%;
+        .search-bar-search-btn {
+            color: #fff;
+        
+        }
     }
 }
