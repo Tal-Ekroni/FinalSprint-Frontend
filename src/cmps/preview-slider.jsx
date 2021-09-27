@@ -20,9 +20,9 @@ export default class LazyLoad extends Component {
 
         return (
             <Slider {...settings} className="preview-slider"  >
-                {imgs.map(img => {
+                {imgs.map((img,idx) => {
                     return (
-                        <div>
+                        <div key={idx}>
                             <img src={img} alt="Preview img" />
                         </div>
                     )

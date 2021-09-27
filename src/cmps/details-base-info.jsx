@@ -40,12 +40,12 @@ export function BasicInfo({ stay }) {
 
                 <div className="primary-img square-ratio"><img src={stay.imgUrls[0]} alt="" /></div>
                 <div className="imgs-container flex">
-                    <div className="asset-img square-ratio"><img src={stay.imgUrls[0]} alt="" /></div>
-                    <div className="asset-img square-ratio"><img src={stay.imgUrls[0]} alt="" /></div>
+                    <div className="asset-img square-ratio"><img src={stay.imgUrls[1]} alt="" /></div>
+                    <div className="asset-img square-ratio"><img src={stay.imgUrls[2]} alt="" /></div>
                 </div>
                 <div className="imgs-container flex">
-                    <div className="asset-img square-ratio"><img src={stay.imgUrls[0]} alt="" /></div>
-                    <div className="asset-img square-ratio"><img src={stay.imgUrls[0]} alt="" /></div>
+                    <div className="asset-img square-ratio"><img src={stay.imgUrls[3]} alt="" /></div>
+                    <div className="asset-img square-ratio"><img src={stay.imgUrls[4]} alt="" /></div>
                 </div>
                 </div>
             </section>

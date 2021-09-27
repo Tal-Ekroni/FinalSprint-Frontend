@@ -1,0 +1,17 @@
+.explore-filter {
+    padding-bottom: 10px;
+    .MuiInput-underline:before {
+        border-bottom: none;
+    }
+    .explore-select {
+        border: 1px solid lightgray;
+        border-radius: 9999px;
+        svg {
+            visibility: hidden;
+        }
+    }
+    .MuiSelect-select:focus {
+        background-color: inherit;
+    }
+    
+}
