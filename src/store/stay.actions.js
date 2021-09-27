@@ -83,7 +83,6 @@ export function onBookTrip(trip) {
             user.myTrips.push(trip)
             await userService.update(user)
             await userService.update(hostUser)
-            await stayService.save(trip)
             dispatch({ type: 'BOOK-A-TRIP', trip })
             showSuccessMsg('Stay Rserved ')
             console.log('Reserved Succesfully!');
