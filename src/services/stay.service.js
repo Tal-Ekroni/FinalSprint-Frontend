@@ -18,7 +18,6 @@ export const stayService = {
 window.cs = stayService;
 
 function query(filterBy) {
-    console.log('in query',filterBy)
     const stays = storageService.query(STORAGE_KEY,200,filterBy) 
     return stays
 }

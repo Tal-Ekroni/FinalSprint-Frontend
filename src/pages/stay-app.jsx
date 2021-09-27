@@ -8,16 +8,22 @@ import { StaysList } from '../cmps/stays-list.jsx'
 import { ExploreFilter } from '../cmps/explore-filter.jsx'
 
 class _StayApp extends React.Component {
-    state = {
-        filterBy: {
-            cityName:''
+    // state = {
+    //     filterBy: {
+    //         cityName: ''
+    //     }
+    // }
+    componentDidMount() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const myParam = urlParams.get('cityName');
+        this.props.loadStays(this.props.filterBy)
+    }
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.filterBy !== this.props.filterBy) {
+            this.props.loadStays(this.props.filterBy);
+
         }
     }
-    componentDidMount() {
-        this.state.filterBy.cityName = this.props.match.params.city;
-        this.props.loadStays(this.state.filterBy)
-    }
-
     onRemoveStay = (stayId) => {
         this.props.onRemoveStay(stayId)
     }
@@ -50,7 +56,8 @@ class _StayApp extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        stays: state.stayModule.stays
+        stays: state.stayModule.stays,
+        filterBy: state.stayModule.filterBy
     }
 }
 const mapDispatchToProps = {
