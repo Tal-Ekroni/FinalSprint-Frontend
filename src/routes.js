@@ -5,7 +5,7 @@ import {ReviewApp} from './pages/review-app.jsx'
 // import { ChatApp } from './pages/chat-app.jsx'
 import { AdminApp } from './pages/admin-app.jsx'
 import { StayDetails } from './pages/stay-details.jsx'
-
+import {SearchBar} from'./cmps/search-bar.jsx'
 // Routes accesible from the main navigation (in AppHeader)
 const routes = [
     {
@@ -15,6 +15,9 @@ const routes = [
     {
         path:'/stay',
         component: StayApp,
+    }, {
+        path:'/search',
+        component: SearchBar,
     },
     {
         path: '/stay/:stayId',

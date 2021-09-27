@@ -1,0 +1,17 @@
+.search-bar-container {
+    border: 1px solid $clr5;
+    border-radius: 999px;
+    justify-content: space-evenly;
+    width: 690px;
+    margin: 0 auto;
+    div:nth-child(1) {
+        border-right: 1px solid lightgray;
+    }
+    input{
+        border: none;
+        outline: none;
+    }
+    .DateRangePickerInput__withBorder {
+        all: initial;
+    }
+}

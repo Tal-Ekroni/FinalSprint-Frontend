@@ -14,6 +14,7 @@ import routes from '../routes'
 
 import { onLogin, onLogout, onSignup, loadUsers, removeUser } from '../store/user.actions.js'
 import { LoginSignup } from './login-signup.jsx'
+import { SearchBar } from './search-bar';
 
 class _AppHeader extends React.Component {
     state = {
@@ -63,7 +64,8 @@ class _AppHeader extends React.Component {
                         </button>
                     </div>
                 </nav>
-                <div className="search-bar-container flex justify-center">
+                <SearchBar/>
+                {/* <div className="search-bar-container flex justify-center">
                     <div className="flex column">
                         <label htmlFor="location">Location:</label>
                         <input type="text" name="location" />
@@ -84,7 +86,7 @@ class _AppHeader extends React.Component {
                     </div>
                     <button className="search-btn">Search</button>
                 </div>
-                {this.state.isGuestMode && <GuestsModal />}
+                {this.state.isGuestMode && <GuestsModal />} */}
             </header>
         )
     }
