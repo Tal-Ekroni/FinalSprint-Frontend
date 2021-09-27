@@ -14,8 +14,8 @@ class _StayApp extends React.Component {
     //     }
     // }
     componentDidMount() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const myParam = urlParams.get('cityName');
+        // const urlParams = new URLSearchParams(window.location.search);
+        // const myParam = urlParams.get('cityName');
         this.props.loadStays(this.props.filterBy)
     }
     componentDidUpdate(prevProps, prevState) {

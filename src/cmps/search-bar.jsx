@@ -18,22 +18,22 @@ class _SearchBar extends React.Component {
 
     handleChange = (ev) => {
         const value = ev.target.value;
-        this.setState({ location: value });
+        this.setState({ location: value },()=>{this.props.setFilter(this.state)});
     }
     onSelectDates = ({ startDate, endDate }) => {
-        this.setState({ startDate, endDate })
+        this.setState({ startDate, endDate },()=>{this.props.setFilter(this.state)})
     }
     onToggleModals = (modalSelect) => {
         switch (modalSelect) {
             case 'guestModal':
                 this.setState(prevState => ({
                     guestModal: !prevState.guestModal
-                }));
+                },()=>{this.props.setFilter(this.state)}));
                 break;
             case 'datesPicker':
                 this.setState(prevState => ({
                     datesModal: !prevState.datesModal
-                }));
+                },()=>{this.props.setFilter(this.state)}));
                 break;
 
         }
@@ -44,20 +44,21 @@ class _SearchBar extends React.Component {
                 if (this.state.adultNumber + diff >= 0) {
                     this.setState(prevState => ({
                         adultNumber: prevState.adultNumber + diff
-                    }));
+                    },()=>{this.props.setFilter(this.state)}));
                 }
                 break;
             case 'kidsNumber':
                 if (this.state.kidsNumber + diff >= 0) {
                     this.setState(prevState => ({
                         kidsNumber: prevState.kidsNumber + diff
-                    }));
+                    },()=>{this.props.setFilter(this.state)}));
                 }
                 break;
         }
     }
     onSetFilter = async () => {
         await this.props.setFilter(this.state)
+        // console.log(ev.target,'lalalala');
         this.props.history.push('/explore')
     }
     render() {
