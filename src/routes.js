@@ -7,6 +7,7 @@ import { AdminApp } from './pages/admin-app.jsx'
 import { StayDetails } from './pages/stay-details.jsx'
 import { SearchBar } from './cmps/search-bar.jsx'
 import { LoginPage } from './pages/login.jsx'
+import { Login } from './pages/'
 
 // Routes accesible from the main navigation (in AppHeader)
 const routes = [
@@ -14,6 +15,7 @@ const routes = [
         path: '/',
         component: HomePage,
     },
+   
     {
         path: '/explore/',
         component: StayApp,

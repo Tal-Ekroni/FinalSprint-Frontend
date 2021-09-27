@@ -4,6 +4,9 @@ import { connect } from 'react-redux'
 import { userService } from '../services/user.service'
 import { onLogout } from '../store/user.actions'
 class _UserMenu extends React.Component {
+    state = {
+        isLoginModalOn: false
+    }
     componentDidMount() {
         return async function () {
 
@@ -13,8 +16,16 @@ class _UserMenu extends React.Component {
     }
     onLogout = () => {
         this.props.onLogout()
+        this.props.onToogleMenu()
     }
-
+    onOpenLogin = () => {
+        this.setState({ isLoginModalOn: true })
+    }
+    onCloseLogin = () => {
+        this.setState({ isLoginModalOn: false })
+        this.props.onToogleMenu()
+    }
+    
     render() {
         const { user } = this.props
         return (
@@ -53,6 +64,9 @@ class _UserMenu extends React.Component {
 
                     {user && <div className="user-menu-line" onClick={this.onLogout}>
                         <p>Logout</p>
+                    </div>}
+                    {!user && <div className="user-menu-line" onClick={this.onOpenLogin}>
+                        <p>Login</p>
                     </div>}
 
                 </section>

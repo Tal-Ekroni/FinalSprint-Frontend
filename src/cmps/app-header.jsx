@@ -38,10 +38,10 @@ class _AppHeader extends React.Component {
     }
     onToogleMenu = () => {
         this.setState({ isUserMenuOpen: !this.state.isUserMenuOpen })
-        console.log(this.state);
     }
     render() {
         const { user, setFilter } = this.props
+        const { isUserMenuOpen } = this.state
         return (
             <header className="app-header-conatiner">
                 <nav className="user-header-section flex space-between align-center main-layout"  >
@@ -56,7 +56,7 @@ class _AppHeader extends React.Component {
                     <div className="user-img-container flex">
                         <button className="user-btn flex space-between">
                             <div className="btn-section flex space-between">
-                                <p className="menu-btn">☰</p>
+                                <p onClick={this.onToogleMenu} className="menu-btn">☰</p>
                                 <div className="user-logo-container">
 
                                     <div className="user-header-logo">
@@ -66,6 +66,7 @@ class _AppHeader extends React.Component {
                             </div>
                         </button>
                     </div>
+                    {isUserMenuOpen && <UserMenu onToogleMenu={this.onToogleMenu} />}
                 </nav>
                 <SearchBar setFilter={setFilter} />
                 <LoginSignup />
