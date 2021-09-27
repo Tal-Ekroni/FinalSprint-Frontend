@@ -2,7 +2,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { addToCart, removeFromCart, checkout } from '../store/stay.actions'
+import { onBookTrip, removeFromCart, checkout } from '../store/stay.actions'
+
 import { UserMsg } from './user-msg.jsx'
 
 class _AppFooter extends React.Component {
@@ -45,7 +46,7 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = {
     checkout,
-    addToCart,
+    onBookTrip,
     removeFromCart
 }
 
