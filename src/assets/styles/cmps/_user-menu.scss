@@ -1,0 +1,17 @@
+.user-menu-container {
+    height: 250px;
+    width: 175px;
+    background-color: $clr4;
+    border-radius: 12px;
+    position: absolute;
+    top: 75px;
+    right: 80px;
+    z-index: 10;
+    & .user-menu-line {
+        height: 25px;
+        &:hover{
+            background-color: $clr5;
+
+        }
+    }
+}

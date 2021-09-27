@@ -12,7 +12,10 @@ header {
         // margin: 0 auto;
         // width: 80%;
     }
-
+    .user-secction-container {
+        flex-direction: column;
+        max-height: 350px;
+    }
     .logo-container {
         height: 35px;
         margin-right: 3px;
@@ -58,7 +61,7 @@ header {
         & .search-btn {
             background-color: $clr8;
             padding: 10px;
-            border-radius:10%;
+            border-radius: 10%;
         }
     }
 }
