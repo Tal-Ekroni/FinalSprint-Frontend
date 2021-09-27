@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 
 import logo from '../assets/img/logo.png'
+import locImg from '../assets/img/location-preview.png'
 
 class _HomePage extends React.Component {
     state = {}
@@ -22,15 +23,15 @@ class _HomePage extends React.Component {
                     <h2>Suggested locations:</h2>
                     <div className="locations flex space-between">
                         <div className="loc-section flex justify-center ">
-                            <img src="../../public/img/location-preview.png" />
+                            <img src={locImg} />
                             <h1 className="flex align-center">New-York</h1>
                         </div>
                         <div className="loc-section flex justify-center">
-                            <img src="../../public/img/location-preview.png" alt="" />
+                            <img src={locImg} alt="" />
                             <h1 className="flex align-center" >Paris</h1>
                         </div>
                         <div className="loc-section flex justify-center">
-                            <img src="../../public/img/location-preview.png" alt="" />
+                            <img src={locImg} alt="" />
                             <h1 className="flex align-center">Tokyo</h1>
                         </div>
                     </div>
@@ -40,15 +41,15 @@ class _HomePage extends React.Component {
                     <div className="live-loc flex space-between">
 
                         <div className="live-card flex column">
-                            <img src="" alt="" />
+                            <img src={locImg} alt="" />
                             <p>Near the city</p>
                         </div>
                         <div className="live-card flex column">
-                            <img src="" alt="" />
+                            <img src={locImg} alt="" />
                             <p>Pets Allowed</p>
                         </div>
                         <div className="live-card flex column">
-                            <img src="" alt="" />
+                            <img src={locImg} alt="" />
                             <p>In the jungle</p>
                         </div>
                     </div>

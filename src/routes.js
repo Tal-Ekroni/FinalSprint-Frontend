@@ -5,6 +5,7 @@ import {ReviewApp} from './pages/review-app.jsx'
 // import { ChatApp } from './pages/chat-app.jsx'
 import { AdminApp } from './pages/admin-app.jsx'
 import { StayDetails } from './pages/stay-details.jsx'
+import { LoginPage } from './pages/login.jsx'
 
 // Routes accesible from the main navigation (in AppHeader)
 const routes = [
@@ -32,6 +33,10 @@ const routes = [
     //     path:'/chat',
     //     component: ChatApp,
     // },
+    {
+        path:'/login',
+        component:LoginPage
+    },
     {
         path:'/about',
         component: AboutUs,
