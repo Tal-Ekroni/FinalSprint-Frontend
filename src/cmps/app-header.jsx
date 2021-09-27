@@ -6,13 +6,20 @@ import { onLogin, onLogout, onSignup, loadUsers, removeUser, } from '../store/us
 import { setFilter } from '../store/stay.actions';
 import { LoginSignup } from './login-signup.jsx'
 import { SearchBar } from './search-bar';
+import { UserMenu } from './user-menu';
+import { Select } from '@material-ui/core';
 
 
 class _AppHeader extends React.Component {
     state = {
         startDate: null,
         endDate: null,
-        isGuestMode: false
+        isGuestMode: false,
+        isUserMenuOpen: false
+
+    }
+    componentDidMount() {
+        this.setState({ isUserMenuOpen: false })
     }
     onLogin = (credentials) => {
         this.props.onLogin(credentials)
@@ -29,9 +36,12 @@ class _AppHeader extends React.Component {
         }));
 
     }
-
+    onToogleMenu = () => {
+        this.setState({ isUserMenuOpen: !this.state.isUserMenuOpen })
+    }
     render() {
         const { user, setFilter } = this.props
+        const { isUserMenuOpen } = this.state
         return (
             <header className="app-header-conatiner">
                 <nav className="user-header-section flex space-between align-center main-layout"  >
@@ -46,8 +56,9 @@ class _AppHeader extends React.Component {
                     <div className="user-img-container flex">
                         <button className="user-btn flex space-between">
                             <div className="btn-section flex space-between">
-                                <p className="menu-btn">☰</p>
+                                <p onClick={this.onToogleMenu} className="menu-btn">☰</p>
                                 <div className="user-logo-container">
+
                                     <div className="user-header-logo">
                                         <p>I</p>
                                     </div>
@@ -55,6 +66,7 @@ class _AppHeader extends React.Component {
                             </div>
                         </button>
                     </div>
+                    {isUserMenuOpen && <UserMenu onToogleMenu={this.onToogleMenu} />}
                 </nav>
                 <SearchBar setFilter={setFilter} />
                 <LoginSignup />
