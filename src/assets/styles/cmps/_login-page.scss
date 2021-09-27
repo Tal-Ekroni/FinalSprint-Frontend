@@ -33,6 +33,11 @@
         height: 40px;
         font-weight: bold;
     }
+    .new-user{
+        .new-user-btn{
+            color:black;
+        }
+    }
 }
 .login-form button{
     background-color: $clr6;

@@ -15,7 +15,7 @@ const routes = [
         component: HomePage,
     },
     {
-        path:'/stay',
+        path:'/explore/:city?',
         component: StayApp,
     }, {
         path:'/search',

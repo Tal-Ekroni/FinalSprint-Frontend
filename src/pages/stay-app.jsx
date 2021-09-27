@@ -9,9 +9,13 @@ import { ExploreFilter } from '../cmps/explore-filter.jsx'
 
 class _StayApp extends React.Component {
     state = {
+        filterBy: {
+            cityName:''
+        }
     }
     componentDidMount() {
-        this.props.loadStays()
+        this.state.filterBy.cityName = this.props.match.params.city;
+        this.props.loadStays(this.state.filterBy)
     }
 
     onRemoveStay = (stayId) => {
@@ -36,7 +40,7 @@ class _StayApp extends React.Component {
         return (
             <main className="main-container">
                 <p>{stays.length} stays</p>
-                <ExploreFilter/>
+                <ExploreFilter />
                 {stays.length && <StaysList stays={stays} history={this.props.history} />}
             </main>
         )

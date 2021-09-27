@@ -48,7 +48,7 @@ class _AppHeader extends React.Component {
                         <span>airbnb</span>
                     </div>
                     <div className="nav-bar-container flex space-between">
-                        <NavLink to="/stay">Explore</NavLink>
+                        <NavLink to="/explore">Explore</NavLink>
                         <NavLink to="/stay/10006546">Become a host</NavLink>
                     </div>
                     <div className="user-img-container flex">

@@ -4,6 +4,10 @@ export class LoginPage extends React.Component {
     state = {
         isSignUp: false
     }
+    toggleSignUp = (ev) => {
+        ev.preventDefault()
+        this.setState({ isSignUp: !this.state.isSignUp })
+    }
     render() {
         const { isSignUp } = this.state
         return (
@@ -15,7 +19,10 @@ export class LoginPage extends React.Component {
                         <input type="text" placeholder="Username" />
                         <input type="text" placeholder="Password" />
                     </div>
-                    <button className="login-btn">Login</button>
+                    <button className="login-btn">{isSignUp ? 'Sign Up' : 'Login'}</button>
+                    <div className="new-user">
+                        <button className="new-user-btn" onClick={this.toggleSignUp}>New User ?</button>
+                    </div>
                 </form>
             </section>
 
