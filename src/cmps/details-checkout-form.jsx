@@ -2,7 +2,7 @@ import React from 'react'
 import 'react-dates/initialize';
 import { DateRangePicker, DayPickerRangeController, SingleDatePicker } from 'react-dates'
 import { connect } from 'react-redux'
-import { addToCart } from '../store/stay.actions.js'
+import { onBookTrip } from '../store/stay.actions.js'
 import Select from 'react-select'
 import { Button } from '@material-ui/core'
 import { Calendar } from 'react-date-range';
@@ -31,9 +31,7 @@ class _CheckoutForm extends React.Component {
             isGuestPopupOn: false
         })
     }
-    onReservStay = () => {
-        console.log(this.state);
-    }
+
     handleChange = ({ startDate, endDate }) => {
         // const Moment  = startDate[Moment]
         // console.log(startDate.Moment);
@@ -49,7 +47,14 @@ class _CheckoutForm extends React.Component {
         // this.setState(prevState => ({ trip: { ...prevState.trip, [field]: value } }))
         // console.log(this.props);
     }
-    
+
+    onBookTrip = (stay,trip) => {
+        console.log(stay,'stay');
+        console.log(trip,'trip');
+        // const bookedTrip = { stay, status: 'pending' }
+        // this.props.onBookTrip(bookedTrip)
+
+    }
 
     render() {
         const { stay } = this.props
@@ -79,7 +84,7 @@ class _CheckoutForm extends React.Component {
                         </div> */}
                     </div>
                     <div className="check-btn-container">
-                        <Button onClick={this.onReservStay}>Check availabilty</Button>
+                        <Button onClick={()=>this.onBookTrip(stay, trip)}>Check availabilty</Button>
                     </div>
                     {this.state.isGuestPopupOn && <div className="guests-popup-container ">~
                         <section className="guests-popup  ">
@@ -117,7 +122,7 @@ function mapStateToProps(state) {
     }
 }
 const mapDispatchToProps = {
-    addToCart
+    onBookTrip
 }
 
 export const CheckoutForm = connect(mapStateToProps, mapDispatchToProps)(_CheckoutForm)

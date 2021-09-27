@@ -71,12 +71,22 @@ export function onEditStay(stayToSave) {
 }
 
 
-export function addToCart(stay) {
-    return (dispatch) => {
-        dispatch({
-            type: 'ADD_TO_CART',
-            stay
-        })
+export function onBookTrip(stay) {
+    console.log('host id', stay.host._id);
+    return async (dispatch, getState) => {
+        try {
+            const user = await userService.getLoggedinUser()
+            const hostUser = await userService.getById(stay.host._id)
+            console.log('host user', hostUser);
+            console.log('user', user);
+            await stayService.save(stay)
+            dispatch({ type: 'Book-A-Stay',stay })
+            showSuccessMsg('Stay Rserved ')
+            console.log('Reserved Succesfully!');
+        } catch (err) {
+            showErrorMsg('Cannot remove stay')
+            console.log('Cannot remove stay', err)
+        }
     }
 }
 export function removeFromCart(carId) {

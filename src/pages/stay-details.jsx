@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom'
 import { stayService } from '../services/stay.service'
 import { showSuccessMsg } from '../services/event-bus.service.js'
 import { FaHome, FaBroom, FaDoorClosed, FaKey, FaFlag } from 'react-icons/fa'
-import { onEditStay, onRemoveStay, addToCart } from '../store/stay.actions.js'
+import { onEditStay, onRemoveStay} from '../store/stay.actions.js'
 import { BasicInfo } from '../cmps/details-base-info'
 import { AssetSum } from '../cmps/details-asset-sum'
 import { AssetAmenities } from '../cmps/details-amenities'
@@ -62,7 +62,7 @@ class _StayDetails extends React.Component {
     onRemoveStay = (stayId) => {
         this.props.onRemoveStay(stayId)
     }
-
+  
     handleChange = ({ startDate, endDate }) => {
         if (startDate) {
             this.setState(prevState => ({ trip: { ...prevState.trip, startDate } }))
@@ -172,7 +172,7 @@ function mapStateToProps(state) {
 const mapDispatchToProps = {
     onRemoveStay,
     onEditStay,
-    addToCart
+    onBookTrip
 }
 
 export const StayDetails = connect(mapStateToProps, mapDispatchToProps)(_StayDetails)

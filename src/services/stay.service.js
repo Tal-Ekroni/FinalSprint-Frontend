@@ -32,6 +32,7 @@ function remove(stayId) {
     return storageService.remove(STORAGE_KEY, stayId)
 }
 function save(stay) {
+    console.log(stay);
     if (stay._id) {
         return storageService.put(STORAGE_KEY, stay)
     } else {
