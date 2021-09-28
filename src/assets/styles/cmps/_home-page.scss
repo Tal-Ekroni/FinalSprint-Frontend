@@ -9,22 +9,26 @@
     }
 
     & .sug-loc {
-        margin-top:56px;
-        margin-bottom:56px;
+        margin-top: 56px;
+        margin-bottom: 56px;
         & .locations {
-            margin: 10px;
             & .loc-section {
-                height: 100px;
-                width: 100px;
-                gap: 10px;
-                font-size: 0.6rem;
+                .loc-img {
+                    height: 100px;
+                    width: 100px;
+                    margin-right: 10px;
+                }
             }
         }
     }
-    & .live-any{
-        margin-bottom:56px;
-        & .live-loc{
-            margin-top:15px;
+    & .live-any {
+        margin-bottom: 56px;
+        & .live-loc {
+            margin-top: 15px;
+            .live-img{
+                border-radius:10%;
+                height:350px;
+            }
         }
     }
     & .host-banner {
