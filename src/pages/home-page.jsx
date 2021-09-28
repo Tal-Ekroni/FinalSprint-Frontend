@@ -1,9 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-
-
-import logo from '../assets/img/logo.png'
 import locImg from '../assets/img/location-preview.png'
+import { setFilter } from '../store/stay.actions';
 
 class _HomePage extends React.Component {
     state = {}
@@ -13,7 +11,12 @@ class _HomePage extends React.Component {
         const action = { type: 'CHANGE_COUNT', diff }
         this.props.dispatch(action)
     }
-
+    onClickLoc = (val) => {
+        const newFilter = this.props.filterBy
+        newFilter.location = val
+        this.props.setFilter(newFilter)
+        this.props.history.push('/explore')
+    }
     render() {
         return (
             <section className="home-page flex column main-container">
@@ -22,16 +25,16 @@ class _HomePage extends React.Component {
                 <div className="sug-loc">
                     <h2>Suggested locations:</h2>
                     <div className="locations flex space-between">
-                        <div className="loc-section flex justify-center main-container ">
-                            <img src={locImg} onClick={() => {this.props.history.push('/explore/Porto')}} />
+                        <div className="loc-section flex justify-center ">
+                            <img src={locImg} onClick={() => { this.onClickLoc('porto') }} />
                             <h1 className="flex align-center">Porto</h1>
                         </div>
                         <div className="loc-section flex justify-center">
-                            <img src={locImg} onClick={() => {this.props.history.push('/explore/Barcelona')}} />
+                            <img src={locImg} onClick={() => { this.onClickLoc('Barcelona') }} />
                             <h1 className="flex align-center" >Barcelona</h1>
                         </div>
                         <div className="loc-section flex justify-center">
-                            <img src={locImg} onClick={() => {this.props.history.push('/explore/Beer')}} />
+                            <img src={locImg} onClick={() => { this.onClickLoc('Beer') }} />
                             <h1 className="flex align-center">Beer-Yaakov</h1>
                         </div>
                     </div>
@@ -67,8 +70,12 @@ class _HomePage extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        count: state.userModule.count
+        count: state.userModule.count,
+        filterBy: state.stayModule.filterBy
     }
 }
+const mapDispatchToProps = {
+    setFilter,
+}
 
-export const HomePage = connect(mapStateToProps)(_HomePage)
+export const HomePage = connect(mapStateToProps, mapDispatchToProps)(_HomePage)

@@ -3,7 +3,16 @@ const initialState = {
     bookedTrip: null,
     currStay: null,
     review: null,
-    lastRemovedStay: null
+    lastRemovedStay: null,
+    filterBy: {
+        startDate: null,
+        endDate: null,
+        guestModal: false,
+        datesModal: false,
+        location: '',
+        adultNumber: 0,
+        kidsNumber: 0
+    }
 }
 export function stayReducer(state = initialState, action) {
     var newState = state
@@ -21,6 +30,11 @@ export function stayReducer(state = initialState, action) {
         case 'ADD_STAY':
             newState = { ...state, stays: [...state.stays, action.stay] }
             break
+        case 'SET_FILTER':
+            console.log(state);
+            newState = { ...state, filterBy: { ...action.filter } }
+            console.log(newState);
+            break;
         case 'UPDATE_STAY':
             stays = state.stays.map(stay => (stay._id === action.stay._id) ? action.stay : stay)
             newState = { ...state, stays }
