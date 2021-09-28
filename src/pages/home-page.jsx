@@ -22,7 +22,7 @@ class _HomePage extends React.Component {
                 <div className="sug-loc">
                     <h2>Suggested locations:</h2>
                     <div className="locations flex space-between">
-                        <div className="loc-section flex justify-center ">
+                        <div className="loc-section flex justify-center main-container ">
                             <img src={locImg} onClick={() => {this.props.history.push('/explore/Porto')}} />
                             <h1 className="flex align-center">Porto</h1>
                         </div>
