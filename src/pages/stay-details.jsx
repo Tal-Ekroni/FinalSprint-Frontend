@@ -27,9 +27,9 @@ class _StayDetails extends React.Component {
         stay: null,
         stayReviews: [],
         trip: {
-            startDate: '',
-            endDate: '',
-            guests: { adults: 1, kids: 0 }
+            startDate: null,
+            endDate: null,
+            guests: { adults: 1, kids: 0, infants: 0 },
 
         }
 
@@ -42,16 +42,17 @@ class _StayDetails extends React.Component {
             let currStay;
             stayService.getById(stayId)
                 .then(stay => {
-                    currStay = stay
                     // console.log('currStay', currStay);
                     this.setState({
-                        stay: currStay,
+                        stay,
                         trip: {
-                            startDate: '',
-                            endDate: '',
-                            guests: { adults: 1, kids: 0 },
-
+                            startDate: null,
+                            endDate: null,
+                            guests: { adults: 1, kids: 0, infants: 0 },
+                            loc: stay.loc
                         }
+
+
                     })
                 })
 
@@ -62,7 +63,14 @@ class _StayDetails extends React.Component {
         this.props.onRemoveStay(stayId)
     }
 
-
+    handleChange = ({ startDate, endDate }) => {
+        if (startDate) {
+            this.setState(prevState => ({ trip: { ...prevState.trip, startDate } }))
+        }
+        if (endDate) {
+            this.setState(prevState => ({ trip: { ...prevState.trip, endDate } }))
+        }
+    }
     render() {
         const { stay } = this.state
         const TextFieldOutlined = (props) => <TextField {...props} variant={'outlined'} color={'primary'} />
@@ -103,16 +111,30 @@ class _StayDetails extends React.Component {
                                 </div>
                                 <button className="amenities-btn">{`Show all ${stay.amenities.length} amenities`}</button>
                             </section>
-                            <section className="dates-container flex">
+                            <section className="dates-container">
                                 <div>
-                                    <h3>Select check-in date</h3>
-                                    <p>Add your travel dates for exact pricing</p>
-                                    <div className="calender-container">
+                                    <div>
+                                        <h3>Select check-in date</h3>
+                                        <p>Add your travel dates for exact pricing</p>
+                                    </div>
+                                    <div className="calender-container flex space-between">
                                         <div className="checkin-calender">
-                                            <DayPickerRangeController />
+                                            <DayPickerRangeController
+                                                startDate={this.state.trip.startDate} // momentPropTypes.momentObj or null,
+                                                endDate={this.state.trip.endDate} // momentPropTypes.momentObj or null,
+                                                onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
+                                                focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
+                                                onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
+                                            />
                                         </div>
                                         <div className="checkout-calender">
-                                            <DayPickerRangeController />
+                                            <DayPickerRangeController
+                                                startDate={this.state.startDate} // momentPropTypes.momentObj or null,
+                                                endDate={this.state.endDate} // momentPropTypes.momentObj or null,
+                                                onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
+                                                focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
+                                                onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
+                                            />
                                         </div>
                                     </div>
 
