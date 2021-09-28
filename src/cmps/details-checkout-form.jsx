@@ -6,6 +6,7 @@ import { onBookTrip } from '../store/stay.actions.js'
 
 import { Button } from '@material-ui/core'
 import 'react-dates/lib/css/_datepicker.css';
+import { showErrorMsg } from '../services/event-bus.service.js';
 class _CheckoutForm extends React.Component {
 
     state = {
@@ -44,17 +45,20 @@ class _CheckoutForm extends React.Component {
         return datum / 1000;
     }
     onBookTrip = (stay, trip) => {
-
-        const { _id, fullname, imgUrl, username } = this.props.user
-        trip.user = { _id, fullname, imgUrl, username }
-        trip.startDate = this.toTimestamp(trip.startDate._d)
-        trip.endDate = this.toTimestamp(trip.endDate._d)
-        trip.stay = {
-            _id: stay._id,
-            host: stay.host
+        if (!this.props.user) {
+            showErrorMsg('login first')
+        } else {
+            const { _id, fullname, imgUrl, username } = this.props.user
+            trip.user = { _id, fullname, imgUrl, username }
+            trip.startDate = this.toTimestamp(trip.startDate._d)
+            trip.endDate = this.toTimestamp(trip.endDate._d)
+            trip.stay = {
+                _id: stay._id,
+                host: stay.host
+            }
+            trip.status = 'pending'
+            this.props.onBookTrip({ trip })
         }
-        trip.status = 'pending'
-        this.props.onBookTrip(trip)
 
     }
 
@@ -123,7 +127,7 @@ function mapStateToProps(state) {
         user: state.userModule.user,
         currStay: state.stayModule.currStay,
         filterBy: state.stayModule.filterBy,
-        
+
     }
 }
 const mapDispatchToProps = {

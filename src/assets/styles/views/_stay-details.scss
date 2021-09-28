@@ -6,6 +6,10 @@
     font-family: circular;
     width: 100%;
     border-bottom: 0.5px solid lightgray;
+    & .details-main-conatiner{
+        border-bottom: 0.5px solid lightgray;
+
+    }
     & .asset-desc-container {
         // width: 650px;
         height: 100px;
@@ -95,12 +99,12 @@
     .details-left-container {
         margin-top: 0;
 
-        height: 1620px;
+        height: 1400px;
         width: 58%;
         padding: 0;
     }
     .details-right-container {
-        height: 1620px;
+        height: 1400px;
         width: 42%;
         padding: 0;
     }
@@ -109,6 +113,9 @@
     }
 }
 @media (min-width: $normal-breakpoint) {
+    .checkout-container{
+        margin-bottom: 24px;
+    }
 }
 @media (min-width: $wide-breakpoint) {
 }

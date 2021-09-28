@@ -10,6 +10,10 @@ const initialState = {
         guestModal: false,
         datesModal: false,
         location: '',
+        amenities: '',
+        assetType: '',
+        uniqueStay: '',
+        capacity: 0,
         adultNumber: 0,
         kidsNumber: 0
     }

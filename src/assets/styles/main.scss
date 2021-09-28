@@ -15,8 +15,8 @@
 @import "views/about-us";
 @import "views/home-page";
 @import "views/stay-app";
-@import "views/review-app";
 @import "views/stay-details";
+@import "views/trips-page";
 
 // Components
 @import "cmps/app-header";
@@ -37,3 +37,4 @@
 @import "cmps/guest-modal.scss";
 @import "cmps/dates.scss";
 @import "cmps/user-menu.scss";
+@import "cmps/details-reviews"

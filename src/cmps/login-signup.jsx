@@ -55,11 +55,12 @@ class _LoginSignup extends React.Component {
     render() {
         const { username, password, fullname } = this.state.credentials;
         const { isSignup, users } = this.state;
+        if(!users) return <div>loading...</div>
         return (
             <div className="login-page">
-                <p>
+                {/* <p>
                     <button className="btn-link" onClick={this.toggleSignup}>{!isSignup ? 'Signup' : 'Login'}</button>
-                </p>
+                </p> */}
                 {!isSignup && <form className="login-form" onSubmit={this.onLogin}>
                     <select
                         name="username"
