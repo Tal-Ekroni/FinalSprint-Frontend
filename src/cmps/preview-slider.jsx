@@ -23,7 +23,7 @@ export default class LazyLoad extends Component {
                 {imgs.map((img,idx) => {
                     return (
                         <div key={idx}>
-                            <img src={img} alt="Preview img" />
+                            <img  src={img} alt="Preview img" />
                         </div>
                     )
                 })}

@@ -42,7 +42,6 @@ class _StayDetails extends React.Component {
             let currStay;
             stayService.getById(stayId)
                 .then(stay => {
-                    // console.log('currStay', currStay);
                     this.setState({
                         stay,
                         trip: {

@@ -3,9 +3,6 @@
     a:hover {
         text-decoration: none;
     }
-    .preview-img {
-        border-radius: 13px;
-    }
     .slick-slider {
         position: relative;
         height: calc(100% -100px);
@@ -57,27 +54,53 @@
             }
         }
     }
-    .preview-details{
+    .preview-details {
         line-height: 1.8rem;
-        font-family: c;
+        h3 {
+            font-size: 15.75px;
+            padding-bottom: 5.5px;
+        }
+        .preview-rating {
+            gap: 4px;
+            // .preview-rating-amount{
+            // color: $clr10;
+
+            // }
+            .preview-review-count {
+                gap: 1.5px;
+            }
+            // p:first-child {
+            //     color: $clr11;
+            // }
+            p,
+            span {
+                font-size: 14px;
+            }
+        }
+        .preview-img {
+            
+        }
+        .stay-style,
+        .preview-rating-amount {
+            color: $clr10;
+            font-weight: unset;
+            font-family: circular-medium;
+        }
     }
-    // .preview-rating {
-   
-    // }
-    // .stay-name h3 {
-    //     line-height: 1.25rem;
-    //     font-size: 0.875rem;
-    // }
-    // .preview-price {
-    //     color: $clr9;
-    //     & h3 {
-    //         font-size: 14px;
-    //         line-height: 1rem;
-    //     }
-    // }
-    // & .stay-style {
-    //     padding-top: 7px;
-    //     gap: 4px;
-    //     color: $clr9;
-    // }
+    
+    .preview-price {
+        color: $clr10;
+        .preview-price-amount {
+            font-family: circular-medium;
+        }
+    }
+    .MuiSvgIcon-root {
+                position: relative;
+                top: 26px;
+                z-index: 1;
+                left: 87%;
+                color:$clr6;
+                
+         
+    }
 }

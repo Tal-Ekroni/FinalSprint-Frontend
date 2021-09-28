@@ -8,11 +8,7 @@ import { StaysList } from '../cmps/stays-list.jsx'
 import { ExploreFilter } from '../cmps/explore-filter.jsx'
 
 class _StayApp extends React.Component {
-    // state = {
-    //     filterBy: {
-    //         cityName: ''
-    //     }
-    // }
+
     componentDidMount() {
         // const urlParams = new URLSearchParams(window.location.search);
         // const myParam = urlParams.get('cityName');
@@ -24,6 +20,7 @@ class _StayApp extends React.Component {
 
         }
     }
+
     onRemoveStay = (stayId) => {
         this.props.onRemoveStay(stayId)
     }
@@ -35,19 +32,15 @@ class _StayApp extends React.Component {
         const stayToSave = { ...stay, price }
         this.props.onEditStay(stayToSave)
     }
-    addToStayt = (stay) => {
-        console.log(`Adding ${stay.vendor} to Stayt`)
-        this.props.addToStayt(stay)
-        showSuccessMsg('Added to Stayt')
-    }
+  
     render() {
         const { stays } = this.props
         if (!stays.length) return <div>loading</div>
         return (
-            <main className="main-container">
+            <main className="main-layout">
                 <p>{stays.length} stays</p>
                 <ExploreFilter />
-                {stays.length && <StaysList stays={stays} history={this.props.history} />}
+                {stays.length && <StaysList stays={stays} history={this.props.history}  />}
             </main>
         )
     }

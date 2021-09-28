@@ -10,6 +10,7 @@
         "notifications": [],
         "myTrips": [],
         "orders": [],
+        "mySaves":[],
         "myStays": [
             {
                 "_id": "1000643546",
@@ -40,6 +41,7 @@
         "notifications": [],
         "myTrips": [],
         "orders": [],
+        "mySaves":[],
         "myStays": []
     },
     {
@@ -53,6 +55,7 @@
         "notifications": [],
         "myTrips": [],
         "orders": [],
+        "mySaves":[],
         "myStays": []
     },
     {
@@ -66,6 +69,7 @@
         "notifications": [],
         "myTrips": [],
         "orders": [],
+        "mySaves":[],
         "myStays": []
     },
     {
@@ -79,6 +83,7 @@
         "notifications": [],
         "myTrips": [],
         "orders": [],
+        "mySaves":[],
         "myStays": []
     },
     {
@@ -92,6 +97,7 @@
         "notifications": [],
         "myTrips": [],
         "orders": [],
+        "mySaves":[],
         "myStays": []
     }
 ]

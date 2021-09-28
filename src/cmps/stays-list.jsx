@@ -4,7 +4,7 @@ export function StaysList({ stays, history }) {
     return (
         <div className="stay-list">
             {stays.map((stay, idx) =>
-                <StayPreview key={idx} stay={stay} history={history} />
+                <StayPreview key={idx} stay={stay} history={history}  />
             )}
         </div>)
 }

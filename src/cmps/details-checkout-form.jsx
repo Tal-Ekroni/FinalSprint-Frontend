@@ -19,7 +19,6 @@ class _CheckoutForm extends React.Component {
     }
     componentDidMount() {
         const { stay,filterBy } = this.props
-        console.log(filterBy);
         this.setState({
             trip: {
                 startDate: filterBy.startDate,

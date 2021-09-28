@@ -38,10 +38,7 @@ export class ExploreFilter extends React.Component {
     handleChange = (ev) => {
         const field = ev.target.name
         const value = ev.target.value;
-        console.log(ev);
-        // this.setState({ filter: { ...this.state.filter, [field]: value } }, () => {
-        //     this.props.filterStays(this.state.filter)
-        // })
+       
 
     }
     openPlaceType = (val) => {

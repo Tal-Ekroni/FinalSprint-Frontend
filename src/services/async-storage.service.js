@@ -19,7 +19,6 @@ function query(entityType, delay = 200, filterBy) {
     // var entities = JSON.parse(localStorage.getItem(entityType)) 
     if (filterBy) {
         if (filterBy.location) {
-            console.log(filterBy.location);
             const regex = new RegExp(filterBy.location, 'i');
             filterdEntities = entities.filter(entity => regex.test(entity.loc.address.split(',')[0]))
             return filterdEntities

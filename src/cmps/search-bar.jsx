@@ -58,7 +58,6 @@ class _SearchBar extends React.Component {
     }
     onSetFilter = async () => {
         await this.props.setFilter(this.state)
-        // console.log(ev.target,'lalalala');
         this.props.history.push('/explore')
     }
     render() {

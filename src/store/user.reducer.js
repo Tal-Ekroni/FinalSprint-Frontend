@@ -9,6 +9,7 @@ const initialState = {
 }
 export function userReducer(state = initialState, action) {
     var newState = state;
+    var users
     switch (action.type) {
         case 'INCREMENT':
             newState = { ...state, count: state.count + 1 }
@@ -34,6 +35,10 @@ export function userReducer(state = initialState, action) {
         case 'SET_USERS':
             newState = { ...state, users: action.users }
             break;
+            case 'UPDATE_USER':
+                users = state.users.map(user => (user._id === action.user._id) ? action.user : user)
+                newState = { ...state, users }
+                break
         case 'SET_SCORE':
             newState = { ...state, user: { ...state.user, score: action.score } }
             break;

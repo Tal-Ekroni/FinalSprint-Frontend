@@ -1,5 +1,6 @@
 import { userService } from "../services/user.service.js";
 import { showErrorMsg } from '../services/event-bus.service.js'
+import { stayService } from "../services/stay.service.js";
 // import { socketService, SOCKET_EMIT_USER_WATCH, SOCKET_EVENT_USER_UPDATED } from "../services/socket.service.js";
 
 
@@ -75,7 +76,24 @@ export function onLogout() {
             })
     }
 }
-
+export function onToggleLikeStay(isLiked, savedStay = null) {
+    return async (dispatch, getState) => {
+        try {
+            const user = await userService.getLoggedinUser()
+            if (isLiked) {
+                user.mySaves.push(savedStay)
+            } else {
+                console.log(user.mySaves, savedStay);
+                const stayIdx = user.mySaves.findIndex(saved => saved._id === savedStay._id)
+                user.mySaves.splice(stayIdx, 1)
+            }
+            await userService.update(user)
+            dispatch({ type: 'UPDATE_USER', user })
+        } catch (err) {
+            console.log(err);
+        }
+    }
+}
 export function loadAndWatchUser(userId) {
     return async (dispatch) => {
         try {

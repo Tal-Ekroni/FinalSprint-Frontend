@@ -9,9 +9,7 @@ class _UserMenu extends React.Component {
     }
     componentDidMount() {
         return async function () {
-
             const user = await userService.getLoggedinUser()
-            console.log('user menu', user);
         }
     }
     onLogout = () => {

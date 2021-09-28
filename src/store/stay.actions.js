@@ -1,7 +1,7 @@
 import { stayService } from "../services/stay.service.js";
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { userService } from "../services/user.service.js";
-export function loadStays(filterBy=null) {
+export function loadStays(filterBy = null) {
     return async (dispatch) => {
         try {
             const stays = await stayService.query(filterBy)
@@ -84,7 +84,6 @@ export function onEditStay(stayToSave) {
 
 
 export function onBookTrip(trip) {
-    console.log('trip', trip);
     return async (dispatch, getState) => {
         try {
             // const user = await userService.getLoggedinUser()
@@ -105,6 +104,8 @@ export function onBookTrip(trip) {
         }
     }
 }
+
+
 export function removeFromCart(carId) {
     return (dispatch) => {
         dispatch({
