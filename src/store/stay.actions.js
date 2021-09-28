@@ -83,7 +83,7 @@ export function onEditStay(stayToSave) {
 }
 
 
-export function onBookTrip(trip) {
+export function onBookTrip({trip}) {
     console.log('trip', trip);
     return async (dispatch, getState) => {
         try {

@@ -15,11 +15,12 @@ class _AppHeader extends React.Component {
         startDate: null,
         endDate: null,
         isGuestMode: false,
-        isUserMenuOpen: false
+        isUserMenuOpen: false,
+        isLoginBotmodal: false
 
     }
     componentDidMount() {
-        this.setState({ isUserMenuOpen: false })
+        this.setState({ isUserMenuOpen: false, isLoginBotmodal: false })
     }
     onLogin = (credentials) => {
         this.props.onLogin(credentials)
@@ -39,15 +40,18 @@ class _AppHeader extends React.Component {
     onToogleMenu = () => {
         this.setState({ isUserMenuOpen: !this.state.isUserMenuOpen })
     }
+    onOpenBotLogin = () => {
+        this.setState({ isLoginBotmodal: true })
+    }
     render() {
         const { user, setFilter } = this.props
-        const { isUserMenuOpen } = this.state
+        const { isUserMenuOpen, isLoginBotmodal } = this.state
         return (
             <header className="app-header-conatiner">
                 <nav className="user-header-section flex space-between align-center main-layout"  >
                     <div className="logo-container flex align-center">
                         <NavLink to="/"> <FaAirbnb size={30} color="#FF5A5F" /></NavLink>
-                        <span>airbnb</span>
+                        <span>AnyGo</span>
                     </div>
                     <div className="nav-bar-container flex space-between">
                         <NavLink to="/explore">Explore</NavLink>
@@ -58,18 +62,18 @@ class _AppHeader extends React.Component {
                             <div className="btn-section flex space-between">
                                 <p onClick={this.onToogleMenu} className="menu-btn">☰</p>
                                 <div className="user-logo-container">
-
-                                    <div className="user-header-logo">
-                                        <p>I</p>
-                                    </div>
+                                    {user && <img src={`https://i.pravatar.cc/100?u=${user._id}`} alt="" />}
                                 </div>
                             </div>
                         </button>
                     </div>
-                    {isUserMenuOpen && <UserMenu onToogleMenu={this.onToogleMenu} />}
+                    {isUserMenuOpen && <UserMenu onToogleMenu={this.onToogleMenu} onOpenBotLogin={this.onOpenBotLogin} />}
                 </nav>
                 <SearchBar setFilter={setFilter} />
-                <LoginSignup />
+                {isLoginBotmodal && <div className="main-layout">
+                    <LoginSignup />
+                </div>}
+
             </header>
         )
     }

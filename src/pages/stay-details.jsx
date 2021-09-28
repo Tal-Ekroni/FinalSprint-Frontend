@@ -16,6 +16,7 @@ import { ErrorMessage, Field, Form, Formik } from 'formik'
 import { Button, TextField } from '@material-ui/core'
 import { CheckoutForm } from '../cmps/details-checkout-form'
 import { DayPickerRangeController } from 'react-dates'
+import { ReviewsList } from '../cmps/reviews-list'
 
 
 // import img from '../assets/img/1.jpg'
@@ -91,7 +92,7 @@ class _StayDetails extends React.Component {
                                     </div>
                                 </div>
                                 <div className="host-img-container">
-                                    <p>i</p>
+                             <img src={`https://i.pravatar.cc/100?u=${stay.host._id}`} alt="" />
                                 </div>
                             </section>
 
@@ -155,6 +156,12 @@ class _StayDetails extends React.Component {
                         </div>
 
                     </section>
+                    <section className="page-bottom-container">
+                        <div >
+
+                        <ReviewsList reviews={stay.reviews}/>
+                        </div>
+                        </section>
                 </div >}
             </section>
         )

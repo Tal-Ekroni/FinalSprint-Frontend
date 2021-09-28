@@ -32,9 +32,12 @@
     height: 350px;
     width: 100%;
     & .asset-imgs {
+        border-radius: 15px;
+        overflow: hidden;
         width: 100%;
         gap: 8px;
         & .primary-img {
+            overflow: hidden;
             width: 100%;
         }
     }
@@ -43,7 +46,7 @@
     display: none;
     flex-direction: column;
     width: 275px;
-    height: 3500px;
+    height: 350px;
     & .asset-img {
         height: 125px;
         width: 100%;
@@ -52,6 +55,8 @@
 .host-img-container {
     height: 56px;
     border-radius: 28px;
+overflow: hidden;
+
     background-color: blue;
     width: 56px;
     & p {
@@ -106,9 +111,6 @@
         height: 500px;
         & .asset-imgs {
             width: 100%;
-            border-radius: 15px;
-            margin: 0 auto;
-            height: 500px;
             justify-content: center;
             & .primary-img {
                 height: 500px;
@@ -134,10 +136,21 @@
     }
 }
 @media (min-width: $normal-breakpoint) {
+    .asset-imgs{
+        overflow: hidden;
+    }
 }
 @media (min-width: $wide-breakpoint) {
+    .asset-imgs{
+        
+        overflow: hidden;
+    }
 }
 @media (min-width: $wide-breakpoint) {
+    .asset-imgs{
+        border-radius: 15px;
+        overflow: hidden;
+    }
 }
 
 // @media (max-width: $mobile-breakpoint) {

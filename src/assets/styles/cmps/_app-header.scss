@@ -12,7 +12,7 @@ header {
         // margin: 0 auto;
         // width: 80%;
     }
-    .user-secction-container {
+    .user-section-container {
         flex-direction: column;
         max-height: 350px;
     }
@@ -48,11 +48,17 @@ header {
         width: 60px;
     }
     .user-logo-container {
+        margin-top: 1px;
         height: 30px;
         width: 30px;
         border-radius: 15px;
         background-color: #ddd;
         text-align: center;
+        overflow: hidden; 
+        & img{
+            height: 100%;
+            object-fit: cover;
+        }
     }
     .search-bar-container {
         width: 700px;
@@ -65,7 +71,6 @@ header {
         }
     }
 }
-
 @media (max-width: $mobile-breakpoint) {
     .user-header-section {
         width: 100%;
