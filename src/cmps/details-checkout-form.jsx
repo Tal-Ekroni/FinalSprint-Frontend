@@ -48,13 +48,15 @@ class _CheckoutForm extends React.Component {
         if (!this.props.user) {
             showErrorMsg('login first')
         } else {
+            console.log(stay);
             const { _id, fullname, imgUrl, username } = this.props.user
             trip.user = { _id, fullname, imgUrl, username }
             trip.startDate = this.toTimestamp(trip.startDate._d)
             trip.endDate = this.toTimestamp(trip.endDate._d)
             trip.stay = {
                 _id: stay._id,
-                host: stay.host
+                host: stay.host,
+                imgsUrl: stay.imgsUrls[0]
             }
             trip.status = 'pending'
             this.props.onBookTrip(trip)
