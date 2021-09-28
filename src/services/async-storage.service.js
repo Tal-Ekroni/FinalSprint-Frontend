@@ -1,4 +1,5 @@
-
+import * as stays from '../data/stays-data.json';
+import * as users from '../data/users-data.json';
 export const storageService = {
     query,
     get,
@@ -7,304 +8,55 @@ export const storageService = {
     remove,
     postMany
 }
-let gStays =
-    [{
-        _id: "1000643546",
-        name: "Ribeira Charming Duplex",
-        assetType: "Entire duplex",
-        imgUrls: [
-            "https://images.unsplash.com/photo-1484154218962-a197022b5858?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=874&q=80",
-            "https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large",
-            "https://media.istockphoto.com/photos/modern-living-room-interior-3d-render-picture-id1293762741?s=612x612",
+let gStays = stays.default;
+let gUsers = users.default;
 
-            'https://images.unsplash.com/photo-1493809842364-78817add7ffb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80'],
-        price: 90.00,
-        summary: "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
-        capacity: 8,
-        amenities: [
-            "TV",
-            "Wifi",
-            "Kitchen",
-            "Smoking allowed",
-            "Pets allowed",
-            "Cooking basics"
-        ],
-        host: {
-            _id: "51399391",
-            fullname: "Davit Pok",
-            imgUrl: "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small"
-        },
-        loc: {
-            country: "Portugal",
-            countryCode: "PT",
-            address: "Porto, Portugal",
-            lat: -8.61308,
-            lng: 41.1413
-        },
-        reviews: [
-            {
-                id: "madeId",
-                txt: "Very helpful hosts. Cooked traditional...",
-                rate: 4,
-                by: {
-                    _id: "u102",
-                    fullname: "user2",
-                    imgUrl: "/img/img2.jpg"
-                }
-            }
-        ],
-        likedByUserIds: [
-            "u101",
-            "u102"
-        ]
-    },
-    {
-        _id: "1029006546",
-        name: "Lola Balola akola",
-        assetType: "Entire duplex",
-        imgUrls: [
-            "https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large",
-            "https://images.unsplash.com/photo-1484154218962-a197022b5858?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=874&q=80",
-            "https://media.istockphoto.com/photos/modern-living-room-interior-3d-render-picture-id1293762741?s=612x612",
-
-            'https://images.unsplash.com/photo-1493809842364-78817add7ffb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80'],
-        price: 80.00,
-        summary: "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
-        capacity: 8,
-        amenities: [
-            "TV",
-            "Wifi",
-            "Kitchen",
-            "Smoking allowed",
-            "Pets allowed",
-            "Cooking basics"
-        ],
-        host: {
-            _id: "51399391",
-            fullname: "Davit Pok",
-            imgUrl: "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small"
-        },
-        loc: {
-            country: "loblogal",
-            countryCode: "PT",
-            address: "Barcelona, Spain",
-            lat: -8.61308,
-            lng: 41.1413
-        },
-        reviews: [
-            {
-                id: "madeId",
-                txt: "Very helpful hosts. Cooked traditional...",
-                rate: 4,
-                by: {
-                    _id: "u102",
-                    fullname: "user2",
-                    imgUrl: "/img/img2.jpg"
-                }
-            }
-        ],
-        likedByUserIds: [
-            "u101",
-            "u102"
-        ]
-    }, {
-        _id: "103996300646546",
-        name: "Taboola salad",
-        assetType: "Entire duplex",
-        imgUrls: [
-            "https://images.unsplash.com/photo-1484154218962-a197022b5858?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=874&q=80",
-        ],
-        price: 80.00,
-        summary: "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
-        capacity: 8,
-        amenities: [
-            "TV",
-            "Wifi",
-            "Kitchen",
-            "Smoking allowed",
-            "Pets allowed",
-            "Cooking basics"
-        ],
-        host: {
-            _id: "51399391",
-            fullname: "Davit Pok",
-            imgUrl: "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small"
-        },
-        loc: {
-            country: "Portugal",
-            countryCode: "PT",
-            address: "Beer Yaakov, Israel",
-            lat: -8.61308,
-            lng: 41.1413
-        },
-        reviews: [
-            {
-                id: "madeId",
-                txt: "Very helpful hosts. Cooked traditional...",
-                rate: 4,
-                by: {
-                    _id: "u102",
-                    fullname: "user2",
-                    imgUrl: "/img/img2.jpg"
-                }
-            }
-        ],
-        likedByUserIds: [
-            "u101",
-            "u102"
-        ]
-    }, {
-        _id: "10963006546",
-        name: "JabrukLandia",
-        assetType: "Entire duplex",
-        imgUrls: [
-            "https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large",
-            "https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large"
-        ],
-        price: 80.00,
-        summary: "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
-        capacity: 8,
-        amenities: [
-            "TV",
-            "Wifi",
-            "Kitchen",
-            "Smoking allowed",
-            "Pets allowed",
-            "Cooking basics"
-        ],
-        host: {
-            _id: "51399391",
-            fullname: "Davit Pok",
-            imgUrl: "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small"
-        },
-        loc: {
-            country: "Portugal",
-            countryCode: "PT",
-            address: "Beer Yaakov, Israel",
-            lat: -8.61308,
-            lng: 41.1413
-        },
-        reviews: [
-            {
-                id: "madeId",
-                txt: "Very helpful hosts. Cooked traditional...",
-                rate: 4,
-                by: {
-                    _id: "u102",
-                    fullname: "user2",
-                    imgUrl: "/img/img2.jpg"
-                }
-            }
-        ],
-        likedByUserIds: [
-            "u101",
-            "u102"
-        ]
-    }, {
-        _id: "143040446",
-        name: "Baba Kababa",
-        assetType: "Entire duplex",
-        imgUrls: [
-            "https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large"
-        ],
-        price: 80.00,
-        summary: "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
-        capacity: 8,
-        amenities: [
-            "TV",
-            "Wifi",
-            "Kitchen",
-            "Smoking allowed",
-            "Pets allowed",
-            "Cooking basics"
-        ],
-        host: {
-            _id: "51399391",
-            fullname: "Davit Pok",
-            imgUrl: "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small"
-        },
-        loc: {
-            country: "Portugal",
-            countryCode: "PT",
-            address: "Beer Yaakov, Israel",
-            lat: -8.61308,
-            lng: 41.1413
-        },
-        reviews: [
-            {
-                id: "madeId",
-                txt: "Very helpful hosts. Cooked traditional...",
-                rate: 4,
-                by: {
-                    _id: "u102",
-                    fullname: "user2",
-                    imgUrl: "/img/img2.jpg"
-                }
-            }
-        ],
-        likedByUserIds: [
-            "u101",
-            "u102"
-        ]
-    }, {
-        _id: "1567846",
-        name: "Paris",
-        assetType: "Entire island",
-        imgUrls: [
-            "https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large"
-        ],
-        price: 80.00,
-        summary: "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
-        capacity: 8,
-        amenities: [
-            "TV",
-            "Wifi",
-            "Kitchen",
-            "Smoking allowed",
-            "Pets allowed",
-            "Cooking basics"
-        ],
-        host: {
-            _id: "51399391",
-            fullname: "Davit Pok",
-            imgUrl: "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small"
-        },
-        loc: {
-            country: "Portugal",
-            countryCode: "PT",
-            address: "Beer Yaakov, Israel",
-            lat: -8.61308,
-            lng: 41.1413
-        },
-        reviews: [
-            {
-                id: "madeId",
-                txt: "Very helpful hosts. Cooked traditional...",
-                rate: 4,
-                by: {
-                    _id: "u102",
-                    fullname: "user2",
-                    imgUrl: "/img/img2.jpg"
-                }
-            }
-        ],
-        likedByUserIds: [
-            "u101",
-            "u102"
-        ]
-    }]
-
-function query(entityType, delay = 200) {
-    var entities = JSON.parse(localStorage.getItem(entityType)) || _save('stay', gStays);
+function query(entityType, delay = 200, filterBy) {
+    var entities;
+    var filterdEntities = []
+    if (entityType === 'stay') entities = JSON.parse(localStorage.getItem(entityType)) || _save('stay', gStays);
+    if (entityType === 'user') entities = JSON.parse(localStorage.getItem(entityType)) || _save('user', gUsers);
     // var entities = JSON.parse(localStorage.getItem(entityType)) 
+    if (filterBy) {
+        if (filterBy.location) {
+            const regex = new RegExp(filterBy.location, 'i');
+            filterdEntities = entities.filter(entity => regex.test(entity.loc.address.split(',')[0]))
+            return filterdEntities
+        }
+        if (filterBy.assetType) {
+            console.log(filterBy.assetType, 'asset-type')
+            const regex = new RegExp(filterBy.assetType, 'i');
+            filterdEntities = entities.filter(entity => regex.test(entity.assetType))
+            return filterdEntities
+        }
+        if (filterBy.amenities) {
+            console.log(filterBy.amenities, 'am')
+            const regex = new RegExp(filterBy.amenities, 'i');
+            filterdEntities = entities.filter(entity => regex.test(entity.amenities))
+            console.log(filterdEntities)
+            return filterdEntities
 
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            // reject('OOOOPs')
-            resolve(entities)
-        }, delay)
-    })
-    // return Promise.resolve(entities)
+        }
+        if (filterBy.capacity) {
+            console.log('cap', filterBy.capacity)
+            filterdEntities = entities.filter(entity => entity.capacity >= filterBy.capacity)
+            return filterdEntities
+        }
+        if (filterBy.uniqueStay) {
+            console.log('unique', filterBy.uniqueStay)
+            filterdEntities = entities.filter(entity => entity.uniqueStay)
+            return filterdEntities;
+        }
+
+
+    }
+    // return new Promise((resolve, reject) => {
+    //     setTimeout(() => {
+    //         // reject('OOOOPs')
+    //         resolve(entities)
+    //     }, delay)
+    // })
+    return Promise.resolve(entities)
 }
 
 

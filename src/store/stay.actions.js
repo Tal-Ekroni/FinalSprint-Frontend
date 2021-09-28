@@ -1,6 +1,7 @@
 import { stayService } from "../services/stay.service.js";
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { userService } from "../services/user.service.js";
+import { utilService } from "../services/util.service.js";
 export function loadStays(filterBy = null) {
     return async (dispatch) => {
         try {
@@ -51,6 +52,18 @@ export function onAddStay(stayToAdd) {
     }
 }
 
+export function setFilter(filterBy) {
+    return async (dispatch) => {
+        try {
+            await dispatch({
+                type: 'SET_FILTER',
+                filter: filterBy
+            })
+        } catch (err) {
+            console.log(err);
+        }
+    }
+}
 export function onEditStay(stayToSave) {
     // console.log('stay to ', stayToSave);
     return async (dispatch) => {
@@ -71,14 +84,36 @@ export function onEditStay(stayToSave) {
 }
 
 
-export function addToCart(stay) {
-    return (dispatch) => {
-        dispatch({
-            type: 'ADD_TO_CART',
-            stay
-        })
+export function onBookTrip(trip) {
+    return async (dispatch, getState) => {
+        try {
+            // const user = await userService.getLoggedinUser()
+            const user = await userService.getById(trip.user._id)
+            const hostUser = await userService.getById(trip.stay.host._id)
+            // const stay = await stayService.getById(trip.stay._id)
+            const orderId = utilService.makeId()
+            const tripId = utilService.makeId()
+            const userTrip = trip
+            userTrip.id = tripId
+            const hostOrder = trip
+            hostOrder.id = orderId
+            hostUser.orders=[]
+            user.myTrips=[]
+            hostUser.orders.push(hostOrder)
+            user.myTrips.push(userTrip)
+            await userService.update(user)
+            await userService.update(hostUser)
+            dispatch({ type: 'BOOK-A-TRIP', trip })
+            showSuccessMsg('Stay Rserved ')
+            // console.log('Reserved Succesfully!', user, hostUser);
+        } catch (err) {
+            showErrorMsg('Cannot reserve stay')
+            console.log('Cannot reserve stay', err)
+        }
     }
 }
+
+
 export function removeFromCart(carId) {
     return (dispatch) => {
         dispatch({
@@ -95,7 +130,7 @@ export function checkout() {
             const total = state.stayModule.cart.reduce((acc, stay) => acc + stay.price, 0)
             const score = await userService.changeScore(-total)
             dispatch({ type: 'SET_SCORE', score })
-            dispatch({ type: 'CLEAR_CART'})
+            dispatch({ type: 'CLEAR_CART' })
             showSuccessMsg('Charged you: $' + total.toLocaleString())
 
 

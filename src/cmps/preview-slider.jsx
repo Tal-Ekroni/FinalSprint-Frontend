@@ -19,11 +19,11 @@ export default class LazyLoad extends Component {
         const { imgs } = this.props
 
         return (
-            <Slider {...settings} className="preview-slider"  >
+            <Slider {...settings} className="preview-slider">
                 {imgs.map((img,idx) => {
                     return (
                         <div key={idx}>
-                            <img src={img} alt="Preview img" />
+                            <img  src={img} alt="Preview img" />
                         </div>
                     )
                 })}

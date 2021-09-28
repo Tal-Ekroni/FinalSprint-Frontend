@@ -1,27 +1,14 @@
 .stay-preview {
-    font-size: 14px;
-    font-family: circular;
-    font-weight: 400;
-    color: $clr2;
-
-    text-decoration: none;
-
     cursor: pointer;
-
     a:hover {
         text-decoration: none;
     }
-    .preview-img {
-        border-radius: 13px;
-        //  .preview-slider {
-
-        // }
-    }
-
     .slick-slider {
         position: relative;
-        // height: calc(100% -100px);
-
+        height: calc(100% -100px);
+        button {
+            margin: -5px 0;
+        }
         &:hover {
             .slick-prev {
                 opacity: 1;
@@ -30,12 +17,15 @@
                 opacity: 1;
             }
         }
-
+        .slick-prev:before,
+        .slick-next:before {
+            font-size: 30px !important;
+        }
         .slick-prev,
         .slick-next {
             position: absolute;
             top: 50%;
-            left: 10px;
+            left: 0px;
             z-index: 5;
             opacity: 0;
             transform: translateY(-50%);
@@ -51,14 +41,12 @@
                 color: whitesmoke;
             }
         }
-
         div {
             height: 100%;
             width: 100%;
             margin: 0 0;
             padding: 0 0;
             border-radius: 15px;
-
             img {
                 height: 100%;
                 border-radius: 15px;
@@ -66,27 +54,53 @@
             }
         }
     }
+    .preview-details {
+        line-height: 1.8rem;
+        h3 {
+            font-size: 15.75px;
+            padding-bottom: 5.5px;
+        }
+        .preview-rating {
+            gap: 4px;
+            // .preview-rating-amount{
+            // color: $clr10;
 
-    .stay-name h3 {
-        line-height: 1.25rem;
-        font-size: 0.875rem;
-    }
-
-    .preview-price {
-        color: $clr9;
-        & h3 {
-            font-size: 14px;
-            line-height: 1rem;
+            // }
+            .preview-review-count {
+                gap: 1.5px;
+            }
+            // p:first-child {
+            //     color: $clr11;
+            // }
+            p,
+            span {
+                font-size: 14px;
+            }
+        }
+        .preview-img {
+            
+        }
+        .stay-style,
+        .preview-rating-amount {
+            color: $clr10;
+            font-weight: unset;
+            font-family: circular-medium;
         }
     }
-    .preview-rating {
-        padding-top: 7px;
-        gap: 4px;
-        color: $clr9;
+    
+    .preview-price {
+        color: $clr10;
+        .preview-price-amount {
+            font-family: circular-medium;
+        }
     }
-    & .stay-style {
-        padding-top: 7px;
-        gap: 4px;
-        color: $clr9;
+    .MuiSvgIcon-root {
+                position: relative;
+                top: 26px;
+                z-index: 1;
+                left: 87%;
+                color:$clr6;
+                
+         
     }
 }

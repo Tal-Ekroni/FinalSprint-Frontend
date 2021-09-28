@@ -2,11 +2,11 @@ import React from 'react'
 import 'react-dates/initialize';
 import { DateRangePicker, DayPickerRangeController, SingleDatePicker } from 'react-dates'
 import { connect } from 'react-redux'
-import { addToCart } from '../store/stay.actions.js'
-import Select from 'react-select'
+import { onBookTrip } from '../store/stay.actions.js'
+
 import { Button } from '@material-ui/core'
-import { Calendar } from 'react-date-range';
 import 'react-dates/lib/css/_datepicker.css';
+import { showErrorMsg } from '../services/event-bus.service.js';
 class _CheckoutForm extends React.Component {
 
     state = {
@@ -19,39 +19,61 @@ class _CheckoutForm extends React.Component {
 
     }
     componentDidMount() {
-        const { stay } = this.props
-        console.log(stay);
+        const { stay, filterBy } = this.props
         this.setState({
             trip: {
-                startDate: null,
-                endDate: null,
+                startDate: filterBy.startDate,
+                endDate: filterBy.endDate,
                 guests: { adults: 1, kids: 0, infants: 0 },
                 loc: stay.loc
             },
             isGuestPopupOn: false
         })
     }
-    onReservStay = () => {
-        console.log(this.state);
-    }
+
     handleChange = ({ startDate, endDate }) => {
-        // const Moment  = startDate[Moment]
-        // console.log(startDate.Moment);
-        // console.log(dateType, date);
         if (startDate) {
             this.setState(prevState => ({ trip: { ...prevState.trip, startDate } }))
         }
         if (endDate) {
+
             this.setState(prevState => ({ trip: { ...prevState.trip, endDate } }))
         }
-        // const field = target.name
-        // const value = target.type === 'number' ? +target.value : target.value
-        // this.setState(prevState => ({ trip: { ...prevState.trip, [field]: value } }))
-        // console.log(this.props);
     }
-    
+    toTimestamp = (strDate) => {
+        var datum = Date.parse(strDate);
+        return datum / 1000;
+    }
+    onBookTrip = (stay, trip) => {
+        if (!this.props.user) {
+            showErrorMsg('login first')
+        } else {
+            console.log(stay);
+            const { _id, fullname, imgUrl, username } = this.props.user
+            trip.user = { _id, fullname, imgUrl, username }
+            trip.startDate = this.toTimestamp(trip.startDate._d)
+            trip.endDate = this.toTimestamp(trip.endDate._d)
+            trip.stay = {
+                _id: stay._id,
+                host: stay.host,
+                imgsUrl: stay.imgsUrls[0]
+            }
+            trip.status = 'pending'
+            this.props.onBookTrip(trip)
+            this.setState({
+                trip: {
+                    startDate: null,
+                    endDate: null,
+                    guests: { adults: 1, kids: 0 }
+                },
+                isGuestPopupOn: false
+            })
+        }
+
+    }
 
     render() {
+
         const { stay } = this.props
         const { trip } = this.state
         return (
@@ -79,7 +101,7 @@ class _CheckoutForm extends React.Component {
                         </div> */}
                     </div>
                     <div className="check-btn-container">
-                        <Button onClick={this.onReservStay}>Check availabilty</Button>
+                        <Button onClick={() => this.onBookTrip(stay, trip)}>Check availabilty</Button>
                     </div>
                     {this.state.isGuestPopupOn && <div className="guests-popup-container ">~
                         <section className="guests-popup  ">
@@ -114,10 +136,12 @@ function mapStateToProps(state) {
     return {
         user: state.userModule.user,
         currStay: state.stayModule.currStay,
+        filterBy: state.stayModule.filterBy,
+
     }
 }
 const mapDispatchToProps = {
-    addToCart
+    onBookTrip
 }
 
 export const CheckoutForm = connect(mapStateToProps, mapDispatchToProps)(_CheckoutForm)

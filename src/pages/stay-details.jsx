@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom'
 import { stayService } from '../services/stay.service'
 import { showSuccessMsg } from '../services/event-bus.service.js'
 import { FaHome, FaBroom, FaDoorClosed, FaKey, FaFlag } from 'react-icons/fa'
-import { onEditStay, onRemoveStay, addToCart } from '../store/stay.actions.js'
+import { onEditStay, onRemoveStay} from '../store/stay.actions.js'
 import { BasicInfo } from '../cmps/details-base-info'
 import { AssetSum } from '../cmps/details-asset-sum'
 import { AssetAmenities } from '../cmps/details-amenities'
@@ -16,6 +16,8 @@ import { ErrorMessage, Field, Form, Formik } from 'formik'
 import { Button, TextField } from '@material-ui/core'
 import { CheckoutForm } from '../cmps/details-checkout-form'
 import { DayPickerRangeController } from 'react-dates'
+import { ReviewsList } from '../cmps/reviews-list'
+import { StayMap } from '../cmps/stay-map'
 
 
 // import img from '../assets/img/1.jpg'
@@ -41,6 +43,7 @@ class _StayDetails extends React.Component {
         else {
             let currStay;
             stayService.getById(stayId)
+<<<<<<< HEAD
                 .then(stay => {
                     // console.log('currStay', currStay);
                     this.setState({
@@ -54,15 +57,33 @@ class _StayDetails extends React.Component {
 
 
                     })
+=======
+            .then(stay => {
+                this.setState({
+                    stay,
+                    trip: {
+                        startDate: null,
+                        endDate: null,
+                        guests: { adults: 1, kids: 0, infants: 0 },
+                        loc: stay.loc
+                    }
+                    
+                    
+>>>>>>> c7346b391da6d46befb05f108014a8ae31cdf911
                 })
-
+            })
+            
         }
 
     }
     onRemoveStay = (stayId) => {
         this.props.onRemoveStay(stayId)
     }
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> c7346b391da6d46befb05f108014a8ae31cdf911
     handleChange = ({ startDate, endDate }) => {
         if (startDate) {
             this.setState(prevState => ({ trip: { ...prevState.trip, startDate } }))
@@ -91,7 +112,7 @@ class _StayDetails extends React.Component {
                                     </div>
                                 </div>
                                 <div className="host-img-container">
-                                    <p>i</p>
+                             <img src={`https://i.pravatar.cc/100?u=${stay.host._id}`} alt="" />
                                 </div>
                             </section>
 
@@ -155,6 +176,16 @@ class _StayDetails extends React.Component {
                         </div>
 
                     </section>
+                    <section className="page-bottom-container">
+                        <div >
+
+                        <ReviewsList reviews={stay.reviews}/>
+                        </div>
+                        <div >
+
+                        <StayMap location={stay.loc}/>
+                        </div>
+                        </section>
                 </div >}
             </section>
         )
@@ -171,8 +202,7 @@ function mapStateToProps(state) {
 }
 const mapDispatchToProps = {
     onRemoveStay,
-    onEditStay,
-    addToCart
+    onEditStay
 }
 
 export const StayDetails = connect(mapStateToProps, mapDispatchToProps)(_StayDetails)

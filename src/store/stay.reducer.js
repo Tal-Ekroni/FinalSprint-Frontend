@@ -1,13 +1,27 @@
 const initialState = {
     stays: [],
-    cart: [],
+    bookedTrip: null,
     currStay: null,
-    review:null,
-    lastRemovedStay: null
+    review: null,
+    lastRemovedStay: null,
+    filterBy: {
+        startDate: null,
+        endDate: null,
+        guestModal: false,
+        datesModal: false,
+        location: '',
+        amenities: '',
+        assetType: '',
+        uniqueStay: '',
+        capacity: 0,
+        adultNumber: 0,
+        kidsNumber: 0
+    }
 }
 export function stayReducer(state = initialState, action) {
     var newState = state
     var stays
+    var trip
     var cart
     switch (action.type) {
         case 'SET_STAYS':
@@ -21,12 +35,15 @@ export function stayReducer(state = initialState, action) {
         case 'ADD_STAY':
             newState = { ...state, stays: [...state.stays, action.stay] }
             break
+        case 'SET_FILTER':
+            newState = { ...state, filterBy: { ...action.filter } }
+            break;
         case 'UPDATE_STAY':
             stays = state.stays.map(stay => (stay._id === action.stay._id) ? action.stay : stay)
             newState = { ...state, stays }
             break
-        case 'ADD_TO_CART':
-            newState = { ...state, cart: [...state.cart, action.stay] }
+        case 'BOOK-A-TRIP':
+            newState = { ...state, bookedTrip: action.trip }
             break
         case 'REMOVE_FROM_CART':
             cart = state.cart.filter(stay => stay._id !== action.stayId)

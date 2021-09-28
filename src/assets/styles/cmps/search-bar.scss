@@ -1,0 +1,30 @@
+.search-bar-container {
+    border: 1px solid $clr5;
+    border-radius: 999px;
+    justify-content: space-evenly;
+    width: 690px;
+    margin: 0 auto;
+    div:nth-child(1) {
+        // border-right: 1px solid lightgray;
+        font-family: circular;
+    }
+    input {
+        border: none;
+        outline: none;
+    }
+    .DateRangePickerInput__withBorder {
+        all: initial;
+    }
+
+    .search-bar-search-btn-container {
+        background-color: $clr8;
+        height: 47px;
+        width: 47px;
+        font-size: 0.875rem;
+        border-radius: 50%;
+        cursor: pointer;
+        .search-bar-search-btn {
+            color: #fff;
+        }
+    }
+}

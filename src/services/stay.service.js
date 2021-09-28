@@ -17,8 +17,8 @@ export const stayService = {
 }
 window.cs = stayService;
 
-function query() {
-    const stays = storageService.query(STORAGE_KEY) 
+function query(filterBy) {
+    const stays = storageService.query(STORAGE_KEY,200,filterBy) 
     return stays
 }
 function getById(stayId) {
@@ -32,12 +32,8 @@ function remove(stayId) {
     return storageService.remove(STORAGE_KEY, stayId)
 }
 function save(stay) {
-    if (stay._id) {
-        return storageService.put(STORAGE_KEY, stay)
-    } else {
-        stay.owner = userService.getLoggedinUser()
         return storageService.post(STORAGE_KEY, stay)
-    }
+
 }
 
 function getEmptyStay() {
