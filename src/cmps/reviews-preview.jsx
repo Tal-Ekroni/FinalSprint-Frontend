@@ -2,7 +2,6 @@ import { FaStar } from "react-icons/fa";
 import Rating from "react-rating";
 
 export function ReviewsPreview({ review }) {
-    console.log(review);
     return (
         <li className="review-card-container">
 

@@ -22,13 +22,12 @@
     & .amenity-icon-container {
         margin-inline-end: 15px;
         & > * {
-            height: 24px;
-            width: 24px;
+            height: 1rem;
+            width: 1rem;
         }
     }
     & .amenity-txt {
-        font-size: 1.2rem;
-        font-weight: 400;
+        font-size: 1rem;
     }
     & .amenities-btn {
         min-width: 210px;

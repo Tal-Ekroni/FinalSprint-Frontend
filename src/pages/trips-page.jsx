@@ -6,7 +6,6 @@ class _TripsPage extends React.Component {
 
     render() {
         const { user } = this.props
-        console.log('user chack', user);
         return (
             <main className="trips-page-container main-layout">
                 <section className="trips-container">

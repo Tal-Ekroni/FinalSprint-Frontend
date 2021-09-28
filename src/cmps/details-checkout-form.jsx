@@ -19,7 +19,7 @@ class _CheckoutForm extends React.Component {
 
     }
     componentDidMount() {
-        const { stay,filterBy } = this.props
+        const { stay, filterBy } = this.props
         this.setState({
             trip: {
                 startDate: filterBy.startDate,
@@ -57,7 +57,15 @@ class _CheckoutForm extends React.Component {
                 host: stay.host
             }
             trip.status = 'pending'
-            this.props.onBookTrip({ trip })
+            this.props.onBookTrip(trip)
+            this.setState({
+                trip: {
+                    startDate: null,
+                    endDate: null,
+                    guests: { adults: 1, kids: 0 }
+                },
+                isGuestPopupOn: false
+            })
         }
 
     }

@@ -71,51 +71,16 @@ header {
         }
     }
 }
-@media (max-width: $mobile-breakpoint) {
-    .user-header-section {
-        width: 100%;
+@media(max-width:$normal-breakpoint){
+    .user-header-section{
+        padding-inline-end: 20px;
     }
 }
-@media (min-width: $mobile-breakpoint) {
-    .user-header-section {
-        width: 100%;
-    }
-}
-// @media (max-width: $narrow-breakpoint) {
-//     .user-header-section {
-//         width: 100%;
-//     }
-// }
 
-@media (min-width: $narrow-breakpoint) {
-    .user-header-section {
-        min-width: 580px;
-        max-width: 888px;
-        width: 80%;
-        margin: 0 auto;
-    }
-}
-@media (min-width: $normal-breakpoint) {
-    .user-header-section {
-        min-width: 888px;
-        max-width: 1200px;
-        margin: 0 auto;
-        width: 80%;
-    }
-}
-@media (min-width: $wide-breakpoint) {
-    .user-header-section {
-        min-width: 1200px;
-        max-width: 1360px;
-        margin: 0 auto;
-        width: 80%;
-    }
-}
 @media (min-width: $wide-breakpoint) {
     .user-header-section {
         min-width: 1360px;
         margin: 0 auto;
-        width: 80%;
         .search-bar-container {
             background-color: white;
             width: 800px;

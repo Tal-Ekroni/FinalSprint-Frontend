@@ -2,15 +2,20 @@
     display: flex;
     flex-direction: column-reverse;
 }
-
+.stay-info-container > * {
+    font-size: 0.875rem;
+}
 .stay-info {
     width: 100%;
-    margin: 25px 0;
-    
-    & .stay-name-container {
-        font-weight: 600;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    & p {
+        font-size: 0.875rem;
+    }
+    & h2 {
         font-size: 1.625rem;
-        line-height: 1.875rem;
+        line-height: 2.125rem;
+        font-family: circular-bold;
     }
 }
 .imgs-container {
@@ -55,7 +60,7 @@
 .host-img-container {
     height: 56px;
     border-radius: 28px;
-overflow: hidden;
+    overflow: hidden;
 
     background-color: blue;
     width: 56px;
@@ -97,12 +102,11 @@ overflow: hidden;
         flex-direction: column;
         padding: 0 5px;
     }
-
 }
 @media (min-width: $narrow-breakpoint) {
     .stay-info {
         flex-direction: row;
-        padding: 0 ;
+        padding: 0;
     }
     .info-imgs-container {
         flex-direction: column;
@@ -136,18 +140,17 @@ overflow: hidden;
     }
 }
 @media (min-width: $normal-breakpoint) {
-    .asset-imgs{
+    .asset-imgs {
         overflow: hidden;
     }
 }
 @media (min-width: $wide-breakpoint) {
-    .asset-imgs{
-        
+    .asset-imgs {
         overflow: hidden;
     }
 }
 @media (min-width: $wide-breakpoint) {
-    .asset-imgs{
+    .asset-imgs {
         border-radius: 15px;
         overflow: hidden;
     }
