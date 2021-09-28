@@ -1,6 +1,17 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import locImg from '../assets/img/location-preview.png'
+import locImg1 from '../assets/img/location-preview-1.png'
+import locImg2 from '../assets/img/location-preview-2.png'
+import locImg3 from '../assets/img/location-preview-3.png'
+import locImg4 from '../assets/img/location-preview-4.png'
+import locImg5 from '../assets/img/location-preview-5.jpg'
+import locImg6 from '../assets/img/location-preview-6.png'
+import locImg7 from '../assets/img/location-preview-7.jpg'
+import locImg8 from '../assets/img/location-preview-8.png'
+import pet from '../assets/img/pets-allowed.jpg'
+import duplex from '../assets/img/entire-duplex.jpg'
+import cap from '../assets/img/large-capacity.jpg'
+import unique from '../assets/img/unique-stays.jpg'
 import { setFilter } from '../store/stay.actions';
 
 class _HomePage extends React.Component {
@@ -39,49 +50,84 @@ class _HomePage extends React.Component {
                 <div className="hero main-container full">
                 </div>
                 <div className="sug-loc">
-                    <h2>Suggested locations:</h2>
-                    <div className="locations flex space-between">
-                        <div className="loc-section flex justify-center">
-                            <img src={locImg} className="loc-img" onClick={() => { this.onClickLoc('porto', 'location') }} />
+                    <h2>Popular destinations</h2>
+                    <div className="locations">
+                        <div className="loc-section flex">
+                            <img src={locImg1} className="loc-img" onClick={() => { this.onClickLoc('porto', 'location') }} />
                             <div className="loc-info flex column justify-center">
-                                <p>Porto</p>
-                                <p>Portugal</p>
+                                <p className="city-name">Porto</p>
+                                <p className="country-name">Portugal</p>
                             </div>
                         </div>
-                        <div className="loc-section flex justify-center">
-                            <img src={locImg} className="loc-img" onClick={() => { this.onClickLoc('Barcelona', 'location') }} />
+                        <div className="loc-section flex">
+                            <img src={locImg2} className="loc-img" onClick={() => { this.onClickLoc('Barcelona', 'location') }} />
                             <div className="loc-info flex column justify-center">
-                                <p>Barcelona</p>
-                                <p>Spain</p>
+                                <p className="city-name">Barcelona</p>
+                                <p className="country-name">Spain</p>
                             </div>
                         </div>
-                        <div className="loc-section flex justify-center">
-                            <img src={locImg} className="loc-img" onClick={() => { this.onClickLoc('Beer', 'location') }} />
+                        <div className="loc-section flex ">
+                            <img src={locImg3} className="loc-img" onClick={() => { this.onClickLoc('Beer', 'location') }} />
                             <div className="loc-info flex column justify-center">
-                                <p>Beer-Yaakov</p>
-                                <p>Israel</p>
+                                <p className="city-name">Beer-Yaakov</p>
+                                <p className="country-name">Israel</p>
+                            </div>
+                        </div>
+                        <div className="loc-section flex ">
+                            <img src={locImg4} className="loc-img" onClick={() => { this.onClickLoc('Beer', 'location') }} />
+                            <div className="loc-info flex column justify-center">
+                                <p className="city-name">Paris</p>
+                                <p className="country-name">France</p>
+                            </div>
+                        </div>
+                        <div className="loc-section flex ">
+                            <img src={locImg5} className="loc-img" onClick={() => { this.onClickLoc('Beer', 'location') }} />
+                            <div className="loc-info flex column justify-center">
+                                <p className="city-name">London</p>
+                                <p className="country-name">United Kingdoms</p>
+                            </div>
+                        </div>
+                        <div className="loc-section flex ">
+                            <img src={locImg6} className="loc-img" onClick={() => { this.onClickLoc('Beer', 'location') }} />
+                            <div className="loc-info flex column justify-center">
+                                <p className="city-name">New York</p>
+                                <p className="country-name">United States</p>
+                            </div>
+                        </div>
+                        <div className="loc-section flex ">
+                            <img src={locImg7} className="loc-img" onClick={() => { this.onClickLoc('Beer', 'location') }} />
+                            <div className="loc-info flex column justify-center">
+                                <p className="city-name">Moscow</p>
+                                <p className="country-name">Russia</p>
+                            </div>
+                        </div>
+                        <div className="loc-section flex ">
+                            <img src={locImg8} className="loc-img" onClick={() => { this.onClickLoc('Beer', 'location') }} />
+                            <div className="loc-info flex column justify-center">
+                                <p className="city-name">Rome</p>
+                                <p className="country-name">Italy</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className="live-any flex column">
-                    <h1>Live Anywhere:</h1>
+                    <h2>Live Anywhere</h2>
                     <div className="live-loc flex space-between">
 
                         <div className="live-card flex column">
-                            <img className="live-img" onClick={() => { this.onClickLoc('duplex', 'assetType') }} src={locImg} alt="" />
+                            <img className="live-img" onClick={() => { this.onClickLoc('duplex', 'assetType') }} src={duplex} alt="" />
                             <p>Entire duplex</p>
                         </div>
                         <div className="live-card flex column">
-                            <img className="live-img" onClick={() => { this.onClickLoc('Pets allowed', 'amenity') }} src={locImg} alt="" />
+                            <img className="live-img" onClick={() => { this.onClickLoc('Pets allowed', 'amenity') }} src={pet} alt="" />
                             <p>Pets Allowed</p>
                         </div>
                         <div className="live-card flex column">
-                            <img className="live-img" onClick={() => { this.onClickLoc(10, 'capacity') }} src={locImg} alt="" />
+                            <img className="live-img" onClick={() => { this.onClickLoc(10, 'capacity') }} src={cap} alt="" />
                             <p>Large capacity</p>
                         </div>
                         <div className="live-card flex column">
-                            <img className="live-img" onClick={() => { this.onClickLoc('unique', 'uniqueStay') }} src={locImg} alt="" />
+                            <img className="live-img" onClick={() => { this.onClickLoc('unique', 'uniqueStay') }} src={unique} alt="" />
                             <p>Unique stays</p>
                         </div>
                     </div>

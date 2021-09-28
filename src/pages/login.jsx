@@ -40,6 +40,7 @@ class _LoginPage extends React.Component {
         if (!this.state.credentials.username) return;
         this.props.onLogin(this.state.credentials);
         this.clearState()
+        this.props.history.push('/')
     }
 
 

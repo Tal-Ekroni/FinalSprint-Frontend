@@ -26,10 +26,10 @@ class _AppFooter extends React.Component {
 
     render() {
         return (
-            <footer className="app-footer main-container">
-                <p>
-                    © T.I.L
-                </p>
+            <footer className="app-footer main-container full">
+                <div className="footer-info flex justify-start align-center">
+                    © 2021 T.I.L ,Inc. · About · Login · Become a host
+                </div>
                 <UserMsg />
             </footer>
         )
