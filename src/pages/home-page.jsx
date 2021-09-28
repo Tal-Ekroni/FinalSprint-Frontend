@@ -11,9 +11,25 @@ class _HomePage extends React.Component {
         const action = { type: 'CHANGE_COUNT', diff }
         this.props.dispatch(action)
     }
-    onClickLoc = (val) => {
+    onClickLoc = (val, type) => {
         const newFilter = this.props.filterBy
-        newFilter.location = val
+        switch (type) {
+            case 'location':
+                newFilter.location = val
+                break;
+            case 'amenity':
+                newFilter.amenities = val
+                break;
+            case 'assetType':
+                newFilter.assetType = val
+                break;
+            case 'capacity':
+                newFilter.capacity = val
+                break;
+            case 'uniqueStay':
+                newFilter.uniqueStay = val
+                break;
+        }
         this.props.setFilter(newFilter)
         this.props.history.push('/explore')
     }
@@ -25,17 +41,26 @@ class _HomePage extends React.Component {
                 <div className="sug-loc">
                     <h2>Suggested locations:</h2>
                     <div className="locations flex space-between">
-                        <div className="loc-section flex justify-center ">
-                            <img src={locImg} onClick={() => { this.onClickLoc('porto') }} />
-                            <h1 className="flex align-center">Porto</h1>
+                        <div className="loc-section flex justify-center">
+                            <img src={locImg} className="loc-img" onClick={() => { this.onClickLoc('porto', 'location') }} />
+                            <div className="loc-info flex column justify-center">
+                                <p>Porto</p>
+                                <p>Portugal</p>
+                            </div>
                         </div>
                         <div className="loc-section flex justify-center">
-                            <img src={locImg} onClick={() => { this.onClickLoc('Barcelona') }} />
-                            <h1 className="flex align-center" >Barcelona</h1>
+                            <img src={locImg} className="loc-img" onClick={() => { this.onClickLoc('Barcelona', 'location') }} />
+                            <div className="loc-info flex column justify-center">
+                                <p>Barcelona</p>
+                                <p>Spain</p>
+                            </div>
                         </div>
                         <div className="loc-section flex justify-center">
-                            <img src={locImg} onClick={() => { this.onClickLoc('Beer') }} />
-                            <h1 className="flex align-center">Beer-Yaakov</h1>
+                            <img src={locImg} className="loc-img" onClick={() => { this.onClickLoc('Beer', 'location') }} />
+                            <div className="loc-info flex column justify-center">
+                                <p>Beer-Yaakov</p>
+                                <p>Israel</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -44,16 +69,20 @@ class _HomePage extends React.Component {
                     <div className="live-loc flex space-between">
 
                         <div className="live-card flex column">
-                            <img src={locImg} alt="" />
-                            <p>Near the city</p>
+                            <img className="live-img" onClick={() => { this.onClickLoc('duplex', 'assetType') }} src={locImg} alt="" />
+                            <p>Entire duplex</p>
                         </div>
                         <div className="live-card flex column">
-                            <img src={locImg} alt="" />
+                            <img className="live-img" onClick={() => { this.onClickLoc('Pets allowed', 'amenity') }} src={locImg} alt="" />
                             <p>Pets Allowed</p>
                         </div>
                         <div className="live-card flex column">
-                            <img src={locImg} alt="" />
-                            <p>In the jungle</p>
+                            <img className="live-img" onClick={() => { this.onClickLoc(10, 'capacity') }} src={locImg} alt="" />
+                            <p>Large capacity</p>
+                        </div>
+                        <div className="live-card flex column">
+                            <img className="live-img" onClick={() => { this.onClickLoc('unique', 'uniqueStay') }} src={locImg} alt="" />
+                            <p>Unique stays</p>
                         </div>
                     </div>
 

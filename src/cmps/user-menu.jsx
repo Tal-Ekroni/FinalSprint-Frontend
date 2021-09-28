@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { NavLink } from 'react-router-dom'
 
+import { Link, NavLink } from 'react-router-dom'
 import { userService } from '../services/user.service'
 import { onLogout } from '../store/user.actions'
 class _UserMenu extends React.Component {
@@ -52,7 +52,7 @@ class _UserMenu extends React.Component {
                         <p>Logout</p>
                     </div>}
                     {!user && <div className="user-menu-line" onClick={this.onOpenLogin}>
-                        <p>Login</p>
+                        <Link to='/login'>Login</Link>
                     </div>}
                     {!user && <div className="user-menu-line">
                         <p>Signup</p>
