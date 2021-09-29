@@ -18,6 +18,7 @@ import { CheckoutForm } from '../cmps/details-checkout-form'
 import { DayPickerRangeController } from 'react-dates'
 import { ReviewsList } from '../cmps/reviews-list'
 import { StayMap } from '../cmps/stay-map'
+import { DatesPicker2 } from '../cmps/dates-picker2'
 
 
 // import img from '../assets/img/1.jpg'
@@ -120,22 +121,22 @@ class _StayDetails extends React.Component {
                                     </div>
                                     <div className="calender-container flex space-between">
                                         <div className="checkin-calender">
-                                            <DayPickerRangeController
+                                            {/* <DayPickerRangeController
                                                 startDate={this.state.trip.startDate} // momentPropTypes.momentObj or null,
                                                 endDate={this.state.trip.endDate} // momentPropTypes.momentObj or null,
                                                 onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
                                                 focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
                                                 onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
-                                            />
+                                            /> */}
                                         </div>
                                         <div className="checkout-calender">
-                                            <DayPickerRangeController
+                                            {/* <DayPickerRangeController
                                                 startDate={this.state.startDate} // momentPropTypes.momentObj or null,
                                                 endDate={this.state.endDate} // momentPropTypes.momentObj or null,
                                                 onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
                                                 focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
                                                 onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
-                                            />
+                                            /> */}
                                         </div>
                                     </div>
 

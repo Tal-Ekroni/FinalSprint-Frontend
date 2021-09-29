@@ -9,6 +9,7 @@ import Select from 'react-select';
 import { Button, TextField } from '@material-ui/core'
 import 'react-dates/lib/css/_datepicker.css';
 import { showErrorMsg } from '../services/event-bus.service.js';
+import { DatesPicker2 } from './dates-picker2.jsx';
 class _CheckoutForm extends React.Component {
 
     state = {
@@ -18,7 +19,8 @@ class _CheckoutForm extends React.Component {
             guests: { adults: 1, kids: 0 }
         },
         isGuestPopupOn: false,
-        isCheckoutToReserve: false
+        isCheckoutToReserve: false,
+        datesModal: false
 
     }
     componentDidMount() {
@@ -31,7 +33,8 @@ class _CheckoutForm extends React.Component {
                 loc: stay.loc
             },
             isGuestPopupOn: false,
-            isCheckoutToReserve: false
+            isCheckoutToReserve: false,
+            datesModal: false
         })
     }
 
@@ -58,6 +61,10 @@ class _CheckoutForm extends React.Component {
         this.setState(prevState => ({ trip: { ...prevState.trip, summedNights, summedPrice }, isCheckoutToReserve: true }));
 
 
+    }
+    toggleDatesModal = (val) => {
+        this.setState({ datesModal: false })
+        this.setState({ datesModal: val })
     }
     onBookTrip = (stay, trip) => {
         if (!this.props.user) {
@@ -89,14 +96,26 @@ class _CheckoutForm extends React.Component {
 
     }
 
+    timeToShow = (date, val) => {
+        var timeStamp = Date.parse(date);
+        var time = new Date(timeStamp);
+        var date = "0" + time.getDate();
+        var month = "0" + (time.getMonth() + 1);
+        var year = "0" + time.getFullYear();
+        var formattedTime = date.substr(-2) + '.' + month.substr(-2) + '.' + year.substr(-2);
+        return formattedTime
+    }
+
+
     render() {
 
         const { stay } = this.props
-        const { trip, isCheckoutToReserve } = this.state
+        const { trip, isCheckoutToReserve ,datesModal} = this.state
         const { price } = stay
+        const {startDate,endDate} = trip
         return (
             <div className="checkout-form-container">
-                <div className="checkout-form-header flex space-between align-center">
+                <div className="checkout-form-header flex space-between align-center" onClick={() => { this.toggleDatesModal(false) }}>
 
                     <div className="order-price-container ">
                         <p className="order-price"><span>${price}</span> / night</p>
@@ -110,19 +129,18 @@ class _CheckoutForm extends React.Component {
                 <div className="form-container">
                     <div className="select-form">
                         <div className="dates-check-container">
-                            <DateRangePicker
-                                className="date-range"
 
-                                startDate={this.state.trip.startDate} // momentPropTypes.momentObj or null,
-                                startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
-                                endDate={this.state.trip.endDate} // momentPropTypes.momentObj or null,
-                                endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
-                                onDatesChange={({ startDate, endDate }) => this.handleChange({ startDate, endDate, price })} // PropTypes.func.isRequired,
-                                focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
-                                onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
-                                startDatePlaceholderText="Check in"
-                                endDatePlaceholderText="Check out"
-                            />
+                            <div className="dates-container flex ">
+                                <div className="check-in-input flex column">
+                                    <label htmlFor="" onClick={() => { this.toggleDatesModal(true) }}>Check in <span>{startDate ? this.timeToShow(startDate, 'startDate') : 'Add date'}</span></label>
+                                </div>
+                                <div className="check-out-input flex column" >
+                                    <label htmlFor="" onClick={() => { this.toggleDatesModal(true) }}>Check out <span>{endDate ? this.timeToShow(endDate, 'startDate') : 'Add date'}</span></label>
+                                    {/* <p>{endDate ? endDate : 'Add date'}</p> */}
+                                </div>
+                            </div>
+
+
                         </div>
                         <div className="guests-check-container">
                             <Select class="guests-lable flex">
@@ -181,7 +199,7 @@ class _CheckoutForm extends React.Component {
                         <div className="infants-line"></div>
                     </section>
                 </div>}
-
+                { datesModal && <DatesPicker2 />}
             </div >
         )
     }

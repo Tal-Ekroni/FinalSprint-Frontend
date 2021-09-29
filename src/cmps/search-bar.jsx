@@ -68,6 +68,7 @@ class _SearchBar extends React.Component {
         }
     }
     onSetFilter = async () => {
+        console.log(this.state);
         await this.props.setFilter(this.state)
         this.props.history.push('/explore')
     }
@@ -116,7 +117,7 @@ class _SearchBar extends React.Component {
                         {guestModal && <GuestsModal onToggleModals={this.onToggleModals} adultNumber={adultNumber} kidsNumber={kidsNumber} onSelectAmount={this.onSelectAmount} />}
                     </div>
 
-                    {/* <button className="search-btn" onClick={() =>this.onSetFilter}>Search</button> */}
+                    <button className="search-btn" onClick={() =>this.onSetFilter}>Search</button>
                     <div className="search-btn-container flex align-center justify-center" onClick={() => { this.onSetFilter() }} >
                         <FaSearch className="search-btn" size={16} />
                     </div>
