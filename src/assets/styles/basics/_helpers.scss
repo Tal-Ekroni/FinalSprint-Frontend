@@ -35,6 +35,9 @@
     &.justify-center {
         justify-content: center;
     }
+    &.justify-start{
+        justify-content: flex-start;
+    }
     &.space-between {
         justify-content: space-between;
     }

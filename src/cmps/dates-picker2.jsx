@@ -3,39 +3,46 @@ import 'react-date-range/dist/theme/default.css'; // theme css file
 import React from "react"
 import { DateRange } from 'react-date-range';
 
-import { Calendar } from 'react-date-range';
+import { Calendar, DateRangePicker } from 'react-date-range';
+// import { DateRangePicker } from 'react-dates';
 
 export class DatesPicker2 extends React.Component {
     state = {
         startDate: null,
         endDate: null
     }
-    handleSelect(date) {
-        console.log(date); // native Date object
-        // var timeStamp = this.toTimeStamp(date)
+    handleSelect = ({ selection }) => {
+        // console.log('endDate', date.selection.startDate);
+        var { startDate, endDate } = selection
+        this.setState({ startDate, endDate }, () => { this.props.onSelectDates(this.state) })
     }
-
-    // handleChange = ({ startDate, endDate }) => {
-    //     if (startDate) {
-    //         this.setState(prevState => ({ trip: { ...prevState.trip, startDate } }))
-    //     }
-    //     if (endDate) {
-    //         this.setState(prevState => ({ trip: { ...prevState.trip, endDate } }))
-    //     }
-    // }
 
     toTimeStamp = (strDate) => {
         var datum = Date.parse(strDate);
-        console.log('hii', datum / 1000);
         return datum / 1000;
     }
     render() {
+        const selectionRange = {
+            startDate: this.state.startDate,
+            endDate: this.state.endDate,
+            key: 'selection',
+        }
         return (
-            <Calendar
-                date={new Date()}
+            <DateRangePicker
+                ranges={[selectionRange]}
                 onChange={this.handleSelect}
-                moveRangeOnFirstSelection={false}
             />
         )
+
+        // return (
+        //     // <Calendar
+        //     //     minDate={this.state.startDate}
+        //     //     maxDate={this.state.endDate}
+        //     //     date={new Date()}
+        //     //     onChange={this.handleSelect}
+        //     //     moveRangeOnFirstSelection={false}
+        //     // />
+        //     <DateRangePicker/>
+        // )
     }
 }
