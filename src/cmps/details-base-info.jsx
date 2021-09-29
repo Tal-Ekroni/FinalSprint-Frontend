@@ -10,7 +10,7 @@ export function BasicInfo({ stay }) {
                     <div className="stay-info-conatiner flex">
                         <div className="stay-review-avg flex align-end">
                             <p><FaStar size={13} color="#FF5A5F" /></p>
-                            <p>4.9</p>
+                            <p>5</p>
                             <p>{`(${stay.reviews.length} reviews)`}</p>
                         </div>
                         <p>•</p>
@@ -33,15 +33,15 @@ export function BasicInfo({ stay }) {
             <section className="asset-imgs-container flex  ">
                 <div className="asset-imgs flex">
 
-                <div className="primary-img square-ratio"><img src={stay.imgUrls[0]} alt="" /></div>
-                <div className="imgs-container flex">
-                    <div className="asset-img square-ratio"><img src={stay.imgUrls[1]} alt="" /></div>
-                    <div className="asset-img square-ratio"><img src={stay.imgUrls[2]} alt="" /></div>
-                </div>
-                <div className="imgs-container flex">
-                    <div className="asset-img square-ratio"><img src={stay.imgUrls[3]} alt="" /></div>
-                    <div className="asset-img square-ratio"><img src={stay.imgUrls[4]} alt="" /></div>
-                </div>
+                    <div className="primary-img square-ratio"><img src={stay.imgUrls[0]} alt="" /></div>
+                    <div className="imgs-container flex">
+                        <div className="asset-img square-ratio"><img src={stay.imgUrls[1]} alt="" /></div>
+                        <div className="asset-img square-ratio"><img src={stay.imgUrls[2]} alt="" /></div>
+                    </div>
+                    <div className="imgs-container flex">
+                        <div className="asset-img square-ratio"><img src={stay.imgUrls[3]} alt="" /></div>
+                        <div className="asset-img square-ratio"><img src={stay.imgUrls[4]} alt="" /></div>
+                    </div>
                 </div>
             </section>
         </section>

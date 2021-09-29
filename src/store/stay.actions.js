@@ -84,34 +84,7 @@ export function onEditStay(stayToSave) {
 }
 
 
-export function onBookTrip(trip) {
-    return async (dispatch, getState) => {
-        try {
-            // const user = await userService.getLoggedinUser()
-            const user = await userService.getById(trip.user._id)
-            const hostUser = await userService.getById(trip.stay.host._id)
-            // const stay = await stayService.getById(trip.stay._id)
-            const orderId = utilService.makeId()
-            const tripId = utilService.makeId()
-            const userTrip = trip
-            userTrip.id = tripId
-            const hostOrder = trip
-            hostOrder.id = orderId
-            if (!hostUser.orders) hostUser.orders = []
-            if (!user.myTrips) user.myTrips = []
-            hostUser.orders.push(hostOrder)
-            user.myTrips.push(userTrip)
-            await userService.update(user)
-            await userService.update(hostUser)
-            dispatch({ type: 'BOOK-A-TRIP', trip })
-            showSuccessMsg('Stay Rserved ')
-            // console.log('Reserved Succesfully!', user, hostUser);
-        } catch (err) {
-            showErrorMsg('Cannot reserve stay')
-            console.log('Cannot reserve stay', err)
-        }
-    }
-}
+
 
 
 export function removeFromCart(carId) {

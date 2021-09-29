@@ -76,7 +76,7 @@
         "_id": "u102",
         "fullname": "Houston Anderson",
         "imgUrl": "/img/img1.jpg",
-        "isHost": false,
+        "isHost": true,
         "username": "Houston",
         "password": "secret",
         "emailAddress": "user2@gmail.com",

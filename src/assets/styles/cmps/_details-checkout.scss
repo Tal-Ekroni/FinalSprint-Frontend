@@ -127,11 +127,20 @@
     height: 50px;
     text-align: center;
     justify-content: center;
-    background-color: $clr6;
+    // background-color: $clr6;
+    background-image: radial-gradient(
+        circle at center,
+        #ff385c 0%,
+        #e61e4d 27.5%,
+        #e31c5f 40%,
+        #d70466 57.5%,
+        #bd1e59 75%,
+        #bd1e59 100%
+    );
     border-radius: 8px;
     & * {
         font-size: 1rem;
-        font-family: circular-book;
+        font-family: circular-bold;
         color: $clr1;
     }
 }

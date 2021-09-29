@@ -2,7 +2,10 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 
-import { loadStays, onAddStay, onEditStay, onRemoveStay, onBookTrip } from '../store/stay.actions.js'
+import { loadStays, onAddStay, onEditStay, onRemoveStay } from '../store/stay.actions.js'
+import { onBookTrip } from '../store/user.actions.js'
+
+
 import { showSuccessMsg } from '../services/event-bus.service.js'
 import { StaysList } from '../cmps/stays-list.jsx'
 import { ExploreFilter } from '../cmps/explore-filter.jsx'

@@ -3,6 +3,10 @@
         width: 100%;
     }
 }
+.read-more {
+    margin-inline-start: 10px;
+    font-family: circular-bold;
+}
 .reviews-section-title {
     margin-top: 40px;
     line-height: 1.625rem;
@@ -48,11 +52,16 @@
         margin-bottom: 5px;
     }
     & .review-txt-container {
+        padding-top: 10px;
         width: 95%;
         margin: 0 auto;
     }
 }
+.review-username {
+    font-family: circular-bold;
+}
 .txt-info-container {
+    margin-inline-start: 15px;
     align-items: center;
 }
 .user-review-img-container {

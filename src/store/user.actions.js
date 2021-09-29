@@ -1,6 +1,7 @@
 import { userService } from "../services/user.service.js";
-import { showErrorMsg } from '../services/event-bus.service.js'
+import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
 import { stayService } from "../services/stay.service.js";
+import { utilService } from "../services/util.service.js";
 // import { socketService, SOCKET_EMIT_USER_WATCH, SOCKET_EVENT_USER_UPDATED } from "../services/socket.service.js";
 
 
@@ -90,6 +91,37 @@ export function onToggleLikeStay(isLiked, savedStay = null) {
             dispatch({ type: 'UPDATE_USER', user })
         } catch (err) {
             console.log(err);
+        }
+    }
+}
+export function onBookTrip(trip) {
+    return async (dispatch, getState) => {
+        try {
+            const user = await userService.getById(trip.user._id)
+            const hostUser = await userService.getById(trip.stay.host._id)
+            const orderId = utilService.makeId()
+            const tripId = utilService.makeId()
+
+            const userTrip = trip
+            userTrip.id = tripId
+            const hostOrder = trip
+            hostOrder.id = orderId
+
+            if (!hostUser.orders) hostUser.orders = []
+            if (!user.myTrips) user.myTrips = []
+            hostUser.orders.push(hostOrder)
+            user.myTrips.push(userTrip)
+
+            const updatedUser = await userService.update(user)
+            const updatedHost = await userService.update(hostUser)
+
+            dispatch({ type: 'UPDATE_USER', user: updatedUser })
+            dispatch({ type: 'UPDATE_USER', user: updatedHost })
+
+            showSuccessMsg('Stay Rserved ')
+        } catch (err) {
+            showErrorMsg('Cannot reserve stay')
+            console.log('Cannot reserve stay', err)
         }
     }
 }

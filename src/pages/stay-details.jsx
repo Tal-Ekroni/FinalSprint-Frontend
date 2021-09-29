@@ -19,8 +19,7 @@ import { DayPickerRangeController } from 'react-dates'
 import { ReviewsList } from '../cmps/reviews-list'
 import { StayMap } from '../cmps/stay-map'
 import { DatesPicker2 } from '../cmps/dates-picker2'
-
-
+import { AddReview } from '../cmps/add-review'
 // import img from '../assets/img/1.jpg'
 // const stay = data.stay;
 // var stay = data.default[0].stay[0]
@@ -158,8 +157,11 @@ class _StayDetails extends React.Component {
                     </section>
                     <section className="page-bottom-container">
                         <div >
-
+                            {/* <ReviewsAvg/> */}
                             <ReviewsList reviews={stay.reviews} />
+                            <div className="add-review main-layout">
+                                {/* <AddReview /> */}
+                            </div>
                         </div>
                         <div >
 

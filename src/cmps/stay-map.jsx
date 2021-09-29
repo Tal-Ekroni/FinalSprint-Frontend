@@ -50,7 +50,7 @@ class _StayMap extends Component {
                     <Map
                         containerStyle={style}
                         google={this.props.google}
-                        zoom={9}
+                        zoom={15}
                         initialCenter={this.state.center}
                         onClick={this.onMapClicked}
                         center={this.state.center}

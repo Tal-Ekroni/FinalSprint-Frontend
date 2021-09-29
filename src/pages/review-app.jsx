@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-import { loadReviews, addReview, removeReview } from '../store/review.actions'
+import { loadReviews, onAddReview, removeReview } from '../store/review.actions'
 import { loadUsers } from '../store/user.actions.js'
 
 class _ReviewApp extends Component {
@@ -106,7 +106,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
   loadReviews,
   loadUsers,
-  addReview,
+  onAddReview,
   removeReview
 }
 

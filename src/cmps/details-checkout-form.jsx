@@ -2,7 +2,8 @@ import React from 'react'
 import 'react-dates/initialize';
 import { DateRangePicker, DayPickerRangeController, SingleDatePicker } from 'react-dates'
 import { connect } from 'react-redux'
-import { onBookTrip } from '../store/stay.actions.js'
+import { onBookTrip } from '../store/user.actions'
+
 import { FaStar, FaAngleDown, FaAngleUp, FaMinus, FaPlus } from 'react-icons/fa'
 import Select from 'react-select';
 
