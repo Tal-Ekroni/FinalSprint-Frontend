@@ -147,13 +147,12 @@ class _StayDetails extends React.Component {
                         </div>
                         {/* TODO */}
                         <div className="details-right-container">
-                            <section className="checkout-container flex">
+                    
                                 <CheckoutForm stay={stay} />
                                 {/* <div className="report-container flex ">
                                     <FaFlag />
                                     <p>Report this listing</p>
                                 </div> */}
-                            </section>
                         </div>
 
                     </section>
