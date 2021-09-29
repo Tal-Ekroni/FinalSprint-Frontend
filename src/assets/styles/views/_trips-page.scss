@@ -1,14 +1,19 @@
+.trips-page-container {
+    padding-top: 180px;
+}
 .trips-container {
     min-height: 400px;
     border-bottom: 0.5px solid lightgray;
-
     .trip-preview-container {
         cursor: pointer;
-        border: 1px solid;
+        border: 0.5px solid #717171;
         border-radius: 15px;
         overflow: hidden;
         width: 350px;
         height: 300px;
+    }
+    .trip-preview-details {
+        padding: 10px;
     }
     & .trips-title-container {
         height: 36px;

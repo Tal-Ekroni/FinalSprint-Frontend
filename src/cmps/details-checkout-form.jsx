@@ -100,7 +100,8 @@ class _CheckoutForm extends React.Component {
                 if (action === 'plus') infants = infants + 1
                 break;
         }
-        this.setState({ trip: { guests: { adults, kids, infants } } }, () => { console.log(this.state); })
+        this.setState(prevState => ({ ...prevState, trip: { ...prevState.trip, guests: { adults, kids, infants } } }));
+        // this.setState({ guests: { adults, kids, infants } })
 
     }
     calcGuestNum = () => {
@@ -131,7 +132,7 @@ class _CheckoutForm extends React.Component {
                 trip: {
                     startDate: null,
                     endDate: null,
-                    guests: { adults: 1, kids: 0 }
+                    guests: { adults: 1, kids: 0, infants: 0 }
                 },
                 isGuestPopupOn: false,
                 isCheckoutToReserve: false
@@ -279,7 +280,7 @@ class _CheckoutForm extends React.Component {
                         </div>
                     </div>
                 </div>}
-                {datesModal && <DatesPicker2 handleChange={this.handleChange} />}
+                {datesModal && <DatesPicker2 onSelectDates={this.onSelectDates} handleChange={this.handleChange} />}
             </section>
         )
     }
