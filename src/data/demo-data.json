@@ -1,3 +1,4 @@
+
 [
     {
         "_id": "1321fd32s456",
@@ -5,10 +6,11 @@
         "assetType": "Entire duplex",
         "uniqueStay": true,
         "imgUrls": [
-            "https://images.unsplash.com/photo-1484154218962-a197022b5858?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=874&q=80",
-            "https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large",
-            "https://media.istockphoto.com/photos/modern-living-room-interior-3d-render-picture-id1293762741?s=612x612",
-            "https://images.unsplash.com/photo-1493809842364-78817add7ffb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+            "../assets/img/idobarc1",
+            "../assets/img/idobarc2",
+            "../assets/img/idobarc3",
+            "../assets/img/idobarc4",
+            "../assets/img/idobarc5"
         ],
         "price": 175.00,
         "summary": "The apartment Villa Olimpica beach is located on the 5th floor of a building with elevator.The living room with warm colors consists of a comfortable sofa in front of a flat-screen TV. You will also have table with 7 chairs, where you will be able to get together for a sunny breakfast or surfing on the internet with the high speed WIFI connection.",

@@ -108,7 +108,6 @@ class _CheckoutForm extends React.Component {
     calcGuestNum = () => {
         const { adults, kids, infants } = this.state.trip.guests
         var res = adults + kids + infants
-        console.log('res', res);
         return res
     }
 

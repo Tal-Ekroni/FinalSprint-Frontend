@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { stayService } from '../services/stay.service'
 import { showSuccessMsg } from '../services/event-bus.service.js'
-import { FaHome, FaBroom, FaDoorClosed, FaKey, FaFlag } from 'react-icons/fa'
+import { FaHome, FaBroom, FaDoorClosed, FaKey, FaFlag, FaStar } from 'react-icons/fa'
 import { onEditStay, onRemoveStay } from '../store/stay.actions.js'
 import { BasicInfo } from '../cmps/details-base-info'
 import { AssetSum } from '../cmps/details-asset-sum'
@@ -19,7 +19,7 @@ import { DayPickerRangeController } from 'react-dates'
 import { ReviewsList } from '../cmps/reviews-list'
 import { StayMap } from '../cmps/stay-map'
 import { DatesPicker2 } from '../cmps/dates-picker2'
-import { AddReview } from '../cmps/add-review'
+import { ReviewAvg } from '../cmps/_reviews-avg'
 // import img from '../assets/img/1.jpg'
 // const stay = data.stay;
 // var stay = data.default[0].stay[0]
@@ -33,7 +33,8 @@ class _StayDetails extends React.Component {
             endDate: null,
             guests: { adults: 1, kids: 0, infants: 0 },
 
-        }
+        },
+        totalStayReviewAvg: null
 
     }
     componentDidMount() {
@@ -72,10 +73,11 @@ class _StayDetails extends React.Component {
             this.setState(prevState => ({ trip: { ...prevState.trip, endDate } }))
         }
     }
+    setReviewAvg = (res) => {
+        this.setState({ totalStayReviewAvg: res })
+    }
     render() {
-        const { stay } = this.state
-        const TextFieldOutlined = (props) => <TextField {...props} variant={'outlined'} color={'primary'} />
-        const initialValues = {}
+        const { stay,totalStayReviewAvg } = this.state
         return (
             <section className="stay-details-section main-layout">
                 {stay && <div className="stay-details-container">
@@ -157,7 +159,12 @@ class _StayDetails extends React.Component {
                     </section>
                     <section className="page-bottom-container">
                         <div >
-                            {/* <ReviewsAvg/> */}
+                            <div className="reviews-sec-title-container">
+                                <h1 className="reviews-section-title flex" ><FaStar
+                                    size={15}
+                                    color="#FF5A5F" />{totalStayReviewAvg}Reviews<span>•</span>{stay.reviews.length} Reviews</h1>
+                            </div>
+                            <ReviewAvg setReviewAvg={this.setReviewAvg} reviews={stay.reviews} />
                             <ReviewsList reviews={stay.reviews} />
                             <div className="add-review main-layout">
                                 {/* <AddReview /> */}

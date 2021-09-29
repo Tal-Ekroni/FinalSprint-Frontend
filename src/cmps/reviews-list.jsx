@@ -1,6 +1,6 @@
 import { FaStar } from 'react-icons/fa'
 import { ReviewsPreview } from './reviews-preview'
-import { ReviewAvg } from './_reviews.avg'
+import { ReviewAvg } from './_reviews-avg'
 
 export function ReviewsList({ reviews }) {
     return (
@@ -11,11 +11,7 @@ export function ReviewsList({ reviews }) {
             }
             {reviews.length && <section>
                 <div>
-                    <div className="reviews-sec-title-container">
-                        <h1 className="reviews-section-title flex" ><FaStar
-                            size={15}
-                            color="#FF5A5F" />5 Reviews<span>•</span>{reviews.length} Reviews</h1>
-                    </div>
+                  
                     {/* <div className="reviews-avgs-container">
                         <ReviewAvg reviews={reviews} />
                     </div> */}

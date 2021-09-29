@@ -1,42 +1,3 @@
-// .search-bar-container {
-//     border: 1px solid $clr5;
-//     border-radius: 999px;
-//     width: 96%;
-//     justify-content: space-evenly;
-//     // margin: 0 auto;
-//     z-index: 1;
-//     // margin-bottom: 40px;
-//
-//     .loc-inpt{
-//         font-family: circular-bold;
-
-//     }
-//     .DateRangePickerInput__withBorder {
-//         all: initial;
-
-//         .DateRangePicker_picker{
-//             z-index: 2;
-
-//         }
-//     }
-
-//     .search-bar-search-btn-container {
-//         background-color: $clr8;
-//         height: 47px;
-//         width: 47px;
-//         font-size: 0.875rem;
-//         border-radius: 50%;
-//         cursor: pointer;
-//         .search-bar-search-btn {
-//             color: #fff;
-//             background-color: $clr8;
-
-//         }
-//     }
-//         & .search-btn {
-
-//     }
-// }
 .search-bar-container {
     min-width: 50%;
     max-width: 850px;
@@ -48,14 +9,19 @@
     height: 63px;
     margin-bottom: 32px;
     border: 0.5px solid lightgray;
-    .dates-container {
-        width: 420px;
+    transition: display 1s;
+    padding: 0 10px 0 0;
+
+    .guests-container,
+    .location-container {
+        width: 25%;
     }
-    .location-container,
-    .check-in-input,
-    .check-out-input,
-    .guests-container {
-        width: 210px;
+
+    .dates-container {
+        width: 50%;
+        > * {
+            flex-grow: 1;
+        }
     }
 
     input {
@@ -63,7 +29,11 @@
         outline: none;
         margin: 0;
         padding: 0;
-        background-color: none;
+        background-color: inherit;
+        overflow: hidden;
+        &:hover {
+            background-color: rgba(211, 211, 211, 0.603);
+        }
     }
     .check-container {
         justify-content: center;
@@ -77,6 +47,29 @@
         gap: 31%;
         margin-bottom: -3px;
         margin-top: 13px;
+    }
+    .dates-container {
+        span {
+            color: $clr5;
+            font-size: 12px;
+            font-family: circular;
+        }
+    }
+    .guest-placeholder {
+        color: $clr5;
+        font-size: 12px;
+        font-family: circular;
+    }
+    .location-container {
+        input::placeholder {
+            color: $clr5;
+            font-size: 12px;
+            font-family: circular;
+
+            &:hover {
+                background-color: rgba(211, 211, 211, 0.603);
+            }
+        }
     }
     label {
         padding: 14px 24px;
@@ -94,13 +87,24 @@
         overflow: hidden;
 
         &:hover {
-            background-color: #fff;
-            box-shadow: 0 0 25px 0;
+            background-color: rgba(211, 211, 211, 0.603);
         }
         &:nth-child(1) {
             display: flex;
             flex-direction: column;
         }
+    }
+    .search-btn-container {
+        // position: absolute;
+        // right: 0;
+        // top: 50%;
+        // transform: translateY(-50%);
+        width: 47px;
+        height: 47px;
+        color: $clr1;
+        background-color: $clr8;
+        border-radius: 55px;
+        cursor: pointer;
     }
 
     .DateRangePicker {
@@ -117,6 +121,6 @@
     left: 40%;
     // background-color: none;
 }
-.rdrDefinedRangesWrapper{
+.rdrDefinedRangesWrapper {
     display: none;
 }
