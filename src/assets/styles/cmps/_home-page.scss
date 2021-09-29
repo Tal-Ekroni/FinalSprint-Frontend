@@ -7,7 +7,7 @@
         background-size: cover;
         position: relative;
     }
-    
+
     & .sug-loc {
         margin-top: 20px;
         margin-bottom: 50px;
@@ -17,7 +17,7 @@
         & .locations {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 24px 300px;
+            gap: 24px 150px;
             margin-top: 30px;
             & .loc-section {
                 max-width: 100px;
@@ -26,7 +26,7 @@
                     width: 100px;
                     margin-right: 10px;
                     border-radius: 10%;
-                    cursor:pointer;
+                    cursor: pointer;
                 }
                 .city-name {
                     font-family: circular-bold;
@@ -44,15 +44,16 @@
             font-family: circular-bold;
         }
         & .live-loc {
+            gap: 10px;
             margin-top: 15px;
             .live-img {
                 border-radius: 10%;
-                height: 350px;
-                width: 350px;
-                cursor:pointer;
+                height: 270px;
+                width: 270px;
+                cursor: pointer;
             }
-            p{
-                font-size:1.475rem;
+            p {
+                font-size: 1rem;
             }
         }
     }
@@ -65,7 +66,7 @@
         color: white;
         padding: 100px;
         border-radius: 10px;
-        margin-bottom:90px;
+        margin-bottom: 90px;
         & p {
             margin-top: 15px;
             max-width: 270px;
