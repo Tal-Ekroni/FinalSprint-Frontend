@@ -78,7 +78,8 @@
             }
         }
         .preview-img {
-            
+            position: relative;
+            display: inline-block;
         }
         .stay-style,
         .preview-rating-amount {
@@ -87,7 +88,7 @@
             font-family: circular-medium;
         }
     }
-    
+
     .preview-price {
         color: $clr10;
         .preview-price-amount {
@@ -95,12 +96,11 @@
         }
     }
     .MuiSvgIcon-root {
-                position: relative;
-                top: 26px;
-                z-index: 1;
-                left: 87%;
-                color:$clr6;
-                
-         
+        position: relative;
+        top: 25px;
+        z-index: 1;
+        left: 89%;
+        color: $clr6;
+        width: 30px;
     }
 }

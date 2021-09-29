@@ -21,48 +21,31 @@ class _SearchBar extends React.Component {
         const value = ev.target.value;
         this.setState({ location: value }, () => { this.props.setFilter(this.state) });
     }
-    // onSelectDates = ({ startDate, endDate }) => {
-    //     if (startDate) {
-    //         this.setState({ startDate }, () => console.log(this.state))
-    //     }
-    //     if (endDate) {
-
-    //         this.setState({ endDate }, () => console.log(this.state))
-    //     }
-    // }
 
     onSelectDates = ({ startDate, endDate }) => {
         this.setState({ startDate, endDate }, () => { this.props.setFilter(this.state) })
     }
-    onToggleModals = (modalSelect) => {
-        switch (modalSelect) {
-            case 'guestModal':
-                this.setState(prevState => ({
-                    guestModal: !prevState.guestModal
-                }, () => { this.props.setFilter(this.state) }));
-                break;
-            case 'datesPicker':
-                this.setState(prevState => ({
-                    datesModal: !prevState.datesModal
-                }, () => { this.props.setFilter(this.state) }));
-                break;
 
-        }
-    }
+
+
     onSelectAmount = (guestType, diff) => {
+        console.log(guestType);
         switch (guestType) {
             case 'adultNumber':
                 if (this.state.adultNumber + diff >= 0) {
-                    this.setState(prevState => ({
-                        adultNumber: prevState.adultNumber + diff
-                    }, () => { this.props.setFilter(this.state) }));
+                    // this.setState(prevState => ({
+                    //     adultNumber: prevState.adultNumber + diff
+                    // }, () => { this.props.setFilter(this.state) }));
+
+                    this.setState({ adultNumber: this.state.adultNumber + diff }, () => { this.props.setFilter(this.state) })
                 }
                 break;
             case 'kidsNumber':
                 if (this.state.kidsNumber + diff >= 0) {
-                    this.setState(prevState => ({
-                        kidsNumber: prevState.kidsNumber + diff
-                    }, () => { this.props.setFilter(this.state) }));
+                    // this.setState(prevState => ({
+                    //     kidsNumber: prevState.kidsNumber + diff
+                    // }, () => { this.props.setFilter(this.state) }));
+                    this.setState({ kidsNumber: this.state.kidsNumber + diff }, () => { this.props.setFilter(this.state) })
                 }
                 break;
         }
@@ -75,6 +58,10 @@ class _SearchBar extends React.Component {
     toggleDatesModal = (val) => {
         this.setState({ datesModal: false })
         this.setState({ datesModal: val })
+    }
+    onToggleGuestModals = () => {
+        this.toggleDatesModal()
+        this.setState({ guestModal: !this.state.guestModal })
     }
     timeToShow = (date, val) => {
         var timeStamp = Date.parse(date);
@@ -104,21 +91,21 @@ class _SearchBar extends React.Component {
                         </div>
                         <div className="check-out-input flex column" >
                             <label htmlFor="" onClick={() => { this.toggleDatesModal(true) }}>Check out <span>{endDate ? this.timeToShow(endDate, 'startDate') : 'Add date'}</span></label>
-                            {/* <p>{endDate ? endDate : 'Add date'}</p> */}
+
                         </div>
                     </div>
 
-                    <div className="guests-container flex justify-center align-center" onClick={() => { this.toggleDatesModal(false) }}>
+                    <div className="guests-container flex justify-center align-center" onClick={() => { this.onToggleGuestModals() }}>
 
-                    {/* // onClick={(ev) => {
+                        {/* // onClick={(ev) => {
                                 console.log(ev.target.getBoundingClientRect())
                             }}> */}
-                            <label htmlFor="" className=" flex align-center column" >
-                                <span onClick={() => { this.onToggleModals('guestModal') }}>Guests</span>
-                                <span className="guest-placeholder">Add guests</span>
-                            </label>
-                            { guestModal && <GuestsModal onToggleModals={this.onToggleModals} adultNumber={adultNumber} kidsNumber={kidsNumber} onSelectAmount={this.onSelectAmount} /> }
+                        <label htmlFor="" className=" flex align-center column" >
+                            <span>Guests</span>
+                            <span className="guest-placeholder">Add guests</span>
+                        </label>
                     </div>
+                    {guestModal && <GuestsModal onToggleGuestModals={this.onToggleGuestModals} adultNumber={adultNumber} kidsNumber={kidsNumber} onSelectAmount={this.onSelectAmount} />}
 
                     <div className="search-btn-container flex align-center justify-center" onClick={() => { this.onSetFilter() }} >
                         <FaSearch size={16} />
