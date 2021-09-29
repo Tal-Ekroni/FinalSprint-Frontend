@@ -20,7 +20,6 @@ class _StayPreview extends React.Component {
     }
     onToggleLikeStay = (ev,stay) => {
         ev.stopPropagation()
-
         const { user } = this.props
         if (user) {
             if (this.state.isLiked) {
