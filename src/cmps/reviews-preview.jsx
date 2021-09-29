@@ -22,6 +22,7 @@ export function ReviewsPreview({ review }) {
                 </div>
                 <div className="review-stars-container">
                     <Rating
+                    readonly
                     initialRating={review.rate}
                     fullSymbol= {<FaStar size={13} color="#FF5A5F" />}
                     emptySymbol= {<FaStar size={13} color="lightgray" border="1px solid #FF5A5F"/>}

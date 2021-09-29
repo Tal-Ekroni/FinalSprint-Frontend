@@ -38,13 +38,24 @@
 //     }
 // }
 .search-bar-container {
-    // width: 900px;
+    min-width: 55%;
+    max-width: 900px;
     background-color: #fff;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
     border-radius: 50px;
     height: 63px;
+    .dates-container {
+        width: 420px;
+    }
+    .location-container,
+    .check-in-input,
+    .check-out-input,
+    .guests-container {
+        width: 210px;
+    }
+
     input {
         border: none;
         outline: none;
@@ -52,22 +63,24 @@
         padding: 0;
         background-color: none;
     }
-    .check-container{
-justify-content: center;
+    .check-container {
+        justify-content: center;
     }
-    p{
+    p {
         color: $clr2;
         font-size: 12px;
         font-family: circular-bold;
     }
-    .check-in-out{
+    .check-in-out {
         gap: 31%;
         margin-bottom: -3px;
         margin-top: 13px;
     }
     label {
         padding: 14px 24px;
-        width: auto;
+        // width: auto;
+        width: 100%;
+
         color: $clr2;
         font-size: 12px;
         font-family: circular-bold;
@@ -87,14 +100,21 @@ justify-content: center;
             flex-direction: column;
         }
     }
-    
+
     .DateRangePicker {
         input {
             border-right: 1px solid lightgray;
             font-family: circular-bold;
             font-size: 12px;
-       
         }
     }
-    
+}
+
+.search-dates-container {
+    position: absolute;
+    left: 40%;
+    // background-color: none;
+}
+.rdrDefinedRangesWrapper{
+    display: none;
 }
