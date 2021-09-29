@@ -13,7 +13,7 @@
     .logo-container {
         .logo {
             all: unset;
-            color: $clr6;
+            color: $clr5;
             letter-spacing: 0;
             font-family: circular-bold;
             cursor: pointer;
@@ -67,10 +67,14 @@
         }
     }
     .user-img-container {
-        // border-radius: 55px;
         overflow: hidden;
         .menu-btn {
             font-size: 14px;
+        }
+    }
+    &.mini-header {
+        .search-bar-container {
+            display: none;
         }
     }
 }

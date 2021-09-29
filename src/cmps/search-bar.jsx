@@ -90,7 +90,7 @@ class _SearchBar extends React.Component {
         const { location, adultNumber, kidsNumber, endDate, startDate, guestModal, datesModal } = this.state
         return (
             <div>
-                <div className="search-bar-container flex ">
+                <div className="search-bar-container flex align-center ">
 
                     <div className="location-container flex column" onClick={() => { this.toggleDatesModal(false) }}>
                         <label htmlFor="location" className="loc-inpt">Location
@@ -108,21 +108,24 @@ class _SearchBar extends React.Component {
                         </div>
                     </div>
 
-                    <div className="guests-container flex justify-center align-center" onClick={(ev) => {
-                        console.log(ev.target.getBoundingClientRect())
-                    }}>
-                        <label htmlFor="" >
-                            <span onClick={() => { this.onToggleModals('guestModal') }}>Guests</span>
-                        </label>
-                        {guestModal && <GuestsModal onToggleModals={this.onToggleModals} adultNumber={adultNumber} kidsNumber={kidsNumber} onSelectAmount={this.onSelectAmount} />}
+                    <div className="guests-container flex justify-center align-center" onClick={() => { this.toggleDatesModal(false) }}>
+
+                    {/* // onClick={(ev) => {
+                                console.log(ev.target.getBoundingClientRect())
+                            }}> */}
+                            <label htmlFor="" className=" flex align-center column" >
+                                <span onClick={() => { this.onToggleModals('guestModal') }}>Guests</span>
+                                <span className="guest-placeholder">Add guests</span>
+                            </label>
+                            { guestModal && <GuestsModal onToggleModals={this.onToggleModals} adultNumber={adultNumber} kidsNumber={kidsNumber} onSelectAmount={this.onSelectAmount} /> }
                     </div>
-                    <button className="search-btn" onClick={() =>this.onSetFilter}>Search</button>
+
                     <div className="search-btn-container flex align-center justify-center" onClick={() => { this.onSetFilter() }} >
-                        <FaSearch className="search-btn" size={16} />
+                        <FaSearch size={16} />
                     </div>
 
                 </div>
-                <div className="search-dates-container">
+                <div className="search-dates-container ">
                     {datesModal && <DatesPicker2 onSelectDates={this.onSelectDates} />}
                 </div>
             </div>

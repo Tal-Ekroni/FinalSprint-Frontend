@@ -16,11 +16,24 @@ class _AppHeader extends React.Component {
         endDate: null,
         isGuestMode: false,
         isUserMenuOpen: false,
-        isLoginBotmodal: false
+        isLoginBotmodal: false,
+        isPageTop: true
 
     }
     componentDidMount() {
         this.setState({ isUserMenuOpen: false, isLoginBotmodal: false })
+        window.addEventListener('scroll', (ev) => {
+            if (ev.target.scrollingElement.scrollTop > 200) {
+                this.setState({ isPageTop: false })
+            } else {
+                this.setState({ isPageTop: true })
+
+            }
+
+        })
+    }
+    componentWillUnmount() {
+        window.removeEventListener('scroll')
     }
     onLogin = (credentials) => {
         this.props.onLogin(credentials)
@@ -45,9 +58,9 @@ class _AppHeader extends React.Component {
     }
     render() {
         const { user, setFilter } = this.props
-        const { isUserMenuOpen, isLoginBotmodal } = this.state
+        const { isUserMenuOpen, isLoginBotmodal, isPageTop } = this.state
         return (
-            <header className="app-header-conatiner main-container">
+            <header className={isPageTop ? `app-header-conatiner main-container` : `app-header-conatiner main-container mini-header`}>
                 <nav className="user-header-section flex space-between "  >
                     <div className="logo-container flex align-center">
                         <NavLink to="/" className="logo"><span>Any</span><FaAirbnb size={40} color="#ff5a5f" /><span>Go</span></NavLink>
@@ -59,10 +72,10 @@ class _AppHeader extends React.Component {
                         <div className="nav-options flex align-center">
                             <NavLink to="/explore" className="nav-opt">Explore</NavLink>
                         </div>
-                        <div className="user-img-container ">
+                        <div className="user-img-container " onClick={this.onToogleMenu}>
                             <button className="user-btn flex align-center btn-section  ">
                                 {/* <div className="btn-section flex align-center justify-center"> */}
-                                <FaBars onClick={this.onToogleMenu} className="menu-btn" />
+                                <FaBars  className="menu-btn" />
                                 <div className="user-logo-container">
                                     {!user && <img src={`https://i.pravatar.cc/100?u=${1}`} alt="" />}
                                     {user && <img src={`https://i.pravatar.cc/100?u=${user._id}`} alt="" />}
