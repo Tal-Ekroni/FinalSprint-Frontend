@@ -37,7 +37,7 @@ class _StayApp extends React.Component {
         const { stays } = this.props
         if (!stays.length) return <div>loading</div>
         return (
-            <main className="main-layout">
+            <main className="main-container">
                 <p>{stays.length} stays</p>
                 <ExploreFilter />
                 {stays.length && <StaysList stays={stays} history={this.props.history}  />}

@@ -83,7 +83,6 @@ export function onToggleLikeStay(isLiked, savedStay = null) {
             if (isLiked) {
                 user.mySaves.push(savedStay)
             } else {
-                console.log(user.mySaves, savedStay);
                 const stayIdx = user.mySaves.findIndex(saved => saved._id === savedStay._id)
                 user.mySaves.splice(stayIdx, 1)
             }

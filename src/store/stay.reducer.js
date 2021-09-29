@@ -21,6 +21,7 @@ const initialState = {
 export function stayReducer(state = initialState, action) {
     var newState = state
     var stays
+    var trip
     var cart
     switch (action.type) {
         case 'SET_STAYS':
@@ -42,8 +43,6 @@ export function stayReducer(state = initialState, action) {
             newState = { ...state, stays }
             break
         case 'BOOK-A-TRIP':
-            stays = state.stays.map(stay => (stay._id === action.stay._id) ? action.stay : stay)
-            newState = { ...state, stays }
             newState = { ...state, bookedTrip: action.trip }
             break
         case 'REMOVE_FROM_CART':

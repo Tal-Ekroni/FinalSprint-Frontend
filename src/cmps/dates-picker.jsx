@@ -18,6 +18,9 @@ export class DatesPicker extends React.Component {
     return (
       <div className="App">
         <DateRangePicker
+        noBorder="true"
+        startDatePlaceholderText="Add dates"
+        endDatePlaceholderText="Add dates"
           startDateId="startDate"
           endDateId="endDate"
           startDate={startDate}

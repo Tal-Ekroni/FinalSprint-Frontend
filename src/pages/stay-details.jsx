@@ -17,6 +17,7 @@ import { Button, TextField } from '@material-ui/core'
 import { CheckoutForm } from '../cmps/details-checkout-form'
 import { DayPickerRangeController } from 'react-dates'
 import { ReviewsList } from '../cmps/reviews-list'
+import { StayMap } from '../cmps/stay-map'
 
 
 // import img from '../assets/img/1.jpg'
@@ -42,20 +43,20 @@ class _StayDetails extends React.Component {
         else {
             let currStay;
             stayService.getById(stayId)
-                .then(stay => {
-                    this.setState({
-                        stay,
-                        trip: {
-                            startDate: null,
-                            endDate: null,
-                            guests: { adults: 1, kids: 0, infants: 0 },
-                            loc: stay.loc
-                        }
-
-
-                    })
+            .then(stay => {
+                this.setState({
+                    stay,
+                    trip: {
+                        startDate: null,
+                        endDate: null,
+                        guests: { adults: 1, kids: 0, infants: 0 },
+                        loc: stay.loc
+                    }
+                    
+                    
                 })
-
+            })
+            
         }
 
     }
@@ -147,10 +148,10 @@ class _StayDetails extends React.Component {
                         <div className="details-right-container">
                             <section className="checkout-container flex">
                                 <CheckoutForm stay={stay} />
-                                <div className="report-container flex ">
+                                {/* <div className="report-container flex ">
                                     <FaFlag />
                                     <p>Report this listing</p>
-                                </div>
+                                </div> */}
                             </section>
                         </div>
 
@@ -159,6 +160,10 @@ class _StayDetails extends React.Component {
                         <div >
 
                         <ReviewsList reviews={stay.reviews}/>
+                        </div>
+                        <div >
+
+                        <StayMap location={stay.loc}/>
                         </div>
                         </section>
                 </div >}

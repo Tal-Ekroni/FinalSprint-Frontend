@@ -1,6 +1,15 @@
 .trips-container {
     min-height: 400px;
     border-bottom: 0.5px solid lightgray;
+
+    .trip-preview-container {
+        cursor: pointer;
+        border: 1px solid;
+        border-radius: 15px;
+        overflow: hidden;
+        width: 350px;
+        height: 300px;
+    }
     & .trips-title-container {
         height: 36px;
         margin-bottom: 24px;
@@ -9,11 +18,57 @@
             line-height: 1.2rem;
         }
     }
-    & .trips-img-container {
-        height: 350px;
-        width: 100%;
-        & img{
-            object-fit: contain;
+    & .trip-img-container {
+        height: 200px;
+        overflow: hidden;
+        & img {
+            object-fit: cover;
+            // height: 200px;
         }
     }
+    & a:hover {
+        text-decoration: none;
+    }
+    & .slick-slider {
+        position: relative;
+        height: calc(100% -100px);
+        button {
+            margin: -5px 0;
+        }
+        &:hover {
+            .slick-prev {
+                opacity: 1;
+            }
+            .slick-next {
+                opacity: 1;
+            }
+        }
+        .slick-prev:before,
+        .slick-next:before {
+            font-size: 30px !important;
+        }
+        .slick-prev,
+        .slick-next {
+            position: absolute;
+            top: 50%;
+            left: 0px;
+            z-index: 5;
+            opacity: 0;
+            transform: translateY(-50%);
+        }
+        .slick-next {
+            right: 10px;
+            left: unset;
+        }
+
+        .slick-dots {
+            bottom: 10px;
+            li.slick-active button::before {
+                color: whitesmoke;
+            }
+        }
+    }
+}
+.trip-img {
+    height: 100px;
 }
