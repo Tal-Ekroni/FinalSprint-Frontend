@@ -7,10 +7,9 @@
     font-size: 1rem;
     width: 100%;
     border-bottom: 0.5px solid lightgray;
-    padding-top: 150px;
-    & .details-main-conatiner{
+    padding-top: 180px;
+    & .details-main-conatiner {
         border-bottom: 0.5px solid lightgray;
-
     }
     & .asset-desc-container {
         // width: 650px;
@@ -55,11 +54,11 @@
 .dates-container {
     padding: 0 5px;
 }
- .DateRangePickerInput{
-     display: flex;
-     max-width: 450px;
-     width: 100%;
- }
+.DateRangePickerInput {
+    display: flex;
+    max-width: 450px;
+    width: 100%;
+}
 @media (max-width: $mobile-breakpoint) {
     .details-main-conatiner {
         display: flex;
@@ -111,11 +110,10 @@
         width: 42%;
         padding: 0;
     }
-   
 }
 
 @media (min-width: $normal-breakpoint) {
-    .checkout-container{
+    .checkout-container {
         margin-bottom: 24px;
     }
 }

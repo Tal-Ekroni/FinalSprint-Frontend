@@ -97,8 +97,8 @@ export function onBookTrip(trip) {
             userTrip.id = tripId
             const hostOrder = trip
             hostOrder.id = orderId
-            hostUser.orders=[]
-            user.myTrips=[]
+            if (!hostUser.orders) hostUser.orders = []
+            if (!user.myTrips) user.myTrips = []
             hostUser.orders.push(hostOrder)
             user.myTrips.push(userTrip)
             await userService.update(user)

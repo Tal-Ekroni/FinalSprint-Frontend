@@ -77,7 +77,7 @@ class _AppHeader extends React.Component {
                                 {/* <div className="btn-section flex align-center justify-center"> */}
                                 <FaBars  className="menu-btn" />
                                 <div className="user-logo-container">
-                                    {!user && <img src={`https://i.pravatar.cc/100?u=${1}`} alt="" />}
+                                    {/* {!user && <img src={`https://i.pravatar.cc/100?u=${1}`} alt="" />} */}
                                     {user && <img src={`https://i.pravatar.cc/100?u=${user._id}`} alt="" />}
                                 </div>
                                 {/* </div> */}

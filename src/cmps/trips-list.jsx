@@ -5,7 +5,7 @@ export function TripsList({ trips, isHost, stays }) {
     return (
         <div className="trip-list">
             {trips.map((trip, idx) =>
-                <TripPreview key={idx}  trip={trip} />
+                <TripPreview key={idx} trip={trip} />
             )}
         </div>)
 }

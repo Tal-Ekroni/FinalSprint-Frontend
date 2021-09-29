@@ -42,7 +42,7 @@ class _TripPreview extends React.Component {
                                 <LazyLoad imgs={trip.stay.imgUrls} />
                             </div>
                         </div>
-                        <div className="preview-details">
+                        <div className="trip-preview-details">
                             <div className="name-dates-container flex space-between">
                                 <div><h4>{trip.stay.name}</h4></div>
                                 <div>
