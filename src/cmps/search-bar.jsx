@@ -29,22 +29,22 @@ class _SearchBar extends React.Component {
 
 
     onSelectAmount = (guestType, diff) => {
-        console.log(guestType);
         switch (guestType) {
             case 'adultNumber':
                 if (this.state.adultNumber + diff >= 0) {
                     // this.setState(prevState => ({
+                    //     ...prevState,
                     //     adultNumber: prevState.adultNumber + diff
-                    // }, () => { this.props.setFilter(this.state) }));
+                    // }, () => { console.log(this.state) }));
 
                     this.setState({ adultNumber: this.state.adultNumber + diff }, () => { this.props.setFilter(this.state) })
                 }
                 break;
             case 'kidsNumber':
                 if (this.state.kidsNumber + diff >= 0) {
-                    // this.setState(prevState => ({
-                    //     kidsNumber: prevState.kidsNumber + diff
-                    // }, () => { this.props.setFilter(this.state) }));
+                    this.setState(prevState => ({...prevState,
+                        kidsNumber: prevState.kidsNumber + diff
+                    }, () => { this.props.setFilter(this.state) }));
                     this.setState({ kidsNumber: this.state.kidsNumber + diff }, () => { this.props.setFilter(this.state) })
                 }
                 break;
@@ -99,6 +99,7 @@ class _SearchBar extends React.Component {
 
                         {/* // onClick={(ev) => {
                                 console.log(ev.target.getBoundingClientRect())
+                                //inline styling
                             }}> */}
                         <label htmlFor="" className=" flex align-center column" >
                             <span>Guests</span>

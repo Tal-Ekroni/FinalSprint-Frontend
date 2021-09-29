@@ -23,7 +23,7 @@ class _AppHeader extends React.Component {
     componentDidMount() {
         this.setState({ isUserMenuOpen: false, isLoginBotmodal: false })
         window.addEventListener('scroll', (ev) => {
-            if (ev.target.scrollingElement.scrollTop > 200) {
+            if (ev.target.scrollingElement.scrollTop > 50) {
                 this.setState({ isPageTop: false })
             } else {
                 this.setState({ isPageTop: true })
@@ -75,7 +75,7 @@ class _AppHeader extends React.Component {
                         <div className="user-img-container " onClick={this.onToogleMenu}>
                             <button className="user-btn flex align-center btn-section  ">
                                 {/* <div className="btn-section flex align-center justify-center"> */}
-                                <FaBars  className="menu-btn" />
+                                <FaBars className="menu-btn" />
                                 <div className="user-logo-container">
                                     {/* {!user && <img src={`https://i.pravatar.cc/100?u=${1}`} alt="" />} */}
                                     {user && <img src={`https://i.pravatar.cc/100?u=${user._id}`} alt="" />}

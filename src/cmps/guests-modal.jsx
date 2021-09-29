@@ -8,8 +8,8 @@ export class GuestsModal extends React.Component {
         const { adultNumber, kidsNumber, onSelectAmount, onToggleGuestModals } = this.props
         return (
             <div className="guest-modal">
-                <div className="screen" onClick={() => {onToggleGuestModals() }}>
-                </div>
+               ` <div className="screen" onClick={() => {onToggleGuestModals() }}>
+                </div>`
                 <div className="guest-card flex space-between">
                     <p>Adults</p>
                     <div className="guest-amount flex">
