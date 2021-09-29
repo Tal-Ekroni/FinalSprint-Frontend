@@ -116,11 +116,11 @@ class _SearchBar extends React.Component {
                         </label>
                         {guestModal && <GuestsModal onToggleModals={this.onToggleModals} adultNumber={adultNumber} kidsNumber={kidsNumber} onSelectAmount={this.onSelectAmount} />}
                     </div>
-
                     <button className="search-btn" onClick={() =>this.onSetFilter}>Search</button>
                     <div className="search-btn-container flex align-center justify-center" onClick={() => { this.onSetFilter() }} >
                         <FaSearch className="search-btn" size={16} />
                     </div>
+
                 </div>
                 <div className="search-dates-container">
                     {datesModal && <DatesPicker2 onSelectDates={this.onSelectDates} />}

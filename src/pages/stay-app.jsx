@@ -8,17 +8,22 @@ import { StaysList } from '../cmps/stays-list.jsx'
 import { ExploreFilter } from '../cmps/explore-filter.jsx'
 
 class _StayApp extends React.Component {
+    
 
     componentDidMount() {
         // const urlParams = new URLSearchParams(window.location.search);
         // const myParam = urlParams.get('cityName');
         this.props.loadStays(this.props.filterBy)
+        window.scrollTo(0, 0)
+
     }
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.filterBy !== this.props.filterBy) {
             this.props.loadStays(this.props.filterBy);
 
         }
+        // window.scrollTo(0, 0)
+
     }
 
     onRemoveStay = (stayId) => {
@@ -37,7 +42,7 @@ class _StayApp extends React.Component {
         const { stays } = this.props
         if (!stays.length) return <div>loading</div>
         return (
-            <main className="main-container">
+            <main className="main-container page-padding">
                 <p>{stays.length} stays</p>
                 <ExploreFilter />
                 {stays.length && <StaysList stays={stays} history={this.props.history}  />}

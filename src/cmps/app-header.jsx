@@ -50,21 +50,24 @@ class _AppHeader extends React.Component {
             <header className="app-header-conatiner main-container">
                 <nav className="user-header-section flex space-between "  >
                     <div className="logo-container flex align-center">
-                        <NavLink to="/" className="logo"><span>Any</span><FaAirbnb size={40} color="#FFF"/><span>Go</span></NavLink>
+                        <NavLink to="/" className="logo"><span>Any</span><FaAirbnb size={40} color="#ff5a5f" /><span>Go</span></NavLink>
                     </div>
                     <div className="nav-bar-container flex ">
-                        <div className="nav-options flex align-center">
+                        <div className="     flex align-center">
                             <NavLink to="/stay/" className="nav-opt">Become a host</NavLink>
+                        </div>
+                        <div className="nav-options flex align-center">
                             <NavLink to="/explore" className="nav-opt">Explore</NavLink>
                         </div>
                         <div className="user-img-container ">
-                            <button className="user-btn flex align-center ">
-                                <div className="btn-section flex align-center justify-center">
-                                    <FaBars onClick={this.onToogleMenu} className="menu-btn" />
-                                    <div className="user-logo-container">
-                                        {user && <img src={`https://i.pravatar.cc/100?u=${user._id}`} alt="" />}
-                                    </div>
+                            <button className="user-btn flex align-center btn-section  ">
+                                {/* <div className="btn-section flex align-center justify-center"> */}
+                                <FaBars onClick={this.onToogleMenu} className="menu-btn" />
+                                <div className="user-logo-container">
+                                    {!user && <img src={`https://i.pravatar.cc/100?u=${1}`} alt="" />}
+                                    {user && <img src={`https://i.pravatar.cc/100?u=${user._id}`} alt="" />}
                                 </div>
+                                {/* </div> */}
                             </button>
                         </div>
                         <div className="user-menu">

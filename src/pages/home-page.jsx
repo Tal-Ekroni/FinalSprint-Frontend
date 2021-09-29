@@ -16,7 +16,10 @@ import { setFilter } from '../store/stay.actions';
 
 class _HomePage extends React.Component {
     state = {}
+componentWillUnmount(){
+    window.scrollTo(0, 0)
 
+}
     changeCount = (diff) => {
         console.log('Changing count by:', diff);
         const action = { type: 'CHANGE_COUNT', diff }
