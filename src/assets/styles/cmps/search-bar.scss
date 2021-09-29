@@ -1,30 +1,100 @@
+// .search-bar-container {
+//     border: 1px solid $clr5;
+//     border-radius: 999px;
+//     width: 96%;
+//     justify-content: space-evenly;
+//     // margin: 0 auto;
+//     z-index: 1;
+//     // margin-bottom: 40px;
+//
+//     .loc-inpt{
+//         font-family: circular-bold;
+
+//     }
+//     .DateRangePickerInput__withBorder {
+//         all: initial;
+
+//         .DateRangePicker_picker{
+//             z-index: 2;
+
+//         }
+//     }
+
+//     .search-bar-search-btn-container {
+//         background-color: $clr8;
+//         height: 47px;
+//         width: 47px;
+//         font-size: 0.875rem;
+//         border-radius: 50%;
+//         cursor: pointer;
+//         .search-bar-search-btn {
+//             color: #fff;
+//             background-color: $clr8;
+
+//         }
+//     }
+//         & .search-btn {
+
+//     }
+// }
 .search-bar-container {
-    border: 1px solid $clr5;
-    border-radius: 999px;
-    justify-content: space-evenly;
-    width: 690px;
-    margin: 0 auto;
-    div:nth-child(1) {
-        // border-right: 1px solid lightgray;
-        font-family: circular;
-    }
+    // width: 900px;
+    background-color: #fff;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50px;
+    height: 63px;
     input {
         border: none;
         outline: none;
+        margin: 0;
+        padding: 0;
+        background-color: none;
     }
-    .DateRangePickerInput__withBorder {
-        all: initial;
+    .check-container{
+justify-content: center;
     }
-
-    .search-bar-search-btn-container {
-        background-color: $clr8;
-        height: 47px;
-        width: 47px;
-        font-size: 0.875rem;
-        border-radius: 50%;
+    p{
+        color: $clr2;
+        font-size: 12px;
+        font-family: circular-bold;
+    }
+    .check-in-out{
+        gap: 31%;
+        margin-bottom: -3px;
+        margin-top: 13px;
+    }
+    label {
+        padding: 14px 24px;
+        width: auto;
+        color: $clr2;
+        font-size: 12px;
+        font-family: circular-bold;
+        height: 100%;
+        padding: 14px 24px;
+        border-radius: 40px;
         cursor: pointer;
-        .search-bar-search-btn {
-            color: #fff;
+        transition: background-color 0.3s, box-shadow 0.3s;
+        overflow: hidden;
+
+        &:hover {
+            background-color: #fff;
+            box-shadow: 0 0 25px 0;
+        }
+        &:nth-child(1) {
+            display: flex;
+            flex-direction: column;
         }
     }
+    
+    .DateRangePicker {
+        input {
+            border-right: 1px solid lightgray;
+            font-family: circular-bold;
+            font-size: 12px;
+       
+        }
+    }
+    
 }

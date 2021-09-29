@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link, NavLink } from 'react-router-dom'
-import { FaAirbnb } from 'react-icons/fa'
+import { FaAirbnb, FaBars } from 'react-icons/fa'
 import { onLogin, onLogout, onSignup, loadUsers, removeUser, } from '../store/user.actions.js'
 import { setFilter } from '../store/stay.actions';
 import { LoginSignup } from './login-signup.jsx'
@@ -47,27 +47,30 @@ class _AppHeader extends React.Component {
         const { user, setFilter } = this.props
         const { isUserMenuOpen, isLoginBotmodal } = this.state
         return (
-            <header className="app-header-conatiner">
-                <nav className="user-header-section flex space-between align-center main-layout"  >
+            <header className="app-header-conatiner main-container">
+                <nav className="user-header-section flex space-between "  >
                     <div className="logo-container flex align-center">
-                        <NavLink to="/"> <FaAirbnb size={30} color="#FF5A5F" /></NavLink>
-                        <span>AnyGo</span>
+                        <NavLink to="/" className="logo"><span>Any</span><FaAirbnb size={40} color="#FFF"/><span>Go</span></NavLink>
                     </div>
-                    <div className="nav-bar-container flex space-between">
-                        <NavLink to="/explore">Explore</NavLink>
-                        <NavLink to="/stay/10006546">Become a host</NavLink>
-                    </div>
-                    <div className="user-img-container flex">
-                        <button className="user-btn flex space-between">
-                            <div className="btn-section flex space-between">
-                                <p onClick={this.onToogleMenu} className="menu-btn">☰</p>
-                                <div className="user-logo-container">
-                                    {user && <img src={`https://i.pravatar.cc/100?u=${user._id}`} alt="" />}
+                    <div className="nav-bar-container flex ">
+                        <div className="nav-options flex align-center">
+                            <NavLink to="/stay/" className="nav-opt">Become a host</NavLink>
+                            <NavLink to="/explore" className="nav-opt">Explore</NavLink>
+                        </div>
+                        <div className="user-img-container ">
+                            <button className="user-btn flex align-center ">
+                                <div className="btn-section flex align-center justify-center">
+                                    <FaBars onClick={this.onToogleMenu} className="menu-btn" />
+                                    <div className="user-logo-container">
+                                        {user && <img src={`https://i.pravatar.cc/100?u=${user._id}`} alt="" />}
+                                    </div>
                                 </div>
-                            </div>
-                        </button>
+                            </button>
+                        </div>
+                        <div className="user-menu">
+                            {isUserMenuOpen && <UserMenu onToogleMenu={this.onToogleMenu} onOpenBotLogin={this.onOpenBotLogin} />}
+                        </div>
                     </div>
-                    {isUserMenuOpen && <UserMenu onToogleMenu={this.onToogleMenu} onOpenBotLogin={this.onOpenBotLogin} />}
                 </nav>
                 <SearchBar setFilter={setFilter} />
                 {isLoginBotmodal && <div className="main-layout">
