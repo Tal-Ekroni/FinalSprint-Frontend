@@ -62,6 +62,7 @@ class _SearchBar extends React.Component {
         this.props.history.push('/explore')
     }
     toggleDatesModal = (val) => {
+        this.setState({ datesModal: false })
         this.setState({ datesModal: val })
     }
     render() {
@@ -87,6 +88,7 @@ class _SearchBar extends React.Component {
                     {datesModal && <DatesPicker2 />}
                 </div>
                 <div className="flex justify-center align-center" onClick={(ev) => {
+                    this.toggleDatesModal(true)
                     console.log(ev.target.getBoundingClientRect())
                 }}>
                     <label htmlFor="" >
