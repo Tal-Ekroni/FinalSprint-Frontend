@@ -14,11 +14,6 @@ export function BasicInfo({ stay }) {
                             <p>{`(${stay.reviews.length} reviews)`}</p>
                         </div>
                         <p>•</p>
-                        <div className="host-level-container flex align-end">
-                            <p><FaMedal size={13} color="#FF5A5F" /></p>
-                            <p>Superhost</p>
-                        </div>
-                        <p>•</p>
                         <div className="host-location-container flex align-end">
                             <p className="info-line-loc">{stay.loc.address}</p>
                         </div>

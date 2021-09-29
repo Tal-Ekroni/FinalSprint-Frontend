@@ -43,21 +43,6 @@ class _StayDetails extends React.Component {
         else {
             let currStay;
             stayService.getById(stayId)
-<<<<<<< HEAD
-                .then(stay => {
-                    // console.log('currStay', currStay);
-                    this.setState({
-                        stay,
-                        trip: {
-                            startDate: null,
-                            endDate: null,
-                            guests: { adults: 1, kids: 0, infants: 0 },
-                            loc: stay.loc
-                        }
-
-
-                    })
-=======
             .then(stay => {
                 this.setState({
                     stay,
@@ -69,7 +54,6 @@ class _StayDetails extends React.Component {
                     }
                     
                     
->>>>>>> c7346b391da6d46befb05f108014a8ae31cdf911
                 })
             })
             
@@ -79,11 +63,7 @@ class _StayDetails extends React.Component {
     onRemoveStay = (stayId) => {
         this.props.onRemoveStay(stayId)
     }
-<<<<<<< HEAD
-
-=======
   
->>>>>>> c7346b391da6d46befb05f108014a8ae31cdf911
     handleChange = ({ startDate, endDate }) => {
         if (startDate) {
             this.setState(prevState => ({ trip: { ...prevState.trip, startDate } }))
@@ -168,10 +148,10 @@ class _StayDetails extends React.Component {
                         <div className="details-right-container">
                             <section className="checkout-container flex">
                                 <CheckoutForm stay={stay} />
-                                <div className="report-container flex ">
+                                {/* <div className="report-container flex ">
                                     <FaFlag />
                                     <p>Report this listing</p>
-                                </div>
+                                </div> */}
                             </section>
                         </div>
 

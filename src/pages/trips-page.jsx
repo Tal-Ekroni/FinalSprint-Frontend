@@ -19,7 +19,7 @@ class _TripsPage extends React.Component {
                             <img src={travelImg} alt="" />
                         </div>
                     </div>}
-                    {user.myTrips && user.myTrips.length && <section className="no-trips-container">
+                    {user.myTrips && user.myTrips.length && <section className="trips-container">
                         <TripsList trips={user.myTrips} isHost={user.isHost} />
                     </section>}
                 </section>

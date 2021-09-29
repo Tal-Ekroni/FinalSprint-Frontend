@@ -16,35 +16,46 @@ class _TripPreview extends React.Component {
     loadStays = () => {
 
     }
+    getTime = (time) => {
+        var time = new Date(time * 1000);
+        var date = '0' + time.getDate();
+        var month = "0" + (time.getMonth() - 1);
+        var year = "0" + time.getFullYear();
+
+        var formattedTime = date.substr(-2) + '.' + month.substr(-2) + '.' + year.substr(-2);
+
+        console.log('ft', formattedTime);
+        return formattedTime
+    }
     render() {
-        const {  trip } = this.props
+        const { trip } = this.props
+        var startDate = this.getTime(trip.startDate)
+        var endDate = this.getTime(trip.endDate)
         console.log(trip);
         return (
-            <div className="trip-preview"  >
+            <div className="trip-preview-container"  >
                 {trip &&
                     <section>
-
-                        <div className="trip-img">
-                            <img  src={trip.stay.imgUrl} alt="" />
+                        <div>
+                            <div className="trip-img-container">
+                                {/* <img src={trip.stay.imgUrl} alt="" /> */}
+                                <LazyLoad imgs={trip.stay.imgUrls} />
+                            </div>
                         </div>
                         <div className="preview-details">
-                            {/* <span className="preview-rating flex align-center">
-                        <FaStar size={13} color="#FF5A5F" />
-                        <p className="preview-rating-amount">{trip.reviews[0].rate}</p>
-                        <span className="preview-review-count flex"><span>(</span>{reviews.length}<span>)</span></span>
-                        <p>reviews</p>
-                    </span> */}
-                            <div className="trip-style flex">
-                                {/* <h3><span>{this.props.trip.assetType}</span> &#183; <span>{this.props.trip.loc.address.split(',')[0]}</span></h3> */}
-                                {/* <h3>  {trip.assetType} <span> &#183;</span> {
-                        trip.loc.address.split(',')[0]}  </h3> */}
+                            <div className="name-dates-container flex space-between">
+                                <div><h4>{trip.stay.name}</h4></div>
+                                <div>
+                                    <div>{startDate}</div>
+                                    <div>{endDate}</div>
+                                </div>
                             </div>
-                            <div className="trip-name" >
-                                <h3>{trip.name}</h3>
+                            <div className="flex space-between">
+                                {trip.status === 'pending' && <div>
+                                    <p>Wait for approval</p>
+                                </div>}
+                                <div><p>Cancel order</p></div>
                             </div>
-                            {/* <div className="preview-price" >
-                                <h3><span className="preview-price-amount">${trip.price}</span> / night</h3>
-                            </div> */}
                         </div >
                     </section>}
             </div >
