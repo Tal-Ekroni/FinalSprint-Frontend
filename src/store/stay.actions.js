@@ -1,6 +1,7 @@
 import { stayService } from "../services/stay.service.js";
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { userService } from "../services/user.service.js";
+import { utilService } from "../services/util.service.js";
 export function loadStays(filterBy = null) {
     return async (dispatch) => {
         try {
@@ -83,19 +84,25 @@ export function onEditStay(stayToSave) {
 }
 
 
-export function onBookTrip({trip}) {
+export function onBookTrip(trip) {
     return async (dispatch, getState) => {
-        console.log('trip',trip);
         try {
             // const user = await userService.getLoggedinUser()
             const user = await userService.getById(trip.user._id)
             const hostUser = await userService.getById(trip.stay.host._id)
             // const stay = await stayService.getById(trip.stay._id)
-            hostUser.orders.push(trip)
-            user.myTrips.push(trip)
+            const orderId = utilService.makeId()
+            const tripId = utilService.makeId()
+            const userTrip = trip
+            userTrip.id = tripId
+            const hostOrder = trip
+            hostOrder.id = orderId
+            hostUser.orders=[]
+            user.myTrips=[]
+            hostUser.orders.push(hostOrder)
+            user.myTrips.push(userTrip)
             await userService.update(user)
             await userService.update(hostUser)
-
             dispatch({ type: 'BOOK-A-TRIP', trip })
             showSuccessMsg('Stay Rserved ')
             // console.log('Reserved Succesfully!', user, hostUser);

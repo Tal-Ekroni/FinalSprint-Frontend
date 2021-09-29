@@ -2,11 +2,11 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { showSuccessMsg } from '../services/event-bus.service.js'
 import travelImg from '../assets/img/travel.jpg'
+import { TripsList } from '../cmps/trips-list.jsx'
 class _TripsPage extends React.Component {
 
     render() {
         const { user } = this.props
-        console.log('user chack', user);
         return (
             <main className="trips-page-container main-layout">
                 <section className="trips-container">
@@ -20,6 +20,7 @@ class _TripsPage extends React.Component {
                         </div>
                     </div>}
                     {user.myTrips && user.myTrips.length && <section className="no-trips-container">
+                        <TripsList trips={user.myTrips} isHost={user.isHost} />
                     </section>}
                 </section>
             </main>
@@ -30,6 +31,8 @@ class _TripsPage extends React.Component {
 function mapStateToProps(state) {
     return {
         user: state.userModule.user,
+        
+
     }
 }
 // const mapDispatchToProps = {

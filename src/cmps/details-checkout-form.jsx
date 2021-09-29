@@ -19,7 +19,7 @@ class _CheckoutForm extends React.Component {
 
     }
     componentDidMount() {
-        const { stay,filterBy } = this.props
+        const { stay, filterBy } = this.props
         this.setState({
             trip: {
                 startDate: filterBy.startDate,
@@ -48,16 +48,26 @@ class _CheckoutForm extends React.Component {
         if (!this.props.user) {
             showErrorMsg('login first')
         } else {
+            console.log(stay);
             const { _id, fullname, imgUrl, username } = this.props.user
             trip.user = { _id, fullname, imgUrl, username }
             trip.startDate = this.toTimestamp(trip.startDate._d)
             trip.endDate = this.toTimestamp(trip.endDate._d)
             trip.stay = {
                 _id: stay._id,
-                host: stay.host
+                host: stay.host,
+                imgsUrl: stay.imgsUrls[0]
             }
             trip.status = 'pending'
-            this.props.onBookTrip({ trip })
+            this.props.onBookTrip(trip)
+            this.setState({
+                trip: {
+                    startDate: null,
+                    endDate: null,
+                    guests: { adults: 1, kids: 0 }
+                },
+                isGuestPopupOn: false
+            })
         }
 
     }

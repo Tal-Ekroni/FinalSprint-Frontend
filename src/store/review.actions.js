@@ -8,7 +8,6 @@ export function loadReviews() {
   return async dispatch => {
     try {
       const reviews = await reviewService.query()
-      console.log('reviews', reviews);
       dispatch({ type: 'SET_REVIEWS', reviews })
       // socketService.on(SOCKET_EVENT_REVIEW_ADDED, (review) =>{
       //   dispatch({ type: 'ADD_REVIEW', review })
