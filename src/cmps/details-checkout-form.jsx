@@ -85,26 +85,31 @@ class _CheckoutForm extends React.Component {
         this.calcGuestNum()
     }
     onSelectGuests = (val, action) => {
-        console.log(val);
+        const { stay } = this.props
         var { adults, kids, infants } = this.state.trip.guests
         switch (val) {
             case 'adults':
                 if (action === 'minus') adults = adults - 1
+                if (adults < 0) adults = 0
+                if (adults + kids + infants >= stay.capacity) return
                 if (action === 'plus') adults = adults + 1
                 break;
             case 'kids':
                 if (action === 'minus') kids = kids - 1
+                if (kids < 0) kids = 0
+                if (adults + kids + infants >= stay.capacity) return
                 if (action === 'plus') kids = kids + 1
                 break;
             case 'infants':
                 if (action === 'minus') infants = infants - 1
+                if (infants < 0) infants = 0
+                if (adults + kids + infants >= stay.capacity) return
                 if (action === 'plus') infants = infants + 1
                 break;
         }
         this.setState(prevState => ({ ...prevState, trip: { ...prevState.trip, guests: { adults, kids, infants } } }));
-        // this.setState({ guests: { adults, kids, infants } })
-
     }
+    
     calcGuestNum = () => {
         const { adults, kids, infants } = this.state.trip.guests
         var res = adults + kids + infants
