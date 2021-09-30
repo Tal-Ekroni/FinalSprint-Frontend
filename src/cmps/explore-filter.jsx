@@ -49,7 +49,8 @@ export class ExploreFilter extends React.Component {
         return (
             <div className="explore-filter flex">
                 <div className="place-type">
-                    <Button onClick={() => this.openPlaceType(true)}>Place Type</Button>
+                {/* onClick={() => this.openPlaceType(true)} */}
+                    <Button >Place Type</Button>
                     <Modal
                         isOpen={placeTypeIsOpen}
                         // style={myStyle}
@@ -57,7 +58,8 @@ export class ExploreFilter extends React.Component {
                     >
                         <h2 style={{ fontSize: '8px' }}>Entire place</h2>
                         <h2 style={{ fontSize: '8px' }}>Private Room</h2>
-                        <Button onClick={() => this.openPlaceType(false)}>Filter</Button>
+                        <Button >Filter</Button>
+                        {/* onClick={() => this.openPlaceType(false)} */}
                     </Modal>
                 </div>
                 <Button>Place Type</Button>
