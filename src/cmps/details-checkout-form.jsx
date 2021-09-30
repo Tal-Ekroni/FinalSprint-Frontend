@@ -157,7 +157,7 @@ class _CheckoutForm extends React.Component {
         const { startDate, endDate } = trip
         return (
             <section className="checkout-popup">
-                <div className="checkout-screen" onClick={(ev) => { this.onCloseModal(ev) }}></div>
+                {isGuestPopupOn || datesModal && <div className="checkout-screen" onClick={(ev) => { this.onCloseModal(ev) }}></div>}
                 <section className="checkout-container flex">
                     <div className="checkout-form-container">
                         <div className="checkout-form-header flex space-between align-center" onClick={() => { this.onCloseModal(false) }}>
