@@ -175,11 +175,11 @@ class _SearchBar extends React.Component {
                             <span className="guest-placeholder">Add guests</span>
                         </label>
 
+                    </div>
+                    {guestModal && <GuestsModal onToggleGuestModals={this.onToggleGuestModals} adultNumber={adultNumber} kidsNumber={kidsNumber} infantsNumber={infantsNumber} onSelectAmount={this.onSelectAmount} />}
                     <div className="search-btn-container flex align-center justify-center" onClick={() => { this.onSetFilter() }} >
                         <FaSearch size={16} />
                     </div>
-                    </div>
-                    {guestModal && <GuestsModal onToggleGuestModals={this.onToggleGuestModals} adultNumber={adultNumber} kidsNumber={kidsNumber} infantsNumber={infantsNumber} onSelectAmount={this.onSelectAmount} />}
 
                 </div>
                 <div className="search-dates-container ">

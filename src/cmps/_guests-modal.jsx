@@ -36,6 +36,7 @@ export class GuestsModal extends React.Component {
         return (
             <div className="guest-popup-container">
                 {/* <div className="guests-popup">
+
                     <div className="adults-line flex space-between align-center">
                         <div>
                             <p>Adults</p>
@@ -52,6 +53,8 @@ export class GuestsModal extends React.Component {
                             </div>
                         </div>
                     </div>
+
+                    
                     <div className="children-line flex space-between align-center" >
                         <div>
                             <p>Children</p>

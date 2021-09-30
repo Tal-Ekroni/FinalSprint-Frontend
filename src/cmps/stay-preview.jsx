@@ -18,7 +18,7 @@ class _StayPreview extends React.Component {
     componentDidMount() {
         this.isStayLiked()
     }
-    onToggleLikeStay = (ev,stay) => {
+    onToggleLikeStay = (ev, stay) => {
         ev.stopPropagation()
         const { user } = this.props
         if (user) {
@@ -56,30 +56,33 @@ class _StayPreview extends React.Component {
     }
     render() {
         return (
-            <div className="stay-preview" onClick={(ev) => {
-                if (ev.target.className === 'slick-arrow slick-prev' ||ev.target.className === 'slick-arrow slick-next' || ev.target.className.baseVal === 'MuiSvgIcon-root') return
+            <div className="stay-preview square-ratio" onClick={(ev) => {
+                if (ev.target.className === 'slick-arrow slick-prev' || ev.target.className === 'slick-arrow slick-next' || ev.target.className.baseVal === 'MuiSvgIcon-root') return
                 this.props.history.push(`/stay/${this.props.stay._id}`)
             }} >
-                <div className="preview-img ">
-                    {!this.state.isLiked && <FavoriteBorderIcon onClick={(ev) => this.onToggleLikeStay(ev,this.props.stay)} />}
-                    {this.state.isLiked && <FavoriteIcon onClick={(ev) => this.onToggleLikeStay(ev,this.props.stay)} />}
-                    <LazyLoad imgs={this.props.stay.imgUrls} />
-                </div>
-                <div className="preview-details">
-                    <span className="preview-rating flex align-center">
-                        <FaStar size={13} color="#FF5A5F" />
-                        <p className="preview-rating-amount">{this.props.stay.reviews[0].rate}</p>
-                        <span className="preview-review-count flex"><span>(</span>{this.props.stay.reviews.length}<span>)</span></span>
-                        <p>reviews</p>
-                    </span>
-                    <div className="stay-style flex">
-                        <h3><span>{this.props.stay.assetType}</span> &#183; <span>{this.props.stay.loc.address.split(',')[0]}</span></h3>
+                <div className="preview-wrapper flex column">
+
+                    <div className="preview-img   ">
+                        {!this.state.isLiked && <FavoriteBorderIcon onClick={(ev) => this.onToggleLikeStay(ev, this.props.stay)} />}
+                        {this.state.isLiked && <FavoriteIcon onClick={(ev) => this.onToggleLikeStay(ev, this.props.stay)} />}
+                        <LazyLoad imgs={this.props.stay.imgUrls} />
                     </div>
-                    <div className="stay-name" >
-                        <h3>{this.props.stay.name}</h3>
-                    </div>
-                    <div className="preview-price" >
-                        <h3><span className="preview-price-amount">${this.props.stay.price}</span> / night</h3>
+                    <div className="preview-details ">
+                        <span className="preview-rating flex align-center">
+                            <FaStar size={13} color="#FF5A5F" />
+                            <p className="preview-rating-amount">{this.props.stay.reviews[0].rate}</p>
+                            <span className="preview-review-count flex"><span>(</span>{this.props.stay.reviews.length}<span>)</span></span>
+                            <p>reviews</p>
+                        </span>
+                        <div className="stay-style flex">
+                            <h3><span>{this.props.stay.assetType}</span> &#183; <span>{this.props.stay.loc.address.split(',')[0]}</span></h3>
+                        </div>
+                        <div className="stay-name" >
+                            <h3>{this.props.stay.name}</h3>
+                        </div>
+                        <div className="preview-price" >
+                            <h3><span className="preview-price-amount">${this.props.stay.price}</span> / night</h3>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -61,14 +61,17 @@
         font-family: circular;
     }
     .location-container {
+        input {
+            background-color: transparent;
+            font-family: circular-light;
+            color: $clr5;
+        }
         input::placeholder {
             color: $clr5;
             font-size: 12px;
             font-family: circular;
-
-            &:hover {
-                background-color: rgba(211, 211, 211, 0.603);
-            }
+            background-color: transparent;
+           
         }
     }
     label {
@@ -87,7 +90,7 @@
         overflow: hidden;
 
         &:hover {
-            background-color: lightgray;
+            background-color: #ebebeb;
             // background-color: rgba(211, 211, 211, 0.603);
         }
         &:nth-child(1) {
@@ -96,7 +99,7 @@
         }
     }
     .search-btn-container {
-        width: 80px;
+        width: 55px;
         height: 49px;
         color: $clr1;
         background-color: $clr8;
