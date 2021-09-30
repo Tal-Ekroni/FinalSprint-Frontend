@@ -4,8 +4,8 @@ import { ReviewAvg } from './_reviews-avg'
 
 export function ReviewsList({ reviews,onToogleReadModal,isReadMoreOn }) {
     return (
-        <section className="reviews-section-container flex space-between">
-            {!reviews.length && <section className="reviews-container flex space-between">
+        <section className="reviews-section-container flex ">
+            {!reviews.length && <section className="reviews-container flex ">
                 <p>No reviews to show...</p>
             </section>
             }
@@ -15,7 +15,7 @@ export function ReviewsList({ reviews,onToogleReadModal,isReadMoreOn }) {
                     {/* <div className="reviews-avgs-container">
                         <ReviewAvg reviews={reviews} />
                     </div> */}
-                    <ul className="reviews-container flex space-between ">
+                    <ul className="reviews-container flex space-between">
                         {reviews.map(review => <ReviewsPreview review={review} key={review.id}  onToogleReadModal={onToogleReadModal} isReadMoreOn={isReadMoreOn}/>)}
 
                     </ul>
