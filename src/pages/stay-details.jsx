@@ -20,6 +20,7 @@ import { ReviewsList } from '../cmps/reviews-list'
 import { StayMap } from '../cmps/stay-map'
 import { DatesPicker2 } from '../cmps/dates-picker2'
 import { ReviewAvg } from '../cmps/_reviews-avg'
+import { ReadMore } from '../cmps/_read-more'
 // import img from '../assets/img/1.jpg'
 // const stay = data.stay;
 // var stay = data.default[0].stay[0]
@@ -33,8 +34,8 @@ class _StayDetails extends React.Component {
             endDate: null,
             guests: { adults: 1, kids: 0, infants: 0 },
 
-        }
-
+        },
+        isReadMoreOn: false
     }
     componentDidMount() {
         // localStorage.setItem('stay', JSON.stringify([stay]))
@@ -51,9 +52,8 @@ class _StayDetails extends React.Component {
                             endDate: null,
                             guests: { adults: 1, kids: 0, infants: 0 },
                             loc: stay.loc
-                        }
-
-
+                        },
+                        isReadMoreOn: false
                     })
                 })
 
@@ -72,9 +72,14 @@ class _StayDetails extends React.Component {
             this.setState(prevState => ({ trip: { ...prevState.trip, endDate } }))
         }
     }
-
+    onToogleReadModal = () => {
+        this.setState({ isReadMoreOn: !this.state.isReadMoreOn })
+    }
+    onOpenReadModal = () => {
+        this.setState({ isReadMoreOn: true })
+    }
     render() {
-        const { stay } = this.state
+        const { stay, isReadMoreOn } = this.state
         const { user } = this.props
         return (
             <section className="stay-details-section main-layout">
@@ -165,14 +170,15 @@ class _StayDetails extends React.Component {
                                     color="#FF5A5F" />Reviews<span>•</span>{stay.reviews.length} Reviews</h1>
                             </div>
                             <ReviewAvg reviews={stay.reviews} />
-                            <ReviewsList reviews={stay.reviews} />
+                            <ReviewsList reviews={stay.reviews} onToogleReadModal={this.onToogleReadModal} isReadMoreOn={isReadMoreOn} />
+
                             <div className="add-review main-layout">
                                 {/* <AddReview /> */}
                             </div>
                         </div>
                         <div >
 
-                            <StayMap location={stay.loc} />
+                            <StayMap location={stay.loc}  />
                         </div>
                     </section>
                 </div >}

@@ -55,8 +55,8 @@ class _CheckoutForm extends React.Component {
     }
 
     toggleDatesModal = (val) => {
-        this.setState({ datesModal: false, isGuestPopupOn: false })
-        this.setState({ datesModal: val })
+        this.setState({ datesModal: true, isGuestPopupOn: false })
+        // this.setState({ datesModal: val })
     }
 
     timeToShow = (date, val) => {
@@ -109,7 +109,7 @@ class _CheckoutForm extends React.Component {
         }
         this.setState(prevState => ({ ...prevState, trip: { ...prevState.trip, guests: { adults, kids, infants } } }));
     }
-    
+
     calcGuestNum = () => {
         const { adults, kids, infants } = this.state.trip.guests
         var res = adults + kids + infants
@@ -145,7 +145,10 @@ class _CheckoutForm extends React.Component {
         }
 
     }
+    onCloseModal = (ev) => {
+        this.setState({ isGuestPopupOn: false, datesModal: false }, () => { console.log(this.state); })
 
+    }
     render() {
 
         const { stay } = this.props
@@ -154,9 +157,10 @@ class _CheckoutForm extends React.Component {
         const { startDate, endDate } = trip
         return (
             <section className="checkout-popup">
+                <div className="checkout-screen" onClick={(ev) => { this.onCloseModal(ev) }}></div>
                 <section className="checkout-container flex">
                     <div className="checkout-form-container">
-                        <div className="checkout-form-header flex space-between align-center" onClick={() => { this.toggleDatesModal(false) }}>
+                        <div className="checkout-form-header flex space-between align-center" onClick={() => { this.onCloseModal(false) }}>
 
                             <div className="order-price-container ">
                                 <p className="order-price"><span>${price}</span> / night</p>

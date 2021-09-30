@@ -2,7 +2,7 @@ import { FaStar } from 'react-icons/fa'
 import { ReviewsPreview } from './reviews-preview'
 import { ReviewAvg } from './_reviews-avg'
 
-export function ReviewsList({ reviews }) {
+export function ReviewsList({ reviews,onToogleReadModal,isReadMoreOn }) {
     return (
         <section className="reviews-section-container flex space-between">
             {!reviews.length && <section className="reviews-container flex space-between">
@@ -16,7 +16,8 @@ export function ReviewsList({ reviews }) {
                         <ReviewAvg reviews={reviews} />
                     </div> */}
                     <ul className="reviews-container flex space-between ">
-                        {reviews.map(review => <ReviewsPreview review={review} key={review.id} />)}
+                        {reviews.map(review => <ReviewsPreview review={review} key={review.id}  onToogleReadModal={onToogleReadModal} isReadMoreOn={isReadMoreOn}/>)}
+
                     </ul>
                 </div>
             </section>

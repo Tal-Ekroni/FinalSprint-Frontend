@@ -271,3 +271,11 @@
 }
 @media (min-width: $wide-breakpoint) {
 }
+.checkout-screen {
+    position: fixed;
+    // background-color:rgba(0, 0, 0, 0.075);
+    inset: 0;
+    z-index: -1;
+    height: 9999px;
+    width: 9999px;
+}

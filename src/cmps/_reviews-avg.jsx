@@ -15,27 +15,27 @@ export class ReviewAvg extends React.Component {
         switch (type) {
             case 'cleanliness':
                 reviews.map(review => avgScore += +review.cleanliness)
-                avgScore = ((avgScore / reviews.length)).toFixed(3)
+                avgScore = ((avgScore / reviews.length)).toFixed(2)
                 return avgScore
             case 'communication':
                 reviews.map(review => avgScore += +review.communication)
-                avgScore = ((avgScore / reviews.length)).toFixed(3)
+                avgScore = ((avgScore / reviews.length)).toFixed(2)
                 return avgScore
             case 'checkIn':
                 reviews.map(review => avgScore += +review.checkIn)
-                avgScore = ((avgScore / reviews.length)).toFixed(3)
+                avgScore = ((avgScore / reviews.length)).toFixed(2)
                 return avgScore
             case 'accuracy':
                 reviews.map(review => avgScore += +review.accuracy)
-                avgScore = ((avgScore / reviews.length)).toFixed(3)
+                avgScore = ((avgScore / reviews.length)).toFixed(2)
                 return avgScore
             case 'location':
                 reviews.map(review => avgScore += +review.location)
-                avgScore = ((avgScore / reviews.length)).toFixed(3)
+                avgScore = ((avgScore / reviews.length)).toFixed(2)
                 return avgScore
             case 'value':
                 reviews.map(review => avgScore += +review.value)
-                avgScore = ((avgScore / reviews.length)).toFixed(3)
+                avgScore = ((avgScore / reviews.length)).toFixed(2)
                 return avgScore
         }
     }

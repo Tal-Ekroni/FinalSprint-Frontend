@@ -1,0 +1,12 @@
+.read-more-popup-container {
+    width: 500px;
+    height: 500px;
+    .read-more-popup {
+        width: 100%;
+        padding: 15px;
+    }
+    .close-btn {
+        width: 100%;
+        text-align: end;
+    }
+}
