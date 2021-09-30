@@ -16,7 +16,8 @@ import { setFilter } from '../store/stay.actions';
 
 class _HomePage extends React.Component {
     state = {}
-componentWillUnmount(){
+    
+componentDidMount(){
     window.scrollTo(0, 0)
 
 }
