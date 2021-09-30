@@ -194,7 +194,7 @@ class _CheckoutForm extends React.Component {
                             </div>
                             {isCheckoutToReserve &&
                                 <div className="summed-trip-info">
-                                    <div class="sum-line">
+                                    <div className="sum-line">
                                         <p>You won't be charged yet</p>
                                     </div>
                                     <div className="calc-price-container flex space-between">
