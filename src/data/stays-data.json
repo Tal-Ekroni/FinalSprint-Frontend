@@ -1,16 +1,15 @@
 [
     {
-<<<<<<< HEAD
         "_id": "1321fd32s456",
         "name": "BCN Villa Olimpica Beach",
         "assetType": "Entire duplex",
         "uniqueStay": true,
         "imgUrls": [
-            "../assets/img/idobarc1.jpg",
-            "../assets/img/idobarc2.jpg",
-            "../assets/img/idobarc3.jpg",
-            "../assets/img/idobarc4.jpg",
-            "../assets/img/idobarc5.jpg"
+            "../assets/img/idobarc1",
+            "../assets/img/idobarc2",
+            "../assets/img/idobarc3",
+            "../assets/img/idobarc4",
+            "../assets/img/idobarc5"
         ],
         "price": 175.00,
         "summary": "The apartment Villa Olimpica beach is located on the 5th floor of a building with elevator.The living room with warm colors consists of a comfortable sofa in front of a flat-screen TV. You will also have table with 7 chairs, where you will be able to get together for a sunny breakfast or surfing on the internet with the high speed WIFI connection.",
@@ -406,133 +405,14 @@
         "bookedDates": []
     },
     {
-=======
-<<<<<<< HEAD
-        "_id": "1000643546",
-        "name": "Ribeira Charming Duplex",
-        "assetType": "Entire duplex",
-        "uniqueStay": true,
-        "imgUrls": [
-            "https://images.unsplash.com/photo-1484154218962-a197022b5858?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=874&q=80",
-=======
->>>>>>> 3b03558c09499abf7d6b42f6d01825458a2db318
-        "_id": "192837",
-        "name": "Charming garden home",
-        "assetType": "Entire home",
-        "uniqueStay": true,
-        "imgUrls": [
->>>>>>> 616a986c25df3e3254923e8aced80e3ad056a517
-            "https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large",
-            "https://media.istockphoto.com/photos/modern-living-room-interior-3d-render-picture-id1293762741?s=612x612",
-            "https://images.unsplash.com/photo-1493809842364-78817add7ffb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-        ],
-<<<<<<< HEAD
-        "price": 90.00,
-        "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
-        "capacity": 8,
-=======
-        "price": 400.00,
-        "summary": "Welcome to my home! I've lived here for quite some years now and I absolutely love it. It's spacious, it has high ceilings and a huge garden, which is really rare in a city like Amsterdam. You get why I don't ever want to leave... ;-) I just renovated the place, so everything is new and it's just the way I like it. Please make sure you make yourself at home, in this wonderful neighborhood with everything nearby. You'll love it too, I'm sure!",
-        "capacity": 2,
->>>>>>> 616a986c25df3e3254923e8aced80e3ad056a517
-        "amenities": [
-            "TV",
-            "Wifi",
-            "Kitchen",
-            "Smoking allowed",
-            "Pets allowed",
-            "Cooking basics"
-        ],
-        "host": {
-            "_id": "51399391",
-            "fullname": "Davit Pok",
-            "imgUrl": "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small"
+        "id": "9638956",
+        "txt": "This apartment was great! Close to everything especially if you rent bikes at the bike shop down the street. The apartment was super clean when we arrived, and the fresh flowers and stroopwaffels were great. Be sure to take time and enjoy the garden patio, we sure did. We didn't want to leave!",
+        "rate": 4,
+        "by": {
+            "_id": "u102",
+            "fullname": "Jeff",
+            "imgUrl": "/img/img2.jpg"
         },
-        "loc": {
-<<<<<<< HEAD
-            "country": "Portugal",
-            "countryCode": "PT",
-            "address": "Porto, Portugal",
-            "lat": -8.61308,
-            "lng": 41.1413
-        },
-        "reviews": [
-            {
-                "id": "madeId",
-                "txt": "Very helpful hosts. Cooked traditional...",
-                "rate": 4,
-                "by": {
-                    "_id": "u102",
-                    "fullname": "user2",
-=======
-            "country": "Amsterdam ",
-            "countryCode": "PT",
-            "address": "Amsterdam , Netherlands",
-            "lat": 52.357994,
-            "lng": 4.868648
-        },
-        "reviews": [
-            {
-                "id": "1211",
-                "txt": "Brilliant location. Stylish and comfy apartment. Would definitely recommend to travellers wanting to stay slightly out of the centre but within a great local neighbourhood.",
-                "rate": 4,
-                "by": {
-                    "_id": "u102",
-                    "fullname": "Matt",
->>>>>>> 616a986c25df3e3254923e8aced80e3ad056a517
-                    "imgUrl": "/img/img2.jpg"
-                }
-            },
-            {
-<<<<<<< HEAD
-                "id": "madeId1",
-                "txt": "Very helpful hosts. Cooked traditional...",
-                "rate": 4,
-                "by": {
-                    "_id": "u102",
-                    "fullname": "user2",
-=======
-                "id": "111131",
-                "txt": "This place is exactly as described, perfectly located for easy access to Vondelpark, the museum district and West Amsterdam. The place is bright and sunny with a lovely garden. We would definitely stay here again, no hesitations.",
-                "rate": 4,
-                "by": {
-                    "_id": "u102",
-                    "fullname": "Chris",
->>>>>>> 616a986c25df3e3254923e8aced80e3ad056a517
-                    "imgUrl": "/img/img2.jpg"
-                }
-            },
-            {
-<<<<<<< HEAD
-                "id": "madeId2",
-                "txt": "Very helpful hosts. Cooked traditional...",
-                "rate": 4,
-                "by": {
-                    "_id": "u102",
-                    "fullname": "user2",
-=======
-                "id": "34234",
-                "txt": "This was great place near vondelpark. Close enough and far enough away from city center that it makes a great home base. Beautiful home with beautiful plants. I love the Avocado Forest!.",
-                "rate": 4,
-                "by": {
-                    "_id": "u102",
-                    "fullname": "David",
->>>>>>> 616a986c25df3e3254923e8aced80e3ad056a517
-                    "imgUrl": "/img/img2.jpg"
-                }
-            },
-            {
-<<<<<<< HEAD
-                "id": "madeId3",
-                "txt": "Very helpful hosts. Cooked traditional...",
-                "rate": 4,
-                "by": {
-                    "_id": "u102",
-                    "fullname": "user2",
-                    "imgUrl": "/img/img2.jpg"
-                }
-            }
-        ],
         "bookedDates": [],
         "likedByUserIds": [
             "u101",
@@ -540,81 +420,6 @@
         ]
     },
     {
-        "_id": "1029006546",
-        "name": "Lola Balola akola",
-        "assetType": "Entire duplex",
-        "uniqueStay": true,
-        "imgUrls": [
-            "https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large",
-            "https://images.unsplash.com/photo-1484154218962-a197022b5858?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=874&q=80",
-            "https://media.istockphoto.com/photos/modern-living-room-interior-3d-render-picture-id1293762741?s=612x612",
-            "https://images.unsplash.com/photo-1493809842364-78817add7ffb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-        ],
-        "price": 80.00,
-        "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
-        "capacity": 8,
-        "amenities": [
-            "TV",
-            "Wifi",
-            "Kitchen",
-            "Smoking allowed",
-            "Pets allowed",
-            "Cooking basics"
-        ],
-        "host": {
-            "_id": "51399393",
-            "fullname": "Lily Duarte",
-            "imgUrl": "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small"
-        },
-        "loc": {
-            "country": "loblogal",
-            "countryCode": "PT",
-            "address": "Barcelona, Spain",
-            "lat": -8.61308,
-            "lng": 41.1413
-        },
-        "reviews": [
-            {
-                "id": "madeId",
-                "txt": "Very helpful hosts. Cooked traditional...",
-                "rate": 4,
-                "by": {
-                    "_id": "u102",
-                    "fullname": "user2",
-=======
-                "id": "9638956",
-                "txt": "This apartment was great! Close to everything especially if you rent bikes at the bike shop down the street. The apartment was super clean when we arrived, and the fresh flowers and stroopwaffels were great. Be sure to take time and enjoy the garden patio, we sure did. We didn't want to leave!",
-                "rate": 4,
-                "by": {
-                    "_id": "u102",
-                    "fullname": "Jeff",
->>>>>>> 616a986c25df3e3254923e8aced80e3ad056a517
-                    "imgUrl": "/img/img2.jpg"
-                }
-            }
-        ],
-<<<<<<< HEAD
-=======
-        "bookedDates": [],
->>>>>>> 616a986c25df3e3254923e8aced80e3ad056a517
-        "likedByUserIds": [
-            "u101",
-            "u102"
-        ]
-    },
-    {
-<<<<<<< HEAD
-        "_id": "103996300646546",
-        "name": "Taboola salad",
-        "assetType": "Entire duplex",
-        "uniqueStay": false,
-        "imgUrls": [
-            "https://images.unsplash.com/photo-1484154218962-a197022b5858?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=874&q=80"
-        ],
-        "price": 80.00,
-        "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
-        "capacity": 8,
-=======
         "_id": "432341",
         "name": "Extraordinary Penthouse + Terrace",
         "assetType": "Entire Penthouse",
@@ -628,7 +433,6 @@
         "price": 55.00,
         "summary": "Breathtaking High-End Penthouse, private and enormous forest-like balcony, overlooking right above the Carmel Market & the calm sea, located at the heart of the city.The place featuring a spacious brand-new kitchen and living room, fully equipped for your needs.",
         "capacity": 4,
->>>>>>> 616a986c25df3e3254923e8aced80e3ad056a517
         "amenities": [
             "TV",
             "Wifi",
@@ -638,76 +442,6 @@
             "Cooking basics"
         ],
         "host": {
-<<<<<<< HEAD
-            "_id": "51399391",
-            "fullname": "Davit Pok",
-            "imgUrl": "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small"
-        },
-        "loc": {
-            "country": "Portugal",
-            "countryCode": "PT",
-            "address": "Beer Yaakov, Israel",
-            "lat": -8.61308,
-            "lng": 41.1413
-        },
-        "reviews": [
-            {
-                "id": "madeId",
-                "txt": "Very helpful hosts. Cooked traditional...",
-                "rate": 4,
-                "by": {
-                    "_id": "u102",
-                    "fullname": "user2",
-                    "imgUrl": "/img/img2.jpg"
-                }
-            }
-        ],
-        "likedByUserIds": [
-            "u101",
-            "u102"
-        ]
-    },
-    {
-        "_id": "10963006546",
-        "name": "JabrukLandia",
-        "assetType": "Entire duplex",
-        "uniqueStay": true,
-        "imgUrls": [
-            "https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large",
-            "https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large"
-        ],
-        "price": 80.00,
-        "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
-        "capacity": 8,
-        "amenities": [
-            "TV",
-            "Wifi",
-            "Kitchen",
-            "Smoking allowed",
-            "Pets allowed",
-            "Cooking basics"
-        ],
-        "host": {
-            "_id": "51399391",
-            "fullname": "Davit Pok",
-            "imgUrl": "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small"
-        },
-        "loc": {
-            "country": "Portugal",
-            "countryCode": "PT",
-            "address": "Beer Yaakov, Israel",
-            "lat": -8.61308,
-            "lng": 41.1413
-        },
-        "reviews": [
-            {
-                "id": "madeId",
-                "txt": "Very helpful hosts. Cooked traditional...",
-                "rate": 4,
-                "by": {
-                    "_id": "u102",
-                    "fullname": "user2",
-=======
             "_id": "51399393",
             "fullname": "Lily Duarte",
             "imgUrl": "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small"
@@ -767,7 +501,6 @@
                 "by": {
                     "_id": "12327",
                     "fullname": "Yehuda",
->>>>>>> 616a986c25df3e3254923e8aced80e3ad056a517
                     "imgUrl": "/img/img2.jpg"
                 }
             }
@@ -776,68 +509,6 @@
             "u101",
             "u102"
         ]
-<<<<<<< HEAD
-    },
-    {
-        "_id": "143040446",
-        "name": "Baba Kababa",
-        "assetType": "Entire duplex",
-        "uniqueStay": false,
-        "imgUrls": [
-            "https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large"
-        ],
-        "price": 80.00,
-        "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
-        "capacity": 8,
-        "amenities": [
-            "TV",
-            "Wifi",
-            "Kitchen",
-            "Smoking allowed",
-            "Pets allowed",
-            "Cooking basics"
-        ],
-        "host": {
-            "_id": "51399391",
-            "fullname": "Davit Pok",
-            "imgUrl": "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small"
-        },
-        "loc": {
-            "country": "Portugal",
-            "countryCode": "PT",
-            "address": "Beer Yaakov, Israel",
-            "lat": -8.61308,
-            "lng": 41.1413
-        },
-        "reviews": [
-            {
-                "id": "madeId",
-                "txt": "Very helpful hosts. Cooked traditional...",
-                "rate": 4,
-                "by": {
-                    "_id": "u102",
-                    "fullname": "user2",
-                    "imgUrl": "/img/img2.jpg"
-                }
-            }
-        ],
-        "likedByUserIds": [
-            "u101",
-            "u102"
-        ]
-    },
-    {
-        "_id": "1567846",
-        "name": "Paris",
-        "assetType": "Entire island",
-        "uniqueStay": false,
-        "imgUrls": [
-            "https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large"
-        ],
-        "price": 80.00,
-        "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
-        "capacity": 8,
-=======
     },
     {
         "_id": "3434555",
@@ -850,7 +521,6 @@
         "price": 180.00,
         "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
         "capacity": 4,
->>>>>>> 616a986c25df3e3254923e8aced80e3ad056a517
         "amenities": [
             "TV",
             "Wifi",
@@ -865,22 +535,6 @@
             "imgUrl": "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small"
         },
         "loc": {
-<<<<<<< HEAD
-            "country": "Portugal",
-            "countryCode": "PT",
-            "address": "Beer Yaakov, Israel",
-            "lat": -8.61308,
-            "lng": 41.1413
-        },
-        "reviews": [
-            {
-                "id": "madeId",
-                "txt": "Very helpful hosts. Cooked traditional...",
-                "rate": 4,
-                "by": {
-                    "_id": "u102",
-                    "fullname": "user2",
-=======
             "country": "England",
             "countryCode": "GB ",
             "address": "London, England",
@@ -935,7 +589,6 @@
                 "by": {
                     "_id": "u102",
                     "fullname": "Marie",
->>>>>>> 616a986c25df3e3254923e8aced80e3ad056a517
                     "imgUrl": "/img/img2.jpg"
                 }
             }
@@ -945,8 +598,4 @@
             "u102"
         ]
     }
-<<<<<<< HEAD
-  
-=======
->>>>>>> 616a986c25df3e3254923e8aced80e3ad056a517
 ]
