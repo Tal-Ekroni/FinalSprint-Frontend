@@ -11,9 +11,11 @@
         padding-bottom: 18px;
     }
     .logo-container {
+                    color: $clr1;
+
         .logo {
             all: unset;
-            color: $clr5;
+            color: $clr1;
             letter-spacing: 0;
             font-family: circular-bold;
             cursor: pointer;
@@ -57,7 +59,7 @@
         .nav-opt {
             padding: 10px 15px;
             font-family: circular-medium;
-            color: $clr8;
+            color: $clr1;
             font-size: 14px;
             border-radius: 55px;
             &:hover {

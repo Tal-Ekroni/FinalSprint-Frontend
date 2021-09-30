@@ -63,7 +63,7 @@ class _AppHeader extends React.Component {
             <header className={isPageTop ? `app-header-conatiner main-container` : `app-header-conatiner main-container mini-header`}>
                 <nav className="user-header-section flex space-between "  >
                     <div className="logo-container flex align-center">
-                        <NavLink to="/" className="logo"><span>Any</span><FaAirbnb size={40} color="#ff5a5f" /><span>Go</span></NavLink>
+                        <NavLink to="/" className="logo"><span>Any</span><FaAirbnb size={40} color="#fff" /><span>Go</span></NavLink>
                     </div>
                     <div className="nav-bar-container flex ">
                         <div className="     flex align-center">
