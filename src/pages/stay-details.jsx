@@ -38,6 +38,8 @@ class _StayDetails extends React.Component {
         isReadMoreOn: false
     }
     componentDidMount() {
+    window.scrollTo(0, 0)
+
         // localStorage.setItem('stay', JSON.stringify([stay]))
         const { stayId } = this.props.match.params
         if (!stayId) this.props.history.push('/')

@@ -16,7 +16,8 @@ import { setFilter } from '../store/stay.actions';
 
 class _HomePage extends React.Component {
     state = {}
-componentWillUnmount(){
+    
+componentDidMount(){
     window.scrollTo(0, 0)
 
 }
@@ -70,7 +71,7 @@ componentWillUnmount(){
                             </div>
                         </div>
                         <div className="loc-section flex ">
-                            <img src={locImg3} className="loc-img" onClick={() => { this.onClickLoc('Tel', 'location') }} />
+                            <img src={locImg3} className="loc-img" onClick={() => { this.onClickLoc('Aviv', 'location') }} />
                             <div className="loc-info flex column justify-center">
                                 <p className="city-name">Tel-Aviv</p>
                                 <p className="country-name">Israel</p>

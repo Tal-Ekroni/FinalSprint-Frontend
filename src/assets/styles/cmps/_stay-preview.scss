@@ -104,4 +104,11 @@
         color: $clr6;
         width: 30px;
     }
+    .preview-img {
+        max-height: 200px;
+        & img {
+            max-height: 200px;
+            height: 100%;
+        }
+    }
 }

@@ -42,7 +42,7 @@ class _StayMap extends Component {
             margin: "0 auto"
         }
         return (
-            <section className="main-map-container main-layout">
+            <section className="main-map-container">
                 <div className="map-title-container">
                     <h1 className="map-title">Where you’ll be</h1>
                 </div>
