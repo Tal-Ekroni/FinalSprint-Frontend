@@ -114,7 +114,8 @@ export function onBookTrip(trip) {
 
             const updatedUser = await userService.update(user)
             const updatedHost = await userService.update(hostUser)
-
+            console.log('host', hostUser);
+            console.log('user', user);
             dispatch({ type: 'UPDATE_USER', user: updatedUser })
             dispatch({ type: 'UPDATE_USER', user: updatedHost })
 
