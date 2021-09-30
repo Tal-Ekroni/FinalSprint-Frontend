@@ -32,7 +32,7 @@ export class AssetAmenities extends React.Component {
     render() {
         const { amenities } = this.props
         return (
-            <ul className="amenities-list flex space-between">
+            <ul className="amenities-list flex">
                 {amenities && amenities.map(amenity => {
                     return <li key={amenity} className="amenity-item flex">
                         <div className="amenity-icon-container">
