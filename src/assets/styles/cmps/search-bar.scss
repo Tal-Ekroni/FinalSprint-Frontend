@@ -6,7 +6,7 @@
     left: 50%;
     transform: translateX(-50%);
     border-radius: 50px;
-    height: 63px;
+    height: 66px;
     margin-bottom: 32px;
     border: 0.5px solid lightgray;
     transition: display 1s;
@@ -30,10 +30,10 @@
         margin: 0;
         padding: 0;
         background-color: inherit;
+
         overflow: hidden;
-        &:hover {
-            background-color: rgba(211, 211, 211, 0.603);
-        }
+        transition: background-color 0.3s;
+
     }
     .check-container {
         justify-content: center;
@@ -83,11 +83,12 @@
         padding: 14px 24px;
         border-radius: 40px;
         cursor: pointer;
-        transition: background-color 0.3s, box-shadow 0.3s;
+        transition: background-color 0.3s;
         overflow: hidden;
 
         &:hover {
-            background-color: rgba(211, 211, 211, 0.603);
+            background-color: lightgray;
+            // background-color: rgba(211, 211, 211, 0.603);
         }
         &:nth-child(1) {
             display: flex;
@@ -95,12 +96,8 @@
         }
     }
     .search-btn-container {
-        // position: absolute;
-        // right: 0;
-        // top: 50%;
-        // transform: translateY(-50%);
-        width: 47px;
-        height: 47px;
+        width: 80px;
+        height: 49px;
         color: $clr1;
         background-color: $clr8;
         border-radius: 55px;
