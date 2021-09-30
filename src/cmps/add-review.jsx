@@ -1,7 +1,7 @@
 import { Component } from 'react'
 import { connect } from 'react-redux'
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { Button, MenuItem, Select, TextField } from '@material-ui/core';
+import { Button, MenuItem, Select, TextareaAutosize, TextField } from '@material-ui/core';
 import { onAddReview } from '../store/review.actions.js'
 import { utilService } from '../services/util.service.js';
 import Rating from 'react-rating';
@@ -53,9 +53,10 @@ class _AddReview extends Component {
     }
 
     formSubmited = (ev) => {
-        this.setState(prevState => ({ newReview: { ...prevState.newReview, ['createdAt']: Date.now() } }))
-        const review = this.state.newReview
-        this.props.onAddReview(review)
+        ev.preventDefault()
+        // this.setState(prevState => ({ newReview: { ...prevState.newReview, ['createdAt']: Date.now() } }))
+        // const review = this.state.newReview
+        // this.props.onAddReview(review)
     }
 
     render() {
@@ -63,7 +64,10 @@ class _AddReview extends Component {
 
         return (
             <div >
-                <form action="" className="add-form flex column ">
+                <div className="add-review-title-container">
+                    <h3>Add review</h3>
+                </div>
+                <form action="" className="add-form flex column " onSubmit={this.formSubmited}>
                     <div className=" add-review-container flex ">
 
                         <div className="left-review">
@@ -127,10 +131,19 @@ class _AddReview extends Component {
                             </div>
                         </div>
                     </div>
+
                     <div className="add-txt-container flex">
                         {/* <h4>Text</h4> */}
-                        <input value={txt} className="review-input" onChange={this.handleChange} name="txt" />
+                        <input value={txt}
+                            placeholder="Write you opinion about this stay..."
+                            className="review-input" onChange={this.handleChange}
+                            name="txt"
+                            autoComplete="off" />
+                    </div>
+                    <div>
+
                         <Button
+                            className="add-review-btn"
                             variant={'contained'}
                             color={'primary'}
                             type="submit"

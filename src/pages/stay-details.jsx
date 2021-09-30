@@ -19,6 +19,7 @@ import { DayPickerRangeController } from 'react-dates'
 import { ReviewsList } from '../cmps/reviews-list'
 import { StayMap } from '../cmps/stay-map'
 import { DatesPicker2 } from '../cmps/dates-picker2'
+import {AddReview} from '../cmps/add-review'
 import { ReviewAvg } from '../cmps/_reviews-avg'
 import { ReadMore } from '../cmps/_read-more'
 // import img from '../assets/img/1.jpg'
@@ -174,8 +175,8 @@ class _StayDetails extends React.Component {
                             <ReviewAvg reviews={stay.reviews} />
                             <ReviewsList reviews={stay.reviews} onToogleReadModal={this.onToogleReadModal} isReadMoreOn={isReadMoreOn} />
 
-                            <div className="add-review main-layout">
-                                {/* <AddReview /> */}
+                            <div className="add-review">
+                                <AddReview />
                             </div>
                         </div>
                         <div >

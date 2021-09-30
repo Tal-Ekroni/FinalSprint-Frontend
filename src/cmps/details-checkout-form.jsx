@@ -1,12 +1,8 @@
 import React from 'react'
 import 'react-dates/initialize';
-import { DateRangePicker, DayPickerRangeController, SingleDatePicker } from 'react-dates'
 import { connect } from 'react-redux'
 import { onBookTrip } from '../store/user.actions'
-
 import { FaStar, FaAngleDown, FaAngleUp, FaMinus, FaPlus } from 'react-icons/fa'
-import Select from 'react-select';
-
 import { Button, TextField } from '@material-ui/core'
 import 'react-dates/lib/css/_datepicker.css';
 import { showErrorMsg } from '../services/event-bus.service.js';
