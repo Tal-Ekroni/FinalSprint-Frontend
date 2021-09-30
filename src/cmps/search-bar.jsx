@@ -156,10 +156,10 @@ class _SearchBar extends React.Component {
 
                     <div className="dates-container flex ">
                         <div className="check-in-input flex column">
-                            <label htmlFor="" onClick={() => { this.toggleDatesModal(true) }}>Check in <span>{startDate ? this.timeToString(startDate, 'startDate') : 'Add date'}</span></label>
+                            <label htmlFor="" onClick={() => { this.toggleDatesModal(true) }}>Check in <span>{startDate ? this.timeToShow(startDate, 'startDate') : 'Add date'}</span></label>
                         </div>
                         <div className="check-out-input flex column" >
-                            <label htmlFor="" onClick={() => { this.toggleDatesModal(true) }}>Check out <span>{endDate ? this.timeToString(endDate, 'startDate') : 'Add date'}</span></label>
+                            <label htmlFor="" onClick={() => { this.toggleDatesModal(true) }}>Check out <span>{endDate ? this.timeToShow(endDate, 'startDate') : 'Add date'}</span></label>
 
                         </div>
                     </div>
