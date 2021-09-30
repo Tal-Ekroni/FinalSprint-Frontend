@@ -70,7 +70,7 @@ componentWillUnmount(){
                             </div>
                         </div>
                         <div className="loc-section flex ">
-                            <img src={locImg3} className="loc-img" onClick={() => { this.onClickLoc('Tel', 'location') }} />
+                            <img src={locImg3} className="loc-img" onClick={() => { this.onClickLoc('Aviv', 'location') }} />
                             <div className="loc-info flex column justify-center">
                                 <p className="city-name">Tel-Aviv</p>
                                 <p className="country-name">Israel</p>
