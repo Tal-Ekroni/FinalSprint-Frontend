@@ -145,6 +145,9 @@ class _CheckoutForm extends React.Component {
         this.setState({ isGuestPopupOn: false, datesModal: false }, () => { console.log(this.state); })
 
     }
+    getMouseCord = (ev) => {
+        
+    }
     render() {
 
         const { stay } = this.props
@@ -217,7 +220,7 @@ class _CheckoutForm extends React.Component {
                                 </div>
                             }
 
-                            {!isCheckoutToReserve && <div className="check-btn-container flex">
+                            {!isCheckoutToReserve && <div className="check-btn-container flex" onMouseOver={this.getMouseCord}>
                                 <Button onClick={() => this.getTripPrice(trip.startDate, trip.endDate, price)}>Check availabilty</Button>
                             </div>}
                             {isCheckoutToReserve && <div className="check-btn-container flex">
