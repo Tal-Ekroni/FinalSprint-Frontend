@@ -1,6 +1,6 @@
-import { FaStar } from "react-icons/fa";
-import Rating from "react-rating";
-import { ReadMore } from "./_read-more";
+// import { FaStar } from "react-icons/fa";
+// import Rating from "react-rating";
+// import { ReadMore } from "./_read-more";
 
 export function ReviewsPreview({ review, onToogleReadModal, isReadMoreOn }) {
     return (

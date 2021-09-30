@@ -5,6 +5,13 @@
 .stay-info-container > * {
     font-size: 0.875rem;
 }
+.user-btns-container {
+    justify-content: space-between;
+    width: 100px;
+    & p {
+        font-size: 1rem;
+    }
+}
 .stay-info {
     width: 100%;
     margin-top: 25px;
@@ -57,7 +64,7 @@
     height: 500px;
     & .asset-img {
         height: 245px;
-// height: 175px;
+        // height: 175px;
         width: 100%;
     }
 }

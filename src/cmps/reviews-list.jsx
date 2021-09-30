@@ -1,6 +1,6 @@
-import { FaStar } from 'react-icons/fa'
+// import { FaStar } from 'react-icons/fa'
 import { ReviewsPreview } from './reviews-preview'
-import { ReviewAvg } from './_reviews-avg'
+// import { ReviewAvg } from './_reviews-avg'
 
 export function ReviewsList({ reviews,onToogleReadModal,isReadMoreOn }) {
     return (
