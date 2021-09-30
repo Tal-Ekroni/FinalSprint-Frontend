@@ -11,7 +11,7 @@
         padding-bottom: 18px;
     }
     .logo-container {
-                    color: $clr1;
+        color: $clr1;
 
         .logo {
             all: unset;
@@ -77,10 +77,19 @@
     &.mini-header {
         background-color: $clr1;
         transition: all 0.5s;
+        .nav-opt {
+            color: $clr2;
+        }
+        .logo-container {
+            color: $clr6;
+
+            .logo {
+                color: $clr6;
+            }
+        }
         .search-bar-container {
             display: none;
             transition: all 0.5s;
         }
     }
 }
-
