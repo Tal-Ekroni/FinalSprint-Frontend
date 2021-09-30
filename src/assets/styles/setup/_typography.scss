@@ -1,21 +1,24 @@
-
 @font-face {
     font-family: "circular";
-    src: url(../../fonts/AirbnbCereal-Light.ttf);
+    src: url(../../fonts/airbnb-new/AirbnbCerealLight.woff);
     font-weight: 300;
     font-style: normal;
 }
 @font-face {
     font-family: circular-medium;
-    src: url(../../fonts/AirbnbCereal-Medium.ttf);
+    src: url(../../fonts/airbnb-new/AirbnbCerealMedium.woff);
 }
 @font-face {
     font-family: circular-Bold;
-    src: url(../../fonts/AirbnbCereal-Bold.ttf);
+    src: url(../../fonts/airbnb-new/AirbnbCerealBold.woff);
 }
 @font-face {
     font-family: circular-book;
-    src: url(../../fonts/AirbnbCereal-Book.ttf);
+    src: url(../../fonts/airbnb-new/AirbnbCerealBook.woff);
+}
+@font-face {
+    font-family: circular-extra;
+    src: url(../../fonts/airbnb-new/AirbnbCerealExtraBold.woff);
 }
 // @font-face {
 //     font-family: circular;
