@@ -3,13 +3,13 @@ import React from 'react'
 
 export class GuestsModal extends React.Component {
 
-   
+
     render() {
-        const { adultNumber, kidsNumber,onSelectAmount,onToggleModals } = this.props
+        const { adultNumber, kidsNumber, onSelectAmount, onToggleGuestModals } = this.props
         return (
             <div className="guest-modal">
-                <div className="screen" onClick={() => { onToggleModals('guestModal') }}>
-                </div>
+               ` <div className="screen" onClick={() => {onToggleGuestModals() }}>
+                </div>`
                 <div className="guest-card flex space-between">
                     <p>Adults</p>
                     <div className="guest-amount flex">

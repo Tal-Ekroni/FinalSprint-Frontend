@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom'
 import { stayService } from '../services/stay.service'
 import { showSuccessMsg } from '../services/event-bus.service.js'
 import { FaHome, FaBroom, FaDoorClosed, FaKey, FaFlag } from 'react-icons/fa'
-import { onEditStay, onRemoveStay} from '../store/stay.actions.js'
+import { onEditStay, onRemoveStay } from '../store/stay.actions.js'
 import { BasicInfo } from '../cmps/details-base-info'
 import { AssetSum } from '../cmps/details-asset-sum'
 import { AssetAmenities } from '../cmps/details-amenities'
@@ -44,27 +44,27 @@ class _StayDetails extends React.Component {
         else {
             let currStay;
             stayService.getById(stayId)
-            .then(stay => {
-                this.setState({
-                    stay,
-                    trip: {
-                        startDate: null,
-                        endDate: null,
-                        guests: { adults: 1, kids: 0, infants: 0 },
-                        loc: stay.loc
-                    }
-                    
-                    
+                .then(stay => {
+                    this.setState({
+                        stay,
+                        trip: {
+                            startDate: null,
+                            endDate: null,
+                            guests: { adults: 1, kids: 0, infants: 0 },
+                            loc: stay.loc
+                        }
+
+
+                    })
                 })
-            })
-            
+
         }
 
     }
     onRemoveStay = (stayId) => {
         this.props.onRemoveStay(stayId)
     }
-  
+
     handleChange = ({ startDate, endDate }) => {
         if (startDate) {
             this.setState(prevState => ({ trip: { ...prevState.trip, startDate } }))
@@ -93,7 +93,7 @@ class _StayDetails extends React.Component {
                                     </div>
                                 </div>
                                 <div className="host-img-container">
-                             <img src={`https://i.pravatar.cc/100?u=${stay.host._id}`} alt="" />
+                                    <img src={`https://i.pravatar.cc/100?u=${stay.host._id}`} alt="" />
                                 </div>
                             </section>
 
@@ -121,22 +121,22 @@ class _StayDetails extends React.Component {
                                     </div>
                                     <div className="calender-container flex space-between">
                                         <div className="checkin-calender">
-                                            {/* <DayPickerRangeController
+                                            <DayPickerRangeController
                                                 startDate={this.state.trip.startDate} // momentPropTypes.momentObj or null,
                                                 endDate={this.state.trip.endDate} // momentPropTypes.momentObj or null,
                                                 onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
                                                 focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
                                                 onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
-                                            /> */}
+                                            />
                                         </div>
                                         <div className="checkout-calender">
-                                            {/* <DayPickerRangeController
+                                            <DayPickerRangeController
                                                 startDate={this.state.startDate} // momentPropTypes.momentObj or null,
                                                 endDate={this.state.endDate} // momentPropTypes.momentObj or null,
                                                 onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
                                                 focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
                                                 onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
-                                            /> */}
+                                            />
                                         </div>
                                     </div>
 
@@ -147,9 +147,9 @@ class _StayDetails extends React.Component {
                         </div>
                         {/* TODO */}
                         <div className="details-right-container">
-                    
-                                <CheckoutForm stay={stay} />
-                                {/* <div className="report-container flex ">
+
+                            <CheckoutForm stay={stay} />
+                            {/* <div className="report-container flex ">
                                     <FaFlag />
                                     <p>Report this listing</p>
                                 </div> */}
@@ -159,13 +159,13 @@ class _StayDetails extends React.Component {
                     <section className="page-bottom-container">
                         <div >
 
-                        <ReviewsList reviews={stay.reviews}/>
+                            <ReviewsList reviews={stay.reviews} />
                         </div>
                         <div >
 
-                        <StayMap location={stay.loc}/>
+                            <StayMap location={stay.loc} />
                         </div>
-                        </section>
+                    </section>
                 </div >}
             </section>
         )

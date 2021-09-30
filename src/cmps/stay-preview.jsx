@@ -60,7 +60,7 @@ class _StayPreview extends React.Component {
                 if (ev.target.className === 'slick-arrow slick-prev' ||ev.target.className === 'slick-arrow slick-next' || ev.target.className.baseVal === 'MuiSvgIcon-root') return
                 this.props.history.push(`/stay/${this.props.stay._id}`)
             }} >
-                <div className="preview-img">
+                <div className="preview-img ">
                     {!this.state.isLiked && <FavoriteBorderIcon onClick={(ev) => this.onToggleLikeStay(ev,this.props.stay)} />}
                     {this.state.isLiked && <FavoriteIcon onClick={(ev) => this.onToggleLikeStay(ev,this.props.stay)} />}
                     <LazyLoad imgs={this.props.stay.imgUrls} />
@@ -74,8 +74,6 @@ class _StayPreview extends React.Component {
                     </span>
                     <div className="stay-style flex">
                         <h3><span>{this.props.stay.assetType}</span> &#183; <span>{this.props.stay.loc.address.split(',')[0]}</span></h3>
-                        {/* <h3>  {stay.assetType} <span> &#183;</span> {
-                    stay.loc.address.split(',')[0]}  </h3> */}
                     </div>
                     <div className="stay-name" >
                         <h3>{this.props.stay.name}</h3>
