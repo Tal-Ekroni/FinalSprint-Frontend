@@ -25,7 +25,7 @@ export function BasicInfo({ stay }) {
                             <p>Share</p>
                         </div>
                         <div className="save-btn-container flex align-end">
-                            <p><FaHeart size={13} /></p>
+                            <p><FaHeart size={13} color="#FF5A5F" /></p>
                             <p>Save</p>
                         </div>
                     </div>

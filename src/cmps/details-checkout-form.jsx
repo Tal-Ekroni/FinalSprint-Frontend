@@ -158,7 +158,7 @@ class _CheckoutForm extends React.Component {
                             </div>
                             <div className="check-rating-container flex align-end">
                                 <p><FaStar size={13} color="#FF5A5F" /></p>
-                                <p className="order-avg-score">4.9</p>
+                                <p className="order-avg-score">4</p>
                                 <p className="order-reviews">{`(${stay.reviews.length} reviews)`}</p>
                             </div>
                         </div>

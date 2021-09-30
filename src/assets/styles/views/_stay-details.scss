@@ -13,14 +13,12 @@
     }
     & .asset-desc-container {
         // width: 650px;
-        height: 100px;
         border-bottom: 0.5px solid lightgray;
         & .asset-desc {
             overflow: hidden;
             text-overflow: ellipsis;
             & p {
                 line-height: 1.5rem;
-                font-weight: 400;
                 font-size: 1rem;
             }
         }
@@ -90,9 +88,8 @@
     }
     .asset-desc-container {
         padding: 0;
-        padding-top: 35px;
-        padding-bottom: 50px;
-        height: 175px;
+        padding-top: 30px;
+        padding-bottom: 30px;
     }
     .stay-info-conatiner {
         // line-height: 1.25rem;
@@ -101,12 +98,12 @@
     .details-left-container {
         margin-top: 0;
 
-        height: 1400px;
+        min-height: 1000px;
         width: 58%;
         padding: 0;
     }
     .details-right-container {
-        height: 1430px;
+        min-height: 1030px;
         width: 42%;
         padding: 0;
     }

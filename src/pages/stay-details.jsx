@@ -33,8 +33,7 @@ class _StayDetails extends React.Component {
             endDate: null,
             guests: { adults: 1, kids: 0, infants: 0 },
 
-        },
-        totalStayReviewAvg: null
+        }
 
     }
     componentDidMount() {
@@ -73,15 +72,14 @@ class _StayDetails extends React.Component {
             this.setState(prevState => ({ trip: { ...prevState.trip, endDate } }))
         }
     }
-    setReviewAvg = (res) => {
-        this.setState({ totalStayReviewAvg: res })
-    }
+
     render() {
-        const { stay,totalStayReviewAvg } = this.state
+        const { stay } = this.state
+        const { user } = this.props
         return (
             <section className="stay-details-section main-layout">
                 {stay && <div className="stay-details-container">
-                    <BasicInfo stay={stay} />
+                    <BasicInfo user={user} stay={stay} />
                     <section className=" details-main-conatiner flex">
                         <div className="details-left-container">
                             <section className="host-info-container flex align-center space-between">
@@ -104,7 +102,9 @@ class _StayDetails extends React.Component {
 
                             <section className="asset-desc-container">
                                 <div className="asset-desc">
-                                    <p>"{stay.summary}"</p>
+                                    {stay.summary > 100 ? <p >{stay.summary.substring(0, 100)} <span className="read-more" > More...</span></p> : <p  >{stay.summary}</p>}
+
+                                    {/* <p>"{stay.summary}"</p> */}
                                 </div>
                             </section>
                             <section className="amenities-container">
@@ -114,7 +114,7 @@ class _StayDetails extends React.Component {
                                 </div>
                                 <button className="amenities-btn">{`Show all ${stay.amenities.length} amenities`}</button>
                             </section>
-                            <section className="dates-container">
+                            {/* <section className="dates-container">
                                 <div>
                                     <div>
                                         <h3>Select check-in date</h3>
@@ -144,7 +144,7 @@ class _StayDetails extends React.Component {
 
                                 </div>
 
-                            </section>
+                            </section> */}
                         </div>
                         {/* TODO */}
                         <div className="details-right-container">
@@ -162,9 +162,9 @@ class _StayDetails extends React.Component {
                             <div className="reviews-sec-title-container">
                                 <h1 className="reviews-section-title flex" ><FaStar
                                     size={15}
-                                    color="#FF5A5F" />{totalStayReviewAvg}Reviews<span>•</span>{stay.reviews.length} Reviews</h1>
+                                    color="#FF5A5F" />Reviews<span>•</span>{stay.reviews.length} Reviews</h1>
                             </div>
-                            <ReviewAvg setReviewAvg={this.setReviewAvg} reviews={stay.reviews} />
+                            <ReviewAvg reviews={stay.reviews} />
                             <ReviewsList reviews={stay.reviews} />
                             <div className="add-review main-layout">
                                 {/* <AddReview /> */}
