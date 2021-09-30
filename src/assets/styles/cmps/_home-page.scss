@@ -19,6 +19,16 @@
             grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             gap: 24px 150px;
             margin-top: 30px;
+            @include for-mobile-layout {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+                gap: 24px 50px;
+                :nth-last-child(n + 3) {
+                    display: none;
+                }
+                .loc-img {
+                    height: 50px;
+                }
+            }
             & .loc-section {
                 max-width: 100px;
                 .loc-img {
@@ -43,9 +53,29 @@
         h2 {
             font-family: circular-bold;
         }
-        & .live-loc {
+        .live-loc {
             gap: 10px;
             margin-top: 15px;
+
+            @include for-mobile-layout {
+                .live-card:nth-last-child(n + 3) {
+                    display: none;
+                }
+               flex-direction: column;
+
+                // .live-card{
+                //     .live-img{
+                //         height:150px;
+                //         width:150px;
+                //     }
+                // }
+            }
+            @include for-wide-layout {
+                .live-img {
+                    height: 400px;
+                    width: 400px;
+                }
+            }
             .live-img {
                 border-radius: 10%;
                 height: 270px;
