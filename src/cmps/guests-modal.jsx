@@ -5,11 +5,11 @@ export class GuestsModal extends React.Component {
 
 
     render() {
-        const { adultNumber, kidsNumber, onSelectAmount, onToggleGuestModals } = this.props
+        const { adultNumber, kidsNumber,infantsNumber, onSelectAmount, onToggleGuestModals } = this.props
         return (
             <div className="guest-modal">
-               ` <div className="screen" onClick={() => {onToggleGuestModals() }}>
-                </div>`
+                <div className="screen" onClick={() => {onToggleGuestModals() }}>
+                </div>
                 <div className="guest-card flex space-between">
                     <p>Adults</p>
                     <div className="guest-amount flex">
@@ -25,6 +25,14 @@ export class GuestsModal extends React.Component {
                         <button className="guest-btn" onClick={() => onSelectAmount('kidsNumber', 1)}>+</button>
                         <p>{kidsNumber}</p>
                         <button className="guest-btn" onClick={() => onSelectAmount('kidsNumber', -1)}>-</button>
+                    </div>
+                </div>
+                <div className="guest-card flex space-between border-top">
+                    <p>Infants</p>
+                    <div className="guest-amount flex">
+                        <button className="guest-btn" onClick={() => onSelectAmount('infantsNumber', 1)}>+</button>
+                        <p>{infantsNumber}</p>
+                        <button className="guest-btn" onClick={() => onSelectAmount('infantsNumber', -1)}>-</button>
                     </div>
                 </div>
 

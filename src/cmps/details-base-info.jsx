@@ -1,5 +1,5 @@
 import { FaStar, FaMedal, FaUpload, FaHeart } from 'react-icons/fa'
-import img from '../assets/img/idobarc1.jpg'
+import img from '../assets/img/stays-images/idobarc1.jpg'
 export function BasicInfo({ stay }) {
     return (
         <section className="info-imgs-container">

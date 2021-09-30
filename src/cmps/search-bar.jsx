@@ -14,7 +14,8 @@ class _SearchBar extends React.Component {
         datesModal: false,
         location: '',
         adultNumber: 0,
-        kidsNumber: 0
+        kidsNumber: 0,
+        infantsNumber:0
     }
 
     handleChange = (ev) => {
@@ -40,14 +41,22 @@ class _SearchBar extends React.Component {
                     this.setState({ adultNumber: this.state.adultNumber + diff }, () => { this.props.setFilter(this.state) })
                 }
                 break;
-            case 'kidsNumber':
-                if (this.state.kidsNumber + diff >= 0) {
-                    this.setState(prevState => ({...prevState,
-                        kidsNumber: prevState.kidsNumber + diff
-                    }, () => { this.props.setFilter(this.state) }));
-                    this.setState({ kidsNumber: this.state.kidsNumber + diff }, () => { this.props.setFilter(this.state) })
-                }
-                break;
+                case 'kidsNumber':
+                    if (this.state.kidsNumber + diff >= 0) {
+                        // this.setState(prevState => ({...prevState,
+                        //     kidsNumber: prevState.kidsNumber + diff
+                        // }, () => { this.props.setFilter(this.state) }));
+                        this.setState({ kidsNumber: this.state.kidsNumber + diff }, () => { this.props.setFilter(this.state) })
+                    }
+                    break;
+                    case 'infantsNumber':
+                        if (this.state.infantsNumber + diff >= 0) {
+                            // this.setState(prevState => ({...prevState,
+                            //     kidsNumber: prevState.kidsNumber + diff
+                            // }, () => { this.props.setFilter(this.state) }));
+                            this.setState({ infantsNumber: this.state.infantsNumber + diff }, () => { this.props.setFilter(this.state) })
+                        }
+                        break;
         }
     }
     onSetFilter = async () => {
@@ -74,7 +83,7 @@ class _SearchBar extends React.Component {
     }
 
     render() {
-        const { location, adultNumber, kidsNumber, endDate, startDate, guestModal, datesModal } = this.state
+        const { location, adultNumber, kidsNumber,infantsNumber, endDate, startDate, guestModal, datesModal } = this.state
         return (
             <div>
                 <div className="search-bar-container flex align-center ">
@@ -106,7 +115,7 @@ class _SearchBar extends React.Component {
                             <span className="guest-placeholder">Add guests</span>
                         </label>
                     </div>
-                    {guestModal && <GuestsModal onToggleGuestModals={this.onToggleGuestModals} adultNumber={adultNumber} kidsNumber={kidsNumber} onSelectAmount={this.onSelectAmount} />}
+                    {guestModal && <GuestsModal onToggleGuestModals={this.onToggleGuestModals} adultNumber={adultNumber} kidsNumber={kidsNumber} infantsNumber={infantsNumber} onSelectAmount={this.onSelectAmount} />}
 
                     <div className="search-btn-container flex align-center justify-center" onClick={() => { this.onSetFilter() }} >
                         <FaSearch size={16} />
