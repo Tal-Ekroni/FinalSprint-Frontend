@@ -42,7 +42,7 @@ class _StayMap extends Component {
             margin: "0 auto"
         }
         return (
-            <section>
+            <section className="main-map-container main-layout">
                 <div className="map-title-container">
                     <h1 className="map-title">Where you’ll be</h1>
                 </div>
@@ -50,7 +50,7 @@ class _StayMap extends Component {
                     <Map
                         containerStyle={style}
                         google={this.props.google}
-                        zoom={9}
+                        zoom={15}
                         initialCenter={this.state.center}
                         onClick={this.onMapClicked}
                         center={this.state.center}

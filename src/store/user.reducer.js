@@ -5,7 +5,7 @@ const initialState = {
     count: 10,
     user: userService.getLoggedinUser(),
     users: [],
-    watchedUser : null
+    watchedUser: null
 }
 export function userReducer(state = initialState, action) {
     var newState = state;
@@ -35,10 +35,10 @@ export function userReducer(state = initialState, action) {
         case 'SET_USERS':
             newState = { ...state, users: action.users }
             break;
-            case 'UPDATE_USER':
-                users = state.users.map(user => (user._id === action.user._id) ? action.user : user)
-                newState = { ...state, users }
-                break
+        case 'UPDATE_USER':
+            users = state.users.map(user => (user._id === action.user._id) ? action.user : user)
+            newState = { ...state, users }
+            break
         case 'SET_SCORE':
             newState = { ...state, user: { ...state.user, score: action.score } }
             break;

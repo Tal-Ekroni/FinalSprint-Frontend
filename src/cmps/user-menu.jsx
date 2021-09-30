@@ -50,7 +50,8 @@ class _UserMenu extends React.Component {
                         <p>Logout</p>
                     </div>}
                     {!user && <div className="user-menu-line" onClick={this.onOpenLogin}>
-                        <Link to='/login'>Login</Link>
+                        <p>Login</p>
+                        {/* <Link to='/login'>Login</Link> */}
                     </div>}
                     {!user && <div className="user-menu-line">
                         <p>Signup</p>

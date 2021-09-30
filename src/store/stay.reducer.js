@@ -42,9 +42,7 @@ export function stayReducer(state = initialState, action) {
             stays = state.stays.map(stay => (stay._id === action.stay._id) ? action.stay : stay)
             newState = { ...state, stays }
             break
-        case 'BOOK-A-TRIP':
-            newState = { ...state, bookedTrip: action.trip }
-            break
+       
         case 'REMOVE_FROM_CART':
             cart = state.cart.filter(stay => stay._id !== action.stayId)
             newState = { ...state, cart }

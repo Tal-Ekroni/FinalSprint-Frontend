@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { stayService } from '../services/stay.service'
 import { showSuccessMsg } from '../services/event-bus.service.js'
-import { FaHome, FaBroom, FaDoorClosed, FaKey, FaFlag } from 'react-icons/fa'
+import { FaHome, FaBroom, FaDoorClosed, FaKey, FaFlag, FaStar } from 'react-icons/fa'
 import { onEditStay, onRemoveStay } from '../store/stay.actions.js'
 import { BasicInfo } from '../cmps/details-base-info'
 import { AssetSum } from '../cmps/details-asset-sum'
@@ -19,8 +19,7 @@ import { DayPickerRangeController } from 'react-dates'
 import { ReviewsList } from '../cmps/reviews-list'
 import { StayMap } from '../cmps/stay-map'
 import { DatesPicker2 } from '../cmps/dates-picker2'
-
-
+import { ReviewAvg } from '../cmps/_reviews-avg'
 // import img from '../assets/img/1.jpg'
 // const stay = data.stay;
 // var stay = data.default[0].stay[0]
@@ -73,14 +72,14 @@ class _StayDetails extends React.Component {
             this.setState(prevState => ({ trip: { ...prevState.trip, endDate } }))
         }
     }
+
     render() {
         const { stay } = this.state
-        const TextFieldOutlined = (props) => <TextField {...props} variant={'outlined'} color={'primary'} />
-        const initialValues = {}
+        const { user } = this.props
         return (
             <section className="stay-details-section main-layout">
                 {stay && <div className="stay-details-container">
-                    <BasicInfo stay={stay} />
+                    <BasicInfo user={user} stay={stay} />
                     <section className=" details-main-conatiner flex">
                         <div className="details-left-container">
                             <section className="host-info-container flex align-center space-between">
@@ -103,7 +102,9 @@ class _StayDetails extends React.Component {
 
                             <section className="asset-desc-container">
                                 <div className="asset-desc">
-                                    <p>"{stay.summary}"</p>
+                                    {stay.summary > 100 ? <p >{stay.summary.substring(0, 100)} <span className="read-more" > More...</span></p> : <p  >{stay.summary}</p>}
+
+                                    {/* <p>"{stay.summary}"</p> */}
                                 </div>
                             </section>
                             <section className="amenities-container">
@@ -113,7 +114,7 @@ class _StayDetails extends React.Component {
                                 </div>
                                 <button className="amenities-btn">{`Show all ${stay.amenities.length} amenities`}</button>
                             </section>
-                            <section className="dates-container">
+                            {/* <section className="dates-container">
                                 <div>
                                     <div>
                                         <h3>Select check-in date</h3>
@@ -143,7 +144,7 @@ class _StayDetails extends React.Component {
 
                                 </div>
 
-                            </section>
+                            </section> */}
                         </div>
                         {/* TODO */}
                         <div className="details-right-container">
@@ -158,8 +159,16 @@ class _StayDetails extends React.Component {
                     </section>
                     <section className="page-bottom-container">
                         <div >
-
+                            <div className="reviews-sec-title-container">
+                                <h1 className="reviews-section-title flex" ><FaStar
+                                    size={15}
+                                    color="#FF5A5F" />Reviews<span>•</span>{stay.reviews.length} Reviews</h1>
+                            </div>
+                            <ReviewAvg reviews={stay.reviews} />
                             <ReviewsList reviews={stay.reviews} />
+                            <div className="add-review main-layout">
+                                {/* <AddReview /> */}
+                            </div>
                         </div>
                         <div >
 
