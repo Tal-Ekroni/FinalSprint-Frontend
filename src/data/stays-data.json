@@ -5,11 +5,10 @@
         "assetType": "Entire duplex",
         "uniqueStay": true,
         "imgUrls": [
-            "../assets/img/idobarc1",
-            "../assets/img/idobarc2",
-            "../assets/img/idobarc3",
-            "../assets/img/idobarc4",
-            "../assets/img/idobarc5"
+            "https://images.unsplash.com/photo-1484154218962-a197022b5858?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=874&q=80",
+            "https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large",
+            "https://media.istockphoto.com/photos/modern-living-room-interior-3d-render-picture-id1293762741?s=612x612",
+            "https://images.unsplash.com/photo-1493809842364-78817add7ffb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
         ],
         "price": 175.00,
         "summary": "The apartment Villa Olimpica beach is located on the 5th floor of a building with elevator.The living room with warm colors consists of a comfortable sofa in front of a flat-screen TV. You will also have table with 7 chairs, where you will be able to get together for a sunny breakfast or surfing on the internet with the high speed WIFI connection.",
@@ -405,122 +404,19 @@
         "bookedDates": []
     },
     {
-        "id": "9638956",
-        "txt": "This apartment was great! Close to everything especially if you rent bikes at the bike shop down the street. The apartment was super clean when we arrived, and the fresh flowers and stroopwaffels were great. Be sure to take time and enjoy the garden patio, we sure did. We didn't want to leave!",
-        "rate": 4,
-        "by": {
-            "_id": "u102",
-            "fullname": "Jeff",
-            "imgUrl": "/img/img2.jpg"
-        },
-        "bookedDates": [],
-        "likedByUserIds": [
-            "u101",
-            "u102"
-        ]
-    },
-    {
-        "_id": "432341",
-        "name": "Extraordinary Penthouse + Terrace",
-        "assetType": "Entire Penthouse",
+        "_id": "1000643546",
+        "name": "Fantastic duplex",
+        "assetType": "Entire duplex",
         "uniqueStay": true,
         "imgUrls": [
-            "https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large",
             "https://images.unsplash.com/photo-1484154218962-a197022b5858?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=874&q=80",
+            "https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large",
             "https://media.istockphoto.com/photos/modern-living-room-interior-3d-render-picture-id1293762741?s=612x612",
             "https://images.unsplash.com/photo-1493809842364-78817add7ffb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
         ],
-        "price": 55.00,
-        "summary": "Breathtaking High-End Penthouse, private and enormous forest-like balcony, overlooking right above the Carmel Market & the calm sea, located at the heart of the city.The place featuring a spacious brand-new kitchen and living room, fully equipped for your needs.",
-        "capacity": 4,
-        "amenities": [
-            "TV",
-            "Wifi",
-            "Kitchen",
-            "Smoking allowed",
-            "Pets allowed",
-            "Cooking basics"
-        ],
-        "host": {
-            "_id": "51399393",
-            "fullname": "Lily Duarte",
-            "imgUrl": "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small"
-        },
-        "loc": {
-            "country": "Israel",
-            "countryCode": "IL",
-            "address": "Tel Aviv, Israel",
-            "lat": 32.109333,
-            "lng": 34.855499
-        },
-        "reviews": [
-            {
-                "id": "76768",
-                "txt": "Great space, great location. The hosts were easy to reach and we had a great time. If you are travelling with small children be aware there are a lot of stairs and also stairs in the apartment itself.",
-                "rate": 4,
-                "by": {
-                    "_id": "12331",
-                    "fullname": "Ava",
-                    "imgUrl": "/img/img2.jpg"
-                }
-            },
-            {
-                "id": "76767",
-                "txt": "Great location, the apartment was clean and had everything I needed. Matan and Aviad were nice and friendly and responded super fast to every question and request.",
-                "rate": 4,
-                "by": {
-                    "_id": "12330",
-                    "fullname": "Tsuf",
-                    "imgUrl": "/img/img2.jpg"
-                }
-            },
-            {
-                "id": "76766",
-                "txt": "The location is a 10!!! Excellent location to the heart of Tel Aviv and the beach! The hosts were awesome! They promptly answered all my questions, and even checked in on me.",
-                "rate": 4,
-                "by": {
-                    "_id": "12329",
-                    "fullname": "Stacy",
-                    "imgUrl": "/img/img2.jpg"
-                }
-            },
-            {
-                "id": "76765",
-                "txt": "Top location, great proximity to the beach and cool restaurants in the market. The balcony is grand and beautiful. A play to relax, not just to sleep in.",
-                "rate": 4,
-                "by": {
-                    "_id": "12328",
-                    "fullname": "Sarig",
-                    "imgUrl": "/img/img2.jpg"
-                }
-            },
-            {
-                "id": "76764",
-                "txt": " And accommodated everything! The place is amazingly beautiful located in the perfect spot. It was extremely quiet and lovely to be there. I really enjoyed my stay. I was there for close to 2 weeks. And it was just lovely!",
-                "rate": 4,
-                "by": {
-                    "_id": "12327",
-                    "fullname": "Yehuda",
-                    "imgUrl": "/img/img2.jpg"
-                }
-            }
-        ],
-        "likedByUserIds": [
-            "u101",
-            "u102"
-        ]
-    },
-    {
-        "_id": "3434555",
-        "name": "Loft Style apartment",
-        "assetType": "Entire loft",
-        "uniqueStay": false,
-        "imgUrls": [
-            "https://images.unsplash.com/photo-1484154218962-a197022b5858?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=874&q=80"
-        ],
-        "price": 180.00,
-        "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
-        "capacity": 4,
+        "price": 75,
+        "summary": "Fantastic duplex apartment with three bedrooms, located in the center of Paris,France",
+        "capacity": 6,
         "amenities": [
             "TV",
             "Wifi",
@@ -531,68 +427,283 @@
         ],
         "host": {
             "_id": "51399391",
-            "fullname": "Davit Pok",
+            "fullname": "Joe james",
             "imgUrl": "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small"
         },
         "loc": {
-            "country": "England",
-            "countryCode": "GB ",
-            "address": "London, England",
-            "lat": 51.509865,
-            "lng": 0.118092
+            "country": "France",
+            "countryCode": "FR",
+            "address": "Paris,France",
+            "lat": -8.61308,
+            "lng": 41.1413
         },
         "reviews": [
             {
-                "id": "198392",
-                "txt": "A great apartment in a east to reach location. Comprehensive and easy to follow instructions for check in as well as regular check ins to make sure our stay was going well.",
-                "rate": 4,
+                "id": "idlior1",
+                "txt": "Amazing appatment right in the center of the city!",
+                "cleanliness": 5,
+                "communication": 3,
+                "checkIn": 4,
+                "accuracy": 5,
+                "location": 5,
+                "value": 4,
                 "by": {
-                    "_id": "u102",
-                    "fullname": "Jodie",
+                    "_id": "u101",
+                    "fullname": "Roei parker",
                     "imgUrl": "/img/img2.jpg"
                 }
             },
             {
-                "id": "198391",
-                "txt": "Great place which looks exactly like the pictures. Really good location and the host was great at communicating. Would definitely stay again.",
-                "rate": 4,
+                "id": "idlior2",
+                "txt": "Had no troubles talking with the owner, and there was alot of resturants in the area",
+                "cleanliness": 4,
+                "communication": 5,
+                "checkIn": 4,
+                "accuracy": 4,
+                "location": 5,
+                "value": 5,
                 "by": {
-                    "_id": "u102",
-                    "fullname": "Tamzin",
+                    "_id": "u103",
+                    "fullname": "David lewis",
                     "imgUrl": "/img/img2.jpg"
                 }
             },
             {
-                "id": "198390",
-                "txt": "My friends and I had a great time staying here! Close by to the bars and restaurants of East London! Very comfortable with everything we needed,Thanks!",
-                "rate": 4,
+                "id": "idlior3",
+                "txt": "Amazing duplex and amazing location !",
+                "cleanliness": 4,
+                "communication": 5,
+                "checkIn": 5,
+                "accuracy": 5,
+                "location": 4,
+                "value": 5,
                 "by": {
-                    "_id": "u102",
-                    "fullname": "Georgia",
+                    "_id": "u104",
+                    "fullname": "Jimmy yon",
                     "imgUrl": "/img/img2.jpg"
                 }
             },
             {
-                "id": "198389",
-                "txt": "We had a great stay at Jose's, the location is excellent. The apartment is lovely with comfortable beds and is nicely designed. It's very quiet despite being on a busy street. We'd definitely stay again next time we're in London.",
-                "rate": 4,
+                "id": "idlior4",
+                "txt": "love paris very much and the appartment was incredible",
+                "cleanliness": 5,
+                "communication": 3,
+                "checkIn": 4,
+                "accuracy": 5,
+                "location": 4,
+                "value": 5,
                 "by": {
-                    "_id": "u102",
-                    "fullname": "Erica",
-                    "imgUrl": "/img/img2.jpg"
-                }
-            },
-            {
-                "id": "198388",
-                "txt": "The flat is very nice and modern. Well equipped with all basics provided of you want to cook. However we found it a bit noisy as the road is just in front. Thanks a lot for the hospitality and the nice chocolate ! The kids loved them.",
-                "rate": 4,
-                "by": {
-                    "_id": "u102",
-                    "fullname": "Marie",
+                    "_id": "u105",
+                    "fullname": "Ron jameson",
                     "imgUrl": "/img/img2.jpg"
                 }
             }
         ],
+        "bookedDates": [],
+        "likedByUserIds": [
+            "u101",
+            "u102"
+        ]
+    },
+    {
+        "_id": "1000643576",
+        "name": "Condo in paris",
+        "assetType": "Entire duplex",
+        "uniqueStay": false,
+        "imgUrls": [
+            "https://images.unsplash.com/photo-1484154218962-a197022b5858?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=874&q=80",
+            "https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large",
+            "https://media.istockphoto.com/photos/modern-living-room-interior-3d-render-picture-id1293762741?s=612x612",
+            "https://images.unsplash.com/photo-1493809842364-78817add7ffb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+        ],
+        "price": 50,
+        "summary": "Hello my name is Davit and this is my condo,located in center paris",
+        "capacity": 10,
+        "amenities": [
+            "TV",
+            "Wifi",
+            "Kitchen",
+            "Smoking allowed",
+            "Pets allowed",
+            "Cooking basics"
+        ],
+        "host": {
+            "_id": "51399691",
+            "fullname": "Davit Pok",
+            "imgUrl": "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small"
+        },
+        "loc": {
+            "country": "France",
+            "countryCode": "FR",
+            "address": "Paris,France",
+            "lat": -8.61308,
+            "lng": 41.1413
+        },
+        "reviews": [
+            {
+                "id": "idlior5",
+                "txt": "Very nice place and very easy to get to and from to travel around",
+                "cleanliness": 4,
+                "communication": 3,
+                "checkIn": 4,
+                "accuracy": 4,
+                "location": 5,
+                "value": 4,
+                "by": {
+                    "_id": "u105",
+                    "fullname": "Johans burg",
+                    "imgUrl": "/img/img2.jpg"
+                }
+            },
+            {
+                "id": "idlior6",
+                "txt": "The appartment itself is pretty nice and the neighbors were very friendly",
+                "cleanliness": 5,
+                "communication": 5,
+                "checkIn": 4,
+                "accuracy": 4,
+                "location": 4,
+                "value": 4,
+                "by": {
+                    "_id": "u106",
+                    "fullname": "Rachel park",
+                    "imgUrl": "/img/img2.jpg"
+                }
+            },
+            {
+                "id": "idlior7",
+                "txt": "Had some troubles with the shower but the owner showed up the same day to fix it,but great location",
+                "cleanliness": 2,
+                "communication": 5,
+                "checkIn": 3,
+                "accuracy": 4,
+                "location": 5,
+                "value": 4,
+                "by": {
+                    "_id": "u107",
+                    "fullname": "Bob manswi",
+                    "imgUrl": "/img/img2.jpg"
+                }
+            },
+            {
+                "id": "idlior8",
+                "txt": "Lovely appartment! I'll recommend going to the resturant bellow the place",
+                "cleanliness": 3,
+                "communication": 4,
+                "checkIn": 5,
+                "accuracy": 4,
+                "location": 4,
+                "value": 4,
+                "by": {
+                    "_id": "u108",
+                    "fullname": "Hana kilter",
+                    "imgUrl": "/img/img2.jpg"
+                }
+            }
+        ],
+        "bookedDates": [],
+        "likedByUserIds": [
+            "u101",
+            "u102"
+        ]
+    },
+    {
+        "_id": "1005643576",
+        "name": "Cottage in the outskirts of paris",
+        "assetType": "Entire duplex",
+        "uniqueStay": true,
+        "imgUrls": [
+            "https://images.unsplash.com/photo-1484154218962-a197022b5858?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=874&q=80",
+            "https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large",
+            "https://media.istockphoto.com/photos/modern-living-room-interior-3d-render-picture-id1293762741?s=612x612",
+            "https://images.unsplash.com/photo-1493809842364-78817add7ffb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+        ],
+        "price": 100,
+        "summary": "Welcome to my cottage in the outskirts of paris where you can enjoy the peace and quiet",
+        "capacity": 5,
+        "amenities": [
+            "TV",
+            "Wifi",
+            "Kitchen",
+            "Smoking allowed",
+            "Pets allowed",
+            "Cooking basics"
+        ],
+        "host": {
+            "_id": "51399691",
+            "fullname": "Ronald johns",
+            "imgUrl": "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small"
+        },
+        "loc": {
+            "country": "France",
+            "countryCode": "FR",
+            "address": "Paris,France",
+            "lat": -8.61308,
+            "lng": 41.1413
+        },
+        "reviews": [
+            {
+                "id": "idlior9",
+                "txt": "Such a lovely place and very quiet, although i had a little bit of trobule getting here",
+                "cleanliness": 4,
+                "communication": 5,
+                "checkIn": 4,
+                "accuracy": 5,
+                "location": 2,
+                "value": 4,
+                "by": {
+                    "_id": "u109",
+                    "fullname": "Moe hams",
+                    "imgUrl": "/img/img2.jpg"
+                }
+            },
+            {
+                "id": "idlior10",
+                "txt": "beautiful place surrounded by an even prettier area",
+                "cleanliness": 4,
+                "communication": 4,
+                "checkIn": 4,
+                "accuracy": 4,
+                "location": 4,
+                "value": 4,
+                "by": {
+                    "_id": "u1010",
+                    "fullname": "Mark zukmo",
+                    "imgUrl": "/img/img2.jpg"
+                }
+            },
+            {
+                "id": "idlior11",
+                "txt": "Very nice place and clean. Peacful and quite area to the people who want to get away from the city",
+                "cleanliness": 5,
+                "communication": 3,
+                "checkIn": 4,
+                "accuracy": 3,
+                "location": 5,
+                "value": 4,
+                "by": {
+                    "_id": "u1011",
+                    "fullname": "Joey bobba",
+                    "imgUrl": "/img/img2.jpg"
+                }
+            },
+            {
+                "id": "idlior12",
+                "txt": "Amazing place!! the cottage itself was very clean and very comfortable to stay in",
+                "cleanliness": 5,
+                "communication": 5,
+                "checkIn": 5,
+                "accuracy": 4,
+                "location": 5,
+                "value": 5,
+                "by": {
+                    "_id": "u1012",
+                    "fullname": "Benjamin frank",
+                    "imgUrl": "/img/img2.jpg"
+                }
+            }
+        ],
+        "bookedDates": [],
         "likedByUserIds": [
             "u101",
             "u102"
