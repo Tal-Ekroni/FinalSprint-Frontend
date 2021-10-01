@@ -1,38 +1,48 @@
 import React from 'react'
-
-
+import { FaPlus, FaMinus } from 'react-icons/fa'
 export class GuestsModal extends React.Component {
 
 
     render() {
-        const { adultNumber, kidsNumber,infantsNumber, onSelectAmount, onToggleGuestModals } = this.props
+        const { adultNumber, kidsNumber, infantsNumber, onSelectAmount, onToggleGuestModals } = this.props
         return (
-            <div className="guest-modal">
-                <div className="screen" onClick={() => {onToggleGuestModals() }}>
+            <div className="guest-modal flex column">
+                <div className="screen" onClick={(ev) => { onToggleGuestModals(ev) }}>
                 </div>
-                <div className="guest-card flex space-between">
-                    <p>Adults</p>
-                    <div className="guest-amount flex">
-                        <button className="guest-btn" onClick={() => onSelectAmount('adultNumber', 1)}>+</button>
-                        <p>{adultNumber}</p>
-                        <button className="guest-btn" onClick={() => onSelectAmount('adultNumber', -1)}>-</button>
+                <div className="guest-card flex space-between  align-center">
+                    <div className="column">
+                        <p className="guest-type">Adults</p>
+                        <p className="guest-desc">Ages 13 or above</p>
                     </div>
-
-                </div>
-                <div className="guest-card flex space-between border-top">
-                    <p>Kids</p>
-                    <div className="guest-amount flex">
-                        <button className="guest-btn" onClick={() => onSelectAmount('kidsNumber', 1)}>+</button>
-                        <p>{kidsNumber}</p>
-                        <button className="guest-btn" onClick={() => onSelectAmount('kidsNumber', -1)}>-</button>
+                    <div className="guest-amount">
+                        <p className={adultNumber ? "guest-btn" : "guest-btn zero"} onClick={() => onSelectAmount('adultNumber', -1)}><FaMinus /></p>
+                        <p className="guest-amount-count">{adultNumber}</p>
+                        <p className="guest-btn " onClick={() => onSelectAmount('adultNumber', 1)}><FaPlus />
+                        </p>
                     </div>
                 </div>
-                <div className="guest-card flex space-between border-top">
-                    <p>Infants</p>
-                    <div className="guest-amount flex">
-                        <button className="guest-btn" onClick={() => onSelectAmount('infantsNumber', 1)}>+</button>
-                        <p>{infantsNumber}</p>
-                        <button className="guest-btn" onClick={() => onSelectAmount('infantsNumber', -1)}>-</button>
+                <div className="guest-card flex space-between align-center">
+                    <div className="column">
+                        <p className="guest-type">Children</p>
+                        <p className="guest-desc">Ages 2-12</p>
+                    </div>
+                    <div className="guest-amount">
+                        <p className={kidsNumber ? "guest-btn" : "guest-btn zero"} onClick={() => onSelectAmount('kidsNumber', -1)}><FaMinus /></p>
+                        <p className="guest-amount-count">{kidsNumber}</p>
+                        <p className="guest-btn " onClick={() => onSelectAmount('kidsNumber', 1)}><FaPlus />
+                        </p>
+                    </div>
+                </div>
+                <div className="guest-card flex space-between  align-center">
+                    <div className="column">
+                        <p className="guest-type">Infants</p>
+                        <p className="guest-desc">Under 2</p>
+                    </div>
+                    <div className="guest-amount ">
+                        <p className={infantsNumber ? "guest-btn" : "guest-btn zero"} onClick={() => onSelectAmount('infantsNumber', -1)}><FaMinus /></p>
+                        <p className="guest-amount-count">{infantsNumber}</p>
+                        <p className="guest-btn" onClick={() => onSelectAmount('infantsNumber', 1)}><FaPlus />
+                        </p>
                     </div>
                 </div>
 

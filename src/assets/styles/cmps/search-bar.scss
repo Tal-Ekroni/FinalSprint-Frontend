@@ -11,7 +11,9 @@
     border: 0.5px solid lightgray;
     transition: display 1s;
     padding: 0 10px 0 0;
-
+    .guests-container {
+        position: relative;
+    }
     .guests-container,
     .location-container {
         width: 25%;
@@ -33,7 +35,6 @@
 
         overflow: hidden;
         transition: background-color 0.3s;
-
     }
     .check-container {
         justify-content: center;
@@ -71,7 +72,6 @@
             font-size: 12px;
             font-family: circular;
             background-color: transparent;
-           
         }
     }
     label {
@@ -118,7 +118,16 @@
 
 .search-dates-container {
     position: absolute;
-    left: 40%;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 90%;
+    .date-pick {
+        width: 328px;
+        .rdrCalendarWrapper {
+            width: 300px;
+            height: 350px;
+        }
+    }
     // background-color: none;
 }
 .rdrDefinedRangesWrapper {

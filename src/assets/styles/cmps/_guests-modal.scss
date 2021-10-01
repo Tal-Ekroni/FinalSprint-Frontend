@@ -1,18 +1,79 @@
 .guest-modal {
-    width: 300px;
-    background-color: $clr1;
     position: absolute;
-    top: 132px;
-    right: 233px;
+    width: 400px;
+    height: 245px;
+    border-radius: 32px;
+    background-color: $clr1;
+    top: 55px;
+    right: 0px;
     z-index: 3;
+    overflow: hidden;
+    margin-top: 12px;
+    padding: 16px 32px;
+    font-family: circular-light;
+    p {
+        font-family: unset;
+    }
+    .guest-amount-count {
+        font-family: circular-light;
+        font-size: 16px;
+    }
+    .guest-type {
+        font-family: circular-medium;
+        font-size: 16px;
+    }
+    .guest-desc {
+        font-size: 14px;
+        font-family: circular-light;
+    }
+    .screen {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        height: 9999px;
+        width: 9999px;
+    }
+
     & .guest-card {
-        &.border-top {
-            border-top: 1px $clr2 solid;
+        z-index: 5;
+        background-color: white;
+        padding-top: 16px !important;
+        padding-bottom: 16px !important;
+        padding-right: 4px !important;
+        min-width: 330px;
+        &:not(:last-child) {
+            border-bottom: 1px solid rgb(235, 235, 235);
         }
         & .guest-amount {
+            display: flex;
+            align-items: center;
+            justify-content: space-between !important;
+            width: 104px !important;
+            height: 32px !important;
             & .guest-btn {
+                display: flex;
+                justify-content: center;
+                align-items: center;
                 color: $clr2;
                 border-radius: 50%;
+                background: rgb(255, 255, 255);
+                border: 1px solid rgb(176, 176, 176) !important;
+                color: rgb(113, 113, 113) !important;
+                width: 32px !important;
+                height: 32px !important;
+                flex-grow: 0 !important;
+                flex-grow: 0 !important;
+                flex-shrink: 0 !important;
+                cursor: pointer !important;
+                margin: 0px !important;
+                padding: 0px !important;
+                text-align: center;
+                &.zero {
+                    cursor: not-allowed !important;
+                    color: rgb(235, 235, 235) !important;
+                    border-color: rgb(235, 235, 235) !important;
+                    background: rgb(255, 255, 255) !important;
+                }
             }
         }
     }

@@ -29,6 +29,7 @@ export class DatesPicker2 extends React.Component {
         }
         return (
             <DateRangePicker
+            className="date-pick"
                 ranges={[selectionRange]}
                 onChange={this.handleSelect}
             />
