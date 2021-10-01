@@ -64,6 +64,19 @@ export function setFilter(filterBy) {
         }
     }
 }
+
+export function setMiniHeader(isPageTop) {
+    return async (dispatch, getState) => {
+        try {
+            await dispatch({
+                type: 'SET_HEADER',
+                isPageTop
+            })
+        } catch (err) {
+            console.log(err);
+        }
+    }
+}
 export function onEditStay(stayToSave) {
     // console.log('stay to ', stayToSave);
     return async (dispatch) => {

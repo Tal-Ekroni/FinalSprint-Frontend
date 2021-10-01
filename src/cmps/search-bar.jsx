@@ -18,19 +18,19 @@ class _SearchBar extends React.Component {
             left: ''
         }
     }
-    componentDidMount() {
-        window.addEventListener('scroll', (ev) => {
-            if (ev.target.scrollingElement.scrollTop > 50) {
-                this.setState({ guestModal: false, datesModal: false })
-            }
+    // componentDidMount() {
+    //     window.addEventListener('scroll', (ev) => {
+    //         if (ev.target.scrollingElement.scrollTop > 50) {
+    //             this.setState({ guestModal: false, datesModal: false })
+    //         }
 
 
 
-        })
-    }
-    componentWillUnmount() {
-        window.removeEventListener('scroll')
-    }
+    //     })
+    // }
+    // componentWillUnmount() {
+    //     window.removeEventListener('scroll')
+    // }
     handleChange = (ev) => {
         const value = ev.target.value;
         this.setState({ location: value }, () => { this.props.setFilter(this.state) });
@@ -60,26 +60,19 @@ class _SearchBar extends React.Component {
         }
     }
     onSetFilter = async () => {
-        console.log(this.state);
         await this.props.setFilter(this.state)
         this.props.history.push('/explore')
     }
-    toggleDatesModal = (ev, val) => {
-
+    toggleDatesModal = (val) => {
         this.setState({ datesModal: false })
         this.setState({ datesModal: val })
     }
     onToggleGuestModals = (ev) => {
-        // if (ev.target) {
-        //     console.log('kan');
-        //     return}
-        const { height, left, bottom } = ev.target.getBoundingClientRect()
-
+        const { left, bottom } = ev.target.getBoundingClientRect()
         const pos = {
             top: bottom + 'px',
             left: (left + 50) + 'px'
         }
-
         this.setState({ modalPos: pos }, () => console.log(this.state.modalPos))
         if (this.state.datesModal) this.toggleDatesModal()
         this.setState({ guestModal: !this.state.guestModal })
@@ -98,7 +91,7 @@ class _SearchBar extends React.Component {
     render() {
         const { location, adultNumber, kidsNumber, infantsNumber, endDate, startDate, guestModal, datesModal, modalPos } = this.state
         return (
-            <div>
+            <div >
                 <div className="search-bar-container flex align-center ">
 
                     <div className="location-container flex column" onClick={() => { this.toggleDatesModal(false) }}>
@@ -119,10 +112,6 @@ class _SearchBar extends React.Component {
 
                     <div className="guests-container align-center flex" onClick={(ev) => { this.onToggleGuestModals(ev) }}>
 
-                        {/* // onClick={(ev) => {
-                                console.log(ev.target.getBoundingClientRect())
-                                //inline styling
-                            }}> */}
                         <label htmlFor="" className=" flex column" >
                             <span>Guests</span>
                             <span className="guest-placeholder">Add guests</span>
@@ -136,7 +125,7 @@ class _SearchBar extends React.Component {
 
                 </div>
                 <div className="search-dates-container ">
-                    {datesModal && <DatesPicker2 onSelectDates={this.onSelectDates} />}
+                    {datesModal && <DatesPicker2 onSelectDates={this.onSelectDates} toggleDatesModal={this.toggleDatesModal} />}
                 </div>
             </div>
         )

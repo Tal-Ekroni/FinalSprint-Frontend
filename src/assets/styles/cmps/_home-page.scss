@@ -10,6 +10,15 @@
         align-items: center;
         width: 98.7vw;
         box-shadow: inset 0px 1px 20px 0px #5a5a5a;
+        .where-to-go{
+            position: relative;
+            top: 10px;
+            h3{
+                font-family: circular-book;
+                font-size: 18px;
+            }
+
+        }
         .flex-btn {
             // color: linear-gradient(90deg, #6f019c 0%, #c6017e 135.12%);
             a {
@@ -20,15 +29,14 @@
                 -webkit-background-clip: -webkit-text;
                 -webkit-background-clip: text;
             }
+            position: absolute;
+            top: 46px;
             background-color: $clr1;
             box-shadow: 0px 6px 16px #0000002b;
             font-size:1.125rem;
             font-family: circular-bold;
             height: 60px;
             width: 200px;
-            position: absolute;
-            top: 50%;
-            right: 50%;
             border-radius: 3rem;
             transition: 0.3s;
             &:hover {
