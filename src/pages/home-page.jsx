@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Link, NavLink } from 'react-router-dom'
 import locImg1 from '../assets/img/location-preview-1.png'
 import locImg2 from '../assets/img/location-preview-2.png'
 import locImg3 from '../assets/img/location-preview-3.png'
@@ -16,11 +17,11 @@ import { setFilter } from '../store/stay.actions';
 
 class _HomePage extends React.Component {
     state = {}
-    
-componentDidMount(){
-    window.scrollTo(0, 0)
 
-}
+    componentDidMount() {
+        window.scrollTo(0, 0)
+
+    }
     changeCount = (diff) => {
         console.log('Changing count by:', diff);
         const action = { type: 'CHANGE_COUNT', diff }
@@ -51,7 +52,8 @@ componentDidMount(){
     render() {
         return (
             <section className="home-page flex column main-container">
-                <div className="hero main-container full">
+                <div className="hero main-container full flex justify-center align-center">
+                    <button className="flex-btn flex justify-center align-center"><Link to="/explore">I'm flexible</Link></button>
                 </div>
                 <div className="sug-loc">
                     <h2>Popular destinations</h2>

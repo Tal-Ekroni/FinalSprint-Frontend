@@ -6,8 +6,35 @@
         background-repeat: no-repeat;
         background-size: cover;
         position: relative;
+        justify-content: center;
+        align-items: center;
         width: 98.7vw;
         box-shadow: inset 0px 1px 20px 0px #5a5a5a;
+        .flex-btn {
+            // color: linear-gradient(90deg, #6f019c 0%, #c6017e 135.12%);
+            a {
+                -webkit-text-fill-color: transparent;
+                background: -webkit-linear-gradient(90deg, #6f019c 0%, #c6017e 135.12%);
+                background: -moz-linear-gradient(90deg, #6f019c 0%, #c6017e 135.12%);
+                background: linear-gradient(90deg, #6f019c 0%, #c6017e 135.12%);
+                -webkit-background-clip: -webkit-text;
+                -webkit-background-clip: text;
+            }
+            background-color: $clr1;
+            box-shadow: 0px 6px 16px #0000002b;
+            font-size:1.125rem;
+            font-family: circular-bold;
+            height: 60px;
+            width: 200px;
+            position: absolute;
+            top: 50%;
+            right: 50%;
+            border-radius: 3rem;
+            transition: 0.3s;
+            &:hover {
+                box-shadow: 0px 6px 16px #00000066;
+            }
+        }
     }
 
     & .sug-loc {
@@ -42,17 +69,19 @@
             & .loc-section {
                 max-width: 100px;
                 .loc-img {
-                    height: 100px;
-                    width: 100px;
+                    height: 60px;
+                    width: 60px;
                     margin-right: 10px;
                     border-radius: 10%;
                     cursor: pointer;
                 }
                 .city-name {
                     font-family: circular-bold;
+                    width: 100px;
                 }
                 .country-name {
                     color: $clr5;
+                    width: 130px;
                 }
             }
         }
@@ -66,7 +95,12 @@
         .live-loc {
             gap: 10px;
             margin-top: 15px;
-
+            .live-card {
+                .live-img {
+                    height: 250px;
+                    width: 250px;
+                }
+            }
             @include for-mobile-layout {
                 .live-card:nth-last-child(n + 3) {
                     display: none;
@@ -89,7 +123,7 @@
                 }
             }
             .live-img {
-                border-radius: 10%;
+                border-radius: 3%;
                 height: 270px;
                 width: 270px;
                 cursor: pointer;
