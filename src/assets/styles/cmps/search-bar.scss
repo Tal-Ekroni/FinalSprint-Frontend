@@ -11,6 +11,9 @@
     border: 0.5px solid lightgray;
     transition: display 1s;
     padding: 0 10px 0 0;
+    .mini-search-input {
+        display: none;
+    }
     .guests-container {
         position: relative;
     }
@@ -18,7 +21,6 @@
     .location-container {
         width: 25%;
         line-height: 18px;
-
     }
 
     .dates-container {
@@ -65,14 +67,11 @@
         font-family: circular-light;
     }
     .location-container {
-        
         input {
-            
             background-color: transparent;
             color: $clr5;
         }
         input::placeholder {
-
             color: $clr5;
             font-size: 14px;
             font-family: circular-light;
@@ -119,9 +118,9 @@
             font-size: 12px;
         }
     }
+    
 }
 .search-dates-container {
-
     position: absolute;
     left: 50%;
     transform: translateX(-50%);

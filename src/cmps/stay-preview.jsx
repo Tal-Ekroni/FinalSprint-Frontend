@@ -70,6 +70,7 @@ class _StayPreview extends React.Component {
                     <div className="preview-details ">
                         <span className="preview-rating flex align-center">
                             <FaStar size={13} color="#FF5A5F" />
+                            {console.log(this.props.stay.reviews)}
                             <p className="preview-rating-amount">{this.props.stay.reviews[0].rate}</p>
                             <span className="preview-review-count flex"><span>(</span>{this.props.stay.reviews.length} {this.props.stay.reviews.length===1?'review':'reviews'}<span>)</span></span>
                         </span>

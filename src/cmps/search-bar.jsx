@@ -89,17 +89,23 @@ class _SearchBar extends React.Component {
     }
 
     render() {
+        const { isPageTop } = this.props
+        console.log( this.props,'okok');
         const { location, adultNumber, kidsNumber, infantsNumber, endDate, startDate, guestModal, datesModal, modalPos } = this.state
         return (
             <div >
-                <div className="search-bar-container flex align-center ">
+                <div className="search-bar-container flex space-between align-center ">
 
                     <div className="location-container flex column" onClick={() => { this.toggleDatesModal(false) }}>
                         <label htmlFor="location" className="loc-inpt">Location
                             <input type="text" name="location" autoComplete="off" value={location} onChange={this.handleChange} placeholder="Where are you going?" />
                         </label>
                     </div>
-
+                    <div className="mini-search-input">
+                        <p>
+                        Start your search
+                        </p>
+                    </div>
                     <div className="dates-container flex ">
                         <div className="check-in-input flex column">
                             <label htmlFor="" onClick={() => { this.toggleDatesModal(true) }}>Check in <span>{startDate ? this.timeToShow(startDate, 'startDate') : 'Add date'}</span></label>
@@ -120,7 +126,8 @@ class _SearchBar extends React.Component {
                     </div>
                     {guestModal && <GuestsModal style={modalPos} onToggleGuestModals={this.onToggleGuestModals} adultNumber={adultNumber} kidsNumber={kidsNumber} infantsNumber={infantsNumber} onSelectAmount={this.onSelectAmount} />}
                     <div className="search-btn-container flex align-center justify-center" onClick={() => { this.onSetFilter() }} >
-                        <FaSearch size={16} />
+                        {!isPageTop && < FaSearch size={13} />}
+                        {isPageTop && < FaSearch size={15} />}
                     </div>
 
                 </div>
