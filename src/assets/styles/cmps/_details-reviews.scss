@@ -25,10 +25,11 @@
     gap: 20px;
     flex-wrap: wrap;
     padding: 0;
+
     & .review-card-container {
         min-width: 350px;
-        max-width: 47%;
-        width: 47%;
+        max-width: 40%;
+        width: 40%;
         height: 120px;
         border-radius: 15px;
         // box-shadow: 17px -4px 15px 1px rgba(0, 0, 0, 0.07);
@@ -77,13 +78,13 @@
 }
 .right-review {
     padding-inline-start: 12px;
-    max-width: 600px;
-    width: 45%;
+    max-width: 40%;
+    width: 40%;
 }
 .left-review {
     padding-inline-start: 12px;
-    max-width: 600px;
-    width: 45%;
+    max-width: 40%;
+    width: 40%;
 }
 .line {
     height: 2rem;
@@ -96,9 +97,13 @@
 .review-score {
     font-family: circular-bold;
     padding-inline-end: 20px;
+    font-size: 0.875rem;
+}
+.loader-container{
+    width: 175px;
 }
 .line-loader-container {
-    width: 150px;
+    width: 115px;
     height: 5px;
     background-color: lightgray;
 }

@@ -34,7 +34,6 @@ class _StayDetails extends React.Component {
     }
     componentDidMount() {
         window.scrollTo(0, 0)
-
         // localStorage.setItem('stay', JSON.stringify([stay]))
         const { stayId } = this.props.match.params
         if (!stayId) this.props.history.push('/')
@@ -54,8 +53,8 @@ class _StayDetails extends React.Component {
                 })
 
         }
-
     }
+
     onRemoveStay = (stayId) => {
         this.props.onRemoveStay(stayId)
     }
