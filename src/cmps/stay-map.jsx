@@ -7,8 +7,8 @@ class _StayMap extends Component {
 
     state = {
         center: {
-            lat: 31.73220474357407,
-            lng: 35.18801418638734
+            lat: '',
+            lng: ''
         },
         loc: {
             lat: '',
@@ -58,14 +58,14 @@ class _StayMap extends Component {
                         <Marker
                             position={this.state.center}
                             name={'Current location'}
-                            onClick={this.onMarkerClicked}
+                        // onClick={this.onMarkerClicked}
                         />
-                        <Marker
+                        {/* <Marker
                             key={loc.name}
                             position={loc}
                             name={'Current location'}
                             onClick={this.onMarkerClicked}
-                        />
+                        /> */}
 
 
 
@@ -79,9 +79,9 @@ class _StayMap extends Component {
                             </div>
                         </InfoWindow>
                     </Map>
-                <div>
-                    {this.state.loc.address && <h1 className="address-title">{this.state.loc.address}</h1>}
-                </div>
+                    <div>
+                        {this.state.loc.address && <h1 className="address-title">{this.state.loc.address}</h1>}
+                    </div>
                 </div>
             </section>
         );
