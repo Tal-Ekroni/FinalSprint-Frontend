@@ -52,9 +52,17 @@ class _HomePage extends React.Component {
     render() {
         return (
             <section className="home-page flex column main-container">
+
                 <div className="hero main-container full flex justify-center align-center">
-                    <button className="flex-btn flex justify-center align-center"><Link to="/explore">I'm flexible</Link></button>
+                    <div className="where-to-go flex justify-center align-center">
+                        <h3>Not sure where to go? Perfect.</h3>
+                        <button className="flex-btn flex justify-center align-center">
+                            <Link to="/explore">I'm flexible
+                            </Link>
+                        </button>
+                    </div>
                 </div>
+
                 <div className="sug-loc">
                     <h2>Popular destinations</h2>
                     <div className="locations">
