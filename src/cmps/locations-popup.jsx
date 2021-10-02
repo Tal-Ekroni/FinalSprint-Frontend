@@ -2,7 +2,7 @@ import React from "react";
 import locImg1 from '../assets/img/location-preview-1.png'
 import locImg2 from '../assets/img/location-preview-2.png'
 import locImg3 from '../assets/img/location-preview-3.png'
-import locImg4 from '../assets/img/location-preview-4.png'
+import locImg4 from '../assets/img/location-preview-4.jpg'
 import locImg5 from '../assets/img/location-preview-5.jpg'
 import locImg6 from '../assets/img/location-preview-6.png'
 import locImg7 from '../assets/img/location-preview-7.jpg'

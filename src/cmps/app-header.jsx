@@ -77,7 +77,7 @@ class _AppHeader extends React.Component {
         this.onToggleScreen(false)
         this.setState({ locModal: false, guestModal: false, datesModal: false })
     }
-
+   
     render() {
         const { user, setFilter, filterBy, isFullHeader } = this.props
         const { isUserMenuOpen, isLoginBotmodal, isScreenOpen, locModal, datesModal, guestModal } = this.state
@@ -99,7 +99,7 @@ class _AppHeader extends React.Component {
                         </div>
 
                         <div className="flex align-center">
-                            <NavLink to="/stay/" className="nav-opt">Become a host</NavLink>
+                            <NavLink to="/explore/" className="nav-opt">Explore</NavLink>
                         </div>
 
 
