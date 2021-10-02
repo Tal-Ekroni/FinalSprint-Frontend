@@ -100,10 +100,9 @@ export function onBookTrip(trip) {
             const user = await userService.getById(trip.user._id)
             const hostUser = await userService.getById(trip.stay.host._id)
             const orderId = utilService.makeId()
-            const tripId = utilService.makeId()
 
             const userTrip = trip
-            userTrip.id = tripId
+            userTrip.id = orderId
             const hostOrder = trip
             hostOrder.id = orderId
 
@@ -126,6 +125,7 @@ export function onBookTrip(trip) {
         }
     }
 }
+
 export function loadAndWatchUser(userId) {
     return async (dispatch) => {
         try {

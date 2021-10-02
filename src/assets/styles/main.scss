@@ -16,7 +16,8 @@
 @import "views/home-page";
 @import "views/stay-app";
 @import "views/stay-details";
-@import "views/trips-page";
+@import "views/_trips-page";
+@import "views/_host-page";
 
 // Components
 @import "cmps/app-header";
@@ -30,7 +31,7 @@
 @import "cmps/_details-basic-info.scss";
 @import "cmps/_details-dates.scss";
 @import "cmps/_details-checkout.scss";
-@import "cmps/guests-modal";
+@import "cmps/_guests-modal";
 @import "cmps/login-page";
 @import "cmps/explore-filter.scss";
 @import "cmps/search-bar.scss";

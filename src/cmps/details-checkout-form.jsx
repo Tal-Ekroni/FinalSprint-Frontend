@@ -1,13 +1,16 @@
 import React from 'react'
 import 'react-dates/initialize';
 import { connect } from 'react-redux'
-import { onBookTrip } from '../store/user.actions'
+import { onAddOrder } from '../store/order.actions'
 import { FaStar, FaAngleDown, FaAngleUp, FaMinus, FaPlus } from 'react-icons/fa'
-import { Button, TextField } from '@material-ui/core'
+import { Button } from '@material-ui/core'
 import 'react-dates/lib/css/_datepicker.css';
 import { showErrorMsg } from '../services/event-bus.service.js';
 import { DatesPicker2 } from './dates-picker2.jsx';
 import { parse } from 'date-fns/esm';
+import { GuestsCheckoutModal } from './_guests-modal';
+import { utilService } from '../services/util.service';
+
 class _CheckoutForm extends React.Component {
 
     state = {
@@ -70,14 +73,14 @@ class _CheckoutForm extends React.Component {
         const start = new Date(startDate / 1000);
         const end = new Date(endDate / 1000);
         const timeDiff = (end - start)
-        const summedNights = (timeDiff / 86400)
-        const summedPrice = price * summedNights
-        this.setState(prevState => ({ trip: { ...prevState.trip, summedNights, summedPrice }, isCheckoutToReserve: true }));
+        const totalNights = (timeDiff / 86400)
+        const totalPrice = price * totalNights
+        this.setState(prevState => ({ trip: { ...prevState.trip, totalNights, totalPrice }, isCheckoutToReserve: true }));
     }
 
     toggleGuestsModal = () => {
         this.setState({ datesModal: false })
-        this.setState({ isGuestPopupOn: !this.state.isGuestPopupOn }, () => { console.log(this.state); })
+        this.setState({ isGuestPopupOn: !this.state.isGuestPopupOn })
         this.calcGuestNum()
     }
     onSelectGuests = (val, action) => {
@@ -116,19 +119,18 @@ class _CheckoutForm extends React.Component {
         if (!this.props.user) {
             showErrorMsg('login first')
         } else {
-            // console.log(stay);
             const { _id, fullname, imgUrl, username } = this.props.user
-            trip.user = { _id, fullname, imgUrl, username }
-            trip.startDate = this.toTimestamp(trip.startDate._d)
-            trip.endDate = this.toTimestamp(trip.endDate._d)
+            trip.buyer = { _id, fullname, imgUrl, username }
+            trip.startDate = this.toTimestamp(trip.startDate)
+            trip.endDate = this.toTimestamp(trip.endDate)
+            trip.host = stay.host
             trip.stay = {
                 _id: stay._id,
-                host: stay.host,
                 imgUrls: stay.imgUrls,
                 name: stay.name
             }
             trip.status = 'pending'
-            this.props.onBookTrip(trip)
+            this.props.onAddOrder(trip)
             this.setState({
                 trip: {
                     startDate: null,
@@ -142,7 +144,10 @@ class _CheckoutForm extends React.Component {
 
     }
     onCloseModal = (ev) => {
-        this.setState({ isGuestPopupOn: false, datesModal: false }, () => { console.log(this.state); })
+        this.setState({ isGuestPopupOn: false, datesModal: false })
+
+    }
+    getMouseCord = (ev) => {
 
     }
     render() {
@@ -161,8 +166,8 @@ class _CheckoutForm extends React.Component {
                             <div className="order-price-container ">
                                 <p className="order-price"><span>${price}</span> / night</p>
                             </div>
-                            <div className="check-rating-container flex align-end">
-                                <p><FaStar size={13} color="#FF5A5F" /></p>
+                            <div className="check-rating-container flex align-center">
+                                <p className="checkout-star"><FaStar  size={13} color="#FF5A5F" /></p>
                                 <p className="order-avg-score">4</p>
                                 <p className="order-reviews">{`(${stay.reviews.length} reviews)`}</p>
                             </div>
@@ -203,8 +208,8 @@ class _CheckoutForm extends React.Component {
                                         <p>You won't be charged yet</p>
                                     </div>
                                     <div className="calc-price-container flex space-between">
-                                        <p className="calc-price">${price} x {trip.summedNights} nights</p>
-                                        <p>${trip.summedPrice}</p>
+                                        <p className="calc-price">${price} x {trip.totalNights} nights</p>
+                                        <p>${trip.totalPrice}</p>
                                     </div>
                                     <div className="service-fee-container flex space-between">
                                         <p className="service-fee">Service fee</p>
@@ -212,12 +217,12 @@ class _CheckoutForm extends React.Component {
                                     </div>
                                     <div className="total-price-container flex space-between">
                                         <p className="total">Total</p>
-                                        <p className="total-price">${trip.summedPrice + 200}</p>
+                                        <p className="total-price">${trip.totalPrice + 200}</p>
                                     </div>
                                 </div>
                             }
 
-                            {!isCheckoutToReserve && <div className="check-btn-container flex">
+                            {!isCheckoutToReserve && <div className="check-btn-container flex" onMouseOver={this.getMouseCord}>
                                 <Button onClick={() => this.getTripPrice(trip.startDate, trip.endDate, price)}>Check availabilty</Button>
                             </div>}
                             {isCheckoutToReserve && <div className="check-btn-container flex">
@@ -227,64 +232,8 @@ class _CheckoutForm extends React.Component {
                         </div>
                     </div >
                 </section>
-                {isGuestPopupOn && <div className="guest-popup-container">
-                    <div className="guests-popup">
-                        <div className="adults-line flex space-between align-center">
-                            <div>
-                                <p>Adults</p>
-                            </div>
-                            <div className="counter-container flex space-between align-center">
-                                <div className="minus-guest-btn flex" onClick={() => { this.onSelectGuests('adults', 'minus') }}>
-                                    <p><FaMinus size={14} /></p>
-                                </div>
-                                <div>
-                                    <p>{trip.guests.adults}</p>
-                                </div>
-                                <div className="plus-guest-btn flex" onClick={() => { this.onSelectGuests('adults', 'plus') }}>
-                                    <p><FaPlus size={14} /></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="children-line flex space-between align-center" >
-                            <div>
-                                <p>Children</p>
-                            </div>
-                            <div className="counter-container flex space-between align-center">
-                                <div className="minus-guest-btn flex" onClick={() => { this.onSelectGuests('kids', 'minus') }}>
-                                    <p><FaMinus size={14} /></p>
-                                </div>
-                                <div>
-                                    <p>{trip.guests.kids}</p>
-                                </div>
-                                <div className="plus-guest-btn flex" onClick={() => { this.onSelectGuests('kids', 'plus') }}>
-                                    <p><FaPlus size={14} /></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="infants-line flex space-between align-center">
-                            <div>
-                                <p>Infants</p>
-                            </div>
-                            <div className="counter-container flex space-between align-center">
-                                <div className="minus-guest-btn flex" onClick={() => { this.onSelectGuests('infants', 'minus') }}>
-                                    <p><FaMinus size={14} /></p>
-                                </div>
-                                <div>
-                                    <p>{trip.guests.infants}</p>
-                                </div>
-                                <div className="plus-guest-btn flex" onClick={() => { this.onSelectGuests('infants', 'plus') }}>
-                                    <p><FaPlus size={14} /></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="max-guests-container">
-                            <p>{stay.capacity} guests maximum. Infants don’t count toward the number of guests.</p>
-                        </div>
-                        <div className="close-guest-popup-container">
-                            <p onClick={() => { this.toggleGuestsModal() }}>Close</p>
-                        </div>
-                    </div>
-                </div>}
+                {isGuestPopupOn && <GuestsCheckoutModal toggleGuestsModal={this.toggleGuestsModal} onSelectGuests={this.onSelectGuests} trip={trip} stay={stay} />}
+                {/* {isGuestPopupOn && } */}
                 {datesModal && <DatesPicker2 onSelectDates={this.onSelectDates} handleChange={this.handleChange} />}
             </section>
         )
@@ -300,7 +249,7 @@ function mapStateToProps(state) {
     }
 }
 const mapDispatchToProps = {
-    onBookTrip
+    onAddOrder
 }
 
 export const CheckoutForm = connect(mapStateToProps, mapDispatchToProps)(_CheckoutForm)

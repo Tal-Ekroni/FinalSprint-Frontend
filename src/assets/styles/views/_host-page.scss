@@ -1,0 +1,24 @@
+.host-page-container {
+    padding-top: 250px;
+    min-height: 100vh;
+}
+
+.tabs-bar {
+    font-family: circular-bold;
+    margin-top: 30px;
+    width: 200px;
+    height: 50px;
+}
+button {
+    font-family: circular-bold;
+    color: #333;
+}
+.host-tab {
+    border-radius: 15px;
+    justify-content: center;
+    width: 100px;
+    &.active {
+        background-color: $clr6;
+        color: $clr1;
+    }
+}

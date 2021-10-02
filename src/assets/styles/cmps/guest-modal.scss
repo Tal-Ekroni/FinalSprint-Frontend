@@ -1,16 +1,17 @@
-.guest-modal {
-    position: absolute;
-    width: 400px;
+.guest-modal-container {
+    position: relative;
+    width: 60%;
     height: 245px;
     border-radius: 32px;
     background-color: $clr1;
-    top: 55px;
-    right: 0px;
+    bottom: 95px;
     z-index: 3;
     overflow: hidden;
-    margin-top: 12px;
+    margin: 0 auto;
     padding: 16px 32px;
     font-family: circular-light;
+    border: 1px solid #00000030;
+
     p {
         font-family: unset;
     }
@@ -37,19 +38,18 @@
     & .guest-card {
         z-index: 5;
         background-color: white;
-        padding-top: 16px !important;
-        padding-bottom: 16px !important;
-        padding-right: 4px !important;
-        min-width: 330px;
+        padding-top: 16px;
+        padding-bottom: 16px;
+        padding-right: 4px;
         &:not(:last-child) {
             border-bottom: 1px solid rgb(235, 235, 235);
         }
         & .guest-amount {
             display: flex;
             align-items: center;
-            justify-content: space-between !important;
-            width: 104px !important;
-            height: 32px !important;
+            justify-content: space-between;
+            width: 104px;
+            height: 32px;
             & .guest-btn {
                 display: flex;
                 justify-content: center;
@@ -57,22 +57,22 @@
                 color: $clr2;
                 border-radius: 50%;
                 background: rgb(255, 255, 255);
-                border: 1px solid rgb(176, 176, 176) !important;
-                color: rgb(113, 113, 113) !important;
-                width: 32px !important;
-                height: 32px !important;
-                flex-grow: 0 !important;
-                flex-grow: 0 !important;
-                flex-shrink: 0 !important;
-                cursor: pointer !important;
-                margin: 0px !important;
-                padding: 0px !important;
+                border: 1px solid rgb(176, 176, 176);
+                color: rgb(113, 113, 113);
+                width: 32px;
+                height: 32px;
+                flex-grow: 0;
+                flex-grow: 0;
+                flex-shrink: 0;
+                cursor: pointer;
+                margin: 0px;
+                padding: 0px;
                 text-align: center;
                 &.zero {
-                    cursor: not-allowed !important;
-                    color: rgb(235, 235, 235) !important;
-                    border-color: rgb(235, 235, 235) !important;
-                    background: rgb(255, 255, 255) !important;
+                    cursor: not-allowed;
+                    color: rgb(235, 235, 235);
+                    border-color: rgb(235, 235, 235);
+                    background: rgb(255, 255, 255);
                 }
             }
         }

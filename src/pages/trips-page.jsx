@@ -1,15 +1,23 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { showSuccessMsg } from '../services/event-bus.service.js'
+// import { showSuccessMsg } from '../services/event-bus.service.js'
 import travelImg from '../assets/img/travel.jpg'
 import { TripsList } from '../cmps/trips-list.jsx'
 class _TripsPage extends React.Component {
+    state = {
+        user: null
+    }
+    async componentDidMount() {
+        // this.props.loadAndWatchUser(this.props.match.params.id)
+    }
+    onCancelTrip = () => {
 
+    }
     render() {
         const { user } = this.props
         return (
             <main className="trips-page-container main-layout">
-                <section className="trips-container">
+                {user && <section className="trips-container">
                     <div className="trips-title-container">
                         <h1>Trips</h1>
                     </div>
@@ -22,7 +30,7 @@ class _TripsPage extends React.Component {
                     {user.myTrips && user.myTrips.length && <section className="trips-container">
                         <TripsList trips={user.myTrips} isHost={user.isHost} />
                     </section>}
-                </section>
+                </section>}
             </main>
         )
     }
@@ -31,7 +39,7 @@ class _TripsPage extends React.Component {
 function mapStateToProps(state) {
     return {
         user: state.userModule.user,
-        
+
 
     }
 }

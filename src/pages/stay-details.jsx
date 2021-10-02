@@ -1,31 +1,25 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import { connect } from 'react-redux'
-import { NavLink } from 'react-router-dom'
 import { stayService } from '../services/stay.service'
-import { showSuccessMsg } from '../services/event-bus.service.js'
-import { FaHome, FaBroom, FaDoorClosed, FaKey, FaFlag, FaStar } from 'react-icons/fa'
+import {  FaStar } from 'react-icons/fa'
 import { onEditStay, onRemoveStay } from '../store/stay.actions.js'
 import { BasicInfo } from '../cmps/details-base-info'
 import { AssetSum } from '../cmps/details-asset-sum'
 import { AssetAmenities } from '../cmps/details-amenities'
 import 'react-dates/initialize'
 import 'react-dates/lib/css/_datepicker.css';
-import * as data from '../data/air-data.json';
-import { ErrorMessage, Field, Form, Formik } from 'formik'
-import { Button, TextField } from '@material-ui/core'
+// import * as data from '../data/air-data.json';
 import { CheckoutForm } from '../cmps/details-checkout-form'
-import { DayPickerRangeController } from 'react-dates'
 import { ReviewsList } from '../cmps/reviews-list'
 import { StayMap } from '../cmps/stay-map'
-import { DatesPicker2 } from '../cmps/dates-picker2'
 import { AddReview } from '../cmps/add-review'
 import { ReviewAvg } from '../cmps/_reviews-avg'
 import { ReadMore } from '../cmps/_read-more'
+
 // import img from '../assets/img/1.jpg'
 // const stay = data.stay;
 // var stay = data.default[0].stay[0]
-var trip = data.default[0].trip
+// var trip = data.default[0].trip
 class _StayDetails extends React.Component {
     state = {
         stay: null,
@@ -40,12 +34,10 @@ class _StayDetails extends React.Component {
     }
     componentDidMount() {
         window.scrollTo(0, 0)
-
         // localStorage.setItem('stay', JSON.stringify([stay]))
         const { stayId } = this.props.match.params
         if (!stayId) this.props.history.push('/')
         else {
-            let currStay;
             stayService.getById(stayId)
                 .then(stay => {
                     this.setState({
@@ -61,8 +53,8 @@ class _StayDetails extends React.Component {
                 })
 
         }
-
     }
+
     onRemoveStay = (stayId) => {
         this.props.onRemoveStay(stayId)
     }
@@ -107,12 +99,9 @@ class _StayDetails extends React.Component {
                             <section className="asset-sum-container">
                                 <AssetSum />
                             </section>
-
                             <section className="asset-desc-container">
                                 <div className="asset-desc">
                                     {stay.summary > 100 ? <p >{stay.summary.substring(0, 100)} <span className="read-more" > More...</span></p> : <p  >{stay.summary}</p>}
-
-                                    {/* <p>"{stay.summary}"</p> */}
                                 </div>
                             </section>
                             <section className="amenities-container">
@@ -189,7 +178,6 @@ class _StayDetails extends React.Component {
         )
     }
 }
-{/* <img src={stay.host.imgUrl}  /> */ }
 function mapStateToProps(state) {
     return {
         user: state.userModule.user,

@@ -77,7 +77,7 @@ class _AppHeader extends React.Component {
         this.onToggleScreen(false)
         this.setState({ locModal: false, guestModal: false, datesModal: false })
     }
-   
+
     render() {
         const { user, setFilter, filterBy, isFullHeader } = this.props
         const { isUserMenuOpen, isLoginBotmodal, isScreenOpen, locModal, datesModal, guestModal } = this.state
@@ -94,14 +94,14 @@ class _AppHeader extends React.Component {
                         {!isFullHeader && <SearchBar setFilter={setFilter} isFullHeader={isFullHeader} filterBy={filterBy} datesModal={datesModal} guestModal={guestModal} locModal={locModal} onToggleSearchModals={this.onToggleSearchModals} />}
                     </div>
                     <div className="nav-bar-container flex ">
+                        <div className="nav-options flex align-center">
+                            <NavLink to="/stay/" className="nav-opt">Become a host</NavLink>
+                        </div>
 
                         <div className="flex align-center">
                             <NavLink to="/stay/" className="nav-opt">Become a host</NavLink>
                         </div>
 
-                        <div className="nav-options flex align-center">
-                            <NavLink to="/explore" className="nav-opt">Explore</NavLink>
-                        </div>
 
                         <div className="user-img-container " onClick={this.onToogleMenu}>
 

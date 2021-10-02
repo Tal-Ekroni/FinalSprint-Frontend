@@ -10,17 +10,15 @@
         align-items: center;
         width: 98.7vw;
         box-shadow: inset 0px 1px 20px 0px #5a5a5a;
-        .where-to-go{
+        .where-to-go {
             position: relative;
             top: 10px;
-            h3{
+            h3 {
                 font-family: circular-book;
                 font-size: 18px;
             }
-
         }
         .flex-btn {
-            // color: linear-gradient(90deg, #6f019c 0%, #c6017e 135.12%);
             a {
                 -webkit-text-fill-color: transparent;
                 background: -webkit-linear-gradient(90deg, #6f019c 0%, #c6017e 135.12%);
@@ -33,7 +31,7 @@
             top: 46px;
             background-color: $clr1;
             box-shadow: 0px 6px 16px #0000002b;
-            font-size:1.125rem;
+            font-size: 1.125rem;
             font-family: circular-bold;
             height: 60px;
             width: 200px;
@@ -49,7 +47,7 @@
         margin-top: 20px;
         margin-bottom: 50px;
         h2 {
-            font-family: circular-Bold;
+            font-family: circular-bold;
         }
         & .locations {
             display: grid;
@@ -72,6 +70,14 @@
                 }
                 .loc-img {
                     height: 50px;
+                }
+            }
+            @include for-narrow-layout {
+                :nth-last-child(n + 5) {
+                    display: none;
+                }
+                .loc-section {
+                    flex-direction: column;
                 }
             }
             & .loc-section {
@@ -105,8 +111,8 @@
             margin-top: 15px;
             .live-card {
                 .live-img {
-                    height: 250px;
-                    width: 250px;
+                    height: 265px;
+                    width: 265px;
                 }
             }
             @include for-mobile-layout {
@@ -116,13 +122,17 @@
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-
-                // .live-card{
-                //     .live-img{
-                //         height:150px;
-                //         width:150px;
-                //     }
-                // }
+            }
+            @include for-narrow-layout {
+                .live-card:nth-last-child(n + 3) {
+                    display: none;
+                }
+                .live-card {
+                    .live-img {
+                        height: 225px;
+                        width: 225px;
+                    }
+                }
             }
             @include for-wide-layout {
                 .live-img {
@@ -151,18 +161,24 @@
         padding: 100px;
         border-radius: 10px;
         margin-bottom: 90px;
+        h1 {
+            font-size: 3rem;
+        }
         & p {
+            font-size: 1.125rem;
             margin-top: 15px;
-            max-width: 270px;
+            max-width: 300px;
         }
         & .try-host-btn {
             background-color: $clr1;
+            font-family: circular-bold;
+            font-size: 1rem;
             color: $clr2;
-            height: 50px;
-            margin-top: 20px;
-            width: 120px;
+            min-height: 45px;
+            margin-top: 40px;
+            width: 135px;
             text-align: center;
-            border-radius: 5%;
+            border-radius: 8px;
         }
     }
 }

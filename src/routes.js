@@ -7,6 +7,7 @@ import { AdminApp } from './pages/admin-app.jsx'
 import { StayDetails } from './pages/stay-details.jsx'
 import { LoginPage } from './pages/login.jsx'
 import { TripsPage } from './pages/trips-page.jsx'
+import { HostPage } from './pages/host-page.jsx'
 // import { Login } from './pages/'
 
 // Routes accesible from the main navigation (in AppHeader)
@@ -31,6 +32,10 @@ const routes = [
     {
         path: '/trips',
         component: TripsPage,
+    },
+    {
+        path: '/host',
+        component: HostPage,
     },
     {
         path: '/login',

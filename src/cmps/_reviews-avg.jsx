@@ -43,61 +43,61 @@ export class ReviewAvg extends React.Component {
         return (
             <div className="review-avg-container flex space-between" >
                 <div className="left-review">
-                    <div className="line flex align-center">
+                    <div className="line flex align-center space-between">
                         <p className="line-title">Cleanliness</p>
-                        <div className="line-loader-container">
-                            <div className="line-loader" style={{ width: `${this.getAvrage('cleanliness') * 20}%` }}></div>
-                        </div>
-                        <div>
+                        <div className="loader-container flex align-center space-between">
+                            <div className="line-loader-container">
+                                <div className="line-loader" style={{ width: `${this.getAvrage('cleanliness') * 20}%` }}></div>
+                            </div>
                             <p className="review-score">{this.getAvrage('cleanliness')}</p>
                         </div>
                     </div>
-                    <div className="line flex align-center">
+                    <div className="line flex align-center space-between">
                         <p className="line-title">Communication</p>
-                        <div className="line-loader-container">
-                            <div className="line-loader" style={{ width: `${this.getAvrage('communication') * 20}%` }}></div>
-                        </div>
-                        <div>
-                            <p className="review-score">{this.getAvrage('communication')}</p>
+                        <div className="loader-container flex align-center space-between">
+                            <div className="line-loader-container">
+                                <div className="line-loader" style={{ width: `${this.getAvrage('communication') * 20}%` }}></div>
+                            </div>
+                                <p className="review-score">{this.getAvrage('communication')}</p>
                         </div>
 
                     </div>
-                    <div className="line flex align-center">
+                    <div className="line flex align-center space-between">
                         <p className="line-title">Check in</p>
+                        <div className="loader-container flex align-center space-between">
                         <div className="line-loader-container">
                             <div className="line-loader" style={{ width: `${this.getAvrage('checkIn') * 20}%` }}></div>
                         </div>
-                        <div>
                             <p className="review-score">{this.getAvrage('checkIn')}</p>
                         </div>
                     </div>
                 </div>
                 <div className="right-review">
-                    <div className="line flex align-center">
+                    <div className="line flex align-center space-between">
                         <p className="line-title">Accuracy</p>
+                        <div className="loader-container flex align-center space-between">
                         <div className="line-loader-container ">
                             <div className="line-loader" style={{ width: `${this.getAvrage('accuracy') * 20}%` }}></div>
                         </div>
-                        <div>
                             <p className="review-score">{this.getAvrage('accuracy')}</p>
                         </div>
 
                     </div>
-                    <div className="line flex align-center">
+                    <div className="line flex align-center space-between">
                         <p className="line-title">Location</p>
+                        <div className="loader-container flex align-center space-between">
                         <div className="line-loader-container">
                             <div className="line-loader" style={{ width: `${this.getAvrage('location') * 20}%` }}></div>
                         </div>
-                        <div>
                             <p className="review-score">{this.getAvrage('location')}</p>
                         </div>
                     </div>
-                    <div className="line flex align-center">
+                    <div className="line flex align-center space-between">
                         <p className="line-title">Value</p>
+                        <div className="loader-container flex align-center space-between">
                         <div className="line-loader-container">
                             <div className="line-loader" style={{ width: `${this.getAvrage('value') * 20}%` }}></div>
                         </div>
-                        <div>
                             <p className="review-score">{this.getAvrage('value')}</p>
                         </div>
                     </div>

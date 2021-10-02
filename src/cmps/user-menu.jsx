@@ -35,9 +35,13 @@ class _UserMenu extends React.Component {
             <div className="user-menu-container" >
                 <section className="user-menu top-section">
                     <div >
-                    <NavLink onClick={()=>this.props.onToogleMenu()} className="user-menu-line" to="/trips"><p>Trips</p></NavLink>
-                        
+                        <NavLink onClick={() => this.props.onToogleMenu()} className="user-menu-line" to="/trips"><p>Trips</p></NavLink>
+
                     </div>
+                    {user && user.isHost && <div >
+                        <NavLink onClick={() => this.props.onToogleMenu()} className="user-menu-line" to="/host"><p>Host</p></NavLink>
+
+                    </div>}
                     <div className="user-menu-line">
                         <p>Wishlist</p>
                     </div>
