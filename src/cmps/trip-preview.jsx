@@ -1,13 +1,7 @@
 import React from "react";
 import { connect } from 'react-redux'
-import { FaStar, } from "react-icons/fa";
-import { onToggleLikeTrip } from '../store/user.actions.js'
-
+import { onCancelTrip } from '../store/user.actions'
 import LazyLoad from "./preview-slider"
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import { showErrorMsg } from "../services/event-bus.service.js";
-import { userService } from "../services/user.service.js";
 
 class _TripPreview extends React.Component {
     state = {
@@ -21,17 +15,17 @@ class _TripPreview extends React.Component {
         var date = '0' + time.getDate();
         var month = "0" + (time.getMonth() + 1);
         var year = "0" + time.getFullYear();
-
         var formattedTime = date.substr(-2) + '.' + month.substr(-2) + '.' + year.substr(-2);
-
-        console.log('ft', formattedTime);
         return formattedTime
+    }
+    onCancelTrip = (trip) => {
+        this.props.onCancelTrip(trip)
     }
     render() {
         const { trip } = this.props
         var startDate = this.getTime(trip.startDate)
         var endDate = this.getTime(trip.endDate)
-        console.log(trip);
+        console.log('trip', trip);
         return (
             <div className="trip-preview-container"  >
                 {trip &&
@@ -54,7 +48,7 @@ class _TripPreview extends React.Component {
                                 {trip.status === 'pending' && <div>
                                     <p>Wait for approval</p>
                                 </div>}
-                                <div><p>Cancel order</p></div>
+                                <div><p onClick={() => { this.onCancelTrip(trip) }}>Cancel order</p></div>
                             </div>
                         </div >
                     </section>}
@@ -77,6 +71,9 @@ function mapStateToProps(state) {
     }
 }
 
+const mapDispatchToProps = {
+    onCancelTrip
+}
 
 
-export const TripPreview = connect(mapStateToProps)(_TripPreview)
+export const TripPreview = connect(mapStateToProps, mapDispatchToProps)(_TripPreview)

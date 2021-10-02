@@ -16,6 +16,7 @@ function query(entityType, delay = 200, filterBy) {
     var filterdEntities = []
     if (entityType === 'stay') entities = JSON.parse(localStorage.getItem(entityType)) || _save('stay', gStays);
     if (entityType === 'user') entities = JSON.parse(localStorage.getItem(entityType)) || _save('user', gUsers);
+    if (entityType === 'order') entities = JSON.parse(localStorage.getItem(entityType)) || _save('order',[]);
     // var entities = JSON.parse(localStorage.getItem(entityType)) 
     if (filterBy) {
         if (filterBy.location) {
@@ -70,7 +71,7 @@ function get(entityType, entityId) {
 function post(entityType, newEntity) {
     newEntity._id = _makeId()
     return query(entityType)
-        .then(entities => {
+    .then(entities => {
             entities.push(newEntity)
             _save(entityType, entities)
             return newEntity
@@ -78,6 +79,7 @@ function post(entityType, newEntity) {
 }
 
 function put(entityType, updatedEntity) {
+    console.log('storgae',entityType );
     return query(entityType)
         .then(entities => {
             const idx = entities.findIndex(entity => entity._id === updatedEntity._id)

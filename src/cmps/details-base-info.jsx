@@ -8,12 +8,12 @@ export function BasicInfo({ stay }) {
                 </div>
                 <section className="info-line flex space-between">
                     <div className="stay-info-conatiner flex">
-                        <div className="stay-review-avg flex align-end">
-                            <p><FaStar size={13} color="#FF5A5F" /></p>
-                            <p>5</p>
+                        <div className="stay-avg-info flex align-end">
+                            <p><FaStar size={14} color="#FF5A5F" /></p>
+                            <p className="info-line-score">5</p>
                             <p>{`(${stay.reviews.length} reviews)`}</p>
                         </div>
-                        <p>•</p>
+                        <p className="dot">•</p>
                         <div className="host-location-container flex align-end">
                             <p className="info-line-loc">{stay.loc.address}</p>
                         </div>

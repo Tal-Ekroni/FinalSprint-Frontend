@@ -1,7 +1,6 @@
 import { Component } from 'react'
 import { connect } from 'react-redux'
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { Button, MenuItem, Select, TextareaAutosize, TextField } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import { onAddReview } from '../store/review.actions.js'
 import { utilService } from '../services/util.service.js';
 import Rating from 'react-rating';
@@ -49,7 +48,7 @@ class _AddReview extends Component {
         this.setState(prevState => ({ newReview: { ...prevState.newReview, [field]: value } }))
     }
     changeRating = (target) => {
-        console.log(target);
+        // console.log(target);
     }
 
     formSubmited = (ev) => {

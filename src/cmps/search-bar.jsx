@@ -73,7 +73,8 @@ class _SearchBar extends React.Component {
             top: bottom + 'px',
             left: (left + 50) + 'px'
         }
-        this.setState({ modalPos: pos }, () => console.log(this.state.modalPos))
+        this.setState({ modalPos: pos })
+        // this.setState({ modalPos: pos }, () => console.log(this.state.modalPos))
         if (this.state.datesModal) this.toggleDatesModal()
         this.setState({ guestModal: !this.state.guestModal })
     }

@@ -3,7 +3,7 @@ import { TripPreview } from "./trip-preview";
 export function TripsList({ trips, isHost, stays }) {
     // console.log('tripspage',trips,isHost);
     return (
-        <div className="trip-list main-layout flex">
+        <div className="trip-list flex">
             {trips.map((trip, idx) =>
                 <TripPreview key={idx} trip={trip} />
             )}
