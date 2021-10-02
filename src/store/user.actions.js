@@ -125,11 +125,7 @@ export function onBookTrip(trip) {
         }
     }
 }
-export function onCancelTrip(trip) {
-// const {id , }
-console.log('trip cancel', trip);
 
-}
 export function loadAndWatchUser(userId) {
     return async (dispatch) => {
         try {

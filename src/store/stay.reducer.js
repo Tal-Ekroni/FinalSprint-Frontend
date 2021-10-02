@@ -38,7 +38,6 @@ export function stayReducer(state = initialState, action) {
             break
         case 'SET_HEADER':
             newState = { ...state, isPageTop: action.isPageTop }
-            console.log(newState);
             break
         case 'SET_FILTER':
             newState = { ...state, filterBy: { ...action.filter } }

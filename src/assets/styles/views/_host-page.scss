@@ -1,85 +1,24 @@
 .host-page-container {
-    padding-top: 180px;
+    padding-top: 250px;
     min-height: 100vh;
 }
-.host-container {
-    min-height: 400px;
-    border-bottom: 0.5px solid lightgray;
-    .host-preview-container {
-        cursor: pointer;
-        // border: 0.5px solid #717171;
-        border-radius: 15px;
-        overflow: hidden;
-        width: 350px;
-        height: 300px;
-    }
-    .host-preview-details {
-        padding: 10px;
-    }
-    & .host-title-container {
-        height: 36px;
-        margin-bottom: 24px;
-        font-family: circular-bold;
-        & p {
-            line-height: 1.2rem;
-        }
-    }
-    & .host-img-container {
-        height: 200px;
-        overflow: hidden;
-        & img {
-            object-fit: cover;
-            // height: 200px;
-        }
-    }
-    & a:hover {
-        text-decoration: none;
-    }
-    & .slick-slider {
-        position: relative;
-        height: calc(100% -100px);
-        button {
-            margin: -5px 0;
-        }
-        &:hover {
-            .slick-prev {
-                opacity: 1;
-            }
-            .slick-next {
-                opacity: 1;
-            }
-        }
-        .slick-prev:before,
-        .slick-next:before {
-            font-size: 30px !important;
-        }
-        .slick-prev,
-        .slick-next {
-            position: absolute;
-            top: 50%;
-            left: 0px;
-            z-index: 5;
-            opacity: 0;
-            transform: translateY(-50%);
-        }
-        .slick-next {
-            right: 10px;
-            left: unset;
-        }
 
-        .slick-dots {
-            bottom: 10px;
-            li.slick-active button::before {
-                color: whitesmoke;
-            }
-        }
+.tabs-bar {
+    font-family: circular-bold;
+    margin-top: 30px;
+    width: 200px;
+    height: 50px;
+}
+button {
+    font-family: circular-bold;
+    color: #333;
+}
+.host-tab {
+    border-radius: 15px;
+    justify-content: center;
+    width: 100px;
+    &.active {
+        background-color: $clr6;
+        color: $clr1;
     }
-}
-.host-img {
-    height: 100px;
-}
-
-.host-list {
-    flex-wrap: wrap;
-    gap: 50px;
 }

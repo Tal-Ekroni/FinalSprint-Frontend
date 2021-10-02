@@ -41,7 +41,8 @@ export function onAddOrder(orderToAdd) {
             const user = await userService.getById(orderToAdd.buyer._id)
             const hostUser = await userService.getById(orderToAdd.host._id)
             const savedOrder = await orderService.save(orderToAdd)
-
+            console.log('host', hostUser);
+            console.log('user', user);
             if (!hostUser.orders) hostUser.orders = []
             if (!user.myTrips) user.myTrips = []
             hostUser.orders.push(orderToAdd)
@@ -60,7 +61,11 @@ export function onAddOrder(orderToAdd) {
         }
     }
 }
+export function onCancelOrder(trip) {
+    // const {id , }
+    console.log('trip cancel', trip);
 
+}
 export function setFilter(filterBy) {
     return async (dispatch) => {
         try {
@@ -112,21 +117,21 @@ export function checkout() {
     }
 }
 
-export function onBookTrip(trip) {
-    return async (dispatch, getState) => {
-        try {
-            // const userTrip = trip
-            // userTrip.id = orderId
-            // const hostOrder = trip
-            // hostOrder.id = orderId
+// export function onBookTrip(trip) {
+//     return async (dispatch, getState) => {
+//         try {
+//             // const userTrip = trip
+//             // userTrip.id = orderId
+//             // const hostOrder = trip
+//             // hostOrder.id = orderId
 
-            // console.log('host', hostUser);
-            // console.log('user', user);
+//             // console.log('host', hostUser);
+//             // console.log('user', user);
 
-            // showSuccessMsg('Stay Rserved ')
-        } catch (err) {
-            showErrorMsg('Cannot reserve stay')
-            console.log('Cannot reserve stay', err)
-        }
-    }
-}
+//             // showSuccessMsg('Stay Rserved ')
+//         } catch (err) {
+//             showErrorMsg('Cannot reserve stay')
+//             console.log('Cannot reserve stay', err)
+//         }
+//     }
+// }
