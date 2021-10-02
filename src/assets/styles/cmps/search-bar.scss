@@ -11,10 +11,14 @@
     border: 0.5px solid lightgray;
     transition: display 1s;
     padding: 0 10px 0 0;
-
+    .guests-container {
+        position: relative;
+    }
     .guests-container,
     .location-container {
         width: 25%;
+        line-height: 18px;
+
     }
 
     .dates-container {
@@ -33,7 +37,6 @@
 
         overflow: hidden;
         transition: background-color 0.3s;
-
     }
     .check-container {
         justify-content: center;
@@ -49,29 +52,31 @@
         margin-top: 13px;
     }
     .dates-container {
+        line-height: 18px;
         span {
             color: $clr5;
-            font-size: 12px;
-            font-family: circular;
+            font-size: 14px;
+            font-family: circular-light;
         }
     }
     .guest-placeholder {
         color: $clr5;
-        font-size: 12px;
-        font-family: circular;
+        font-size: 14px;
+        font-family: circular-light;
     }
     .location-container {
+        
         input {
+            
             background-color: transparent;
-            font-family: circular-light;
             color: $clr5;
         }
         input::placeholder {
+
             color: $clr5;
-            font-size: 12px;
-            font-family: circular;
+            font-size: 14px;
+            font-family: circular-light;
             background-color: transparent;
-           
         }
     }
     label {
@@ -115,10 +120,27 @@
         }
     }
 }
-
 .search-dates-container {
+
     position: absolute;
-    left: 40%;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 90%;
+    .screen {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        height: 9999px;
+        width: 9999px;
+        background-color: red;
+    }
+    .date-pick {
+        width: 328px;
+        .rdrCalendarWrapper {
+            width: 300px;
+            height: 350px;
+        }
+    }
     // background-color: none;
 }
 .rdrDefinedRangesWrapper {

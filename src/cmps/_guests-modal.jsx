@@ -1,3 +1,4 @@
+import React from 'react'
 import { FaStar, FaAngleDown, FaAngleUp, FaMinus, FaPlus } from 'react-icons/fa'
 
 export class GuestsModal extends React.Component {

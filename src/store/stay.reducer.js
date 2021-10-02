@@ -4,6 +4,7 @@ const initialState = {
     currStay: null,
     review: null,
     lastRemovedStay: null,
+    isPageTop: true,
     filterBy: {
         startDate: null,
         endDate: null,
@@ -35,6 +36,10 @@ export function stayReducer(state = initialState, action) {
         case 'ADD_STAY':
             newState = { ...state, stays: [...state.stays, action.stay] }
             break
+        case 'SET_HEADER':
+            newState = { ...state, isPageTop: action.isPageTop }
+            console.log(newState);
+            break
         case 'SET_FILTER':
             newState = { ...state, filterBy: { ...action.filter } }
             break;
@@ -42,7 +47,7 @@ export function stayReducer(state = initialState, action) {
             stays = state.stays.map(stay => (stay._id === action.stay._id) ? action.stay : stay)
             newState = { ...state, stays }
             break
-       
+
         case 'REMOVE_FROM_CART':
             cart = state.cart.filter(stay => stay._id !== action.stayId)
             newState = { ...state, cart }

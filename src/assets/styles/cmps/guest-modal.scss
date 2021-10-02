@@ -1,16 +1,19 @@
-.guest-modal {
-    top: 114%;
-    right: -4%;
-    .screen {
-        position: fixed;
-        // background-color:rgba(0, 0, 0, 0.075);
-        inset: 0;
-        z-index:-1;
-        height: 9999px;
-        width: 9999px;
-    }
-    .guest-card {
-        z-index: 5;
-        background-color: white;
-    }
-}
+// .guest-modal {
+//     position: absolute;
+//     width: 400px;
+//     height: 245px;
+//     border-radius: 13px;
+//     overflow: hidden;
+//     .screen {
+//         position: fixed;
+//         inset: 0;
+//         z-index: -1;
+//         height: 9999px;
+//         width: 9999px;
+//     }
+//     .guest-card {
+//         z-index: 5;
+//         background-color: white;
+//         padding-right: 0px 0px 1px 1px;
+//     }
+// }

@@ -46,7 +46,7 @@ class _StayApp extends React.Component {
         if (!stays.length) return <div>loading</div>
         return (
             <main className="main-container page-padding">
-                <p>{stays.length} stays</p>
+                <p>{stays.length===1?`${stays.length} stay`:`${stays.length} stays`}</p>
                 <ExploreFilter />
                 {stays.length && <StaysList stays={stays} history={this.props.history}  />}
             </main>

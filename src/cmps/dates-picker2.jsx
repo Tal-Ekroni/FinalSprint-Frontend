@@ -28,10 +28,15 @@ export class DatesPicker2 extends React.Component {
             key: 'selection',
         }
         return (
+            <div className="">
+                <div className="screen" onClick={() => { this.props.toggleDatesModal(false) }}></div>
+
             <DateRangePicker
-                ranges={[selectionRange]}
-                onChange={this.handleSelect}
+            className="date-pick"
+            ranges={[selectionRange]}
+            onChange={this.handleSelect}
             />
+                </div>
         )
 
         // return (
