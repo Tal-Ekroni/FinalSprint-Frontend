@@ -29,7 +29,7 @@ export class DatesPicker2 extends React.Component {
         }
         return (
             <div className="">
-                <div className="screen" onClick={() => { this.props.toggleDatesModal(false) }}></div>
+                {/* <div className="screen" onClick={() => { this.props.toggleDatesModal(false) }}></div> */}
 
             <DateRangePicker
             className="date-pick"

@@ -14,13 +14,25 @@ class _AppHeader extends React.Component {
     state = {
         isUserMenuOpen: false,
         isLoginBotmodal: false,
-        // isFullHeader: this.props.isFullHeader
-    }
-    componentDidMount() {
-        this.setState({ isUserMenuOpen: false, isLoginBotmodal: false })
-      
+        isScreenOpen: false,
+        guestModal: false,
+        datesModal: false,
+        locModal: false,
     }
 
+    componentDidMount() {
+        this.setState({ isUserMenuOpen: false, isLoginBotmodal: false })
+        window.scrollTo(0, 0)
+        window.addEventListener('scroll', this.onScrollCloseModals)
+    }
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.onScrollCloseModals)
+    }
+    onScrollCloseModals = (ev) => {
+        if (ev.target.scrollingElement.scrollTop > 1) {
+            this.closeAllModals()
+        }
+    }
 
     onLogin = (credentials) => {
         this.props.onLogin(credentials)
@@ -31,24 +43,47 @@ class _AppHeader extends React.Component {
     onLogout = () => {
         this.props.onLogout()
     }
-    onGuestMode = () => {
-        this.setState(prevState => ({
-            isGuestMode: !prevState.isGuestMode
-        }));
 
-    }
     onToogleMenu = () => {
         this.setState({ isUserMenuOpen: !this.state.isUserMenuOpen })
     }
     onOpenBotLogin = () => {
         this.setState({ isLoginBotmodal: true })
     }
+    onToggleScreen = (val) => {
+        this.setState({ isScreenOpen: val })
+    }
+    onToggleSearchModals = (modal, val) => {
+        switch (modal) {
+            case 'locModal':
+                this.closeAllModals()
+                this.onToggleScreen(!this.state.locModal)
+                this.setState({ locModal: !this.state.locModal })
+                break;
+            case 'guestModal':
+                this.closeAllModals()
+                this.onToggleScreen(!this.state.guestModal)
+                this.setState({ guestModal: !this.state.guestModal })
+                break;
+            case 'datesModal':
+                this.closeAllModals()
+                this.onToggleScreen(!this.state.datesModal)
+                this.setState({ datesModal: !this.state.datesModal })
+                break;
+        }
+    }
+
+    closeAllModals = () => {
+        this.onToggleScreen(false)
+        this.setState({ locModal: false, guestModal: false, datesModal: false })
+    }
+   
     render() {
-        const { user, setFilter, filterBy ,isFullHeader} = this.props
-        const { isUserMenuOpen, isLoginBotmodal,  } = this.state
+        const { user, setFilter, filterBy, isFullHeader } = this.props
+        const { isUserMenuOpen, isLoginBotmodal, isScreenOpen, locModal, datesModal, guestModal } = this.state
         return (
             <header className={isFullHeader ? `app-header-conatiner main-container` : `app-header-conatiner main-container mini-header`}>
-
+                <div className={isScreenOpen ? "screen screen-open full" : "screen full"} onClick={() => { this.closeAllModals() }}></div>
                 <nav className="user-header-section flex space-between align-center">
 
                     <div className="logo-container flex align-center">
@@ -56,7 +91,7 @@ class _AppHeader extends React.Component {
                     </div>
 
                     <div className="mini-search-bar">
-                        {!isFullHeader && <SearchBar setFilter={setFilter} isFullHeader={isFullHeader} filterBy={filterBy} />}
+                        {!isFullHeader && <SearchBar setFilter={setFilter} isFullHeader={isFullHeader} filterBy={filterBy} datesModal={datesModal} guestModal={guestModal} locModal={locModal} onToggleSearchModals={this.onToggleSearchModals} />}
                     </div>
                     <div className="nav-bar-container flex ">
 
@@ -84,7 +119,7 @@ class _AppHeader extends React.Component {
 
                     </div>
                 </nav>
-                {isFullHeader && <SearchBar setFilter={setFilter} isFullHeader={isFullHeader} filterBy={filterBy} />}
+                {isFullHeader && <SearchBar setFilter={setFilter} isFullHeader={isFullHeader} filterBy={filterBy} datesModal={datesModal} guestModal={guestModal} locModal={locModal} onToggleSearchModals={this.onToggleSearchModals} />}
                 {isLoginBotmodal && <div className="main-layout">
                     <LoginSignup />
                 </div>}

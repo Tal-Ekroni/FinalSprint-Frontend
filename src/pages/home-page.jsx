@@ -21,7 +21,7 @@ class _HomePage extends React.Component {
         this.props.setMiniHeader(true)
         window.addEventListener('scroll', this.onSetMiniHeader)
     }
-    componentWillUnmount() {
+    componentWillUnmount() {    
         this.props.setMiniHeader(false)
         window.removeEventListener('scroll',this.onSetMiniHeader)
     }
@@ -57,7 +57,7 @@ class _HomePage extends React.Component {
                 break;
         }
         this.props.setFilter(newFilter)
-        this.props.history.push('/explore')
+        this.props.history.push(`/explore`)
     }
     render() {
         return (

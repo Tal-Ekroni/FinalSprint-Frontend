@@ -1,11 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-
-
 import { loadStays, onAddStay, onEditStay, onRemoveStay, setFilter } from '../store/stay.actions.js'
 import { onBookTrip } from '../store/user.actions.js'
-
-
 import { StaysList } from '../cmps/stays-list.jsx'
 import { ExploreFilter } from '../cmps/explore-filter.jsx'
 class _Explore extends React.Component {
@@ -13,7 +9,6 @@ class _Explore extends React.Component {
     componentDidMount() {
         this.props.loadStays(this.props.filterBy)
         window.scrollTo(0, 0)
-
     }
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.filterBy !== this.props.filterBy) {

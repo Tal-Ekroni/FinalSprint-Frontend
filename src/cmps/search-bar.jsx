@@ -4,13 +4,12 @@ import { FaSearch } from 'react-icons/fa'
 import { withRouter } from "react-router-dom"
 import { DatesPicker2 } from "./dates-picker2"
 import { stayService } from '../services/stay.service';
+import { LocationsPopUp } from './locations-popup';
 
 class _SearchBar extends React.Component {
     state = {
         startDate: null,
         endDate: null,
-        guestModal: false,
-        datesModal: false,
         location: '',
         adultNumber: 0,
         kidsNumber: 0,
@@ -19,7 +18,7 @@ class _SearchBar extends React.Component {
     componentDidMount() {
         const params = stayService.onGetQueryParams()
         this.props.setFilter(params)
-        this.setState(params)
+        this.setState({params})
     }
 
     handleChange = (ev) => {
@@ -59,14 +58,7 @@ class _SearchBar extends React.Component {
     onLoadFilter = async (filterBy) => {
         await this.props.setFilter(filterBy)
     }
-    toggleDatesModal = (val) => {
-        this.setState({ datesModal: false })
-        this.setState({ datesModal: val })
-    }
-    onToggleGuestModals = (ev) => {
-        if (this.state.datesModal) this.toggleDatesModal()
-        this.setState({ guestModal: !this.state.guestModal })
-    }
+
 
     timeToShow = (date, val) => {
         var timeStamp = Date.parse(date);
@@ -77,35 +69,37 @@ class _SearchBar extends React.Component {
         var formattedTime = date.substr(-2) + '.' + month.substr(-2) + '.' + year.substr(-2);
         return formattedTime
     }
+   
 
     render() {
-        const { isFullHeader } = this.props
-        const { location, adultNumber, kidsNumber, infantsNumber, endDate, startDate, guestModal, datesModal } = this.state
+        const { isFullHeader, guestModal, datesModal, locModal,  onToggleSearchModals, } = this.props
+        const { location, adultNumber, kidsNumber, infantsNumber, endDate, startDate } = this.state
         return (
             <div >
                 <div className="search-bar-container flex space-between align-center ">
 
-                    <div className="location-container flex column" onClick={() => { this.toggleDatesModal(false) }}>
+                    <div className="location-container flex column" onClick={() => { onToggleSearchModals('locModal') }}>
                         <label htmlFor="location" className="loc-inpt">Location
                             <input type="text" name="location" autoComplete="off" value={location} onChange={this.handleChange} placeholder="Where are you going?" />
                         </label>
                     </div>
+                    {locModal && <LocationsPopUp  />}
                     <div className="mini-search-input">
-                        <p>
+                        <p >
                             Start your search
                         </p>
                     </div>
                     <div className="dates-container flex ">
                         <div className="check-in-input flex column">
-                            <label htmlFor="" onClick={() => { this.toggleDatesModal(true) }}>Check in <span>{startDate ? this.timeToShow(startDate, 'startDate') : 'Add date'}</span></label>
+                            <label htmlFor="" onClick={() => {  onToggleSearchModals('datesModal') }}>Check in <span>{startDate ? this.timeToShow(startDate, 'startDate') : 'Add date'}</span></label>
                         </div>
                         <div className="check-out-input flex column" >
-                            <label htmlFor="" onClick={() => { this.toggleDatesModal(true) }}>Check out <span>{endDate ? this.timeToShow(endDate, 'startDate') : 'Add date'}</span></label>
+                            <label htmlFor="" onClick={() => {  onToggleSearchModals('datesModal') }}>Check out <span>{endDate ? this.timeToShow(endDate, 'startDate') : 'Add date'}</span></label>
 
                         </div>
                     </div>
 
-                    <div className="guests-container align-center flex" onClick={(ev) => { this.onToggleGuestModals(ev) }}>
+                    <div className="guests-container align-center flex" onClick={(ev) => {  onToggleSearchModals('guestModal') }}>
 
                         <label htmlFor="" className=" flex column" >
                             <span>Guests</span>
@@ -113,7 +107,7 @@ class _SearchBar extends React.Component {
                         </label>
 
                     </div>
-                    {guestModal && <GuestsModal onToggleGuestModals={this.onToggleGuestModals} adultNumber={adultNumber} kidsNumber={kidsNumber} infantsNumber={infantsNumber} onSelectAmount={this.onSelectAmount} />}
+                    {guestModal && <GuestsModal  adultNumber={adultNumber} kidsNumber={kidsNumber} infantsNumber={infantsNumber} onSelectAmount={this.onSelectAmount} />}
                     <div className="search-btn-container flex align-center justify-center" onClick={() => { this.onSetFilter() }} >
                         {!isFullHeader && < FaSearch size={13} />}
                         {isFullHeader && < FaSearch size={15} />}

@@ -4,11 +4,9 @@ export class GuestsModal extends React.Component {
 
 
     render() {
-        const { adultNumber, kidsNumber, infantsNumber, onSelectAmount, onToggleGuestModals } = this.props
+        const { adultNumber, kidsNumber, infantsNumber, onSelectAmount } = this.props
         return (
             <div className="guest-modal flex column">
-                <div className="screen" onClick={(ev) => { onToggleGuestModals(ev) }}>
-                </div>
                 <div className="guest-card flex space-between  align-center">
                     <div className="column">
                         <p className="guest-type">Adults</p>
@@ -16,7 +14,7 @@ export class GuestsModal extends React.Component {
                     </div>
                     <div className="guest-amount">
                         <p className={adultNumber ? "guest-btn" : "guest-btn zero"} onClick={() => onSelectAmount('adultNumber', -1)}><FaMinus /></p>
-                        <p className="guest-amount-count">{adultNumber}</p>
+                        <p className="guest-amount-count">{adultNumber ? adultNumber : 0}</p>
                         <p className="guest-btn " onClick={() => onSelectAmount('adultNumber', 1)}><FaPlus />
                         </p>
                     </div>
@@ -28,7 +26,7 @@ export class GuestsModal extends React.Component {
                     </div>
                     <div className="guest-amount">
                         <p className={kidsNumber ? "guest-btn" : "guest-btn zero"} onClick={() => onSelectAmount('kidsNumber', -1)}><FaMinus /></p>
-                        <p className="guest-amount-count">{kidsNumber}</p>
+                        <p className="guest-amount-count">{kidsNumber ? kidsNumber : 0}</p>
                         <p className="guest-btn " onClick={() => onSelectAmount('kidsNumber', 1)}><FaPlus />
                         </p>
                     </div>
@@ -40,7 +38,7 @@ export class GuestsModal extends React.Component {
                     </div>
                     <div className="guest-amount ">
                         <p className={infantsNumber ? "guest-btn" : "guest-btn zero"} onClick={() => onSelectAmount('infantsNumber', -1)}><FaMinus /></p>
-                        <p className="guest-amount-count">{infantsNumber}</p>
+                        <p className="guest-amount-count">{infantsNumber ? infantsNumber : 0}</p>
                         <p className="guest-btn" onClick={() => onSelectAmount('infantsNumber', 1)}><FaPlus />
                         </p>
                     </div>

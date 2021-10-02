@@ -19,7 +19,7 @@
     @include for-normal-layout {
         grid-template-columns:
             minmax(50px, 1fr)
-            minmax(auto, $narrow-breakpoint)
+            minmax(auto, $normal-breakpoint)
             minmax(50px, 1fr);
     }
     @include for-wide-layout {
