@@ -28,8 +28,9 @@ export function ReviewsPreview({ review, onToogleReadModal, isReadMoreOn }) {
                     <div className="review-txt-container">
 
                         {review.txt.length >= 100 && (
-                            <p >{review.txt.substring(0, 100)} {review.txt.length > 100 && (<span className="read-more" onClick={onToogleReadModal}> More...</span>)}</p>
+                            <p >{review.txt.substring(0, 100)} {review.txt.length > 100 && (<span className="read-more" onClick={onToogleReadModal}><br /> More...</span>)}</p>
                         )}
+
                         {review.txt.length < 100 && <p  >{review.txt}</p>}
                     </div>
 
