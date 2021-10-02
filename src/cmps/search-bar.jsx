@@ -3,6 +3,8 @@ import { GuestsModal } from './guests-modal';
 import { FaSearch } from 'react-icons/fa'
 import { withRouter } from "react-router-dom"
 import { DatesPicker2 } from "./dates-picker2"
+import { stayService } from '../services/stay.service';
+
 class _SearchBar extends React.Component {
     state = {
         startDate: null,
@@ -13,24 +15,13 @@ class _SearchBar extends React.Component {
         adultNumber: 0,
         kidsNumber: 0,
         infantsNumber: 0,
-        modalPos: {
-            top: '',
-            left: ''
-        }
     }
-    // componentDidMount() {
-    //     window.addEventListener('scroll', (ev) => {
-    //         if (ev.target.scrollingElement.scrollTop > 50) {
-    //             this.setState({ guestModal: false, datesModal: false })
-    //         }
+    componentDidMount() {
+        const params = stayService.onGetQueryParams()
+        this.props.setFilter(params)
+        this.setState(params)
+    }
 
-
-
-    //     })
-    // }
-    // componentWillUnmount() {
-    //     window.removeEventListener('scroll')
-    // }
     handleChange = (ev) => {
         const value = ev.target.value;
         this.setState({ location: value }, () => { this.props.setFilter(this.state) });
@@ -61,19 +52,18 @@ class _SearchBar extends React.Component {
     }
     onSetFilter = async () => {
         await this.props.setFilter(this.state)
-        this.props.history.push('/explore')
+        const { location, startDate, endDate, adultNumber, kidsNumber, infantsNumber } = this.state
+        const urlQuery = `/explore/?location=${location}&startDate=${startDate}&endDate=${endDate}&adults=${adultNumber}&kids=${kidsNumber}&infants=${infantsNumber}`
+        this.props.history.push(urlQuery)
+    }
+    onLoadFilter = async (filterBy) => {
+        await this.props.setFilter(filterBy)
     }
     toggleDatesModal = (val) => {
         this.setState({ datesModal: false })
         this.setState({ datesModal: val })
     }
     onToggleGuestModals = (ev) => {
-        const { left, bottom } = ev.target.getBoundingClientRect()
-        const pos = {
-            top: bottom + 'px',
-            left: (left + 50) + 'px'
-        }
-        this.setState({ modalPos: pos }, () => console.log(this.state.modalPos))
         if (this.state.datesModal) this.toggleDatesModal()
         this.setState({ guestModal: !this.state.guestModal })
     }
@@ -89,9 +79,8 @@ class _SearchBar extends React.Component {
     }
 
     render() {
-        const { isPageTop } = this.props
-        console.log( this.props,'okok');
-        const { location, adultNumber, kidsNumber, infantsNumber, endDate, startDate, guestModal, datesModal, modalPos } = this.state
+        const { isFullHeader } = this.props
+        const { location, adultNumber, kidsNumber, infantsNumber, endDate, startDate, guestModal, datesModal } = this.state
         return (
             <div >
                 <div className="search-bar-container flex space-between align-center ">
@@ -103,7 +92,7 @@ class _SearchBar extends React.Component {
                     </div>
                     <div className="mini-search-input">
                         <p>
-                        Start your search
+                            Start your search
                         </p>
                     </div>
                     <div className="dates-container flex ">
@@ -124,10 +113,10 @@ class _SearchBar extends React.Component {
                         </label>
 
                     </div>
-                    {guestModal && <GuestsModal style={modalPos} onToggleGuestModals={this.onToggleGuestModals} adultNumber={adultNumber} kidsNumber={kidsNumber} infantsNumber={infantsNumber} onSelectAmount={this.onSelectAmount} />}
+                    {guestModal && <GuestsModal onToggleGuestModals={this.onToggleGuestModals} adultNumber={adultNumber} kidsNumber={kidsNumber} infantsNumber={infantsNumber} onSelectAmount={this.onSelectAmount} />}
                     <div className="search-btn-container flex align-center justify-center" onClick={() => { this.onSetFilter() }} >
-                        {!isPageTop && < FaSearch size={13} />}
-                        {isPageTop && < FaSearch size={15} />}
+                        {!isFullHeader && < FaSearch size={13} />}
+                        {isFullHeader && < FaSearch size={15} />}
                     </div>
 
                 </div>

@@ -4,19 +4,20 @@ const initialState = {
     currStay: null,
     review: null,
     lastRemovedStay: null,
-    isPageTop: true,
+    isFullHeader: false,
     filterBy: {
         startDate: null,
         endDate: null,
-        guestModal: false,
-        datesModal: false,
         location: '',
+        adultNumber: 0,
+        kidsNumber: 0,
+        infantsNumber: 0,
+        capacity: 0,
         amenities: '',
         assetType: '',
         uniqueStay: '',
-        capacity: 0,
-        adultNumber: 0,
-        kidsNumber: 0
+        guestModal: false,
+        datesModal: false,
     }
 }
 export function stayReducer(state = initialState, action) {
@@ -37,8 +38,8 @@ export function stayReducer(state = initialState, action) {
             newState = { ...state, stays: [...state.stays, action.stay] }
             break
         case 'SET_HEADER':
-            newState = { ...state, isPageTop: action.isPageTop }
-            console.log(newState);
+            newState = { ...state, isFullHeader: action.isFullHeader }
+            // console.log(newState);
             break
         case 'SET_FILTER':
             newState = { ...state, filterBy: { ...action.filter } }

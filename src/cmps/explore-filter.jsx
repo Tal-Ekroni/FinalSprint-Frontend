@@ -48,22 +48,10 @@ export class ExploreFilter extends React.Component {
         const { placeTypeIsOpen } = this.state.modals
         return (
             <div className="explore-filter flex">
-                <div className="place-type">
-                {/* onClick={() => this.openPlaceType(true)} */}
-                    <Button >Place Type</Button>
-                    <Modal
-                        isOpen={placeTypeIsOpen}
-                        // style={myStyle}
-                        className="place-modal"
-                    >
-                        <h2 style={{ fontSize: '8px' }}>Entire place</h2>
-                        <h2 style={{ fontSize: '8px' }}>Private Room</h2>
-                        <Button >Filter</Button>
-                        {/* onClick={() => this.openPlaceType(false)} */}
-                    </Modal>
+                <div className="sort-type">
+                   <button>Type of place</button>
                 </div>
-                <Button>Place Type</Button>
-                <Button>Place Type</Button>
+     
             </div>
         )
     }

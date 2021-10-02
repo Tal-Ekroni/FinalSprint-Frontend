@@ -12,30 +12,16 @@ import { Select } from '@material-ui/core';
 
 class _AppHeader extends React.Component {
     state = {
-        startDate: null,
-        endDate: null,
         isUserMenuOpen: false,
         isLoginBotmodal: false,
-        isPageTop: true
-
+        // isFullHeader: this.props.isFullHeader
     }
     componentDidMount() {
         this.setState({ isUserMenuOpen: false, isLoginBotmodal: false })
-        window.addEventListener('scroll', (ev) => {
-            if (ev.target.scrollingElement.scrollTop > 50) {
-                this.setState({ isPageTop: false }, () => {
-                    this.props.setMiniHeader(this.state.isPageTop)
-                })
-            } else {
-                this.setState({ isPageTop: true }, () => {
-                    this.props.setMiniHeader(this.state.isPageTop)
-                })
-            }
-        })
+      
     }
-    componentWillUnmount() {
-        window.removeEventListener('scroll')
-    }
+
+
     onLogin = (credentials) => {
         this.props.onLogin(credentials)
     }
@@ -58,19 +44,19 @@ class _AppHeader extends React.Component {
         this.setState({ isLoginBotmodal: true })
     }
     render() {
-        const { user, setFilter } = this.props
-        const { isUserMenuOpen, isLoginBotmodal, isPageTop } = this.state
+        const { user, setFilter, filterBy ,isFullHeader} = this.props
+        const { isUserMenuOpen, isLoginBotmodal,  } = this.state
         return (
-            <header className={isPageTop ? `app-header-conatiner main-container` : `app-header-conatiner main-container mini-header`}>
+            <header className={isFullHeader ? `app-header-conatiner main-container` : `app-header-conatiner main-container mini-header`}>
 
                 <nav className="user-header-section flex space-between align-center">
 
                     <div className="logo-container flex align-center">
-                        <NavLink to="/" className="logo"><FaAirbnb size={40} color={isPageTop ? '#fff' : '#ff5a5f'} /><span>AnyGo</span></NavLink>
+                        <NavLink to="/" className="logo"><FaAirbnb size={40} color={isFullHeader ? '#fff' : '#ff5a5f'} /><span>AnyGo</span></NavLink>
                     </div>
 
                     <div className="mini-search-bar">
-                        {!isPageTop && <SearchBar setFilter={setFilter} isPageTop={this.state.isPageTop} />}
+                        {!isFullHeader && <SearchBar setFilter={setFilter} isFullHeader={isFullHeader} filterBy={filterBy} />}
                     </div>
                     <div className="nav-bar-container flex ">
 
@@ -98,7 +84,7 @@ class _AppHeader extends React.Component {
 
                     </div>
                 </nav>
-                {isPageTop && <SearchBar setFilter={setFilter} isPageTop={this.state.isPageTop} />}
+                {isFullHeader && <SearchBar setFilter={setFilter} isFullHeader={isFullHeader} filterBy={filterBy} />}
                 {isLoginBotmodal && <div className="main-layout">
                     <LoginSignup />
                 </div>}
@@ -113,7 +99,10 @@ function mapStateToProps(state) {
         users: state.userModule.users,
         user: state.userModule.user,
         count: state.userModule.count,
-        isLoading: state.systemModule.isLoading
+        isLoading: state.systemModule.isLoading,
+        filterBy: state.stayModule.filterBy,
+        isFullHeader: state.stayModule.isFullHeader
+
     }
 }
 const mapDispatchToProps = {

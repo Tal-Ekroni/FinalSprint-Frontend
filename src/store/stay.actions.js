@@ -65,12 +65,12 @@ export function setFilter(filterBy) {
     }
 }
 
-export function setMiniHeader(isPageTop) {
+export function setMiniHeader(isFullHeader) {
     return async (dispatch, getState) => {
         try {
             await dispatch({
                 type: 'SET_HEADER',
-                isPageTop
+                isFullHeader
             })
         } catch (err) {
             console.log(err);

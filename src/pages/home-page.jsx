@@ -13,14 +13,24 @@ import pet from '../assets/img/pets-allowed.jpg'
 import duplex from '../assets/img/entire-duplex.jpg'
 import cap from '../assets/img/large-capacity.jpg'
 import unique from '../assets/img/unique-stays.jpg'
-import { setFilter } from '../store/stay.actions';
+import { setFilter, setMiniHeader } from '../store/stay.actions';
 
 class _HomePage extends React.Component {
-    state = {}
-
     componentDidMount() {
         window.scrollTo(0, 0)
-
+        this.props.setMiniHeader(true)
+        window.addEventListener('scroll', this.onSetMiniHeader)
+    }
+    componentWillUnmount() {
+        this.props.setMiniHeader(false)
+        window.removeEventListener('scroll',this.onSetMiniHeader)
+    }
+    onSetMiniHeader=(ev) => {
+        if (ev.target.scrollingElement.scrollTop > 50) {
+            this.props.setMiniHeader(false)
+        } else {
+            this.props.setMiniHeader(true)
+        }
     }
     changeCount = (diff) => {
         console.log('Changing count by:', diff);
@@ -165,6 +175,7 @@ function mapStateToProps(state) {
 }
 const mapDispatchToProps = {
     setFilter,
+    setMiniHeader
 }
 
 export const HomePage = connect(mapStateToProps, mapDispatchToProps)(_HomePage)
