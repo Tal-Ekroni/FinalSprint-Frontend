@@ -4,7 +4,7 @@ import { ReviewsPreview } from './reviews-preview'
 
 export function ReviewsList({ reviews, onToogleReadModal, isReadMoreOn }) {
     return (
-        <section className="reviews-section-container flex ">
+        <section className="reviews-list-container flex ">
             {!reviews.length && <section className="reviews-container flex ">
                 <p>No reviews to show...</p>
             </section>

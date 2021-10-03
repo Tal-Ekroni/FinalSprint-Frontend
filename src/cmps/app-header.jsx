@@ -95,7 +95,7 @@ class _AppHeader extends React.Component {
                     </div>
                     <div className="nav-bar-container flex ">
                         <div className="nav-options flex align-center">
-                            <NavLink to="/stay/" className="nav-opt">Become a host</NavLink>
+                            <NavLink to="/become-a-host" className="nav-opt">Become a host</NavLink>
                         </div>
 
                         <div className="flex align-center">

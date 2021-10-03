@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { stayService } from '../services/stay.service'
-import { FaStar } from 'react-icons/fa'
+import { FaFlag, FaStar } from 'react-icons/fa'
 import { onEditStay, onRemoveStay } from '../store/stay.actions.js'
 import { BasicInfo } from '../cmps/details-base-info'
 import { AssetSum } from '../cmps/details-asset-sum'
@@ -15,6 +15,7 @@ import { StayMap } from '../cmps/stay-map'
 import { AddReview } from '../cmps/add-review'
 import { ReviewAvg } from '../cmps/_reviews-avg'
 import { ReadMore } from '../cmps/_read-more'
+import { eventBusService } from '../services/event-bus.service'
 
 // import img from '../assets/img/1.jpg'
 // const stay = data.stay;
@@ -35,6 +36,7 @@ class _StayDetails extends React.Component {
     componentDidMount() {
         window.scrollTo(0, 0)
         // localStorage.setItem('stay', JSON.stringify([stay]))
+        // window.addEventListener('scroll', (ev) => { console.log('ev', ev); })
         const { stayId } = this.props.match.params
         if (!stayId) this.props.history.push('/')
         else {
@@ -54,7 +56,9 @@ class _StayDetails extends React.Component {
 
         }
     }
-
+    // componentWillUnmount() {
+    //     window.removeEventListener('scroll',(ev) => { console.log('ev', ev); })
+    // }
     onRemoveStay = (stayId) => {
         this.props.onRemoveStay(stayId)
     }
@@ -109,23 +113,20 @@ class _StayDetails extends React.Component {
                                 <div >
                                     <AssetAmenities amenities={stay.amenities} />
                                 </div>
-                                <button className="amenities-btn">{`Show all ${stay.amenities.length} amenities`}</button>
+                                {/* <button className="amenities-btn">{`Show all ${stay.amenities.length} amenities`}</button> */}
                             </section>
                         </div>
                         {/* TODO */}
                         <div className="details-right-container">
 
                             <CheckoutForm stay={stay} />
-                            {/* <div className="report-container flex ">
-                                    <FaFlag />
-                                    <p>Report this listing</p>
-                                </div> */}
+
                         </div>
 
                     </section>
                     <section className="page-bottom-container">
-                        <div >
-                   
+                        <div className="reviews-section-container" >
+
                             <ReviewAvg reviews={stay.reviews} />
                             <ReviewsList reviews={stay.reviews} onToogleReadModal={this.onToogleReadModal} isReadMoreOn={isReadMoreOn} />
 

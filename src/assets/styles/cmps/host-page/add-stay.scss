@@ -1,0 +1,11 @@
+.add-form {
+    width: 100%;
+    .add-form-line {
+        height: 50px;
+        width: 100%;
+
+        & input {
+            width: 200px;
+        }
+    }
+}

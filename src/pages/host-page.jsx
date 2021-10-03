@@ -5,18 +5,19 @@ import { connect } from 'react-redux'
 import { HostChart } from '../cmps/host-stats';
 import { OrdersList } from '../cmps/orders-list';
 import { loadUser } from '../store/user.actions'
+import { AddStay } from '../cmps/add-stay';
 
 // import { OrdersList } from '../cmps/hosts-list.jsx'
 class _HostPage extends React.Component {
     state = {
         user: null,
         orders: [],
-        selectedTab: 'orders'
+        selectedTab: 'add-stay'
     }
     componentDidMount() {
         window.scrollTo(0, 0)
         this.props.loadUser(this.props.user._id)
-        this.setState({ selectedTab: 'orders', orders: this.props.user.orders })
+        this.setState({ selectedTab: 'add-stay', orders: this.props.user.orders })
     }
     componentDidUpdate(prevProps, prevState) {
         if (this.state.orders !== prevState.orders)
@@ -42,6 +43,7 @@ class _HostPage extends React.Component {
                         indicatorColor="secondary"
                         aria-label="secondary tabs example"
                     >
+                        <Tab value="add-stay" label="Add a stay" />
                         <Tab value="orders" label="Orders" />
                         <Tab value="stats" label="Stats" />
                     </Tabs>
@@ -57,6 +59,10 @@ class _HostPage extends React.Component {
                     </div>}
                     {selectedTab === 'stats' && <div>
                         <HostChart />
+                    </div>}
+                    {selectedTab === 'add-stay' && <div>
+                        <h1>Add a stay</h1>
+                        <AddStay />
                     </div>}
                 </section>}
             </main>

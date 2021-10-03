@@ -27,6 +27,10 @@
     &.cancel-btn {
         background-color: #d9534f;
     }
+    &.apporved {
+        background-color: $clr2;
+        cursor: text;
+    }
 }
 .orders-container {
     min-height: 400px;
@@ -41,6 +45,9 @@
     }
     .order-preview-details {
         padding: 10px;
+        & > * {
+            margin: 10px 0;
+        }
     }
     & .orders-title-container {
         height: 36px;
