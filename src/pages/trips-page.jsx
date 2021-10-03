@@ -1,17 +1,16 @@
 import React from 'react'
 import { connect } from 'react-redux'
 // import { showSuccessMsg } from '../services/event-bus.service.js'
+import { loadUser } from '../store/user.actions'
 import travelImg from '../assets/img/travel.jpg'
 import { TripsList } from '../cmps/trips-list.jsx'
 class _TripsPage extends React.Component {
     state = {
         user: null
     }
-    async componentDidMount() {
-        // this.props.loadAndWatchUser(this.props.match.params.id)
-    }
-    onCancelTrip = () => {
-
+    componentDidMount() {
+        window.scrollTo(0, 0)
+        this.props.loadUser(this.props.user._id)
     }
     render() {
         const { user } = this.props
@@ -40,12 +39,11 @@ function mapStateToProps(state) {
     return {
         user: state.userModule.user,
 
-
     }
 }
-// const mapDispatchToProps = {
+const mapDispatchToProps = {
+    loadUser
+}
 
-// }
 
-
-export const TripsPage = connect(mapStateToProps)(_TripsPage)
+export const TripsPage = connect(mapStateToProps, mapDispatchToProps)(_TripsPage)

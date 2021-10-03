@@ -1,39 +1,63 @@
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 import React from 'react'
 import { connect } from 'react-redux'
+import { HostChart } from '../cmps/host-stats';
+import { OrdersList } from '../cmps/orders-list';
+import { loadUser } from '../store/user.actions'
+
 // import { OrdersList } from '../cmps/hosts-list.jsx'
 class _HostPage extends React.Component {
     state = {
         user: null,
         orders: [],
-        openTab: 'orders'
+        selectedTab: 'orders'
     }
     componentDidMount() {
-        const { user } = this.props
-        console.log(user, 'user');
-        this.setState({ openTab: 'orders' })
+        window.scrollTo(0, 0)
+        this.props.loadUser(this.props.user._id)
+        this.setState({ selectedTab: 'orders', orders: this.props.user.orders })
     }
+    componentDidUpdate(prevProps, prevState) {
+        if (this.state.orders !== prevState.orders)
+            this.props.loadUser(this.props.user._id)
+
+    }
+
     // onCancelHost = () => {
     // }
-    onChangeTab = (tab) => {
-        this.setState({ openTab: tab })
+    onChangeTab = (ev, value) => {
+        this.setState({ selectedTab: value })
     }
     render() {
         const { user } = this.props
-        const { openTab } = this.state
+        const { selectedTab } = this.state
         return (
             <main className="host-page-container main-layout">
+                <section className="host-tabs-container">
+                    <Tabs
+                        value={selectedTab}
+                        onChange={this.onChangeTab}
+                        textColor="secondary"
+                        indicatorColor="secondary"
+                        aria-label="secondary tabs example"
+                    >
+                        <Tab value="orders" label="Orders" />
+                        <Tab value="stats" label="Stats" />
+                    </Tabs>
+                </section>
                 {user && <section className="host-container">
-                    <div className="host-title-container">
-                        <h1>Hosts</h1>
-                        <nav className="tabs-bar flex space-between">
-                            <div className="host-tab flex align-center "><p>Orders</p></div>
-                            <div className="host-tab flex align-center active"><p>Stats</p></div>
-                        </nav>
-                    </div>
-                    {openTab === 'orders' && <div>Orders</div>}
-                    {/* {user.orders && user.orders.length && <section className="hosts-container">
-                        <OrdersList orders={user.orders} />
-                    </section>} */}
+
+                    {selectedTab === 'orders' && <div>
+                        <h2>Orders</h2>
+                        <div className="orders-container">
+
+                            <OrdersList orders={user.orders} />
+                        </div>
+                    </div>}
+                    {selectedTab === 'stats' && <div>
+                        <HostChart />
+                    </div>}
                 </section>}
             </main>
         )
@@ -47,9 +71,9 @@ function mapStateToProps(state) {
 
     }
 }
-// const mapDispatchToProps = {
+const mapDispatchToProps = {
+    loadUser
+}
 
-// }
 
-
-export const HostPage = connect(mapStateToProps)(_HostPage)
+export const HostPage = connect(mapStateToProps, mapDispatchToProps)(_HostPage)

@@ -15,8 +15,8 @@ class _CheckoutForm extends React.Component {
 
     state = {
         trip: {
-            startDate: null,
-            endDate: null,
+            startDate:  this.props.startDate,
+            endDate:  this.props.endDate,
             guests: { adults: 1, kids: 0, infants: 0 }
         },
         isGuestPopupOn: false,
@@ -26,6 +26,7 @@ class _CheckoutForm extends React.Component {
     }
     componentDidMount() {
         const { stay, filterBy } = this.props
+        console.log('filterBy', filterBy.startDate);
         this.setState({
             trip: {
                 startDate: filterBy.startDate,
@@ -42,6 +43,7 @@ class _CheckoutForm extends React.Component {
     onSelectDates = ({ startDate, endDate }) => {
         if (startDate) {
             this.setState(prevState => ({ trip: { ...prevState.trip, startDate } }))
+            console.log('change', startDate);
         }
         if (endDate) {
 
@@ -69,8 +71,8 @@ class _CheckoutForm extends React.Component {
     }
 
     getTripPrice = (startDate, endDate, price) => {
-        const start = new Date(startDate / 1000);
-        const end = new Date(endDate / 1000);
+        const start =this.toTimestamp(startDate)
+        const end =this.toTimestamp(endDate)
         const timeDiff = (end - start)
         const totalNights = (timeDiff / 86400)
         const totalPrice = price * totalNights
@@ -110,7 +112,7 @@ class _CheckoutForm extends React.Component {
 
     calcGuestNum = () => {
         const { adults, kids, infants } = this.state.trip.guests
-        var res = parseInt(adults) + parseInt(kids) + parseInt(infants)
+        var res = +adults + +kids + +infants
         return res
     }
 
@@ -216,7 +218,7 @@ class _CheckoutForm extends React.Component {
                                 </div>
                             }
                             {!isCheckoutToReserve && <div className="check-btn-container flex" onMouseOver={this.getMouseCord}>
-                                <Button onClick={() => this.getTripPrice(trip.startDate, trip.endDate, price)}>Check availabilty</Button>
+                                <Button onClick={() => this.getTripPrice(startDate, endDate, price)}>Check availabilty</Button>
                             </div>}
                             {isCheckoutToReserve && <div className="check-btn-container flex">
                                 <Button onClick={() => this.onBookTrip(stay, trip)}>Reserve</Button>

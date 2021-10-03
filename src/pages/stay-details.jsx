@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { stayService } from '../services/stay.service'
-import {  FaStar } from 'react-icons/fa'
+import { FaStar } from 'react-icons/fa'
 import { onEditStay, onRemoveStay } from '../store/stay.actions.js'
 import { BasicInfo } from '../cmps/details-base-info'
 import { AssetSum } from '../cmps/details-asset-sum'
@@ -111,37 +111,6 @@ class _StayDetails extends React.Component {
                                 </div>
                                 <button className="amenities-btn">{`Show all ${stay.amenities.length} amenities`}</button>
                             </section>
-                            {/* <section className="dates-container">
-                                <div>
-                                    <div>
-                                        <h3>Select check-in date</h3>
-                                        <p>Add your travel dates for exact pricing</p>
-                                    </div>
-                                    <div className="calender-container flex space-between">
-                                        <div className="checkin-calender">
-                                            <DayPickerRangeController
-                                                startDate={this.state.trip.startDate} // momentPropTypes.momentObj or null,
-                                                endDate={this.state.trip.endDate} // momentPropTypes.momentObj or null,
-                                                onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
-                                                focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
-                                                onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
-                                            />
-                                        </div>
-                                        <div className="checkout-calender">
-                                            <DayPickerRangeController
-                                                startDate={this.state.startDate} // momentPropTypes.momentObj or null,
-                                                endDate={this.state.endDate} // momentPropTypes.momentObj or null,
-                                                onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
-                                                focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
-                                                onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
-                                            />
-                                        </div>
-                                    </div>
-
-
-                                </div>
-
-                            </section> */}
                         </div>
                         {/* TODO */}
                         <div className="details-right-container">
@@ -156,16 +125,12 @@ class _StayDetails extends React.Component {
                     </section>
                     <section className="page-bottom-container">
                         <div >
-                            <div className="reviews-sec-title-container">
-                                <h1 className="reviews-section-title flex" ><FaStar
-                                    size={15}
-                                    color="#FF5A5F" />Reviews<span>•</span>{stay.reviews.length} Reviews</h1>
-                            </div>
+                   
                             <ReviewAvg reviews={stay.reviews} />
                             <ReviewsList reviews={stay.reviews} onToogleReadModal={this.onToogleReadModal} isReadMoreOn={isReadMoreOn} />
 
-                           { user &&  <div className="add-review">
-                               <AddReview />
+                            {user && <div className="add-review">
+                                <AddReview stayId={stay._id} />
                             </div>}
                         </div>
                         <div >
