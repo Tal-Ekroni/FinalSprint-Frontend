@@ -55,34 +55,43 @@
             gap: 24px 150px;
             margin-top: 30px;
             @include for-mobile-layout {
-                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-                gap: 24px 50px;
-                :nth-last-child(n + 3) {
-                    display: none;
-                }
+                // grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+                // gap: 24px 50px;
+                // :nth-last-child(n + 3) {
+                //     display: none;
+                // }
 
-                align-items: center;
+                // align-items: center;
+                // display: flex;
+                // justify-content: center;
+
+                // .loc-section {
+                //     flex-direction: column;
+                // }
+                // .loc-img {
+                //     height: 50px;
+                // }
+                max-width: 400px;
                 display: flex;
-                justify-content: center;
-
-                .loc-section {
-                    flex-direction: column;
-                }
-                .loc-img {
-                    height: 50px;
-                }
+                overflow-x: auto;
             }
             @include for-narrow-layout {
-                :nth-last-child(n + 5) {
-                    display: none;
-                }
-                .loc-section {
-                    flex-direction: column;
-                }
-            }
-            @include for-normal-layout {
-                :nth-last-child(n + 0) {
-                    display: flex;
+                max-width: 700px;
+                overflow-x: auto;
+                display: flex;
+                //     :nth-last-child(n + 5) {
+                //         display: none;
+                //     }
+                //     .loc-section {
+                //         flex-direction: column;
+                //     }
+                // }
+                @include for-normal-layout {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                    max-width: unset;
+                    overflow-x: unset;
+                    gap: 24px 150px;
                 }
             }
 
@@ -116,23 +125,27 @@
             gap: 10px;
             margin-top: 15px;
             @include for-mobile-layout {
-                .live-card:nth-last-child(n + 3) {
-                    display: none;
-                }
-                display: flex;
-                flex-direction: column;
-                align-items: center;
+                // .live-card:nth-last-child(n + 3) {
+                //     display: none;
+                // }
+                // display: flex;
+                // flex-direction: column;
+                // align-items: center;
+                max-width: 400px;
+                overflow-x: auto;
             }
             @include for-narrow-layout {
-                .live-card:nth-last-child(n + 4) {
-                    display: none;
-                }
-                .live-card {
-                    .live-img {
-                        height: 225px;
-                        width: 225px;
-                    }
-                }
+                max-width: 700px;
+                overflow-x: auto;
+                // .live-card:nth-last-child(n + 4) {
+                //     display: none;
+                // }
+                // .live-card {
+                //     .live-img {
+                //         height: 225px;
+                //         width: 225px;
+                //     }
+                // }
             }
             @include for-normal-layout {
                 .live-card {
@@ -141,15 +154,17 @@
                         width: 265px;
                     }
                 }
-            }
-            @include for-wide-layout {
-                .live-card:nth-last-child(n + 0) {
-                    display: flex;
-                }
-                .live-img {
-                    height: 400px;
-                    width: 400px;
-                }
+                overflow-x:unset;
+                max-width:unset;
+            // }
+            // @include for-wide-layout {
+            //     .live-card:nth-last-child(n + 0) {
+            //         display: flex;
+            //     }
+            //     .live-img {
+            //         height: 400px;
+            //         width: 400px;
+            //     }
             }
             .live-img {
                 border-radius: 3%;
