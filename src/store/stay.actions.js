@@ -64,12 +64,12 @@ export function setFilter(filterBy) {
     }
 }
 
-export function setMiniHeader(isFullHeader) {
+export function setMiniHeader(isMiniHeader) {
     return async (dispatch, getState) => {
         try {
             await dispatch({
                 type: 'SET_HEADER',
-                isFullHeader
+                isMiniHeader
             })
         } catch (err) {
             console.log(err);

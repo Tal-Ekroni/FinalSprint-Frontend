@@ -72,7 +72,7 @@ class _SearchBar extends React.Component {
    
 
     render() {
-        const { isFullHeader, guestModal, datesModal, locModal,  onToggleSearchModals, } = this.props
+        const { isMiniHeader, guestModal, datesModal, locModal,  onToggleSearchModals,onToggleMiniSearchBar } = this.props
         const { location, adultNumber, kidsNumber, infantsNumber, endDate, startDate } = this.state
         return (
             <div >
@@ -83,8 +83,8 @@ class _SearchBar extends React.Component {
                             <input type="text" name="location" autoComplete="off" value={location} onChange={this.handleChange} placeholder="Where are you going?" />
                         </label>
                     </div>
-                    {locModal && <LocationsPopUp  />}
-                    <div className="mini-search-input">
+                    {locModal && <LocationsPopUp onToggleSearchModals={onToggleSearchModals}  />}
+                    <div className="mini-search-input" onClick={onToggleMiniSearchBar}>
                         <p >
                             Start your search
                         </p>
@@ -109,16 +109,35 @@ class _SearchBar extends React.Component {
                     </div>
                     {guestModal && <GuestsModal  adultNumber={adultNumber} kidsNumber={kidsNumber} infantsNumber={infantsNumber} onSelectAmount={this.onSelectAmount} />}
                     <div className="search-btn-container flex align-center justify-center" onClick={() => { this.onSetFilter() }} >
-                        {!isFullHeader && < FaSearch size={13} />}
-                        {isFullHeader && < FaSearch size={15} />}
+                        {!isMiniHeader && < FaSearch size={13} />}
+                        {isMiniHeader && < FaSearch size={15} />}
                     </div>
 
                 </div>
                 <div className="search-dates-container ">
-                    {datesModal && <DatesPicker2 onSelectDates={this.onSelectDates} toggleDatesModal={this.toggleDatesModal} />}
+                    {datesModal && <DatesPicker2 onSelectDates={this.onSelectDates}/>}
                 </div>
             </div>
         )
     }
 }
 export const SearchBar = withRouter(_SearchBar)
+
+
+
+// function mapStateToProps(state) {
+//     return {
+//         users: state.userModule.users,
+//         user: state.userModule.user,
+//         count: state.userModule.count,
+//         isLoading: state.systemModule.isLoading,
+//         filterBy: state.stayModule.filterBy,
+//         isMiniHeader: state.stayModule.isMiniHeader
+
+//     }
+// }
+// const mapDispatchToProps = {
+// }
+
+
+// export const SearchBar = withRouter(connect(mapStateToProps, mapDispatchToProps)(_SearchBar))
