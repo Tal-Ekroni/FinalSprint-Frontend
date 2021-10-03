@@ -141,10 +141,10 @@
             }
         }
         // @include for-narrow-layout {
-        //     .logo-container {
-        //         display: none;
-        //     }
-        //     .nav-bar-container {
+            //     .logo-container {
+                //         display: none;
+                //     }
+                //     .nav-bar-container {
         //         display: none;
         //     }
         //     .user-menu {
@@ -152,4 +152,10 @@
         //     }
         // }
     }
+    
+            &.mini-header-white {
+                align-items: flex-start;
+                background-color: #fff;
+                height: 180px;
+            }
 }

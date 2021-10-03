@@ -72,7 +72,7 @@ class _SearchBar extends React.Component {
    
 
     render() {
-        const { isFullHeader, guestModal, datesModal, locModal,  onToggleSearchModals, } = this.props
+        const { isFullHeader, guestModal, datesModal, locModal,  onToggleSearchModals,onToggleMiniSearchBar } = this.props
         const { location, adultNumber, kidsNumber, infantsNumber, endDate, startDate } = this.state
         return (
             <div >
@@ -83,8 +83,8 @@ class _SearchBar extends React.Component {
                             <input type="text" name="location" autoComplete="off" value={location} onChange={this.handleChange} placeholder="Where are you going?" />
                         </label>
                     </div>
-                    {locModal && <LocationsPopUp  />}
-                    <div className="mini-search-input">
+                    {locModal && <LocationsPopUp onToggleSearchModals={onToggleSearchModals}  />}
+                    <div className="mini-search-input" onClick={onToggleMiniSearchBar}>
                         <p >
                             Start your search
                         </p>
