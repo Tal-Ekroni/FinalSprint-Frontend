@@ -13,13 +13,14 @@ export const stayService = {
     remove,
     getEmptyStay,
     subscribe,
-    onGetQueryParams
+    onGetQueryParams, 
+    update
 
 }
 window.cs = stayService;
 
 function query(filterBy) {
-    const stays = storageService.query(STORAGE_KEY,200,filterBy) 
+    const stays = storageService.query(STORAGE_KEY, 200, filterBy)
     return stays
 }
 function getById(stayId) {
@@ -33,10 +34,13 @@ function remove(stayId) {
     return storageService.remove(STORAGE_KEY, stayId)
 }
 function save(stay) {
-        return storageService.post(STORAGE_KEY, stay)
+    return storageService.post(STORAGE_KEY, stay)
 
 }
+function update(stay) {
+    return storageService.put('stay', stay)
 
+}
 function getEmptyStay() {
     return {
         vendor: 'Susita-' + (Date.now() % 1000),
@@ -52,7 +56,7 @@ function _notifySubscribersStaysChanged(stays) {
     console.log('Notifying Listeners');
     listeners.forEach(listener => listener(stays))
 }
-function onGetQueryParams(){
+function onGetQueryParams() {
     const urlParams = new URLSearchParams(window.location.search);
     const location = urlParams.get('location');
     const startDate = urlParams.get('startDate');

@@ -3,15 +3,14 @@ import { connect } from 'react-redux'
 
 import { Link, NavLink } from 'react-router-dom'
 import { userService } from '../services/user.service'
-import { onLogout } from '../store/user.actions'
+import { onLogout, loadUser } from '../store/user.actions'
 class _UserMenu extends React.Component {
     state = {
         isLoginModalOn: false
     }
     componentDidMount() {
-        return async function () {
-            const user = await userService.getLoggedinUser()
-        }
+        const userId = this.props.user._id
+        this.props.loadUser(userId)
     }
     onLogout = () => {
         this.props.onLogout()
@@ -35,20 +34,23 @@ class _UserMenu extends React.Component {
             <div className="user-menu-container" >
                 <section className="user-menu top-section">
                     <div >
-                        <NavLink onClick={() => this.props.onToogleMenu()} className="user-menu-line" to="/trips"><p>Trips</p></NavLink>
+                        {user && <NavLink onClick={() => this.props.onToogleMenu()} className="user-menu-line" to="/trips"><p>Trips</p></NavLink>}
+                        {!user && <p className="user-menu-line"> Trips</p>}
 
                     </div>
-                    {user && user.isHost && <div >
-                        <NavLink onClick={() => this.props.onToogleMenu()} className="user-menu-line" to="/host"><p>Host</p></NavLink>
+                    {
+                        user && user.isHost && <div >
+                            <NavLink onClick={() => this.props.onToogleMenu()} className="user-menu-line" to="/host"><p>Host</p></NavLink>
 
-                    </div>}
+                        </div>
+                    }
                     <div className="user-menu-line">
                         <p>Wishlist</p>
                     </div>
                     <div className="user-menu-line">
                         <p>Host a expirience</p>
                     </div>
-                </section>
+                </section >
                 <section className="user-menu bottom-section">
                     {user && <div className="user-menu-line" onClick={this.onLogout}>
                         <p>Logout</p>
@@ -62,7 +64,7 @@ class _UserMenu extends React.Component {
                     </div>}
 
                 </section>
-            </div>
+            </div >
         )
     }
 }
@@ -73,6 +75,7 @@ function mapStateToProps(state) {
     }
 }
 const mapDispatchToProps = {
-    onLogout
+    onLogout,
+    loadUser
 }
 export const UserMenu = connect(mapStateToProps, mapDispatchToProps)(_UserMenu)

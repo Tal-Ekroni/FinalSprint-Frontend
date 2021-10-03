@@ -2,7 +2,9 @@ export const utilService = {
     makeId,
     makeLorem,
     getRandomIntInclusive,
-    delay
+    delay,
+    toTimestamp,
+    timeToShow
 }
 
 function makeId(length = 6) {
@@ -38,3 +40,17 @@ function delay(ms = 1500) {
     })
 }
 
+
+function toTimestamp(strDate) {
+    var datum = Date.parse(strDate);
+    return datum / 1000;
+}
+function timeToShow(date) {
+    var timeStamp = (typeof date === 'string') ? Date.parse(date) : date;
+    var time = new Date(timeStamp);
+    var date = "0" + time.getDate();
+    var month = "0" + (time.getMonth() + 1);
+    var year = "0" + time.getFullYear();
+    var formattedTime = date.substr(-2) + '/' + month.substr(-2) + '/' + year.substr(-2);
+    return formattedTime
+}

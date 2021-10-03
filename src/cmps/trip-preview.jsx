@@ -1,15 +1,13 @@
 import React from "react";
 import { connect } from 'react-redux'
-import {  onCancelOrder } from '../store/order.actions'
+import { onCancelOrder } from '../store/order.actions'
 import LazyLoad from "./preview-slider"
 
 class _TripPreview extends React.Component {
     state = {
         trip: null
     }
-    loadStays = () => {
-
-    }
+   
     getTime = (time) => {
         var time = new Date(time * 1000);
         var date = '0' + time.getDate();
@@ -19,7 +17,10 @@ class _TripPreview extends React.Component {
         return formattedTime
     }
     onCancelTrip = (trip) => {
-        this.props.onCancelTrip(trip)
+        const { _id, buyer, host } = trip
+        const buyerId = buyer._id
+        const hostId = host._id
+        this.props.onCancelOrder(_id, buyerId, hostId)
     }
     render() {
         const { trip } = this.props
@@ -32,7 +33,6 @@ class _TripPreview extends React.Component {
                     <section>
                         <div>
                             <div className="trip-img-container">
-                                {/* <img src={trip.stay.imgUrl} alt="" /> */}
                                 <LazyLoad imgs={trip.stay.imgUrls} />
                             </div>
                         </div>
@@ -48,7 +48,7 @@ class _TripPreview extends React.Component {
                                 {trip.status === 'pending' && <div>
                                     <p>Wait for approval</p>
                                 </div>}
-                                <div><p onClick={() => { this.onCancelOrder(trip) }}>Cancel order</p></div>
+                                <div><p onClick={() => { this.onCancelTrip(trip) }}>Cancel order</p></div>
                             </div>
                         </div >
                     </section>}
