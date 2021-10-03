@@ -25,10 +25,10 @@ class _AppHeader extends React.Component {
         this.setState({ isUserMenuOpen: false, isLoginBotmodal: false })
         window.scrollTo(0, 0)
         window.addEventListener('scroll', this.onScrollCloseModals)
-
+        this.onDetectScreenWitdh()
     }
     componentDidUpdate(prevProps, prevState) {
-        if (prevProps.isFullHeader !== this.props.isFullHeader && !this.props.isFullHeader) {
+        if (prevProps.isMiniHeader !== this.props.isMiniHeader && !this.props.isMiniHeader) {
             this.closeAllModals()
         }
     }
@@ -38,10 +38,16 @@ class _AppHeader extends React.Component {
     onScrollCloseModals = (ev) => {
         if (ev.target.scrollingElement.scrollTop > 1) {
             this.closeAllModals()
-            this.setState({isMiniInput:false})
+            this.setState({ isMiniInput: false })
         }
     }
-
+    onDetectScreenWitdh = () => {
+        if (window.innerWidth < 780) {
+            console.log(window.innerWidth);
+            this.setState({ isMiniInput: false })
+            this.props.setMiniHeader(false)
+        }
+    }
     onLogin = (credentials) => {
         this.props.onLogin(credentials)
     }
@@ -59,11 +65,9 @@ class _AppHeader extends React.Component {
         this.setState({ isLoginBotmodal: true })
     }
     onToggleScreen = (val) => {
-        console.log('here screen');
         this.setState({ isScreenOpen: val })
     }
     onToggleSearchModals = (modal) => {
-        console.log('here modals');
         switch (modal) {
             case 'locModal':
                 this.closeAllModals()
@@ -84,7 +88,6 @@ class _AppHeader extends React.Component {
     }
 
     closeAllModals = () => {
-        console.log('closing all')
         this.onToggleScreen(false)
         this.setState({ locModal: false, guestModal: false, datesModal: false })
     }
@@ -92,19 +95,19 @@ class _AppHeader extends React.Component {
         this.setState({ isMiniInput: !this.state.isMiniInput })
     }
     render() {
-        const { user, setFilter, filterBy, isFullHeader } = this.props
+        const { user, setFilter, filterBy, isMiniHeader } = this.props
         const { isUserMenuOpen, isLoginBotmodal, isScreenOpen, locModal, datesModal, guestModal, isMiniInput } = this.state
         return (
-            <header className={isFullHeader ? `app-header-conatiner main-container` : isMiniInput ? `app-header-conatiner main-container mini-header-white` : `app-header-conatiner main-container mini-header`}>
+            <header className={isMiniHeader ? `app-header-conatiner main-container` : isMiniInput ? `app-header-conatiner main-container mini-header-with-input` : `app-header-conatiner main-container mini-header`}>
                 <div className={isScreenOpen ? "screen screen-open full" : "screen full"} onClick={() => { this.closeAllModals() }}></div>
                 <nav className="user-header-section flex space-between align-center">
 
                     <div className="logo-container flex align-center">
-                        <NavLink to="/" className="logo"><FaAirbnb size={40} color={isFullHeader ? '#fff' : '#ff5a5f'} /><span>AnyGo</span></NavLink>
+                        <NavLink to="/" className="logo"><FaAirbnb size={40} color={isMiniHeader ? '#fff' : '#ff5a5f'} /><span>AnyGo</span></NavLink>
                     </div>
 
                     <div className="mini-search-bar">
-                        {!isFullHeader && <SearchBar setFilter={setFilter} isFullHeader={isFullHeader} filterBy={filterBy} datesModal={datesModal} guestModal={guestModal} locModal={locModal} onToggleSearchModals={this.onToggleSearchModals} onToggleMiniSearchBar={this.onToggleMiniSearchBar} />}
+                        {!isMiniHeader && <SearchBar setFilter={setFilter} isMiniHeader={isMiniHeader} filterBy={filterBy} datesModal={datesModal} guestModal={guestModal} locModal={locModal} onToggleSearchModals={this.onToggleSearchModals} onToggleMiniSearchBar={this.onToggleMiniSearchBar} />}
                     </div>
                     <div className="nav-bar-container flex ">
                         <div className="nav-options flex align-center">
@@ -132,7 +135,7 @@ class _AppHeader extends React.Component {
 
                     </div>
                 </nav>
-                {isFullHeader && <SearchBar setFilter={setFilter} isFullHeader={isFullHeader} filterBy={filterBy} datesModal={datesModal} guestModal={guestModal} locModal={locModal} onToggleSearchModals={this.onToggleSearchModals}  />}
+                {isMiniHeader && <SearchBar setFilter={setFilter} isMiniHeader={isMiniHeader} filterBy={filterBy} datesModal={datesModal} guestModal={guestModal} locModal={locModal} onToggleSearchModals={this.onToggleSearchModals} />}
                 {isLoginBotmodal && <div className="main-layout">
                     <LoginSignup />
                 </div>}
@@ -149,7 +152,7 @@ function mapStateToProps(state) {
         count: state.userModule.count,
         isLoading: state.systemModule.isLoading,
         filterBy: state.stayModule.filterBy,
-        isFullHeader: state.stayModule.isFullHeader
+        isMiniHeader: state.stayModule.isMiniHeader
 
     }
 }

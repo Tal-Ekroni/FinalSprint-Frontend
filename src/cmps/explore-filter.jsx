@@ -1,57 +1,40 @@
 import React from 'react'
-import Modal from 'react-modal'
-import { Select, MenuItem, Button } from '@material-ui/core'
-// const myStyle = {
-//     overlay: {
-//         top: 0,
-//         left: 0,
-//         right: 0,
-//         bottom: 0,
-//         backgroundColor: 'transperent'
-//     },
-//     content: {
-//         position: 'relative',
-//         border: '1px solid #ccc',
-//         background: '#fff',
-//         overflow: 'none',
-//         WebkitOverflowScrolling: 'touch',
-//         borderRadius: '14px',
-//         outline: 'none',
-//         height: '78px',
-//         width: '85px',
-//         left: '33px',
-//         top: '197px',
-//         textAlign:'center'
-//     }
-// }
+import DynamicModal from 'react-modal'
 
 export class ExploreFilter extends React.Component {
     state = {
         modals: {
             placeTypeIsOpen: false
-        },
-        filter: {
-            isPrivate: ''
         }
     }
 
     handleChange = (ev) => {
         const field = ev.target.name
         const value = ev.target.value;
-       
+
 
     }
-    openPlaceType = (val) => {
-        this.setState({ modals: { ...this.state.modals, placeTypeIsOpen: val } })
+    openPlaceType = () => {
+        console.log('ok');
+        this.setState({ modals: { tplaceTypeIsOpen: !this.state.modals.placeTypeIsOpen } })
     }
     render() {
         const { placeTypeIsOpen } = this.state.modals
         return (
             <div className="explore-filter flex">
                 <div className="sort-type">
-                   <button>Type of place</button>
+                    <button onClick={this.openPlaceType}>Type of place</button>
+                    <DynamicModal>
+                        <h1>Place types</h1>
+                        <h1>Place types</h1>
+                        <h1>Place types</h1>
+                        <h1>Place types</h1>
+                        <h1>Place types</h1>
+                        <h1>Place types</h1>
+                        <h1>Place types</h1>
+                    </DynamicModal>
                 </div>
-     
+
             </div>
         )
     }
