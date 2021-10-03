@@ -12,30 +12,28 @@ import { Select } from '@material-ui/core';
 
 class _AppHeader extends React.Component {
     state = {
-        startDate: null,
-        endDate: null,
         isUserMenuOpen: false,
         isLoginBotmodal: false,
-        isPageTop: true
-
+        isScreenOpen: false,
+        guestModal: false,
+        datesModal: false,
+        locModal: false,
     }
+
     componentDidMount() {
         this.setState({ isUserMenuOpen: false, isLoginBotmodal: false })
-        window.addEventListener('scroll', (ev) => {
-            if (ev.target.scrollingElement.scrollTop > 50) {
-                this.setState({ isPageTop: false }, () => {
-                    this.props.setMiniHeader(this.state.isPageTop)
-                })
-            } else {
-                this.setState({ isPageTop: true }, () => {
-                    this.props.setMiniHeader(this.state.isPageTop)
-                })
-            }
-        })
+        window.scrollTo(0, 0)
+        window.addEventListener('scroll', this.onScrollCloseModals)
     }
     componentWillUnmount() {
-        window.removeEventListener('scroll')
+        window.removeEventListener('scroll', this.onScrollCloseModals)
     }
+    onScrollCloseModals = (ev) => {
+        if (ev.target.scrollingElement.scrollTop > 1) {
+            this.closeAllModals()
+        }
+    }
+
     onLogin = (credentials) => {
         this.props.onLogin(credentials)
     }
@@ -45,56 +43,83 @@ class _AppHeader extends React.Component {
     onLogout = () => {
         this.props.onLogout()
     }
-    onGuestMode = () => {
-        this.setState(prevState => ({
-            isGuestMode: !prevState.isGuestMode
-        }));
 
-    }
     onToogleMenu = () => {
         this.setState({ isUserMenuOpen: !this.state.isUserMenuOpen })
     }
     onOpenBotLogin = () => {
         this.setState({ isLoginBotmodal: true })
     }
+    onToggleScreen = (val) => {
+        this.setState({ isScreenOpen: val })
+    }
+    onToggleSearchModals = (modal, val) => {
+        switch (modal) {
+            case 'locModal':
+                this.closeAllModals()
+                this.onToggleScreen(!this.state.locModal)
+                this.setState({ locModal: !this.state.locModal })
+                break;
+            case 'guestModal':
+                this.closeAllModals()
+                this.onToggleScreen(!this.state.guestModal)
+                this.setState({ guestModal: !this.state.guestModal })
+                break;
+            case 'datesModal':
+                this.closeAllModals()
+                this.onToggleScreen(!this.state.datesModal)
+                this.setState({ datesModal: !this.state.datesModal })
+                break;
+        }
+    }
+
+    closeAllModals = () => {
+        this.onToggleScreen(false)
+        this.setState({ locModal: false, guestModal: false, datesModal: false })
+    }
+   
     render() {
-        const { user, setFilter } = this.props
-        const { isUserMenuOpen, isLoginBotmodal, isPageTop } = this.state
+        const { user, setFilter, filterBy, isFullHeader } = this.props
+        const { isUserMenuOpen, isLoginBotmodal, isScreenOpen, locModal, datesModal, guestModal } = this.state
         return (
-            <header className={isPageTop ? `app-header-conatiner main-container` : `app-header-conatiner main-container mini-header`}>
-                <nav className="user-header-section flex space-between align-center "  >
+            <header className={isFullHeader ? `app-header-conatiner main-container` : `app-header-conatiner main-container mini-header`}>
+                <div className={isScreenOpen ? "screen screen-open full" : "screen full"} onClick={() => { this.closeAllModals() }}></div>
+                <nav className="user-header-section flex space-between align-center">
+
                     <div className="logo-container flex align-center">
-                        <NavLink to="/" className="logo"><span>Any</span><FaAirbnb size={40} color={isPageTop ? '#fff' : '#ff5a5f'} /><span>Go</span></NavLink>
+                        <NavLink to="/" className="logo"><FaAirbnb size={40} color={isFullHeader ? '#fff' : '#ff5a5f'} /><span>AnyGo</span></NavLink>
                     </div>
-                    {/* <div className="mini-search-bar"> */}
-                    {!isPageTop && <SearchBar setFilter={setFilter} isPageTop={this.props.isPageTop} />}
-                    {/* </div> */}
+
+                    <div className="mini-search-bar">
+                        {!isFullHeader && <SearchBar setFilter={setFilter} isFullHeader={isFullHeader} filterBy={filterBy} datesModal={datesModal} guestModal={guestModal} locModal={locModal} onToggleSearchModals={this.onToggleSearchModals} />}
+                    </div>
                     <div className="nav-bar-container flex ">
-                        <div className="     flex align-center">
-                            <NavLink to="/explore" className="nav-opt">Explore</NavLink>
-                        </div>
                         <div className="nav-options flex align-center">
                             <NavLink to="/stay/" className="nav-opt">Become a host</NavLink>
                         </div>
-                        {/* {!isPageTop && < SearchBar setFilter={setFilter} />} */}
+
+                        <div className="flex align-center">
+                            <NavLink to="/explore/" className="nav-opt">Explore</NavLink>
+                        </div>
+
 
                         <div className="user-img-container " onClick={this.onToogleMenu}>
+
                             <button className="user-btn flex align-center btn-section  ">
-                                {/* <div className="btn-section flex align-center justify-center"> */}
                                 <FaBars className="menu-btn" />
                                 <div className="user-logo-container">
-                                    {/* {!user && <img src={`https://i.pravatar.cc/100?u=${1}`} alt="" />} */}
                                     {user && <img src={`https://i.pravatar.cc/100?u=${user._id}`} alt="" />}
                                 </div>
-                                {/* </div> */}
                             </button>
                         </div>
+
                         <div className="user-menu">
                             {isUserMenuOpen && <UserMenu onToogleMenu={this.onToogleMenu} onOpenBotLogin={this.onOpenBotLogin} />}
                         </div>
+
                     </div>
                 </nav>
-                {isPageTop && <SearchBar setFilter={setFilter} isPageTop={this.props.isPageTop} />}
+                {isFullHeader && <SearchBar setFilter={setFilter} isFullHeader={isFullHeader} filterBy={filterBy} datesModal={datesModal} guestModal={guestModal} locModal={locModal} onToggleSearchModals={this.onToggleSearchModals} />}
                 {isLoginBotmodal && <div className="main-layout">
                     <LoginSignup />
                 </div>}
@@ -109,7 +134,10 @@ function mapStateToProps(state) {
         users: state.userModule.users,
         user: state.userModule.user,
         count: state.userModule.count,
-        isLoading: state.systemModule.isLoading
+        isLoading: state.systemModule.isLoading,
+        filterBy: state.stayModule.filterBy,
+        isFullHeader: state.stayModule.isFullHeader
+
     }
 }
 const mapDispatchToProps = {

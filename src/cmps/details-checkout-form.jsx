@@ -7,6 +7,7 @@ import { Button } from '@material-ui/core'
 import 'react-dates/lib/css/_datepicker.css';
 import { showErrorMsg } from '../services/event-bus.service.js';
 import { DatesPicker2 } from './dates-picker2.jsx';
+import { parse } from 'date-fns/esm';
 import { GuestsCheckoutModal } from './_guests-modal';
 import { utilService } from '../services/util.service';
 
@@ -29,7 +30,7 @@ class _CheckoutForm extends React.Component {
             trip: {
                 startDate: filterBy.startDate,
                 endDate: filterBy.endDate,
-                guests: { adults: 1, kids: 0, infants: 0 },
+                guests: { adults: filterBy.adultNumber, kids: filterBy.kidsNumber, infants: filterBy.infantsNumber },
                 loc: stay.loc
             },
             isGuestPopupOn: false,
@@ -55,7 +56,6 @@ class _CheckoutForm extends React.Component {
 
     toggleDatesModal = (val) => {
         this.setState({ datesModal: true, isGuestPopupOn: false })
-        // this.setState({ datesModal: val })
     }
 
     timeToShow = (date, val) => {
@@ -110,7 +110,7 @@ class _CheckoutForm extends React.Component {
 
     calcGuestNum = () => {
         const { adults, kids, infants } = this.state.trip.guests
-        var res = adults + kids + infants
+        var res = parseInt(adults) + parseInt(kids) + parseInt(infants)
         return res
     }
 

@@ -12,7 +12,8 @@ export const stayService = {
     save,
     remove,
     getEmptyStay,
-    subscribe
+    subscribe,
+    onGetQueryParams
 
 }
 window.cs = stayService;
@@ -51,7 +52,24 @@ function _notifySubscribersStaysChanged(stays) {
     console.log('Notifying Listeners');
     listeners.forEach(listener => listener(stays))
 }
-
+function onGetQueryParams(){
+    const urlParams = new URLSearchParams(window.location.search);
+    const location = urlParams.get('location');
+    const startDate = urlParams.get('startDate');
+    const endDate = urlParams.get('endDate');
+    const adultNumber = urlParams.get('adults');
+    const kidsNumber = urlParams.get('kids');
+    const infantsNumber = urlParams.get('infants');
+    const params = {
+        location,
+        startDate,
+        endDate,
+        adultNumber,
+        kidsNumber,
+        infantsNumber
+    }
+    return params
+}
 window.addEventListener('storage', () => {
     console.log('Storage Changed from another Browser!');
     query()

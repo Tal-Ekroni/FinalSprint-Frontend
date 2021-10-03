@@ -1,7 +1,6 @@
 import { stayService } from "../services/stay.service.js";
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { userService } from "../services/user.service.js";
-import { utilService } from "../services/util.service.js";
 export function loadStays(filterBy = null) {
     return async (dispatch) => {
         try {
@@ -65,12 +64,12 @@ export function setFilter(filterBy) {
     }
 }
 
-export function setMiniHeader(isPageTop) {
+export function setMiniHeader(isFullHeader) {
     return async (dispatch, getState) => {
         try {
             await dispatch({
                 type: 'SET_HEADER',
-                isPageTop
+                isFullHeader
             })
         } catch (err) {
             console.log(err);

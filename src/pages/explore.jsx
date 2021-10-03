@@ -1,34 +1,21 @@
 import React from 'react'
 import { connect } from 'react-redux'
-
-
-import { loadStays, onAddStay, onEditStay, onRemoveStay } from '../store/stay.actions.js'
+import { loadStays, onAddStay, onEditStay, onRemoveStay, setFilter } from '../store/stay.actions.js'
 import { onBookTrip } from '../store/user.actions.js'
-
-
-import { showSuccessMsg } from '../services/event-bus.service.js'
 import { StaysList } from '../cmps/stays-list.jsx'
 import { ExploreFilter } from '../cmps/explore-filter.jsx'
-
-class _StayApp extends React.Component {
-    
+class _Explore extends React.Component {
 
     componentDidMount() {
-        // const urlParams = new URLSearchParams(window.location.search);
-        // const myParam = urlParams.get('cityName');
         this.props.loadStays(this.props.filterBy)
         window.scrollTo(0, 0)
-
     }
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.filterBy !== this.props.filterBy) {
             this.props.loadStays(this.props.filterBy);
-
         }
-        // window.scrollTo(0, 0)
-
     }
-
+  
     onRemoveStay = (stayId) => {
         this.props.onRemoveStay(stayId)
     }
@@ -40,15 +27,18 @@ class _StayApp extends React.Component {
         const stayToSave = { ...stay, price }
         this.props.onEditStay(stayToSave)
     }
-  
+
     render() {
         const { stays } = this.props
         if (!stays.length) return <div>loading</div>
         return (
             <main className="main-container page-padding">
-                <p>{stays.length===1?`${stays.length} stay`:`${stays.length} stays`}</p>
+                <div className="stays-headline">
+                <p>{stays.length === 1 ? `${stays.length} stay` : `${stays.length} stays`}</p>
+                    <h1>Find places to stay</h1>
+                </div>
                 <ExploreFilter />
-                {stays.length && <StaysList stays={stays} history={this.props.history}  />}
+                {stays.length && <StaysList stays={stays} history={this.props.history} />}
             </main>
         )
     }
@@ -66,8 +56,10 @@ const mapDispatchToProps = {
     onRemoveStay,
     onAddStay,
     onEditStay,
-    onBookTrip
+    onBookTrip,
+    setFilter,
+
 }
 
 
-export const StayApp = connect(mapStateToProps, mapDispatchToProps)(_StayApp)
+export const Explore = connect(mapStateToProps, mapDispatchToProps)(_Explore)
