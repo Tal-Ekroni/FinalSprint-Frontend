@@ -69,7 +69,6 @@ class _CheckoutForm extends React.Component {
     }
 
     getTripPrice = (startDate, endDate, price) => {
-
         const start = new Date(startDate / 1000);
         const end = new Date(endDate / 1000);
         const timeDiff = (end - start)
@@ -151,23 +150,22 @@ class _CheckoutForm extends React.Component {
 
     }
     render() {
-
         const { stay } = this.props
         const { trip, isCheckoutToReserve, isGuestPopupOn, datesModal } = this.state
         const { price } = stay
         const { startDate, endDate } = trip
+
         return (
             <section className="checkout-popup">
                 {isGuestPopupOn || datesModal && <div className="checkout-screen" onClick={(ev) => { this.onCloseModal(ev) }}></div>}
                 <section className="checkout-container flex">
                     <div className="checkout-form-container">
                         <div className="checkout-form-header flex space-between align-center" onClick={() => { this.onCloseModal(false) }}>
-
                             <div className="order-price-container ">
                                 <p className="order-price"><span>${price}</span> / night</p>
                             </div>
                             <div className="check-rating-container flex align-center">
-                                <p className="checkout-star"><FaStar  size={13} color="#FF5A5F" /></p>
+                                <p className="checkout-star"><FaStar size={13} color="#FF5A5F" /></p>
                                 <p className="order-avg-score">4</p>
                                 <p className="order-reviews">{`(${stay.reviews.length} reviews)`}</p>
                             </div>
@@ -186,8 +184,6 @@ class _CheckoutForm extends React.Component {
                                             <label htmlFor="" ><span>{endDate ? this.timeToShow(endDate, 'startDate') : 'Add date'}</span></label>
                                         </div>
                                     </div>
-
-
                                 </div>
                                 <div className="guests-check-container flex space-between" onClick={() => { this.toggleGuestsModal() }}>
                                     <div className="guests-input flex column"  >
@@ -199,8 +195,6 @@ class _CheckoutForm extends React.Component {
 
                                     </div>
                                 </div>
-
-
                             </div>
                             {isCheckoutToReserve &&
                                 <div className="summed-trip-info">
@@ -221,14 +215,12 @@ class _CheckoutForm extends React.Component {
                                     </div>
                                 </div>
                             }
-
                             {!isCheckoutToReserve && <div className="check-btn-container flex" onMouseOver={this.getMouseCord}>
                                 <Button onClick={() => this.getTripPrice(trip.startDate, trip.endDate, price)}>Check availabilty</Button>
                             </div>}
                             {isCheckoutToReserve && <div className="check-btn-container flex">
                                 <Button onClick={() => this.onBookTrip(stay, trip)}>Reserve</Button>
                             </div>}
-
                         </div>
                     </div >
                 </section>

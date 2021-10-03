@@ -22,11 +22,12 @@ export function loadReviews() {
 export function onAddReview(review) {
   return async dispatch => {
     try {
-      const addedReview = await reviewService.add(review)
-      dispatch({ type: 'ADD_REVIEW', review: addedReview })
+      console.log(review);
+      // const addedReview = await reviewService.add(review)
+      // dispatch({ type: 'ADD_REVIEW', review: addedReview })
 
-      const score = await userService.changeScore(SCORE_FOR_REVIEW)
-      dispatch({ type: 'SET_SCORE', score })
+      // const score = await userService.changeScore(SCORE_FOR_REVIEW)
+      // dispatch({ type: 'SET_SCORE', score })
       
     } catch (err) {
       console.log('ReviewActions: err in addReview', err)
