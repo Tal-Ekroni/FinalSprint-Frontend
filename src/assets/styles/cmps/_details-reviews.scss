@@ -1,11 +1,30 @@
 .reviews-section-container {
     & section {
         width: 100%;
+        max-height: 950px;
+        min-height: 450px;
     }
 }
 .read-more {
     margin-inline-start: 10px;
     font-family: circular-bold;
+}
+.show-reviews-btn {
+    z-index: 5;
+    min-width: 210px;
+    max-width: 100%;
+    height: 50px;
+    border: 1px solid $clr2;
+    color: $clr2;
+    font-size: 1rem;
+    line-height: 1.43rem;
+    font-weight: 600;
+    border-radius: 8px;
+    margin: 20px 0;
+    background-color: $clr1;
+    &:hover {
+        text-decoration: underline;
+    }
 }
 .reviews-section-title {
     margin-top: 40px;
@@ -19,7 +38,7 @@
 .reviews-container {
     width: 100%;
     // border: 1px solid black;
-    max-height: 600px;
+    max-height: 650px;
     list-style: none;
     margin-top: 30px;
     gap: 20px;
@@ -99,7 +118,7 @@
     padding-inline-end: 20px;
     font-size: 0.875rem;
 }
-.loader-container{
+.loader-container {
     width: 175px;
 }
 .line-loader-container {

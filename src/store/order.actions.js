@@ -61,10 +61,49 @@ export function onAddOrder(orderToAdd) {
         }
     }
 }
-export function onCancelOrder(trip) {
-    // const {id , }
-    console.log('trip cancel', trip);
+export function onCancelOrder(tripId, buyerId, hostId) {
+    return async (dispatch) => {
+        try {
+            // const {id , }
+            console.log('trip cancel', tripId, buyerId, hostId);
+            const buyer = await userService.getById(buyerId)
+            const hostUser = await userService.getById(hostId)
+            buyer.myTrips = buyer.myTrips.filter(trip => { return trip._id !== tripId })
+            hostUser.orders = hostUser.orders.filter(trip => { return trip._id !== tripId })
+            const updatedUser = await userService.update(buyer)
+            const updatedHost = await userService.update(hostUser)
+            dispatch({ type: 'UPDATE_USER', user: updatedUser })
+            dispatch({ type: 'UPDATE_USER', user: updatedHost })
+            showSuccessMsg('Order canceled')
 
+        }
+        catch (err) {
+            showErrorMsg('Cannot Cancel order')
+            console.log('Cannot Cancel order', err)
+        }
+    }
+}
+export function onApproveOrder(orderId, buyerId, hostId) {
+    return async (dispatch) => {
+        try {
+            const buyer = await userService.getById(buyerId)
+            const hostUser = await userService.getById(hostId)
+            const buyerIdx = buyer.myTrips.findIndex(trip => trip._id === orderId)
+            const hostIdx = hostUser.orders.findIndex(order => order._id === orderId)
+            buyer.myTrips[buyerIdx].status = 'approved'
+            hostUser.orders[hostIdx].status = 'approved'
+            const updatedUser = await userService.update(buyer)
+            const updatedHost = await userService.update(hostUser)
+            dispatch({ type: 'UPDATE_USER', user: updatedUser })
+            dispatch({ type: 'UPDATE_USER', user: updatedHost })
+            showSuccessMsg('Order Approved')
+
+        }
+        catch (err) {
+            showErrorMsg('Cannot approve order')
+            console.log('Cannot approve order', err)
+        }
+    }
 }
 export function setFilter(filterBy) {
     return async (dispatch) => {

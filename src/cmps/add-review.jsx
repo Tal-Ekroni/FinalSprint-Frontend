@@ -1,6 +1,6 @@
 import { Component } from 'react'
 import { connect } from 'react-redux'
-import { Button } from '@material-ui/core';
+import { Button, TextareaAutosize, TextField } from '@material-ui/core';
 import { onAddReview } from '../store/review.actions.js'
 import { utilService } from '../services/util.service.js';
 import Rating from 'react-rating';
@@ -9,10 +9,14 @@ import { FaStar } from 'react-icons/fa';
 class _AddReview extends Component {
     state = {
         newReview: {
-            name: this.props.user.fullname,
+            by: {
+                fullname: this.props.user.fullname,
+                _id: this.props.user._id,
+                imgUrl: this.props.user.imgUrl
+            },
             createdAt: null,
             txt: null,
-            id: utilService.makeId(),
+            id: utilService.makeId(8),
             cleanliness: null,
             communication: null,
             checkIn: null,
@@ -22,22 +26,23 @@ class _AddReview extends Component {
         }
 
     }
-
+    onRemove = async reviewId => {
+        await this.props.removeReview(reviewId)
+        // this.props.history.push('/login')
+      }
     clearReview = () => {
         this.setState({
             newReview: {
                 name: this.props.user.fullname,
-                createdAt: `${new Date().getDate()}/${new Date().getMonth() + 1}`,
+                createdAt: null,
                 txt: null,
                 id: utilService.makeId(),
-                review: {
-                    cleanliness: null,
-                    communication: null,
-                    checkIn: null,
-                    accuracy: null,
-                    location: null,
-                    value: null
-                }
+                cleanliness: null,
+                communication: null,
+                checkIn: null,
+                accuracy: null,
+                location: null,
+                value: null
             }
         })
     }
@@ -47,34 +52,44 @@ class _AddReview extends Component {
         const value = target.type === 'number' ? +target.value : target.value
         this.setState(prevState => ({ newReview: { ...prevState.newReview, [field]: value } }))
     }
-    changeRating = (target) => {
-        // console.log(target);
+    changeRating = (score, name) => {
+        this.setState(prevState => ({ newReview: { ...prevState.newReview, [name]: score } }))
     }
 
     formSubmited = (ev) => {
         ev.preventDefault()
-        // this.setState(prevState => ({ newReview: { ...prevState.newReview, ['createdAt']: Date.now() } }))
-        // const review = this.state.newReview
-        // this.props.onAddReview(review)
+        const { stayId } = this.props
+        this.setState(prevState => ({ newReview: { ...prevState.newReview, ['createdAt']: Date.now() } }), () => {
+            const review = this.state.newReview
+            this.props.onAddReview(review, stayId)
+            this.clearReview()
+        })
     }
 
     render() {
         const { cleanliness, communication, checkIn, accuracy, location, value, txt } = this.state.newReview
-
+        const style = {
+            margin: '20px 0',
+            padding: '20px',
+            width: '100%',
+            height: ' 150px',
+            resize: 'none',
+            borderRadius: '13px',
+            borderColor: ' #bdbcbc'
+        }
         return (
             <div >
                 <div className="add-review-title-container">
                     <h3>Add review</h3>
                 </div>
-                <form action="" className="add-form flex column " onSubmit={this.formSubmited}>
+                <form action="" className="add-form flex column " onSubmit={this.formSubmited} >
                     <div className=" add-review-container flex ">
 
                         <div className="left-review">
                             <div className="line flex">
                                 <p>Cleanliness</p>
                                 <Rating
-                                    name="cleanliness"
-                                    onChange={this.changeRating}
+                                    onChange={(ev) => this.changeRating(ev, 'cleanliness')}
                                     initialRating={cleanliness}
                                     fullSymbol={<FaStar size={13} color="#FF5A5F" />}
                                     emptySymbol={<FaStar size={13} color="lightgray" border="1px solid #FF5A5F" />}
@@ -83,8 +98,8 @@ class _AddReview extends Component {
                             <div className="line flex">
                                 <p>Communication</p>
                                 <Rating
-                                    onChange={this.changeRating}
-                                    initialRating={cleanliness}
+                                    onChange={(ev) => this.changeRating(ev, 'communication')}
+                                    initialRating={communication}
                                     fullSymbol={<FaStar size={13} color="#FF5A5F" />}
                                     emptySymbol={<FaStar size={13} color="lightgray" border="1px solid #FF5A5F" />}
                                 />
@@ -92,8 +107,8 @@ class _AddReview extends Component {
                             <div className="line flex">
                                 <p>Check in</p>
                                 <Rating
-                                    onChange={this.changeRating}
-                                    initialRating={cleanliness}
+                                    onChange={(ev) => this.changeRating(ev, 'checkIn')}
+                                    initialRating={checkIn}
                                     fullSymbol={<FaStar size={13} color="#FF5A5F" />}
                                     emptySymbol={<FaStar size={13} color="lightgray" border="1px solid #FF5A5F" />}
                                 />
@@ -103,9 +118,8 @@ class _AddReview extends Component {
                             <div className="line flex">
                                 <p>Accuracy</p>
                                 <Rating
-                                    name="cleanliness"
-                                    onChange={this.changeRating}
-                                    initialRating={cleanliness}
+                                    onChange={(ev) => this.changeRating(ev, 'accuracy')}
+                                    initialRating={accuracy}
                                     fullSymbol={<FaStar size={13} color="#FF5A5F" />}
                                     emptySymbol={<FaStar size={13} color="lightgray" border="1px solid #FF5A5F" />}
                                 />
@@ -113,8 +127,8 @@ class _AddReview extends Component {
                             <div className="line flex">
                                 <p>Location</p>
                                 <Rating
-                                    onChange={this.changeRating}
-                                    initialRating={cleanliness}
+                                    onChange={(ev) => this.changeRating(ev, 'location')}
+                                    initialRating={location}
                                     fullSymbol={<FaStar size={13} color="#FF5A5F" />}
                                     emptySymbol={<FaStar size={13} color="lightgray" border="1px solid #FF5A5F" />}
                                 />
@@ -122,8 +136,8 @@ class _AddReview extends Component {
                             <div className="line flex">
                                 <p>Value</p>
                                 <Rating
-                                    onChange={this.changeRating}
-                                    initialRating={cleanliness}
+                                    onChange={(ev) => this.changeRating(ev, 'value')}
+                                    initialRating={value}
                                     fullSymbol={<FaStar size={13} color="#FF5A5F" />}
                                     emptySymbol={<FaStar size={13} color="lightgray" border="1px solid #FF5A5F" />}
                                 />
@@ -133,9 +147,17 @@ class _AddReview extends Component {
 
                     <div className="add-txt-container flex">
                         {/* <h4>Text</h4> */}
-                        <input value={txt}
+                        {/* <input value={txt}
                             placeholder="Write you opinion about this stay..."
                             className="review-input" onChange={this.handleChange}
+                            name="txt"
+                            autoComplete="off" /> */}
+                        <TextareaAutosize
+                            style={style}
+                            value={txt}
+                            placeholder="Write you opinion about this stay..."
+                            className="review-input"
+                            onChange={this.handleChange}
                             name="txt"
                             autoComplete="off" />
                     </div>
@@ -151,7 +173,7 @@ class _AddReview extends Component {
                         </Button>
                     </div>
                 </form>
-            </div>
+            </div >
         )
     }
 }

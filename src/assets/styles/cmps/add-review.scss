@@ -7,7 +7,8 @@
     }
     .add-review-container {
         width: 100%;
-        justify-content: center;
+        // justify-content: center;
+        justify-content: space-between;
         & p {
             font-family: circular-bold;
             font-size: 1rem;
@@ -15,8 +16,9 @@
     }
     .left-review,
     .right-review {
-        width: 50%;
-        justify-content: center;
+        padding-inline-start: 12px;
+        max-width: 40%;
+        width: 40%;
     }
     .add-txt-container {
         width: 100%;

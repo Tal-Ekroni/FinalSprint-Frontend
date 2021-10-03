@@ -2,6 +2,8 @@
 // import Rating from "react-rating";
 // import { ReadMore } from "./_read-more";
 
+import { utilService } from "../services/util.service";
+
 export function ReviewsPreview({ review, onToogleReadModal, isReadMoreOn }) {
     return (
         <div className="review-card-container">
@@ -16,7 +18,7 @@ export function ReviewsPreview({ review, onToogleReadModal, isReadMoreOn }) {
                                 <p className="review-username">{review.by.fullname} </p>
                             </div>
                             <div className="review-username-container">
-                                <p className="">{review.createdAt} </p>
+                                {typeof review.createdAt === 'number' ? <p >{utilService.timeToShow(review.createdAt)} </p> : <p >{review.createdAt} </p>}
                             </div>
                             {/* <div>
                     <p >{`${new Date(review.createdAt).getDate()}.${new Date(review.createdAt).getMonth() + 1}.${new Date(review.createdAt).getFullYear()}`}</p>
@@ -27,11 +29,11 @@ export function ReviewsPreview({ review, onToogleReadModal, isReadMoreOn }) {
 
                     <div className="review-txt-container">
 
-                        {review.txt.length >= 100 && (
+                        {review.txt && review.txt.length >= 100 && (
                             <p >{review.txt.substring(0, 100)} {review.txt.length > 100 && (<span className="read-more" onClick={onToogleReadModal}><br /> More...</span>)}</p>
                         )}
 
-                        {review.txt.length < 100 && <p  >{review.txt}</p>}
+                        {review.txt && review.txt.length < 100 && <p  >{review.txt}</p>}
                     </div>
 
                 </div>
