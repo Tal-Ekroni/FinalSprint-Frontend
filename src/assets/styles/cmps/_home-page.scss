@@ -46,13 +46,17 @@
     & .sug-loc {
         margin-top: 20px;
         margin-bottom: 50px;
+        ::-webkit-scrollbar{
+            width:0;
+            background-color:transparent;
+        }
         h2 {
             font-family: circular-bold;
         }
         & .locations {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 24px 150px;
+            grid-template-columns: repeat(4, minmax(150px, 1fr));
+            // gap: 24px 150px;
             margin-top: 30px;
             @include for-mobile-layout {
                 // grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
@@ -72,13 +76,19 @@
                 //     height: 50px;
                 // }
                 max-width: 400px;
-                display: flex;
+                display: grid;
+                gap:40px 100px;
                 overflow-x: auto;
-            }
-            @include for-narrow-layout {
-                max-width: 700px;
-                overflow-x: auto;
-                display: flex;
+                // ::-webkit-scrollbar{
+                    //     width:0;
+                    //     background-color:transparent;
+                    // }
+                }
+                @include for-narrow-layout {
+                    max-width: 700px;
+                    overflow-x: auto;
+                    display: grid;
+                    gap:40px 100px;
                 //     :nth-last-child(n + 5) {
                 //         display: none;
                 //     }
@@ -121,6 +131,10 @@
         h2 {
             font-family: circular-bold;
         }
+        ::-webkit-scrollbar{
+            width:0;
+            background-color:transparent;
+        }
         .live-loc {
             gap: 10px;
             margin-top: 15px;
@@ -154,17 +168,17 @@
                         width: 265px;
                     }
                 }
-                overflow-x:unset;
-                max-width:unset;
-            // }
-            // @include for-wide-layout {
-            //     .live-card:nth-last-child(n + 0) {
-            //         display: flex;
-            //     }
-            //     .live-img {
-            //         height: 400px;
-            //         width: 400px;
-            //     }
+                overflow-x: unset;
+                max-width: unset;
+                // }
+                // @include for-wide-layout {
+                //     .live-card:nth-last-child(n + 0) {
+                //         display: flex;
+                //     }
+                //     .live-img {
+                //         height: 400px;
+                //         width: 400px;
+                //     }
             }
             .live-img {
                 border-radius: 3%;
