@@ -70,9 +70,6 @@ class _AddStay extends React.Component {
 
         const field = target.name
         const value = target.value
-        console.log('field', target);
-        console.log('value', value);
-
         this.setState(prevState => ({ ...prevState, newStay: { ...this.state.newStay, [field]: value } }), () => { console.log(this.state); })
     }
     handleMultiSelectChange = (target) => {
@@ -80,16 +77,13 @@ class _AddStay extends React.Component {
         if (target.length > 0) {
             const field = target[0].name
             lastName = field
-            console.log(lastName);
             const labels = target.map(label => {
                 return label.value;
             }) || [];
             this.setState({ newStay: { ...this.state.newStay, [field]: labels } }, () => {
-                console.log('field', this.state)
             });
         } else {
             this.setState({ newStay: { ...this.state.newStay, [lastName]: [] } }, () => {
-                console.log('field', this.state)
             });
         }
 
@@ -98,7 +92,6 @@ class _AddStay extends React.Component {
     onAddsStay = (ev) => {
         ev.preventDefault()
         const { newStay } = this.state
-        console.log('add', newStay);
         this.props.onAddStay(newStay)
         this.setState(prevState => ({
             ...prevState, newStay: {
@@ -141,8 +134,6 @@ class _AddStay extends React.Component {
                 const ImgUrl = res.url
                 state.newStay.imgUrls.push(ImgUrl)
                 this.setState((state))
-
-                console.log('res', res.url);
             })
             .catch(err => console.error(err))
     }
