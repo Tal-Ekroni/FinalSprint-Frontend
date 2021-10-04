@@ -8,10 +8,7 @@ class _UserMenu extends React.Component {
     state = {
         isLoginModalOn: false
     }
-    componentDidMount() {
-        const userId = this.props.user._id
-        this.props.loadUser(userId)
-    }
+
     onLogout = () => {
         this.props.onLogout()
         this.props.onToogleMenu()
@@ -71,7 +68,6 @@ class _UserMenu extends React.Component {
 function mapStateToProps(state) {
     return {
         user: state.userModule.user,
-        count: state.userModule.count,
     }
 }
 const mapDispatchToProps = {

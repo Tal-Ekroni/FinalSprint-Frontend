@@ -4,7 +4,7 @@ const initialState = {
     currStay: null,
     review: null,
     lastRemovedStay: null,
-    isFullHeader: false,
+    isMiniHeader: false,
     filterBy: {
         startDate: null,
         endDate: null,
@@ -38,7 +38,7 @@ export function stayReducer(state = initialState, action) {
             newState = { ...state, stays: [...state.stays, action.stay] }
             break
         case 'SET_HEADER':
-            newState = { ...state, isFullHeader: action.isFullHeader }
+            newState = { ...state, isMiniHeader: action.isMiniHeader }
             // console.log(newState);
             break
         case 'SET_FILTER':

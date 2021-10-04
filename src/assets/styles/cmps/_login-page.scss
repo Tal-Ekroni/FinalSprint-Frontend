@@ -10,12 +10,12 @@
     & input {
         padding: 15px;
         outline: none;
-        &:nth-child(2){
+        &:nth-child(2) {
             border-top: 1px solid $clr2;
             border-bottom: 1px solid $clr2;
         }
     }
-    
+
     .input-fields {
         border: 1px solid $clr2;
         margin-right: 10px;
@@ -33,13 +33,17 @@
         height: 40px;
         font-weight: bold;
     }
-    .new-user{
-        .new-user-btn{
-            color:black;
+    .new-user {
+        .new-user-btn {
+            color: black;
         }
     }
 }
-.login-form button{
+.login-form {
+    position: absolute;
+    top: 130px;
+}
+.login-form button {
     background-color: $clr6;
     border: none;
 }

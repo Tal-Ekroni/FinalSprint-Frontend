@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from 'react-redux'
-import { onCancelOrder } from '../store/order.actions'
-import LazyLoad from "./preview-slider"
+import { onCancelOrder } from '../../store/order.actions'
+import LazyLoad from "../preview-slider"
 
 class _TripPreview extends React.Component {
     state = {
@@ -48,7 +48,10 @@ class _TripPreview extends React.Component {
                                 {trip.status === 'pending' && <div>
                                     <p>Wait for approval</p>
                                 </div>}
-                                <div><p onClick={() => { this.onCancelTrip(trip) }}>Cancel order</p></div>
+                                {trip.status === 'approved' && <div>
+                                    <p>Approved by host!</p>
+                                </div>}
+                                <div><p className="user-cancel" onClick={() => { this.onCancelTrip(trip) }}>Cancel order</p></div>
                             </div>
                         </div >
                     </section>}

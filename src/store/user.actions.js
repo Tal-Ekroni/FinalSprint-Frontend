@@ -90,6 +90,22 @@ export function onLogout() {
             })
     }
 }
+export function onBecomeHost(userId) {
+    return async (dispatch, getState) => {
+        try {
+
+            const user = await userService.getById(userId)
+            user.isHost = true
+            const updatedUser = await userService.update(user)
+            dispatch({
+                type: 'UPDATE_USER', user: updatedUser
+            })
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+}
 export function onToggleLikeStay(isLiked, savedStay = null) {
     return async (dispatch, getState) => {
         try {

@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 // import { showSuccessMsg } from '../services/event-bus.service.js'
 import { loadUser } from '../store/user.actions'
 import travelImg from '../assets/img/travel.jpg'
-import { TripsList } from '../cmps/trips-list.jsx'
+import { TripsList } from '../cmps/trips-page/trips-list.jsx'
 class _TripsPage extends React.Component {
     state = {
         user: null

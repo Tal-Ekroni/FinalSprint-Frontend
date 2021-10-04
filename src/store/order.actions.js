@@ -45,8 +45,8 @@ export function onAddOrder(orderToAdd) {
             console.log('user', user);
             if (!hostUser.orders) hostUser.orders = []
             if (!user.myTrips) user.myTrips = []
-            hostUser.orders.push(orderToAdd)
-            user.myTrips.push(orderToAdd)
+            hostUser.orders.unshift(orderToAdd)
+            user.myTrips.unshift(orderToAdd)
 
             const updatedUser = await userService.update(user)
             const updatedHost = await userService.update(hostUser)

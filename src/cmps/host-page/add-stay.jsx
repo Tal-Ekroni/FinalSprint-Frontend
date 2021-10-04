@@ -1,0 +1,195 @@
+import React from 'react'
+import { connect } from 'react-redux'
+import { Field, Form, Formik } from "formik";
+import GoogleSelect from '@material-ui/core/Select';
+import { MenuItem, Button, TextareaAutosize } from "@material-ui/core";
+import Select from 'react-select';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import { AddStayBasicInfo } from './add-stay-basic-info';
+import { AddStayFloorPlan } from './add-stay-floor-plan';
+import { AddStayProfile } from './add-stay-profile';
+import { onAddStay } from '../../store/stay.actions'
+
+class _AddStay extends React.Component {
+    state = {
+        newStay: {
+            name: '',
+            assetType: '',
+            assetSpace: '',
+            summary: '',
+            uniqueStay: false,
+            imgUrls: [],
+            price: null,
+            capacity: null,
+            amenities: [],
+            labels: [],
+            loc: {
+                country: null,
+                countryCode: null,
+                address: null,
+                lat: null,
+                lng: null
+            },
+            reviews: []
+        },
+        selectedTab: 'get-start'
+
+    }
+    componentDidMount() {
+        this.setState({
+            newStay: {
+                name: '',
+                assetType: '',
+                assetSpace: '',
+                summary: '',
+                uniqueStay: false,
+                imgUrls: [],
+                price: null,
+                capacity: null,
+                amenities: [],
+                loc: {
+                    country: null,
+                    countryCode: null,
+                    address: null,
+                    lat: null,
+                    lng: null
+                },
+                reviews: []
+            },
+            selectedTab: 'get-start'
+        })
+
+    }
+    handleChange = ({ target }) => {
+        const field = target.name;
+        const value = target.type === 'number' ? +target.value : target.value;
+        this.setState(prevState => ({ ...prevState, newStay: { ...this.state.newStay, [field]: value } }))
+    }
+    handleSelectChange = (target) => {
+
+        const field = target.name
+        const value = target.value
+        console.log('field', target);
+        console.log('value', value);
+
+        this.setState(prevState => ({ ...prevState, newStay: { ...this.state.newStay, [field]: value } }), () => { console.log(this.state); })
+    }
+    handleMultiSelectChange = (target) => {
+        var lastName = null
+        if (target.length > 0) {
+            const field = target[0].name
+            lastName = field
+            console.log(lastName);
+            const labels = target.map(label => {
+                return label.value;
+            }) || [];
+            this.setState({ newStay: { ...this.state.newStay, [field]: labels } }, () => {
+                console.log('field', this.state)
+            });
+        } else {
+            this.setState({ newStay: { ...this.state.newStay, [lastName]: [] } }, () => {
+                console.log('field', this.state)
+            });
+        }
+
+        // this.setState(prevState => ({ ...prevState, newStay: { ...this.state.newStay, [field]: value } }), () => { console.log(this.state); })
+    }
+    onAddsStay = (ev) => {
+        ev.preventDefault()
+        const { newStay } = this.state
+        console.log('add', newStay);
+        this.props.onAddStay(newStay)
+        this.setState(prevState => ({
+            ...prevState, newStay: {
+                name: '',
+                assetType: '',
+                assetSpace: '',
+                summary: '',
+                uniqueStay: false,
+                imgUrls: [],
+                price: null,
+                capacity: null,
+                amenities: [],
+                labels: [],
+                loc: {
+                    country: null,
+                    countryCode: null,
+                    address: null,
+                    lat: null,
+                    lng: null
+                },
+                reviews: []
+            }
+        }))
+
+    }
+
+    onChangeTab = (ev, value) => {
+        this.setState({ selectedTab: value })
+    }
+    render() {
+        const { selectedTab } = this.state
+        const { user } = this.props
+
+        return (
+            <div className="add-stay-container">
+                <section className="host-tabs-container">
+                    <Tabs
+                        value={selectedTab}
+                        onChange={this.onChangeTab}
+                        textColor="secondary"
+                        indicatorColor="secondary"
+                        aria-label="secondary tabs example"
+                    >
+                        <Tab value="get-start" label="Let's start!" />
+                        <Tab value="floor-plan" label="Floor plan" />
+                        <Tab value="stay-profile" label="Stay profile" />
+                        <Tab value="finish-page" label="Finish your page" />
+                    </Tabs>
+                </section>
+
+                <div className="add-form-container flex" onSubmit={this.onAddsStay}>
+                    <form className="add-form flex column space-between">
+                        <div className="add-curr-tab-title">
+                            {selectedTab === 'get-start' && <h1>Let's start with some basic info!</h1>}
+                            {selectedTab === 'floor-plan' && <h1>Stay floor plan</h1>}
+                            {selectedTab === 'stay-profile' && <h1>Stay Profile</h1>}
+                            {selectedTab === 'finish-page' && <h1>Finish your page</h1>}
+                        </div>
+                        {selectedTab === 'get-start' && <AddStayBasicInfo handleChange={this.handleChange} handleSelectChange={this.handleSelectChange} state={this.state} />}
+                        {selectedTab === 'floor-plan' && <AddStayFloorPlan handleChange={this.handleChange} handleMultiSelectChange={this.handleMultiSelectChange} state={this.state} />}
+                        {selectedTab === 'stay-profile' && <AddStayProfile handleChange={this.handleChange} handleMultiSelectChange={this.handleMultiSelectChange} state={this.state} />}
+
+                        {selectedTab === 'finish-page' ? <button
+                            className=" add-page-btn add-stay-btn"
+                            variant={'contained'}
+                            type="submit"
+                        >
+                            Add Stay
+                        </button> : <button
+                            className=" add-page-btn next-page-btn"
+                            variant={'contained'}
+                            type="button"
+                        >
+                            Next Page
+                        </button>}
+                    </form>
+
+                </div>
+            </div>
+        )
+    }
+}
+function mapStateToProps(state) {
+    return {
+        user: state.userModule.user,
+        stays: state.stayModule.stays
+    }
+}
+const mapDispatchToProps = {
+    onAddStay
+}
+
+
+export const AddStay = connect(mapStateToProps, mapDispatchToProps)(_AddStay)

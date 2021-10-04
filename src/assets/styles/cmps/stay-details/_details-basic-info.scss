@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column-reverse;
 }
+
 .stay-info {
     width: 100%;
     margin-top: 25px;
@@ -50,6 +51,8 @@
 }
 .host-info-container {
     border-bottom: 0.5px solid lightgray;
+    padding-bottom: 24px;
+
 }
 .asset-short-info {
     flex-direction: column;
@@ -116,6 +119,7 @@
     text-decoration: underline;
     color: $clr5;
 }
+
 @media (max-width: $mobile-breakpoint) {
     .stay-info {
         flex-direction: column;
@@ -135,6 +139,9 @@
     .stay-info {
         flex-direction: column;
         padding: 0 5px;
+    }
+    .host-info-container {
+        padding-bottom: 24px;
     }
 }
 @media (min-width: $narrow-breakpoint) {
@@ -174,10 +181,12 @@
     }
     .host-info-container {
         padding-top: 48px;
-        padding-bottom: 24px;
     }
 }
 @media (min-width: $normal-breakpoint) {
+    .host-info-container {
+        padding-bottom: 24px;
+    }
     .asset-imgs {
         overflow: hidden;
     }

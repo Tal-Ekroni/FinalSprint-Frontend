@@ -1,49 +1,53 @@
-.checkout-container {
-    flex-direction: column;
-    align-items: center;
-    min-height: 280px;
-    width: 380px;
-    margin: 0 auto;
-    border: 1px solid #00000030;
-    border-radius: 13px;
-    box-shadow: 0 6px 16px -2px #d8d8d8;
-    & .checkout-form-container {
-        width: 100%;
-        padding: 20px 25px 15px;
-        // & .checkout-form-header {
-        //     height: 30px;
-        //     margin-block-end: 1rem;
-        // }
-    }
-    & .checkout-form-header {
-        // border: 1px solid black;
-        height: 35px;
-        margin-block-end: 1rem;
-        & .order-price-container {
-            & span {
-                font-family: circular-book;
-                font-size: 1.375rem;
-            }
+.checkout-popup {
+    width: 100%;
+    position: sticky;
+    top: 80px;
+    bottom: 20px;
+    align-items: flex-end;
+    margin-top: 20px ;
+    justify-content: flex-end;
+    .checkout-container {
+        flex-direction: column;
+        align-items: center;
+        min-height: 280px;
+        width: 380px;
+        // margin: 0 auto;
+        justify-content: flex-end;
+        border: 1px solid #00000030;
+        border-radius: 13px;
+        box-shadow: 0 6px 16px -2px #d8d8d8;
+        & .checkout-form-container {
+            width: 100%;
+            padding: 20px 25px 15px;
         }
-        & .check-rating-container {
-            & .order-avg-score {
-                font-family: circular-book;
-                font-weight: 600;
-                margin-inline-start: 4px;
-                margin-inline-end: 4px;
+        & .checkout-form-header {
+            height: 35px;
+            margin-block-end: 1rem;
+            & .order-price-container {
+                & span {
+                    font-family: circular-book;
+                    font-size: 1.375rem;
+                }
             }
-            & .order-reviews {
-                font-size: 0.875rem;
-                color: gray;
-                text-decoration: underline;
-            }
-            & .checkout-star{
-                padding-top: 2px;
+            & .check-rating-container {
+                & .order-avg-score {
+                    font-family: circular-book;
+                    font-weight: 600;
+                    margin-inline-start: 4px;
+                    margin-inline-end: 4px;
+                }
+                & .order-reviews {
+                    font-size: 0.875rem;
+                    color: gray;
+                    text-decoration: underline;
+                }
+                & .checkout-star {
+                    padding-top: 2px;
+                }
             }
         }
     }
 }
-
 .summed-trip-info {
     & .sum-line {
         height: 26px;
@@ -157,15 +161,6 @@
     font-weight: 300;
     text-decoration: underline;
 }
-.checkout-popup {
-    width: 100%;
-    position: sticky;
-    top: 200px;
-    bottom: 25px;
-    margin-top: 50px;
-    margin-bottom: 45px;
-}
-
 @media (max-width: $mobile-breakpoint) {
 }
 @media (min-width: $mobile-breakpoint) {
@@ -179,7 +174,6 @@
         // top: 50px; //Header
         top: 200px;
         bottom: 25px;
-        margin-top: 50px;
         align-items: flex-end;
     }
 }
