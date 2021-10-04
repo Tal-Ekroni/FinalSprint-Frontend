@@ -83,7 +83,7 @@ class _SearchBar extends React.Component {
                             <input type="text" name="location" autoComplete="off" value={location} onChange={this.handleChange} placeholder="Where are you going?" />
                         </label>
                     </div>
-                    {locModal && <LocationsPopUp onToggleSearchModals={onToggleSearchModals} />}
+                    {locModal && <LocationsPopUp history={this.props.history} />}
                     <div className="mini-search-input" onClick={onToggleMiniSearchBar}>
                         <p >
                             Start your search
