@@ -2,6 +2,7 @@
 import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
+import {httpService} from './http.service.js'
 
 const STORAGE_KEY = 'stay'
 const listeners = []
@@ -19,11 +20,14 @@ export const stayService = {
 }
 window.cs = stayService;
 
-function query(filterBy) {
+async function query(filterBy) {
     const stays = storageService.query(STORAGE_KEY, 200, filterBy)
+    //const stays = await httpService.get('/stay',{params:filterBy})
     return stays
 }
-function getById(stayId) {
+async function getById(stayId) {
+    // const stay = await httpService.get(`/stay/${stayId}`)
+    // return stay 
     return storageService.get(STORAGE_KEY, stayId)
 }
 function remove(stayId) {

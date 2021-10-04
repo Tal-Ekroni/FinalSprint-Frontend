@@ -2,6 +2,7 @@
 import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
+import {httpService} from './http.service.js'
 
 const STORAGE_KEY = 'order'
 const listeners = []
@@ -16,9 +17,12 @@ export const orderService = {
 }
 window.cs = orderService;
 
-function query(filterBy) {
+ async function query(filterBy) {
     const orders = storageService.query(STORAGE_KEY,200,filterBy) 
     return orders
+    //add userId and type to parameters in query
+    // const orders = httpService.get('/order',{params:{userId,type}})
+    // return orders
 }
 function getById(orderId) {
     return storageService.get(STORAGE_KEY, orderId)
@@ -33,6 +37,8 @@ function remove(orderId) {
 function save(order) {
     console.log('order', order);
         return storageService.post(STORAGE_KEY, order)
+        // const savedOrder = httpService.post('/order',order)
+        // return savedOrder
 
 }
 function subscribe(listener) {
