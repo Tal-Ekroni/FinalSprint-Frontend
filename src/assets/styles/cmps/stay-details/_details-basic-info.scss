@@ -51,6 +51,8 @@
 }
 .host-info-container {
     border-bottom: 0.5px solid lightgray;
+    padding-bottom: 24px;
+
 }
 .asset-short-info {
     flex-direction: column;
@@ -138,6 +140,9 @@
         flex-direction: column;
         padding: 0 5px;
     }
+    .host-info-container {
+        padding-bottom: 24px;
+    }
 }
 @media (min-width: $narrow-breakpoint) {
     .stay-info {
@@ -176,10 +181,12 @@
     }
     .host-info-container {
         padding-top: 48px;
-        padding-bottom: 24px;
     }
 }
 @media (min-width: $normal-breakpoint) {
+    .host-info-container {
+        padding-bottom: 24px;
+    }
     .asset-imgs {
         overflow: hidden;
     }

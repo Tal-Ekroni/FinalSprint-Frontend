@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from 'react-redux'
-import { onCancelOrder } from '../store/order.actions'
-import LazyLoad from "./preview-slider"
+import { onCancelOrder } from '../../store/order.actions'
+import LazyLoad from "../preview-slider"
 
 class _TripPreview extends React.Component {
     state = {

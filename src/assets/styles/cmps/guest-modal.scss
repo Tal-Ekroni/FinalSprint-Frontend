@@ -1,13 +1,15 @@
-.guest-modal-container {
-    position: relative;
-    width: 60%;
+.guest-modal {
+    position: absolute;
+    width: 390px;
     height: 245px;
     border-radius: 32px;
     background-color: $clr1;
-    bottom: 95px;
     z-index: 3;
+    top: 10px;
+    transform: translateX(-250%);
+    transform: translatey(25%);
     overflow: hidden;
-    margin: 0 auto;
+    // margin: 0 auto;
     padding: 16px 32px;
     font-family: circular-light;
     border: 1px solid #00000030;

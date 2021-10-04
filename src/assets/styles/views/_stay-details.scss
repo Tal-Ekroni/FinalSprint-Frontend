@@ -13,6 +13,7 @@
             // width: 650px;
             border-bottom: 0.5px solid lightgray;
             & .asset-desc {
+                padding: 20px 0;
                 overflow: hidden;
                 text-overflow: ellipsis;
                 & p {
@@ -37,6 +38,7 @@
     }
     .host-info-container {
         padding: 0 5px;
+        padding-bottom: 24px;
     }
     .asset-desc-container {
         padding: 0 5px;
@@ -75,6 +77,7 @@
     }
     .host-info-container {
         padding: 0;
+        padding-bottom: 24px;
     }
     .asset-sum-container {
         padding: 0;

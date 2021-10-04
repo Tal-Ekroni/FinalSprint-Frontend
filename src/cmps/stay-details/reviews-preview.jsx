@@ -2,7 +2,7 @@
 // import Rating from "react-rating";
 // import { ReadMore } from "./_read-more";
 
-import { utilService } from "../services/util.service";
+import { utilService } from "../../services/util.service";
 
 export function ReviewsPreview({ review, onToogleReadModal, isReadMoreOn }) {
     return (
