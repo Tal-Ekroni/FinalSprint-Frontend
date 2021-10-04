@@ -32,7 +32,7 @@ class _HostPage extends React.Component {
     }
     render() {
         const { user } = this.props
-        const { selectedTab } = this.state
+        const { selectedTab, orders } = this.state
         return (
             <main className="host-page-container main-container">
                 <div>
@@ -46,7 +46,7 @@ class _HostPage extends React.Component {
                             aria-label="secondary tabs example"
                         >
                             <Tab value="add-stay" label="Add a stay" />
-                            <Tab value="orders" label="Orders" />
+                            <Tab value="orders" label={orders ? `Orders (${orders.length})`: 'Orders'} />
                             <Tab value="stats" label="Stats" />
                         </Tabs>
                     </section>

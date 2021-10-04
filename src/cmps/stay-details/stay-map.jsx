@@ -33,7 +33,7 @@ class _StayMap extends Component {
         this.setState({ isInfoWindowOn: false })
     }
     render() {
-        const { loc } = this.state
+        const { lat, lng } = this.state.loc
 
         const style = {
             width: '100%',
@@ -56,7 +56,7 @@ class _StayMap extends Component {
                         center={this.state.center}
                     >
                         <Marker
-                            position={this.state.center}
+                            position={{ lat, lng }}
                             name={'Current location'}
                         // onClick={this.onMarkerClicked}
                         />

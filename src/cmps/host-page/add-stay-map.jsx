@@ -26,14 +26,15 @@ class _AddStayMap extends Component {
     componentDidMount() {
     }
     onMapClicked = (props, marker, ev) => {
-        console.log(ev);
+        // console.log(ev);
+        console.log('map', ev.latLng.lat());
         this.setState({
             center: { lat: ev.latLng.lat(), lng: ev.latLng.lng() },
             activeMarker: marker,
             selectedPlace: props,
             isInfoWindowOn: true
         })
-        console.log(props);
+        // console.log(props);
     }
 
     onMarkerClicked = () => {
