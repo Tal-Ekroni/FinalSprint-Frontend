@@ -3,42 +3,37 @@ import { DynamicModal } from './DynamicModal'
 
 export class ExploreFilter extends React.Component {
     state = {
-        // modals: {
-        placeTypeIsOpen: false,
-        PropertyTypeIsOpen: false,
-        PriceIsOpen: false,
-        AmenitiesTypeIsOpen: false,
-        // }
+        modals: {
+            placeTypeIsOpen: false,
+            PropertyTypeIsOpen: false,
+            PriceIsOpen: false,
+            AmenitiesTypeIsOpen: false,
+        }
 
     }
-
-    this
-
     onCloseAllModals = () => {
-        this.setState({ placeTypeIsOpen: false, PropertyTypeIsOpen: false, PriceIsOpen: false, AmenitiesTypeIsOpen: false })
+        this.setState({ modals: { ...this.state.modals, placeTypeIsOpen: false, PropertyTypeIsOpen: false, PriceIsOpen: false, AmenitiesTypeIsOpen: false } })
+        // this.setState({ modals:{placeTypeIsOpen: false, PropertyTypeIsOpen: false, PriceIsOpen: false, AmenitiesTypeIsOpen: false }})
     }
     onToggleModals = (modal) => {
+        this.onCloseAllModals()
         switch (modal) {
             case 'placeTypeIsOpen':
-                this.onCloseAllModals()
-                this.setState({ placeTypeIsOpen: !this.state.placeTypeIsOpen })
+                this.setState({ modals: { ...this.state.modals, placeTypeIsOpen: !this.state.modals.placeTypeIsOpen } })
                 break;
             case 'PropertyTypeIsOpen':
-                this.onCloseAllModals()
-                this.setState({ PropertyTypeIsOpen: !this.state.PropertyTypeIsOpen })
+                this.setState({ modals: { ...this.state.modals, PropertyTypeIsOpen: !this.state.modals.PropertyTypeIsOpen } })
                 break;
             case 'PriceIsOpen':
-                this.onCloseAllModals()
-                this.setState({ PriceIsOpen: !this.state.PriceIsOpen })
+                this.setState({ modals: { ...this.state.modals, PriceIsOpen: !this.state.modals.PriceIsOpen } })
                 break;
             case 'AmenitiesTypeIsOpen':
-                this.onCloseAllModals()
-                this.setState({ AmenitiesTypeIsOpen: !this.state.AmenitiesTypeIsOpen })
+                this.setState({ modals: { ...this.state.modals, AmenitiesTypeIsOpen: !this.state.modals.AmenitiesTypeIsOpen } })
                 break;
         }
     }
     render() {
-        const { placeTypeIsOpen, PropertyTypeIsOpen, PriceIsOpen, AmenitiesTypeIsOpen } = this.state
+        const { placeTypeIsOpen, PropertyTypeIsOpen, PriceIsOpen, AmenitiesTypeIsOpen } = this.state.modals
         return (
             <div className="explore-filter flex">
                 <div className="sort-type type-of-place">
@@ -54,7 +49,6 @@ export class ExploreFilter extends React.Component {
                         </div>
                     </DynamicModal>}
                 </div>
-
                 <div className="sort-type property-type">
                     <button onClick={() => { this.onToggleModals('PropertyTypeIsOpen') }}>Property Type</button>
                     {PropertyTypeIsOpen && <DynamicModal >
@@ -84,7 +78,6 @@ export class ExploreFilter extends React.Component {
                         <div className="price">
                             <input type="number" name="" id="" />
                         </div>
-
                     </DynamicModal>}
                 </div>
                 <div className="sort-type amenities-type">
@@ -122,9 +115,6 @@ export class ExploreFilter extends React.Component {
                         </div>
                     </DynamicModal>}
                 </div>
-
-
-
                 <div className="sort-type type-of-place">
                     <button >Clear</button>
                 </div>
