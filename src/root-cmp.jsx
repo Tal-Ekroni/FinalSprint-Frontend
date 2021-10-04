@@ -13,7 +13,7 @@ export class RootCmp extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="root-cmp">
                 <AppHeader  />
                 <main>
                     <Switch>

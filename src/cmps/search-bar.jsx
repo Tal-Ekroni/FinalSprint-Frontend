@@ -109,8 +109,8 @@ class _SearchBar extends React.Component {
                         {guestModal && <GuestsModal adultNumber={adultNumber} kidsNumber={kidsNumber} infantsNumber={infantsNumber} onSelectAmount={this.onSelectAmount} />}
                     </div>
                     <div className="search-btn-container flex align-center justify-center" onClick={() => { this.onSetFilter() }} >
-                        {!isMiniHeader && < FaSearch size={13} />}
-                        {isMiniHeader &&< FaSearch size={20} />}
+                        {isMiniHeader && < FaSearch size={13} />}
+                        {!isMiniHeader &&< FaSearch size={20} />}
                     </div>
 
                 </div>

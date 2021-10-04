@@ -4,7 +4,7 @@ const initialState = {
     currStay: null,
     review: null,
     lastRemovedStay: null,
-    isMiniHeader: false,
+    isMiniHeader: true,
     filterBy: {
         startDate: null,
         endDate: null,

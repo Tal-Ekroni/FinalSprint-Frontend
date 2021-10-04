@@ -64,7 +64,10 @@
             line-height: 1.0625rem;
             font-family: circular-light,sans-serif;
             color: #484848;
-
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        
         }
         .preview-rating {
             gap: 4px;
@@ -101,15 +104,11 @@
     }
     .MuiSvgIcon-root {
         position: absolute;
-        top: 2px;
+        top: 9px;
         z-index: 1;
         left: 87%;
         color: $clr6;
         width: 30px;
     }
-    .preview-img {
-        & img {
-            // height: 100%;
-        }
-    }
+  
 }

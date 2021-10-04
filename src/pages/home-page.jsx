@@ -18,18 +18,18 @@ import { setFilter, setMiniHeader } from '../store/stay.actions';
 class _HomePage extends React.Component {
     componentDidMount() {
         window.scrollTo(0, 0)
-        this.props.setMiniHeader(true)
+        this.props.setMiniHeader(false)
         window.addEventListener('scroll', this.onSetMiniHeader)
     }
     componentWillUnmount() {    
-        this.props.setMiniHeader(false)
+        this.props.setMiniHeader(true)
         window.removeEventListener('scroll',this.onSetMiniHeader)
     }
     onSetMiniHeader=(ev) => {
         if (ev.target.scrollingElement.scrollTop > 50) {
-            this.props.setMiniHeader(false)
-        } else {
             this.props.setMiniHeader(true)
+        } else {
+            this.props.setMiniHeader(false)
         }
     }
     changeCount = (diff) => {
