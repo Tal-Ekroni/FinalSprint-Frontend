@@ -1,5 +1,5 @@
 .stays-headline {
-  padding-top: 50px !important;
+  padding-top: 50px;
   h1 {
     font-size: 32px;
     font-family: circular-bold;
@@ -7,26 +7,117 @@
 }
 .explore-filter {
   padding: 25px 0;
+
   .sort-type {
-    display: inline-block !important;
-    white-space: nowrap !important;
-    padding-right: 8px !important;
-    padding-top: 4px !important;
-    padding-bottom: 4px !important;
+    display: inline-block;
+    white-space: nowrap;
+    // padding-right: 8px;
+    padding-top: 4px;
+    padding-bottom: 4px;
     button {
+      position: relative;
       cursor: pointer;
       text-align: center;
       border: 1px solid rgb(221, 221, 221);
       background-color: rgb(255, 255, 255);
       outline: none;
-      margin: 0px;
       border-radius: 30px;
-      color: rgb(34, 34, 34);
-      font-family: circular-light;
-      position: relative;
+      color: rgb(0, 0, 0);
+      font-family: circular-book;
       padding: 10px 16px;
       font-size: 14px;
       line-height: 16px;
+      transition: border 0.5s;
+      &:hover {
+        border: 1px solid black;
+      }
+    }
+    .dynamic-sort-modal {
+      background-color: $clr1;
+      position: absolute;
+      z-index: 2;
+      color: $clr10;
+      border-radius: 13px;
+      cursor: pointer;
+      font-family: circular-light;
+      &.place-type {
+        background-color: $clr1;
+        .place-type {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          padding: 10px 20px;
+          transition: background-color 0.5s;
+          overflow: hidden;
+          border-radius: 13px;
+          &:not(:last-child) {
+            border-bottom: 1px solid #d8d8d8;
+          }
+          &:hover {
+            background-color: lightgray;
+          }
+          h1 {
+            font-size: 14px;
+          }
+          p {
+            font-size: 11px;
+          }
+        }
+      }
+
+      &.property-type {
+        .property-type {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          padding: 10px 20px;
+          transition: background-color 0.5s;
+          border-radius: 13px;
+          h1 {
+            font-size: 14px;
+          }
+          &:not(:last-child) {
+            border-bottom: 1px solid #d8d8d8;
+          }
+          &:hover {
+            background-color: lightgray;
+          }
+        }
+      }
+      &.amenities-type {
+        .amenities-type {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          padding: 10px 20px;
+          transition: background-color 0.5s;
+          border-radius: 13px;
+          h1 {
+            font-size: 14px;
+          }
+          &:not(:last-child) {
+            border-bottom: 1px solid #d8d8d8;
+          }
+          &:hover {
+            background-color: lightgray;
+          }
+        }
+      }
+      &.price{
+        .price{
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          padding: 10px 20px;
+          transition: background-color 0.5s;
+          border-radius: 13px;
+          input{
+            outline:none;
+            border: none;
+            border-bottom: 1px solid black;
+          }
+        }
+      }
     }
   }
 }
