@@ -9,7 +9,10 @@ export class ExploreFilter extends React.Component {
         PriceIsOpen: false,
         AmenitiesTypeIsOpen: false,
         // }
+
     }
+
+    this
 
     onCloseAllModals = () => {
         this.setState({ placeTypeIsOpen: false, PropertyTypeIsOpen: false, PriceIsOpen: false, AmenitiesTypeIsOpen: false })
