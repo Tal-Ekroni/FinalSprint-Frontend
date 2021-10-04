@@ -12,7 +12,6 @@ class _OrderPreview extends React.Component {
     }
     componentDidMount() {
         const { order } = this.props
-        console.log(order);
         if (order.status === 'pending') this.setState({ order, isApproved: false })
         if (order.status === 'approved') this.setState({ order, isApproved: true })
     }
