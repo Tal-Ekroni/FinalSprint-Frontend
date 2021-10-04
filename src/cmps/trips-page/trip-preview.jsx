@@ -26,7 +26,6 @@ class _TripPreview extends React.Component {
         const { trip } = this.props
         var startDate = this.getTime(trip.startDate)
         var endDate = this.getTime(trip.endDate)
-        console.log('trip', trip);
         return (
             <div className="trip-preview-container"  >
                 {trip &&

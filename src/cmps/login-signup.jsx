@@ -55,7 +55,6 @@ class _LoginSignup extends React.Component {
         const { username, password, fullname } = this.state.credentials;
         const { isSignup } = this.state;
         const { user, users } = this.props
-        console.log('render users', users);
         return (
             <div className="login-page">
                 {/* <p>

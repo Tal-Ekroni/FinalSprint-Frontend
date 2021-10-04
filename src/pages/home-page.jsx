@@ -147,7 +147,7 @@ class _HomePage extends React.Component {
                             <p>Pets Allowed</p>
                         </div>
                         <div className="live-card flex column">
-                            <img className="live-img" onClick={() => { this.onClickLoc(10, 'capacity') }} src={cap} alt="" />
+                            <img className="live-img" onClick={() => { this.onClickLoc(7, 'capacity') }} src={cap} alt="" />
                             <p>Large capacity</p>
                         </div>
                         <div className="live-card flex column">
