@@ -11,18 +11,18 @@ class _UserMenu extends React.Component {
 
     onLogout = () => {
         this.props.onLogout()
-        this.props.onToogleMenu()
+        this.props.onToggleSearchModals('menuModal')
     }
     // onOpenLogin = () => {
     //     this.setState({ isLoginModalOn: true })
     // }
     onCloseLogin = () => {
         this.setState({ isLoginModalOn: false })
-        this.props.onToogleMenu()
+        this.props.onToggleSearchModals('menuModal')
     }
     onOpenLogin = () => {
         this.props.onOpenBotLogin()
-        this.props.onToogleMenu()
+        this.props.onToggleSearchModals('menuModal')
     }
 
     render() {
@@ -31,13 +31,13 @@ class _UserMenu extends React.Component {
             <div className="user-menu-container" >
                 <section className="user-menu top-section">
                     <div >
-                        {user && <NavLink onClick={() => this.props.onToogleMenu()} className="user-menu-line" to="/trips"><p>Trips</p></NavLink>}
+                        {user && <NavLink onClick={() => this.props.onToggleSearchModals('menuModal')} className="user-menu-line" to="/trips"><p>Trips</p></NavLink>}
                         {!user && <p className="user-menu-line"> Trips</p>}
 
                     </div>
                     {
                         user && user.isHost && <div >
-                            <NavLink onClick={() => this.props.onToogleMenu()} className="user-menu-line" to="/host"><p>Host</p></NavLink>
+                            <NavLink onClick={() => this.props.onToggleSearchModals('menuModal')} className="user-menu-line" to="/host"><p>Host</p></NavLink>
 
                         </div>
                     }

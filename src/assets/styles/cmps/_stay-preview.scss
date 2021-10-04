@@ -64,7 +64,10 @@
             line-height: 1.0625rem;
             font-family: circular-light,sans-serif;
             color: #484848;
-
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        
         }
         .preview-rating {
             gap: 4px;
