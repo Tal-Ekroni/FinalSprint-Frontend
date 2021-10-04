@@ -1,9 +1,9 @@
 import React from "react";
 import { connect } from 'react-redux'
-import { onCancelOrder, onApproveOrder } from '../store/order.actions'
-import LazyLoad from "./preview-slider"
-import { loadUser } from '../store/user.actions'
-import { utilService } from "../services/util.service";
+import { onCancelOrder, onApproveOrder } from '../../store/order.actions'
+import LazyLoad from "../preview-slider"
+import { loadUser } from '../../store/user.actions'
+import { utilService } from "../../services/util.service";
 
 class _OrderPreview extends React.Component {
     state = {

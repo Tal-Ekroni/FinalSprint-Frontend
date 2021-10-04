@@ -1,8 +1,8 @@
 import { Component } from 'react'
 import { connect } from 'react-redux'
 import { Button, TextareaAutosize, TextField } from '@material-ui/core';
-import { onAddReview } from '../store/review.actions.js'
-import { utilService } from '../services/util.service.js';
+import { onAddReview } from '../../store/review.actions.js'
+import { utilService } from '../../services/util.service.js';
 import Rating from 'react-rating';
 import { FaStar } from 'react-icons/fa';
 

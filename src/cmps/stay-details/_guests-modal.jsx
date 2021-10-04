@@ -10,8 +10,8 @@ export class GuestsCheckoutModal extends React.Component {
         console.log(adults);
         // <div className="minus-guest-btn flex" onClick={() => { onSelectGuests('adults', 'minus') }}>
         return (
-            <div className="guest-popup-container">
-                {trip && <div className="guest-modal-container flex column">
+            <div className="guest-mega-container">
+                {trip && <div className="guest-popup-container flex column">
                     <div className="screen" onClick={() => { toggleGuestsModal() }}>
                     </div>
                     <div className="guest-card flex space-between  align-center">
@@ -45,7 +45,7 @@ export class GuestsCheckoutModal extends React.Component {
                         </div>
                         <div className="guest-amount ">
                             <p className={infants ? "guest-btn" : "guest-btn zero"} onClick={() => onSelectGuests('infants', 'minus')}><FaMinus /></p>
-                            <p className="guest-amount-count">{infants ? infants : 0}</p>
+                            <p className="guest-amount-count">{infants?infants:0}</p>
                             <p className="guest-btn" onClick={() => onSelectGuests('infants', 'plus')}><FaPlus />
                             </p>
                         </div>

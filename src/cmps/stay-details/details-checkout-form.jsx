@@ -1,15 +1,15 @@
 import React from 'react'
 import 'react-dates/initialize';
 import { connect } from 'react-redux'
-import { onAddOrder } from '../store/order.actions'
+import { onAddOrder } from '../../store/order.actions'
 import { FaStar, FaAngleDown, FaAngleUp, FaMinus, FaPlus, FaFlag } from 'react-icons/fa'
 import { Button } from '@material-ui/core'
 import 'react-dates/lib/css/_datepicker.css';
-import { showErrorMsg } from '../services/event-bus.service.js';
-import { DatesPicker2 } from './dates-picker2.jsx';
+import { showErrorMsg } from '../../services/event-bus.service.js';
+import { DatesPicker2 } from '../dates-picker2.jsx';
 import { parse } from 'date-fns/esm';
 import { GuestsCheckoutModal } from './_guests-modal';
-import { utilService } from '../services/util.service';
+import { utilService } from '../../services/util.service';
 
 class _CheckoutForm extends React.Component {
 
@@ -26,6 +26,8 @@ class _CheckoutForm extends React.Component {
     }
     componentDidMount() {
         const { stay, filterBy } = this.props
+        window.addEventListener('scroll', (ev) => { this.setState({ isGuestPopupOn: false }) })
+
         console.log('filterBy', filterBy.startDate);
         this.setState({
             trip: {
@@ -39,7 +41,9 @@ class _CheckoutForm extends React.Component {
             datesModal: false
         })
     }
-
+    componentWillUnmount() {
+        window.removeEventListener('scroll', (ev) => { this.setState({ isGuestPopupOn: false })  })
+    }
     onSelectDates = ({ startDate, endDate }) => {
         if (startDate) {
             this.setState(prevState => ({ trip: { ...prevState.trip, startDate } }))
@@ -158,7 +162,7 @@ class _CheckoutForm extends React.Component {
         const { startDate, endDate } = trip
 
         return (
-            <section className="checkout-popup flex">
+            <section className="checkout-popup flex column">
                 {isGuestPopupOn || datesModal && <div className="checkout-screen" onClick={(ev) => { this.onCloseModal(ev) }}></div>}
                 <section className="checkout-container flex">
                     <div className="checkout-form-container">
@@ -213,7 +217,7 @@ class _CheckoutForm extends React.Component {
                                     </div>
                                     <div className="total-price-container flex space-between">
                                         <p className="total">Total</p>
-                                        <p className="total-price">${trip.totalPrice }</p>
+                                        <p className="total-price">${trip.totalPrice}</p>
                                     </div>
                                 </div>
                             }
