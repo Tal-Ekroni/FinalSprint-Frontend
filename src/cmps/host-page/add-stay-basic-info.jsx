@@ -24,6 +24,7 @@ const style = {
     borderRadius: '13px',
     borderColor: ' #bdbcbc'
 }
+
 export class AddStayBasicInfo extends React.Component {
     render() {
         const { handleChange, handleSelectChange } = this.props

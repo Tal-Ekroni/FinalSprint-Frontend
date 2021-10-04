@@ -124,6 +124,28 @@ class _AddStay extends React.Component {
         }))
 
     }
+    onUploadImg = (ev) => {
+        const CLOUD_NAME = 'dkbfdybze'
+        const UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`
+        const file = ev.target.files[0]
+        const formData = new FormData()
+        formData.append("file", file)
+        formData.append("upload_preset", "ewa9mksh")
+        return fetch(UPLOAD_URL, {
+            method: 'POST',
+            body: formData
+        })
+            .then(res => res.json())
+            .then(res => {
+                const state = this.state
+                const ImgUrl = res.url
+                state.newStay.imgUrls.push(ImgUrl)
+                this.setState((state))
+
+                console.log('res', res.url);
+            })
+            .catch(err => console.error(err))
+    }
 
     onChangeTab = (ev, value) => {
         this.setState({ selectedTab: value })
@@ -134,8 +156,14 @@ class _AddStay extends React.Component {
 
         return (
             <div className="add-stay-container">
+                <div>
+                    <h1>Add stay!</h1>
+                </div>
                 <section className="host-tabs-container">
                     <Tabs
+                        centered
+                        color="#6f019c"
+
                         value={selectedTab}
                         onChange={this.onChangeTab}
                         textColor="secondary"
@@ -159,7 +187,7 @@ class _AddStay extends React.Component {
                         </div>
                         {selectedTab === 'get-start' && <AddStayBasicInfo handleChange={this.handleChange} handleSelectChange={this.handleSelectChange} state={this.state} />}
                         {selectedTab === 'floor-plan' && <AddStayFloorPlan handleChange={this.handleChange} handleMultiSelectChange={this.handleMultiSelectChange} state={this.state} />}
-                        {selectedTab === 'stay-profile' && <AddStayProfile handleChange={this.handleChange} handleMultiSelectChange={this.handleMultiSelectChange} state={this.state} />}
+                        {selectedTab === 'stay-profile' && <AddStayProfile onUploadImg={this.onUploadImg} handleChange={this.handleChange} handleMultiSelectChange={this.handleMultiSelectChange} state={this.state} />}
 
                         {selectedTab === 'finish-page' ? <button
                             className=" add-page-btn add-stay-btn"
