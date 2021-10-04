@@ -14,7 +14,7 @@ const labelsOptions = [
 
 export class AddStayProfile extends React.Component {
     render() {
-        const { handleChange, handleMultiSelectChange } = this.props
+        const { handleChange, handleMultiSelectChange , onUploadImg } = this.props
         const { labels, name, imgUrls } = this.props.state
         return (
             <div className="add-basic-info-container">
@@ -24,7 +24,8 @@ export class AddStayProfile extends React.Component {
                 </div>
                 <div className="add-form-line flex align-center space-between">
                     <label className="add-line" htmlFor="">Upload images here</label>
-                    <TextField type="number" value={imgUrls} autoComplete="off" name="capacity" placeholder="Asset capacity..." />
+
+                    <TextField type="file" value={imgUrls} name="imgUrls" onChange={onUploadImg} />
                 </div>
                 <div className="add-form-line flex align-center space-between">
                     <label className="add-line" htmlFor="">Choose your asset lebels</label>

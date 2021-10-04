@@ -58,18 +58,16 @@ class _OrderPreview extends React.Component {
                 {order &&
                     <section>
                         <div className="order-preview-details">
-                            <div className="name-dates-container flex space-between ">
-                                <div className="review-user-info flex">
-                                    <div className="user-review-img-container">
-                                        <img src={`https://i.pravatar.cc/100?u=${order.buyer._id}`} alt="" />
+                            <div className="order-user-info flex " >
+                                <div className="user-img-container">
+                                    <img src={`https://i.pravatar.cc/100?u=${order.buyer._id}`} alt="" />
+                                </div>
+                                <div className="txt-info-container flex column">
+                                    <div className="review-username-container">
+                                        <p className="review-username">{order.buyer.fullname} </p>
                                     </div>
-                                    <div className="txt-info-container flex column">
-                                        <div className="review-username-container">
-                                            <p className="review-username">{order.buyer.fullname} </p>
-                                        </div>
-                                        <div className="review-username-container">
-                                            {typeof order.createdAt === 'number' ? <p >{utilService.timeToShow(order.createdAt)} </p> : <p >{order.createdAt} </p>}
-                                        </div>
+                                    <div className="review-username-container">
+                                        {typeof order.createdAt === 'number' ? <p >{utilService.timeToShow(order.createdAt)} </p> : <p >{order.createdAt} </p>}
                                     </div>
                                 </div>
                             </div>
@@ -80,7 +78,7 @@ class _OrderPreview extends React.Component {
                             </div>
                             <div>
                                 {(adults + kids + infants === 1) && <p > Guests:{adults + kids + infants}</p>}
-                                {(adults + kids + infants > 1) && <p>{adults > 0 && <span>Adults:{adults} , Children:{kids} , Infants:{infants}</span>}</p>}
+                                {(adults + kids + infants > 1) && <p>{adults > 0 && <span>Adults:{adults}</span>} {kids > 0 && <span>Children:{kids} </span>} {infants > 0 && <span> Infants:{infants}</span>}</p>}
                             </div>
 
                             <div className="host-btns-container flex space-between">
