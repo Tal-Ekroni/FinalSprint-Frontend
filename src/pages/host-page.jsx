@@ -6,6 +6,7 @@ import { HostChart } from '../cmps/host-page/host-stats';
 import { OrdersList } from '../cmps/host-page/orders-list';
 import { loadUser } from '../store/user.actions'
 import { AddStay } from '../cmps/host-page/add-stay';
+import { loadOrders } from '../store/order.actions'
 
 // import { OrdersList } from '../cmps/hosts-list.jsx'
 class _HostPage extends React.Component {
@@ -14,10 +15,11 @@ class _HostPage extends React.Component {
         orders: [],
         selectedTab: 'add-stay'
     }
-    componentDidMount() {
+    async componentDidMount() {
         window.scrollTo(0, 0)
-        this.props.loadUser(this.props.user._id)
-        this.setState({ selectedTab: 'add-stay', orders: this.props.user.orders })
+        await this.props.loadUser(this.props.user._id)
+        await this.props.loadOrders(this.props.user._id, 'host')
+
     }
     componentDidUpdate(prevProps, prevState) {
         if (this.state.orders !== prevState.orders)
@@ -31,8 +33,8 @@ class _HostPage extends React.Component {
         this.setState({ selectedTab: value })
     }
     render() {
-        const { user } = this.props
-        const { selectedTab, orders } = this.state
+        const { user, orders } = this.props
+        const { selectedTab } = this.state
         return (
             <main className="host-page-container main-container">
                 <div>
@@ -46,7 +48,7 @@ class _HostPage extends React.Component {
                             aria-label="secondary tabs example"
                         >
                             <Tab value="add-stay" label="Add a stay" />
-                            <Tab value="orders" label={orders ? `Orders (${orders.length})`: 'Orders'} />
+                            <Tab value="orders" label={orders ? `Orders (${orders.length})` : 'Orders'} />
                             <Tab value="stats" label="Stats" />
                         </Tabs>
                     </section>
@@ -56,7 +58,7 @@ class _HostPage extends React.Component {
                             <h2>Orders</h2>
                             <div className="orders-container">
 
-                                <OrdersList orders={user.orders} />
+                                <OrdersList orders={orders} />
                             </div>
                         </div>}
                         {selectedTab === 'stats' && <div>
@@ -75,12 +77,13 @@ class _HostPage extends React.Component {
 function mapStateToProps(state) {
     return {
         user: state.userModule.user,
-
-
+        orders: state.orderModule.orders
     }
 }
 const mapDispatchToProps = {
-    loadUser
+    loadUser,
+    loadOrders
+
 }
 
 

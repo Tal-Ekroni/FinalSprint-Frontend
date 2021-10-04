@@ -33,6 +33,7 @@ export function userReducer(state = initialState, action) {
             }
             break;
         case 'SET_USERS':
+            console.log('reducer', action.users);
             newState = { ...state, users: action.users }
             break;
         case 'UPDATE_USER':

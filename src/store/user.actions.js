@@ -10,6 +10,7 @@ export function loadUsers() {
         try {
             dispatch({ type: 'LOADING_START' })
             const users = await userService.getUsers()
+            await console.log('user actions', users);
             dispatch({ type: 'SET_USERS', users })
         } catch (err) {
             console.log('UserActions: err in loadUsers', err)

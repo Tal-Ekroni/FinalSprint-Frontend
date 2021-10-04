@@ -6,8 +6,8 @@ import { StaysList } from '../cmps/stays-list.jsx'
 import { ExploreFilter } from '../cmps/explore-filter.jsx'
 class _Explore extends React.Component {
 
-    componentDidMount() {
-        this.props.loadStays(this.props.filterBy)
+    async componentDidMount() {
+        await this.props.loadStays(this.props.filterBy)
         window.scrollTo(0, 0)
     }
     componentDidUpdate(prevProps, prevState) {
@@ -15,7 +15,7 @@ class _Explore extends React.Component {
             this.props.loadStays(this.props.filterBy);
         }
     }
-  
+
     onRemoveStay = (stayId) => {
         this.props.onRemoveStay(stayId)
     }
@@ -34,7 +34,7 @@ class _Explore extends React.Component {
         return (
             <main className="main-container page-padding">
                 <div className="stays-headline">
-                <p>{stays.length === 1 ? `${stays.length} stay` : `${stays.length} stays`}</p>
+                    <p>{stays.length === 1 ? `${stays.length} stay` : `${stays.length} stays`}</p>
                     <h1>Find places to stay</h1>
                 </div>
                 <ExploreFilter />

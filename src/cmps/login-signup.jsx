@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { userService } from '../services/user.service'
-import { onLogin, onLogout, onSignup } from '../store/user.actions'
+import { onLogin, onLogout, onSignup, loadUsers } from '../store/user.actions'
 class _LoginSignup extends React.Component {
     state = {
         credentials: {
@@ -13,8 +13,7 @@ class _LoginSignup extends React.Component {
         users: []
     }
     async componentDidMount() {
-        const users = await userService.getUsers()
-        this.setState({ users })
+        await this.props.loadUsers()
     }
     clearState = () => {
         const clearTemplate = {
@@ -54,23 +53,23 @@ class _LoginSignup extends React.Component {
 
     render() {
         const { username, password, fullname } = this.state.credentials;
-        const { isSignup, users } = this.state;
-        const { user } = this.props
-        if (!users) return <div>loading...</div>
+        const { isSignup } = this.state;
+        const { user, users } = this.props
+        console.log('render users', users);
         return (
             <div className="login-page">
                 {/* <p>
                     <button className="btn-link" onClick={this.toggleSignup}>{!isSignup ? 'Signup' : 'Login'}</button>
                 </p> */}
                 {!isSignup && !user && <form className="login-form" onSubmit={this.onLogin}>
-                    <select
+                    {users && <select
                         name="username"
                         value={username}
                         onChange={this.handleChange}
                     >
                         <option value="">Select User</option>
                         {users.map(user => <option key={user._id} value={user.username}>{user.fullname}</option>)}
-                    </select>
+                    </select>}
 
                     {/* <input
                         type="text"
@@ -129,12 +128,14 @@ class _LoginSignup extends React.Component {
 function mapStateToProps(state) {
     return {
         user: state.userModule.user,
+        users: state.userModule.users
     }
 }
 const mapDispatchToProps = {
     onLogin,
     onLogout,
-    onSignup
+    onSignup,
+    loadUsers
 }
 
 export const LoginSignup = connect(mapStateToProps, mapDispatchToProps)(_LoginSignup)

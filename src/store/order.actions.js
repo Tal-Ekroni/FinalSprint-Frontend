@@ -3,10 +3,10 @@ import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { userService } from "../services/user.service.js";
 import { utilService } from "../services/util.service.js";
 
-export function loadOrders(filterBy = null) {
+export function loadOrders(userId, type) {
     return async (dispatch) => {
         try {
-            const orders = await orderService.query(filterBy)
+            const orders = await orderService.query(userId, type)
             dispatch({
                 type: 'SET_ORDERS',
                 orders
@@ -37,23 +37,25 @@ export function onRemoveOrder(orderId) {
 export function onAddOrder(orderToAdd) {
     return async (dispatch) => {
         try {
-            console.log('orderToAdd', orderToAdd);
-            const user = await userService.getById(orderToAdd.buyer._id)
-            const hostUser = await userService.getById(orderToAdd.host._id)
             const savedOrder = await orderService.save(orderToAdd)
-            console.log('host', hostUser);
-            console.log('user', user);
-            if (!hostUser.orders) hostUser.orders = []
-            if (!user.myTrips) user.myTrips = []
-            hostUser.orders.unshift(orderToAdd)
-            user.myTrips.unshift(orderToAdd)
+            console.log('orderToAdd', orderToAdd);
 
-            const updatedUser = await userService.update(user)
-            const updatedHost = await userService.update(hostUser)
             dispatch({ type: 'ADD_ORDER', order: savedOrder })
-            dispatch({ type: 'UPDATE_USER', user: updatedUser })
-            dispatch({ type: 'UPDATE_USER', user: updatedHost })
             showSuccessMsg('Order added')
+            // const user = await userService.getById(orderToAdd.buyer._id)
+            // const hostUser = await userService.getById(orderToAdd.host._id)
+            // const savedOrder = await orderService.save(orderToAdd)
+            // console.log('host', hostUser);
+            // console.log('user', user);
+            // if (!hostUser.orders) hostUser.orders = []
+            // if (!user.myTrips) user.myTrips = []
+            // hostUser.orders.unshift(orderToAdd)
+            // user.myTrips.unshift(orderToAdd)
+
+            // const updatedUser = await userService.update(user)
+            // const updatedHost = await userService.update(hostUser)
+            // dispatch({ type: 'UPDATE_USER', user: updatedUser })
+            // dispatch({ type: 'UPDATE_USER', user: updatedHost })
         }
         catch (err) {
             showErrorMsg('Cannot add order')

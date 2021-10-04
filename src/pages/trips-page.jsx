@@ -4,30 +4,35 @@ import { connect } from 'react-redux'
 import { loadUser } from '../store/user.actions'
 import travelImg from '../assets/img/travel.jpg'
 import { TripsList } from '../cmps/trips-page/trips-list.jsx'
+import { loadOrders } from '../store/order.actions'
 class _TripsPage extends React.Component {
     state = {
-        user: null
+        user: null,
+        trips: []
     }
-    componentDidMount() {
+    async componentDidMount() {
         window.scrollTo(0, 0)
-        this.props.loadUser(this.props.user._id)
+        await this.props.loadUser(this.props.user._id)
+        await this.props.loadOrders(this.props.user._id, 'buyer')
+        console.log('props', this.props.orders);
+
     }
     render() {
-        const { user } = this.props
+        const { user, orders } = this.props
         return (
             <main className="trips-page-container main-layout">
                 {user && <section className="trips-container">
                     <div className="trips-title-container">
                         <h1>Trips</h1>
                     </div>
-                    {!user.myTrips.length && <div className="no-trips-txt">
+                    {!orders.length && <div className="no-trips-txt">
                         <p>When you’re ready to start planning your next trip, we’re here to help. </p>
                         <div className="trips-img-container">
                             <img src={travelImg} alt="" />
                         </div>
                     </div>}
-                    {user.myTrips && user.myTrips.length && <section className="trips-container">
-                        <TripsList trips={user.myTrips} isHost={user.isHost} />
+                    {orders && orders.length && <section className="trips-container">
+                        <TripsList trips={orders} isHost={user.isHost} />
                     </section>}
                 </section>}
             </main>
@@ -38,11 +43,12 @@ class _TripsPage extends React.Component {
 function mapStateToProps(state) {
     return {
         user: state.userModule.user,
-
+        orders: state.orderModule.orders
     }
 }
 const mapDispatchToProps = {
-    loadUser
+    loadUser,
+    loadOrders
 }
 
 
