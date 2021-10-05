@@ -39,32 +39,13 @@ class _HomePage extends React.Component {
     }
     onClickLoc = (val, type) => {
         const newFilter = this.props.filterBy
-        switch (type) {
-            case 'location':
-                newFilter.location = val
-                break;
-            case 'amenity':
-                newFilter.amenities = val
-                break;
-            case 'assetType':
-                newFilter.assetType = val
-                break;
-            case 'capacity':
-                newFilter.capacity = val
-                break;
-            case 'uniqueStay':
-                newFilter.uniqueStay = val
-                break;
-            default:
-                break;
-        }
+        newFilter[type] = val
         this.props.setFilter(newFilter)
         this.props.history.push(`/explore`)
     }
     render() {
         return (
             <section className="home-page flex column main-container">
-
                 <div className="hero main-container full flex justify-center align-center">
                     <div className="where-to-go flex justify-center align-center">
                         <h3>Not sure where to go? Perfect.</h3>
