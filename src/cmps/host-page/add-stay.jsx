@@ -186,9 +186,10 @@ class _AddStay extends React.Component {
                         {selectedTab === 'stay-profile' && <AddStayProfile handleAddressChange={this.handleAddressChange} onUploadImg={this.onUploadImg} handleChange={this.handleChange} handleMultiSelectChange={this.handleMultiSelectChange} state={this.state} />}
 
                         {selectedTab === 'finish-page' ? <button
+                            onClick={this.onAddsStay}
                             className=" add-page-btn add-stay-btn"
                             variant={'contained'}
-                            type="submit"
+                            type="submit" 
                         >
                             Add Stay
                         </button> : <button onClick={this.onNextPage}

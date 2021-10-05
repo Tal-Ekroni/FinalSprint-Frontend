@@ -14,6 +14,7 @@ class _BecomeAHost extends React.Component {
         }
         else this.props.history.push('/')
     }
+    
     render() {
         return (
             <section className="be-host-container">
@@ -35,8 +36,6 @@ class _BecomeAHost extends React.Component {
         )
     }
 }
-
-
 
 function mapStateToProps(state) {
     return {

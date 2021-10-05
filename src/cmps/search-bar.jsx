@@ -54,7 +54,8 @@ class _SearchBar extends React.Component {
     onSetFilter = async () => {
         await this.props.setFilter(this.state)
         const { location, startDate, endDate, adultNumber, kidsNumber, infantsNumber } = this.state
-        const urlQuery = `/explore/?location=${location}&startDate=${startDate}&endDate=${endDate}&adults=${adultNumber}&kids=${kidsNumber}&infants=${infantsNumber}`
+        const urlQuery = `/?location=${location}&startDate=${startDate}&endDate=${endDate}&adults=${adultNumber}&kids=${kidsNumber}&infants=${infantsNumber}`
+        this.props.closeAllModals()
         this.props.history.push(urlQuery)
     }
 
@@ -69,7 +70,7 @@ class _SearchBar extends React.Component {
     }
 
     render() {
-        const { isMiniHeader, guestModal, datesModal, locModal, onToggleSearchModals, onToggleMiniSearchBar } = this.props
+        const { isMiniHeader, guestModal, datesModal, locModal, onToggleSearchModals, onToggleMiniSearchBar, closeAllModals } = this.props
         const { location, adultNumber, kidsNumber, infantsNumber, endDate, startDate } = this.state
         return (
             <div >
@@ -80,7 +81,7 @@ class _SearchBar extends React.Component {
                             <input type="text" name="location" autoComplete="off" value={location} onChange={this.handleChange} placeholder="Where are you going?" />
                         </label>
                     </div>
-                    {locModal && <LocationsPopUp history={this.props.history} />}
+                    {locModal && <LocationsPopUp closeAllModals={closeAllModals} history={this.props.history} />}
                     <div className="mini-search-input" onClick={onToggleMiniSearchBar}>
                         <p >
                             Start your search

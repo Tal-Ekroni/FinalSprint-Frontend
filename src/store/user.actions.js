@@ -110,7 +110,6 @@ export function onLogout() {
 export function onBecomeHost(userId) {
     return async (dispatch, getState) => {
         try {
-
             const user = await userService.getById(userId)
             user.isHost = true
             const updatedUser = await userService.update(user)

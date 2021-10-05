@@ -47,7 +47,7 @@ class _StayPreview extends React.Component {
     isStayLiked = () => {
         const { user, stay } = this.props
         if (user) {
-            if (user.mySaves.length) {
+            if (user.mySaves && user.mySaves.length) {
                 const isLiked = user.mySaves.filter(saved => saved._id === stay._id)
                 if (isLiked.length) {
                     this.setState({ isLiked: true })

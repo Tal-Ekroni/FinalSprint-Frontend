@@ -119,8 +119,8 @@ class _AppHeader extends React.Component {
                         </div>
                     </div>
                 </nav>
-                {!isMiniHeader && <SearchBar setFilter={setFilter} isMiniHeader={isMiniHeader} filterBy={filterBy} datesModal={datesModal} guestModal={guestModal} locModal={locModal} onToggleSearchModals={this.onToggleSearchModals} />}
-                {isLoginBotmodal && <div className="main-layout">
+                {!isMiniHeader && <SearchBar closeAllModals={this.closeAllModals} setFilter={setFilter} isMiniHeader={isMiniHeader} filterBy={filterBy} datesModal={datesModal} guestModal={guestModal} locModal={locModal} onToggleSearchModals={this.onToggleSearchModals} />}
+                {isLoginBotmodal && <div className="main-container">
                     <LoginSignup />
                 </div>}
             </header>

@@ -15,7 +15,7 @@ class _AddReview extends Component {
                 imgUrl: this.props.user.imgUrl
             },
             createdAt: null,
-            txt: null,
+            txt: '',
             id: utilService.makeId(8),
             cleanliness: null,
             communication: null,
@@ -35,7 +35,7 @@ class _AddReview extends Component {
             newReview: {
                 name: this.props.user.fullname,
                 createdAt: null,
-                txt: null,
+                txt: '',
                 id: utilService.makeId(),
                 cleanliness: null,
                 communication: null,
