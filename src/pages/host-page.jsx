@@ -72,7 +72,7 @@ class _HostPage extends React.Component {
                             </div>
                         </div>}
                         {selectedTab === 'my-stays' && <div>
-                            <h2>Orders</h2>
+                            <h2>My Stays!</h2>
                             <div className="orders-container">
                                 <HostStayslist stays={stays} />
 
