@@ -4,6 +4,8 @@ import { loadStays, onAddStay, onEditStay, onRemoveStay, setFilter } from '../st
 import { onBookTrip } from '../store/user.actions.js'
 import { StaysList } from '../cmps/stays-list.jsx'
 import { ExploreFilter } from '../cmps/explore-filter.jsx'
+import loader from '../assets/img/three-dots.svg'
+
 class _Explore extends React.Component {
 
     componentDidMount() {
@@ -36,7 +38,7 @@ class _Explore extends React.Component {
 
     render() {
         const { stays, filterBy } = this.props
-        if (!stays.length) return <div>loading</div>
+        if (!stays.length) return <div className="loader-container flex align-center justify-center"><img src={loader} alt="loader" /></div>
         return (
             <main className="main-container page-padding">
                 <div className="stays-headline">

@@ -11,13 +11,10 @@ import { ReviewsList } from '../cmps/stay-details/reviews-list'
 import { StayMap } from '../cmps/stay-details/stay-map'
 import { AddReview } from '../cmps/stay-details/add-review'
 import { ReviewAvg } from '../cmps/stay-details/_reviews-avg'
+import loader from '../assets/img/three-dots.svg'
 // import { ReadMore } from '../cmps/_read-more'
 // import { eventBusService } from '../services/event-bus.service'
 
-// import img from '../assets/img/1.jpg'
-// const stay = data.stay;
-// var stay = data.default[0].stay[0]
-// var trip = data.default[0].trip
 class _StayDetails extends React.Component {
     state = {
         stay: null,
@@ -59,6 +56,7 @@ class _StayDetails extends React.Component {
         const { stay, user } = this.props
         return (
             <section className="stay-details-section main-layout">
+                {(!stay) && <div className="loader-container flex align-center justify-center"><img src={loader} alt="loader" /></div>}
                 {stay && <div className="stay-details-container">
                     <BasicInfo user={user} stay={stay} />
                     <section className=" details-main-conatiner flex">
@@ -96,7 +94,7 @@ class _StayDetails extends React.Component {
                         {/* TODO */}
                         <div className="details-right-container">
 
-                            <CheckoutForm  />
+                            <CheckoutForm />
 
                         </div>
 
