@@ -1,6 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import hostLogo from '../assets/img/become-host.jpg'
 // import { stayService } from '../services/stay.service'
 import { onBecomeHost } from '../store/user.actions.js'
 import { FaAirbnb } from 'react-icons/fa'
@@ -30,7 +29,7 @@ class _BecomeAHost extends React.Component {
                     </div>
                 </div>
                 <div className="be-host-img-container">
-                    <img src={hostLogo} alt="" />
+                    <img src="https://res.cloudinary.com/dkbfdybze/image/upload/v1633436197/become-host_ufwcx6.jpg" alt="" />
                 </div>
             </section>
         )

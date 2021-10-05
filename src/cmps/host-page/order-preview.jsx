@@ -33,6 +33,7 @@ class _OrderPreview extends React.Component {
         this.props.onUpdateOrder(order)
     }
     onRemoveOrder = (orderId) => {
+        console.log(orderId);
         this.props.onRemoveOrder(orderId)
     }
     render() {
@@ -79,7 +80,7 @@ class _OrderPreview extends React.Component {
                                     <button className="host-btns approve-btn">Canceled</button>
                                 </div>
                                 <div>
-                                    <button onClick={() => { this.onRemoveOrder(order) }} className="host-btns cancel-btn">Remove</button>
+                                    <button onClick={() => { this.onRemoveOrder(order._id) }} className="host-btns cancel-btn">Remove</button>
                                 </div>
                             </div>}
                             {order.status === 'declined' && <div className="host-btns-container flex space-between">

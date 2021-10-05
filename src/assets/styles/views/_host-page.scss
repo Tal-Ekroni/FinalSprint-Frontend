@@ -23,6 +23,9 @@
     border-radius: 8px;
     &.approve-btn {
         background-color: #5cb85c;
+        a {
+            color: $clr1;
+        }
     }
     &.cancel-btn {
         background-color: #d9534f;
@@ -83,7 +86,7 @@
         }
         .slick-prev:before,
         .slick-next:before {
-            font-size: 30px ;
+            font-size: 30px;
         }
         .slick-prev,
         .slick-next {

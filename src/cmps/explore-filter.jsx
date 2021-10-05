@@ -30,6 +30,8 @@ export class ExploreFilter extends React.Component {
             case 'AmenitiesTypeIsOpen':
                 this.setState({ modals: { ...this.state.modals, AmenitiesTypeIsOpen: !this.state.modals.AmenitiesTypeIsOpen } })
                 break;
+            default:
+                break;
         }
     }
     render() {

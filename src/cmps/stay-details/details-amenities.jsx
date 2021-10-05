@@ -13,7 +13,7 @@ export class AssetAmenities extends React.Component {
             case 'Smoking allowed':
                 return <FaSmoking />
             case 'Pets allowed':
-                return <FaPaw/>
+                return <FaPaw />
             case 'No smoking':
                 return <FaSmokingBan />
             case 'Air conditioner':
@@ -24,7 +24,8 @@ export class AssetAmenities extends React.Component {
                 return <FaHotTub />
             case 'Free parking on premises':
                 return <FaCar />
-         
+            default:
+                break;
 
         }
     }

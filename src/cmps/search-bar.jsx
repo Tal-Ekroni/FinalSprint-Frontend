@@ -47,6 +47,8 @@ class _SearchBar extends React.Component {
                     this.setState({ infantsNumber: this.state.infantsNumber + diff }, () => { this.props.setFilter(this.state) })
                 }
                 break;
+            default:
+                break;
         }
     }
     onSetFilter = async () => {
