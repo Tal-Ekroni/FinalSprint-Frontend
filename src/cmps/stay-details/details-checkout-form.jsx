@@ -2,14 +2,12 @@ import React from 'react'
 import 'react-dates/initialize';
 import { connect } from 'react-redux'
 import { onAddOrder } from '../../store/order.actions'
-import { FaStar, FaAngleDown, FaAngleUp, FaMinus, FaPlus, FaFlag } from 'react-icons/fa'
+import { FaStar, FaAngleDown, FaAngleUp, FaFlag } from 'react-icons/fa'
 import { Button } from '@material-ui/core'
 import 'react-dates/lib/css/_datepicker.css';
 import { showErrorMsg } from '../../services/event-bus.service.js';
 import { DatesPicker2 } from '../dates-picker2.jsx';
-import { parse } from 'date-fns/esm';
 import { GuestsCheckoutModal } from './_guests-modal';
-import { utilService } from '../../services/util.service';
 
 class _CheckoutForm extends React.Component {
 
@@ -17,7 +15,7 @@ class _CheckoutForm extends React.Component {
         trip: {
             startDate: this.props.startDate,
             endDate: this.props.endDate,
-            guests: { adults: 1, kids: 0, infants: 0 }
+            guests: { adults: this.props.filterBy.adultNumber, kids: this.props.filterBy.kidsNumber, infants: this.props.filterBy.infantsNumber }
         },
         isGuestPopupOn: false,
         isCheckoutToReserve: false,
@@ -27,8 +25,6 @@ class _CheckoutForm extends React.Component {
     componentDidMount() {
         const { stay, filterBy } = this.props
         window.addEventListener('scroll', (ev) => { this.setState({ isGuestPopupOn: false }) })
-
-        console.log('filterBy', filterBy.startDate);
         this.setState({
             trip: {
                 startDate: filterBy.startDate,
@@ -42,15 +38,13 @@ class _CheckoutForm extends React.Component {
         })
     }
     componentWillUnmount() {
-        window.removeEventListener('scroll', (ev) => { this.setState({ isGuestPopupOn: false })  })
+        window.removeEventListener('scroll', (ev) => { this.setState({ isGuestPopupOn: false }) })
     }
     onSelectDates = ({ startDate, endDate }) => {
         if (startDate) {
             this.setState(prevState => ({ trip: { ...prevState.trip, startDate } }))
-            console.log('change', startDate);
         }
         if (endDate) {
-
             this.setState(prevState => ({ trip: { ...prevState.trip, endDate } }))
         }
     }
@@ -89,6 +83,7 @@ class _CheckoutForm extends React.Component {
         this.calcGuestNum()
     }
     onSelectGuests = (val, action) => {
+
         const { stay } = this.props
         var { adults, kids, infants } = this.state.trip.guests
         switch (val) {
@@ -245,7 +240,7 @@ class _CheckoutForm extends React.Component {
 function mapStateToProps(state) {
     return {
         user: state.userModule.user,
-        currStay: state.stayModule.currStay,
+        stay: state.stayModule.stay,
         filterBy: state.stayModule.filterBy,
 
     }

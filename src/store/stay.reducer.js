@@ -18,16 +18,21 @@ const initialState = {
         uniqueStay: '',
         guestModal: false,
         datesModal: false,
+        hostId: ''
     }
 }
 export function stayReducer(state = initialState, action) {
     var newState = state
     var stays
+    var stay
     var trip
     var cart
     switch (action.type) {
         case 'SET_STAYS':
             newState = { ...state, stays: action.stays }
+            break
+        case 'SET_STAY':
+            newState = { ...state, stay: action.stay }
             break
         case 'REMOVE_STAY':
             const lastRemovedStay = state.stays.find(stay => stay._id === action.stayId)

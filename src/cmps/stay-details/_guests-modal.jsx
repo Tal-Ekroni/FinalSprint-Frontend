@@ -7,7 +7,6 @@ export class GuestsCheckoutModal extends React.Component {
     render() {
         const { onSelectGuests, toggleGuestsModal, trip } = this.props
         const { adults, kids, infants } = trip.guests
-        console.log(adults);
         // <div className="minus-guest-btn flex" onClick={() => { onSelectGuests('adults', 'minus') }}>
         return (
             <div className="guest-mega-container">

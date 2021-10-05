@@ -15,6 +15,19 @@ export function loadStays(filterBy = null) {
     }
 }
 
+export function loadStay(stayId) {
+    return async dispatch => {
+        try {
+            dispatch({ type: 'LOADING_START' })
+            const stay = await stayService.getById(stayId)
+            dispatch({ type: 'SET_STAY', stay })
+        } catch (err) {
+            console.log('UserActions: err in loadStay', err)
+        } finally {
+            dispatch({ type: 'LOADING_DONE' })
+        }
+    }
+}
 
 export function onRemoveStay(stayId) {
     return async (dispatch, getState) => {

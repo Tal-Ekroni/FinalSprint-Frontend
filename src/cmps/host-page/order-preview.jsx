@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from 'react-redux'
-import { onCancelOrder, onApproveOrder } from '../../store/order.actions'
-import LazyLoad from "../preview-slider"
+import { onRemoveOrder, onApproveOrder, onUpdateOrder } from '../../store/order.actions'
 import { loadUser } from '../../store/user.actions'
 import { utilService } from "../../services/util.service";
 
@@ -16,15 +15,6 @@ class _OrderPreview extends React.Component {
         if (order.status === 'approved') this.setState({ order, isApproved: true })
     }
 
-    // componentDidUpdate(prevProps, prevState) {
-    //     const { order } = this.props
-    //     console.log('prevProps', prevProps.order.status);
-    //     if (order) {
-    //         console.log('props', order.status);
-    //         if (prevProps.order.status !== order.status) console.log('state', this.state)
-    //     }
-
-    // }
 
     getTime = (time) => {
         var time = new Date(time * 1000);
@@ -35,23 +25,19 @@ class _OrderPreview extends React.Component {
         return formattedTime
     }
     onApproveOrder = (order) => {
-        console.log('btn approve');
-        const { _id, buyer, host } = order
-        const buyerId = buyer._id
-        const hostId = host._id
-        this.props.onApproveOrder(_id, buyerId, hostId)
-        this.setState({ isApproved: true })
+        order.status = "approved"
+        this.props.onUpdateOrder(order)
     }
-    onCancelOrder = (order) => {
-        const { _id, buyer, host } = order
-        const buyerId = buyer._id
-        const hostId = host._id
-        this.props.onCancelOrder(_id, buyerId, hostId)
+    onDeclinelOrder = (order) => {
+        order.status = "declined"
+        this.props.onUpdateOrder(order)
+    }
+    onRemoveOrder = (orderId) => {
+        this.props.onRemoveOrder(orderId)
     }
     render() {
         const { order } = this.props
         const { adults, kids, infants } = order.guests
-        console.log('order', order);
         return (
             <div className="order-preview-container"  >
                 {order &&
@@ -80,15 +66,38 @@ class _OrderPreview extends React.Component {
                                 {(adults + kids + infants > 1) && <p>{adults > 0 && <span>Adults:{adults}</span>} {kids > 0 && <span>Children:{kids} </span>} {infants > 0 && <span> Infants:{infants}</span>}</p>}
                             </div>
 
-                            <div className="host-btns-container flex space-between">
-                                {order.status === 'pending' && <div>
+                            {order.status === 'pending' && <div className="host-btns-container flex space-between">
+                                <div>
                                     <button onClick={() => { this.onApproveOrder(order) }} className="host-btns approve-btn">Approve</button>
-                                </div>}
-                                {order.status === 'approved' && <div>
-                                    <button className="host-btns apporved">Approved!</button>
-                                </div>}
-                                <div><button onClick={() => { this.onCancelOrder(order) }} className="host-btns cancel-btn">Cancel</button></div>
-                            </div>
+                                </div>
+                                <div>
+                                    <button onClick={() => { this.onDeclinelOrder(order) }} className="host-btns cancel-btn">Decline</button>
+                                </div>
+                            </div>}
+                            {order.status === 'canceled' && <div className="host-btns-container flex space-between">
+                                <div>
+                                    <button className="host-btns approve-btn">Canceled</button>
+                                </div>
+                                <div>
+                                    <button onClick={() => { this.onRemoveOrder(order) }} className="host-btns cancel-btn">Remove</button>
+                                </div>
+                            </div>}
+                            {order.status === 'declined' && <div className="host-btns-container flex space-between">
+                                <div>
+                                    <button className="host-btns approve-btn apporved">Declined</button>
+                                </div>
+                                <div>
+                                    <button onClick={() => { this.onRemoveOrder(order._id) }} className="host-btns cancel-btn">Remove</button>
+                                </div>
+                            </div>}
+                            {order.status === 'approved' && <div className="host-btns-container flex space-between">
+                                <div>
+                                    <button className="host-btns approve-btn apporved">Approved!</button>
+                                </div>
+                                <div>
+                                    <button onClick={() => { this.onDeclinelOrder(order) }} className="host-btns cancel-btn">Decline</button>
+                                </div>
+                            </div>}
                         </div >
                     </section>}
             </div >
@@ -108,8 +117,9 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
-    onCancelOrder,
+    onRemoveOrder,
     onApproveOrder,
+    onUpdateOrder,
     loadUser
 }
 

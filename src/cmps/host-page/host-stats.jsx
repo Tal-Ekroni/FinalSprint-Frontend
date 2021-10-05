@@ -10,7 +10,7 @@ class _HostChart extends React.Component {
         this.getStaysStatus()
     }
     getStaysStatus = () => {
-        const { orders } = this.props.user
+        const { orders } = this.props
         var pendingOrders = orders.filter(order => { return order.status === 'pending' })
         var approvedOrders = orders.filter(order => { return order.status === 'approved' })
         this.setState({ staysStatus: [pendingOrders.length, approvedOrders.length] }, () => { console.log(this.state); })
@@ -24,10 +24,10 @@ class _HostChart extends React.Component {
                 {
                     data: staysStatus,
                     width: 200,
-                    backgroundColor: ["#6f019c", "#ff5a5f"],
+                    backgroundColor: ["#d9534f", "#5cb85c"],
                     borderColor: [
-                        "#6f019c",
-                        "#ff5a5f"
+                        "#d9534f",
+                        "#5cb85c"
                     ],
                     borderWidth: 3
                 }
@@ -48,6 +48,7 @@ class _HostChart extends React.Component {
 function mapStateToProps(state) {
     return {
         user: state.userModule.user,
+        orders: state.orderModule.orders
     }
 }
 // const mapDispatchToProps = {

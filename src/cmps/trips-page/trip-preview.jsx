@@ -1,13 +1,13 @@
 import React from "react";
 import { connect } from 'react-redux'
-import { onCancelOrder } from '../../store/order.actions'
+import { onCancelOrder, onRemoveOrder, onUpdateOrder } from '../../store/order.actions'
 import LazyLoad from "../preview-slider"
 
 class _TripPreview extends React.Component {
     state = {
         trip: null
     }
-   
+
     getTime = (time) => {
         var time = new Date(time * 1000);
         var date = '0' + time.getDate();
@@ -17,10 +17,11 @@ class _TripPreview extends React.Component {
         return formattedTime
     }
     onCancelTrip = (trip) => {
-        const { _id, buyer, host } = trip
-        const buyerId = buyer._id
-        const hostId = host._id
-        this.props.onCancelOrder(_id, buyerId, hostId)
+        trip.status = "canceled"
+        this.props.onUpdateOrder(trip)
+    }
+    onRemoveTrip = (tripId) => {
+        this.props.onRemoveOrder(tripId)
     }
     render() {
         const { trip } = this.props
@@ -28,11 +29,11 @@ class _TripPreview extends React.Component {
         var endDate = this.getTime(trip.endDate)
         return (
             <div className="trip-preview-container"  >
-                {trip &&
+                {trip.stay &&
                     <section>
                         <div>
                             <div className="trip-img-container">
-                                <LazyLoad imgs={trip.stay.imgUrls} />
+                                {trip.stay.imgUrls.length && <LazyLoad imgs={trip.stay.imgUrls} />}
                             </div>
                         </div>
                         <div className="trip-preview-details">
@@ -43,7 +44,39 @@ class _TripPreview extends React.Component {
                                     <div>{endDate}</div>
                                 </div>
                             </div>
-                            <div className="flex space-between">
+                            {trip.status === 'pending' && <div className="host-btns-container flex space-between">
+                                <div>
+                                    <p>Wait for approval</p>
+                                </div>
+                                <div>
+                                    <button onClick={() => { this.onCancelTrip(trip) }} className="host-btns cancel-btn">Cancel</button>
+                                </div>
+                            </div>}
+                            {trip.status === 'canceled' && <div className="host-btns-container flex space-between">
+                                <div>
+                                    <button className="host-btns approve-btn">Canceled</button>
+                                </div>
+                                <div>
+                                    <button onClick={() => { this.onRemoveTrip(trip._id) }} className="host-btns cancel-btn">Remove</button>
+                                </div>
+                            </div>}
+                            {trip.status === 'declined' && <div className="host-btns-container flex space-between">
+                                <div>
+                                    <p>Declined by host</p>
+                                </div>
+                                <div>
+                                    <button onClick={() => { this.onRemoveTrip(trip._id) }} className="host-btns cancel-btn">Remove</button>
+                                </div>
+                            </div>}
+                            {trip.status === 'approved' && <div className="host-btns-container flex space-between">
+                                <div>
+                                    <p>Approved by host!</p>
+                                </div>
+                                <div>
+                                    <button onClick={() => { this.onCancelTrip(trip) }} className="host-btns cancel-btn">Cancel</button>
+                                </div>
+                            </div>}
+                            {/* <div className="flex space-between">
                                 {trip.status === 'pending' && <div>
                                     <p>Wait for approval</p>
                                 </div>}
@@ -51,13 +84,10 @@ class _TripPreview extends React.Component {
                                     <p>Approved by host!</p>
                                 </div>}
                                 <div><p className="user-cancel" onClick={() => { this.onCancelTrip(trip) }}>Cancel order</p></div>
-                            </div>
+                            </div> */}
                         </div >
                     </section>}
             </div >
-        )
-        return (
-            <div>hi</div>
         )
     }
 }
@@ -74,7 +104,9 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
-    onCancelOrder
+    onCancelOrder,
+    onRemoveOrder,
+    onUpdateOrder
 }
 
 

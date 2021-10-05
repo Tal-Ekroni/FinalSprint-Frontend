@@ -29,13 +29,13 @@ class _Explore extends React.Component {
     }
 
     render() {
-        const { stays } = this.props
+        const { stays,filterBy } = this.props
         if (!stays.length) return <div>loading</div>
         return (
             <main className="main-container page-padding">
                 <div className="stays-headline">
                     <p>{stays.length === 1 ? `${stays.length} stay` : `${stays.length} stays`}</p>
-                    <h1>Find places to stay</h1>
+                    <h1>{filterBy.location ? `Places to stay at ${filterBy.location}`:'Find places to stay'}</h1>
                 </div>
                 <ExploreFilter />
                 {stays.length && <StaysList stays={stays} history={this.props.history} />}

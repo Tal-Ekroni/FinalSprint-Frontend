@@ -4,9 +4,13 @@ const initialState = {
 export function orderReducer(state = initialState, action) {
     var newState = state
     var orders
+    var order;
     switch (action.type) {
         case 'SET_ORDERS':
             newState = { ...state, orders: action.orders }
+            break
+        case 'SET_ORDER':
+            newState = { ...state, order: action.order }
             break
         case 'REMOVE_ORDER':
             const lastRemovedOrder = state.orders.find(order => order._id === action.orderId)
@@ -14,7 +18,6 @@ export function orderReducer(state = initialState, action) {
             newState = { ...state, orders, lastRemovedOrder }
             break
         case 'ADD_ORDER':
-            console.log('action', action.order);
             newState = { ...state, orders: [...state.orders, action.order] }
             break
         case 'UPDATE_ORDER':
@@ -22,7 +25,7 @@ export function orderReducer(state = initialState, action) {
             newState = { ...state, orders }
             break
     }
-    
+
     // For debug:
     window.orderState = newState
     // console.log('Prev State:', state)
