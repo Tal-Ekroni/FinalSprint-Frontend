@@ -63,5 +63,8 @@
     }
     .MuiInput-root {
         width: 300px;
+        & input {
+            width: 100%;
+        }
     }
 }

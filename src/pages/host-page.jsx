@@ -7,23 +7,39 @@ import { OrdersList } from '../cmps/host-page/orders-list';
 import { loadUser } from '../store/user.actions'
 import { AddStay } from '../cmps/host-page/add-stay';
 import { loadOrders } from '../store/order.actions'
+import { loadStays, setFilter } from '../store/stay.actions'
+import { HostStayslist } from '../cmps/host-page/host-stays-list';
 
 // import { OrdersList } from '../cmps/hosts-list.jsx'
 class _HostPage extends React.Component {
     state = {
         user: null,
         orders: [],
+        stays: [],
         selectedTab: 'add-stay'
     }
     async componentDidMount() {
         window.scrollTo(0, 0)
+        this.onGetHostStays()
         await this.props.loadUser(this.props.user._id)
         await this.props.loadOrders(this.props.user._id, 'host')
+        await this.props.loadStays(this.props.filterBy)
+        console.log('props', this.props.stays);
+
+    }
+    onGetHostStays = () => {
+        const newFilter = this.props.filterBy
+        newFilter.hostId = this.props.user._id
+        console.log('filter', newFilter);
+        this.props.setFilter(newFilter)
 
     }
     componentDidUpdate(prevProps, prevState) {
         if (this.props.orders !== prevProps.orders)
             this.props.loadUser(this.props.user._id)
+        // if (prevProps.filterBy !== this.props.filterBy) {
+        //     this.props.loadStays(this.props.filterBy);
+        // }
 
     }
 
@@ -33,7 +49,7 @@ class _HostPage extends React.Component {
         this.setState({ selectedTab: value })
     }
     render() {
-        const { user, orders } = this.props
+        const { user, orders, stays } = this.props
         const { selectedTab } = this.state
         return (
             <main className="host-page-container main-container">
@@ -49,6 +65,7 @@ class _HostPage extends React.Component {
                         >
                             <Tab value="add-stay" label="Add a stay" />
                             <Tab value="orders" label={orders ? `Orders (${orders.length})` : 'Orders'} />
+                            <Tab value="my-stays" label="My stays" />
                             <Tab value="stats" label="Stats" />
                         </Tabs>
                     </section>
@@ -59,6 +76,13 @@ class _HostPage extends React.Component {
                             <div className="orders-container">
 
                                 <OrdersList orders={orders} />
+                            </div>
+                        </div>}
+                        {selectedTab === 'my-stays' && <div>
+                            <h2>Orders</h2>
+                            <div className="orders-container">
+                                <HostStayslist stays={stays} />
+
                             </div>
                         </div>}
                         {selectedTab === 'stats' && <div>
@@ -77,12 +101,19 @@ class _HostPage extends React.Component {
 function mapStateToProps(state) {
     return {
         user: state.userModule.user,
-        orders: state.orderModule.orders
+        orders: state.orderModule.orders,
+        stays: state.stayModule.stays,
+        filterBy: state.stayModule.filterBy
+
+
     }
 }
 const mapDispatchToProps = {
     loadUser,
-    loadOrders
+    loadOrders,
+    loadStays,
+    setFilter
+
 
 }
 

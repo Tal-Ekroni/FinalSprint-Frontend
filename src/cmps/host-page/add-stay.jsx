@@ -66,11 +66,13 @@ class _AddStay extends React.Component {
         const value = target.type === 'number' ? +target.value : target.value;
         this.setState(prevState => ({ ...prevState, newStay: { ...this.state.newStay, [field]: value } }))
     }
+    handleAddressChange = (address) => {
+        this.setState(prevState => ({ ...prevState, newStay: { ...this.state.newStay, loc: address } }))
+    }
     handleSelectChange = (target) => {
-
         const field = target.name
         const value = target.value
-        this.setState(prevState => ({ ...prevState, newStay: { ...this.state.newStay, [field]: value } }), () => { console.log(this.state); })
+        this.setState(prevState => ({ ...prevState, newStay: { ...this.state.newStay, [field]: value } }))
     }
     handleMultiSelectChange = (target) => {
         var lastName = null
@@ -92,6 +94,8 @@ class _AddStay extends React.Component {
     onAddsStay = (ev) => {
         ev.preventDefault()
         const { newStay } = this.state
+        const { _id, fullname, ImgUrl } = this.props.user
+        newStay.host = { fullname, _id, ImgUrl }
         this.props.onAddStay(newStay)
         this.setState(prevState => ({
             ...prevState, newStay: {
@@ -112,6 +116,7 @@ class _AddStay extends React.Component {
                     lat: null,
                     lng: null
                 },
+                host: '',
                 reviews: []
             }
         }))
@@ -140,6 +145,12 @@ class _AddStay extends React.Component {
 
     onChangeTab = (ev, value) => {
         this.setState({ selectedTab: value })
+    }
+    onNextPage = () => {
+        const { selectedTab } = this.state
+        const tabs = ['get-start', 'floor-plan', 'stay-profile', 'finish-page']
+        const idx = tabs.findIndex(tab => tab === selectedTab)
+        this.setState(prevState => ({ ...prevState, selectedTab: tabs[idx + 1] }))
     }
     render() {
         const { selectedTab } = this.state
@@ -178,7 +189,7 @@ class _AddStay extends React.Component {
                         </div>
                         {selectedTab === 'get-start' && <AddStayBasicInfo handleChange={this.handleChange} handleSelectChange={this.handleSelectChange} state={this.state} />}
                         {selectedTab === 'floor-plan' && <AddStayFloorPlan handleChange={this.handleChange} handleMultiSelectChange={this.handleMultiSelectChange} state={this.state} />}
-                        {selectedTab === 'stay-profile' && <AddStayProfile onUploadImg={this.onUploadImg} handleChange={this.handleChange} handleMultiSelectChange={this.handleMultiSelectChange} state={this.state} />}
+                        {selectedTab === 'stay-profile' && <AddStayProfile handleAddressChange={this.handleAddressChange} onUploadImg={this.onUploadImg} handleChange={this.handleChange} handleMultiSelectChange={this.handleMultiSelectChange} state={this.state} />}
 
                         {selectedTab === 'finish-page' ? <button
                             className=" add-page-btn add-stay-btn"
@@ -186,7 +197,7 @@ class _AddStay extends React.Component {
                             type="submit"
                         >
                             Add Stay
-                        </button> : <button
+                        </button> : <button onClick={this.onNextPage}
                             className=" add-page-btn next-page-btn"
                             variant={'contained'}
                             type="button"

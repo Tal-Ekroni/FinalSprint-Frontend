@@ -14,7 +14,7 @@ const labelsOptions = [
 
 export class AddStayProfile extends React.Component {
     render() {
-        const { handleChange, handleMultiSelectChange, onUploadImg } = this.props
+        const { handleChange, handleMultiSelectChange, onUploadImg , handleAddressChange} = this.props
         const { labels, name, imgUrls } = this.props.state
         return (
             <div className="add-basic-info-container">
@@ -39,7 +39,7 @@ export class AddStayProfile extends React.Component {
                         options={labelsOptions}
                     />
                 </div>
-                <AddStayMap />
+                <AddStayMap handleAddressChange={handleAddressChange} />
             </div>
         )
     }

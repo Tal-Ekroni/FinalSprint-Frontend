@@ -18,6 +18,7 @@ const initialState = {
         uniqueStay: '',
         guestModal: false,
         datesModal: false,
+        hostId: ''
     }
 }
 export function stayReducer(state = initialState, action) {
