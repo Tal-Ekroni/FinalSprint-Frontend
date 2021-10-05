@@ -18,7 +18,7 @@ class _TripsPage extends React.Component {
     render() {
         const { user, orders } = this.props
         return (
-            <main className="trips-page-container main-layout">
+            <main className="trips-page-container main-container">
                 {user && <section className="trips-container">
                     <div className="trips-title-container">
                         <h1>Trips</h1>

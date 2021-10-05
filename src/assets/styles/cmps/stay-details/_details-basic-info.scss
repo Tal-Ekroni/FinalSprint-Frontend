@@ -1,58 +1,68 @@
 .info-imgs-container {
     display: flex;
     flex-direction: column-reverse;
-}
+    .stay-info {
+        width: 100%;
+        margin-top: 25px;
+        margin-bottom: 10px;
+        & p:not(:first-child) {
+            padding-inline-start: 4px;
+        }
+        & p {
+            font-size: 0.875rem;
+        }
+        & h2 {
+            font-size: 1.625rem;
+            line-height: 2.125rem;
+            font-family: circular-bold;
+        }
+        .user-btns-container {
+            justify-content: space-evenly;
+            width: 150px;
+            & p {
+                font-size: 1rem;
+            }
+        }
+        .stay-avg-info {
+            & p {
+                font-family: circular-light;
+            }
+            .info-line-score {
+                font-family: circular-bold;
+                padding-inline-start: 4px;
+            }
+        }
+        .dot {
+            margin-inline-end: 10px;
+            margin-inline-start: 4px;
+        }
 
-.stay-info {
-    width: 100%;
-    margin-top: 25px;
-    margin-bottom: 10px;
-    & p:not(:first-child) {
-        padding-inline-start: 4px;
+        @include for-mobile-layout {
+            .stay-info {
+                flex-direction: column;
+                padding: 0 5px;
+            }
+            .user-btns-container {
+                display: none;
+            }
+        }
+        @include for-narrow-layout {
+            .stay-info {
+                flex-direction: row;
+                padding: 0;
+            }
+        }
+        @include for-normal-layout {
+            .stay-info {
+                // flex-direction: row;
+                padding: 0;
+            }
+        }
     }
-    & p {
-        font-size: 0.875rem;
-    }
-    & h2 {
-        font-size: 1.625rem;
-        line-height: 2.125rem;
-        font-family: circular-bold;
-    }
-}
-.stay-avg-info {
-    // width: 130px;
-    & p {
-        font-family: circular-light;
-    }
-    .info-line-score {
-        font-family: circular-bold;
-        padding-inline-start: 4px;
-    }
-}
-// .stay-info-container > * {
-//     font-size: 0.875rem;
-// }
-
-.user-btns-container {
-    justify-content: space-evenly;
-    width: 150px;
-    & p {
-        font-size: 1rem;
-    }
-}
-.dot {
-    margin-inline-end: 10px;
-    margin-inline-start: 4px;
-}
-.imgs-container {
-    width: 100%;
-    // height: 350px;
-    height: 500px;
 }
 .host-info-container {
     border-bottom: 0.5px solid lightgray;
     padding-bottom: 24px;
-
 }
 .asset-short-info {
     flex-direction: column;
@@ -62,10 +72,11 @@
         line-height: 1.625rem;
     }
 }
+
 .asset-imgs-container {
-    // height: 350px;
     height: 500px;
     width: 100%;
+    margin-bottom: 20px;
     & .asset-imgs {
         border-radius: 15px;
         overflow: hidden;
@@ -77,6 +88,7 @@
         }
     }
 }
+
 .imgs-container {
     display: none;
     flex-direction: column;
@@ -89,6 +101,17 @@
         width: 100%;
     }
 }
+
+.asset-img {
+    height: 245px;
+    width: 100%;
+}
+
+.info-line-loc {
+    font-family: circular-bold;
+    text-decoration: underline;
+    color: $clr5;
+}
 .host-img-container {
     height: 56px;
     border-radius: 28px;
@@ -96,45 +119,8 @@
 
     background-color: blue;
     width: 56px;
-    & p {
-        line-height: 56px;
-        text-align: center;
-        color: whitesmoke;
-    }
 }
 
-.imgs-container {
-    img {
-        width: 100%;
-        height: 100%;
-    }
-}
-.asset-img {
-    height: 245px;
-    // height: 175px;
-    width: 100%;
-}
-.info-line-loc {
-    font-family: circular-bold;
-    text-decoration: underline;
-    color: $clr5;
-}
-
-@media (max-width: $mobile-breakpoint) {
-    .stay-info {
-        flex-direction: column;
-        padding: 0 5px;
-    }
-
-    .stay-info-container {
-        width: 100%;
-        justify-content: space-between;
-    }
-
-    .user-btns-container {
-        display: none;
-    }
-}
 @media (min-width: $mobile-breakpoint) {
     .stay-info {
         flex-direction: column;
@@ -145,10 +131,6 @@
     }
 }
 @media (min-width: $narrow-breakpoint) {
-    .stay-info {
-        flex-direction: row;
-        padding: 0;
-    }
     .info-imgs-container {
         flex-direction: column;
     }

@@ -35,7 +35,7 @@
     &.justify-center {
         justify-content: center;
     }
-    &.justify-start{
+    &.justify-start {
         justify-content: flex-start;
     }
     &.space-between {
@@ -49,9 +49,9 @@
     }
 }
 
-.page-padding{
+.page-padding {
     padding-top: 81px;
-
+    min-height: calc(90vh);
 }
 // .main-layout{
 //     max-width: 1020px;

@@ -21,13 +21,12 @@ class _HostChart extends React.Component {
         const staysData = {
             labels: ["Declined", "Pending", "Approved"],
             datasets: [
-
                 {
                     data: staysStatus,
                     width: 200,
-                    backgroundColor: ["6f019c", "#d9534f", "#5cb85c"],
+                    backgroundColor: ["#6f019c", "#d9534f", "#5cb85c"],
                     borderColor: [
-                        "6f019c",
+                        "#6f019c",
                         "#d9534f",
                         "#5cb85c"
                     ],

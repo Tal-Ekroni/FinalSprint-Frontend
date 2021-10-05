@@ -1,18 +1,21 @@
+import { lightGreen } from '@material-ui/core/colors'
 import React from 'react'
 import { connect } from 'react-redux'
 
-import {  NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { onLogout, loadUser } from '../store/user.actions'
 class _UserMenu extends React.Component {
     state = {
         isLoginModalOn: false
     }
-
+    componentDidMount() {
+        if (this.props.user) this.props.loadUser(this.props.user._id)
+    }
     onLogout = () => {
         this.props.onLogout()
         this.props.onToggleSearchModals('menuModal')
     }
-  
+
     onCloseLogin = () => {
         this.setState({ isLoginModalOn: false })
         this.props.onToggleSearchModals('menuModal')
@@ -64,7 +67,7 @@ class _UserMenu extends React.Component {
 }
 function mapStateToProps(state) {
     return {
-        user: state.userModule.user,
+        user: state.userModule.user
     }
 }
 const mapDispatchToProps = {

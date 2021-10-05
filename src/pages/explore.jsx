@@ -5,10 +5,12 @@ import { onBookTrip } from '../store/user.actions.js'
 import { StaysList } from '../cmps/stays-list.jsx'
 import { ExploreFilter } from '../cmps/explore-filter.jsx'
 import loader from '../assets/img/three-dots.svg'
+import staySrevice from '../services/stay.service'
 
 class _Explore extends React.Component {
 
     componentDidMount() {
+        console.log(this.props.filterBy);
         return async () => {
             window.scrollTo(0, 0)
             try {

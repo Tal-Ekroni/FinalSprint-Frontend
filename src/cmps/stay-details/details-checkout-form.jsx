@@ -24,7 +24,7 @@ class _CheckoutForm extends React.Component {
     }
     componentDidMount() {
         const { stay, filterBy } = this.props
-        window.addEventListener('scroll', (ev) => { this.setState({ isGuestPopupOn: false }) })
+        // window.addEventListener('scroll', (ev) => { this.setState({ isGuestPopupOn: false }) })
         this.setState({
             trip: {
                 startDate: filterBy.startDate,
@@ -37,9 +37,9 @@ class _CheckoutForm extends React.Component {
             datesModal: false
         })
     }
-    componentWillUnmount() {
-        window.removeEventListener('scroll', (ev) => { this.setState({ isGuestPopupOn: false }) })
-    }
+    // componentWillUnmount() {
+    //     window.removeEventListener('scroll', (ev) => { this.setState({ isGuestPopupOn: false }) })
+    // }
     onSelectDates = ({ startDate, endDate }) => {
         if (startDate) {
             this.setState(prevState => ({ trip: { ...prevState.trip, startDate } }))
