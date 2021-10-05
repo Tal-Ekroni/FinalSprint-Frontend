@@ -7,8 +7,6 @@ import { setFilter, setMiniHeader } from '../store/stay.actions';
 import { LoginSignup } from './login-signup.jsx'
 import { SearchBar } from './search-bar';
 import { UserMenu } from './user-menu';
-
-
 class _AppHeader extends React.Component {
     state = {
         isUserMenuOpen: false,
@@ -90,14 +88,12 @@ class _AppHeader extends React.Component {
         const { user, setFilter, filterBy, isMiniHeader } = this.props
         const { isUserMenuOpen, isLoginBotmodal, isScreenOpen, locModal, datesModal, guestModal, isMiniInput } = this.state
         return (
-            <header className={isMiniHeader ? `app-header-conatiner main-container mini-header` : isMiniInput ? `app-header-conatiner main-container mini-header-with-input` : `app-header-conatiner main-container `}>
+            <header className={isMiniInput ? `app-header-conatiner main-container mini-header-with-input` : isMiniHeader ? `app-header-conatiner main-container mini-header` : `app-header-conatiner main-container `}>
                 <div className={isScreenOpen ? "screen screen-open full" : "screen full"} onClick={() => { this.closeAllModals() }}></div>
                 <nav className="user-header-section flex space-between align-center">
-
                     <div className="logo-container flex align-center">
-                        <NavLink to="/" className="logo"><FaAirbnb size={40} color={isMiniHeader ? '#fff' : '#ff5a5f'} /><span>AnyGo</span></NavLink>
+                        <NavLink to="/" className="logo"><FaAirbnb size={40} color={!isMiniHeader ? '#fff' : '#ff5a5f'} /><span>AnyGo</span></NavLink>
                     </div>
-
                     <div className="search-bar">
                         {isMiniHeader && <SearchBar setFilter={setFilter} isMiniHeader={isMiniHeader} filterBy={filterBy} datesModal={datesModal} guestModal={guestModal} locModal={locModal} onToggleSearchModals={this.onToggleSearchModals} onToggleMiniSearchBar={this.onToggleMiniSearchBar} />}
                     </div>
@@ -105,14 +101,10 @@ class _AppHeader extends React.Component {
                         <div className="nav-options flex align-center">
                             <NavLink to="/become-a-host" className="nav-opt">Become a host</NavLink>
                         </div>
-
                         <div className="flex align-center">
                             <NavLink to="/explore/" className="nav-opt">Explore</NavLink>
                         </div>
-
-
                         <div className="user-img-container " onClick={() => { this.onToggleSearchModals('menuModal') }}>
-
                             <button className="user-btn flex align-center btn-section  ">
                                 <FaBars className="menu-btn" />
                                 <div className="user-logo-container">
@@ -120,18 +112,15 @@ class _AppHeader extends React.Component {
                                 </div>
                             </button>
                         </div>
-
                         <div className="user-menu">
                             {isUserMenuOpen && <UserMenu onToggleSearchModals={this.onToggleSearchModals} onOpenBotLogin={this.onOpenBotLogin} />}
                         </div>
-
                     </div>
                 </nav>
                 {!isMiniHeader && <SearchBar setFilter={setFilter} isMiniHeader={isMiniHeader} filterBy={filterBy} datesModal={datesModal} guestModal={guestModal} locModal={locModal} onToggleSearchModals={this.onToggleSearchModals} />}
                 {isLoginBotmodal && <div className="main-layout">
                     <LoginSignup />
                 </div>}
-
             </header>
         )
     }
