@@ -29,7 +29,6 @@ class _StayDetails extends React.Component {
     }
     componentDidMount() {
         window.scrollTo(0, 0)
-        // window.addEventListener('scroll', (ev) => { console.log('ev', ev); })
         const { stayId } = this.props.match.params
         if (!stayId) this.props.history.push('/')
         else this.props.loadStay(stayId)
@@ -85,7 +84,6 @@ class _StayDetails extends React.Component {
                                     <img src={`https://i.pravatar.cc/100?u=${stay.host._id}`} alt="" />
                                 </div>
                             </section>
-
                             <section className="asset-sum-container">
                                 <AssetSum />
                             </section>
@@ -104,18 +102,13 @@ class _StayDetails extends React.Component {
                         </div>
                         {/* TODO */}
                         <div className="details-right-container">
-
                             <CheckoutForm />
-
                         </div>
-
                     </section>
                     <section className="page-bottom-container">
                         <div className="reviews-section-container" >
-
                             <ReviewAvg reviews={stay.reviews} />
                             <ReviewsList reviews={stay.reviews} onToogleReadModal={this.onToogleReadModal} isReadMoreOn={isReadMoreOn} />
-
                             {user && <div className="add-review">
                                 <AddReview stayId={stay._id} />
                             </div>}
@@ -135,11 +128,9 @@ function mapStateToProps(state) {
         user: state.userModule.user,
         stay: state.stayModule.stay,
         reviews: state.reviewModule.reviews
-
     }
 }
 const mapDispatchToProps = {
     loadStay
 }
-
 export const StayDetails = connect(mapStateToProps, mapDispatchToProps)(_StayDetails)
