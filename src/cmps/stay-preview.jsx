@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from 'react-redux'
 import { FaStar, } from "react-icons/fa";
-import { onToggleLikeStay } from '../store/user.actions.js'
+import { onToggleLikeStay, updateUser } from '../store/user.actions.js'
 
 import LazyLoad from "./preview-slider"
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
@@ -37,6 +37,8 @@ class _StayPreview extends React.Component {
                 }
                 this.setState({ isLiked: !this.state.isLiked }, () => this.props.onToggleLikeStay(this.state.isLiked, savedStay))
             }
+            this.props.updateUser(user)
+
         } else {
             showErrorMsg('Login First')
         }
@@ -97,7 +99,8 @@ function mapStateToProps(state) {
     }
 }
 const mapDispatchToProps = {
-    onToggleLikeStay
+    onToggleLikeStay,
+    updateUser
 }
 
 

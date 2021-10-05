@@ -37,6 +37,17 @@ class _StayDetails extends React.Component {
     // componentWillUnmount() {
     //     window.removeEventListener('scroll',(ev) => { console.log('ev', ev); })
     // }
+    // isStayLiked = () => {
+    //     const { user, stay } = this.props
+    //     if (user) {
+    //         if (user.mySaves.length) {
+    //             const isLiked = user.mySaves.filter(saved => saved._id === stay._id)
+    //             if (isLiked.length) {
+    //                 this.setState({ isLiked: true })
+    //             }
+    //         }
+    //     }
+    // }
     handleChange = ({ startDate, endDate }) => {
         if (startDate) {
             this.setState(prevState => ({ trip: { ...prevState.trip, startDate } }))

@@ -42,6 +42,25 @@ export function removeUser(userId) {
         }
     }
 }
+export function updateUser(userToSave) {
+    // console.log('stay to ', stayToSave);
+    return async (dispatch) => {
+        try {
+            const updatedUser = await userService.update(userToSave)
+            console.log('Updated user:', updatedUser);
+            dispatch({
+                type: 'UPDATE_USER',
+                stay: updatedUser
+            })
+            showSuccessMsg('User updated')
+        } catch (err) {
+            showErrorMsg('Cannot update user')
+            console.log('Cannot save user', err)
+        }
+    }
+
+}
+
 
 
 export function onLogin(credentials) {
