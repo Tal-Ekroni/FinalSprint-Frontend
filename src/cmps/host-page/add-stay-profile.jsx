@@ -14,7 +14,7 @@ const labelsOptions = [
 
 export class AddStayProfile extends React.Component {
     render() {
-        const { handleChange, handleMultiSelectChange , onUploadImg } = this.props
+        const { handleChange, handleMultiSelectChange, onUploadImg } = this.props
         const { labels, name, imgUrls } = this.props.state
         return (
             <div className="add-basic-info-container">
@@ -38,11 +38,6 @@ export class AddStayProfile extends React.Component {
                         value={labels}
                         options={labelsOptions}
                     />
-                </div>
-                <div className="add-form-line flex align-center space-between">
-                    <label className="add-line" htmlFor="">Enter your stay location</label>
-                    <TextField type="text" value={imgUrls} autoComplete="off" name="capacity" placeholder="Asset capacity..." />
-
                 </div>
                 <AddStayMap />
             </div>

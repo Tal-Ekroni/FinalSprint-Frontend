@@ -29,7 +29,7 @@ class _AddReview extends Component {
     onRemove = async reviewId => {
         await this.props.removeReview(reviewId)
         // this.props.history.push('/login')
-      }
+    }
     clearReview = () => {
         this.setState({
             newReview: {

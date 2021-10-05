@@ -22,7 +22,7 @@ class _HostPage extends React.Component {
 
     }
     componentDidUpdate(prevProps, prevState) {
-        if (this.state.orders !== prevState.orders)
+        if (this.props.orders !== prevProps.orders)
             this.props.loadUser(this.props.user._id)
 
     }

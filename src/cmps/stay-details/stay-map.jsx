@@ -1,7 +1,6 @@
 
 import { Component } from 'react';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
-import Button from '@material-ui/core/Button';
 
 class _StayMap extends Component {
 

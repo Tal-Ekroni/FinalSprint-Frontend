@@ -16,6 +16,19 @@ export function loadOrders(userId, type) {
         }
     }
 }
+export function loadOrder(orderId) {
+    return async (dispatch) => {
+        try {
+            const order = await orderService.getById(orderId)
+            dispatch({
+                type: 'SET_ORDER',
+                order
+            })
+        } catch (err) {
+            showErrorMsg('Cannot load orders')
+        }
+    }
+}
 
 export function onRemoveOrder(orderId) {
     return async (dispatch, getState) => {
@@ -38,24 +51,8 @@ export function onAddOrder(orderToAdd) {
     return async (dispatch) => {
         try {
             const savedOrder = await orderService.save(orderToAdd)
-            console.log('orderToAdd', orderToAdd);
-
             dispatch({ type: 'ADD_ORDER', order: savedOrder })
             showSuccessMsg('Order added')
-            // const user = await userService.getById(orderToAdd.buyer._id)
-            // const hostUser = await userService.getById(orderToAdd.host._id)
-            // const savedOrder = await orderService.save(orderToAdd)
-            // console.log('host', hostUser);
-            // console.log('user', user);
-            // if (!hostUser.orders) hostUser.orders = []
-            // if (!user.myTrips) user.myTrips = []
-            // hostUser.orders.unshift(orderToAdd)
-            // user.myTrips.unshift(orderToAdd)
-
-            // const updatedUser = await userService.update(user)
-            // const updatedHost = await userService.update(hostUser)
-            // dispatch({ type: 'UPDATE_USER', user: updatedUser })
-            // dispatch({ type: 'UPDATE_USER', user: updatedHost })
         }
         catch (err) {
             showErrorMsg('Cannot add order')
@@ -85,19 +82,11 @@ export function onCancelOrder(tripId, buyerId, hostId) {
         }
     }
 }
-export function onApproveOrder(orderId, buyerId, hostId) {
+export function onApproveOrder(order) {
     return async (dispatch) => {
         try {
-            const buyer = await userService.getById(buyerId)
-            const hostUser = await userService.getById(hostId)
-            const buyerIdx = buyer.myTrips.findIndex(trip => trip._id === orderId)
-            const hostIdx = hostUser.orders.findIndex(order => order._id === orderId)
-            buyer.myTrips[buyerIdx].status = 'approved'
-            hostUser.orders[hostIdx].status = 'approved'
-            const updatedUser = await userService.update(buyer)
-            const updatedHost = await userService.update(hostUser)
-            dispatch({ type: 'UPDATE_USER', user: updatedUser })
-            dispatch({ type: 'UPDATE_USER', user: updatedHost })
+            const updatedOrder = await orderService.update(order)
+            dispatch({ type: 'UPDATE_ORDER', order: updatedOrder })
             showSuccessMsg('Order Approved')
 
         }
@@ -107,6 +96,21 @@ export function onApproveOrder(orderId, buyerId, hostId) {
         }
     }
 }
+export function onUpdateOrder(order) {
+    return async (dispatch) => {
+        try {
+            const updatedOrder = await orderService.update(order)
+            dispatch({ type: 'UPDATE_ORDER', order: updatedOrder })
+            showSuccessMsg('Order Updated')
+
+        }
+        catch (err) {
+            showErrorMsg('Cannot approve order')
+            console.log('Cannot approve order', err)
+        }
+    }
+}
+
 export function setFilter(filterBy) {
     return async (dispatch) => {
         try {

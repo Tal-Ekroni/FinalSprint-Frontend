@@ -1,14 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { stayService } from '../services/stay.service'
-import { FaFlag, FaStar } from 'react-icons/fa'
-import { onEditStay, onRemoveStay } from '../store/stay.actions.js'
+import { loadStay } from '../store/stay.actions.js'
 import { BasicInfo } from '../cmps/stay-details/details-base-info'
 import { AssetSum } from '../cmps/stay-details/details-asset-sum'
 import { AssetAmenities } from '../cmps/stay-details/details-amenities'
 import 'react-dates/initialize'
 import 'react-dates/lib/css/_datepicker.css';
-// import * as data from '../data/air-data.json';
 import { CheckoutForm } from '../cmps/stay-details/details-checkout-form'
 import { ReviewsList } from '../cmps/stay-details/reviews-list'
 import { StayMap } from '../cmps/stay-details/stay-map'
@@ -35,34 +32,14 @@ class _StayDetails extends React.Component {
     }
     componentDidMount() {
         window.scrollTo(0, 0)
-        // localStorage.setItem('stay', JSON.stringify([stay]))
         // window.addEventListener('scroll', (ev) => { console.log('ev', ev); })
         const { stayId } = this.props.match.params
         if (!stayId) this.props.history.push('/')
-        else {
-            stayService.getById(stayId)
-                .then(stay => {
-                    this.setState({
-                        stay,
-                        trip: {
-                            startDate: null,
-                            endDate: null,
-                            guests: { adults: 1, kids: 0, infants: 0 },
-                            loc: stay.loc
-                        },
-                        isReadMoreOn: false
-                    })
-                })
-
-        }
+        else this.props.loadStay(stayId)
     }
     // componentWillUnmount() {
     //     window.removeEventListener('scroll',(ev) => { console.log('ev', ev); })
     // }
-    onRemoveStay = (stayId) => {
-        this.props.onRemoveStay(stayId)
-    }
-
     handleChange = ({ startDate, endDate }) => {
         if (startDate) {
             this.setState(prevState => ({ trip: { ...prevState.trip, startDate } }))
@@ -78,8 +55,8 @@ class _StayDetails extends React.Component {
         this.setState({ isReadMoreOn: true })
     }
     render() {
-        const { stay, isReadMoreOn } = this.state
-        const { user } = this.props
+        const { isReadMoreOn } = this.state
+        const { stay, user } = this.props
         return (
             <section className="stay-details-section main-layout">
                 {stay && <div className="stay-details-container">
@@ -119,7 +96,7 @@ class _StayDetails extends React.Component {
                         {/* TODO */}
                         <div className="details-right-container">
 
-                            <CheckoutForm stay={stay} />
+                            <CheckoutForm  />
 
                         </div>
 
@@ -147,14 +124,13 @@ class _StayDetails extends React.Component {
 function mapStateToProps(state) {
     return {
         user: state.userModule.user,
-        currStay: state.stayModule.currStay,
+        stay: state.stayModule.stay,
         reviews: state.reviewModule.reviews
 
     }
 }
 const mapDispatchToProps = {
-    onRemoveStay,
-    onEditStay
+    loadStay
 }
 
 export const StayDetails = connect(mapStateToProps, mapDispatchToProps)(_StayDetails)
