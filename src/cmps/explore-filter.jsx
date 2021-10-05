@@ -10,10 +10,10 @@ export class ExploreFilter extends React.Component {
             AmenitiesTypeIsOpen: false,
         }
 
+
     }
     onCloseAllModals = () => {
         this.setState({ modals: { ...this.state.modals, placeTypeIsOpen: false, PropertyTypeIsOpen: false, PriceIsOpen: false, AmenitiesTypeIsOpen: false } })
-        // this.setState({ modals:{placeTypeIsOpen: false, PropertyTypeIsOpen: false, PriceIsOpen: false, AmenitiesTypeIsOpen: false }})
     }
     onToggleModals = (modal) => {
         this.onCloseAllModals()
@@ -32,6 +32,9 @@ export class ExploreFilter extends React.Component {
                 break;
         }
     }
+    click=()=>{
+        console.log('click from dynamic');
+    }
     render() {
         const { placeTypeIsOpen, PropertyTypeIsOpen, PriceIsOpen, AmenitiesTypeIsOpen } = this.state.modals
         return (
@@ -39,7 +42,8 @@ export class ExploreFilter extends React.Component {
                 <div className="sort-type type-of-place">
                     <button onClick={() => { this.onToggleModals('placeTypeIsOpen') }}>Type of place</button>
                     {placeTypeIsOpen && <DynamicModal >
-                        <div className="place-type">
+                        
+                        <div className="place-type" onClick={this.click()}>
                             <h1>Entire Place</h1>
                             <p>You'll Have The Place To Yourself</p>
                         </div>
@@ -52,7 +56,7 @@ export class ExploreFilter extends React.Component {
                 <div className="sort-type property-type">
                     <button onClick={() => { this.onToggleModals('PropertyTypeIsOpen') }}>Property Type</button>
                     {PropertyTypeIsOpen && <DynamicModal >
-                        <div className="property-type">
+                        <div className="property-type" >
                             <h1>Loft</h1>
                         </div>
                         <div className="property-type">

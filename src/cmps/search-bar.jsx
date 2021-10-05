@@ -18,7 +18,7 @@ class _SearchBar extends React.Component {
     componentDidMount() {
         const params = stayService.onGetQueryParams()
         this.props.setFilter(params)
-        this.setState({ params })
+        this.setState({ ...params })
     }
 
     handleChange = (ev) => {
@@ -55,10 +55,6 @@ class _SearchBar extends React.Component {
         const urlQuery = `/explore/?location=${location}&startDate=${startDate}&endDate=${endDate}&adults=${adultNumber}&kids=${kidsNumber}&infants=${infantsNumber}`
         this.props.history.push(urlQuery)
     }
-    onLoadFilter = async (filterBy) => {
-        await this.props.setFilter(filterBy)
-    }
-
 
     timeToShow = (date, val) => {
         var timeStamp = Date.parse(date);
@@ -69,7 +65,6 @@ class _SearchBar extends React.Component {
         var formattedTime = day.substr(-2) + '.' + month.substr(-2) + '.' + year.substr(-2);
         return formattedTime
     }
-
 
     render() {
         const { isMiniHeader, guestModal, datesModal, locModal, onToggleSearchModals, onToggleMiniSearchBar } = this.props

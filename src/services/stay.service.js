@@ -47,9 +47,9 @@ function onGetQueryParams() {
     const location = urlParams.get('location');
     const startDate = urlParams.get('startDate');
     const endDate = urlParams.get('endDate');
-    const adultNumber = urlParams.get('adults');
-    const kidsNumber = urlParams.get('kids');
-    const infantsNumber = urlParams.get('infants');
+    const adultNumber = +urlParams.get('adults');
+    const kidsNumber = +urlParams.get('kids');
+    const infantsNumber = +urlParams.get('infants');
     const params = {
         location,
         startDate,
