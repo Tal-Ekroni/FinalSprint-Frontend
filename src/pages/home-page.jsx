@@ -91,7 +91,7 @@ class _HomePage extends React.Component {
                             </div>
                         </div>
                         <div className="loc-section flex ">
-                            <img src={locImg3} className="loc-img" onClick={() => { this.onClickLoc('Aviv', 'location') }} />
+                            <img src={locImg3} className="loc-img" onClick={() => { this.onClickLoc('Tel Aviv', 'location') }} />
                             <div className="loc-info flex column justify-center">
                                 <p className="city-name">Tel-Aviv</p>
                                 <p className="country-name">Israel</p>
@@ -112,7 +112,7 @@ class _HomePage extends React.Component {
                             </div>
                         </div>
                         <div className="loc-section flex ">
-                            <img src={locImg6} className="loc-img" onClick={() => { this.onClickLoc('York', 'location') }} />
+                            <img src={locImg6} className="loc-img" onClick={() => { this.onClickLoc('New York', 'location') }} />
                             <div className="loc-info flex column justify-center">
                                 <p className="city-name">New York</p>
                                 <p className="country-name">United States</p>
