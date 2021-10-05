@@ -1,6 +1,5 @@
 import { httpService } from './http.service.js'
 
-const STORAGE_KEY = 'stay'
 const listeners = []
 
 export const stayService = {

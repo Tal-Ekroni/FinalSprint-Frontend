@@ -1,4 +1,4 @@
-import { FaStar, FaMedal, FaUpload, FaHeart } from 'react-icons/fa'
+import { FaStar, FaUpload, FaHeart } from 'react-icons/fa'
 export function BasicInfo({ stay }) {
     return (
         <section className="info-imgs-container">

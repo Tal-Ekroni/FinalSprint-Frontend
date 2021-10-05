@@ -63,10 +63,10 @@ class _SearchBar extends React.Component {
     timeToShow = (date, val) => {
         var timeStamp = Date.parse(date);
         var time = new Date(timeStamp);
-        var date = "0" + time.getDate();
+        var day = "0" + time.getDate();
         var month = "0" + (time.getMonth() + 1);
         var year = "0" + time.getFullYear();
-        var formattedTime = date.substr(-2) + '.' + month.substr(-2) + '.' + year.substr(-2);
+        var formattedTime = day.substr(-2) + '.' + month.substr(-2) + '.' + year.substr(-2);
         return formattedTime
     }
 
@@ -110,7 +110,7 @@ class _SearchBar extends React.Component {
                     </div>
                     <div className="search-btn-container flex align-center justify-center" onClick={() => { this.onSetFilter() }} >
                         {isMiniHeader && < FaSearch size={13} />}
-                        {!isMiniHeader &&< FaSearch size={20} />}
+                        {!isMiniHeader && < FaSearch size={20} />}
                     </div>
 
                 </div>

@@ -1,10 +1,8 @@
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import React from "react"
-import { DateRange } from 'react-date-range';
 
-import { Calendar, DateRangePicker } from 'react-date-range';
-// import { DateRangePicker } from 'react-dates';
+import { DateRangePicker } from 'react-date-range';
 
 export class DatesPicker2 extends React.Component {
     state = {
@@ -31,23 +29,12 @@ export class DatesPicker2 extends React.Component {
             <div className="">
                 {/* <div className="screen" onClick={() => { this.props.toggleDatesModal(false) }}></div> */}
 
-            <DateRangePicker
-            className="date-pick"
-            ranges={[selectionRange]}
-            onChange={this.handleSelect}
-            />
-                </div>
+                <DateRangePicker
+                    className="date-pick"
+                    ranges={[selectionRange]}
+                    onChange={this.handleSelect}
+                />
+            </div>
         )
-
-        // return (
-        //     // <Calendar
-        //     //     minDate={this.state.startDate}
-        //     //     maxDate={this.state.endDate}
-        //     //     date={new Date()}
-        //     //     onChange={this.handleSelect}
-        //     //     moveRangeOnFirstSelection={false}
-        //     // />
-        //     <DateRangePicker/>
-        // )
     }
 }

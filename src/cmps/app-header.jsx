@@ -1,13 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Link, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { FaAirbnb, FaBars } from 'react-icons/fa'
 import { onLogin, onLogout, onSignup, loadUsers, removeUser, } from '../store/user.actions.js'
 import { setFilter, setMiniHeader } from '../store/stay.actions';
 import { LoginSignup } from './login-signup.jsx'
 import { SearchBar } from './search-bar';
 import { UserMenu } from './user-menu';
-import { Select } from '@material-ui/core';
 
 
 class _AppHeader extends React.Component {
@@ -38,15 +37,15 @@ class _AppHeader extends React.Component {
             this.setState({ isMiniInput: false })
         }
     }
-    onLogin = (credentials) => {
-        this.props.onLogin(credentials)
-    }
-    onSignup = (credentials) => {
-        this.props.onSignup(credentials)
-    }
-    onLogout = () => {
-        this.props.onLogout()
-    }
+    // onLogin = (credentials) => {
+    //     this.props.onLogin(credentials)
+    // }
+    // onSignup = (credentials) => {
+    //     this.props.onSignup(credentials)
+    // }
+    // onLogout = () => {
+    //     this.props.onLogout()
+    // }
 
     onOpenBotLogin = () => {
         this.setState({ isLoginBotmodal: true })
@@ -76,6 +75,7 @@ class _AppHeader extends React.Component {
                 this.onToggleScreen(!this.state.isUserMenuOpen)
                 this.setState({ isUserMenuOpen: !this.state.isUserMenuOpen })
                 break;
+
         }
     }
 

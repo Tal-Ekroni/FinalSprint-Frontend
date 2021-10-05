@@ -1,8 +1,6 @@
 import React from "react";
 import { connect } from 'react-redux'
 import { onRemoveStay } from '../../store/stay.actions'
-import { loadUser } from '../../store/user.actions'
-import { utilService } from "../../services/util.service";
 
 class _HostStayPreview extends React.Component {
     state = {
@@ -43,9 +41,6 @@ class _HostStayPreview extends React.Component {
                         </div >
                     </section>}
             </div >
-        )
-        return (
-            <div>hi</div>
         )
     }
 }

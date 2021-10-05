@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Link, NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import locImg1 from '../assets/img/location-preview-1.png'
 import locImg2 from '../assets/img/location-preview-2.png'
 import locImg3 from '../assets/img/location-preview-3.png'
@@ -21,11 +21,11 @@ class _HomePage extends React.Component {
         this.props.setMiniHeader(false)
         window.addEventListener('scroll', this.onSetMiniHeader)
     }
-    componentWillUnmount() {    
+    componentWillUnmount() {
         this.props.setMiniHeader(true)
-        window.removeEventListener('scroll',this.onSetMiniHeader)
+        window.removeEventListener('scroll', this.onSetMiniHeader)
     }
-    onSetMiniHeader=(ev) => {
+    onSetMiniHeader = (ev) => {
         if (ev.target.scrollingElement.scrollTop > 50) {
             this.props.setMiniHeader(true)
         } else {
@@ -77,56 +77,56 @@ class _HomePage extends React.Component {
                     <h2>Popular destinations</h2>
                     <div className="locations">
                         <div className="loc-section flex">
-                            <img src={locImg1} className="loc-img" onClick={() => { this.onClickLoc('porto', 'location') }} />
+                            <img src={locImg1} alt="location" className="loc-img" onClick={() => { this.onClickLoc('porto', 'location') }} />
                             <div className="loc-info flex column justify-center">
                                 <p className="city-name">Porto</p>
                                 <p className="country-name">Portugal</p>
                             </div>
                         </div>
                         <div className="loc-section flex">
-                            <img src={locImg2} className="loc-img" onClick={() => { this.onClickLoc('Barcelona', 'location') }} />
+                            <img src={locImg2} alt="location" className="loc-img" onClick={() => { this.onClickLoc('Barcelona', 'location') }} />
                             <div className="loc-info flex column justify-center">
                                 <p className="city-name">Barcelona</p>
                                 <p className="country-name">Spain</p>
                             </div>
                         </div>
                         <div className="loc-section flex ">
-                            <img src={locImg3} className="loc-img" onClick={() => { this.onClickLoc('Tel Aviv', 'location') }} />
+                            <img src={locImg3} alt="location" className="loc-img" onClick={() => { this.onClickLoc('Tel Aviv', 'location') }} />
                             <div className="loc-info flex column justify-center">
                                 <p className="city-name">Tel-Aviv</p>
                                 <p className="country-name">Israel</p>
                             </div>
                         </div>
                         <div className="loc-section flex ">
-                            <img src={locImg4} className="loc-img" onClick={() => { this.onClickLoc('Paris', 'location') }} />
+                            <img src={locImg4} alt="location" className="loc-img" onClick={() => { this.onClickLoc('Paris', 'location') }} />
                             <div className="loc-info flex column justify-center">
                                 <p className="city-name">Paris</p>
                                 <p className="country-name">France</p>
                             </div>
                         </div>
                         <div className="loc-section flex ">
-                            <img src={locImg5} className="loc-img" onClick={() => { this.onClickLoc('London', 'location') }} />
+                            <img src={locImg5} alt="location" className="loc-img" onClick={() => { this.onClickLoc('London', 'location') }} />
                             <div className="loc-info flex column justify-center">
                                 <p className="city-name">London</p>
                                 <p className="country-name">United Kingdoms</p>
                             </div>
                         </div>
                         <div className="loc-section flex ">
-                            <img src={locImg6} className="loc-img" onClick={() => { this.onClickLoc('New York', 'location') }} />
+                            <img src={locImg6} alt="location" className="loc-img" onClick={() => { this.onClickLoc('New York', 'location') }} />
                             <div className="loc-info flex column justify-center">
                                 <p className="city-name">New York</p>
                                 <p className="country-name">United States</p>
                             </div>
                         </div>
                         <div className="loc-section flex ">
-                            <img src={locImg7} className="loc-img" onClick={() => { this.onClickLoc('Amsterdam', 'location') }} />
+                            <img src={locImg7} alt="location" className="loc-img" onClick={() => { this.onClickLoc('Amsterdam', 'location') }} />
                             <div className="loc-info flex column justify-center">
                                 <p className="city-name">Amsterdam</p>
                                 <p className="country-name">Netherlands</p>
                             </div>
                         </div>
                         <div className="loc-section flex ">
-                            <img src={locImg8} className="loc-img" onClick={() => { this.onClickLoc('Rome', 'location') }} />
+                            <img src={locImg8} alt="location" className="loc-img" onClick={() => { this.onClickLoc('Rome', 'location') }} />
                             <div className="loc-info flex column justify-center">
                                 <p className="city-name">Rome</p>
                                 <p className="country-name">Italy</p>
@@ -139,19 +139,19 @@ class _HomePage extends React.Component {
                     <div className="live-loc flex space-between">
 
                         <div className="live-card flex column">
-                            <img className="live-img" onClick={() => { this.onClickLoc('duplex', 'assetType') }} src={duplex} alt="" />
+                            <img className="live-img" alt="alt-live" onClick={() => { this.onClickLoc('duplex', 'assetType') }} src={duplex} />
                             <p>Entire duplex</p>
                         </div>
                         <div className="live-card flex column">
-                            <img className="live-img" onClick={() => { this.onClickLoc('Pets allowed', 'amenity') }} src={pet} alt="" />
+                            <img className="live-img" alt="alt-live" onClick={() => { this.onClickLoc('Pets allowed', 'amenity') }} src={pet} />
                             <p>Pets Allowed</p>
                         </div>
                         <div className="live-card flex column">
-                            <img className="live-img" onClick={() => { this.onClickLoc(7, 'capacity') }} src={cap} alt="" />
+                            <img className="live-img" alt="alt-live" onClick={() => { this.onClickLoc(7, 'capacity') }} src={cap} />
                             <p>Large capacity</p>
                         </div>
                         <div className="live-card flex column">
-                            <img className="live-img" onClick={() => { this.onClickLoc('unique', 'uniqueStay') }} src={unique} alt="" />
+                            <img className="live-img" alt="alt-live" onClick={() => { this.onClickLoc('unique', 'uniqueStay') }} src={unique} />
                             <p>Unique stays</p>
                         </div>
                     </div>

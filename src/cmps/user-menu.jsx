@@ -1,8 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { Link, NavLink } from 'react-router-dom'
-import { userService } from '../services/user.service'
+import {  NavLink } from 'react-router-dom'
 import { onLogout, loadUser } from '../store/user.actions'
 class _UserMenu extends React.Component {
     state = {
@@ -13,9 +12,7 @@ class _UserMenu extends React.Component {
         this.props.onLogout()
         this.props.onToggleSearchModals('menuModal')
     }
-    // onOpenLogin = () => {
-    //     this.setState({ isLoginModalOn: true })
-    // }
+  
     onCloseLogin = () => {
         this.setState({ isLoginModalOn: false })
         this.props.onToggleSearchModals('menuModal')

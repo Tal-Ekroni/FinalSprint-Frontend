@@ -17,7 +17,7 @@ class _OrderPreview extends React.Component {
 
 
     getTime = (time) => {
-        var time = new Date(time * 1000);
+        time = new Date(time * 1000);
         var date = '0' + time.getDate();
         var month = "0" + (time.getMonth() + 1);
         var year = "0" + time.getFullYear();
@@ -101,9 +101,6 @@ class _OrderPreview extends React.Component {
                         </div >
                     </section>}
             </div >
-        )
-        return (
-            <div>hi</div>
         )
     }
 }

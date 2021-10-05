@@ -1,5 +1,4 @@
-import { TextareaAutosize, TextField } from "@material-ui/core";
-import { Field } from "formik";
+import { TextField } from "@material-ui/core";
 
 import React from "react";
 import Select from 'react-select';

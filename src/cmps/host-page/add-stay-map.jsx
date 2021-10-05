@@ -1,8 +1,7 @@
 
 import { Component } from 'react';
-import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
-import PlacesAutocomplete, { geocodeByAddress, geocodeByPlaceId, getLatLng, } from 'react-places-autocomplete';
-import Button from '@material-ui/core/Button';
+import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
+import PlacesAutocomplete, { geocodeByAddress, getLatLng, } from 'react-places-autocomplete';
 import { TextField } from '@material-ui/core';
 
 class _AddStayMap extends Component {
@@ -71,7 +70,7 @@ class _AddStayMap extends Component {
                     <label className="add-line" htmlFor="">Enter your stay location</label>
 
                     <PlacesAutocomplete
-                        value={this.state.selectedPlace}
+                        value={selectedPlace}
                         onChange={this.handleChange}
                         onSelect={this.handleSelect}
                     >

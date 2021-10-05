@@ -2,7 +2,6 @@
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service';
 import { stayService } from '../services/stay.service'
 
-const SCORE_FOR_REVIEW = 500
 
 // export function loadReviews() {
 //   return async dispatch => {

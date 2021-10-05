@@ -1,5 +1,4 @@
-import { TextareaAutosize, TextField } from "@material-ui/core";
-import { Field } from "formik";
+import { TextField } from "@material-ui/core";
 
 import React from "react";
 import Select from 'react-select';
@@ -13,15 +12,6 @@ const ameintiesOptions = [
 
 
 ];
-const style = {
-    margin: '20px 0',
-    padding: '20px',
-    width: '100%',
-    height: ' 150px',
-    resize: 'none',
-    borderRadius: '13px',
-    borderColor: ' #bdbcbc'
-}
 export class AddStayFloorPlan extends React.Component {
     render() {
         const { handleChange, handleMultiSelectChange } = this.props

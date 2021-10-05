@@ -2,7 +2,7 @@ import React from 'react'
 import 'react-dates/initialize';
 import { connect } from 'react-redux'
 import { onAddOrder } from '../../store/order.actions'
-import { FaStar, FaAngleDown, FaAngleUp, FaFlag } from 'react-icons/fa'
+import { FaStar, FaAngleDown, FaAngleUp } from 'react-icons/fa'
 import { Button } from '@material-ui/core'
 import 'react-dates/lib/css/_datepicker.css';
 import { showErrorMsg } from '../../services/event-bus.service.js';
@@ -61,10 +61,10 @@ class _CheckoutForm extends React.Component {
     timeToShow = (date, val) => {
         var timeStamp = Date.parse(date);
         var time = new Date(timeStamp);
-        var date = "0" + time.getDate();
+        var day = "0" + time.getDate();
         var month = "0" + (time.getMonth() + 1);
         var year = "0" + time.getFullYear();
-        var formattedTime = date.substr(-2) + '.' + month.substr(-2) + '.' + year.substr(-2);
+        var formattedTime = day.substr(-2) + '.' + month.substr(-2) + '.' + year.substr(-2);
         return formattedTime
     }
 
@@ -158,7 +158,7 @@ class _CheckoutForm extends React.Component {
 
         return (
             <section className="checkout-popup flex column">
-                {isGuestPopupOn || datesModal && <div className="checkout-screen" onClick={(ev) => { this.onCloseModal(ev) }}></div>}
+                {(isGuestPopupOn || datesModal) && <div className="checkout-screen" onClick={(ev) => { this.onCloseModal(ev) }}></div>}
                 <section className="checkout-container flex">
                     <div className="checkout-form-container">
                         <div className="checkout-form-header flex space-between align-center" onClick={() => { this.onCloseModal(false) }}>

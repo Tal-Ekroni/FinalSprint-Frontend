@@ -24,8 +24,6 @@ const initialState = {
 export function stayReducer(state = initialState, action) {
     var newState = state
     var stays
-    var stay
-    var trip
     var cart
     switch (action.type) {
         case 'SET_STAYS':

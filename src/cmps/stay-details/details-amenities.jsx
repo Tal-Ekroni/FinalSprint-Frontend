@@ -1,7 +1,6 @@
 import { FastfoodTwoTone } from '@material-ui/icons';
 import React from 'react'
-import { Fa } from 'react-icons'
-import { FaAirFreshener, FaApple, FaBlender, FaCar, FaDog, FaHotTub, FaPaw, FaSmoking, FaSmokingBan, FaTv, FaWifi } from 'react-icons/fa';
+import { FaAirFreshener, FaBlender, FaCar, FaHotTub, FaPaw, FaSmoking, FaSmokingBan, FaTv, FaWifi } from 'react-icons/fa';
 export class AssetAmenities extends React.Component {
     getAmenitiesIcons = (amenity) => {
         switch (amenity) {

@@ -1,7 +1,6 @@
 import { orderService } from "../services/order.service.js";
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { userService } from "../services/user.service.js";
-import { utilService } from "../services/util.service.js";
 
 export function loadOrders(userId, type) {
     return async (dispatch) => {

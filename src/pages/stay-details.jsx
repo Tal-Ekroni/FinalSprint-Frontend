@@ -11,8 +11,8 @@ import { ReviewsList } from '../cmps/stay-details/reviews-list'
 import { StayMap } from '../cmps/stay-details/stay-map'
 import { AddReview } from '../cmps/stay-details/add-review'
 import { ReviewAvg } from '../cmps/stay-details/_reviews-avg'
-import { ReadMore } from '../cmps/_read-more'
-import { eventBusService } from '../services/event-bus.service'
+// import { ReadMore } from '../cmps/_read-more'
+// import { eventBusService } from '../services/event-bus.service'
 
 // import img from '../assets/img/1.jpg'
 // const stay = data.stay;
