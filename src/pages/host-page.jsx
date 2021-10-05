@@ -24,15 +24,11 @@ class _HostPage extends React.Component {
         await this.props.loadUser(this.props.user._id)
         await this.props.loadOrders(this.props.user._id, 'host')
         await this.props.loadStays(this.props.filterBy)
-        console.log('props', this.props.stays);
-
     }
     onGetHostStays = () => {
         const newFilter = this.props.filterBy
         newFilter.hostId = this.props.user._id
-        console.log('filter', newFilter);
         this.props.setFilter(newFilter)
-
     }
     componentDidUpdate(prevProps, prevState) {
         if (this.props.orders !== prevProps.orders)
@@ -40,11 +36,8 @@ class _HostPage extends React.Component {
         // if (prevProps.filterBy !== this.props.filterBy) {
         //     this.props.loadStays(this.props.filterBy);
         // }
-
     }
 
-    // onCancelHost = () => {
-    // }
     onChangeTab = (ev, value) => {
         this.setState({ selectedTab: value })
     }
@@ -79,7 +72,7 @@ class _HostPage extends React.Component {
                             </div>
                         </div>}
                         {selectedTab === 'my-stays' && <div>
-                            <h2>Orders</h2>
+                            <h2>My Stays!</h2>
                             <div className="orders-container">
                                 <HostStayslist stays={stays} />
 

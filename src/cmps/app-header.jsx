@@ -73,6 +73,8 @@ class _AppHeader extends React.Component {
                 this.onToggleScreen(!this.state.isUserMenuOpen)
                 this.setState({ isUserMenuOpen: !this.state.isUserMenuOpen })
                 break;
+            default:
+                break;
 
         }
     }

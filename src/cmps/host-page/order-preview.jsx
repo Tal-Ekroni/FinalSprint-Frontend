@@ -33,6 +33,7 @@ class _OrderPreview extends React.Component {
         this.props.onUpdateOrder(order)
     }
     onRemoveOrder = (orderId) => {
+        console.log(orderId);
         this.props.onRemoveOrder(orderId)
     }
     render() {
@@ -43,13 +44,13 @@ class _OrderPreview extends React.Component {
                 {order &&
                     <section>
                         <div className="order-preview-details">
-                            <div className="order-user-info flex " >
+                            <div className="order-user-info flex space-between" >
                                 <div className="user-img-container">
                                     <img src={`https://i.pravatar.cc/100?u=${order.buyer._id}`} alt="" />
                                 </div>
                                 <div className="txt-info-container flex column">
-                                    <div className="review-username-container">
-                                        <p className="review-username">{order.buyer.fullname} </p>
+                                    <div className="order-username-container">
+                                        <p className="order-username">{order.buyer.fullname} </p>
                                     </div>
                                     <div className="review-username-container">
                                         {typeof order.createdAt === 'number' ? <p >{utilService.timeToShow(order.createdAt)} </p> : <p >{order.createdAt} </p>}
@@ -79,7 +80,7 @@ class _OrderPreview extends React.Component {
                                     <button className="host-btns approve-btn">Canceled</button>
                                 </div>
                                 <div>
-                                    <button onClick={() => { this.onRemoveOrder(order) }} className="host-btns cancel-btn">Remove</button>
+                                    <button onClick={() => { this.onRemoveOrder(order._id) }} className="host-btns cancel-btn">Remove</button>
                                 </div>
                             </div>}
                             {order.status === 'declined' && <div className="host-btns-container flex space-between">

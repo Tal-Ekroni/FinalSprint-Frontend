@@ -77,6 +77,7 @@ class _AddStayMap extends Component {
                         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
                             <div>
                                 <TextField
+                                    value={selectedPlace}
                                     {...getInputProps({
                                         placeholder: 'Search Places ...',
                                         className: 'location-search-input',

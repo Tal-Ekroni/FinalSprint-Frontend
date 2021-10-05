@@ -9,7 +9,6 @@ export function loadUsers() {
         try {
             dispatch({ type: 'LOADING_START' })
             const users = await userService.getUsers()
-            await console.log('user actions', users);
             dispatch({ type: 'SET_USERS', users })
         } catch (err) {
             console.log('UserActions: err in loadUsers', err)
@@ -42,6 +41,24 @@ export function removeUser(userId) {
         }
     }
 }
+export function updateUser(userToSave) {
+    // console.log('stay to ', stayToSave);
+    return async (dispatch) => {
+        try {
+            const updatedUser = await userService.update(userToSave)
+            dispatch({
+                type: 'UPDATE_USER',
+                stay: updatedUser
+            })
+            showSuccessMsg('User updated')
+        } catch (err) {
+            showErrorMsg('Cannot update user')
+            console.log('Cannot save user', err)
+        }
+    }
+
+}
+
 
 
 export function onLogin(credentials) {

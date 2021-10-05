@@ -14,8 +14,6 @@ class _TripsPage extends React.Component {
         window.scrollTo(0, 0)
         await this.props.loadUser(this.props.user._id)
         await this.props.loadOrders(this.props.user._id, 'buyer')
-        console.log('props', this.props.orders);
-
     }
     render() {
         const { user, orders } = this.props

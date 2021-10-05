@@ -11,13 +11,12 @@ class _LoginSignup extends React.Component {
         isSignup: false,
         users: []
     }
-    componentDidMount() {
-        return async () => {
-            try {
-                await this.props.loadUsers()
-            } catch(err) {
-                console.log('error', err)
-            }
+    async componentDidMount() {
+
+        try {
+            await this.props.loadUsers()
+        } catch (err) {
+            console.log('error', err)
         }
     }
     clearState = () => {

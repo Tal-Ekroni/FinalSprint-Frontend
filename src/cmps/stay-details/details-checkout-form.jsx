@@ -105,6 +105,8 @@ class _CheckoutForm extends React.Component {
                 if (adults + kids + infants >= stay.capacity) return
                 if (action === 'plus') infants = infants + 1
                 break;
+            default:
+                break;
         }
         this.setState(prevState => ({ ...prevState, trip: { ...prevState.trip, guests: { adults, kids, infants } } }));
     }

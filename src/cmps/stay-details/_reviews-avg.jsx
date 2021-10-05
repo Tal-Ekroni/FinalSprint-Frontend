@@ -38,6 +38,8 @@ export class ReviewAvg extends React.Component {
                 reviews.map(review => avgScore += +review.value)
                 avgScore = ((avgScore / reviews.length)).toFixed(2)
                 break
+            default:
+                break;
         }
         return avgScore
 

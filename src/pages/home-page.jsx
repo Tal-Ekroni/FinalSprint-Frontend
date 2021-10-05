@@ -55,6 +55,8 @@ class _HomePage extends React.Component {
             case 'uniqueStay':
                 newFilter.uniqueStay = val
                 break;
+            default:
+                break;
         }
         this.props.setFilter(newFilter)
         this.props.history.push(`/explore`)
