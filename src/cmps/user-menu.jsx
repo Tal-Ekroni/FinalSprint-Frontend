@@ -1,7 +1,6 @@
 import { lightGreen } from '@material-ui/core/colors'
 import React from 'react'
 import { connect } from 'react-redux'
-
 import { NavLink } from 'react-router-dom'
 import { onLogout, loadUser } from '../store/user.actions'
 class _UserMenu extends React.Component {
@@ -28,8 +27,8 @@ class _UserMenu extends React.Component {
     render() {
         const { user } = this.props
         return (
-            <div className="user-menu-container" >
-                <section className="user-menu top-section">
+            <div className="user-menu-container flex column" >
+                <section className="user-menu top-section ">
                     <div >
                         {user && <NavLink onClick={() => this.props.onToggleSearchModals('menuModal')} className="user-menu-line" to="/trips"><p>Trips</p></NavLink>}
                         {!user && <p className="user-menu-line"> Trips</p>}

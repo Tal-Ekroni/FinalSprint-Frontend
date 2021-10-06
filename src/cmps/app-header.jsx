@@ -90,21 +90,21 @@ class _AppHeader extends React.Component {
         const { user, setFilter, filterBy, isMiniHeader } = this.props
         const { isUserMenuOpen, isLoginBotmodal, isScreenOpen, locModal, datesModal, guestModal, isMiniInput } = this.state
         return (
-            <header className={isMiniInput ? `app-header-conatiner main-container mini-header-with-input` : isMiniHeader ? `app-header-conatiner main-container mini-header` : `app-header-conatiner main-container `}>
+            <header className={isMiniInput ? `app-header-conatiner main-container mini-header-with-input` : isMiniHeader ? `app-header-conatiner main-container mini-header full` : `app-header-conatiner main-container `}>
                 <div className={isScreenOpen ? "screen screen-open full" : "screen full"} onClick={() => { this.closeAllModals() }}></div>
                 <nav className="user-header-section flex space-between align-center">
                     <div className="logo-container flex align-center">
                         <NavLink to="/" className="logo"><FaAirbnb size={40} color={!isMiniHeader ? '#fff' : '#ff5a5f'} /><span>AnyGo</span></NavLink>
                     </div>
                     <div className="search-bar">
-                        {isMiniHeader && <SearchBar setFilter={setFilter} isMiniHeader={isMiniHeader} filterBy={filterBy} datesModal={datesModal} guestModal={guestModal} locModal={locModal} onToggleSearchModals={this.onToggleSearchModals} onToggleMiniSearchBar={this.onToggleMiniSearchBar} />}
+                        {isMiniHeader && <SearchBar closeAllModals={this.closeAllModals} setFilter={setFilter} isMiniHeader={isMiniHeader} filterBy={filterBy} datesModal={datesModal} guestModal={guestModal} locModal={locModal} onToggleSearchModals={this.onToggleSearchModals} onToggleMiniSearchBar={this.onToggleMiniSearchBar} />}
                     </div>
                     <div className="nav-bar-container flex ">
-                        <div className="nav-options flex align-center">
-                            <NavLink to="/become-a-host" className="nav-opt">Become a host</NavLink>
-                        </div>
                         <div className="flex align-center">
                             <NavLink to="/explore/" className="nav-opt">Explore</NavLink>
+                        </div>
+                        <div className="nav-options flex align-center">
+                            <NavLink to="/become-a-host" className="nav-opt">Become a host</NavLink>
                         </div>
                         <div className="user-img-container " onClick={() => { this.onToggleSearchModals('menuModal') }}>
                             <button className="user-btn flex align-center btn-section  ">

@@ -9,16 +9,17 @@ import staySrevice from '../services/stay.service'
 
 class _Explore extends React.Component {
 
-    componentDidMount() {
-        console.log(this.props.filterBy);
-        return async () => {
-            window.scrollTo(0, 0)
-            try {
-                await this.props.loadStays(this.props.filterBy)
-            } catch (err) {
-                console.log('error', err)
-            }
+    async componentDidMount() {
+        window.scrollTo(0, 0)
+        try {
+            console.log(this.props.filterBy, 'from explore ');
+            await this.props.loadStays(this.props.filterBy)
+            console.log(this.props.filterBy, 'from explore 2 ');
+
+        } catch (err) {
+            console.log('error', err)
         }
+
     }
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.filterBy !== this.props.filterBy) {
@@ -40,7 +41,7 @@ class _Explore extends React.Component {
 
     render() {
         const { stays, filterBy } = this.props
-        if (!stays.length) return <div className="loader-container flex align-center justify-center"><img src={loader} alt="loader" /></div>
+        if (!stays.length) return <div className="loader-container flex align-center justify-center page-padding"><img src={loader} alt="loader" /></div>
         return (
             <main className="main-container page-padding">
                 <div className="stays-headline">
