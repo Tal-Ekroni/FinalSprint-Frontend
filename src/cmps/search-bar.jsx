@@ -24,18 +24,18 @@ class _SearchBar extends React.Component {
     }
     componentDidMount() {
         const params = this.onGetQueryParams()
-        console.log(this.props.location.query,'query params')
+        console.log(this.props.location.query, 'query params')
         // this.props.setFilter(params )
         // this.setState({ ...params },()=>{console.log(this.state)})
     }
- onGetQueryParams=()=> {
-        const urlParams = new URLSearchParams(this.location.search);
-        const location = urlParams.get('location')||'';
-        const startDate = urlParams.get('startDate')||null;
-        const endDate = urlParams.get('endDate')||null;
-        const adultNumber = +urlParams.get('adults')||1;
-        const kidsNumber = +urlParams.get('kids')||0;
-        const infantsNumber = +urlParams.get('infants')||0;
+    onGetQueryParams = () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const location = urlParams.get('location') || '';
+        const startDate = urlParams.get('startDate') || null;
+        const endDate = urlParams.get('endDate') || null;
+        const adultNumber = +urlParams.get('adults') || 1;
+        const kidsNumber = +urlParams.get('kids') || 0;
+        const infantsNumber = +urlParams.get('infants') || 0;
         const params = {
             location,
             startDate,
