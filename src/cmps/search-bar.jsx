@@ -24,18 +24,18 @@ class _SearchBar extends React.Component {
     }
     componentDidMount() {
         const params = this.onGetQueryParams()
-        console.log(params,'params');
-        // this.props.setFilter(params )
-        // this.setState({ ...params },()=>{console.log(this.state)})
+        console.log(params, 'params');
+        this.props.setFilter(params)
+        this.setState({ ...params }, () => { console.log(this.state) })
     }
- onGetQueryParams=()=> {
-        const urlParams = new URLSearchParams(this.location.search);
-        const location = urlParams.get('location')||'';
-        const startDate = urlParams.get('startDate')||null;
-        const endDate = urlParams.get('endDate')||null;
-        const adultNumber = +urlParams.get('adults')||1;
-        const kidsNumber = +urlParams.get('kids')||0;
-        const infantsNumber = +urlParams.get('infants')||0;
+    onGetQueryParams = () => {
+        const urlParams = new URLSearchParams(this.props.location.search);
+        const location = urlParams.get('location') || '';
+        const startDate = urlParams.get('startDate') || null;
+        const endDate = urlParams.get('endDate') || null;
+        const adultNumber = +urlParams.get('adults') || 1;
+        const kidsNumber = +urlParams.get('kids') || 0;
+        const infantsNumber = +urlParams.get('infants') || 0;
         const params = {
             location,
             startDate,
@@ -152,22 +152,5 @@ class _SearchBar extends React.Component {
     }
 }
 export const SearchBar = withRouter(_SearchBar)
-
-
-
-// function mapStateToProps(state) {
-//     return {
-//         users: state.userModule.users,
-//         user: state.userModule.user,
-//         count: state.userModule.count,
-//         isLoading: state.systemModule.isLoading,
-//         filterBy: state.stayModule.filterBy,
-//         isMiniHeader: state.stayModule.isMiniHeader
-
-//     }
-// }
-// const mapDispatchToProps = {
-// }
-
 
 // export const SearchBar = withRouter(connect(mapStateToProps, mapDispatchToProps)(_SearchBar))

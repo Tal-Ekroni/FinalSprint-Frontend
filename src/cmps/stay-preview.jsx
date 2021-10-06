@@ -7,10 +7,7 @@ import LazyLoad from "./preview-slider"
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import { showErrorMsg } from "../services/event-bus.service.js";
-
-// ({ stay, history, onToggleLike,isLiked }
 class _StayPreview extends React.Component {
-
     state = {
         isLiked: false
     }
@@ -38,11 +35,9 @@ class _StayPreview extends React.Component {
                 this.setState({ isLiked: !this.state.isLiked }, () => this.props.onToggleLikeStay(this.state.isLiked, savedStay))
             }
             this.props.updateUser(user)
-
         } else {
             showErrorMsg('Login First')
         }
-
     }
     isStayLiked = () => {
         const { user, stay } = this.props
