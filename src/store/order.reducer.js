@@ -4,7 +4,6 @@ const initialState = {
 export function orderReducer(state = initialState, action) {
     var newState = state
     var orders
-    var order;
     switch (action.type) {
         case 'SET_ORDERS':
             newState = { ...state, orders: action.orders }
@@ -24,6 +23,8 @@ export function orderReducer(state = initialState, action) {
             orders = state.orders.map(order => (order._id === action.order._id) ? action.order : order)
             newState = { ...state, orders }
             break
+        default:
+            break;
     }
 
     // For debug:

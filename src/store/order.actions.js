@@ -1,7 +1,6 @@
 import { orderService } from "../services/order.service.js";
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { userService } from "../services/user.service.js";
-import { utilService } from "../services/util.service.js";
 
 export function loadOrders(userId, type) {
     return async (dispatch) => {
@@ -63,7 +62,6 @@ export function onAddOrder(orderToAdd) {
 export function onCancelOrder(tripId, buyerId, hostId) {
     return async (dispatch) => {
         try {
-            // const {id , }
             console.log('trip cancel', tripId, buyerId, hostId);
             const buyer = await userService.getById(buyerId)
             const hostUser = await userService.getById(hostId)
@@ -74,7 +72,6 @@ export function onCancelOrder(tripId, buyerId, hostId) {
             dispatch({ type: 'UPDATE_USER', user: updatedUser })
             dispatch({ type: 'UPDATE_USER', user: updatedHost })
             showSuccessMsg('Order canceled')
-
         }
         catch (err) {
             showErrorMsg('Cannot Cancel order')
@@ -110,7 +107,6 @@ export function onUpdateOrder(order) {
         }
     }
 }
-
 export function setFilter(filterBy) {
     return async (dispatch) => {
         try {
@@ -123,9 +119,7 @@ export function setFilter(filterBy) {
         }
     }
 }
-
 export function onEditOrder(orderToSave) {
-    // console.log('order to ', orderToSave);
     return async (dispatch) => {
         try {
             const updatedOrder = await orderService.update(orderToSave)
@@ -140,10 +134,7 @@ export function onEditOrder(orderToSave) {
             console.log('Cannot save order', err)
         }
     }
-
 }
-
-
 export function checkout() {
     return async (dispatch, getState) => {
         try {
@@ -153,8 +144,6 @@ export function checkout() {
             dispatch({ type: 'SET_SCORE', score })
             dispatch({ type: 'CLEAR_CART' })
             showSuccessMsg('Charged you: $' + total.toLocaleString())
-
-
         } catch (err) {
             showErrorMsg('Cannot checkout, login first')
             console.log('CarActions: err in checkout', err)

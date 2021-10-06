@@ -1,1 +1,8 @@
-
+.loader-container {
+    width: 100%;
+    height: calc(100vh-100px);
+    img {
+        height: 250px;
+        width: 250px;
+    }
+}

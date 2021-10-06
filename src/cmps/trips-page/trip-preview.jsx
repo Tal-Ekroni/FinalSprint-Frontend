@@ -8,8 +8,8 @@ class _TripPreview extends React.Component {
         trip: null
     }
 
-    getTime = (time) => {
-        var time = new Date(time * 1000);
+    getTime = (timeStamp) => {
+        var time = new Date(timeStamp * 1000);
         var date = '0' + time.getDate();
         var month = "0" + (time.getMonth() + 1);
         var year = "0" + time.getFullYear();

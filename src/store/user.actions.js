@@ -1,6 +1,5 @@
 import { userService } from "../services/user.service.js";
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
-import { stayService } from "../services/stay.service.js";
 import { utilService } from "../services/util.service.js";
 // import { socketService, SOCKET_EMIT_USER_WATCH, SOCKET_EVENT_USER_UPDATED } from "../services/socket.service.js";
 
@@ -10,7 +9,6 @@ export function loadUsers() {
         try {
             dispatch({ type: 'LOADING_START' })
             const users = await userService.getUsers()
-            await console.log('user actions', users);
             dispatch({ type: 'SET_USERS', users })
         } catch (err) {
             console.log('UserActions: err in loadUsers', err)
@@ -43,6 +41,24 @@ export function removeUser(userId) {
         }
     }
 }
+export function updateUser(userToSave) {
+    // console.log('stay to ', stayToSave);
+    return async (dispatch) => {
+        try {
+            const updatedUser = await userService.update(userToSave)
+            dispatch({
+                type: 'UPDATE_USER',
+                stay: updatedUser
+            })
+            showSuccessMsg('User updated')
+        } catch (err) {
+            showErrorMsg('Cannot update user')
+            console.log('Cannot save user', err)
+        }
+    }
+
+}
+
 
 
 export function onLogin(credentials) {
@@ -94,7 +110,6 @@ export function onLogout() {
 export function onBecomeHost(userId) {
     return async (dispatch, getState) => {
         try {
-
             const user = await userService.getById(userId)
             user.isHost = true
             const updatedUser = await userService.update(user)
@@ -159,7 +174,7 @@ export function onBookTrip(trip) {
 export function loadAndWatchUser(userId) {
     return async (dispatch) => {
         try {
-            const user = await userService.getById(userId);
+            // const user = await userService.getById(userId);
             // dispatch({ type: 'SET_WATCHED_USER', user })
             // socketService.emit(SOCKET_EMIT_USER_WATCH, userId)
             // socketService.off(SOCKET_EVENT_USER_UPDATED)

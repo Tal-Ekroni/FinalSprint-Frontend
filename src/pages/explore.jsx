@@ -4,11 +4,21 @@ import { loadStays, onAddStay, onEditStay, onRemoveStay, setFilter } from '../st
 import { onBookTrip } from '../store/user.actions.js'
 import { StaysList } from '../cmps/stays-list.jsx'
 import { ExploreFilter } from '../cmps/explore-filter.jsx'
+import loader from '../assets/img/three-dots.svg'
+import staySrevice from '../services/stay.service'
+
 class _Explore extends React.Component {
 
-    async componentDidMount() {
-        await this.props.loadStays(this.props.filterBy)
-        window.scrollTo(0, 0)
+    componentDidMount() {
+        console.log(this.props.filterBy);
+        return async () => {
+            window.scrollTo(0, 0)
+            try {
+                await this.props.loadStays(this.props.filterBy)
+            } catch (err) {
+                console.log('error', err)
+            }
+        }
     }
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.filterBy !== this.props.filterBy) {
@@ -29,13 +39,13 @@ class _Explore extends React.Component {
     }
 
     render() {
-        const { stays,filterBy } = this.props
-        if (!stays.length) return <div>loading</div>
+        const { stays, filterBy } = this.props
+        if (!stays.length) return <div className="loader-container flex align-center justify-center"><img src={loader} alt="loader" /></div>
         return (
             <main className="main-container page-padding">
                 <div className="stays-headline">
                     <p>{stays.length === 1 ? `${stays.length} stay` : `${stays.length} stays`}</p>
-                    <h1>{filterBy.location ? `Places to stay at ${filterBy.location}`:'Find places to stay'}</h1>
+                    <h1>{filterBy.location ? `Places to stay at ${filterBy.location}` : 'Find places to stay'}</h1>
                 </div>
                 <ExploreFilter />
                 {stays.length && <StaysList stays={stays} history={this.props.history} />}

@@ -48,9 +48,9 @@ function toTimestamp(strDate) {
 function timeToShow(date) {
     var timeStamp = (typeof date === 'string') ? Date.parse(date) : date;
     var time = new Date(timeStamp);
-    var date = "0" + time.getDate();
+    var day = "0" + time.getDate();
     var month = "0" + (time.getMonth() + 1);
     var year = "0" + time.getFullYear();
-    var formattedTime = date.substr(-2) + '/' + month.substr(-2) + '/' + year.substr(-2);
+    var formattedTime = day.substr(-2) + '/' + month.substr(-2) + '/' + year.substr(-2);
     return formattedTime
 }

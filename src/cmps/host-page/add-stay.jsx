@@ -1,9 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Field, Form, Formik } from "formik";
-import GoogleSelect from '@material-ui/core/Select';
-import { MenuItem, Button, TextareaAutosize } from "@material-ui/core";
-import Select from 'react-select';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import { AddStayBasicInfo } from './add-stay-basic-info';
@@ -154,8 +150,6 @@ class _AddStay extends React.Component {
     }
     render() {
         const { selectedTab } = this.state
-        const { user } = this.props
-
         return (
             <div className="add-stay-container">
                 <div>
@@ -192,9 +186,10 @@ class _AddStay extends React.Component {
                         {selectedTab === 'stay-profile' && <AddStayProfile handleAddressChange={this.handleAddressChange} onUploadImg={this.onUploadImg} handleChange={this.handleChange} handleMultiSelectChange={this.handleMultiSelectChange} state={this.state} />}
 
                         {selectedTab === 'finish-page' ? <button
+                            onClick={this.onAddsStay}
                             className=" add-page-btn add-stay-btn"
                             variant={'contained'}
-                            type="submit"
+                            type="submit" 
                         >
                             Add Stay
                         </button> : <button onClick={this.onNextPage}

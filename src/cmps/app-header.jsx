@@ -35,15 +35,15 @@ class _AppHeader extends React.Component {
             this.setState({ isMiniInput: false })
         }
     }
-    onLogin = (credentials) => {
-        this.props.onLogin(credentials)
-    }
-    onSignup = (credentials) => {
-        this.props.onSignup(credentials)
-    }
-    onLogout = () => {
-        this.props.onLogout()
-    }
+    // onLogin = (credentials) => {
+    //     this.props.onLogin(credentials)
+    // }
+    // onSignup = (credentials) => {
+    //     this.props.onSignup(credentials)
+    // }
+    // onLogout = () => {
+    //     this.props.onLogout()
+    // }
 
     onOpenBotLogin = () => {
         this.setState({ isLoginBotmodal: true })
@@ -73,6 +73,9 @@ class _AppHeader extends React.Component {
                 this.onToggleScreen(!this.state.isUserMenuOpen)
                 this.setState({ isUserMenuOpen: !this.state.isUserMenuOpen })
                 break;
+            default:
+                break;
+
         }
     }
 
@@ -116,8 +119,8 @@ class _AppHeader extends React.Component {
                         </div>
                     </div>
                 </nav>
-                {!isMiniHeader && <SearchBar setFilter={setFilter} isMiniHeader={isMiniHeader} filterBy={filterBy} datesModal={datesModal} guestModal={guestModal} locModal={locModal} onToggleSearchModals={this.onToggleSearchModals} />}
-                {isLoginBotmodal && <div className="main-layout">
+                {!isMiniHeader && <SearchBar closeAllModals={this.closeAllModals} setFilter={setFilter} isMiniHeader={isMiniHeader} filterBy={filterBy} datesModal={datesModal} guestModal={guestModal} locModal={locModal} onToggleSearchModals={this.onToggleSearchModals} />}
+                {isLoginBotmodal && <div className="main-container">
                     <LoginSignup />
                 </div>}
             </header>

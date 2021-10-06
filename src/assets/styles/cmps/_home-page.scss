@@ -46,9 +46,9 @@
     & .sug-loc {
         margin-top: 20px;
         margin-bottom: 50px;
-        ::-webkit-scrollbar{
-            width:0;
-            background-color:transparent;
+        ::-webkit-scrollbar {
+            width: 0;
+            background-color: transparent;
         }
         h2 {
             font-family: circular-bold;
@@ -77,18 +77,18 @@
                 // }
                 max-width: 400px;
                 display: grid;
-                gap:40px 100px;
+                gap: 40px 100px;
                 overflow-x: auto;
                 // ::-webkit-scrollbar{
-                    //     width:0;
-                    //     background-color:transparent;
-                    // }
-                }
-                @include for-narrow-layout {
-                    max-width: 700px;
-                    overflow-x: auto;
-                    display: grid;
-                    gap:40px 100px;
+                //     width:0;
+                //     background-color:transparent;
+                // }
+            }
+            @include for-narrow-layout {
+                max-width: 700px;
+                overflow-x: auto;
+                display: grid;
+                gap: 40px 100px;
                 //     :nth-last-child(n + 5) {
                 //         display: none;
                 //     }
@@ -96,20 +96,20 @@
                 //         flex-direction: column;
                 //     }
                 // }
-                @include for-normal-layout {
-                    display: grid;
-                    grid-template-columns: repeat(auto-fill, minmax(4, 1fr));
-                    max-width: unset;
-                    overflow-x: unset;
-                    gap: 24px;
-                }
-                @include for-extra-wide-layout {
-                    grid-template-columns: repeat(4, minmax(150px, 1fr));
-                    max-width: unset;
-                    overflow-x: unset;
-                    gap: 24px;
-                }
-            
+            }
+            @include for-normal-layout {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(4, 1fr));
+                max-width: unset;
+                overflow-x: unset;
+                gap: 24px;
+            }
+
+            @include for-extra-wide-layout {
+                grid-template-columns: repeat(4, minmax(150px, 1fr));
+                max-width: unset;
+                overflow-x: unset;
+                gap: 24px;
             }
 
             & .loc-section {
@@ -138,9 +138,9 @@
         h2 {
             font-family: circular-bold;
         }
-        ::-webkit-scrollbar{
-            width:0;
-            background-color:transparent;
+        ::-webkit-scrollbar {
+            width: 0;
+            background-color: transparent;
         }
         .live-loc {
             gap: 10px;
@@ -187,7 +187,15 @@
                 //         width: 400px;
                 //     }
             }
-            @include for-extra-wide-layout{
+            @include for-wide-layout {
+                .live-card {
+                    .live-img {
+                        height: 270px;
+                        width: 270px;
+                    }
+                }
+            }
+            @include for-extra-wide-layout {
                 .live-card {
                     .live-img {
                         height: 385px;

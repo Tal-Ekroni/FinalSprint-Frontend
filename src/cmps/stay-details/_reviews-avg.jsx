@@ -12,7 +12,7 @@ export class ReviewAvg extends React.Component {
     getAvrage = (type) => {
         const { reviews } = this.props
         var avgScore = 0;
-        var newTotalAvg = this.state.totalAvg
+        // var newTotalAvg = this.state.totalAvg
         switch (type) {
             case 'cleanliness':
                 reviews.map(review => avgScore += +review.cleanliness)
@@ -38,6 +38,8 @@ export class ReviewAvg extends React.Component {
                 reviews.map(review => avgScore += +review.value)
                 avgScore = ((avgScore / reviews.length)).toFixed(2)
                 break
+            default:
+                break;
         }
         return avgScore
 

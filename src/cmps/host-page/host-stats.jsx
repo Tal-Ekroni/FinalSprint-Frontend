@@ -13,19 +13,20 @@ class _HostChart extends React.Component {
         const { orders } = this.props
         var pendingOrders = orders.filter(order => { return order.status === 'pending' })
         var approvedOrders = orders.filter(order => { return order.status === 'approved' })
-        this.setState({ staysStatus: [pendingOrders.length, approvedOrders.length] }, () => { console.log(this.state); })
+        var declinedOrders = orders.filter(order => { return order.status === 'declined' })
+        this.setState({ staysStatus: [declinedOrders.length, pendingOrders.length, approvedOrders.length] }, () => { console.log(this.state); })
     }
     render() {
         const { staysStatus } = this.state
         const staysData = {
-            labels: ["Pending", "Approved"],
+            labels: ["Declined", "Pending", "Approved"],
             datasets: [
-
                 {
                     data: staysStatus,
                     width: 200,
-                    backgroundColor: ["#d9534f", "#5cb85c"],
+                    backgroundColor: ["#6f019c", "#d9534f", "#5cb85c"],
                     borderColor: [
+                        "#6f019c",
                         "#d9534f",
                         "#5cb85c"
                     ],

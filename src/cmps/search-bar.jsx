@@ -18,7 +18,7 @@ class _SearchBar extends React.Component {
     componentDidMount() {
         const params = stayService.onGetQueryParams()
         this.props.setFilter(params)
-        this.setState({ params })
+        this.setState({ ...params })
     }
 
     handleChange = (ev) => {
@@ -47,32 +47,30 @@ class _SearchBar extends React.Component {
                     this.setState({ infantsNumber: this.state.infantsNumber + diff }, () => { this.props.setFilter(this.state) })
                 }
                 break;
+            default:
+                break;
         }
     }
     onSetFilter = async () => {
         await this.props.setFilter(this.state)
         const { location, startDate, endDate, adultNumber, kidsNumber, infantsNumber } = this.state
-        const urlQuery = `/explore/?location=${location}&startDate=${startDate}&endDate=${endDate}&adults=${adultNumber}&kids=${kidsNumber}&infants=${infantsNumber}`
+        const urlQuery = `/?location=${location}&startDate=${startDate}&endDate=${endDate}&adults=${adultNumber}&kids=${kidsNumber}&infants=${infantsNumber}`
+        this.props.closeAllModals()
         this.props.history.push(urlQuery)
     }
-    onLoadFilter = async (filterBy) => {
-        await this.props.setFilter(filterBy)
-    }
-
 
     timeToShow = (date, val) => {
         var timeStamp = Date.parse(date);
         var time = new Date(timeStamp);
-        var date = "0" + time.getDate();
+        var day = "0" + time.getDate();
         var month = "0" + (time.getMonth() + 1);
         var year = "0" + time.getFullYear();
-        var formattedTime = date.substr(-2) + '.' + month.substr(-2) + '.' + year.substr(-2);
+        var formattedTime = day.substr(-2) + '.' + month.substr(-2) + '.' + year.substr(-2);
         return formattedTime
     }
 
-
     render() {
-        const { isMiniHeader, guestModal, datesModal, locModal, onToggleSearchModals, onToggleMiniSearchBar } = this.props
+        const { isMiniHeader, guestModal, datesModal, locModal, onToggleSearchModals, onToggleMiniSearchBar, closeAllModals } = this.props
         const { location, adultNumber, kidsNumber, infantsNumber, endDate, startDate } = this.state
         return (
             <div >
@@ -83,7 +81,7 @@ class _SearchBar extends React.Component {
                             <input type="text" name="location" autoComplete="off" value={location} onChange={this.handleChange} placeholder="Where are you going?" />
                         </label>
                     </div>
-                    {locModal && <LocationsPopUp history={this.props.history} />}
+                    {locModal && <LocationsPopUp closeAllModals={closeAllModals} history={this.props.history} />}
                     <div className="mini-search-input" onClick={onToggleMiniSearchBar}>
                         <p >
                             Start your search
@@ -110,7 +108,7 @@ class _SearchBar extends React.Component {
                     </div>
                     <div className="search-btn-container flex align-center justify-center" onClick={() => { this.onSetFilter() }} >
                         {isMiniHeader && < FaSearch size={13} />}
-                        {!isMiniHeader &&< FaSearch size={20} />}
+                        {!isMiniHeader && < FaSearch size={20} />}
                     </div>
 
                 </div>

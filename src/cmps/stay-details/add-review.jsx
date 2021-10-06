@@ -1,6 +1,6 @@
 import { Component } from 'react'
 import { connect } from 'react-redux'
-import { Button, TextareaAutosize, TextField } from '@material-ui/core';
+import { Button, TextareaAutosize } from '@material-ui/core';
 import { onAddReview } from '../../store/review.actions.js'
 import { utilService } from '../../services/util.service.js';
 import Rating from 'react-rating';
@@ -15,7 +15,7 @@ class _AddReview extends Component {
                 imgUrl: this.props.user.imgUrl
             },
             createdAt: null,
-            txt: null,
+            txt: '',
             id: utilService.makeId(8),
             cleanliness: null,
             communication: null,
@@ -35,7 +35,7 @@ class _AddReview extends Component {
             newReview: {
                 name: this.props.user.fullname,
                 createdAt: null,
-                txt: null,
+                txt: '',
                 id: utilService.makeId(),
                 cleanliness: null,
                 communication: null,
@@ -59,7 +59,7 @@ class _AddReview extends Component {
     formSubmited = (ev) => {
         ev.preventDefault()
         const { stayId } = this.props
-        this.setState(prevState => ({ newReview: { ...prevState.newReview, ['createdAt']: Date.now() } }), () => {
+        this.setState(prevState => ({ newReview: { ...prevState.newReview, createdAt: Date.now() } }), () => {
             const review = this.state.newReview
             this.props.onAddReview(review, stayId)
             this.clearReview()

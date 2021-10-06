@@ -14,13 +14,11 @@ class _TripsPage extends React.Component {
         window.scrollTo(0, 0)
         await this.props.loadUser(this.props.user._id)
         await this.props.loadOrders(this.props.user._id, 'buyer')
-        console.log('props', this.props.orders);
-
     }
     render() {
         const { user, orders } = this.props
         return (
-            <main className="trips-page-container main-layout">
+            <main className="trips-page-container main-container">
                 {user && <section className="trips-container">
                     <div className="trips-title-container">
                         <h1>Trips</h1>

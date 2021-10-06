@@ -1,13 +1,12 @@
 import React from "react";
 import { connect } from 'react-redux'
 import { FaStar, } from "react-icons/fa";
-import { onToggleLikeStay } from '../store/user.actions.js'
+import { onToggleLikeStay, updateUser } from '../store/user.actions.js'
 
 import LazyLoad from "./preview-slider"
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import { showErrorMsg } from "../services/event-bus.service.js";
-import { userService } from "../services/user.service.js";
 
 // ({ stay, history, onToggleLike,isLiked }
 class _StayPreview extends React.Component {
@@ -38,6 +37,8 @@ class _StayPreview extends React.Component {
                 }
                 this.setState({ isLiked: !this.state.isLiked }, () => this.props.onToggleLikeStay(this.state.isLiked, savedStay))
             }
+            this.props.updateUser(user)
+
         } else {
             showErrorMsg('Login First')
         }
@@ -46,7 +47,7 @@ class _StayPreview extends React.Component {
     isStayLiked = () => {
         const { user, stay } = this.props
         if (user) {
-            if (user.mySaves.length) {
+            if (user.mySaves && user.mySaves.length) {
                 const isLiked = user.mySaves.filter(saved => saved._id === stay._id)
                 if (isLiked.length) {
                     this.setState({ isLiked: true })
@@ -98,7 +99,8 @@ function mapStateToProps(state) {
     }
 }
 const mapDispatchToProps = {
-    onToggleLikeStay
+    onToggleLikeStay,
+    updateUser
 }
 
 

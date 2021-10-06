@@ -1,6 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { userService } from '../services/user.service'
 import { onLogin, onLogout, onSignup, loadUsers } from '../store/user.actions'
 class _LoginSignup extends React.Component {
     state = {
@@ -13,7 +12,12 @@ class _LoginSignup extends React.Component {
         users: []
     }
     async componentDidMount() {
-        await this.props.loadUsers()
+
+        try {
+            await this.props.loadUsers()
+        } catch (err) {
+            console.log('error', err)
+        }
     }
     clearState = () => {
         const clearTemplate = {

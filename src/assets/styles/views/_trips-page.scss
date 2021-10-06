@@ -2,7 +2,7 @@
     padding-top: 180px;
 }
 .trips-container {
-    min-height: 400px;
+    min-height: calc(100vh-280px);
     border-bottom: 0.5px solid lightgray;
     .trip-preview-container {
         cursor: pointer;
@@ -82,6 +82,6 @@
     flex-wrap: wrap;
     gap: 50px;
 }
-.user-cancel{
+.user-cancel {
     font-family: circular-bold;
 }

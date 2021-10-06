@@ -1,8 +1,7 @@
 import React from "react";
 import { connect } from 'react-redux'
+import { NavLink } from "react-router-dom";
 import { onRemoveStay } from '../../store/stay.actions'
-import { loadUser } from '../../store/user.actions'
-import { utilService } from "../../services/util.service";
 
 class _HostStayPreview extends React.Component {
     state = {
@@ -35,17 +34,14 @@ class _HostStayPreview extends React.Component {
                             <div className="stay-name" >
                                 <h3>{stay.name}</h3>
                             </div>
-
                             <div className="host-btns-container flex space-between">
+                                <button className="host-btns approve-btn"><NavLink to={`/stay/${stay._id}`}>Stay page</NavLink></button>
                                 <button onClick={() => { this.onRemoveStay(stay._id) }} className="host-btns cancel-btn">Remove</button>
                             </div>
 
                         </div >
                     </section>}
             </div >
-        )
-        return (
-            <div>hi</div>
         )
     }
 }

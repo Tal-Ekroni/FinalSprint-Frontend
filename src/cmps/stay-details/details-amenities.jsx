@@ -1,7 +1,6 @@
 import { FastfoodTwoTone } from '@material-ui/icons';
 import React from 'react'
-import { Fa } from 'react-icons'
-import { FaAirFreshener, FaApple, FaBlender, FaCar, FaDog, FaHotTub, FaPaw, FaSmoking, FaSmokingBan, FaTv, FaWifi } from 'react-icons/fa';
+import { FaAirFreshener, FaBlender, FaCar, FaHotTub, FaPaw, FaSmoking, FaSmokingBan, FaTv, FaWifi } from 'react-icons/fa';
 export class AssetAmenities extends React.Component {
     getAmenitiesIcons = (amenity) => {
         switch (amenity) {
@@ -14,7 +13,7 @@ export class AssetAmenities extends React.Component {
             case 'Smoking allowed':
                 return <FaSmoking />
             case 'Pets allowed':
-                return <FaPaw/>
+                return <FaPaw />
             case 'No smoking':
                 return <FaSmokingBan />
             case 'Air conditioner':
@@ -25,7 +24,8 @@ export class AssetAmenities extends React.Component {
                 return <FaHotTub />
             case 'Free parking on premises':
                 return <FaCar />
-         
+            default:
+                break;
 
         }
     }
