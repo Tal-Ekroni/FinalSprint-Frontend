@@ -6,7 +6,7 @@ import duplex from '../assets/img/entire-duplex.jpg'
 import cap from '../assets/img/large-capacity.jpg'
 import unique from '../assets/img/unique-stays.jpg'
 import { setFilter, setMiniHeader } from '../store/stay.actions';
-const locations = [{ city: 'Porto', country: 'Portugal' }, { city: 'Barcelona', country: 'Spain' }, { city: 'Tel Aviv', country: 'Israel' }, { city: 'Paris', country: "France" }, { city: 'London', country: 'United Kingdom' }, { city: 'New York', country: 'United States' }, { city: 'Amsterdam', country: 'Netherlands' }, { city: 'Rome', country: 'Italy' }]
+const locations = [{ city: 'Porto', country: 'Portugal',imgUrl:'https://res.cloudinary.com/dpbqsvvtk/image/upload/v1633521279/location%20previews/location-preview-1_avfpxl.png' }, { city: 'Barcelona', country: 'Spain',imgUrl:'https://res.cloudinary.com/dpbqsvvtk/image/upload/v1633521279/location%20previews/location-preview-2_qchnx7.png' }, { city: 'Tel Aviv', country: 'Israel',imgUrl:'https://res.cloudinary.com/dpbqsvvtk/image/upload/v1633521280/location%20previews/location-preview-3_fndewl.png' }, { city: 'Paris', country: "France",imgUrl:'https://res.cloudinary.com/dpbqsvvtk/image/upload/v1633521279/location%20previews/location-preview-4_nqshaa.jpg' }, { city: 'London', country: 'United Kingdom',imgUrl:'https://res.cloudinary.com/dpbqsvvtk/image/upload/v1633521279/location%20previews/location-preview-5_pbuhtd.jpg' }, { city: 'New York', country: 'United States',imgUrl:'https://res.cloudinary.com/dpbqsvvtk/image/upload/v1633521279/location%20previews/location-preview-6_kynrq5.png' }, { city: 'Amsterdam', country: 'Netherlands',imgUrl:'https://res.cloudinary.com/dpbqsvvtk/image/upload/v1633521278/location%20previews/location-preview-7_unmsuc.jpg' }, { city: 'Rome', country: 'Italy',imgUrl:'https://res.cloudinary.com/dpbqsvvtk/image/upload/v1633521279/location%20previews/location-preview-8_yjbewa.png' }]
 
 class _HomePage extends React.Component {
     componentDidMount() {
@@ -52,7 +52,7 @@ class _HomePage extends React.Component {
                     <h2>Popular destinations</h2>
                     <div className="locations">
                         {locations.map((location, idx) => <div className="loc-section flex">
-                            <img src={`./img/location-preview-${idx+1}.jpg`} alt="" className="loc-img" onClick={() => { this.onClickLoc(location.city, 'location') }} />
+                            <img src={location.imgUrl} alt="" className="loc-img" onClick={() => { this.onClickLoc(location.city, 'location') }} />
                             <div className="loc-info flex column justify-center">
                                 <p className="city-name">{location.city}</p>
                                 <p className="country-name">{location.country}</p>

@@ -1,6 +1,6 @@
 .home-page {
     & .hero {
-        left: -20px;
+        left:-21px;
         background-image: url(../../img/hero.png);
         height: 92vh;
         background-position: center;
@@ -120,52 +120,63 @@
             gap: 10px;
             margin-top: 15px;
             @include for-mobile-layout {
+                .live-card {
+                    .live-img {
+                        height: 225px;
+                        width: 225px;
+                    }
+                }
                 overflow-x: auto;
                 max-width: calc(100vw - 64px);
             }
             @include for-narrow-layout {
-                max-width: 700px;
-                overflow-x: auto;
+                .live-card {
+                    .live-img {
+                        height: 180px;
+                        width: 180px;
+                    }
+                }
+                overflow-x: unset;
             }
             @include for-normal-layout {
-                // .live-card {
-                //     .live-img {
-                //         height: 225px;
-                //         width: 225px;
-                //     }
-                // }
+                .live-card {
+                    .live-img {
+                        height: 225px;
+                        width: 225px;
+                    }
+                }
                 overflow-x: unset;
                 max-width: unset;
             }
         
-            // @include for-wide-layout {
-            //     .live-card {
-            //         .live-img {
-            //             height: 270px;
-            //             width: 270px;
-            //         }
-            //     }
-            // }
-            // @include for-wider-layout {
-            //     .live-card {
-            //         .live-img {
-            //             height: 315px;
-            //             width: 315px;
-            //         }
-            //     }
-            // }
-            // @include for-extra-wide-layout {
-            //     .live-card {
-            //         .live-img {
-            //             height: 23vw;
-            //             width: 23vw;
-            //         }
-            //     }
-            // }
+            @include for-wide-layout {
+                .live-card {
+                    .live-img {
+                        height: 20vw;
+                        width: 20vw;
+                    }
+                }
+            }
+            @include for-wider-layout {
+                .live-card {
+                    .live-img {
+                        height: 315px;
+                        width: 315px;
+                    }
+                }
+            }
+            @include for-extra-wide-layout {
+                .live-card {
+                    .live-img {
+                        height: 23vw;
+                        width: 23vw;
+                    }
+                }
+            }
             .live-img {
                 border-radius: 3%;
-                height: 20vw;
-                width: 20vw;
+                // height: 20vw;
+                // width: 20vw;
                 // max-height: 350px;
                 // max-width: 350px;
                 cursor: pointer;
@@ -203,6 +214,9 @@
             width: 135px;
             text-align: center;
             border-radius: 8px;
+        }
+        @include for-mobile-layout{
+            max-width:calc(100vw - 64px);
         }
     }
 }
