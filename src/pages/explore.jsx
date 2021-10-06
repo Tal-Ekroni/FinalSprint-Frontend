@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { loadStays, onAddStay, onEditStay, onRemoveStay, setFilter } from '../store/stay.actions.js'
-import { onBookTrip } from '../store/user.actions.js'
+import { onBookTrip,loadUser } from '../store/user.actions.js'
 import { StaysList } from '../cmps/stays-list.jsx'
 import { ExploreFilter } from '../cmps/explore-filter.jsx'
 import loader from '../assets/img/three-dots.svg'
@@ -11,8 +11,10 @@ class _Explore extends React.Component {
 
     async componentDidMount() {
         window.scrollTo(0, 0)
+        console.log(this.props.location.query,'query params')
         try {
             console.log(this.props.filterBy, 'from explore ');
+            await this.props.loadUser(this.props.user._id)
             await this.props.loadStays(this.props.filterBy)
             console.log(this.props.filterBy, 'from explore 2 ');
 
@@ -59,7 +61,8 @@ class _Explore extends React.Component {
 function mapStateToProps(state) {
     return {
         stays: state.stayModule.stays,
-        filterBy: state.stayModule.filterBy
+        filterBy: state.stayModule.filterBy,
+        user: state.userModule.user
     }
 }
 const mapDispatchToProps = {
@@ -69,6 +72,7 @@ const mapDispatchToProps = {
     onEditStay,
     onBookTrip,
     setFilter,
+    loadUser
 
 }
 

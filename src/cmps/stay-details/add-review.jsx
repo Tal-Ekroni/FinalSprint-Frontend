@@ -65,7 +65,13 @@ class _AddReview extends Component {
             this.clearReview()
         })
     }
-
+    getBtnDivs = () => {
+        let divStr = []
+        for (let i = 0; i < 100; i++) {
+            divStr.push(<div className="cell" ></div >)
+        }
+        return divStr
+    }
     render() {
         const { cleanliness, communication, checkIn, accuracy, location, value, txt } = this.state.newReview
         const style = {
@@ -161,7 +167,17 @@ class _AddReview extends Component {
                             name="txt"
                             autoComplete="off" />
                     </div>
-                    <div>
+                    <div className="add-review-btn">
+
+                        <div className="checkout-btn-container">
+                            {this.getBtnDivs()}
+                            <div className="content">
+                                <button type="submit" className="checkout-btn" ><span>Add</span></button>
+                            </div>
+
+                        </div>
+                    </div>
+                    {/* <div>
 
                         <Button
                             className="add-review-btn"
@@ -171,7 +187,7 @@ class _AddReview extends Component {
                         >
                             Add
                         </Button>
-                    </div>
+                    </div> */}
                 </form>
             </div >
         )

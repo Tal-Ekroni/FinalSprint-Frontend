@@ -144,6 +144,14 @@
                     }
                 }
             }
+            @include for-wider-layout {
+                .live-card {
+                    .live-img {
+                        height: 315px;
+                        width: 315px;
+                    }
+                }
+            }
             @include for-extra-wide-layout {
                 .live-card {
                     .live-img {
