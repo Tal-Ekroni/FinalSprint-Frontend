@@ -44,19 +44,27 @@ function _notifySubscribersStaysChanged(stays) {
 
 function onGetQueryParams() {
     const urlParams = new URLSearchParams(window.location.search);
-    const location = urlParams.get('location');
-    const startDate = urlParams.get('startDate');
-    const endDate = urlParams.get('endDate');
-    const adultNumber = +urlParams.get('adults');
-    const kidsNumber = +urlParams.get('kids');
-    const infantsNumber = +urlParams.get('infants');
+    const location = urlParams.get('location')||'';
+    console.log(location,'location');
+    const startDate = urlParams.get('startDate')||null;
+    const endDate = urlParams.get('endDate')||null;
+    const adultNumber = +urlParams.get('adults')||1;
+    const kidsNumber = +urlParams.get('kids')||0;
+    const infantsNumber = +urlParams.get('infants')||0;
     const params = {
         location,
         startDate,
         endDate,
         adultNumber,
         kidsNumber,
-        infantsNumber
+        infantsNumber,
+        capacity: 0,
+        amenities: '',
+        assetType: '',
+        uniqueStay: '',
+        guestModal: false,
+        datesModal: false,
+        hostId: ''
     }
     return params
 }
