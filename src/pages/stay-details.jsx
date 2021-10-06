@@ -29,6 +29,7 @@ class _StayDetails extends React.Component {
     }
     componentDidMount() {
         window.scrollTo(0, 0)
+        console.log(this.props.match,'query params')
         const { stayId } = this.props.match.params
         if (!stayId) this.props.history.push('/')
         else this.props.loadStay(stayId)
