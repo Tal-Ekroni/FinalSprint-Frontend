@@ -26,7 +26,7 @@
 .flex {
     display: flex;
 
-    > *.full {
+    > *.full-flex {
         flex: 1;
     }
     &.column {

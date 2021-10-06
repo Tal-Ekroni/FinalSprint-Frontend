@@ -14,7 +14,7 @@ window.cs = orderService;
 
 async function query(userId, type) {
     // add userId and type to parameters in query
-    const orders = httpService.get('order', { params: { userId, type } })
+    const orders = await httpService.get('order', { params: { userId, type } })
     return orders
 }
 async function getById(orderId) {

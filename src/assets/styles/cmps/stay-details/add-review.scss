@@ -2,15 +2,22 @@
     border-top: 0.5px solid lightgray;
 
     .add-review-title-container {
-        margin: 20px 0;
-        font-family: circular-bold;
+        width: 100%;
+        // border-bottom: 0.5px solid lightgray;
+        & h3 {
+            font-family: circular-bold;
+            padding-top: 40px;
+            padding-bottom: 24px;
+            line-height: 1.875rem;
+            font-size: 1.375rem;
+        }
     }
     .add-review-container {
         width: 100%;
         // justify-content: center;
         flex-direction: column;
         justify-content: space-between;
-         p {
+        p {
             font-family: circular-bold;
             font-size: 1rem;
         }
@@ -24,16 +31,18 @@
     .add-txt-container {
         width: 100%;
         height: 100%;
+      
     }
 
     .review-input {
-        margin: 20px 0;
-        padding: 20px;
-        width: 100%;
-        height: 150px;
-        resize: none;
-        border-radius: 13px;
-        border-color: #bdbcbc;
+        // margin: 20px 0;
+        // padding: 20px;
+        // width: 100%;
+        // height: 150px;
+        // resize: none;
+        // border-radius: 13px;
+        // border-color: #bdbcbc;
+        // margin: 0;
     }
     .add-review-btn {
         width: 200px;

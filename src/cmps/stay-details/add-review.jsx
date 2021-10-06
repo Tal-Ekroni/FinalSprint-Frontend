@@ -68,7 +68,7 @@ class _AddReview extends Component {
     getBtnDivs = () => {
         let divStr = []
         for (let i = 0; i < 100; i++) {
-            divStr.push(<div className="cell" ></div >)
+            divStr.push(<div key={i} className="cell" ></div >)
         }
         return divStr
     }
@@ -76,7 +76,6 @@ class _AddReview extends Component {
         const { cleanliness, communication, checkIn, accuracy, location, value, txt } = this.state.newReview
         const reviewStr = { leftReview: ['cleanliness', 'communication', 'checkIn'], rightReview: ['accuracy', 'location', 'value'] }
         const style = {
-            margin: '20px 0',
             padding: '20px',
             width: '100%',
             height: ' 150px',

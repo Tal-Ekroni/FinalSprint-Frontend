@@ -21,22 +21,29 @@ class _HostPage extends React.Component {
     async componentDidMount() {
         window.scrollTo(0, 0)
         this.onGetHostStays()
-        await this.props.loadUser(this.props.user._id)
-        await this.props.loadOrders(this.props.user._id, 'host')
-        await this.props.loadStays(this.props.filterBy)
+        try {
+            this.props.loadUser(this.props.user._id)
+            await this.props.loadOrders(this.props.user._id, 'host')
+            await this.props.loadStays(this.props.filterBy)
+
+        } catch (err) {
+            console.log('Error', err);
+        }
     }
     onGetHostStays = () => {
         const newFilter = this.props.filterBy
         newFilter.hostId = this.props.user._id
         this.props.setFilter(newFilter)
     }
-    componentDidUpdate(prevProps, prevState) {
-        if (this.props.orders !== prevProps.orders)
-            this.props.loadUser(this.props.user._id)
-        // if (prevProps.filterBy !== this.props.filterBy) {
-        //     this.props.loadStays(this.props.filterBy);
-        // }
-    }
+    // componentDidUpdate(prevProps, prevState) {
+    //     if (this.props.orders !== prevProps.orders)
+    //         this.props.loadUser(this.props.user._id)
+    //     // this.props.loadOrders(this.props.user._id, 'host')
+
+    //     // if (prevProps.filterBy !== this.props.filterBy) {
+    //     //     this.props.loadStays(this.props.filterBy);
+    //     // }
+    // }
 
     onChangeTab = (ev, value) => {
         this.setState({ selectedTab: value })
@@ -74,7 +81,7 @@ class _HostPage extends React.Component {
                         {selectedTab === 'my-stays' && <div>
                             <h2>My Stays!</h2>
                             <div className="orders-container">
-                                <HostStayslist stays={stays} />
+                                {stays && <HostStayslist stays={stays} />}
 
                             </div>
                         </div>}

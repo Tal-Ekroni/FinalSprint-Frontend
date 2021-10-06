@@ -22,9 +22,9 @@ const style = {
     height: ' 150px',
     resize: 'none',
     borderRadius: '13px',
-    borderColor: ' #bdbcbc'
+    borderColor: ' #bdbcbc',
+    fontFamily: "circular-book"
 }
-
 export class AddStayBasicInfo extends React.Component {
     render() {
         const { handleChange, handleSelectChange } = this.props

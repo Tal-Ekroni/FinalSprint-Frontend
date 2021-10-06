@@ -47,6 +47,7 @@ class _StayMap extends Component {
                 </div>
                 <div className="map-container">
                     <Map
+                    className="stay-map"
                         containerStyle={style}
                         google={this.props.google}
                         zoom={15}
@@ -79,7 +80,7 @@ class _StayMap extends Component {
                         </InfoWindow>
                     </Map>
                     <div>
-                        {this.state.loc.address && <h1 className="address-title">{this.state.loc.address}</h1>}
+                        {this.state.loc.address && <h1 className="address-title">{this.state.loc.address.split(',')[0]} , {this.state.loc.address.split(',')[1]}</h1>}
                     </div>
                 </div>
             </section>

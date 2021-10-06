@@ -23,15 +23,12 @@ class _AddStayMap extends Component {
     componentDidMount() {
     }
     onMapClicked = (props, marker, ev) => {
-        // console.log(ev);
-        console.log('map', ev.latLng.lat());
         this.setState({
             center: { lat: ev.latLng.lat(), lng: ev.latLng.lng() },
             activeMarker: marker,
             selectedPlace: props,
             isInfoWindowOn: true
         })
-        // console.log(props);
     }
 
     onMarkerClicked = () => {
@@ -60,7 +57,7 @@ class _AddStayMap extends Component {
 
         const style = {
             width: '100%',
-            height: '200px',
+            height: '500px',
             position: "relative",
             margin: "0 auto"
         }
@@ -128,7 +125,7 @@ class _AddStayMap extends Component {
                     </Map>
                 </div>
                 <div>
-                    {this.state.loc.address && <h1 className="address-title">{this.state.loc.address}</h1>}
+                    {this.state.loc.address && <h1 className="address-title">{this.state.loc.address.split(',')[0]} , {this.state.loc.address.split(',')[1]}</h1>}
                 </div>
             </section>
         );

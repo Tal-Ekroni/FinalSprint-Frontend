@@ -3,14 +3,15 @@
     position: sticky;
     top: 80px;
     bottom: 20px;
-    align-items: flex-end;
     margin-top: 20px;
+    align-items: center;
     justify-content: flex-end;
     .checkout-container {
         flex-direction: column;
         align-items: center;
         min-height: 280px;
-        width: 380px;
+        width: 80%;
+
         // margin: 0 auto;
         justify-content: flex-end;
         border: 1px solid #00000030;
@@ -47,6 +48,32 @@
             }
         }
     }
+    @include for-mobile-layout {
+        align-items: center;
+        .checkout-container {
+            width: 80%;
+        }
+    }
+    @include for-narrow-layout {
+        align-items: center;
+    }
+    @include for-normal-layout {
+        // max-width: 300px;
+        align-items: flex-end;
+        .checkout-container {
+            display: flex;
+            position: -webkit-sticky;
+            position: sticky;
+            width: 380px;
+            // top: 50px; //Header
+            top: 200px;
+            bottom: 25px;
+            align-items: flex-end;
+        }
+    }
+    // @include for-normal-layout {
+    //     align-items: flex-end;
+    // }
 }
 .summed-trip-info {
     & .sum-line {
@@ -210,28 +237,7 @@
     font-weight: 300;
     text-decoration: underline;
 }
-@media (max-width: $mobile-breakpoint) {
-}
-@media (min-width: $mobile-breakpoint) {
-}
 
-@media (min-width: $narrow-breakpoint) {
-    .checkout-container {
-        display: flex;
-        position: -webkit-sticky;
-        position: sticky;
-        // top: 50px; //Header
-        top: 200px;
-        bottom: 25px;
-        align-items: flex-end;
-    }
-}
-@media (min-width: $normal-breakpoint) {
-}
-@media (min-width: $wide-breakpoint) {
-}
-@media (min-width: $wide-breakpoint) {
-}
 .checkout-screen {
     position: fixed;
     // background-color:rgba(0, 0, 0, 0.075);

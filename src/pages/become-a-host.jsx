@@ -1,11 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
 // import { stayService } from '../services/stay.service'
-import { onBecomeHost } from '../store/user.actions.js'
+import { onBecomeHost, loadUser } from '../store/user.actions.js'
 import { FaAirbnb } from 'react-icons/fa'
 
-class _BecomeAHost extends React.Component {
 
+class _BecomeAHost extends React.Component {
+    async componentDidMount() {
+        await this.props.loadUser(this.props.user._id)
+    }
     onBecomeHost = () => {
         if (this.props.user) {
             const userId = this.props.user._id
@@ -14,7 +17,7 @@ class _BecomeAHost extends React.Component {
         }
         else this.props.history.push('/')
     }
-    
+
     render() {
         return (
             <section className="be-host-container">
@@ -44,7 +47,8 @@ function mapStateToProps(state) {
     }
 }
 const mapDispatchToProps = {
-    onBecomeHost
+    onBecomeHost,
+    loadUser
 }
 
 export const BecomeAHost = connect(mapStateToProps, mapDispatchToProps)(_BecomeAHost)

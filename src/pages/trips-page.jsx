@@ -19,7 +19,7 @@ class _TripsPage extends React.Component {
         const { user, orders } = this.props
         return (
             <main className="trips-page-container main-container">
-                {user && <section className="trips-container">
+                {user && <section className="trips-container page-padding">
                     <div className="trips-title-container">
                         <h1>Trips</h1>
                     </div>
