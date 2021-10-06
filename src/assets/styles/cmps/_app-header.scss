@@ -100,36 +100,45 @@
                 color: $clr6;
             }
         }
-        @include for-mobile-layout{
-            label{
-                padding: 45px 0px;
+        @include for-mobile-layout {
+            height: 115px;
+            label {
+                padding: 20px 15px;
             }
-            
-            .search-bar-container{
-                min-width: 75%;
-                max-width: 113%;
+
+            .search-bar-container {
+                min-width: 92%;
+                min-height: 30%;
+                top: -10%;
             }
             .guests-container,
             .location-container {
-                padding: 8px 10px;
-                width: 25%;
-                line-height: 14px;
-                position: relative;
-                input{
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                    overflow: hidden;
-                }
+                // padding: 8px 10px;
+                // width: 25%;
+                // line-height: 14px;
+                // position: relative;
+                // input{
+                //     text-overflow: ellipsis;
+                //     white-space: nowrap;
+                //     overflow: hidden;
+                // }
+                width: 100%;
             }
-            .dates-container {
-                padding: 8px 10px;
+            .user-header-section {
+                padding: 0;
+            }
+            .dates-container,
+            .guests-container,
+            .nav-bar-container,
+            .logo {
+                // padding: 8px 10px;
 
-                width: 50%;
-                > * {
-                    flex-grow: 1;
-                }
+                // width: 50%;
+                // > * {
+                //     flex-grow: 1;
+                // }
+                display: none;
             }
-        
         }
     }
     &.mini-header {
@@ -201,9 +210,9 @@
             }
         }
         @include for-narrow-layout {
-            .logo-container{
-                .logo{
-                    span{
+            .logo-container {
+                .logo {
+                    span {
                         display: none;
                     }
                 }
@@ -211,7 +220,7 @@
             .search-bar-container {
                 position: unset;
                 left: unset;
-                transform:unset;
+                transform: unset;
                 margin-right: 62px;
             }
         }
@@ -219,20 +228,19 @@
             .search-bar-container {
                 position: absolute;
                 left: 50%;
-                transform: translate(-50%,-50%);
-
+                transform: translate(-50%, -50%);
             }
         }
         @include for-wide-layout {
             .search-bar-container {
                 position: absolute;
                 left: 50%;
-                transform: translate(-50%,-50%);
+                transform: translate(-50%, -50%);
                 margin: unset;
             }
-            .logo-container{
-                .logo{
-                    span{
+            .logo-container {
+                .logo {
+                    span {
                         display: block;
                     }
                 }
