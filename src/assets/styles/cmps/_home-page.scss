@@ -1,5 +1,6 @@
 .home-page {
     & .hero {
+        left: -20px;
         background-image: url(../../img/hero.png);
         height: 92vh;
         background-position: center;
@@ -8,7 +9,7 @@
         position: relative;
         justify-content: center;
         align-items: center;
-        width: 98.7vw;
+        width: 100vw;
         box-shadow: inset 0px 1px 20px 0px #5a5a5a;
         .where-to-go {
             position: relative;
@@ -59,7 +60,7 @@
             // gap: 24px 150px;
             margin-top: 30px;
             @include for-mobile-layout {
-                max-width: 400px;
+                max-width: calc(100vw - 64px);
                 display: grid;
                 gap: 40px 100px;
                 overflow-x: auto;
@@ -119,51 +120,54 @@
             gap: 10px;
             margin-top: 15px;
             @include for-mobile-layout {
-                max-width: 400px;
                 overflow-x: auto;
+                max-width: calc(100vw - 64px);
             }
             @include for-narrow-layout {
                 max-width: 700px;
                 overflow-x: auto;
             }
             @include for-normal-layout {
-                .live-card {
-                    .live-img {
-                        height: 225px;
-                        width: 225px;
-                    }
-                }
+                // .live-card {
+                //     .live-img {
+                //         height: 225px;
+                //         width: 225px;
+                //     }
+                // }
                 overflow-x: unset;
                 max-width: unset;
             }
-            @include for-wide-layout {
-                .live-card {
-                    .live-img {
-                        height: 270px;
-                        width: 270px;
-                    }
-                }
-            }
-            @include for-wider-layout {
-                .live-card {
-                    .live-img {
-                        height: 315px;
-                        width: 315px;
-                    }
-                }
-            }
-            @include for-extra-wide-layout {
-                .live-card {
-                    .live-img {
-                        height: 385px;
-                        width: 385px;
-                    }
-                }
-            }
+        
+            // @include for-wide-layout {
+            //     .live-card {
+            //         .live-img {
+            //             height: 270px;
+            //             width: 270px;
+            //         }
+            //     }
+            // }
+            // @include for-wider-layout {
+            //     .live-card {
+            //         .live-img {
+            //             height: 315px;
+            //             width: 315px;
+            //         }
+            //     }
+            // }
+            // @include for-extra-wide-layout {
+            //     .live-card {
+            //         .live-img {
+            //             height: 23vw;
+            //             width: 23vw;
+            //         }
+            //     }
+            // }
             .live-img {
                 border-radius: 3%;
-                height: 270px;
-                width: 270px;
+                height: 20vw;
+                width: 20vw;
+                // max-height: 350px;
+                // max-width: 350px;
                 cursor: pointer;
             }
             p {

@@ -224,14 +224,16 @@ class _CheckoutForm extends React.Component {
                                     </div>
                                 </div>
                             }
-                            <div className="checkout-btn-container">
+                            <div className="checkout-btn-container" onClick={() => { (isCheckoutToReserve) ? this.onBookTrip(stay, trip) : this.getTripPrice(startDate, endDate, price) }}>
                                 {this.getBtnDivs()}
-                                {!isCheckoutToReserve && <div className="content">
-                                    <button  className="checkout-btn" onClick={() => this.getTripPrice(startDate, endDate, price)}><span>Check availabilty</span> </button>
-                                </div>}
-                                {isCheckoutToReserve && <div className="content">
-                                    <button className="checkout-btn" onClick={() => this.onBookTrip(stay, trip)}><span>Reserve</span> </button>
-                                </div>}
+                                <div className="content">
+                                    {!isCheckoutToReserve &&
+                                        <button className="checkout-btn" ><span>Check availabilty</span> </button>}
+                                    {isCheckoutToReserve &&
+                                        <button className="checkout-btn" ><span>Reserve</span> </button>
+                                    }
+                                </div>
+
                             </div>
                         </div>
                     </div >
