@@ -1,34 +1,40 @@
 .user-menu-container {
-    height: 200px;
-    width: 175px;
+    padding: 10px 0;
+    // height: 235px;
+    width: 226px;
     background-color: $clr4;
     border-radius: 12px;
     position: absolute;
     top: 65px;
-    right: 137px;
+    right: 97px;
     z-index: 10;
     & .top-section {
-        padding-top: 12px;
-        border-bottom: 1px solid lightgray;
+                border-bottom: 1px solid lightgray;
         & p {
-            font-family: circular-bold;
+            font-family: circular-book;
         }
+    }
+    & .bottom-section{
+    padding: 10px 0;
+
     }
     & .user-menu-line {
         overflow: hidden;
         height: 35px;
+        padding: 12px 20px;
         display: flex;
         align-items: center;
         cursor: pointer;
         & p {
             vertical-align: middle;
-            padding-inline-start: 5px;
             font-size: 1rem;
             color: $clr2;
+            font-family: circular-book;
         }
         &:hover {
             text-decoration: none;
             background-color: rgb(231, 231, 231);
+            overflow: hidden;
         }
     }
 }
