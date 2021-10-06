@@ -115,7 +115,7 @@ class _SearchBar extends React.Component {
     }
 
     render() {
-        const { isMiniHeader, guestModal, datesModal, locModal, onToggleSearchModals, onToggleMiniSearchBar, closeAllModals } = this.props
+        const { isMiniHeader, guestModal, datesModal, locModal, onToggleSearchModals, onToggleMiniSearchBar, closeAllModals,filterBy } = this.props
         const { location, adultNumber, kidsNumber, infantsNumber, endDate, startDate } = this.state
         return (
             <div >
@@ -129,7 +129,7 @@ class _SearchBar extends React.Component {
                     {locModal && <LocationsPopUp closeAllModals={closeAllModals} history={this.props.history} />}
                     <div className="mini-search-input" onClick={onToggleMiniSearchBar}>
                         <p >
-                            Start your search
+                            {filterBy.location?filterBy.location:'Start your search'}
                         </p>
                     </div>
                     <div className="dates-container flex ">
