@@ -8,17 +8,18 @@
     .add-review-container {
         width: 100%;
         // justify-content: center;
+        flex-direction: column;
         justify-content: space-between;
-        & p {
+         p {
             font-family: circular-bold;
             font-size: 1rem;
         }
     }
+
     .left-review,
     .right-review {
-        padding-inline-start: 12px;
-        max-width: 40%;
-        width: 40%;
+        padding: 0 12px;
+        width: 100%;
     }
     .add-txt-container {
         width: 100%;
@@ -36,5 +37,20 @@
     }
     .add-review-btn {
         width: 200px;
+    }
+    // @include for-mobile-layout {
+    // }
+    @include for-narrow-layout {
+    }
+    @include for-normal-layout {
+        .add-review-container {
+            flex-direction: row;
+        }
+        .left-review,
+        .right-review {
+            padding-inline-start: 12px;
+            max-width: 40%;
+            width: 40%;
+        }
     }
 }

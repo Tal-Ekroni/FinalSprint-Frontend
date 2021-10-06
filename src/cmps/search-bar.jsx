@@ -24,7 +24,7 @@ class _SearchBar extends React.Component {
     }
     componentDidMount() {
         const params = this.onGetQueryParams()
-        console.log(params, 'params');
+        // console.log(params, 'params');
         this.props.setFilter(params)
         this.setState({ ...params }, () => { console.log(this.state) })
     }

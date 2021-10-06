@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { loadStays, onAddStay, onEditStay, onRemoveStay, setFilter } from '../store/stay.actions.js'
-import { onBookTrip,loadUser } from '../store/user.actions.js'
+import { onBookTrip, loadUser } from '../store/user.actions.js'
 import { StaysList } from '../cmps/stays-list.jsx'
 import { ExploreFilter } from '../cmps/explore-filter.jsx'
 import loader from '../assets/img/three-dots.svg'
@@ -11,7 +11,7 @@ class _Explore extends React.Component {
 
     async componentDidMount() {
         window.scrollTo(0, 0)
-        console.log(this.props.location.query,'query params')
+        console.log(this.props.location.query, 'query params')
         try {
             console.log(this.props.filterBy, 'from explore ');
             await this.props.loadUser(this.props.user._id)
@@ -45,13 +45,16 @@ class _Explore extends React.Component {
         const { stays, filterBy } = this.props
         if (!stays.length) return <div className="loader-container flex align-center justify-center page-padding"><img src={loader} alt="loader" /></div>
         return (
-            <main className="main-container page-padding">
-                <div className="stays-headline">
-                    <p>{stays.length === 1 ? `${stays.length} stay` : `${stays.length} stays`}</p>
-                    <h1>{filterBy.location ? `Places to stay at ${filterBy.location}` : 'Find places to stay'}</h1>
+            <main className=" main-container page-padding">
+                <div className="explore-page-container">
+
+                    <div className="stays-headline">
+                        <p>{stays.length === 1 ? `${stays.length} stay` : `${stays.length} stays`}</p>
+                        <h1>{filterBy.location ? `Places to stay at ${filterBy.location}` : 'Find places to stay'}</h1>
+                    </div>
+                    <ExploreFilter />
+                    {stays.length && <StaysList stays={stays} history={this.props.history} />}
                 </div>
-                <ExploreFilter />
-                {stays.length && <StaysList stays={stays} history={this.props.history} />}
             </main>
         )
     }
