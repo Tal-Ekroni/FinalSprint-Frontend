@@ -25,26 +25,21 @@ function query(entityType, delay = 200, filterBy) {
             return filterdEntities
         }
         if (filterBy.assetType) {
-            console.log(filterBy.assetType, 'asset-type')
             const regex = new RegExp(filterBy.assetType, 'i');
             filterdEntities = entities.filter(entity => regex.test(entity.assetType))
             return filterdEntities
         }
         if (filterBy.amenities) {
-            console.log(filterBy.amenities, 'am')
             const regex = new RegExp(filterBy.amenities, 'i');
             filterdEntities = entities.filter(entity => regex.test(entity.amenities))
-            console.log(filterdEntities)
             return filterdEntities
 
         }
         if (filterBy.capacity) {
-            console.log('cap', filterBy.capacity)
             filterdEntities = entities.filter(entity => entity.capacity >= filterBy.capacity)
             return filterdEntities
         }
         if (filterBy.uniqueStay) {
-            console.log('unique', filterBy.uniqueStay)
             filterdEntities = entities.filter(entity => entity.uniqueStay)
             return filterdEntities;
         }
@@ -79,7 +74,6 @@ function post(entityType, newEntity) {
 }
 
 function put(entityType, updatedEntity) {
-    console.log('storgae',entityType );
     return query(entityType)
         .then(entities => {
             const idx = entities.findIndex(entity => entity._id === updatedEntity._id)
