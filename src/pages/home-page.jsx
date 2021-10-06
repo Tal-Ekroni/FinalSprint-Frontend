@@ -60,7 +60,7 @@ class _HomePage extends React.Component {
                     <h2>Popular destinations</h2>
                     <div className="locations">
                         {locations.map((location, idx) => <div className="loc-section flex">
-                            <img src={`locImg${idx+1}`} alt="" className="loc-img" onClick={() => { this.onClickLoc(location.city, 'location') }} />
+                            <img src={`./img/location-preview-${idx+1}.jpg`} alt="" className="loc-img" onClick={() => { this.onClickLoc(location.city, 'location') }} />
                             <div className="loc-info flex column justify-center">
                                 <p className="city-name">{location.city}</p>
                                 <p className="country-name">{location.country}</p>
