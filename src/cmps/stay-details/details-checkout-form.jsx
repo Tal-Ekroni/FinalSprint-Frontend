@@ -152,12 +152,18 @@ class _CheckoutForm extends React.Component {
     getMouseCord = (ev) => {
 
     }
+    getBtnDivs = () => {
+        let divStr = []
+        for (let i = 0; i < 100; i++) {
+            divStr.push(<div className="cell" ></div >)
+        }
+        return divStr
+    }
     render() {
         const { stay } = this.props
         const { trip, isCheckoutToReserve, isGuestPopupOn, datesModal } = this.state
         const { price } = stay
         const { startDate, endDate } = trip
-
         return (
             <section className="checkout-popup flex column">
                 {(isGuestPopupOn || datesModal) && <div className="checkout-screen" onClick={(ev) => { this.onCloseModal(ev) }}></div>}
@@ -218,12 +224,15 @@ class _CheckoutForm extends React.Component {
                                     </div>
                                 </div>
                             }
-                            {!isCheckoutToReserve && <div className="check-btn-container flex" onMouseOver={this.getMouseCord}>
-                                <Button onClick={() => this.getTripPrice(startDate, endDate, price)}>Check availabilty</Button>
-                            </div>}
-                            {isCheckoutToReserve && <div className="check-btn-container flex">
-                                <Button onClick={() => this.onBookTrip(stay, trip)}>Reserve</Button>
-                            </div>}
+                            <div className="checkout-btn-container">
+                                {this.getBtnDivs()}
+                                {!isCheckoutToReserve && <div className="content">
+                                    <button  className="checkout-btn" onClick={() => this.getTripPrice(startDate, endDate, price)}><span>Check availabilty</span> </button>
+                                </div>}
+                                {isCheckoutToReserve && <div className="content">
+                                    <button className="checkout-btn" onClick={() => this.onBookTrip(stay, trip)}><span>Reserve</span> </button>
+                                </div>}
+                            </div>
                         </div>
                     </div >
                 </section>
