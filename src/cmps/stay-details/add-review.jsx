@@ -150,14 +150,7 @@ class _AddReview extends Component {
                             </div>
                         </div>
                     </div>
-
                     <div className="add-txt-container flex">
-                        {/* <h4>Text</h4> */}
-                        {/* <input value={txt}
-                            placeholder="Write you opinion about this stay..."
-                            className="review-input" onChange={this.handleChange}
-                            name="txt"
-                            autoComplete="off" /> */}
                         <TextareaAutosize
                             style={style}
                             value={txt}
@@ -177,17 +170,6 @@ class _AddReview extends Component {
 
                         </div>
                     </div>
-                    {/* <div>
-
-                        <Button
-                            className="add-review-btn"
-                            variant={'contained'}
-                            color={'primary'}
-                            type="submit"
-                        >
-                            Add
-                        </Button>
-                    </div> */}
                 </form>
             </div >
         )

@@ -51,6 +51,7 @@
     .dates-container {
         padding: 0 5px;
     }
+  
     .DateRangePickerInput {
         display: flex;
         max-width: 450px;
@@ -109,6 +110,7 @@
             width: 42%;
             padding: 0;
         }
+      
     }
 
     @include for-wide-layout {

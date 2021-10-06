@@ -23,36 +23,36 @@ class _SearchBar extends React.Component {
         hostId: ''
     }
     componentDidMount() {
-        const params = this.onGetQueryParams()
+        // const params = this.onGetQueryParams()
         console.log(this.props.location.query,'query params')
         // this.props.setFilter(params )
         // this.setState({ ...params },()=>{console.log(this.state)})
     }
- onGetQueryParams=()=> {
-        const urlParams = new URLSearchParams(this.location.search);
-        const location = urlParams.get('location')||'';
-        const startDate = urlParams.get('startDate')||null;
-        const endDate = urlParams.get('endDate')||null;
-        const adultNumber = +urlParams.get('adults')||1;
-        const kidsNumber = +urlParams.get('kids')||0;
-        const infantsNumber = +urlParams.get('infants')||0;
-        const params = {
-            location,
-            startDate,
-            endDate,
-            adultNumber,
-            kidsNumber,
-            infantsNumber,
-            capacity: 0,
-            amenities: '',
-            assetType: '',
-            uniqueStay: '',
-            guestModal: false,
-            datesModal: false,
-            hostId: ''
-        }
-        return params
-    }
+//  onGetQueryParams=()=> {
+//         const urlParams = new URLSearchParams(this.location.search);
+//         const location = urlParams.get('location')||'';
+//         const startDate = urlParams.get('startDate')||null;
+//         const endDate = urlParams.get('endDate')||null;
+//         const adultNumber = +urlParams.get('adults')||1;
+//         const kidsNumber = +urlParams.get('kids')||0;
+//         const infantsNumber = +urlParams.get('infants')||0;
+//         const params = {
+//             location,
+//             startDate,
+//             endDate,
+//             adultNumber,
+//             kidsNumber,
+//             infantsNumber,
+//             capacity: 0,
+//             amenities: '',
+//             assetType: '',
+//             uniqueStay: '',
+//             guestModal: false,
+//             datesModal: false,
+//             hostId: ''
+//         }
+//         return params
+//     }
     handleChange = (ev) => {
         const value = ev.target.value;
         this.setState({ location: value }, () => { this.props.setFilter(this.state) });

@@ -95,6 +95,7 @@
     }
     .review-avg-container {
         padding: 25px 0;
+        flex-direction: column;
     }
     .right-review {
         padding-inline-start: 12px;
@@ -130,5 +131,14 @@
     .line-loader {
         height: 5px;
         background-color: $clr2;
+    }
+    @include for-mobile-layout {
+    }
+    @include for-narrow-layout {
+    }
+    @include for-normal-layout {
+        .review-avg-container {
+            flex-direction: row;
+        }
     }
 }
