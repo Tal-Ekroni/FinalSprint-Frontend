@@ -1,6 +1,6 @@
 .home-page {
     & .hero {
-        left:-21px;
+        left: -21px;
         background-image: url(../../img/hero.png);
         height: 92vh;
         background-position: center;
@@ -148,7 +148,7 @@
                 overflow-x: unset;
                 max-width: unset;
             }
-        
+
             @include for-wide-layout {
                 .live-card {
                     .live-img {
@@ -160,16 +160,16 @@
             @include for-wider-layout {
                 .live-card {
                     .live-img {
-                        height: 315px;
-                        width: 315px;
+                        height: 20vw;
+                        width: 20vw;
                     }
                 }
             }
             @include for-extra-wide-layout {
                 .live-card {
                     .live-img {
-                        height: 23vw;
-                        width: 23vw;
+                        height: 20vw;
+                        width: 20vw;
                     }
                 }
             }
@@ -215,8 +215,8 @@
             text-align: center;
             border-radius: 8px;
         }
-        @include for-mobile-layout{
-            max-width:calc(100vw - 64px);
+        @include for-mobile-layout {
+            max-width: calc(100vw - 64px);
         }
     }
 }
