@@ -76,6 +76,18 @@ export function setFilter(filterBy) {
         }
     }
 }
+export function setStays(stays) {
+    return async (dispatch) => {
+        try {
+            await dispatch({
+                type: 'SET_STAYS',
+                stays
+            })
+        } catch (err) {
+            console.log(err);
+        }
+    }
+}
 
 export function setMiniHeader(isMiniHeader) {
     return async (dispatch, getState) => {

@@ -1,10 +1,9 @@
 import React from 'react'
 import { GuestsModal } from './guests-modal';
-import { FaSearch } from 'react-icons/fa'
+import { FaSearch, FaChevronLeft } from 'react-icons/fa'
 import { withRouter } from "react-router-dom"
 import { DatesPicker2 } from "./dates-picker2"
 import { LocationsPopUp } from './locations-popup';
-
 class _SearchBar extends React.Component {
     state = {
         startDate: null,
@@ -115,12 +114,12 @@ class _SearchBar extends React.Component {
     }
 
     render() {
-        const { isMiniHeader, guestModal, datesModal, locModal, onToggleSearchModals, onToggleMiniSearchBar, closeAllModals,filterBy } = this.props
+        const { isMiniHeader, guestModal, datesModal, locModal, onToggleSearchModals, onToggleMiniSearchBar, closeAllModals, filterBy } = this.props
         const { location, adultNumber, kidsNumber, infantsNumber, endDate, startDate } = this.state
         return (
             <div >
                 <div className="search-bar-container flex align-center ">
-
+                    <button className="go-back-btn" onClick={()=>{window.history.back()}}><FaChevronLeft size={22} /></button>
                     <div className="location-container flex column" onClick={() => { onToggleSearchModals('locModal') }}>
                         <label htmlFor="location" className="loc-inpt">Location
                             <input type="text" name="location" autoComplete="off" value={location} onChange={this.handleChange} placeholder="Where are you going?" />
@@ -129,7 +128,7 @@ class _SearchBar extends React.Component {
                     {locModal && <LocationsPopUp closeAllModals={closeAllModals} history={this.props.history} />}
                     <div className="mini-search-input" onClick={onToggleMiniSearchBar}>
                         <p >
-                            {filterBy.location?filterBy.location:'Start your search'}
+                            {filterBy.location ? filterBy.location : 'Start your search'}
                         </p>
                     </div>
                     <div className="dates-container flex ">
