@@ -100,6 +100,37 @@
                 color: $clr6;
             }
         }
+        @include for-mobile-layout{
+            label{
+                padding: 45px 0px;
+            }
+            
+            .search-bar-container{
+                min-width: 75%;
+                max-width: 113%;
+            }
+            .guests-container,
+            .location-container {
+                padding: 8px 10px;
+                width: 25%;
+                line-height: 14px;
+                position: relative;
+                input{
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
+                }
+            }
+            .dates-container {
+                padding: 8px 10px;
+
+                width: 50%;
+                > * {
+                    flex-grow: 1;
+                }
+            }
+        
+        }
     }
     &.mini-header {
         box-shadow: 0 5px 7px 0 rgba(0, 0, 0, 0.05);

@@ -4,7 +4,6 @@ import { userService } from "../services/user.service.js";
 export function loadStays(filterBy = null) {
     return async (dispatch) => {
         try {
-            console.log(filterBy,'from actionsss');
             const stays = await stayService.query(filterBy)
             dispatch({
                 type: 'SET_STAYS',

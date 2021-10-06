@@ -21,11 +21,9 @@ import { stayService } from '../services/stay.service'
 export function onAddReview(review, stayId) {
   return async dispatch => {
     try {
-      console.log(review, stayId);
       const currStay = await stayService.getById(stayId)
       currStay.reviews.unshift(review)
       const updatedStay = await stayService.update(currStay)
-      console.log('Updated Stay:', updatedStay);
       dispatch({
         type: 'UPDATE_STAY',
         stay: updatedStay

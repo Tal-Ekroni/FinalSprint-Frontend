@@ -3,6 +3,7 @@ const locations = [{ city: 'Porto', country: 'Portugal' }, { city: 'Barcelona', 
 export function LocationsPopUp({ history, closeAllModals }) {
     function onPushTo(pushTo) {
         closeAllModals()
+        
         history.push(pushTo)
     }
 
