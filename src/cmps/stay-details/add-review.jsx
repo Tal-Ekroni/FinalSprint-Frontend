@@ -74,6 +74,7 @@ class _AddReview extends Component {
     }
     render() {
         const { cleanliness, communication, checkIn, accuracy, location, value, txt } = this.state.newReview
+        const reviewStr = { leftReview: ['cleanliness', 'communication', 'checkIn'], rightReview: ['accuracy', 'location', 'value'] }
         const style = {
             margin: '20px 0',
             padding: '20px',
@@ -81,7 +82,8 @@ class _AddReview extends Component {
             height: ' 150px',
             resize: 'none',
             borderRadius: '13px',
-            borderColor: ' #bdbcbc'
+            borderColor: ' #bdbcbc',
+            fontFamily: "circular-book"
         }
         return (
             <div >
@@ -91,6 +93,15 @@ class _AddReview extends Component {
                 <form action="" className="add-form flex column " onSubmit={this.formSubmited} >
                     <div className=" add-review-container flex ">
 
+                        {/* <div className="line flex">
+                            <p>Cleanliness</p>
+                            <Rating
+                                onChange={(ev) => this.changeRating(ev, 'cleanliness')}
+                                initialRating={cleanliness}
+                                fullSymbol={<FaStar size={13} color="#FF5A5F" />}
+                                emptySymbol={<FaStar size={13} color="lightgray" border="1px solid #FF5A5F" />}
+                            />
+                        </div> */}
                         <div className="left-review">
                             <div className="line flex">
                                 <p>Cleanliness</p>
@@ -150,14 +161,7 @@ class _AddReview extends Component {
                             </div>
                         </div>
                     </div>
-
                     <div className="add-txt-container flex">
-                        {/* <h4>Text</h4> */}
-                        {/* <input value={txt}
-                            placeholder="Write you opinion about this stay..."
-                            className="review-input" onChange={this.handleChange}
-                            name="txt"
-                            autoComplete="off" /> */}
                         <TextareaAutosize
                             style={style}
                             value={txt}
@@ -177,17 +181,6 @@ class _AddReview extends Component {
 
                         </div>
                     </div>
-                    {/* <div>
-
-                        <Button
-                            className="add-review-btn"
-                            variant={'contained'}
-                            color={'primary'}
-                            type="submit"
-                        >
-                            Add
-                        </Button>
-                    </div> */}
                 </form>
             </div >
         )

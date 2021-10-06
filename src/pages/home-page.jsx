@@ -38,7 +38,7 @@ class _HomePage extends React.Component {
     render() {
         return (
             <section className="home-page flex column main-container">
-                <div className="hero main-container full flex justify-center align-center">
+                <div className="hero  full flex justify-center align-center">
                     <div className="where-to-go flex justify-center align-center">
                         <h3>Not sure where to go? Perfect.</h3>
                         <button className="flex-btn flex justify-center align-center">

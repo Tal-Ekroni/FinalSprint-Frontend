@@ -39,12 +39,15 @@
     .reviews-container {
         width: 100%;
         // border: 1px solid black;
-        max-height: 650px;
         list-style: none;
         margin-top: 30px;
         gap: 20px;
         flex-wrap: wrap;
         padding: 0;
+        max-height: 420px;
+        overflow: hidden;
+        overflow-y: scroll;
+        border: 0.5px solid lightgray;
 
         & .review-card-container {
             min-width: 350px;
@@ -95,16 +98,15 @@
     }
     .review-avg-container {
         padding: 25px 0;
+        flex-direction: column;
     }
     .right-review {
         padding-inline-start: 12px;
-        max-width: 40%;
-        width: 40%;
+        width: 100%;
     }
     .left-review {
         padding-inline-start: 12px;
-        max-width: 40%;
-        width: 40%;
+        width: 100%;
     }
     .line {
         height: 2rem;
@@ -130,5 +132,27 @@
     .line-loader {
         height: 5px;
         background-color: $clr2;
+    }
+   
+    @include for-narrow-layout {
+        .reviews-container {
+            max-height: 650px;
+            overflow: auto;
+            overflow-y: hidden;
+            border: none;
+        }
+    }
+    @include for-normal-layout {
+        .review-avg-container {
+            flex-direction: row;
+        }
+        .left-review {
+            width: 40%;
+            max-width: 40%;
+        }
+        .right-review {
+            width: 40%;
+            max-width: 40%;
+        }
     }
 }
