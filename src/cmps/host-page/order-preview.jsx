@@ -33,7 +33,6 @@ class _OrderPreview extends React.Component {
         this.props.onUpdateOrder(order)
     }
     onRemoveOrder = (orderId) => {
-        console.log(orderId);
         this.props.onRemoveOrder(orderId)
     }
     render() {

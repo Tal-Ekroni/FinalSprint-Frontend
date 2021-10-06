@@ -10,7 +10,6 @@ export class DatesPicker2 extends React.Component {
         endDate: null
     }
     handleSelect = ({ selection }) => {
-        // console.log('endDate', date.selection.startDate);
         var { startDate, endDate } = selection
         this.setState({ startDate, endDate }, () => { this.props.onSelectDates(this.state) })
     }

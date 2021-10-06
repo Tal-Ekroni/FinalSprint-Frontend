@@ -26,7 +26,6 @@ class _HomePage extends React.Component {
         }
     }
     changeCount = (diff) => {
-        console.log('Changing count by:', diff);
         const action = { type: 'CHANGE_COUNT', diff }
         this.props.dispatch(action)
     }

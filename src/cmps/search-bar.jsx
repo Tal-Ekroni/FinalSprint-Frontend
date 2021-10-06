@@ -24,9 +24,8 @@ class _SearchBar extends React.Component {
     }
     componentDidMount() {
         const params = this.onGetQueryParams()
-        // console.log(params, 'params');
         this.props.setFilter(params)
-        this.setState({ ...params }, () => { console.log(this.state) })
+        this.setState({ ...params })
     }
     onGetQueryParams = () => {
         const urlParams = new URLSearchParams(this.props.location.search);
@@ -55,9 +54,24 @@ class _SearchBar extends React.Component {
     }
     handleChange = (ev) => {
         const value = ev.target.value;
-        this.setState({ location: value }, () => { this.props.setFilter(this.state) });
+        var newValue = this.capitalizeArray(value)
+        this.setState({ location: newValue }, () => { this.props.setFilter(this.state) });
     }
-
+    capitalizeArray = (str) => {
+        var newStr = str.split(' ')
+        for (var i = 0; i < newStr.length; i++) {
+            var currWord = ''
+            currWord = newStr[i]
+            currWord = this.capitalize(currWord)
+            newStr[i] = currWord
+        }
+        newStr = newStr.join(' ')
+        console.log(newStr);
+        return newStr
+    }
+    capitalize = (str) => {
+        return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase()
+    }
     onSelectDates = ({ startDate, endDate }) => {
         this.setState({ startDate, endDate }, () => { this.props.setFilter(this.state) })
     }

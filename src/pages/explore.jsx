@@ -11,12 +11,9 @@ class _Explore extends React.Component {
 
     async componentDidMount() {
         window.scrollTo(0, 0)
-        console.log(this.props.location.query, 'query params')
         try {
-            console.log(this.props.filterBy, 'from explore ');
             await this.props.loadUser(this.props.user._id)
             await this.props.loadStays(this.props.filterBy)
-            console.log(this.props.filterBy, 'from explore 2 ');
 
         } catch (err) {
             console.log('error', err)
