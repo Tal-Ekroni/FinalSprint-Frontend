@@ -4,7 +4,7 @@
     top: 80px;
     bottom: 20px;
     align-items: flex-end;
-    margin-top: 20px ;
+    margin-top: 20px;
     justify-content: flex-end;
     .checkout-container {
         flex-direction: column;
@@ -130,27 +130,76 @@
 // .guests-check-container {
 //     margin-top: 18px;
 // }
-.check-btn-container {
-    margin-top: 25px;
-    height: 50px;
-    text-align: center;
-    justify-content: center;
-    // background-color: $clr6;
-    background-image: radial-gradient(
-        circle at center,
-        #ff385c 0%,
-        #e61e4d 27.5%,
-        #e31c5f 40%,
-        #d70466 57.5%,
-        #bd1e59 75%,
-        #bd1e59 100%
-    );
+.checkout-btn-container {
+    position: relative;
+    width: 100%;
+    height: 48px;
+    padding: 0 0;
+    margin: 0 0;
+    margin-top: 15px;
+
+    cursor: pointer;
+    border: none;
+    display: grid;
+    grid-template: repeat(10, 1fr) / repeat(10, 1fr);
+    @for $i from 0 to 10 {
+        .cell:nth-child(10n + #{$i + 1}):hover ~ .content {
+            --positionX: #{$i};
+        }
+
+        .cell:nth-child(n + #{10 * $i + 1}):nth-child(-n + #{10 * ($i + 1)}):hover ~ .content {
+            --positionY: #{$i};
+        }
+    }
+}
+
+.cell {
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+.checkout-btn {
+    background-color: transparent;
     border-radius: 8px;
     & * {
         font-size: 1rem;
         font-family: circular-bold;
         color: $clr1;
     }
+}
+.content {
+    --positionX: 0;
+    --positionY: 5;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    border-radius: 8px;
+
+    background-image: radial-gradient(
+        circle at calc((0 + var(--positionX, 0)) * 10%) calc((0 + var(--positionY, 0)) * 5%),
+        rgb(241, 37, 75) 0%,
+        rgb(230, 30, 77) 27.5%,
+        rgb(227, 28, 95) 40%,
+        rgb(215, 4, 102) 57.5%,
+        rgb(189, 30, 89) 75%,
+        rgb(189, 30, 89) 100%
+    );
+}
+
+.action-btn {
+    padding: 0 0;
+    margin: 0 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
 }
 .report-container {
     width: 80%;
