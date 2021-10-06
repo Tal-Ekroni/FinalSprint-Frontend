@@ -32,7 +32,6 @@ export function BasicInfo({ stay }) {
             </section>
             <section className="asset-imgs-container flex  ">
                 <div className="asset-imgs flex">
-
                     {/* <div className="primary-img square-ratio"><img src={img} alt="" /></div> */}
                     <div className="primary-img square-ratio"><img src={stay.imgUrls[0]} alt="" /></div>
                     <div className="imgs-container flex">

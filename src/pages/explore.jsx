@@ -5,7 +5,6 @@ import { onBookTrip, loadUser } from '../store/user.actions.js'
 import { StaysList } from '../cmps/stays-list.jsx'
 import { ExploreFilter } from '../cmps/explore-filter.jsx'
 import loader from '../assets/img/three-dots.svg'
-import staySrevice from '../services/stay.service'
 
 class _Explore extends React.Component {
 
@@ -42,7 +41,7 @@ class _Explore extends React.Component {
         const { stays, filterBy } = this.props
         if (!stays.length) return <div className="loader-container flex align-center justify-center page-padding"><img src={loader} alt="loader" /></div>
         return (
-            <main className=" main-container page-padding">
+            <main className="explore-mega-container main-container page-padding">
                 <div className="explore-page-container">
 
                     <div className="stays-headline">

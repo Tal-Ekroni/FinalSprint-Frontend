@@ -6,22 +6,36 @@ import duplex from '../assets/img/entire-duplex.jpg'
 import cap from '../assets/img/large-capacity.jpg'
 import unique from '../assets/img/unique-stays.jpg'
 import { setFilter, setMiniHeader } from '../store/stay.actions';
-const locations = [{ city: 'Porto', country: 'Portugal',imgUrl:'https://res.cloudinary.com/dpbqsvvtk/image/upload/v1633521279/location%20previews/location-preview-1_avfpxl.png' }, { city: 'Barcelona', country: 'Spain',imgUrl:'https://res.cloudinary.com/dpbqsvvtk/image/upload/v1633521279/location%20previews/location-preview-2_qchnx7.png' }, { city: 'Tel Aviv', country: 'Israel',imgUrl:'https://res.cloudinary.com/dpbqsvvtk/image/upload/v1633521280/location%20previews/location-preview-3_fndewl.png' }, { city: 'Paris', country: "France",imgUrl:'https://res.cloudinary.com/dpbqsvvtk/image/upload/v1633521279/location%20previews/location-preview-4_nqshaa.jpg' }, { city: 'London', country: 'United Kingdom',imgUrl:'https://res.cloudinary.com/dpbqsvvtk/image/upload/v1633521279/location%20previews/location-preview-5_pbuhtd.jpg' }, { city: 'New York', country: 'United States',imgUrl:'https://res.cloudinary.com/dpbqsvvtk/image/upload/v1633521279/location%20previews/location-preview-6_kynrq5.png' }, { city: 'Amsterdam', country: 'Netherlands',imgUrl:'https://res.cloudinary.com/dpbqsvvtk/image/upload/v1633521278/location%20previews/location-preview-7_unmsuc.jpg' }, { city: 'Rome', country: 'Italy',imgUrl:'https://res.cloudinary.com/dpbqsvvtk/image/upload/v1633521279/location%20previews/location-preview-8_yjbewa.png' }]
+const locations = [{ city: 'Porto', country: 'Portugal', imgUrl: 'https://res.cloudinary.com/dpbqsvvtk/image/upload/v1633521279/location%20previews/location-preview-1_avfpxl.png' }, { city: 'Barcelona', country: 'Spain', imgUrl: 'https://res.cloudinary.com/dpbqsvvtk/image/upload/v1633521279/location%20previews/location-preview-2_qchnx7.png' }, { city: 'Tel Aviv', country: 'Israel', imgUrl: 'https://res.cloudinary.com/dpbqsvvtk/image/upload/v1633521280/location%20previews/location-preview-3_fndewl.png' }, { city: 'Paris', country: "France", imgUrl: 'https://res.cloudinary.com/dpbqsvvtk/image/upload/v1633521279/location%20previews/location-preview-4_nqshaa.jpg' }, { city: 'London', country: 'United Kingdom', imgUrl: 'https://res.cloudinary.com/dpbqsvvtk/image/upload/v1633521279/location%20previews/location-preview-5_pbuhtd.jpg' }, { city: 'New York', country: 'United States', imgUrl: 'https://res.cloudinary.com/dpbqsvvtk/image/upload/v1633521279/location%20previews/location-preview-6_kynrq5.png' }, { city: 'Amsterdam', country: 'Netherlands', imgUrl: 'https://res.cloudinary.com/dpbqsvvtk/image/upload/v1633521278/location%20previews/location-preview-7_unmsuc.jpg' }, { city: 'Rome', country: 'Italy', imgUrl: 'https://res.cloudinary.com/dpbqsvvtk/image/upload/v1633521279/location%20previews/location-preview-8_yjbewa.png' }]
 
 class _HomePage extends React.Component {
     componentDidMount() {
         window.scrollTo(0, 0)
         this.props.setMiniHeader(false)
-        window.addEventListener('scroll', this.onSetMiniHeader)
+        window.addEventListener('resize', this.isMobileDisplay)
+        this.isMobileDisplay()
+
     }
+
     componentWillUnmount() {
         this.props.setMiniHeader(true)
+
+        window.removeEventListener('resize', this.isMobileDisplay)
         window.removeEventListener('scroll', this.onSetMiniHeader)
     }
     onSetMiniHeader = (ev) => {
         if (ev.target.scrollingElement.scrollTop > 50) {
             this.props.setMiniHeader(true)
         } else {
+            this.props.setMiniHeader(false)
+        }
+    }
+    isMobileDisplay = () => {
+        if (window.innerWidth <= 780) {
+            window.removeEventListener('scroll', this.onSetMiniHeader)
+            this.props.setMiniHeader(true)
+        } else {
+            window.addEventListener('scroll', this.onSetMiniHeader)
             this.props.setMiniHeader(false)
         }
     }
@@ -50,7 +64,7 @@ class _HomePage extends React.Component {
                 <div className="sug-loc">
                     <h2>Popular destinations</h2>
                     <div className="locations">
-                        {locations.map((location, idx) => <div className="loc-section flex">
+                        {locations.map((location, idx) => <div key={idx + 1} className="loc-section flex">
                             <img src={location.imgUrl} alt="" className="loc-img" onClick={() => { this.onClickLoc(location.city, 'location') }} />
                             <div className="loc-info flex column justify-center">
                                 <p className="city-name">{location.city}</p>

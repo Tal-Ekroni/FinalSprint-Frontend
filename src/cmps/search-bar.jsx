@@ -3,7 +3,6 @@ import { GuestsModal } from './guests-modal';
 import { FaSearch } from 'react-icons/fa'
 import { withRouter } from "react-router-dom"
 import { DatesPicker2 } from "./dates-picker2"
-import { stayService } from '../services/stay.service';
 import { LocationsPopUp } from './locations-popup';
 
 class _SearchBar extends React.Component {

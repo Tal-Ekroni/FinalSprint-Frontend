@@ -29,11 +29,12 @@ class _StayDetails extends React.Component {
     }
     componentDidMount() {
         window.scrollTo(0, 0)
-        console.log(this.props.match,'query params')
         const { stayId } = this.props.match.params
         if (!stayId) this.props.history.push('/')
         else this.props.loadStay(stayId)
     }
+ 
+   
     handleChange = ({ startDate, endDate }) => {
         if (startDate) {
             this.setState(prevState => ({ trip: { ...prevState.trip, startDate } }))
@@ -71,9 +72,7 @@ class _StayDetails extends React.Component {
                                     <img src={`https://i.pravatar.cc/100?u=${stay.host._id}`} alt="" />
                                 </div>
                             </section>
-                            <section className="asset-sum-container">
-                                <AssetSum />
-                            </section>
+                            <AssetSum />
                             <section className="asset-desc-container">
                                 <div className="asset-desc">
                                     {stay.summary > 100 ? <p >{stay.summary.substring(0, 100)} <span className="read-more" > More...</span></p> : <p  >{stay.summary}</p>}
@@ -84,10 +83,8 @@ class _StayDetails extends React.Component {
                                 <div >
                                     <AssetAmenities amenities={stay.amenities} />
                                 </div>
-                                {/* <button className="amenities-btn">{`Show all ${stay.amenities.length} amenities`}</button> */}
                             </section>
                         </div>
-                        {/* TODO */}
                         <div className="details-right-container">
                             <CheckoutForm />
                         </div>
@@ -100,10 +97,7 @@ class _StayDetails extends React.Component {
                                 <AddReview stayId={stay._id} />
                             </div>}
                         </div>
-                        <div >
-
-                            <StayMap location={stay.loc} />
-                        </div>
+                        <StayMap location={stay.loc} />
                     </section>
                 </div >}
             </section>

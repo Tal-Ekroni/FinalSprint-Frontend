@@ -8,4 +8,12 @@
 }
 .explore-page-container {
     height: calc(90vh - 100px);
+    ::-webkit-scrollbar {
+        width: 0;
+        background-color: transparent;
+        display: none;
+    }
+}
+.explore-mega-container {
+    max-width: calc(100vw - 80px);
 }

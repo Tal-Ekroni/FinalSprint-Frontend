@@ -78,7 +78,7 @@ class _AppHeader extends React.Component {
 
         }
     }
-
+ 
     closeAllModals = () => {
         this.onToggleScreen(false)
         this.setState({ locModal: false, guestModal: false, datesModal: false, isUserMenuOpen: false })

@@ -3,7 +3,6 @@ import 'react-dates/initialize';
 import { connect } from 'react-redux'
 import { onAddOrder } from '../../store/order.actions'
 import { FaStar, FaAngleDown, FaAngleUp } from 'react-icons/fa'
-import { Button } from '@material-ui/core'
 import 'react-dates/lib/css/_datepicker.css';
 import { showErrorMsg } from '../../services/event-bus.service.js';
 import { DatesPicker2 } from '../dates-picker2.jsx';
@@ -155,7 +154,7 @@ class _CheckoutForm extends React.Component {
     getBtnDivs = () => {
         let divStr = []
         for (let i = 0; i < 100; i++) {
-            divStr.push(<div className="cell" ></div >)
+            divStr.push(<div key={i + 1} className="cell" ></div >)
         }
         return divStr
     }

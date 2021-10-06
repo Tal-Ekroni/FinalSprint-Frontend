@@ -1,6 +1,6 @@
 import { Component } from 'react'
 import { connect } from 'react-redux'
-import { Button, TextareaAutosize } from '@material-ui/core';
+import { TextareaAutosize } from '@material-ui/core';
 import { onAddReview } from '../../store/review.actions.js'
 import { utilService } from '../../services/util.service.js';
 import Rating from 'react-rating';
@@ -25,6 +25,9 @@ class _AddReview extends Component {
             value: null
         }
 
+    }
+    componentDidMount() {
+        this.clearReview()
     }
     onRemove = async reviewId => {
         await this.props.removeReview(reviewId)
@@ -74,7 +77,7 @@ class _AddReview extends Component {
     }
     render() {
         const { cleanliness, communication, checkIn, accuracy, location, value, txt } = this.state.newReview
-        const reviewStr = { leftReview: ['cleanliness', 'communication', 'checkIn'], rightReview: ['accuracy', 'location', 'value'] }
+        // const reviewStr = { leftReview: ['cleanliness', 'communication', 'checkIn'], rightReview: ['accuracy', 'location', 'value'] }
         const style = {
             padding: '20px',
             width: '100%',

@@ -1,5 +1,10 @@
 .reviews-section-container {
     .reviews-list-container {
+        ::-webkit-scrollbar {
+            width: 0;
+            background-color: transparent;
+            display: none;
+        }
         & section {
             width: 100%;
             max-height: 950px;
@@ -133,7 +138,7 @@
         height: 5px;
         background-color: $clr2;
     }
-   
+
     @include for-narrow-layout {
         .reviews-container {
             max-height: 650px;
