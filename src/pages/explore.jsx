@@ -40,10 +40,6 @@ class _Explore extends React.Component {
         if (prevProps.filterBy !== this.props.filterBy) {
             this.props.loadStays(this.props.filterBy);
         }
-        if (prevState.PropertyType !== this.state.PropertyType) {
-            this.setState({ stays: stayService.filterPageStays(this.state, this.props.stays) })
-
-        }
     }
     onSetAmenity = (key) => {
         this.setState({ frontFilter: { ...this.state.frontFilter, ameneties: { ...this.state.frontFilter.amenities, [key]: !this.state.frontFilter.amenities[key] } } }, () => { this.onSetPageFilter('ameneties', this.state.frontFilter.amenities) })
