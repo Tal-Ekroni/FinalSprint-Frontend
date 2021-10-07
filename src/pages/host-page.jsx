@@ -35,15 +35,6 @@ class _HostPage extends React.Component {
         newFilter.hostId = this.props.user._id
         this.props.setFilter(newFilter)
     }
-    // componentDidUpdate(prevProps, prevState) {
-    //     if (this.props.orders !== prevProps.orders)
-    //         this.props.loadUser(this.props.user._id)
-    //     // this.props.loadOrders(this.props.user._id, 'host')
-
-    //     // if (prevProps.filterBy !== this.props.filterBy) {
-    //     //     this.props.loadStays(this.props.filterBy);
-    //     // }
-    // }
 
     onChangeTab = (ev, value) => {
         this.setState({ selectedTab: value })

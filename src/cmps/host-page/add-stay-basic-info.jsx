@@ -23,7 +23,8 @@ const style = {
     resize: 'none',
     borderRadius: '13px',
     borderColor: ' #bdbcbc',
-    fontFamily: "circular-book"
+    fontFamily: "circular-book",
+    fontSize: "1rem"
 }
 export class AddStayBasicInfo extends React.Component {
     render() {

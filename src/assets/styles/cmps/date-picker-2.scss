@@ -1,0 +1,20 @@
+.date-pick {
+    width: 350px;
+    & > * {
+        background-color: $clr1;
+        width: 100%;
+    }
+    .rdrDateDisplayWrapper {
+        background-color: $clr1;
+    }
+    .rdrMonth {
+        width: 100%;
+    }
+    .rdrDay{
+        width: 35px;
+        height: 35px;
+    }
+    .rdrDateDisplayWrapper {
+        display: none;
+    }
+}

@@ -38,6 +38,7 @@ class _HostChart extends React.Component {
             <div>
                 <div className="chart-container">
                     <h1>Orders Status</h1>
+                    <p>Here you can see your orders status</p>
                     <Doughnut data={staysData} />
                 </div>
             </div>

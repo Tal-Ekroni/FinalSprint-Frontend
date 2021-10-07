@@ -85,7 +85,8 @@ class _AddReview extends Component {
             resize: 'none',
             borderRadius: '13px',
             borderColor: ' #bdbcbc',
-            fontFamily: "circular-book"
+            fontFamily: "circular-book",
+            fontSize: "1rem"
         }
         return (
             <div >

@@ -17,11 +17,19 @@
             font-family: circular-book;
         }
         .user-btns-container {
-            justify-content: space-evenly;
-            width: 150px;
+            justify-content: space-between;
+            width: 135px;
             & p {
-                font-size: 1rem;
+                cursor: pointer;
+                font-size: 0.875rem;
             }
+            .share-btn-container,
+            .save-btn-container {
+                width: 60px;
+            }
+        }
+        .icon {
+            stroke-width: 0.875rem;
         }
         .stay-avg-info {
             & p {
@@ -39,6 +47,9 @@
                 color: gray;
                 text-decoration: underline;
             }
+            .info-star > * {
+                padding-top: 3.6px;
+            }
         }
         .dot {
             margin-inline-end: 10px;
@@ -49,9 +60,6 @@
             .stay-info {
                 flex-direction: column;
                 padding: 0 5px;
-            }
-            .user-btns-container {
-                display: none;
             }
         }
         @include for-narrow-layout {
@@ -178,4 +186,3 @@
     background-color: blue;
     width: 56px;
 }
-

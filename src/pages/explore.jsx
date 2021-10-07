@@ -8,16 +8,11 @@ import loader from '../assets/img/three-dots.svg'
 
 class _Explore extends React.Component {
 
-    async componentDidMount() {
+    componentDidMount() {
+        const { user } = this.props
         window.scrollTo(0, 0)
-        try {
-            await this.props.loadUser(this.props.user._id)
-            await this.props.loadStays(this.props.filterBy)
-
-        } catch (err) {
-            console.log('error', err)
-        }
-
+        this.props.loadStays(this.props.filterBy)
+        if (user) this.props.loadUser(this.props.user._id)
     }
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.filterBy !== this.props.filterBy) {
