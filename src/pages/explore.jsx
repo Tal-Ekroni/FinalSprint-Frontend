@@ -12,7 +12,7 @@ class _Explore extends React.Component {
         frontFilter: {
             placeType: '',
             PropertyType: '',
-            priceRange:[],
+            priceRange: [20,1500],
             amenities: {
                 TV: false,
                 Wifi: false,
@@ -40,18 +40,16 @@ class _Explore extends React.Component {
         if (prevProps.filterBy !== this.props.filterBy) {
             this.props.loadStays(this.props.filterBy);
         }
-        if (prevState.PropertyType !== this.state.PropertyType) {
-            this.setState({ stays: stayService.filterPageStays(this.state, this.props.stays) })
-
-        }
     }
     onSetAmenity = (key) => {
-        this.setState({ frontFilter: { ...this.state.frontFilter, ameneties: { ...this.state.frontFilter.amenities, [key]: !this.state.frontFilter.amenities[key] } } }, () => { this.onSetPageFilter('ameneties', this.state.frontFilter.amenities) })
-    } 
+        this.setState({ frontFilter: { ...this.state.frontFilter, amenities: { ...this.state.frontFilter.amenities, [key]: !this.state.frontFilter.amenities[key] } } }, () => { this.onSetPageFilter('ameneties', this.state.frontFilter.amenities) })
+    }
     onSetPageFilter = (filterType, val, ev) => {
+
         this.setState({ frontFilter: { ...this.state.frontFilter, [filterType]: val } }, () => {
-            console.log(this.state)
-            this.setState({ stays: stayService.filterPageStays(this.state.frontFilter, this.props.stays) })
+            const newStays = stayService.filterPageStays(this.state.frontFilter, this.props.stays)
+            console.log(newStays,'newStays')
+            this.setState({ stays: newStays })
         })
 
 
