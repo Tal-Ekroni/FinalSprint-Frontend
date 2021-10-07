@@ -28,14 +28,18 @@ class _StayDetails extends React.Component {
         isReadMoreOn: false,
         isLiked: null
     }
-    componentDidMount() {
-        const { user } = this.props
-        const { stayId } = this.props.match.params
-        window.scrollTo(0, 0)
-        if (!stayId) this.props.history.push('/')
-        else this.props.loadStay(stayId)
-        if (user) this.props.loadUser(user._id)
-        this.isStayLiked()
+    async componentDidMount() {
+        try {
+            const { user } = this.props
+            const { stayId } = this.props.match.params
+            window.scrollTo(0, 0)
+            if (!stayId) this.props.history.push('/')
+            else await this.props.loadStay(stayId)
+            if (user) this.props.loadUser(user._id)
+            this.isStayLiked()
+        } catch (err) {
+            console.log(err);
+        }
     }
     componentDidUpdate(prevProps, prevState) {
         const { user } = this.props

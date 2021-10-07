@@ -9,14 +9,30 @@ import { stayService } from '../services/stay.service.js'
 class _Explore extends React.Component {
     state = {
         stays: [],
-        placeType: '',
-        PropertyType: '',
+        frontFilter: {
+            placeType: '',
+            PropertyType: '',
+            amenities: {
+                TV: false,
+                Wifi: false,
+                Kitchen: false,
+                AC: false,
+                "Smoking allowed": false,
+                "Pets allowed": false,
+                "Cooking basics": false,
+            }
+        }
     }
-    componentDidMount() {
-        const { user } = this.props
-        window.scrollTo(0, 0)
-        this.props.loadStays(this.props.filterBy)
-        if (user) this.props.loadUser(this.props.user._id)
+    async componentDidMount() {
+        try {
+            const { user } = this.props
+            window.scrollTo(0, 0)
+            await this.props.loadStays(this.props.filterBy)
+            this.setState({ stays: this.props.stays })
+            if (user) this.props.loadUser(this.props.user._id)
+        } catch (err) {
+            console.log(err);
+        }
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -28,16 +44,25 @@ class _Explore extends React.Component {
 
         }
     }
+    onSetAmenity = (key) => {
+        this.setState({ frontFilter: { ...this.state.frontFilter, ameneties: { ...this.state.frontFilter.amenities, [key]: !this.state.frontFilter.amenities[key] } } }, () => { this.onSetPageFilter('ameneties', this.state.frontFilter.amenities) })
+    } 
     onSetPageFilter = (filterType, val, ev) => {
-        this.setState({ [filterType]: val, stays: stayService.filterPageStays(this.state, this.props.stays) })
+        this.setState({ frontFilter: { ...this.state.frontFilter, [filterType]: val } }, () => {
+            this.setState({ stays: stayService.filterPageStays(this.state.frontFilter, this.props.stays) })
+        })
+
+
     }
     onClearPageFilter = () => {
         const clearState = {
             stays: this.props.stays,
-            placeType: '',
-            PropertyType: '',
+            frontFilter: {
+                placeType: '',
+                PropertyType: '',
+            }
         }
-        this.setState({ ...clearState }, console.log(this.state))
+        this.setState({ ...clearState })
     }
 
     onRemoveStay = (stayId) => {
@@ -59,10 +84,10 @@ class _Explore extends React.Component {
                 <div className="explore-page-container">
 
                     <div className="stays-headline">
-                        <p>{stays.length === 1 ? `${stays.length} stay` : `${stays.length} stays`}</p>
+                        <p>{this.state.stays.length === 1 ? `1 stay` : `${this.state.stays.length} stays`}</p>
                         <h1>{filterBy.location ? `Places to stay at ${filterBy.location}` : 'Find places to stay'}</h1>
                     </div>
-                    <ExploreFilter stays={stays} onSetPageFilter={this.onSetPageFilter} onClearPageFilter={this.onClearPageFilter} />
+                    <ExploreFilter stays={stays} onSetAmenity={this.onSetAmenity} onSetPageFilter={this.onSetPageFilter} onClearPageFilter={this.onClearPageFilter} />
                     {stays.length && <StaysList stays={this.state.stays} history={this.props.history} />}
                 </div>
             </main>

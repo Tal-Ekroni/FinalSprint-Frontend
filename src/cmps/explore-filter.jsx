@@ -94,32 +94,32 @@ export class ExploreFilter extends React.Component {
                 <div className="sort-type amenities-type">
                     <button onClick={() => { this.onToggleModals('AmenitiesTypeIsOpen') }}>Amenities</button>
                     {AmenitiesTypeIsOpen && <DynamicModal >
-                        <div className="amenities-type">
+                        <div className="amenities-type" onClick={() => { this.props.onSetAmenity('TV') }}>
                             <h1>
                                 TV
                             </h1>
                         </div>
-                        <div className="amenities-type">
+                        <div className="amenities-type" onClick={() => { this.props.onSetAmenity('Wifi') }}>
                             <h1>
                                 Wifi
                             </h1>
                         </div>
-                        <div className="amenities-type">
+                        <div className="amenities-type" onClick={() => { this.props.onSetAmenity('AC') }}>
                             <h1>
                                 AC
                             </h1>
                         </div>
-                        <div className="amenities-type">
+                        <div className="amenities-type" onClick={() => { this.props.onSetAmenity('Smoking allowed') }}>
                             <h1>
                                 Smoking Allowed
                             </h1>
                         </div>
-                        <div className="amenities-type">
+                        <div className="amenities-type" onClick={() => { this.props.onSetAmenity('Pets allowed') }}>
                             <h1>
                                 Pets Allowed
                             </h1>
                         </div>
-                        <div className="amenities-type">
+                        <div className="amenities-type" onClick={() => { this.props.onSetAmenity('Cooking basics') }}>
                             <h1>
                                 Cooking Basics
                             </h1>

@@ -102,6 +102,9 @@ class _SearchBar extends React.Component {
         this.props.closeAllModals()
         this.props.history.push(urlQuery)
     }
+    onSetLocationPopUp=(val)=>{
+        this.setState({location:val})
+    }
 
     timeToShow = (date, val) => {
         var timeStamp = Date.parse(date);
@@ -125,7 +128,7 @@ class _SearchBar extends React.Component {
                             <input type="text" name="location" autoComplete="off" value={location} onChange={this.handleChange} placeholder="Where are you going?" />
                         </label>
                     </div>
-                    {locModal && <LocationsPopUp closeAllModals={closeAllModals} history={this.props.history} />}
+                    {locModal && <LocationsPopUp onSetLocationPopUp={this.onSetLocationPopUp} onSetFilter={this.onSetFilter} closeAllModals={closeAllModals} history={this.props.history} />}
                     <div className="mini-search-input" onClick={onToggleMiniSearchBar}>
                         <p >
                             {filterBy.location ? filterBy.location : 'Start your search'}
