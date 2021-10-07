@@ -4,7 +4,15 @@
     bottom: 0;
     border-top:1px lightgray solid;
     h2,h4{
-        margin-top:15px;
+        margin-top:30px;
         font-family:circular-bold;
+    }
+    .footer-link-headers{
+        gap:198px;
+    }
+    .footer-links{
+        gap:100px;
+        border-bottom:1px lightgray solid;
+        
     }
 }

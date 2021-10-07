@@ -8,7 +8,8 @@ import { removeFromCart, checkout } from '../store/stay.actions'
 import { onBookTrip } from '../store/user.actions'
 
 import { UserMsg } from './user-msg.jsx'
-
+import { FooterLocations } from './app-footer/locations-footer'
+const locations = [{ city: 'Porto', country: 'Portugal' }, { city: 'Barcelona', country: 'Spain' }, { city: 'Tel Aviv', country: 'Israel' }, { city: 'Paris', country: "France" }, { city: 'London', country: 'United Kingdom' }, { city: 'New York', country: 'United States' }, { city: 'Amsterdam', country: 'Netherlands' }, { city: 'Rome', country: 'Italy' }]
 class _AppFooter extends React.Component {
 
     state = {
@@ -39,9 +40,14 @@ class _AppFooter extends React.Component {
         return (
             <footer className="app-footer main-container full">
                 <h2>Insparation for future getaways</h2>
-                <div className="flex column">
+                <div className='flex footer-link-headers'>
                     <h4>Top rated stays</h4>
+                    <h4>Locations</h4>
+                </div>
+                <div className="flex footer-links align-center">
                     <TopRatedStays stays={this.state.topRatedStays} />
+                    <FooterLocations locations={this.locations} />
+
                 </div>
                 <div className="footer-info flex justify-start align-center">
                     <p>
