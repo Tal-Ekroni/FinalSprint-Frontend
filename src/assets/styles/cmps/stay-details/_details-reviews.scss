@@ -36,10 +36,12 @@
         margin-top: 40px;
         line-height: 1.625rem;
         font-size: 1.2rem;
-        font-family: circular-bold;
-        font-weight: 300;
+        font-family: circular-book;
         vertical-align: middle;
         align-items: center;
+        > * {
+            margin-inline-end: 5px;
+        }
     }
     .reviews-container {
         width: 100%;

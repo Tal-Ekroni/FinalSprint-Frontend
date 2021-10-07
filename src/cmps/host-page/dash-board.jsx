@@ -35,7 +35,7 @@ class _OrdersDashboard extends Component {
             orders.map(order => {
                 editedOrder = {
                     stayName: order.stay.name,
-                    address: order.loc.address,
+                    // address: order.loc.address,
                     buyerName: order.buyer.fullname,
                     buyerImg: order.buyer.imgUrl,
                     price: order.totalPrice,
@@ -138,7 +138,8 @@ function mapStateToProps(state) {
 }
 const mapDispatchToProps = {
     loadUser,
-    onUpdateOrder
+    onUpdateOrder,
+    onRemoveOrder
 }
 
 

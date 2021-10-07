@@ -2,6 +2,7 @@ import { Component } from 'react'
 import { connect } from 'react-redux'
 import { TextareaAutosize } from '@material-ui/core';
 import { onAddReview } from '../../store/review.actions.js'
+import { loadUser } from '../../store/user.actions'
 import { utilService } from '../../services/util.service.js';
 import Rating from 'react-rating';
 import { FaStar } from 'react-icons/fa';
@@ -28,6 +29,14 @@ class _AddReview extends Component {
     }
     componentDidMount() {
         this.clearReview()
+        if (this.props.user) this.props.loadUser(this.props.user._id)
+        this.setState({
+            by: {
+                fullname: this.props.user.fullname,
+                _id: this.props.user._id,
+                imgUrl: this.props.user.imgUrl
+            }
+        })
     }
     onRemove = async reviewId => {
         await this.props.removeReview(reviewId)
@@ -36,7 +45,6 @@ class _AddReview extends Component {
     clearReview = () => {
         this.setState({
             newReview: {
-                name: this.props.user.fullname,
                 createdAt: null,
                 txt: '',
                 id: utilService.makeId(),
@@ -62,11 +70,18 @@ class _AddReview extends Component {
     formSubmited = (ev) => {
         ev.preventDefault()
         const { stayId } = this.props
-        this.setState(prevState => ({ newReview: { ...prevState.newReview, createdAt: Date.now() } }), () => {
-            const review = this.state.newReview
-            this.props.onAddReview(review, stayId)
-            this.clearReview()
-        })
+        if (this.props.user._id) {
+            this.setState(prevState => ({ newReview: { ...prevState.newReview, createdAt: Date.now() } }), () => {
+                const review = this.state.newReview
+                review.by = {
+                    fullname: this.props.user.fullname,
+                    _id: this.props.user._id,
+                    imgUrl: this.props.user.imgUrl
+                }
+                this.props.onAddReview(review, stayId)
+                this.clearReview()
+            })
+        }
     }
     getBtnDivs = () => {
         let divStr = []
@@ -176,7 +191,7 @@ class _AddReview extends Component {
                     </div>
                     <div className="add-review-btn">
 
-                        <div className="checkout-btn-container">
+                        <div className="checkout-btn-container" onClick={this.formSubmited}>
                             {this.getBtnDivs()}
                             <div className="content">
                                 <button type="submit" className="checkout-btn" ><span>Add</span></button>
@@ -196,7 +211,8 @@ function mapStateToProps(state) {
     }
 }
 const mapDispatchToProps = {
-    onAddReview
+    onAddReview,
+    loadUser
 }
 export const AddReview = connect(mapStateToProps, mapDispatchToProps)(_AddReview)
 // export const AddReview = connect(mapStateToProps)(_AddReview)

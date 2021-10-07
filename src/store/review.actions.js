@@ -21,6 +21,7 @@ import { stayService } from '../services/stay.service'
 export function onAddReview(review, stayId) {
   return async dispatch => {
     try {
+      console.log('add');
       const currStay = await stayService.getById(stayId)
       currStay.reviews.unshift(review)
       const updatedStay = await stayService.update(currStay)
@@ -33,8 +34,6 @@ export function onAddReview(review, stayId) {
       showErrorMsg('Cannot update stay')
       console.log('Cannot save stay', err)
     }
-
-
   }
 }
 

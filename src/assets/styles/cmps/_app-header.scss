@@ -271,12 +271,12 @@
             }
         }
         @include for-wider-layout {
-            .search-bar-container {
-            }
+            // .search-bar-container {
+            // }
         }
         @include for-extra-wide-layout {
-            .search-bar-container {
-            }
+            // .search-bar-container {
+            // }
         }
     }
 }
