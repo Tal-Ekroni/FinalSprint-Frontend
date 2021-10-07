@@ -38,9 +38,9 @@ async function update(stay) {
 function filterPageStays(filterBy, stays) {
     // console.log('filtorrr', stays);
     var filterdStays = []
-    filterdStays = [...filterdStays, ...stays.filter(stay =>
-        stay.amenities.filter(amenity => filterBy.amenities[amenity])
-    )]
+    // filterdStays = [...filterdStays, ...stays.filter(stay =>
+    //     stay.amenities.filter(amenity => filterBy.amenities[amenity])
+    // )]
     if (filterBy.placeType) {
         filterdStays = [...filterdStays, ...stays.filter(stay => stay.assetType.split(' ')[0] === filterBy.placeType.split(' ')[0])]
     }

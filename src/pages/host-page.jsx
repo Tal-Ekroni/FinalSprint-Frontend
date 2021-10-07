@@ -17,7 +17,7 @@ class _HostPage extends React.Component {
         user: null,
         orders: [],
         stays: [],
-        selectedTab: 'add-stay'
+        selectedTab: 'orders'
     }
     async componentDidMount() {
         window.scrollTo(0, 0)
@@ -55,9 +55,9 @@ class _HostPage extends React.Component {
                             indicatorColor="secondary"
                             aria-label="secondary tabs example"
                         >
-                            <Tab value="add-stay" label="Add a stay" />
                             <Tab value="orders" label={orders ? `Orders (${orders.length})` : 'Orders'} />
                             <Tab value="my-stays" label="My stays" />
+                            <Tab value="add-stay" label="Add a stay" />
                             <Tab value="stats" label="Stats" />
                         </Tabs>
                     </section>

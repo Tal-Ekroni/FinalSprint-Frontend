@@ -128,7 +128,8 @@ class _CheckoutForm extends React.Component {
             trip.stay = {
                 _id: stay._id,
                 imgUrls: stay.imgUrls,
-                name: stay.name
+                name: stay.name,
+                reviewsAvg: stay.reviewsAvg
             }
             trip.status = 'pending'
             this.props.onAddOrder(trip)

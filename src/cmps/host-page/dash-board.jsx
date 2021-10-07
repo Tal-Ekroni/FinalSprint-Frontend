@@ -8,6 +8,7 @@ import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
+import { FaStar } from 'react-icons/fa'
 
 class _OrdersDashboard extends Component {
     state = {
@@ -40,7 +41,7 @@ class _OrdersDashboard extends Component {
                     buyerImg: order.buyer.imgUrl,
                     price: order.totalPrice,
                     status: order.status,
-                    approveBtn: <div>
+                    approveBtn: <div className="host-action-btns flex">
                         <button className="approve-order-btn" onClick={() => { this.onApproveOrder(order._id) }}>Approve</button>
                         <button className="approve-order-btn" onClick={() => { (order.status === "pending") ? this.onDeclinelOrder(order._id) : this.onRemoveOrder(order._id) }}>
                             {(order.status === "pending") ? 'Decline' : 'Remove'}</button>
@@ -52,6 +53,12 @@ class _OrdersDashboard extends Component {
             })
             return dataOrders
         }
+    }
+    getTotalRate = (orders) => {
+        let totalRate = 0;
+        orders.map(order => { totalRate += +order.stay.reviewsAvg })
+        // orders.map(order => { console.log(order); })
+        return totalRate
     }
     onApproveOrder = (orderId) => {
         const { orders } = this.props
@@ -70,7 +77,13 @@ class _OrdersDashboard extends Component {
     onRemoveOrder = (orderId) => {
         this.props.onRemoveOrder(orderId)
     }
+    getOrdersStatus = (status) => {
+        const { orders } = this.props
+        const filterdOrders = orders.filter(order => order.status === status)
+        return filterdOrders.length
+    }
     render() {
+        const { orders } = this.props
         const columns = [
             {
                 name: 'stayName',
@@ -116,7 +129,52 @@ class _OrdersDashboard extends Component {
         };
 
         return (
-            <main className="notifications-page-container  main-container">
+            <main className="notifications-page-container  ">
+                <section className="dashboard-header-container flex">
+                    <div className="total-rate-container flex column space-between">
+                        <div>
+                            <p className="dashboard-label">Total Rate</p>
+                        </div>
+                        <div className="dashboard-value flex ">
+                            <p className="checkout-star"><FaStar size={13} color="#FF5A5F" /></p>
+                            <p className="dash-avg-score">{this.getTotalRate(orders)}</p>
+                        </div>
+                    </div>
+                    <div className="dash-stat-container flex column space-between">
+                        <div className="dashboard-label">
+                        </div>
+                        <div className="dashboard-value">
+                            <p className="dash-avg-score">{5}%</p>
+                        </div>
+                    </div>
+                    <div className="dash-earning-container flex column space-between">
+                        <div>
+                            <p className="dashboard-label">monthly earning</p>
+                        </div>
+                        <div className="dashboard-value">
+                            <p className="dash-avg-earning">{5}%</p>
+                        </div>
+                    </div>
+                    <div className="dash-earning-container flex column space-between">
+                        <div>
+                            <p className="dashboard-label">Orders</p>
+                        </div>
+                        <div className="orders-sec-dash flex ">
+                            <div className="dashboard-value flex align-center">
+                                <div className="dash-orders-circle pending"></div>
+                                <p className="dash-avg-order">{this.getOrdersStatus('pending')}/{orders.length}</p>
+                            </div>
+                            <div className="dashboard-value flex align-center">
+                                <div className="dash-orders-circle approved"></div>
+                                <p className="dash-avg-order">{this.getOrdersStatus('approved')}/{orders.length}</p>
+                            </div>
+                            <div className="dashboard-value flex align-center">
+                                <div className="dash-orders-circle declined"></div>
+                                <p className="dash-avg-order">{this.getOrdersStatus('declined')}/{orders.length}</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
                 <section className="notifications-container">
                     <MUIDataTable
                         title={"Your orders"}
