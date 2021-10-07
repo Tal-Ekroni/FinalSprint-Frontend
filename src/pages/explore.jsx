@@ -12,7 +12,7 @@ class _Explore extends React.Component {
         frontFilter: {
             placeType: '',
             PropertyType: '',
-            priceRange:[],
+            priceRange: [20,1500],
             amenities: {
                 TV: false,
                 Wifi: false,
@@ -21,9 +21,7 @@ class _Explore extends React.Component {
                 "Smoking allowed": false,
                 "Pets allowed": false,
                 "Cooking basics": false,
-            },
-            amenities:["TV"]
-
+            }
         }
     }
     async componentDidMount() {
@@ -44,12 +42,14 @@ class _Explore extends React.Component {
         }
     }
     onSetAmenity = (key) => {
-        this.setState({ frontFilter: { ...this.state.frontFilter, ameneties: { ...this.state.frontFilter.amenities, [key]: !this.state.frontFilter.amenities[key] } } }, () => { this.onSetPageFilter('ameneties', this.state.frontFilter.amenities) })
-    } 
+        this.setState({ frontFilter: { ...this.state.frontFilter, amenities: { ...this.state.frontFilter.amenities, [key]: !this.state.frontFilter.amenities[key] } } }, () => { this.onSetPageFilter('ameneties', this.state.frontFilter.amenities) })
+    }
     onSetPageFilter = (filterType, val, ev) => {
+
         this.setState({ frontFilter: { ...this.state.frontFilter, [filterType]: val } }, () => {
-            console.log(this.state)
-            this.setState({ stays: stayService.filterPageStays(this.state.frontFilter, this.props.stays) })
+            const newStays = stayService.filterPageStays(this.state.frontFilter, this.props.stays)
+            console.log(newStays,'newStays')
+            this.setState({ stays: newStays })
         })
 
 
