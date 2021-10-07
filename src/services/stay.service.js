@@ -47,9 +47,9 @@ function filterPageStays(filterBy, stays) {
         filterdStays = [...filterdStays, ...stays.filter(stay =>
             stay.assetType.toLowerCase().split(' ')[1] === filterBy.PropertyType.toLowerCase())]
     }
-    if (filterBy.priceRange) {
-        console.log('hi from price range');
-    }
+    // if (filterBy.priceRange) {
+    //     console.log('hi from price range');
+    // }
     return filterdStays
 }
 function subscribe(listener) {
