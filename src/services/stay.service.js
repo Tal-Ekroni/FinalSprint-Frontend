@@ -36,20 +36,21 @@ async function update(stay) {
 
 
 function filterPageStays(filterBy, stays) {
+    // console.log('filtorrr', stays);
     var filterdStays = []
-    // filterdStays = [...filterdStays, ...stays.filter(stay =>
-    //     stay.amenities.filter(amenity => filterBy.amenities[amenity])
-    // )]
+    filterdStays = [...filterdStays, ...stays.filter(stay =>
+        stay.amenities.filter(amenity => filterBy.amenities[amenity])
+    )]
     if (filterBy.placeType) {
         filterdStays = [...filterdStays, ...stays.filter(stay => stay.assetType.split(' ')[0] === filterBy.placeType.split(' ')[0])]
     }
     if (filterBy.PropertyType) {
-        filterdStays = [...filterdStays, ...stays.filter(stay =>
-            stay.assetType.toLowerCase().split(' ')[1] === filterBy.PropertyType.toLowerCase())]
+        filterdStays = stays.filter(stay => stay.assetType.toLowerCase().split(' ')[1] === filterBy.PropertyType.toLowerCase())
     }
-    // if (filterBy.priceRange) {
-    //     console.log('hi from price range');
-    // }
+    console.log('filtorr', filterdStays);
+    if (filterBy.priceRange) {
+        filterdStays = stays.filter(stay => stay.price >= filterBy.priceRange[0] && stay.price <= filterBy.priceRange[1])
+    }
     return filterdStays
 }
 function subscribe(listener) {
