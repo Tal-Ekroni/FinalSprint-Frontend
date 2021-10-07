@@ -7,7 +7,8 @@
     }
 }
 .explore-page-container {
-    height: 90vh;
+    min-height: 90vh;
+    margin-bottom:45px;
     ::-webkit-scrollbar {
         width: 0;
         background-color: transparent;
