@@ -1,28 +1,43 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { loadStays, onAddStay, onEditStay, onRemoveStay, setFilter } from '../store/stay.actions.js'
+import { loadStays, onAddStay, onEditStay, onRemoveStay, setFilter, setStays } from '../store/stay.actions.js'
 import { onBookTrip, loadUser } from '../store/user.actions.js'
 import { StaysList } from '../cmps/stays-list.jsx'
 import { ExploreFilter } from '../cmps/explore-filter.jsx'
 import loader from '../assets/img/three-dots.svg'
-
+import { stayService } from '../services/stay.service.js'
 class _Explore extends React.Component {
-
-    async componentDidMount() {
-        window.scrollTo(0, 0)
-        try {
-            await this.props.loadUser(this.props.user._id)
-            await this.props.loadStays(this.props.filterBy)
-
-        } catch (err) {
-            console.log('error', err)
-        }
-
+    state = {
+        stays: [],
+        placeType: '',
+        PropertyType: '',
     }
+    componentDidMount() {
+        const { user } = this.props
+        window.scrollTo(0, 0)
+        this.props.loadStays(this.props.filterBy)
+        if (user) this.props.loadUser(this.props.user._id)
+    }
+
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.filterBy !== this.props.filterBy) {
             this.props.loadStays(this.props.filterBy);
         }
+        if (prevState.PropertyType !== this.state.PropertyType) {
+            this.setState({ stays: stayService.filterPageStays(this.state, this.props.stays) })
+
+        }
+    }
+    onSetPageFilter = (filterType, val, ev) => {
+        this.setState({ [filterType]: val, stays: stayService.filterPageStays(this.state, this.props.stays) })
+    }
+    onClearPageFilter = () => {
+        const clearState = {
+            stays: this.props.stays,
+            placeType: '',
+            PropertyType: '',
+        }
+        this.setState({ ...clearState }, console.log(this.state))
     }
 
     onRemoveStay = (stayId) => {
@@ -36,7 +51,6 @@ class _Explore extends React.Component {
         const stayToSave = { ...stay, price }
         this.props.onEditStay(stayToSave)
     }
-
     render() {
         const { stays, filterBy } = this.props
         if (!stays.length) return <div className="loader-container flex align-center justify-center page-padding"><img src={loader} alt="loader" /></div>
@@ -48,15 +62,13 @@ class _Explore extends React.Component {
                         <p>{stays.length === 1 ? `${stays.length} stay` : `${stays.length} stays`}</p>
                         <h1>{filterBy.location ? `Places to stay at ${filterBy.location}` : 'Find places to stay'}</h1>
                     </div>
-                    <ExploreFilter />
-                    {stays.length && <StaysList stays={stays} history={this.props.history} />}
+                    <ExploreFilter stays={stays} onSetPageFilter={this.onSetPageFilter} onClearPageFilter={this.onClearPageFilter} />
+                    {stays.length && <StaysList stays={this.state.stays} history={this.props.history} />}
                 </div>
             </main>
         )
     }
 }
-
-
 function mapStateToProps(state) {
     return {
         stays: state.stayModule.stays,
@@ -71,7 +83,8 @@ const mapDispatchToProps = {
     onEditStay,
     onBookTrip,
     setFilter,
-    loadUser
+    loadUser,
+    setStays
 
 }
 

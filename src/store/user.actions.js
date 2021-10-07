@@ -42,7 +42,6 @@ export function removeUser(userId) {
     }
 }
 export function updateUser(userToSave) {
-    // console.log('stay to ', stayToSave);
     return async (dispatch) => {
         try {
             const updatedUser = await userService.update(userToSave)
@@ -122,18 +121,20 @@ export function onBecomeHost(userId) {
     }
 
 }
-export function onToggleLikeStay(isLiked, savedStay = null) {
+export function onToggleLikedStay(savedStayId, isLiked, userId) {
+    console.log('action', savedStayId, isLiked, userId);
     return async (dispatch, getState) => {
         try {
-            const user = await userService.getLoggedinUser()
+            const user = await userService.getById(userId)
             if (isLiked) {
-                user.mySaves.push(savedStay)
+                user.mySaves.push(savedStayId)
             } else {
-                const stayIdx = user.mySaves.findIndex(saved => saved._id === savedStay._id)
-                user.mySaves.splice(stayIdx, 1)
+                user.mySaves = user.mySaves.filter(saved => saved !== savedStayId)
             }
-            await userService.update(user)
-            dispatch({ type: 'UPDATE_USER', user })
+            const savedUser = await userService.update(user)
+            dispatch({ type: 'UPDATE_USER', savedUser })
+            showSuccessMsg('User updated')
+
         } catch (err) {
             console.log(err);
         }

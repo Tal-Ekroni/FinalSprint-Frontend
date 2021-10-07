@@ -44,39 +44,43 @@
       font-family: circular-light;
       &.place-type {
         background-color: $clr1;
+        overflow: hidden;
         .place-type {
           display: flex;
           flex-direction: column;
           align-items: flex-start;
-          padding: 10px 20px;
           transition: background-color 0.5s;
-          overflow: hidden;
-          border-radius: 13px;
           &:not(:last-child) {
             border-bottom: 1px solid #d8d8d8;
           }
           &:hover {
             background-color: lightgray;
+
           }
           h1 {
             font-size: 14px;
+            padding: 5px 0px 3px 15px;
+
           }
           p {
             font-size: 11px;
+           padding: 0px 0px 4px 15px;
           }
         }
       }
 
       &.property-type {
+        overflow: hidden;
+
         .property-type {
           display: flex;
           flex-direction: column;
           align-items: flex-start;
-          padding: 10px 20px;
           transition: background-color 0.5s;
-          border-radius: 13px;
           h1 {
             font-size: 14px;
+            padding: 5px 10px;
+
           }
           &:not(:last-child) {
             border-bottom: 1px solid #d8d8d8;

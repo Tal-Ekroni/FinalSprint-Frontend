@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { loadStay } from '../store/stay.actions.js'
+import { loadUser, onToggleLikedStay } from '../store/user.actions.js'
 import { BasicInfo } from '../cmps/stay-details/details-base-info'
 import { AssetSum } from '../cmps/stay-details/details-asset-sum'
 import { AssetAmenities } from '../cmps/stay-details/details-amenities'
@@ -14,7 +15,6 @@ import { ReviewAvg } from '../cmps/stay-details/_reviews-avg'
 import loader from '../assets/img/three-dots.svg'
 // import { ReadMore } from '../cmps/_read-more'
 // import { eventBusService } from '../services/event-bus.service'
-
 class _StayDetails extends React.Component {
     state = {
         stay: null,
@@ -25,16 +25,50 @@ class _StayDetails extends React.Component {
             guests: { adults: 1, kids: 0, infants: 0 },
 
         },
-        isReadMoreOn: false
+        isReadMoreOn: false,
+        isLiked: null
     }
     componentDidMount() {
-        window.scrollTo(0, 0)
+        const { user } = this.props
         const { stayId } = this.props.match.params
+        window.scrollTo(0, 0)
         if (!stayId) this.props.history.push('/')
         else this.props.loadStay(stayId)
+        if (user) this.props.loadUser(user._id)
+        this.isStayLiked()
     }
- 
-   
+    componentDidUpdate(prevProps, prevState) {
+        const { user } = this.props
+        if (prevState.isLiked !== this.state.isLiked) {
+            console.log('hii');
+            this.isStayLiked()
+            if (user) this.props.loadUser(user._id)
+        }
+    }
+
+    onToogleLikeStay = () => {
+        const { user, stay } = this.props
+        const { isLiked } = this.state
+        if (user) {
+            this.setState({ isLiked: !isLiked }, () => {
+                this.props.onToggleLikedStay(stay._id, !isLiked, user._id)
+            })
+        }
+    }
+
+    isStayLiked = () => {
+        const { user, stay } = this.props
+        if (user && stay) {
+            if (user.mySaves) {
+                const isLiked = user.mySaves.filter(saved => saved === stay._id)
+                console.log('stayLiked?', user);
+                if (isLiked.length) {
+                    this.setState({ isLiked: true }, () => { console.log('thi', this.state) })
+                }
+            }
+        }
+    }
+
     handleChange = ({ startDate, endDate }) => {
         if (startDate) {
             this.setState(prevState => ({ trip: { ...prevState.trip, startDate } }))
@@ -50,13 +84,13 @@ class _StayDetails extends React.Component {
         this.setState({ isReadMoreOn: true })
     }
     render() {
-        const { isReadMoreOn } = this.state
+        const { isReadMoreOn, isLiked } = this.state
         const { stay, user } = this.props
         return (
             <section className="stay-details-section main-layout">
                 {(!stay) && <div className="loader-container flex align-center justify-center"><img src={loader} alt="loader" /></div>}
                 {stay && <div className="stay-details-container">
-                    <BasicInfo user={user} stay={stay} />
+                    <BasicInfo user={user} stay={stay} isLiked={isLiked} onToogleLikeStay={this.onToogleLikeStay} />
                     <section className=" details-main-conatiner flex">
                         <div className="details-left-container">
                             <section className="host-info-container flex align-center space-between">
@@ -65,7 +99,7 @@ class _StayDetails extends React.Component {
                                         <p>{`${stay.assetType} hosted by ${stay.host.fullname}`}</p>
                                     </div>
                                     <div className="asset-info">
-                                        <p>{`${stay.capacity} guests`}<span>•</span>{`${stay.capacity} bedrooms`}<span>•</span>{`${stay.capacity} beds`}<span>•</span>{`${stay.capacity} baths`} </p>
+                                        <p><span>{`${stay.capacity} guests`}</span> • <span >{`${stay.host.fullname} is Superhost!`}</span> •  <span>{`${stay.capacity} beds`}</span> </p>
                                     </div>
                                 </div>
                                 <div className="host-img-container">
@@ -112,6 +146,8 @@ function mapStateToProps(state) {
     }
 }
 const mapDispatchToProps = {
-    loadStay
+    loadStay,
+    onToggleLikedStay,
+    loadUser
 }
 export const StayDetails = connect(mapStateToProps, mapDispatchToProps)(_StayDetails)

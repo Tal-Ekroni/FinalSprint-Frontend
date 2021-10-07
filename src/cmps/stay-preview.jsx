@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from 'react-redux'
 import { FaStar, } from "react-icons/fa";
-import { onToggleLikeStay, updateUser } from '../store/user.actions.js'
+import { onToggleLikedStay, updateUser } from '../store/user.actions.js'
 
 import LazyLoad from "./preview-slider"
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
@@ -17,25 +17,13 @@ class _StayPreview extends React.Component {
     onToggleLikeStay = (ev, stay) => {
         ev.stopPropagation()
         const { user } = this.props
+        const { isLiked } = this.state
         if (user) {
-            if (this.state.isLiked) {
-                this.setState({ isLiked: !this.state.isLiked }, () => this.props.onToggleLikeStay(this.state.isLiked, { _id: stay._id }))
-            } else {
-                const savedStay = {
-                    _id: stay._id,
-                    reviews: {
-                        rate: stay.reviews[0].rate,
-                        reviewCount: stay.reviews.length
-                    },
-                    assetType: stay.assetType,
-                    loc: stay.loc,
-                    name: stay.name,
-                    price: stay.price
-                }
-                this.setState({ isLiked: !this.state.isLiked }, () => this.props.onToggleLikeStay(this.state.isLiked, savedStay))
-            }
-            this.props.updateUser(user)
-        } else {
+            this.setState({ isLiked: !isLiked }, () => {
+                this.props.onToggleLikedStay(stay._id, !isLiked, user._id)
+            })
+        }
+        else {
             showErrorMsg('Login First')
         }
     }
@@ -43,7 +31,7 @@ class _StayPreview extends React.Component {
         const { user, stay } = this.props
         if (user) {
             if (user.mySaves && user.mySaves.length) {
-                const isLiked = user.mySaves.filter(saved => saved._id === stay._id)
+                const isLiked = user.mySaves.filter(saved => saved === stay._id)
                 if (isLiked.length) {
                     this.setState({ isLiked: true })
                 }
@@ -94,7 +82,7 @@ function mapStateToProps(state) {
     }
 }
 const mapDispatchToProps = {
-    onToggleLikeStay,
+    onToggleLikedStay,
     updateUser
 }
 

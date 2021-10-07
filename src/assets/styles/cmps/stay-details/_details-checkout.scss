@@ -1,7 +1,7 @@
 .checkout-popup {
     width: 100%;
     position: sticky;
-    top: 80px;
+    top: 120px;
     bottom: 20px;
     margin-top: 20px;
     align-items: center;
@@ -9,7 +9,7 @@
     .checkout-container {
         flex-direction: column;
         align-items: center;
-        min-height: 280px;
+        min-height: 250px;
         width: 80%;
 
         // margin: 0 auto;
@@ -103,7 +103,7 @@
     }
 }
 .select-form {
-    border: 1px solid lightgray;
+    border: 0.5px solid #00000050;
     border-radius: 13px;
     overflow: hidden;
     & label {
@@ -117,14 +117,14 @@
     }
 }
 .guests-check-container {
-    border-top: 1px solid lightgray;
+    border-top: 0.5px solid #00000050;
 }
 .checkin-input {
     // padding: 26px 12px 10px;
     padding-left: 12px;
     width: 50%;
     height: 55px;
-    border-right: 1px solid lightgray;
+    border-right: 1px solid #00000050;
     // border-bottom: 1px solid lightgray;
     justify-content: center;
 }

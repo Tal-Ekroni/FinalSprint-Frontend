@@ -1,3 +1,4 @@
+import { showUserMsg } from './event-bus.service.js';
 import { httpService } from './http.service.js'
 
 const listeners = []
@@ -8,7 +9,8 @@ export const stayService = {
     save,
     remove,
     subscribe,
-    update
+    update,
+    filterPageStays
 }
 window.cs = stayService;
 
@@ -32,6 +34,28 @@ async function update(stay) {
     return UpdatedStay;
 }
 
+
+function filterPageStays(filterBy, stays) {
+    var filterdStays = []
+    if (filterBy.placeType) {
+        filterdStays = stays.filter(stay => stay.assetType.split(' ')[0] === filterBy.placeType.split(' ')[0])
+        if (!filterdStays.length) {
+            filterdStays = stays
+            showUserMsg('No matches')
+        }
+    }
+    if (filterBy.PropertyType) {
+        filterdStays = stays.filter(stay =>
+            stay.assetType.toLowerCase().split(' ')[1] === filterBy.PropertyType.toLowerCase()
+        )
+        if (!filterdStays.length) {
+            filterdStays = stays
+            showUserMsg('No matches')
+        }
+    }
+
+    return filterdStays
+}
 function subscribe(listener) {
     listeners.push(listener)
 }

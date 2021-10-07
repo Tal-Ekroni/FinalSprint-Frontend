@@ -1,5 +1,8 @@
-import { FaStar, FaUpload, FaHeart } from 'react-icons/fa'
-export function BasicInfo({ stay }) {
+import { FaStar, FaUpload, FaHeart, FaShare, FaShareAlt, FaFileUpload } from 'react-icons/fa'
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+
+export function BasicInfo({ stay, isLiked, onToogleLikeStay }) {
+    console.log('basic', isLiked);
     return (
         <section className="info-imgs-container">
             <section className="stay-info">
@@ -9,7 +12,7 @@ export function BasicInfo({ stay }) {
                 <section className="info-line flex space-between">
                     <div className="stay-info-conatiner flex">
                         <div className="stay-avg-info flex align-end">
-                            <p><FaStar size={14} color="#FF5A5F" /></p>
+                            <p className="info-star"><FaStar  size={14} color="#FF5A5F" /></p>
                             <p className="info-line-score">5</p>
                             <p className="info-line-reviews">{`(${stay.reviews.length} reviews)`}</p>
                         </div>
@@ -20,11 +23,11 @@ export function BasicInfo({ stay }) {
                     </div>
                     <div className="user-btns-container flex">
                         <div className="share-btn-container flex align-end">
-                            <p><FaUpload size={13} /></p>
+                            <p ><FaUpload className="icon share" /></p>
                             <p>Share</p>
                         </div>
                         <div className="save-btn-container flex align-end">
-                            <p><FaHeart size={13} color="#FF5A5F" /></p>
+                            <p onClick={() => { onToogleLikeStay() }}>{isLiked ? <FaHeart color="#FF5A5F" /> : <FaHeart />}</p>
                             <p>Save</p>
                         </div>
                     </div>

@@ -11,6 +11,9 @@
     margin-bottom: 32px;
     border: 0.5px solid lightgray;
     padding: 0 10px 0 0;
+    .go-back-btn{
+        display: none;
+    }
     ::-webkit-scrollbar {
         width: 0;
         background-color: transparent;
@@ -124,7 +127,8 @@
 .search-dates-container {
     position: absolute;
     left: 50%;
-    transform: translate(-50%, -10%);
+    // transform: translate(-50%, -10%);
+    transform: translateY(75px);
     top: 90%;
     border-radius: 13px;
     overflow: hidden;
