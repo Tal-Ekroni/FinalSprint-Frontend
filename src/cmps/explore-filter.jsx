@@ -1,6 +1,7 @@
 import React from 'react'
 import { DynamicModal } from './DynamicModal'
 import { stayService } from '../services/stay.service'
+import PriceRangeSlider from './price-range-slider'
 
 export class ExploreFilter extends React.Component {
     state = {
@@ -67,9 +68,7 @@ export class ExploreFilter extends React.Component {
                 <div className="sort-type price">
                     <button onClick={() => { this.onToggleModals('PriceIsOpen') }}>Price</button>
                     {PriceIsOpen && <DynamicModal >
-                        <div className="price">
-                            <input type="number" name="" id="" />
-                        </div>
+                        <PriceRangeSlider onSetPageFilter={this.props.onSetPageFilter} />
                     </DynamicModal>}
                 </div>
                 <div className="">

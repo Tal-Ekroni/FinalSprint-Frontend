@@ -44,8 +44,11 @@ function filterPageStays(filterBy, stays) {
         filterdStays = [...filterdStays, ...stays.filter(stay => stay.assetType.split(' ')[0] === filterBy.placeType.split(' ')[0])]
     }
     if (filterBy.PropertyType) {
-        filterdStays = [...filterdStays, ...stays.filter(stay => 
+        filterdStays = [...filterdStays, ...stays.filter(stay =>
             stay.assetType.toLowerCase().split(' ')[1] === filterBy.PropertyType.toLowerCase())]
+    }
+    if (filterBy.priceRange) {
+        console.log('hi from price range');
     }
     return filterdStays
 }
