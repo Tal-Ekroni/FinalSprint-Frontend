@@ -5,6 +5,7 @@ export function loadStays(filterBy = null) {
     return async (dispatch) => {
         try {
             const stays = await stayService.query(filterBy)
+            console.log(stays,'from actions');
             dispatch({
                 type: 'SET_STAYS',
                 stays
@@ -76,19 +77,6 @@ export function setFilter(filterBy) {
         }
     }
 }
-export function setStays(stays) {
-    return async (dispatch) => {
-        try {
-            await dispatch({
-                type: 'SET_STAYS',
-                stays
-            })
-        } catch (err) {
-            console.log(err);
-        }
-    }
-}
-
 export function setMiniHeader(isMiniHeader) {
     return async (dispatch, getState) => {
         try {

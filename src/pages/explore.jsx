@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { loadStays, onAddStay, onEditStay, onRemoveStay, setFilter, setStays } from '../store/stay.actions.js'
+import { loadStays, onAddStay, onEditStay, onRemoveStay, setFilter } from '../store/stay.actions.js'
 import { onBookTrip, loadUser } from '../store/user.actions.js'
 import { StaysList } from '../cmps/stays-list.jsx'
 import { ExploreFilter } from '../cmps/explore-filter.jsx'
@@ -28,7 +28,6 @@ class _Explore extends React.Component {
         try {
             const { user } = this.props
             window.scrollTo(0, 0)
-            await this.props.loadStays(this.props.filterBy)
             this.setState({ stays: this.props.stays })
             if (user) this.props.loadUser(this.props.user._id)
         } catch (err) {
@@ -109,9 +108,7 @@ const mapDispatchToProps = {
     onEditStay,
     onBookTrip,
     setFilter,
-    loadUser,
-    setStays
-
+    loadUser
 }
 
 

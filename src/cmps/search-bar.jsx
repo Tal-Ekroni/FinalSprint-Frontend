@@ -100,10 +100,11 @@ class _SearchBar extends React.Component {
         const { location, startDate, endDate, adultNumber, kidsNumber, infantsNumber } = this.state
         const urlQuery = `explore/?location=${location}&startDate=${startDate}&endDate=${endDate}&adults=${adultNumber}&kids=${kidsNumber}&infants=${infantsNumber}`
         this.props.closeAllModals()
+        await this.props.loadStays(this.props.filterBy)
         this.props.history.push(urlQuery)
     }
-    onSetLocationPopUp=(val)=>{
-        this.setState({location:val})
+    onSetLocationPopUp = (val) => {
+        this.setState({ location: val },()=>{this.onSetFilter()})
     }
 
     timeToShow = (date, val) => {
@@ -122,13 +123,13 @@ class _SearchBar extends React.Component {
         return (
             <div >
                 <div className="search-bar-container flex align-center ">
-                    <button className="go-back-btn" onClick={()=>{window.history.back()}}><FaChevronLeft size={22} /></button>
+                    <button className="go-back-btn" onClick={() => { window.history.back() }}><FaChevronLeft size={22} /></button>
                     <div className="location-container flex column" onClick={() => { onToggleSearchModals('locModal') }}>
                         <label htmlFor="location" className="loc-inpt">Location
                             <input type="text" name="location" autoComplete="off" value={location} onChange={this.handleChange} placeholder="Where are you going?" />
                         </label>
                     </div>
-                    {locModal && <LocationsPopUp onSetLocationPopUp={this.onSetLocationPopUp} onSetFilter={this.onSetFilter} closeAllModals={closeAllModals} history={this.props.history} />}
+                    {locModal && <LocationsPopUp onSetLocationPopUp={this.onSetLocationPopUp}  closeAllModals={closeAllModals}  />}
                     <div className="mini-search-input" onClick={onToggleMiniSearchBar}>
                         <p >
                             {filterBy.location ? filterBy.location : 'Start your search'}

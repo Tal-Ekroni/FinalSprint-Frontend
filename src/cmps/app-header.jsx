@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { FaAirbnb, FaBars } from 'react-icons/fa'
 import { onLogin, onLogout, onSignup, loadUsers, removeUser, } from '../store/user.actions.js'
-import { setFilter, setMiniHeader } from '../store/stay.actions';
+import { setFilter, setMiniHeader, loadStays } from '../store/stay.actions';
 import { LoginSignup } from './login-signup.jsx'
 import { SearchBar } from './search-bar';
 import { UserMenu } from './user-menu';
@@ -78,7 +78,7 @@ class _AppHeader extends React.Component {
 
         }
     }
- 
+
     closeAllModals = () => {
         this.onToggleScreen(false)
         this.setState({ locModal: false, guestModal: false, datesModal: false, isUserMenuOpen: false })
@@ -97,7 +97,7 @@ class _AppHeader extends React.Component {
                         <NavLink to="/" className="logo"><FaAirbnb size={40} color={!isMiniHeader ? '#fff' : '#ff5a5f'} /><span>AnyGo</span></NavLink>
                     </div>
                     <div className="search-bar">
-                        {isMiniHeader && <SearchBar closeAllModals={this.closeAllModals} setFilter={setFilter} isMiniHeader={isMiniHeader} filterBy={filterBy} datesModal={datesModal} guestModal={guestModal} locModal={locModal} onToggleSearchModals={this.onToggleSearchModals} onToggleMiniSearchBar={this.onToggleMiniSearchBar} />}
+                        {isMiniHeader && <SearchBar loadStays={this.props.loadStays} closeAllModals={this.closeAllModals} setFilter={setFilter} isMiniHeader={isMiniHeader} filterBy={filterBy} datesModal={datesModal} guestModal={guestModal} locModal={locModal} onToggleSearchModals={this.onToggleSearchModals} onToggleMiniSearchBar={this.onToggleMiniSearchBar} />}
                     </div>
                     <div className="nav-bar-container flex ">
                         <div className="flex align-center">
@@ -119,7 +119,7 @@ class _AppHeader extends React.Component {
                         </div>
                     </div>
                 </nav>
-                {!isMiniHeader && <SearchBar closeAllModals={this.closeAllModals} setFilter={setFilter} isMiniHeader={isMiniHeader} filterBy={filterBy} datesModal={datesModal} guestModal={guestModal} locModal={locModal} onToggleSearchModals={this.onToggleSearchModals} />}
+                {!isMiniHeader && <SearchBar loadStays={this.props.loadStays} closeAllModals={this.closeAllModals} setFilter={setFilter} isMiniHeader={isMiniHeader} filterBy={filterBy} datesModal={datesModal} guestModal={guestModal} locModal={locModal} onToggleSearchModals={this.onToggleSearchModals} />}
                 {isLoginBotmodal && <div className="main-container">
                     <LoginSignup />
                 </div>}
@@ -145,7 +145,8 @@ const mapDispatchToProps = {
     loadUsers,
     removeUser,
     setFilter,
-    setMiniHeader
+    setMiniHeader,
+    loadStays
 }
 
 export const AppHeader = connect(mapStateToProps, mapDispatchToProps)(_AppHeader)
