@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom"
 
 export function TopRatedStays({ stays, history }) {
-    console.log('from toprated', history)
     return (
         <section className="flex column top-rated-stays ">
             {

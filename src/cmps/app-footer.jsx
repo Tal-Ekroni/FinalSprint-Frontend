@@ -41,14 +41,14 @@ class _AppFooter extends React.Component {
                 <h2>Insparation for future getaways</h2>
                 <div className="flex column">
                     <h4>Top rated stays</h4>
-                    <TopRatedStays  stays={this.state.topRatedStays} />
+                    <TopRatedStays stays={this.state.topRatedStays} />
                 </div>
                 <div className="footer-info flex justify-start align-center">
                     <p>
                         © 2021 AnyGo ,Inc.,
                     </p>
                     <Link to='/login'>· Login</Link>
-                    <Link to={user.isHost ? '/host' : '/become-a-host'}>{user.isHost ? '· Host page' : '· Become a host'}</Link>
+                    {user && <Link to={user.isHost ? '/host' : '/become-a-host'}>{user.isHost ? '· Host page' : '· Become a host'}</Link>}
                 </div>
                 <UserMsg />
             </footer>

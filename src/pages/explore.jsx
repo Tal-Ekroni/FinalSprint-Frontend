@@ -16,6 +16,7 @@ class _Explore extends React.Component {
         const { user } = this.props
         window.scrollTo(0, 0)
         this.props.loadStays(this.props.filterBy)
+        console.log(this.props.stays)
         if (user) this.props.loadUser(this.props.user._id)
     }
 
