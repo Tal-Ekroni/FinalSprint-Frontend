@@ -38,6 +38,7 @@
 @import "cmps/stay-details/_guests-modal";
 @import "cmps/stay-details/add-review.scss";
 @import "cmps/login-page";
+@import "cmps/app-footer/top-rated-stays";
 @import "cmps/explore-filter.scss";
 @import "cmps/search-bar.scss";
 @import "cmps/guest-modal.scss";
@@ -45,5 +46,6 @@
 @import "cmps/user-menu.scss";
 @import "cmps/locations-popup.scss";
 @import "cmps/host-page/add-stay.scss";
-@import "cmps/date-picker-2.scss";
 @import "cmps/host-page/host-orders-list.scss";
+@import"cmps/date-picker-2.scss";
+@import"cmps/price-range-picker";

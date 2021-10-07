@@ -84,7 +84,7 @@
         }
     }
     label {
-        padding: 14px 24px;
+        padding: 16px 24px;
         // width: auto;
         width: 100%;
 
@@ -105,6 +105,8 @@
         &:nth-child(1) {
             display: flex;
             flex-direction: column;
+        padding: 16px 24px;
+
         }
     }
     .search-btn-container {
