@@ -1,8 +1,7 @@
 import { FaStar, FaUpload, FaHeart, FaShare, FaShareAlt, FaFileUpload } from 'react-icons/fa'
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 
-export function BasicInfo({ stay, isLiked, onToogleLikeStay }) {
-    console.log('basic', isLiked);
+export function BasicInfo({ stay, isLiked, onToogleLikeStay, reviewsAvg }) {
     return (
         <section className="info-imgs-container">
             <section className="stay-info">
@@ -12,8 +11,8 @@ export function BasicInfo({ stay, isLiked, onToogleLikeStay }) {
                 <section className="info-line flex space-between">
                     <div className="stay-info-conatiner flex">
                         <div className="stay-avg-info flex align-end">
-                            <p className="info-star"><FaStar  size={14} color="#FF5A5F" /></p>
-                            <p className="info-line-score">5</p>
+                            <p className="info-star"><FaStar size={14} color="#FF5A5F" /></p>
+                            <p className="info-line-score">{reviewsAvg ? reviewsAvg : 0}</p>
                             <p className="info-line-reviews">{`(${stay.reviews.length} reviews)`}</p>
                         </div>
                         <p className="dot">•</p>
@@ -35,7 +34,6 @@ export function BasicInfo({ stay, isLiked, onToogleLikeStay }) {
             </section>
             <section className="asset-imgs-container flex  ">
                 <div className="asset-imgs flex">
-                    {/* <div className="primary-img square-ratio"><img src={img} alt="" /></div> */}
                     <div className="primary-img square-ratio"><img src={stay.imgUrls[0]} alt="" /></div>
                     <div className="imgs-container flex">
                         <div className="asset-img square-ratio"><img src={stay.imgUrls[1]} alt="" /></div>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { loadStay } from '../store/stay.actions.js'
+import { loadStay, onEditStay } from '../store/stay.actions.js'
 import { loadUser, onToggleLikedStay } from '../store/user.actions.js'
 import { BasicInfo } from '../cmps/stay-details/details-base-info'
 import { AssetSum } from '../cmps/stay-details/details-asset-sum'
@@ -39,8 +39,10 @@ class _StayDetails extends React.Component {
             socketService.setup()
             socketService.emit('setHost', this.props.stay.host._id)
             socketService.on('getNotif', (ev) => { console.log(ev); })
+            this.setState({ stay: this.props.stay })
         }
         if (user) this.props.loadUser(user._id)
+
         this.isStayLiked()
     }
     componentWillUnmount() {
@@ -71,7 +73,6 @@ class _StayDetails extends React.Component {
         if (user && stay) {
             if (user.mySaves) {
                 const isLiked = user.mySaves.filter(saved => saved === stay._id)
-                console.log('stayLiked?', user);
                 if (isLiked.length) {
                     this.setState({ isLiked: true }, () => { console.log('thi', this.state) })
                 }
@@ -93,9 +94,12 @@ class _StayDetails extends React.Component {
     onOpenReadModal = () => {
         this.setState({ isReadMoreOn: true })
     }
-    setReviewsAvg = () => {
+    setReviewsAvg = (avgScore) => {
         const { stay } = this.props
-        console.log('stay', stay);
+        stay.reviewsAvg = avgScore
+        if (stay.reviewsAvg !== avgScore ) this.props.onEditStay(stay)
+        this.setState(prevState => ({ stay: { ...prevState.stay, reviewsAvg: avgScore } }))
+
     }
     render() {
         const { isReadMoreOn, isLiked } = this.state
@@ -104,7 +108,7 @@ class _StayDetails extends React.Component {
             <section className="stay-details-section main-layout">
                 {(!stay) && <div className="loader-container flex align-center justify-center"><img src={loader} alt="loader" /></div>}
                 {stay && <div className="stay-details-container">
-                    <BasicInfo user={user} stay={stay} isLiked={isLiked} onToogleLikeStay={this.onToogleLikeStay} />
+                    <BasicInfo user={user} stay={stay} isLiked={isLiked} reviewsAvg={stay.reviewsAvg} onToogleLikeStay={this.onToogleLikeStay} />
                     <section className=" details-main-conatiner flex">
                         <div className="details-left-container">
                             <section className="host-info-container flex align-center space-between">
@@ -134,12 +138,12 @@ class _StayDetails extends React.Component {
                             </section>
                         </div>
                         <div className="details-right-container">
-                            <CheckoutForm />
+                            <CheckoutForm reviewsAvg={stay.reviewsAvg} />
                         </div>
                     </section>
                     <section className="page-bottom-container">
                         <div className="reviews-section-container" >
-                            <ReviewAvg reviews={stay.reviews} />
+                            <ReviewAvg reviews={stay.reviews} setReviewsAvg={this.setReviewsAvg} />
                             <ReviewsList reviews={stay.reviews} onToogleReadModal={this.onToogleReadModal} isReadMoreOn={isReadMoreOn} />
                             {user && <div className="add-review">
                                 <AddReview stayId={stay._id} />
@@ -162,6 +166,7 @@ function mapStateToProps(state) {
 const mapDispatchToProps = {
     loadStay,
     onToggleLikedStay,
-    loadUser
+    loadUser,
+    onEditStay
 }
 export const StayDetails = connect(mapStateToProps, mapDispatchToProps)(_StayDetails)

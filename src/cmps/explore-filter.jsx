@@ -5,38 +5,21 @@ import PriceRangeSlider from './price-range-slider'
 
 export class ExploreFilter extends React.Component {
     state = {
-        modals: {
-            placeTypeIsOpen: false,
-            PropertyTypeIsOpen: false,
-            PriceIsOpen: false,
-            AmenitiesTypeIsOpen: false,
-        }
+        placeTypeIsOpen: false,
+        PropertyTypeIsOpen: false,
+        PriceIsOpen: false,
+        AmenitiesTypeIsOpen: false,
+
     }
-    onCloseAllModals = () => {
-        this.setState({ modals: { ...this.state.modals, placeTypeIsOpen: false, PropertyTypeIsOpen: false, PriceIsOpen: false, AmenitiesTypeIsOpen: false } })
-    }
+    
     onToggleModals = (modal) => {
-        this.onCloseAllModals()
-        switch (modal) {
-            case 'placeTypeIsOpen':
-                this.setState({ modals: { ...this.state.modals, placeTypeIsOpen: !this.state.modals.placeTypeIsOpen } })
-                break;
-            case 'PropertyTypeIsOpen':
-                this.setState({ modals: { ...this.state.modals, PropertyTypeIsOpen: !this.state.modals.PropertyTypeIsOpen } })
-                break;
-            case 'PriceIsOpen':
-                this.setState({ modals: { ...this.state.modals, PriceIsOpen: !this.state.modals.PriceIsOpen } })
-                break;
-            case 'AmenitiesTypeIsOpen':
-                this.setState({ modals: { ...this.state.modals, AmenitiesTypeIsOpen: !this.state.modals.AmenitiesTypeIsOpen } })
-                break;
-            default:
-                break;
-        }
+        this.setState({ placeTypeIsOpen: false, PropertyTypeIsOpen: false, PriceIsOpen: false, AmenitiesTypeIsOpen: false }, () => {
+            this.setState({ [modal]: !this.state[modal] })
+        })
     }
 
     render() {
-        const { placeTypeIsOpen, PropertyTypeIsOpen, PriceIsOpen, AmenitiesTypeIsOpen } = this.state.modals
+        const { placeTypeIsOpen, PropertyTypeIsOpen, PriceIsOpen, AmenitiesTypeIsOpen } = this.state
         return (
             <div className="explore-filter flex">
                 <div className="sort-type type-of-place">
