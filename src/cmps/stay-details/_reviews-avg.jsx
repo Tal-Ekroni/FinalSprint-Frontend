@@ -3,7 +3,13 @@ import { FaStar } from "react-icons/fa";
 
 export class ReviewAvg extends React.Component {
     state = {
-        totalAvg: 0
+        totalAvg: 0,
+        cleanliness: null,
+        communication: null,
+        checkIn: null,
+        accuracy: null,
+        location: null,
+        value: null
     }
     componentDidMount() {
         this.setState({ totalAvg: 0 })
@@ -13,34 +19,37 @@ export class ReviewAvg extends React.Component {
         const { reviews } = this.props
         var avgScore = 0;
         // var newTotalAvg = this.state.totalAvg
-        switch (type) {
-            case 'cleanliness':
-                reviews.map(review => avgScore += +review.cleanliness)
-                avgScore = ((avgScore / reviews.length)).toFixed(2)
-                break
-            case 'communication':
-                reviews.map(review => avgScore += +review.communication)
-                avgScore = ((avgScore / reviews.length)).toFixed(2)
-                break
-            case 'checkIn':
-                reviews.map(review => avgScore += +review.checkIn)
-                avgScore = ((avgScore / reviews.length)).toFixed(2)
-                break
-            case 'accuracy':
-                reviews.map(review => avgScore += +review.accuracy)
-                avgScore = ((avgScore / reviews.length)).toFixed(2)
-                break
-            case 'location':
-                reviews.map(review => avgScore += +review.location)
-                avgScore = ((avgScore / reviews.length)).toFixed(2)
-                break
-            case 'value':
-                reviews.map(review => avgScore += +review.value)
-                avgScore = ((avgScore / reviews.length)).toFixed(2)
-                break
-            default:
-                break;
-        }
+        reviews.map(review => avgScore += +review[type])
+        avgScore = ((avgScore / reviews.length)).toFixed(1)
+        // this.setState(prevState => ({ ...prevState, [type]: +avgScore }), () => { console.log(this.state); })
+        // switch (type) {
+        //     case 'cleanliness':
+        //         reviews.map(review => avgScore += +review.cleanliness)
+        //         avgScore = ((avgScore / reviews.length)).toFixed(2)
+        //         break
+        //     case 'communication':
+        //         reviews.map(review => avgScore += +review.communication)
+        //         avgScore = ((avgScore / reviews.length)).toFixed(2)
+        //         break
+        //     case 'checkIn':
+        //         reviews.map(review => avgScore += +review.checkIn)
+        //         avgScore = ((avgScore / reviews.length)).toFixed(2)
+        //         break
+        //     case 'accuracy':
+        //         reviews.map(review => avgScore += +review.accuracy)
+        //         avgScore = ((avgScore / reviews.length)).toFixed(2)
+        //         break
+        //     case 'location':
+        //         reviews.map(review => avgScore += +review.location)
+        //         avgScore = ((avgScore / reviews.length)).toFixed(2)
+        //         break
+        //     case 'value':
+        //         reviews.map(review => avgScore += +review.value)
+        //         avgScore = ((avgScore / reviews.length)).toFixed(2)
+        //         break
+        //     default:
+        //         break;
+        // }
         return avgScore
 
     }

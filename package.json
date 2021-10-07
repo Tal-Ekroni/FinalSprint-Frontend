@@ -26,6 +26,7 @@
     "google-maps-react": "^2.0.6",
     "materialui-daterange-picker": "^1.1.92",
     "moment": "^2.18.1",
+    "mui-datatables": "^3.7.8",
     "node-sass": "^6.0.1",
     "react": "^16.14.0",
     "react-bootstrap": "^1.6.4",

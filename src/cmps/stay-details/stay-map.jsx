@@ -58,16 +58,7 @@ class _StayMap extends Component {
                         <Marker
                             position={{ lat, lng }}
                             name={'Current location'}
-                        // onClick={this.onMarkerClicked}
                         />
-                        {/* <Marker
-                            key={loc.name}
-                            position={loc}
-                            name={'Current location'}
-                            onClick={this.onMarkerClicked}
-                        /> */}
-
-
 
                         <InfoWindow
                             onClose={this.onInfoWindowClose}

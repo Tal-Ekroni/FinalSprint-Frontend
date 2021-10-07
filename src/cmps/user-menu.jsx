@@ -21,6 +21,13 @@ class _UserMenu extends React.Component {
     onOpenLogin = () => {
         this.props.onOpenBotLogin()
         this.props.onToggleSearchModals('menuModal')
+        const noti = {
+            byUser: { fullName: 'Davit Pok' },
+            onUser: { fullName: 'Joe James' },
+            createdAt: Date.now(),
+            stayId: '',
+            txt: 'Reservd you stay'
+        }
     }
 
     render() {
@@ -29,13 +36,16 @@ class _UserMenu extends React.Component {
             <div className="user-menu-container flex column" >
                 <section className="user-menu top-section ">
                     <div >
+                        {user && <NavLink onClick={() => this.props.onToggleSearchModals('menuModal')} className="user-menu-line" to="/notifications"><p>Notifications</p></NavLink>}
+                    </div>
+                    <div  >
                         {user && <NavLink onClick={() => this.props.onToggleSearchModals('menuModal')} className="user-menu-line" to="/trips"><p>Trips</p></NavLink>}
-                        {!user && <p className="user-menu-line"> Trips</p>}
+                        {!user && <p> Trips</p>}
 
                     </div>
                     {
                         user && user.isHost && <div >
-                            <NavLink onClick={() => this.props.onToggleSearchModals('menuModal')} className="user-menu-line" to="/host"><p>Host</p></NavLink>
+                            <NavLink onClick={() => this.props.onToggleSearchModals('menuModal')} to="/host" className="user-menu-line" ><p>Host</p></NavLink>
 
                         </div>
                     }

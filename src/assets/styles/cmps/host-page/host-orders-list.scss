@@ -1,0 +1,11 @@
+// .MUIDataTableHeadCell-toolButton-63 {
+//     width: 150px;
+//     text-align: center;
+// }
+.MUIDataTableBodyCell-stackedCommon-80 {
+    width: 150px;
+    & > div {
+        display: flex;
+        text-align: center;
+    }
+}

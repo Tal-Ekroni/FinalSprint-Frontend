@@ -63,7 +63,7 @@ class _Explore extends React.Component {
                         <h1>{filterBy.location ? `Places to stay at ${filterBy.location}` : 'Find places to stay'}</h1>
                     </div>
                     <ExploreFilter stays={stays} onSetPageFilter={this.onSetPageFilter} onClearPageFilter={this.onClearPageFilter} />
-                    {stays.length && <StaysList stays={this.state.stays} history={this.props.history} />}
+                    {stays.length && <StaysList stays={this.props.stays} history={this.props.history} />}
                 </div>
             </main>
         )
