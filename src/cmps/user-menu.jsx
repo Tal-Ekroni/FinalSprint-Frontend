@@ -39,8 +39,8 @@ class _UserMenu extends React.Component {
                         {user && <NavLink onClick={() => this.props.onToggleSearchModals('menuModal')} className="user-menu-line" to="/notifications"><p>Notifications</p></NavLink>}
                     </div>
                     <div  >
-                        {user && <NavLink onClick={() => this.props.onToggleSearchModals('menuModal')} className="user-menu-line" to="/trips"><p>Trips</p></NavLink>}
-                        {!user && <p> Trips</p>}
+                        {user && <NavLink onClick={() => this.props.onToggleSearchModals('menuModal')} className="user-menu-line" to="/trips"><p >Trips</p></NavLink>}
+                        {!user && <p className="user-menu-line"F> Trips</p>}
 
                     </div>
                     {
