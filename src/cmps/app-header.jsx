@@ -52,24 +52,21 @@ class _AppHeader extends React.Component {
         this.setState({ isScreenOpen: val })
     }
     onToggleSearchModals = (modal) => {
+        this.closeAllModals()
         switch (modal) {
             case 'locModal':
-                this.closeAllModals()
                 this.onToggleScreen(!this.state.locModal)
                 this.setState({ locModal: !this.state.locModal })
                 break;
             case 'guestModal':
-                this.closeAllModals()
                 this.onToggleScreen(!this.state.guestModal)
                 this.setState({ guestModal: !this.state.guestModal })
                 break;
             case 'datesModal':
-                this.closeAllModals()
                 this.onToggleScreen(!this.state.datesModal)
                 this.setState({ datesModal: !this.state.datesModal })
                 break;
             case 'menuModal':
-                this.closeAllModals()
                 this.onToggleScreen(!this.state.isUserMenuOpen)
                 this.setState({ isUserMenuOpen: !this.state.isUserMenuOpen })
                 break;

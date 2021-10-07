@@ -14,12 +14,9 @@ class _HomePage extends React.Component {
         this.props.setMiniHeader(false)
         window.addEventListener('resize', this.isMobileDisplay)
         this.isMobileDisplay()
-
     }
-
     componentWillUnmount() {
         this.props.setMiniHeader(true)
-
         window.removeEventListener('resize', this.isMobileDisplay)
         window.removeEventListener('scroll', this.onSetMiniHeader)
     }

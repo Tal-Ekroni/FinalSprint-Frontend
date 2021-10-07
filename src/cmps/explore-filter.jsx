@@ -1,29 +1,14 @@
 import React from 'react'
 import { DynamicModal } from './DynamicModal'
-import { stayService } from '../services/stay.service'
 import PriceRangeSlider from './price-range-slider'
-
 export class ExploreFilter extends React.Component {
-    state = {
-        placeTypeIsOpen: false,
-        PropertyTypeIsOpen: false,
-        PriceIsOpen: false,
-        AmenitiesTypeIsOpen: false,
-
-    }
-    
-    onToggleModals = (modal) => {
-        this.setState({ placeTypeIsOpen: false, PropertyTypeIsOpen: false, PriceIsOpen: false, AmenitiesTypeIsOpen: false }, () => {
-            this.setState({ [modal]: !this.state[modal] })
-        })
-    }
-
     render() {
-        const { placeTypeIsOpen, PropertyTypeIsOpen, PriceIsOpen, AmenitiesTypeIsOpen } = this.state
+        const { placeTypeIsOpen, PropertyTypeIsOpen, PriceIsOpen, AmenitiesTypeIsOpen } = this.props.modals
+        const amenities = this.props.amenities
         return (
             <div className="explore-filter flex">
                 <div className="sort-type type-of-place">
-                    <button onClick={() => { this.onToggleModals('placeTypeIsOpen') }}>Type of place</button>
+                    <button onClick={() => { this.props.onToggleModals('placeTypeIsOpen') }}>Type of place</button>
                     {placeTypeIsOpen && <DynamicModal >
 
                         <div className="place-type" onClick={(ev) => { this.props.onSetPageFilter('placeType', 'Entire Place') }}>
@@ -37,7 +22,7 @@ export class ExploreFilter extends React.Component {
                     </DynamicModal>}
                 </div>
                 <div className="sort-type property-type">
-                    <button onClick={() => { this.onToggleModals('PropertyTypeIsOpen') }}>Property Type</button>
+                    <button onClick={() => { this.props.onToggleModals('PropertyTypeIsOpen') }}>Property Type</button>
                     {PropertyTypeIsOpen && <DynamicModal >
                         <div className="property-type" onClick={(ev) => { this.props.onSetPageFilter('PropertyType', 'Loft') }}>
                             <h1>Loft</h1>
@@ -66,7 +51,7 @@ export class ExploreFilter extends React.Component {
                     </DynamicModal>}
                 </div>
                 <div className="sort-type price">
-                    <button onClick={() => { this.onToggleModals('PriceIsOpen') }}>Price</button>
+                    <button onClick={() => { this.props.onToggleModals('PriceIsOpen') }}>Price</button>
                     {PriceIsOpen && <DynamicModal >
                         <PriceRangeSlider onSetPageFilter={this.props.onSetPageFilter} />
                     </DynamicModal>}
@@ -74,34 +59,34 @@ export class ExploreFilter extends React.Component {
                 <div className="">
                 </div>
                 <div className="sort-type amenities-type">
-                    <button onClick={() => { this.onToggleModals('AmenitiesTypeIsOpen') }}>Amenities</button>
+                    <button onClick={() => { this.props.onToggleModals('AmenitiesTypeIsOpen') }}>Amenities</button>
                     {AmenitiesTypeIsOpen && <DynamicModal >
-                        <div className="amenities-type" onClick={() => { this.props.onSetAmenity('TV') }}>
+                        <div className={amenities['TV'] ? 'amenities-type active' : 'amenities-type'} onClick={() => { this.props.onSetAmenity('TV') }}>
                             <h1>
                                 TV
                             </h1>
                         </div>
-                        <div className="amenities-type" onClick={() => { this.props.onSetAmenity('Wifi') }}>
+                        <div className={amenities['Wifi'] ? 'amenities-type active' : 'amenities-type'} onClick={() => { this.props.onSetAmenity('Wifi') }}>
                             <h1>
                                 Wifi
                             </h1>
                         </div>
-                        <div className="amenities-type" onClick={() => { this.props.onSetAmenity('AC') }}>
+                        <div className={amenities['AC'] ? 'amenities-type active' : 'amenities-type'} onClick={() => { this.props.onSetAmenity('AC') }}>
                             <h1>
                                 AC
                             </h1>
                         </div>
-                        <div className="amenities-type" onClick={() => { this.props.onSetAmenity('Smoking allowed') }}>
+                        <div className={amenities['Smoking Allowed'] ? 'amenities-type active' : 'amenities-type'} onClick={() => { this.props.onSetAmenity('Smoking allowed') }}>
                             <h1>
                                 Smoking Allowed
                             </h1>
                         </div>
-                        <div className="amenities-type" onClick={() => { this.props.onSetAmenity('Pets allowed') }}>
+                        <div className={amenities['Pets Allowed'] ? 'amenities-type active' : 'amenities-type'} onClick={() => { this.props.onSetAmenity('Pets allowed') }}>
                             <h1>
                                 Pets Allowed
                             </h1>
                         </div>
-                        <div className="amenities-type" onClick={() => { this.props.onSetAmenity('Cooking basics') }}>
+                        <div className={amenities['Cooking Basics'] ? 'amenities-type active' : 'amenities-type'} onClick={() => { this.props.onSetAmenity('Cooking basics') }}>
                             <h1>
                                 Cooking Basics
                             </h1>
@@ -111,11 +96,9 @@ export class ExploreFilter extends React.Component {
                 <div className="sort-type type-of-place">
                     <button onClick={this.props.onClearPageFilter}>Clear</button>
                 </div>
-
             </div>
         )
     }
-
 }
 
 

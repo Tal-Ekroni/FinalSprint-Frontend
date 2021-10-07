@@ -2,16 +2,16 @@
   background-color: $clr1;
   border: 1px solid $clr7;
   border-radius: 13px;
-  width: 400px;
+  width: 320px;
   height: 200px;
   z-index: 8;
   justify-content: center;
   .MuiBox-root {
     width: 90%;
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
     z-index: 8;
+    .MuiSlider-root{
+      padding: 47px 0px;
+    }
     .MuiSlider-track,
     .MuiSlider-thumb{
       color: $clr6;
@@ -21,29 +21,29 @@
       justify-content: space-between;
       margin: 0 5px;
       z-index: 8;
-      .price-range-lbl {
-        // position: relative;
-        font-size: 12px;
-        font-family: circular-light;
-        // top: 0px;
-        // right: -60px;
-        z-index: 2;
-      }
-      input {
-                margin: 0;
-        padding: 0;
-        outline: unset;
+      .min-price,
+      .max-price{
+
         border: 0.5px solid $clr7;
         border-radius: 13px;
-        height: 42px;
-        width: 72px;
       }
-      .min-input{
-
+        .price-range-span {
+          font-size: 12px;
+          font-family: circular-light;
+          z-index: 2;
+        }
+        input {
+          margin: 0;
+          padding: 0;
+          outline: unset;
+          border: none;
+          border-radius: 13px;
+          height: 26px;
+          width: 70px;
+          text-align: center;
+          color: $clr6;
+          font-size: 14px;
+        }
       }
-      .max-input{
-
-      }
-    }
   }
 }
