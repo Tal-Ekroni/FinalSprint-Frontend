@@ -9,6 +9,7 @@ import { AddStay } from '../cmps/host-page/add-stay';
 import { loadOrders } from '../store/order.actions'
 import { loadStays, setFilter } from '../store/stay.actions'
 import { HostStayslist } from '../cmps/host-page/host-stays-list';
+import { OrdersDashboard } from '../cmps/host-page/dash-board';
 
 // import { OrdersList } from '../cmps/hosts-list.jsx'
 class _HostPage extends React.Component {
@@ -62,21 +63,21 @@ class _HostPage extends React.Component {
                     </section>
                     {user && <section className="host-container">
 
-                        {selectedTab === 'orders' && <div>
+                        {selectedTab === 'orders' && <div className=" page-padding">
                             <h2>Orders</h2>
                             <div className="orders-container">
-
-                                <OrdersList orders={orders} />
+                                <OrdersDashboard orders={orders} />
+                                {/* <OrdersList orders={orders} /> */}
                             </div>
                         </div>}
-                        {selectedTab === 'my-stays' && <div>
+                        {selectedTab === 'my-stays' && <div className=" page-padding">
                             <h2>My Stays!</h2>
                             <div className="orders-container">
                                 {stays && <HostStayslist stays={stays} />}
 
                             </div>
                         </div>}
-                        {selectedTab === 'stats' && <div>
+                        {selectedTab === 'stats' && <div className=" page-padding">
                             <HostChart />
                         </div>}
                         {selectedTab === 'add-stay' && <div>

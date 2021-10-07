@@ -13,6 +13,7 @@ import { StayMap } from '../cmps/stay-details/stay-map'
 import { AddReview } from '../cmps/stay-details/add-review'
 import { ReviewAvg } from '../cmps/stay-details/_reviews-avg'
 import loader from '../assets/img/three-dots.svg'
+import { socketService } from '../services/socket.service'
 // import { ReadMore } from '../cmps/_read-more'
 // import { eventBusService } from '../services/event-bus.service'
 class _StayDetails extends React.Component {
@@ -31,12 +32,21 @@ class _StayDetails extends React.Component {
     componentDidMount() {
         const { user } = this.props
         const { stayId } = this.props.match.params
-        window.scrollTo(0, 0)
         if (!stayId) this.props.history.push('/')
         else this.props.loadStay(stayId)
+        window.scrollTo(0, 0)
+        if (this.props.stay) {
+            socketService.setup()
+            socketService.emit('setHost', this.props.stay.host._id)
+            socketService.on('getNotif', (ev) => { console.log(ev); })
+        }
         if (user) this.props.loadUser(user._id)
         this.isStayLiked()
     }
+    componentWillUnmount() {
+        socketService.off('getNotif', (ev) => { console.log(ev); })
+    }
+
     componentDidUpdate(prevProps, prevState) {
         const { user } = this.props
         if (prevState.isLiked !== this.state.isLiked) {
@@ -82,6 +92,10 @@ class _StayDetails extends React.Component {
     }
     onOpenReadModal = () => {
         this.setState({ isReadMoreOn: true })
+    }
+    setReviewsAvg = () => {
+        const { stay } = this.props
+        console.log('stay', stay);
     }
     render() {
         const { isReadMoreOn, isLiked } = this.state

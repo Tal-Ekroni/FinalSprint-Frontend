@@ -37,23 +37,16 @@ async function update(stay) {
 
 function filterPageStays(filterBy, stays) {
     var filterdStays = []
+    // filterdStays = [...filterdStays, ...stays.filter(stay =>
+    //     stay.amenities.filter(amenity => filterBy.amenities[amenity])
+    // )]
     if (filterBy.placeType) {
-        filterdStays = stays.filter(stay => stay.assetType.split(' ')[0] === filterBy.placeType.split(' ')[0])
-        if (!filterdStays.length) {
-            filterdStays = stays
-            showUserMsg('No matches')
-        }
+        filterdStays = [...filterdStays, ...stays.filter(stay => stay.assetType.split(' ')[0] === filterBy.placeType.split(' ')[0])]
     }
     if (filterBy.PropertyType) {
-        filterdStays = stays.filter(stay =>
-            stay.assetType.toLowerCase().split(' ')[1] === filterBy.PropertyType.toLowerCase()
-        )
-        if (!filterdStays.length) {
-            filterdStays = stays
-            showUserMsg('No matches')
-        }
+        filterdStays = [...filterdStays, ...stays.filter(stay => 
+            stay.assetType.toLowerCase().split(' ')[1] === filterBy.PropertyType.toLowerCase())]
     }
-
     return filterdStays
 }
 function subscribe(listener) {

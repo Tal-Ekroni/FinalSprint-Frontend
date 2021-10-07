@@ -1,6 +1,7 @@
 import { userService } from "../services/user.service.js";
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
 import { utilService } from "../services/util.service.js";
+import { socketService } from "../services/socket.service.js";
 // import { socketService, SOCKET_EMIT_USER_WATCH, SOCKET_EVENT_USER_UPDATED } from "../services/socket.service.js";
 
 
@@ -45,6 +46,7 @@ export function updateUser(userToSave) {
     return async (dispatch) => {
         try {
             const updatedUser = await userService.update(userToSave)
+            console.log('userrr', updatedUser);
             dispatch({
                 type: 'UPDATE_USER',
                 stay: updatedUser
@@ -64,6 +66,11 @@ export function onLogin(credentials) {
     return async (dispatch) => {
         try {
             const user = await userService.login(credentials)
+            if (user.isHost) {
+                socketService.setup()
+                socketService.emit('setHost', user._id)
+                socketService.on('getNotif', (ev) => { console.log(ev)})
+            }
             dispatch({
                 type: 'SET_USER',
                 user

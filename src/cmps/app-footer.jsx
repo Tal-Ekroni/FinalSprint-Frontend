@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { TopRatedStays } from './app-footer/top-rated-stays'
 import { loadStays } from '../store/stay.actions'
 import { removeFromCart, checkout } from '../store/stay.actions'
-import { onBookTrip } from '../store/user.actions'
+import { onBookTrip, loadUser } from '../store/user.actions'
 
 import { UserMsg } from './user-msg.jsx'
 import { FooterLocations } from './app-footer/locations-footer'
@@ -19,6 +19,7 @@ class _AppFooter extends React.Component {
 
     async componentDidMount() {
         await this.props.loadStays(this.props.filterBy)
+        await this.props.loadUser()
         const topRatedStays = this.props.stays.slice(1)
         console.log(topRatedStays)
         this.setState({ topRatedStays })
@@ -31,7 +32,7 @@ class _AppFooter extends React.Component {
     checkout = () => {
         this.props.checkout();
     }
-    get staytTotal() {
+    getstaytTotal() {
         return this.props.cart.reduce((acc, stay) => acc + stay.price, 0)
     }
 
@@ -77,7 +78,8 @@ const mapDispatchToProps = {
     checkout,
     onBookTrip,
     removeFromCart,
-    loadStays
+    loadStays,
+    loadUser    
 }
 
 export const AppFooter = connect(mapStateToProps, mapDispatchToProps)(_AppFooter)
