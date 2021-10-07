@@ -1,38 +1,105 @@
-import 'rheostat/initialize';
-import React from 'react';
-import Rheostat from 'rheostat';
+import * as React from 'react';
+import PropTypes from 'prop-types';
+import Slider, { SliderThumb } from '@mui/material/Slider';
+import { styled } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
+import Tooltip from '@mui/material/Tooltip';
+import Box from '@mui/material/Box';
 
-export class PriceRangePicker extends React.Component {
-    MyBackground = ({ style }) => {
-        return (
-            <div
-                style={{
-                    ...style,
-                    backgroundColor: '#000',
-                    height: 13,
-                }}
-            />
-        );
-    }
-    render() {
-        return (
-            <div className="">
-                <Rheostat
-                    min={1}
-                    max={100}
-                    values={[1, 100]}
-                    background={this.MyBackground}
-                    style={{color:'red'}}
-                />
-                <ol>
-                    <lh>Values</lh>
-                    {[1, 100].map((value) => (
-                        <li key={value}>
-                            {value}
-                        </li>
-                    ))}
-                </ol>
-            </div>
-        )
-    }
+function ValueLabelComponent(props) {
+  const { children, value } = props;
+
+  return (
+    <Tooltip enterTouchDelay={0} placement="top" title={value}>
+      {children}
+    </Tooltip>
+  );
+}
+
+ValueLabelComponent.propTypes = {
+  children: PropTypes.element.isRequired,
+  value: PropTypes.number.isRequired,
+};
+
+
+
+
+
+const AirbnbSlider = styled(Slider)(({ theme }) => ({
+  color: '#3a8589',
+  height: 3,
+  padding: '13px 0',
+  '& .MuiSlider-thumb': {
+    height: 27,
+    width: 27,
+    backgroundColor: '#fff',
+    border: '1px solid currentColor',
+    '&:hover': {
+      boxShadow: '0 0 0 8px rgba(58, 133, 137, 0.16)',
+    },
+    '& .airbnb-bar': {
+      height: 9,
+      width: 1,
+      backgroundColor: 'currentColor',
+      marginLeft: 1,
+      marginRight: 1,
+    },
+  },
+  '& .MuiSlider-track': {
+    height: 3,
+  },
+  '& .MuiSlider-rail': {
+    color: theme.palette.mode === 'dark' ? '#bfbfbf' : '#d8d8d8',
+    opacity: theme.palette.mode === 'dark' ? undefined : 1,
+    height: 3,
+  },
+}));
+
+function AirbnbThumbComponent(props) {
+  const { children, ...other } = props;
+  return (
+    <SliderThumb {...other}>
+      {children}
+      <span className="airbnb-bar" />
+      <span className="airbnb-bar" />
+      <span className="airbnb-bar" />
+    </SliderThumb>
+  );
+}
+
+AirbnbThumbComponent.propTypes = {
+  children: PropTypes.node,
+};
+
+export default function PriceRangeSlider({onSetPageFilter}) {
+const [value,setValue]=React.useState([20,1500])
+
+const handleChange=(event,newValue)=>{
+  onSetPageFilter('priceRange',newValue)
+}
+
+  return (
+    <div className="price-range-container flex ">
+      <Box sx={{ width: 320 }}>
+        <Box sx={{ m: 3 }} />
+        <AirbnbSlider
+          components={{ Thumb: AirbnbThumbComponent }}
+          getAriaLabel={(index) => (index === 0 ? 'Minimum price' : 'Maximum price')}
+          defaultValue={[20,1500]}
+          onChange={handleChange}
+          max={1500}
+        />
+        {/* <div className="picks-container ">
+          <div className="min-price">
+            <label className="price-range-lbl" htmlFor="minPrice">min price</label>
+            <input className="min-input" type="number" />
+          </div>
+          <div className="max-price">
+            <label className="price-range-lbl" htmlFor="maxPrice">min price</label>
+            <input className="max-input" type="number" />
+          </div>
+        </div> */}
+      </Box>
+    </div>
+  );
 }

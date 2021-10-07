@@ -12,6 +12,7 @@ class _Explore extends React.Component {
         frontFilter: {
             placeType: '',
             PropertyType: '',
+            priceRange:[],
             amenities: {
                 TV: false,
                 Wifi: false,
@@ -49,8 +50,10 @@ class _Explore extends React.Component {
     } 
     onSetPageFilter = (filterType, val, ev) => {
         this.setState({ frontFilter: { ...this.state.frontFilter, [filterType]: val } }, () => {
+            console.log(this.state)
             this.setState({ stays: stayService.filterPageStays(this.state.frontFilter, this.props.stays) })
         })
+
 
 
     }
