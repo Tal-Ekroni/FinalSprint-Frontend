@@ -7,21 +7,21 @@
     margin-top: 25px;
     margin-bottom: 25px;
     border-radius: 10%;
-    & input {
+     input {
         padding: 15px;
         outline: none;
-        &:nth-child(2) {
-            border-top: 1px solid $clr2;
-            border-bottom: 1px solid $clr2;
-        }
+        border:none;
+        border-bottom: 1px solid $clr2;
     }
 
     .input-fields {
         border: 1px solid $clr2;
+        padding:15px;
         margin-right: 10px;
         margin-left: 10px;
         margin-bottom: 15px;
         width: 400px;
+        border-radius:3rem;
     }
     h1 {
         position: absolute;

@@ -23,14 +23,6 @@ class _Explore extends React.Component {
             }
         }
     }
-<<<<<<< HEAD
-    componentDidMount() {
-        const { user } = this.props
-        window.scrollTo(0, 0)
-        this.props.loadStays(this.props.filterBy)
-        console.log(this.props.stays)
-        if (user) this.props.loadUser(this.props.user._id)
-=======
     async componentDidMount() {
         try {
             const { user } = this.props
@@ -41,7 +33,6 @@ class _Explore extends React.Component {
         } catch (err) {
             console.log(err);
         }
->>>>>>> a1b77ed103bc0fd37b9bd235797069a889ce4ef4
     }
 
     componentDidUpdate(prevProps, prevState) {

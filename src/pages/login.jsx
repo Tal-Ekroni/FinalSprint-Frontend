@@ -61,7 +61,7 @@ class _LoginPage extends React.Component {
         const { isSignUp, users } = this.state;
         if (!users) return <div>loading...</div>
         return (
-            <section className="flex justify-center">
+            <section className="flex justify-center page-padding">
                 <form className="login flex column justify-center align-center">
                     <h1>{isSignUp ? 'Sign Up' : 'Login'}</h1>
                     <div className="input-fields flex column">

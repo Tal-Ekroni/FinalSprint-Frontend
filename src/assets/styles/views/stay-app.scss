@@ -1,13 +1,13 @@
 .loader-container {
     width: 100%;
-    height: calc(100vh-100px);
+    height: calc(100vh - 420px);
     img {
         height: 250px;
         width: 250px;
     }
 }
 .explore-page-container {
-    height: calc(90vh - 100px);
+    height: 90vh;
     ::-webkit-scrollbar {
         width: 0;
         background-color: transparent;
