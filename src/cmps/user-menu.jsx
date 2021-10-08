@@ -1,4 +1,5 @@
 import React from 'react'
+import { withRouter } from 'react-router'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { onLogout, loadUser } from '../store/user.actions'
@@ -12,6 +13,8 @@ class _UserMenu extends React.Component {
     onLogout = () => {
         this.props.onLogout()
         this.props.onToggleSearchModals('menuModal')
+        this.props.history.push('/')
+
     }
 
     onCloseLogin = () => {
@@ -19,6 +22,7 @@ class _UserMenu extends React.Component {
         this.props.onToggleSearchModals('menuModal')
     }
     onOpenLogin = () => {
+        this.props.history.push('/login')
         this.props.onOpenBotLogin()
         this.props.onToggleSearchModals('menuModal')
         const noti = {
@@ -40,7 +44,7 @@ class _UserMenu extends React.Component {
                     </div>
                     <div  >
                         {user && <NavLink onClick={() => this.props.onToggleSearchModals('menuModal')} className="user-menu-line" to="/trips"><p >Trips</p></NavLink>}
-                        {!user && <p className="user-menu-line"F> Trips</p>}
+                        {!user && <p className="user-menu-line"> Trips</p>}
 
                     </div>
                     {
@@ -82,4 +86,4 @@ const mapDispatchToProps = {
     onLogout,
     loadUser
 }
-export const UserMenu = connect(mapStateToProps, mapDispatchToProps)(_UserMenu)
+export const UserMenu = withRouter(connect(mapStateToProps, mapDispatchToProps)(_UserMenu))

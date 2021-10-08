@@ -28,6 +28,7 @@ class _Explore extends React.Component {
                 "Smoking allowed": false,
                 "Pets allowed": false,
                 "Cooking basics": false,
+                "Hot tub":false,
             }
         }
     }
@@ -76,6 +77,7 @@ class _Explore extends React.Component {
                     "Smoking allowed": false,
                     "Pets allowed": false,
                     "Cooking basics": false,
+                    "Hot tub":false,
                 }
             }
         }

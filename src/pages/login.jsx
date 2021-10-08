@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router'
 import { userService } from '../services/user.service'
 import { onLogin, onLogout, onSignup } from '../store/user.actions'
 class _LoginPage extends React.Component {
@@ -44,11 +45,12 @@ class _LoginPage extends React.Component {
     }
 
 
-    onSignup = (ev = null) => {
+    onSignup = async (ev = null) => {
         if (ev) ev.preventDefault();
         if (!this.state.credentials.username || !this.state.credentials.password || !this.state.credentials.fullname) return;
-        this.props.onSignup(this.state.credentials);
+       await this.props.onSignup(this.state.credentials);
         this.clearState()
+        this.props.history.push('/')
     }
 
 
@@ -91,4 +93,4 @@ const mapDispatchToProps = {
     onSignup
 }
 
-export const LoginPage = connect(mapStateToProps, mapDispatchToProps)(_LoginPage)
+export const LoginPage = withRouter(connect(mapStateToProps, mapDispatchToProps)(_LoginPage))   

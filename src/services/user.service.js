@@ -58,8 +58,9 @@ async function signup(userCred) {
     userCred.myTrips = [];
     userCred.notifications = [];
     userCred.orders = []
-    const user = await storageService.post('user', userCred)
-    // const user = await httpService.post('auth/signup', userCred)
+    userCred.mySaves = []
+    // const user = await storageService.post('user', userCred)
+    const user = await httpService.post('auth/signup', userCred)
     // socketService.emit('set-user-socket', user._id);
     return _saveLocalUser(user)
 }

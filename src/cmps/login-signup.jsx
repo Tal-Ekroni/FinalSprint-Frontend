@@ -1,6 +1,10 @@
 import React from 'react'
+import GoogleLogin from 'react-google-login';
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router'
+import { LoginPage } from '../pages/login'
 import { onLogin, onLogout, onSignup, loadUsers } from '../store/user.actions'
+import { GoogleLoginCmp } from './google-login';
 class _LoginSignup extends React.Component {
     state = {
         credentials: {
@@ -49,12 +53,16 @@ class _LoginSignup extends React.Component {
         if (!this.state.credentials.username || !this.state.credentials.password || !this.state.credentials.fullname) return;
         this.props.onSignup(this.state.credentials);
         this.clearState()
+        this.props.history.push('/')
+
     }
 
     toggleSignup = () => {
         this.setState({ isSignup: !this.state.isSignup })
     }
-
+    responseGoogle = (response) => {
+        console.log(response);
+      }
     render() {
         const { username, password, fullname } = this.state.credentials;
         const { isSignup } = this.state;
@@ -123,7 +131,9 @@ class _LoginSignup extends React.Component {
                         <button >Signup!</button>
                     </form>}
                 </div>
+                <LoginPage />
 
+               <GoogleLoginCmp/>
             </div>
         )
     }
@@ -141,4 +151,4 @@ const mapDispatchToProps = {
     loadUsers
 }
 
-export const LoginSignup = connect(mapStateToProps, mapDispatchToProps)(_LoginSignup)
+export const LoginSignup = withRouter(connect(mapStateToProps, mapDispatchToProps)(_LoginSignup))

@@ -76,19 +76,24 @@ export class ExploreFilter extends React.Component {
                                 AC
                             </h1>
                         </div>
-                        <div className={amenities['Smoking Allowed'] ? 'amenities-type active' : 'amenities-type'} onClick={() => { this.props.onSetAmenity('Smoking allowed') }}>
+                        <div className={amenities['Smoking allowed'] ? 'amenities-type active' : 'amenities-type'} onClick={() => { this.props.onSetAmenity('Smoking allowed') }}>
                             <h1>
                                 Smoking Allowed
                             </h1>
                         </div>
-                        <div className={amenities['Pets Allowed'] ? 'amenities-type active' : 'amenities-type'} onClick={() => { this.props.onSetAmenity('Pets allowed') }}>
+                        <div className={amenities['Pets allowed'] ? 'amenities-type active' : 'amenities-type'} onClick={() => { this.props.onSetAmenity('Pets allowed') }}>
                             <h1>
                                 Pets Allowed
                             </h1>
                         </div>
-                        <div className={amenities['Cooking Basics'] ? 'amenities-type active' : 'amenities-type'} onClick={() => { this.props.onSetAmenity('Cooking basics') }}>
+                        <div className={amenities['Cooking basics'] ? 'amenities-type active' : 'amenities-type'} onClick={() => { this.props.onSetAmenity('Cooking basics') }}>
                             <h1>
                                 Cooking Basics
+                            </h1>
+                        </div>
+                        <div className={amenities['Hot tub'] ? 'amenities-type active' : 'amenities-type'} onClick={() => { this.props.onSetAmenity('Hot tub') }}>
+                            <h1>
+                            Hot tub
                             </h1>
                         </div>
                     </DynamicModal>}

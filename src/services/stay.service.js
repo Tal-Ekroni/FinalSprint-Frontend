@@ -41,8 +41,9 @@ function filterPageStays(filterBy, stays) {
     if (!Object.values(filterBy.amenities).includes(true)) {
         filterdStays = stays
     } else {
+        
         filterdStays = filterdStays.filter(stay => {
-            stay.amenities.filter(amenity => filterBy.amenities[amenity])
+            console.log(stay.amenities.includes('Hot tub'))
         })
     }
     if (filterBy.placeType) {
