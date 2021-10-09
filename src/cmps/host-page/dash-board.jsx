@@ -146,7 +146,7 @@ class _OrdersDashboard extends Component {
                         </div>
                         <div className="dashboard-value flex ">
                             <p className="checkout-star"><FaStar size={13} color="#FF5A5F" /></p>
-                            <p className="dash-avg-score">{this.getTotalRate(orders)}</p>
+                            <p className="dash-avg-score">{this.getTotalRate(orders).toFixed(1)}</p>
                         </div>
                     </div>
                     <div className="dash-stat-container flex column space-between">
