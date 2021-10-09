@@ -20,16 +20,28 @@ class _HostPage extends React.Component {
         selectedTab: 'orders'
     }
     async componentDidMount() {
+        const { user } = this.props
         window.scrollTo(0, 0)
         this.onGetHostStays()
-        try {
-            this.props.loadUser(this.props.user._id)
-            await this.props.loadOrders(this.props.user._id, 'host')
-            await this.props.loadStays(this.props.filterBy)
+        if (user) {
+            try {
+             
+                await this.props.loadOrders(this.props.user._id, 'host')
+                await this.props.loadStays(this.props.filterBy)
 
-        } catch (err) {
-            console.log('Error', err);
+            } catch (err) {
+                console.log('Error', err);
+            }
         }
+    }
+    componentWillUnmount() {
+        this.onClearFilter()
+
+    }
+    onClearFilter = () => {
+        const { filterBy } = this.props
+        filterBy.hostId = ''
+        this.props.setFilter(filterBy)
     }
     onGetHostStays = () => {
         const newFilter = this.props.filterBy
@@ -40,6 +52,7 @@ class _HostPage extends React.Component {
     onChangeTab = (ev, value) => {
         this.setState({ selectedTab: value })
     }
+
     render() {
         const { user, orders, stays } = this.props
         const { selectedTab } = this.state

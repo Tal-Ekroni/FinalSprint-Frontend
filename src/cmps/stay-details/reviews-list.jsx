@@ -3,6 +3,7 @@ import { ReviewsPreview } from './reviews-preview'
 // import { ReviewAvg } from './_reviews-avg'
 
 export function ReviewsList({ reviews, onToogleReadModal, isReadMoreOn }) {
+    console.log('list', isReadMoreOn);
     return (
         <section className="reviews-list-container flex ">
             {!reviews.length && <section className="reviews-container flex ">

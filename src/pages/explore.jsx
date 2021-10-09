@@ -28,7 +28,7 @@ class _Explore extends React.Component {
                 "Smoking allowed": false,
                 "Pets allowed": false,
                 "Cooking basics": false,
-                "Hot tub":false,
+                "Hot tub": false,
             }
         }
     }
@@ -36,7 +36,8 @@ class _Explore extends React.Component {
         try {
             const { user } = this.props
             window.scrollTo(0, 0)
-            this.setState({ stays: this.props.stays })
+           await this.props.loadStays(this.props.filterBy);
+            this.setState({ stays: this.props.stays})
             if (user) this.props.loadUser(this.props.user._id)
         } catch (err) {
             console.log(err);
@@ -44,7 +45,7 @@ class _Explore extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (prevProps.filterBy !== this.props.filterBy) {
+        if (prevProps.filterBy !== this.props.filterBy ) {
             this.props.loadStays(this.props.filterBy);
         }
     }
@@ -77,7 +78,7 @@ class _Explore extends React.Component {
                     "Smoking allowed": false,
                     "Pets allowed": false,
                     "Cooking basics": false,
-                    "Hot tub":false,
+                    "Hot tub": false,
                 }
             }
         }

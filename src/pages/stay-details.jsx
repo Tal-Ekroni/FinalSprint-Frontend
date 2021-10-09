@@ -14,6 +14,7 @@ import { AddReview } from '../cmps/stay-details/add-review'
 import { ReviewAvg } from '../cmps/stay-details/_reviews-avg'
 import loader from '../assets/img/three-dots.svg'
 import { socketService } from '../services/socket.service'
+import { ReadMore } from '../cmps/_read-more.jsx'
 // import { ReadMore } from '../cmps/_read-more'
 // import { eventBusService } from '../services/event-bus.service'
 class _StayDetails extends React.Component {
@@ -27,7 +28,7 @@ class _StayDetails extends React.Component {
 
         },
         isReadMoreOn: false,
-        isLiked: null
+        isLiked: null,
     }
     componentDidMount() {
         const { user } = this.props
@@ -94,12 +95,8 @@ class _StayDetails extends React.Component {
             this.setState(prevState => ({ trip: { ...prevState.trip, endDate } }))
         }
     }
-    onToogleReadModal = () => {
-        this.setState({ isReadMoreOn: !this.state.isReadMoreOn })
-    }
-    onOpenReadModal = () => {
-        this.setState({ isReadMoreOn: true })
-    }
+  
+    
     setReviewsAvg = (avgScore) => {
         const { stay } = this.props
         stay.reviewsAvg = avgScore
@@ -149,7 +146,7 @@ class _StayDetails extends React.Component {
                     <section className="page-bottom-container">
                         <div className="reviews-section-container" >
                             <ReviewAvg reviews={stay.reviews} setReviewsAvg={this.setReviewsAvg} />
-                            <ReviewsList reviews={stay.reviews} onToogleReadModal={this.onToogleReadModal} isReadMoreOn={isReadMoreOn} />
+                            <ReviewsList reviews={stay.reviews} isReadMoreOn={isReadMoreOn}  onToogleReadModal={this.onToogleReadModal} />
                             {user && <div className="add-review">
                                 <AddReview stayId={stay._id} />
                             </div>}
@@ -157,6 +154,8 @@ class _StayDetails extends React.Component {
                         <StayMap location={stay.loc} />
                     </section>
                 </div >}
+                {/* {isReadMoreOn && <ReadMore txt={this.state.txt} onCloseReadModal={this.onCloseReadModal} />} */}
+
             </section>
         )
     }

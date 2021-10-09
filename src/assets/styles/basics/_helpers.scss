@@ -91,6 +91,7 @@
         max-width: 888px;
         width: 90%;
         margin: 0 auto;
+        padding: 0 20px;
     }
 }
 @media (min-width: $normal-breakpoint) {
@@ -99,6 +100,7 @@
         max-width: 1200px;
         margin: 0 auto;
         width: 90%;
+        padding: 0 20px;
     }
 }
 @media (min-width: $wide-breakpoint) {
@@ -107,6 +109,7 @@
         max-width: 1360px;
         margin: 0 auto;
         width: 90%;
+        padding: 0 20px;
     }
 }
 @media (min-width: $wide-breakpoint) {
@@ -114,6 +117,7 @@
         min-width: 1360px;
         margin: 0 auto;
         width: 90%;
+        padding: 0 20px;
     }
 }
 .DateRangePickerInput_arrow {

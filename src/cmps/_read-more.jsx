@@ -1,5 +1,4 @@
-export function ReadMore(txt, onToogleReadModal) {
-
+export function ReadMore({txt, onToogleReadModal}) {
     return (
         <section className="read-more-popup-container">
             <div className="read-more-popup">

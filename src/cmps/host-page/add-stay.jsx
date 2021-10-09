@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import { AddStayBasicInfo } from './add-stay-basic-info';
@@ -116,7 +117,7 @@ class _AddStay extends React.Component {
                 reviews: []
             }
         }))
-
+this.props.history.push('/explore')
     }
     onUploadImg = (ev) => {
         const CLOUD_NAME = 'dkbfdybze'
@@ -217,4 +218,4 @@ const mapDispatchToProps = {
 }
 
 
-export const AddStay = connect(mapStateToProps, mapDispatchToProps)(_AddStay)
+export const AddStay = withRouter(connect(mapStateToProps, mapDispatchToProps)(_AddStay))
