@@ -11,6 +11,7 @@ const locations = [{ city: 'Porto', country: 'Portugal', imgUrl: 'https://res.cl
 class _HomePage extends React.Component {
     componentDidMount() {
         window.scrollTo(0, 0)
+        console.log(this.props.user)
         this.props.setMiniHeader(false)
         window.addEventListener('resize', this.isMobileDisplay)
         this.isMobileDisplay()
@@ -96,7 +97,7 @@ class _HomePage extends React.Component {
                 <div className="host-banner flex column justify-center">
                     <h1>Try hosting</h1>
                     <p>Earn extra income and unlock new opportunities by sharing your space</p>
-                    <button className="try-host-btn" onClick={()=>this.props.history.push('/become-a-host')}>Learn More</button>
+                    <button className="try-host-btn" onClick={()=>(this.props.user.isHost) ?this.props.history.push('/host') : this.props.history.push('/become-a-host')}>Learn More</button>
                 </div>
             </section >
         )
@@ -106,7 +107,8 @@ class _HomePage extends React.Component {
 function mapStateToProps(state) {
     return {
         count: state.userModule.count,
-        filterBy: state.stayModule.filterBy
+        filterBy: state.stayModule.filterBy,
+        user: state.userModule.user,
     }
 }
 const mapDispatchToProps = {
