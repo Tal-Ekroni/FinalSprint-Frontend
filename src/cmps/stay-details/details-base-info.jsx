@@ -1,5 +1,7 @@
 import { FaStar, FaUpload, FaHeart, FaShare, FaShareAlt, FaFileUpload } from 'react-icons/fa'
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+
 
 export function BasicInfo({ stay, isLiked, onToogleLikeStay, reviewsAvg }) {
     return (
@@ -21,12 +23,12 @@ export function BasicInfo({ stay, isLiked, onToogleLikeStay, reviewsAvg }) {
                         </div>
                     </div>
                     <div className="user-btns-container flex">
-                        <div className="share-btn-container flex align-end">
+                        <div className="share-btn-container flex align-center">
                             <p ><FaUpload className="icon share" /></p>
                             <p>Share</p>
                         </div>
-                        <div className="save-btn-container flex align-end">
-                            <p onClick={() => { onToogleLikeStay() }}>{isLiked ? <FaHeart color="#FF5A5F" /> : <FaHeart />}</p>
+                        <div className="save-btn-container flex align-center" onClick={() => { onToogleLikeStay() }}>
+                            <p className="details-like" >{isLiked ? <FavoriteBorderIcon   /> : <FavoriteIcon  color="#FF5A5F"/>}</p>
                             <p>Save</p>
                         </div>
                     </div>

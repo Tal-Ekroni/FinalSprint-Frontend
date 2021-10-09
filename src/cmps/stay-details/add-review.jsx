@@ -1,7 +1,7 @@
 import { Component } from 'react'
 import { connect } from 'react-redux'
 import { TextareaAutosize } from '@material-ui/core';
-import { onAddReview } from '../../store/review.actions.js'
+import { onEditStay } from '../../store/stay.actions.js'
 import { loadUser } from '../../store/user.actions'
 import { utilService } from '../../services/util.service.js';
 import Rating from 'react-rating';
@@ -69,7 +69,7 @@ class _AddReview extends Component {
 
     formSubmited = (ev) => {
         ev.preventDefault()
-        const { stayId } = this.props
+        const { stay } = this.props
         if (this.props.user._id) {
             this.setState(prevState => ({ newReview: { ...prevState.newReview, createdAt: Date.now() } }), () => {
                 const review = this.state.newReview
@@ -78,7 +78,9 @@ class _AddReview extends Component {
                     _id: this.props.user._id,
                     imgUrl: this.props.user.imgUrl
                 }
-                this.props.onAddReview(review, stayId)
+
+                stay.reviews = [review , ...stay.reviews]
+                this.props.onEditStay(stay)
                 this.clearReview()
             })
         }
@@ -211,7 +213,7 @@ function mapStateToProps(state) {
     }
 }
 const mapDispatchToProps = {
-    onAddReview,
+    onEditStay,
     loadUser
 }
 export const AddReview = connect(mapStateToProps, mapDispatchToProps)(_AddReview)

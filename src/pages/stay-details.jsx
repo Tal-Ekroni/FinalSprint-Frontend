@@ -19,7 +19,6 @@ import { ReadMore } from '../cmps/_read-more.jsx'
 // import { eventBusService } from '../services/event-bus.service'
 class _StayDetails extends React.Component {
     state = {
-        stay: null,
         stayReviews: [],
         trip: {
             startDate: null,
@@ -38,17 +37,16 @@ class _StayDetails extends React.Component {
         window.scrollTo(0, 0)
         if (this.props.stay) {
             socketService.setup()
-            socketService.emit('setHost', this.props.stay.host._id)
-            socketService.on('getNotif', (ev) => { console.log(ev); })
-            this.setState({ stay: this.props.stay })
+            socketService.emit('setStay', this.props.stay._id)
+            // socketService.on('getNotif', (ev) => { console.log(ev); })
         }
         if (user) this.props.loadUser(user._id)
 
         this.isStayLiked()
     }
-    componentWillUnmount() {
-        socketService.off('getNotif', (ev) => { console.log(ev); })
-    }
+    // componentWillUnmount() {
+    //     socketService.off('getNotif', (ev) => { console.log(ev); })
+    // }
 
     componentDidUpdate(prevProps, prevState) {
         const { user, stay } = this.props
@@ -56,13 +54,13 @@ class _StayDetails extends React.Component {
             this.isStayLiked()
             if (user) this.props.loadUser(user._id)
         }
-        if (stay) {
-            if (prevProps.stay !== prevState.stay && prevProps.stay) {
-                this.props.onEditStay(stay)
-                this.props.loadStay(stay._id)
-                console.log(this.props.stay);
-            }
-        }
+        // if (stay) {
+        //     if (prevProps.stay !== prevState.stay && prevProps.stay) {
+        //         this.props.onEditStay(stay)
+        //         this.props.loadStay(stay._id)
+        //         console.log(this.props.stay);
+        //     }
+        // }
     }
 
     onToogleLikeStay = () => {
@@ -146,9 +144,9 @@ class _StayDetails extends React.Component {
                     <section className="page-bottom-container">
                         <div className="reviews-section-container" >
                             <ReviewAvg reviews={stay.reviews} setReviewsAvg={this.setReviewsAvg} />
-                            <ReviewsList reviews={stay.reviews} isReadMoreOn={isReadMoreOn} onToogleReadModal={this.onToogleReadModal} />
+                            <ReviewsList  isReadMoreOn={isReadMoreOn} onToogleReadModal={this.onToogleReadModal} />
                             {user && <div className="add-review">
-                                <AddReview stayId={stay._id} />
+                                <AddReview stay={stay} />
                             </div>}
                         </div>
                         <StayMap location={stay.loc} />

@@ -29,6 +29,7 @@ class _TripsPage extends React.Component {
                             <img src={travelImg} alt="" />
                         </div>
                     </div>}
+                  
                     {orders && orders.length && <section className="trips-container">
                         <TripsList trips={orders} isHost={user.isHost} />
                     </section>}

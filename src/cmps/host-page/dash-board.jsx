@@ -41,7 +41,7 @@ class _OrdersDashboard extends Component {
                     buyerImg: <div className="user-order-img-container">
                         <img src={`https://i.pravatar.cc/100?u=${order.buyer._id.substr(order.buyer._id.length - 9)}`} alt="" />
                     </div>,
-                    price: order.totalPrice,
+                    price:`$${order.totalPrice}`,
                     status: order.status,
                     approveBtn: <div className="host-action-btns flex">
                         <button className="approve-order-btn" onClick={() => { this.onApproveOrder(order._id) }}>Approve</button>
@@ -208,6 +208,5 @@ const mapDispatchToProps = {
     onUpdateOrder,
     onRemoveOrder
 }
-
 
 export const OrdersDashboard = connect(mapStateToProps, mapDispatchToProps)(_OrdersDashboard)

@@ -1,5 +1,7 @@
+
 import React from "react";
 import { connect } from 'react-redux'
+import { NavLink } from "react-router-dom";
 import { onCancelOrder, onRemoveOrder, onUpdateOrder } from '../../store/order.actions'
 import LazyLoad from "../preview-slider"
 
@@ -18,6 +20,7 @@ class _TripPreview extends React.Component {
     }
     onCancelTrip = (trip) => {
         trip.status = "canceled"
+console.log('trip', trip);
         this.props.onUpdateOrder(trip)
     }
     onRemoveTrip = (tripId) => {
@@ -32,9 +35,9 @@ class _TripPreview extends React.Component {
                 {trip.stay &&
                     <section>
                         <div>
-                            <div className="trip-img-container">
+                            <NavLink to={`/stay/${trip.stay._id}`} className="trip-img-container">
                                 {trip.stay.imgUrls.length && <LazyLoad imgs={trip.stay.imgUrls} />}
-                            </div>
+                            </NavLink>
                         </div>
                         <div className="trip-preview-details">
                             <div className="name-dates-container flex space-between">
@@ -44,36 +47,36 @@ class _TripPreview extends React.Component {
                                     <div>{endDate}</div>
                                 </div>
                             </div>
-                            {trip.status === 'pending' && <div className="host-btns-container flex space-between">
+                            {trip.status === 'pending' && <div className="container flex space-between align-center">
                                 <div>
                                     <p>Wait for approval</p>
                                 </div>
                                 <div>
-                                    <button onClick={() => { this.onCancelTrip(trip) }} className="host-btns cancel-btn">Cancel</button>
+                                    <p onClick={() => { this.onCancelTrip(trip) }} className="cancel-btn">Cancel</p>
                                 </div>
                             </div>}
-                            {trip.status === 'canceled' && <div className="host-btns-container flex space-between">
+                            {trip.status === 'canceled' && <div className="container flex space-between align-center">
                                 <div>
-                                    <button className="host-btns approve-btn">Canceled</button>
+                                    <p>Canceled</p>
                                 </div>
                                 <div>
-                                    <button onClick={() => { this.onRemoveTrip(trip._id) }} className="host-btns cancel-btn">Remove</button>
+                                    <p onClick={() => { this.onRemoveTrip(trip._id) }} className="cancel-btn">Remove</p>
                                 </div>
                             </div>}
-                            {trip.status === 'declined' && <div className="host-btns-container flex space-between">
+                            {trip.status === 'declined' && <div className="container flex space-between align-center">
                                 <div>
                                     <p>Declined by host</p>
                                 </div>
                                 <div>
-                                    <button onClick={() => { this.onRemoveTrip(trip._id) }} className="host-btns cancel-btn">Remove</button>
+                                    <p onClick={() => { this.onRemoveTrip(trip._id) }} className="cancel-btn">Remove</p>
                                 </div>
                             </div>}
-                            {trip.status === 'approved' && <div className="host-btns-container flex space-between">
+                            {trip.status === 'approved' && <div className="container flex space-between align-center">
                                 <div>
                                     <p>Approved by host!</p>
                                 </div>
                                 <div>
-                                    <button onClick={() => { this.onCancelTrip(trip) }} className="host-btns cancel-btn">Cancel</button>
+                                    <p onClick={() => { this.onCancelTrip(trip) }} className="cancel-btn">Cancel</p>
                                 </div>
                             </div>}
                             {/* <div className="flex space-between">

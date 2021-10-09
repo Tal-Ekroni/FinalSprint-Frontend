@@ -2,6 +2,7 @@ import { userService } from "../services/user.service.js";
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
 import { utilService } from "../services/util.service.js";
 import { socketService } from "../services/socket.service.js";
+import { stayService } from '../services/stay.service.js'
 // import { socketService, SOCKET_EMIT_USER_WATCH, SOCKET_EVENT_USER_UPDATED } from "../services/socket.service.js";
 
 
@@ -68,8 +69,14 @@ export function onLogin(credentials) {
             const user = await userService.login(credentials)
             if (user.isHost) {
                 socketService.setup()
-                socketService.emit('setHost', user._id)
-                socketService.on('getNotif', (ev) => { console.log(ev)})
+                const stays = await stayService.query()
+                console.log('ishost', stays);
+
+                stays.forEach((stay) => {
+                    if (stay.host._id === user._id) socketService.emit('setStay', stay._id)
+
+                })
+                socketService.on('getNotif', (ev) => { console.log(ev) })
             }
             dispatch({
                 type: 'SET_USER',

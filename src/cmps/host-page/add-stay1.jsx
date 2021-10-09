@@ -7,10 +7,6 @@ import { AddStayBasicInfo } from './add-stay-basic-info';
 import { AddStayFloorPlan } from './add-stay-floor-plan';
 import { AddStayProfile } from './add-stay-profile';
 import { onAddStay } from '../../store/stay.actions'
-import { AddStayMap } from './add-stay-map';
-import { TextField } from '@material-ui/core';
-import { TextareaAutosize } from "@material-ui/core";
-import Select from 'react-select';
 
 class _AddStay extends React.Component {
     state = {
@@ -98,7 +94,7 @@ class _AddStay extends React.Component {
         const { _id, fullname, ImgUrl } = this.props.user
         newStay.host = { fullname, _id, ImgUrl }
         this.props.onAddStay(newStay)
-
+        
         this.setState(prevState => ({
             ...prevState, newStay: {
                 name: '',
@@ -122,7 +118,7 @@ class _AddStay extends React.Component {
                 reviews: []
             }
         }))
-        this.props.history.push('/explore')
+this.props.history.push('/explore')
     }
     onUploadImg = (ev) => {
         const CLOUD_NAME = 'dkbfdybze'
@@ -155,97 +151,57 @@ class _AddStay extends React.Component {
         this.setState(prevState => ({ ...prevState, selectedTab: tabs[idx + 1] }))
     }
     render() {
-        const { imgUrls, name, assetSpace, assetType, capacity, summary } = this.state
-        const spaceOptions = [
-            { name: 'assetSpace', value: 'An entire place', label: 'An entire place' },
-            { name: 'assetSpace', value: 'A private room', label: 'A private room' },
-            { name: 'assetSpace', value: 'A shared room', label: 'A shared room' },
-        ];
-        
-        const assetTypeOptions = [
-            { name: 'assetType', value: 'Duplex', label: 'Duplex' },
-            { name: 'assetType', value: 'Villa', label: 'Villa' },
-            { name: 'assetType', value: 'Loft', label: 'Loft' },
-            { name: 'assetType', value: 'Farm', label: 'Farm' },
-            { name: 'assetType', value: 'Cabin', label: 'Cabin' },
-        ];
-        
-        const style = {
-            margin: '20px 0',
-            padding: '20px',
-            width: '100%',
-            height: ' 150px',
-            resize: 'none',
-            borderRadius: '13px',
-            borderColor: ' #bdbcbc',
-            fontFamily: "circular-book",
-            fontSize: "1rem"
-        }
+        const { selectedTab } = this.state
         return (
             <div className="add-stay-container">
                 <div>
                     <h1>Add stay!</h1>
                 </div>
+                <section className="host-tabs-container">
+                    <Tabs
+                        centered
+                        color="#6f019c"
 
+                        value={selectedTab}
+                        onChange={this.onChangeTab}
+                        textColor="secondary"
+                        indicatorColor="secondary"
+                        aria-label="secondary tabs example"
+                    >
+                        <Tab value="get-start" label="Let's start!" />
+                        <Tab value="floor-plan" label="Floor plan" />
+                        <Tab value="stay-profile" label="Stay profile" />
+                        <Tab value="finish-page" label="Finish your page" />
+                    </Tabs>
+                </section>
 
-                <div className="add-stay-form-container flex" onSubmit={this.onAddsStay}>
-                    <form className="add-stay-form">
-                        {/* {selectedTab === 'get-start' && <AddStayBasicInfo handleChange={this.handleChange} handleSelectChange={this.handleSelectChange} state={this.state} />}
+                <div className="add-form-container flex" onSubmit={this.onAddsStay}>
+                    <form className="add-form flex column space-between">
+                        <div className="add-curr-tab-title">
+                            {selectedTab === 'get-start' && <h1>Let's start with some basic info!</h1>}
+                            {selectedTab === 'floor-plan' && <h1>Stay floor plan</h1>}
+                            {selectedTab === 'stay-profile' && <h1>Stay Profile</h1>}
+                            {selectedTab === 'finish-page' && <h1>Finish your page</h1>}
+                        </div>
+                        {selectedTab === 'get-start' && <AddStayBasicInfo handleChange={this.handleChange} handleSelectChange={this.handleSelectChange} state={this.state} />}
                         {selectedTab === 'floor-plan' && <AddStayFloorPlan handleChange={this.handleChange} handleMultiSelectChange={this.handleMultiSelectChange} state={this.state} />}
                         {selectedTab === 'stay-profile' && <AddStayProfile handleAddressChange={this.handleAddressChange} onUploadImg={this.onUploadImg} handleChange={this.handleChange} handleMultiSelectChange={this.handleMultiSelectChange} state={this.state} />}
-                        {selectedTab === 'finish-page' && <AddStayProfile handleAddressChange={this.handleAddressChange} onUploadImg={this.onUploadImg} handleChange={this.handleChange} handleMultiSelectChange={this.handleMultiSelectChange} state={this.state} />} */}
-                        <section className="add-basic-info-container flex align-center">
-                            <div className="add-stay-name-container">
-                                <label className="add-line" htmlFor="">Stay name</label>
-                                <TextField required type="text" autoComplete="off" value={name} name="name" placeholder="Asset name..." onChange={this.handleChange} />
+                        {selectedTab === 'finish-page' && <AddStayProfile handleAddressChange={this.handleAddressChange} onUploadImg={this.onUploadImg} handleChange={this.handleChange} handleMultiSelectChange={this.handleMultiSelectChange} state={this.state} />}
 
-                            </div>
-                            <div className="add-stay-location-container">
-                                <AddStayMap handleAddressChange={this.handleAddressChange} />
-                            </div>
-                        </section>
-                        <section className="add-stay-imgs-container flex">
-                            <div className="add-stay-imgs flex">
-                                <div className="primary-img square-ratio"><input type="file" value={imgUrls} name="imgUrls" onChange={this.onUploadImg} /></div>
-                                <div className="add-small-imgs-container flex column space-between">
-                                    <div className="new-stay-img square-ratio"><input type="file" value={imgUrls} name="imgUrls" onChange={this.onUploadImg} /></div>
-                                    <div className="new-stay-img square-ratio"><input type="file" value={imgUrls} name="imgUrls" onChange={this.onUploadImg} /></div>
-                                </div>
-                                <div className="add-small-imgs-container flex column space-between">
-                                    <div className="new-stay-img square-ratio"><input type="file" value={imgUrls} name="imgUrls" onChange={this.onUploadImg} /></div>
-                                    <div className="new-stay-img square-ratio"><input type="file" value={imgUrls} name="imgUrls" onChange={this.onUploadImg} /></div>
-                                </div>
-                            </div>
-                        </section>
-                        <section className="add-stay-details-container flex ">
-                            <div className="add-form-line flex align-center space-between">
-                                <label className="add-line" htmlFor="">Asset space</label>
-                                <Select
-                                    required
-                                    placeholder="Choose your space type"
-                                    onChange={this.handleSelectChange}
-                                    name="assetSpace"
-                                    className="add-stay-select"
-                                    value={assetSpace}
-                                    options={spaceOptions}
-                                />
-                            </div>
-                            <div className="add-form-line flex align-center space-between">
-                                <label className="add-line" htmlFor="">What is your asset type?</label>
-                                <Select
-                                    required
-                                    placeholder="Choose your asset type"
-                                    onChange={this.handleSelectChange}
-                                    name="assetType"
-                                    className="add-stay-select"
-                                    value={assetType}
-                                    options={assetTypeOptions}
-                                />
-                            </div>
-                        </section>
-                        <button className=" add-page-btn add-stay-btn">
+                        {selectedTab === 'finish-page' ? <button
+                            onClick={this.onAddsStay}
+                            className=" add-page-btn add-stay-btn"
+                            variant={'contained'}
+                            type="button" 
+                        >
                             Add Stay
-                        </button>
+                        </button> : <button onClick={this.onNextPage}
+                            className=" add-page-btn next-page-btn"
+                            variant={'contained'}
+                            type="button"
+                        >
+                            Next Page
+                        </button>}
                     </form>
 
                 </div>

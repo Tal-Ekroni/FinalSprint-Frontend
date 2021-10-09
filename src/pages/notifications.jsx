@@ -16,6 +16,7 @@ class _NotificationsPage extends Component {
         const { user } = this.props
         if (user) this.props.loadUser(user._id)
     }
+    
     getData = (timeStamp) => {
         var time = new Date(timeStamp);
         var day = "0" + time.getDate();
@@ -51,18 +52,10 @@ class _NotificationsPage extends Component {
 
         const data = [
             {
-                byUser: { fullName: "Davit Pok" },
-                onUser: { fullName: "Joe James" },
-                createdAt: this.getData(Date.now()),
-                stayId: "",
-                txt: "Reservd you stay"
-            },
-            {
-                byUser: { fullName: "Davit Pok" },
-                onUser: { fullName: "Joe James" },
+                byUser: { fullName: "Davit Pok" , imgurl:' '},
                 createdAt: this.getData(Date.now() - 1500),
                 stayId: "",
-                txt: "Reservd you stay"
+                txt: "Reserved you stay"
             },
         ];
         return (

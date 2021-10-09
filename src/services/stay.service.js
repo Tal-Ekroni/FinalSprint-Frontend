@@ -14,7 +14,7 @@ export const stayService = {
 }
 window.cs = stayService;
 
-async function query(filterBy) {
+async function query(filterBy = {}) {
     const stays = await httpService.get('stay', { params: filterBy })
     return stays
 }
@@ -41,7 +41,7 @@ function filterPageStays(filterBy, stays) {
     if (!Object.values(filterBy.amenities).includes(true)) {
         filterdStays = stays
     } else {
-        
+
         filterdStays = filterdStays.filter(stay => {
             console.log(stay.amenities.includes('Hot tub'))
         })

@@ -7,10 +7,6 @@ import { TextField } from '@material-ui/core';
 class _AddStayMap extends Component {
 
     state = {
-        center: {
-            lat: 31.751391320315633,
-            lng: 35.19411553257559
-        },
         selectedPlace: '',
         loc: {
             lat: '',
@@ -20,25 +16,6 @@ class _AddStayMap extends Component {
         }
 
     }
-    componentDidMount() {
-    }
-    onMapClicked = (props, marker, ev) => {
-        this.setState({
-            center: { lat: ev.latLng.lat(), lng: ev.latLng.lng() },
-            activeMarker: marker,
-            selectedPlace: props,
-            isInfoWindowOn: true
-        })
-    }
-
-    onMarkerClicked = () => {
-        this.setState({ isInfoWindowOn: true })
-    }
-
-    onInfoWindowClose = () => {
-        this.setState({ isInfoWindowOn: false })
-    }
-
     handleChange = (address) => {
         this.setState({ selectedPlace: address }, () => { console.log(this.state); });
     }
@@ -46,25 +23,17 @@ class _AddStayMap extends Component {
         console.log('ad', address);
         const results = await geocodeByAddress(address)
         const latLng = await getLatLng(results[0])
-        await console.log('lat', latLng);
-        await this.setState({ center: latLng, selectedPlace: address, loc: { lat: latLng.lng, lng: latLng.lng, address: address } }, () => {
+        await this.setState({ selectedPlace: address, loc: { lat: latLng.lng, lng: latLng.lng, address: address } }, () => {
             this.props.handleAddressChange(this.state.loc)
         })
     }
 
     render() {
-        const { center, selectedPlace } = this.state
-
-        const style = {
-            width: '100%',
-            height: '500px',
-            position: "relative",
-            margin: "0 auto"
-        }
+        const { selectedPlace } = this.state
         return (
             <section >
-                <div className="add-form-line flex align-center space-between">
-                    <label className="add-line" htmlFor="">Enter your stay location</label>
+                <div className="add-form-line flex align-center ">
+                    <label className="add-line" htmlFor="">Address</label>
 
                     <PlacesAutocomplete
                         value={selectedPlace}
@@ -107,7 +76,7 @@ class _AddStayMap extends Component {
                         )}
                     </PlacesAutocomplete>
                 </div>
-                <div className="main-add-map-container">
+                {/* <div className="main-add-map-container">
 
                     <Map
                         containerStyle={style}
@@ -126,7 +95,7 @@ class _AddStayMap extends Component {
                 </div>
                 <div>
                     {this.state.loc.address && <h1 className="address-title">{this.state.loc.address.split(',')[0]} , {this.state.loc.address.split(',')[1]}</h1>}
-                </div>
+                </div> */}
             </section>
         );
     }

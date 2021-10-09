@@ -15,6 +15,7 @@ export class ReviewsPreview extends Component {
     }
     render() {
         const { review } = this.props
+        
         const { isReadMoreOn } = this.state
         return (
             <div className="review-card-container">

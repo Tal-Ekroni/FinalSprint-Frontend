@@ -26,6 +26,13 @@
             .share-btn-container,
             .save-btn-container {
                 width: 60px;
+                p {
+                    font-size: 1rem;
+                    &.details-like {
+                        color: $clr6;
+                        size: 0.875rem;
+                    }
+                }
             }
         }
         .icon {

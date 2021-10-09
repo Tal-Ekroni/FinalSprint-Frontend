@@ -54,7 +54,7 @@ async function login(userCred) {
 async function signup(userCred) {
     userCred.isHost = false;
     userCred.imgUrl = '/img/img1.jpg';
-    userCred.myStays = [];
+    // userCred.myStays = [];
     userCred.notifications = [];
     userCred.mySaves = []
     const user = await httpService.post('auth/signup', userCred)
