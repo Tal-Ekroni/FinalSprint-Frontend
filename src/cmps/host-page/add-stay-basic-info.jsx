@@ -35,6 +35,7 @@ export class AddStayBasicInfo extends React.Component {
                 <div className="add-form-line flex align-center space-between">
                     <label className="add-line" htmlFor="">What kind of space will guests have?</label>
                     <Select
+                        required
                         placeholder="Choose your space type"
                         onChange={(ev) => handleSelectChange(ev)}
                         name="assetSpace"
@@ -46,6 +47,7 @@ export class AddStayBasicInfo extends React.Component {
                 <div className="add-form-line flex align-center space-between">
                     <label className="add-line" htmlFor="">What is your asset type?</label>
                     <Select
+                        required
                         placeholder="Choose your asset type"
                         onChange={(ev) => handleSelectChange(ev)}
                         name="assetType"
@@ -57,6 +59,7 @@ export class AddStayBasicInfo extends React.Component {
                 <div className="add-desc-line flex column  space-between">
                     <label className="add-line" htmlFor="">Describe your asset</label>
                     <TextareaAutosize
+                        required
                         style={style}
                         value={summary}
                         placeholder="Describe your asset..."

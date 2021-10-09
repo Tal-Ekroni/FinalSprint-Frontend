@@ -58,7 +58,7 @@ class _HostPage extends React.Component {
                             <Tab value="orders" label={orders ? `Orders (${orders.length})` : 'Orders'} />
                             <Tab value="my-stays" label="My stays" />
                             <Tab value="add-stay" label="Add a stay" />
-                            <Tab value="stats" label="Stats" />
+                            {/* <Tab value="stats" label="Stats" /> */}
                         </Tabs>
                     </section>
                     {user && <section className="host-container">
@@ -77,9 +77,9 @@ class _HostPage extends React.Component {
 
                             </div>
                         </div>}
-                        {selectedTab === 'stats' && <div className=" page-padding">
+                        {/* {selectedTab === 'stats' && <div className=" page-padding">
                             <HostChart />
-                        </div>}
+                        </div>} */}
                         {selectedTab === 'add-stay' && <div>
                             <AddStay />
                         </div>}

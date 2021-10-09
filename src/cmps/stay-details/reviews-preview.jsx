@@ -11,7 +11,7 @@ export function ReviewsPreview({ review, onToogleReadModal, isReadMoreOn }) {
                 <div className="review-card flex column align-center" >
                     <div className="review-user-info flex">
                         <div className="user-review-img-container">
-                            <img src={`https://i.pravatar.cc/100?u=${review.by._id}`} alt="" />
+                            <img src={`https://i.pravatar.cc/100?u=${review.by._id.substr(review.by._id.length - 9)}`} alt="" />
                         </div>
                         <div className="txt-info-container flex column">
                             <div className="review-username-container">

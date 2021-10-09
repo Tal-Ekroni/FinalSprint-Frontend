@@ -39,6 +39,8 @@ class _StayPreview extends React.Component {
         }
     }
     render() {
+
+        console.log(this.props.stay);
         return (
             <div>
 

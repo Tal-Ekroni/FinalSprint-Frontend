@@ -50,12 +50,18 @@ class _StayDetails extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        const { user } = this.props
+        const { user, stay } = this.props
         if (prevState.isLiked !== this.state.isLiked) {
             console.log('hii');
             this.isStayLiked()
             if (user) this.props.loadUser(user._id)
         }
+        if (stay) {
+            console.log('prevProps', prevProps.stay);
+        }
+        // if (prevProps.stay.reviews.length !== stay.reviews.length) {
+        //     this.props.onEditStay(stay)
+        // }
     }
 
     onToogleLikeStay = () => {
@@ -97,7 +103,6 @@ class _StayDetails extends React.Component {
     setReviewsAvg = (avgScore) => {
         const { stay } = this.props
         stay.reviewsAvg = avgScore
-        if (stay.reviewsAvg !== avgScore ) this.props.onEditStay(stay)
         this.setState(prevState => ({ stay: { ...prevState.stay, reviewsAvg: avgScore } }))
 
     }
@@ -121,7 +126,7 @@ class _StayDetails extends React.Component {
                                     </div>
                                 </div>
                                 <div className="host-img-container">
-                                    <img src={`https://i.pravatar.cc/100?u=${stay.host._id}`} alt="" />
+                                    <img src={`https://i.pravatar.cc/100?u=${stay.host._id.substr(stay.host._id.length - 9)}`} alt="" />
                                 </div>
                             </section>
                             <AssetSum />

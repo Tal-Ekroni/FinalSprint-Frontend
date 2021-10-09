@@ -189,7 +189,7 @@ class _AddStay extends React.Component {
                             onClick={this.onAddsStay}
                             className=" add-page-btn add-stay-btn"
                             variant={'contained'}
-                            type="submit" 
+                            type="button" 
                         >
                             Add Stay
                         </button> : <button onClick={this.onNextPage}

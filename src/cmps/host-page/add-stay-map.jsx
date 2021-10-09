@@ -8,8 +8,8 @@ class _AddStayMap extends Component {
 
     state = {
         center: {
-            lat: 31.73220474357407,
-            lng: 35.18801418638734
+            lat: 31.751391320315633,
+            lng: 35.19411553257559
         },
         selectedPlace: '',
         loc: {

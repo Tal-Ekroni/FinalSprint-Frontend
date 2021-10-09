@@ -63,4 +63,24 @@
         justify-content: center;
         width: 100%;
     }
+    .user-order-img-container {
+        height: 44px;
+        border-radius: 22px;
+        background-color: blue;
+        width: 44px;
+        overflow: hidden;
+        & img {
+            // overflow: hidden;
+            height: 100%;
+            width: 100%;
+        }
+    }
+    @include for-narrow-layout {
+        th {
+            font-family: circular-bold;
+        }
+        td {
+            max-width: 150px;
+        }
+    }
 }

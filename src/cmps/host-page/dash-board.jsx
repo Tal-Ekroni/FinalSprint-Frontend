@@ -38,7 +38,9 @@ class _OrdersDashboard extends Component {
                     stayName: order.stay.name,
                     // address: order.loc.address,
                     buyerName: order.buyer.fullname,
-                    buyerImg: order.buyer.imgUrl,
+                    buyerImg: <div className="user-order-img-container">
+                        <img src={`https://i.pravatar.cc/100?u=${order.buyer._id.substr(order.buyer._id.length - 9)}`} alt="" />
+                    </div>,
                     price: order.totalPrice,
                     status: order.status,
                     approveBtn: <div className="host-action-btns flex">
@@ -57,21 +59,24 @@ class _OrdersDashboard extends Component {
     getTotalRate = (orders) => {
         let totalRate = 0;
         orders.map(order => { totalRate += +order.stay.reviewsAvg })
-        // orders.map(order => { console.log(order); })
+        totalRate = totalRate / orders.length
         return totalRate
+    }
+    getTotalPrice = (orders) => {
+        let totalPrice = 0;
+        orders.map(order => { totalPrice += +order.totalPrice })
+        return totalPrice
     }
     onApproveOrder = (orderId) => {
         const { orders } = this.props
         const order = orders.filter(order => order._id === orderId)
         order[0].status = "approved"
-        console.log(order);
         this.props.onUpdateOrder(order[0])
     }
     onDeclinelOrder = (orderId) => {
         const { orders } = this.props
         const order = orders.filter(order => order._id === orderId)
         order[0].status = "declined"
-        console.log(order);
         this.props.onUpdateOrder(order)
     }
     onRemoveOrder = (orderId) => {
@@ -86,7 +91,11 @@ class _OrdersDashboard extends Component {
         const { orders } = this.props
         const columns = [
             {
-                name: 'stayName',
+                name: 'buyerImg',
+                label: " ",
+            },
+            {
+                name: 'buyerName',
                 label: "Name",
                 options: {
                     filter: true,
@@ -94,7 +103,7 @@ class _OrdersDashboard extends Component {
                 }
             },
             {
-                name: "address",
+                name: "stayName",
                 label: "Address",
                 options: {
                     filter: true,
@@ -152,7 +161,7 @@ class _OrdersDashboard extends Component {
                             <p className="dashboard-label">monthly earning</p>
                         </div>
                         <div className="dashboard-value">
-                            <p className="dash-avg-earning">{5}%</p>
+                            <p className="dash-avg-earning">${this.getTotalPrice(orders)}</p>
                         </div>
                     </div>
                     <div className="dash-earning-container flex column space-between">

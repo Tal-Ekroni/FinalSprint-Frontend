@@ -56,8 +56,9 @@ class _UserMenu extends React.Component {
                     <div className="user-menu-line">
                         <p>Wishlist</p>
                     </div>
-                    <div className="user-menu-line">
-                        <p>Host a expirience</p>
+                    <div >
+                        {user ? <NavLink onClick={() => this.props.onToggleSearchModals('menuModal')} className="user-menu-line" to="/become-a-host"><p >Host a expirience</p></NavLink> : <p className="user-menu-line">Host a expirience</p>}
+
                     </div>
                 </section >
                 <section className="user-menu bottom-section">

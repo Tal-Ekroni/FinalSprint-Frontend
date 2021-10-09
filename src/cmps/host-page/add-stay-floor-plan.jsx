@@ -21,17 +21,18 @@ export class AddStayFloorPlan extends React.Component {
 
                 <div className="add-form-line flex align-center space-between">
                     <label className="add-line" htmlFor="">Asset price per night</label>
-                    <TextField type="number" value={price} name="price" placeholder="Asset price per night..." onChange={handleChange} />
+                    <TextField required type="number" value={price} name="price" placeholder="Asset price per night..." onChange={handleChange} />
                 </div>
 
                 <div className="add-form-line flex align-center space-between">
                     <label className="add-line" htmlFor="">What is your host capacity?</label>
-                    <TextField type="number" value={capacity} name="capacity" placeholder="Asset capacity..." onChange={handleChange} />
+                    <TextField required type="number" value={capacity} name="capacity" placeholder="Asset capacity..." onChange={handleChange} />
                 </div>
 
                 <div className="add-form-line flex align-center space-between">
                     <label className="add-line" htmlFor="">Choose your asset amenities</label>
                     <Select
+                    required
                         onChange={handleMultiSelectChange}
                         placeholder="Select amenities"
                         name="amenities"

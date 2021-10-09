@@ -101,13 +101,13 @@ class _AppHeader extends React.Component {
                             <NavLink to="/explore/" className="nav-opt">Explore</NavLink>
                         </div>
                         <div className="nav-options flex align-center">
-                            <NavLink to="/become-a-host" className="nav-opt">Become a host</NavLink>
+                            {user && user.isHost ? <NavLink to="/host" className="nav-opt">Switch to hosting</NavLink> : <NavLink to="/become-a-host" className="nav-opt">Become a host</NavLink>}
                         </div>
                         <div className="user-img-container " onClick={() => { this.onToggleSearchModals('menuModal') }}>
                             <button className="user-btn flex align-center btn-section  ">
                                 <FaBars className="menu-btn" />
                                 <div className="user-logo-container">
-                                    {user && <img src={`https://i.pravatar.cc/100?u=${user._id}`} alt="" />}
+                                    {user && <img src={`https://i.pravatar.cc/100?u=${user._id.substr(user._id.length - 9)}`} alt="" />}
                                 </div>
                             </button>
                         </div>
