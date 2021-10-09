@@ -48,12 +48,19 @@ export function onRemoveOrder(orderId) {
 }
 
 export function onAddOrder(orderToAdd) {
+    const { buyer } = orderToAdd
     return async (dispatch) => {
         try {
+            const notif = {
+                byUser: { fullName: buyer.fullname, imgUrl: buyer.imgUrl, _id: buyer._id },
+                createdAt: Date.now(),
+                stayId: orderToAdd.stay._id,
+                txt: `${buyer.fullname} Reserved your stay`
+            }
             const savedOrder = await orderService.save(orderToAdd)
             dispatch({ type: 'ADD_ORDER', order: savedOrder })
             showSuccessMsg('Order added')
-            socketService.emit('setNotif', orderToAdd)
+            socketService.emit('setNotif', notif)
         }
         catch (err) {
             showErrorMsg('Cannot add order')

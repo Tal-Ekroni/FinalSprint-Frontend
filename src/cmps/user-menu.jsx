@@ -40,7 +40,7 @@ class _UserMenu extends React.Component {
             <div className="user-menu-container flex column" >
                 <section className="user-menu top-section ">
                     <div >
-                        {user && <NavLink onClick={() => this.props.onToggleSearchModals('menuModal')} className="user-menu-line" to="/notifications"><p>Notifications</p></NavLink>}
+                        {user && <NavLink onClick={() => this.props.onToggleSearchModals('menuModal')} className="user-menu-line" to="/notifications"><p>Notifications</p><span>{user.notifications.length ? user.notifications.length : ''}</span></NavLink>}
                     </div>
                     <div  >
                         {user && <NavLink onClick={() => this.props.onToggleSearchModals('menuModal')} className="user-menu-line" to="/trips"><p >Trips</p></NavLink>}

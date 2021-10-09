@@ -12,11 +12,18 @@ class _NotificationsPage extends Component {
     state = {
         user: null
     }
-    componentDidMount() {
+    async componentDidMount() {
         const { user } = this.props
-        if (user) this.props.loadUser(user._id)
+        if (user) {
+            try {
+                await this.props.loadUser(user._id)
+            } catch (err) {
+                console.log('error', err);
+            }
+        }
+        console.log('user', user);
     }
-    
+
     getData = (timeStamp) => {
         var time = new Date(timeStamp);
         var day = "0" + time.getDate();
@@ -26,6 +33,7 @@ class _NotificationsPage extends Component {
         return formattedTime
     }
     render() {
+        const { user } = this.props
         const columns = [
             {
                 name: "txt",
@@ -50,9 +58,11 @@ class _NotificationsPage extends Component {
             filterType: "dropdown",
         };
 
+     
+
         const data = [
             {
-                byUser: { fullName: "Davit Pok" , imgurl:' '},
+                byUser: { fullName: "Davit Pok", imgurl: ' ' },
                 createdAt: this.getData(Date.now() - 1500),
                 stayId: "",
                 txt: "Reserved you stay"
@@ -64,14 +74,14 @@ class _NotificationsPage extends Component {
                     <div className="notifications-title-container">
                         <h1>Notifications</h1>
                     </div>
-                    <section className="notifications-container">
+                    {user && <section className="notifications-container">
                         <MUIDataTable
                             title={"Notifications list"}
                             data={data}
                             columns={columns}
                             options={options}
                         />
-                    </section>
+                    </section>}
                 </section>
             </main>
         )

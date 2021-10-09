@@ -76,7 +76,7 @@ export function onLogin(credentials) {
                     if (stay.host._id === user._id) socketService.emit('setStay', stay._id)
 
                 })
-                socketService.on('getNotif', (ev) => { console.log(ev) })
+                socketService.on('getNotif', (ev) => { console.log(ev, 'check') })
             }
             dispatch({
                 type: 'SET_USER',
