@@ -134,6 +134,7 @@ export function onToggleLikedStay(savedStayId, isLiked, userId) {
         try {
             const user = await userService.getById(userId)
             if (isLiked) {
+                console.log(user);
                 user.mySaves.push(savedStayId)
             } else {
                 user.mySaves = user.mySaves.filter(saved => saved !== savedStayId)
