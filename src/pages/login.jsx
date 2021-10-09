@@ -48,7 +48,7 @@ class _LoginPage extends React.Component {
     onSignup = async (ev = null) => {
         if (ev) ev.preventDefault();
         if (!this.state.credentials.username || !this.state.credentials.password || !this.state.credentials.fullname) return;
-       await this.props.onSignup(this.state.credentials);
+        await this.props.onSignup(this.state.credentials);
         this.clearState()
         this.props.history.push('/')
     }
@@ -66,10 +66,16 @@ class _LoginPage extends React.Component {
             <section className="flex justify-center page-padding">
                 <form className="login flex column justify-center align-center">
                     <h1>{isSignUp ? 'Sign Up' : 'Login'}</h1>
-                    <div className="input-fields flex column">
-                        {isSignUp && <input type="text" name="fullname" placeholder="fullname" value={fullname} onChange={this.handleChange} required />}
-                        <input type="text" name="username" placeholder="Username" value={username} onChange={this.handleChange} required />
-                        <input type="password" name="password" placeholder="Password" value={password} onChange={this.handleChange} required />
+                    <div className="input-fields flex column align-center">
+                        {isSignUp && <div className='fullname-input'>
+                            <input type="text" name="fullname" placeholder="fullname" value={fullname} onChange={this.handleChange} required />
+                        </div>}
+                        <div className={isSignUp ? 'login-input border-top' : 'login-input'}>
+                            <input type="text" name="username" placeholder="Username" value={username} onChange={this.handleChange} required />
+                        </div>
+                        <div className='password-input'>
+                            <input type="password" name="password" placeholder="Password" value={password} onChange={this.handleChange} required />
+                        </div>
                     </div>
                     <button className="login-btn" onClick={isSignUp ? this.onSignup : this.onLogin}>{isSignUp ? 'Sign Up' : 'Login'}</button>
                     <div className="new-user">
@@ -93,4 +99,4 @@ const mapDispatchToProps = {
     onSignup
 }
 
-export const LoginPage = withRouter(connect(mapStateToProps, mapDispatchToProps)(_LoginPage))   
+export const LoginPage = withRouter(connect(mapStateToProps, mapDispatchToProps)(_LoginPage))

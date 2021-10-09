@@ -2,7 +2,7 @@
     height: 500px;
     width: 420px;
     text-align: center;
-    border: 1px $clr2 solid;
+    border: 1px $clr5 solid;
     position: relative;
     margin-top: 25px;
     margin-bottom: 25px;
@@ -14,13 +14,17 @@
     }
 
     .input-fields {
-        border: 1px solid $clr2;
+        border: 1px solid $clr5;
         padding:15px;
         margin-right: 10px;
         margin-left: 10px;
         margin-bottom: 15px;
         width: 400px;
         border-radius:3rem;
+        .login-input{
+            border-bottom:1px solid $clr5;
+            width:400px;
+        }
     }
     h1 {
         position: absolute;
