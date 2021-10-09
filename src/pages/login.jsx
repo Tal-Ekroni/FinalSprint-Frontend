@@ -14,6 +14,7 @@ class _LoginPage extends React.Component {
         users: []
     }
     async componentDidMount() {
+        window.scrollTo(0, 0);
         const users = await userService.getUsers()
         this.setState({ users })
     }
@@ -66,15 +67,16 @@ class _LoginPage extends React.Component {
             <section className="flex justify-center page-padding">
                 <form className="login flex column justify-center align-center">
                     <h1>{isSignUp ? 'Sign Up' : 'Login'}</h1>
+                    <h2>{isSignUp ? 'Welcome to AnyGo' : 'Welcome back'}</h2>
                     <div className="input-fields flex column align-center">
                         {isSignUp && <div className='fullname-input'>
-                            <input type="text" name="fullname" placeholder="fullname" value={fullname} onChange={this.handleChange} required />
+                            <input className='flex' type="text" name="fullname" placeholder="fullname" value={fullname} onChange={this.handleChange} required />
                         </div>}
                         <div className={isSignUp ? 'login-input border-top' : 'login-input'}>
-                            <input type="text" name="username" placeholder="Username" value={username} onChange={this.handleChange} required />
+                            <input className='flex' type="text" name="username" placeholder="Username" value={username} onChange={this.handleChange} required />
                         </div>
                         <div className='password-input'>
-                            <input type="password" name="password" placeholder="Password" value={password} onChange={this.handleChange} required />
+                            <input className='flex' type="password" name="password" placeholder="Password" value={password} onChange={this.handleChange} required />
                         </div>
                     </div>
                     <button className="login-btn" onClick={isSignUp ? this.onSignup : this.onLogin}>{isSignUp ? 'Sign Up' : 'Login'}</button>
