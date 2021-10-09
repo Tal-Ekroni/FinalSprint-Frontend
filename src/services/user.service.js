@@ -55,11 +55,8 @@ async function signup(userCred) {
     userCred.isHost = false;
     userCred.imgUrl = '/img/img1.jpg';
     userCred.myStays = [];
-    userCred.myTrips = [];
     userCred.notifications = [];
-    userCred.orders = []
     userCred.mySaves = []
-    // const user = await storageService.post('user', userCred)
     const user = await httpService.post('auth/signup', userCred)
     // socketService.emit('set-user-socket', user._id);
     return _saveLocalUser(user)
@@ -67,7 +64,7 @@ async function signup(userCred) {
 async function logout() {
     sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
     // socketService.emit('unset-user-socket');
-    // return await httpService.post('auth/logout')
+    return await httpService.post('auth/logout')
 }
 
 function _saveLocalUser(user) {

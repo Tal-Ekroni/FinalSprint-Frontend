@@ -23,7 +23,7 @@ export function onAddReview(review, stayId) {
     try {
       console.log('add');
       const currStay = await stayService.getById(stayId)
-      currStay.reviews.unshift(review)
+       currStay.reviews.unshift(review)
       const updatedStay = await stayService.update(currStay)
       dispatch({
         type: 'UPDATE_STAY',

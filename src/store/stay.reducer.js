@@ -1,7 +1,7 @@
 const initialState = {
     stays: [],
     bookedTrip: null,
-    currStay: null,
+    stay: null,
     review: null,
     lastRemovedStay: null,
     isMiniHeader: true,

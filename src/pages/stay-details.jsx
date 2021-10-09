@@ -53,16 +53,16 @@ class _StayDetails extends React.Component {
     componentDidUpdate(prevProps, prevState) {
         const { user, stay } = this.props
         if (prevState.isLiked !== this.state.isLiked) {
-            console.log('hii');
             this.isStayLiked()
             if (user) this.props.loadUser(user._id)
         }
         if (stay) {
-            console.log('prevProps', prevProps.stay);
+            if (prevProps.stay !== prevState.stay && prevProps.stay) {
+                this.props.onEditStay(stay)
+                this.props.loadStay(stay._id)
+                console.log(this.props.stay);
+            }
         }
-        // if (prevProps.stay.reviews.length !== stay.reviews.length) {
-        //     this.props.onEditStay(stay)
-        // }
     }
 
     onToogleLikeStay = () => {
@@ -95,8 +95,8 @@ class _StayDetails extends React.Component {
             this.setState(prevState => ({ trip: { ...prevState.trip, endDate } }))
         }
     }
-  
-    
+
+
     setReviewsAvg = (avgScore) => {
         const { stay } = this.props
         stay.reviewsAvg = avgScore
@@ -146,7 +146,7 @@ class _StayDetails extends React.Component {
                     <section className="page-bottom-container">
                         <div className="reviews-section-container" >
                             <ReviewAvg reviews={stay.reviews} setReviewsAvg={this.setReviewsAvg} />
-                            <ReviewsList reviews={stay.reviews} isReadMoreOn={isReadMoreOn}  onToogleReadModal={this.onToogleReadModal} />
+                            <ReviewsList reviews={stay.reviews} isReadMoreOn={isReadMoreOn} onToogleReadModal={this.onToogleReadModal} />
                             {user && <div className="add-review">
                                 <AddReview stayId={stay._id} />
                             </div>}
