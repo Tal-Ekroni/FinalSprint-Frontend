@@ -20,8 +20,8 @@ class _OrdersDashboard extends Component {
         this.setState({ orders })
         if (user) this.props.loadUser(user._id)
     }
-    getTime = (timeStamp) => {
-        var time = new Date(timeStamp);
+    getTime = (timestamp) => {
+        var time = new Date(timestamp * 1000);
         var day = "0" + time.getDate();
         var month = "0" + (time.getMonth() + 1);
         var year = "0" + time.getFullYear();
@@ -34,15 +34,19 @@ class _OrdersDashboard extends Component {
         let editedOrder;
         if (orders) {
             orders.map(order => {
+                console.log(order);
                 editedOrder = {
                     stayName: order.stay.name,
                     // address: order.loc.address,
                     buyerName: order.buyer.fullname,
-                    buyerImg: <div className="user-order-img-container">
+                    buyerImg: <div className="user-order-img-container flex align-center">
                         <img src={`https://i.pravatar.cc/100?u=${order.buyer._id.substr(order.buyer._id.length - 9)}`} alt="" />
+                        <p>{order.buyer.fullname}</p>
                     </div>,
-                    price:`$${order.totalPrice}`,
-                    status: order.status,
+                    price: `$${order.totalPrice}`,
+                    status: `${order.status.charAt(0).toUpperCase()}${order.status.substr(1)}`,
+                    checkIn: this.getTime(order.startDate),
+                    checkOut: this.getTime(order.endDate),
                     approveBtn: <div className="host-action-btns flex">
                         <button className="approve-order-btn" onClick={() => { this.onApproveOrder(order._id) }}>Approve</button>
                         <button className="approve-order-btn" onClick={() => { (order.status === "pending") ? this.onDeclinelOrder(order._id) : this.onRemoveOrder(order._id) }}>
@@ -92,19 +96,27 @@ class _OrdersDashboard extends Component {
         const columns = [
             {
                 name: 'buyerImg',
-                label: " ",
+                label: "Name",
             },
             {
-                name: 'buyerName',
-                label: "Name",
+                name: "stayName",
+                label: "Address",
                 options: {
                     filter: true,
                     sort: true
                 }
             },
             {
-                name: "stayName",
-                label: "Address",
+                name: "checkIn",
+                label: "Check in",
+                options: {
+                    filter: true,
+                    sort: true
+                }
+            },
+            {
+                name: "checkOut",
+                label: "Check out",
                 options: {
                     filter: true,
                     sort: true
