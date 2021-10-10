@@ -65,6 +65,22 @@
             object-fit: cover;
         }
     }
+    .notif-icon-container {
+        // position: relative;
+        // z-index: 5;
+        .notif-icon {
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            background-color: $clr6;
+            color: $clr1;
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            font-size: 0.675rem;
+            font-family: circular-book;
+        }
+    }
     .nav-bar-container {
         .nav-opt {
             padding: 10px 15px;
@@ -198,7 +214,7 @@
             }
         }
         .user-header-section {
-            padding: 0;
+            padding: unset;
         }
         .notif-icon-container {
             // position: relative;
@@ -269,6 +285,7 @@
                 left: 50%;
                 transform: translate(-50%, -50%);
             }
+            
         }
         @include for-wide-layout {
             .search-bar-container {
