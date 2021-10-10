@@ -9,8 +9,11 @@ class _UserMenu extends React.Component {
         isLoginModalOn: false
     }
     componentDidMount() {
-        if (this.props.user) this.props.loadUser(this.props.user._id)
+        if (this.props.user) {
+            this.props.loadUser(this.props.user._id)
+        }
     }
+
     onLogout = () => {
         this.props.onLogout()
         this.props.onToggleSearchModals('menuModal')
@@ -41,7 +44,7 @@ class _UserMenu extends React.Component {
             <div className="user-menu-container flex column" >
                 <section className="user-menu top-section ">
                     <div >
-                        {user && <NavLink onClick={() => this.props.onToggleSearchModals('menuModal')} className="user-menu-line flex space-between" to="/notifications"><p>Notifications</p><span className={user.notifications.length?'user-notifications-icon':'user-notifications-icon hide'}>{user.notifications.length ? <NotificationsNoneIcon/> : ''}</span></NavLink>}
+                        {user && <NavLink onClick={() => this.props.onToggleSearchModals('menuModal')} className="user-menu-line flex space-between" to="/notifications"><p>Notifications</p><span className={user.notifications.length ? 'user-notifications-icon' : 'user-notifications-icon hide'}>{user.notifications.length ? <NotificationsNoneIcon /> : ''}</span></NavLink>}
                     </div>
                     <div  >
                         {user && <NavLink onClick={() => this.props.onToggleSearchModals('menuModal')} className="user-menu-line" to="/trips"><p >Trips</p></NavLink>}

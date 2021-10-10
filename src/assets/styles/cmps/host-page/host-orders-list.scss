@@ -64,15 +64,17 @@
         width: 100%;
     }
     .user-order-img-container {
-        height: 44px;
-        border-radius: 22px;
-        background-color: blue;
-        width: 44px;
+        width: 200px;
         overflow: hidden;
+        color: $clr2;
         & img {
             // overflow: hidden;
-            height: 100%;
-            width: 100%;
+            border-radius: 22px;
+            height: 44px;
+            width: 44px;
+        }
+        p {
+            margin-inline-start: 10px;
         }
     }
     @include for-narrow-layout {

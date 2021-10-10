@@ -44,6 +44,7 @@ export function removeUser(userId) {
     }
 }
 export function updateUser(userToSave) {
+    console.log('usert', userToSave);
     return async (dispatch) => {
         try {
             const updatedUser = await userService.update(userToSave)
@@ -75,7 +76,11 @@ export function onLogin(credentials) {
                     if (stay.host._id === user._id) socketService.emit('setStay', stay._id)
 
                 })
-                socketService.on('getNotif', (ev) => { console.log(ev, 'check') })
+                socketService.on('getNotif', async(notif) => {
+                    user.notifications = [notif, ...user.notifications]
+                    const userToSave = await userService.update(user)
+                    dispatch({ type: 'UPDATE_USER', user: userToSave })
+                })
             }
             dispatch({
                 type: 'SET_USER',

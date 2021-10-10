@@ -79,6 +79,7 @@
         }
     }
     .user-img-container {
+        position: relative;
         overflow: hidden;
         .menu-btn {
             font-size: 14px;
@@ -199,7 +200,22 @@
         .user-header-section {
             padding: 0;
         }
-
+        .notif-icon-container {
+            // position: relative;
+            // z-index: 5;
+            .notif-icon {
+                height: 16px;
+                width: 16px;
+                border-radius: 50%;
+                background-color: $clr6;
+                color: $clr1;
+                position: absolute;
+                top: 5px;
+                right: 10px;
+                font-size: 0.675rem;
+                font-family: circular-book;
+            }
+        }
         @include for-mobile-layout {
             .logo-container,
             .nav-bar-container {
@@ -207,29 +223,29 @@
             }
             .search-bar-container {
                 width: 91%;
-                
-            .go-back-btn {
-                display: block;
-                outline: 0px;
-                margin: 0px;
-                padding: 0px;
-                color: rgb(34, 34, 34);
-                background-color: rgb(255, 255, 255);
-                cursor: pointer;
-                touch-action: manipulation;
-                align-items: center;
-                justify-content: center;
-                transition: box-shadow 0.2s ease 0s, -ms-transform 0.25s ease 0s, -webkit-transform 0.25s ease 0s,
-                    transform 0.25s ease 0s;
-                width: 44px;
-                height: 44px;
-                -webkit-box-pack: center;
-                -webkit-box-align: center;
-                appearance: none;
-                display: inline-flex;
-                border-radius: 50%;
-                border: 1px solid rgba(0, 0, 0, 0.03);
-            }
+
+                .go-back-btn {
+                    display: block;
+                    outline: 0px;
+                    margin: 0px;
+                    padding: 0px;
+                    color: rgb(34, 34, 34);
+                    background-color: rgb(255, 255, 255);
+                    cursor: pointer;
+                    touch-action: manipulation;
+                    align-items: center;
+                    justify-content: center;
+                    transition: box-shadow 0.2s ease 0s, -ms-transform 0.25s ease 0s, -webkit-transform 0.25s ease 0s,
+                        transform 0.25s ease 0s;
+                    width: 44px;
+                    height: 44px;
+                    -webkit-box-pack: center;
+                    -webkit-box-align: center;
+                    appearance: none;
+                    display: inline-flex;
+                    border-radius: 50%;
+                    border: 1px solid rgba(0, 0, 0, 0.03);
+                }
             }
         }
         @include for-narrow-layout {

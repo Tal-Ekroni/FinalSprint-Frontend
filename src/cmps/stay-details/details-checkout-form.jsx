@@ -237,6 +237,8 @@ class _CheckoutForm extends React.Component {
                             </div>
                         </div>
                     </div >
+                {datesModal &&<DatesPicker2 onSelectDates={this.onSelectDates} handleChange={this.handleChange} /> }
+
                 </section>
                 {/* <div className="report-container flex ">
                     <FaFlag />
@@ -244,7 +246,6 @@ class _CheckoutForm extends React.Component {
                 </div> */}
                 {isGuestPopupOn && <GuestsCheckoutModal toggleGuestsModal={this.toggleGuestsModal} onSelectGuests={this.onSelectGuests} trip={trip} stay={stay} />}
                 {/* {isGuestPopupOn && } */}
-                {datesModal && <DatesPicker2 onSelectDates={this.onSelectDates} handleChange={this.handleChange} />}
             </section>
         )
     }

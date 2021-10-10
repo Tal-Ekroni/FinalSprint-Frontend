@@ -54,16 +54,12 @@ export function onAddOrder(orderToAdd) {
             const notif = {
                 byUser: { fullName: buyer.fullname, imgUrl: buyer.imgUrl, _id: buyer._id },
                 createdAt: Date.now(),
-                stayId: orderToAdd.stay._id,
-                txt: `${buyer.fullname} Reserved your stay`,
-                isRead:false
+                stay: { _id: orderToAdd.stay._id, name: orderToAdd.loc.address },
+                txt: `Reserved your stay`,
+                isRead: false
             }
             const savedOrder = await orderService.save(orderToAdd)
-            const host = await userService.getById(orderToAdd.host._id)
-            host.notifications = [notif, ...host.notifications]
-            const userToSave = await userService.update(host)
             dispatch({ type: 'ADD_ORDER', order: savedOrder })
-            dispatch({ type: 'UPDATE_USER', user: userToSave })
             showSuccessMsg('Order added')
             socketService.emit('setNotif', notif)
         }
