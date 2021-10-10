@@ -112,11 +112,9 @@ class _AppHeader extends React.Component {
                                 </div>
 
                             </button>
-                            {user?.notifications.some(notif => !notif?.isRead) && <div className="notif-icon-container">
-                                <div className="notif-icon flex align-center justify-center">{() => {
-                                  return user.notifications.filter(notif => !notif.isRead).length
-                                }}</div>
-                            </div>}
+                            {/* {user?.notifications.some(notif =>!notif?.isRead) && <div className="notif-icon-container">
+                                <div className="notif-icon flex align-center justify-center">4</div>
+                            </div>} */}
                         </div>
                         <div className="user-menu">
                             {isUserMenuOpen && <UserMenu onCheckRead={this.onCheckRead} onToggleSearchModals={this.onToggleSearchModals} onOpenBotLogin={this.onOpenBotLogin} />}
