@@ -103,8 +103,8 @@ class _NotificationsPage extends Component {
         };
 
 
-        // let data = [];
-        let data = this.props.user.notifications.length ? this.getData(this.props.user.notifications) : [];
+        let data = [];
+        // let data = this.props.user.notifications.length ? this.getData(this.props.user.notifications) : [];
         return (
             <main className="notifications-page-container  main-container">
                 <section className="page-padding">
