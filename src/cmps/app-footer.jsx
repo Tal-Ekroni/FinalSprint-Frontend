@@ -16,11 +16,9 @@ class _AppFooter extends React.Component {
     }
 
     async componentDidMount() {
-        console.log(this.props, 'footer props')
         await this.props.loadStays(this.props.filterBy)
         await this.props.loadUser()
         const topRatedStays = this.props.stays.slice(1)
-        // console.log(topRatedStays)
         this.setState({ topRatedStays })
 
     }

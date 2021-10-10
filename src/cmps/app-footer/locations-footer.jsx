@@ -3,7 +3,7 @@ export function FooterLocations({onClickLoc}) {
     return (
         <div className='flex column footer-locations'>
             {
-                locations.map(loc =><p onClick={()=>onClickLoc(loc.city,'location')}>{loc.city},{loc.country}</p>)
+                locations.map((loc,idx) =><p key={idx} onClick={()=>onClickLoc(loc.city,'location')}>{loc.city},{loc.country}</p>)
             }
         </div>
     )

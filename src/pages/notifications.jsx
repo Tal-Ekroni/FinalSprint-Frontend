@@ -21,7 +21,6 @@ class _NotificationsPage extends Component {
                 console.log('error', err);
             }
         }
-        console.log('user', user);
     }
 
     getData = (timeStamp) => {
@@ -80,6 +79,7 @@ class _NotificationsPage extends Component {
                             data={data}
                             columns={columns}
                             options={options}
+                            
                         />
                     </section>}
                 </section>

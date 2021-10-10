@@ -36,7 +36,6 @@ async function update(stay) {
 
 
 function filterPageStays(filterBy, stays) {
-    console.log('filterBy', filterBy);
     var filterdStays = stays
     if (!Object.values(filterBy.amenities).includes(true)) {
         filterdStays = stays
@@ -54,7 +53,6 @@ function filterPageStays(filterBy, stays) {
     }
     filterdStays = filterdStays.filter(stay => stay.price >= filterBy.priceRange[0] && stay.price <= filterBy.priceRange[1])
 
-    console.log('filtorr', filterdStays);
     return filterdStays
 }
 function subscribe(listener) {

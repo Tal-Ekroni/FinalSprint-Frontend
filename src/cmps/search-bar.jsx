@@ -64,7 +64,6 @@ class _SearchBar extends React.Component {
             newStr[i] = currWord
         }
         newStr = newStr.join(' ')
-        console.log(newStr);
         return newStr
     }
     capitalize = (str) => {

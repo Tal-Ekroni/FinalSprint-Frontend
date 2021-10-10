@@ -55,10 +55,15 @@ export function onAddOrder(orderToAdd) {
                 byUser: { fullName: buyer.fullname, imgUrl: buyer.imgUrl, _id: buyer._id },
                 createdAt: Date.now(),
                 stayId: orderToAdd.stay._id,
-                txt: `${buyer.fullname} Reserved your stay`
+                txt: `${buyer.fullname} Reserved your stay`,
+                isRead:false
             }
             const savedOrder = await orderService.save(orderToAdd)
+            const host = await userService.getById(orderToAdd.host._id)
+            host.notifications = [notif, ...host.notifications]
+            const userToSave = await userService.update(host)
             dispatch({ type: 'ADD_ORDER', order: savedOrder })
+            dispatch({ type: 'UPDATE_USER', user: userToSave })
             showSuccessMsg('Order added')
             socketService.emit('setNotif', notif)
         }
@@ -160,21 +165,3 @@ export function checkout() {
     }
 }
 
-// export function onBookTrip(trip) {
-//     return async (dispatch, getState) => {
-//         try {
-//             // const userTrip = trip
-//             // userTrip.id = orderId
-//             // const hostOrder = trip
-//             // hostOrder.id = orderId
-
-//             // console.log('host', hostUser);
-//             // console.log('user', user);
-
-//             // showSuccessMsg('Stay Rserved ')
-//         } catch (err) {
-//             showErrorMsg('Cannot reserve stay')
-//             console.log('Cannot reserve stay', err)
-//         }
-//     }
-// }

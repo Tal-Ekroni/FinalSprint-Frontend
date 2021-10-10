@@ -4,7 +4,6 @@ import { NavLink } from 'react-router-dom'
 import { FaAirbnb, FaBars } from 'react-icons/fa'
 import { onLogin, onLogout, onSignup, loadUsers, removeUser, } from '../store/user.actions.js'
 import { setFilter, setMiniHeader, loadStays } from '../store/stay.actions';
-import { LoginSignup } from './login-signup.jsx'
 import { SearchBar } from './search-bar';
 import { UserMenu } from './user-menu';
 class _AppHeader extends React.Component {

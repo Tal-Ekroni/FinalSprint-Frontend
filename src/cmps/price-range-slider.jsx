@@ -71,7 +71,7 @@ AirbnbThumbComponent.propTypes = {
   children: PropTypes.node,
 };
 
-export default function PriceRangeSlider({ onSetPageFilter }) {
+export default function PriceRangeSlider({ onSetPageFilter, allStaysPriceAvg }) {
   const [value, setValue] = React.useState([20, 1500])
 
   const handleChange = (event, newValue) => {
@@ -82,7 +82,7 @@ export default function PriceRangeSlider({ onSetPageFilter }) {
   return (
     <div className="price-range-container flex ">
       <Box sx={{ width: 320 }}>
-        <h3 style={{ textAlign: 'center' }}>Pick Your Price Range</h3>
+        <p style={{ textAlign: 'center' }}>{`The average nightly price is  $${allStaysPriceAvg.toFixed(0)}`}</p>
         <Box sx={{ m: 3 }} />
         <AirbnbSlider
           components={{ Thumb: AirbnbThumbComponent }}
@@ -92,13 +92,19 @@ export default function PriceRangeSlider({ onSetPageFilter }) {
           max={1500}
         />
         <div className="picks-container ">
-          <div className="min-price flex column align-center">
+          <div className="min-price flex column ">
             <span className="price-range-span" htmlFor="minPrice">Min price</span>
-            <input className="min-input" type="number" value={value[0]} />
+            <div>
+              <span className="price-range-span">$</span>
+              <input className="min-input" type="number" value={value[0]} />
+            </div>
           </div>
-          <div className="max-price flex column align-center">
+          <div className="max-price flex column ">
             <span className="price-range-span" htmlFor="maxPrice">Max price</span>
+            <div>
+            <span className="price-range-span">$</span>
             <input className="max-input" type="number" value={value[1]} />
+            </div>
           </div>
         </div>
       </Box>

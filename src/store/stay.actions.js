@@ -5,7 +5,6 @@ export function loadStays(filterBy = null) {
     return async (dispatch) => {
         try {
             const stays = await stayService.query(filterBy)
-            console.log(stays,'from actions');
             dispatch({
                 type: 'SET_STAYS',
                 stays
@@ -94,7 +93,6 @@ export function onEditStay(stayToSave) {
     return async (dispatch) => {
         try {
             const updatedStay = await stayService.update(stayToSave)
-            console.log('Updated Stay:', updatedStay);
             dispatch({
                 type: 'UPDATE_STAY',
                 stay: updatedStay

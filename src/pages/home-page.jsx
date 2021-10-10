@@ -11,14 +11,13 @@ const locations = [{ city: 'Porto', country: 'Portugal', imgUrl: 'https://res.cl
 class _HomePage extends React.Component {
     componentDidMount() {
         window.scrollTo(0, 0)
-        console.log(this.props.user)
         this.props.setMiniHeader(false)
-        window.addEventListener('resize', this.isMobileDisplay)
-        this.isMobileDisplay()
+        window.addEventListener('resize', this.setHeaderDisplay)
+        this.setHeaderDisplay()
     }
     componentWillUnmount() {
         this.props.setMiniHeader(true)
-        window.removeEventListener('resize', this.isMobileDisplay)
+        window.removeEventListener('resize', this.setHeaderDisplay)
         window.removeEventListener('scroll', this.onSetMiniHeader)
     }
     onSetMiniHeader = (ev) => {
@@ -28,7 +27,7 @@ class _HomePage extends React.Component {
             this.props.setMiniHeader(false)
         }
     }
-    isMobileDisplay = () => {
+    setHeaderDisplay = () => {
         if (window.innerWidth <= 780) {
             window.removeEventListener('scroll', this.onSetMiniHeader)
             this.props.setMiniHeader(true)

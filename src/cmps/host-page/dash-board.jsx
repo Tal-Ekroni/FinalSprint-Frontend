@@ -190,7 +190,6 @@ class _OrdersDashboard extends Component {
                         data={this.getData()}
                         columns={columns}
                         options={options}
-
                     />
                 </section>
             </main>

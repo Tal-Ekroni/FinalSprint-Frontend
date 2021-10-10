@@ -10,6 +10,7 @@ class _Explore extends React.Component {
     state = {
         stays: [],
         isScreenOpen: false,
+        allStaysPriceAvg: null,
         modals: {
             placeTypeIsOpen: false,
             PropertyTypeIsOpen: false,
@@ -36,8 +37,10 @@ class _Explore extends React.Component {
         try {
             const { user } = this.props
             window.scrollTo(0, 0)
-           await this.props.loadStays(this.props.filterBy);
-            this.setState({ stays: this.props.stays})
+            await this.props.loadStays(this.props.filterBy);
+            this.setState({ stays: this.props.stays }, () => {
+                this.calcAllStaysPriceAvg(this.state.stays)
+            })
             if (user) this.props.loadUser(this.props.user._id)
         } catch (err) {
             console.log(err);
@@ -45,7 +48,7 @@ class _Explore extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (prevProps.filterBy !== this.props.filterBy ) {
+        if (prevProps.filterBy !== this.props.filterBy) {
             this.props.loadStays(this.props.filterBy);
         }
     }
@@ -55,7 +58,6 @@ class _Explore extends React.Component {
     onSetPageFilter = (filterType, val, ev) => {
         this.setState({ frontFilter: { ...this.state.frontFilter, [filterType]: val } }, () => {
             const newStays = stayService.filterPageStays(this.state.frontFilter, this.props.stays)
-            console.log(newStays, 'newStays')
             this.setState({ stays: newStays })
         })
     }
@@ -104,11 +106,17 @@ class _Explore extends React.Component {
         })
     }
     closeAllModals = () => {
-        console.log('hiyush');
         this.onToggleScreen(false)
         this.setState({ modals: { placeTypeIsOpen: false, PropertyTypeIsOpen: false, PriceIsOpen: false, AmenitiesTypeIsOpen: false } })
     }
-
+    calcAllStaysPriceAvg = (stays) => {
+        let staysAvg = stays
+        staysAvg = staysAvg.reduce((acc, stay) => {
+            acc += stay.price
+            return acc
+        }, 0)
+        this.setState({ allStaysPriceAvg: (staysAvg / stays.length) })
+    }
     render() {
         const { stays, filterBy } = this.props
         const { isScreenOpen } = this.state
@@ -121,7 +129,7 @@ class _Explore extends React.Component {
                         <p>{this.state.stays.length === 1 ? `1 stay` : `${this.state.stays.length} stays`}</p>
                         <h1>{filterBy.location ? `Places to stay at ${filterBy.location}` : 'Find places to stay'}</h1>
                     </div>
-                    <ExploreFilter stays={stays} onSetAmenity={this.onSetAmenity} onSetPageFilter={this.onSetPageFilter} onClearPageFilter={this.onClearPageFilter} modals={this.state.modals} onToggleModals={this.onToggleModals} amenities={this.state.frontFilter.amenities} />
+                    <ExploreFilter stays={stays} closeAllModals={this.closeAllModals}onSetAmenity={this.onSetAmenity} onSetPageFilter={this.onSetPageFilter} onClearPageFilter={this.onClearPageFilter} modals={this.state.modals} onToggleModals={this.onToggleModals} allStaysPriceAvg={this.state.allStaysPriceAvg} amenities={this.state.frontFilter.amenities} />
                     {stays.length && <StaysList stays={this.state.stays} history={this.props.history} />}
                 </div>
             </main>

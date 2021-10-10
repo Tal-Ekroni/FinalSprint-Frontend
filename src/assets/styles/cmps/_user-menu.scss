@@ -1,6 +1,5 @@
 .user-menu-container {
     padding: 10px 0;
-    // height: 235px;
     width: 226px;
     background-color: $clr4;
     border-radius: 12px;
@@ -9,14 +8,13 @@
     right: 97px;
     z-index: 10;
     & .top-section {
-                border-bottom: 1px solid lightgray;
+        border-bottom: 1px solid lightgray;
         & p {
             font-family: circular-book;
         }
     }
-    & .bottom-section{
-    padding: 10px 0;
-
+    & .bottom-section {
+        padding: 10px 0;
     }
     & .user-menu-line {
         overflow: hidden;
@@ -25,6 +23,12 @@
         display: flex;
         align-items: center;
         cursor: pointer;
+        .user-notifications-icon {
+            color: #ff5a5f;
+            &.hide {
+                display: none;
+            }
+        }
         & p {
             vertical-align: middle;
             font-size: 1rem;
