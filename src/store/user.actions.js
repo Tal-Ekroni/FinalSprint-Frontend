@@ -67,21 +67,6 @@ export function onLogin(credentials) {
     return async (dispatch) => {
         try {
             const user = await userService.login(credentials)
-            if (user.isHost) {
-                socketService.setup()
-                const stays = await stayService.query()
-                console.log('ishost', stays);
-
-                stays.forEach((stay) => {
-                    if (stay.host._id === user._id) socketService.emit('setStay', stay._id)
-
-                })
-                socketService.on('getNotif', async(notif) => {
-                    user.notifications = [notif, ...user.notifications]
-                    const userToSave = await userService.update(user)
-                    dispatch({ type: 'UPDATE_USER', user: userToSave })
-                })
-            }
             dispatch({
                 type: 'SET_USER',
                 user

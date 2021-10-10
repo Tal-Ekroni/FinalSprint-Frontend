@@ -1,8 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
+import { socketService } from '../services/socket.service'
+import { stayService } from '../services/stay.service'
 import { userService } from '../services/user.service'
-import { onLogin, onLogout, onSignup } from '../store/user.actions'
+import { onLogin, onLogout, onSignup, updateUser } from '../store/user.actions'
 class _LoginPage extends React.Component {
     state = {
         credentials: {
@@ -37,16 +39,34 @@ class _LoginPage extends React.Component {
         this.setState({ credentials: { ...this.state.credentials, [field]: value } });
     }
 
-    onLogin = (ev = null) => {
+    onLogin = async (ev = null) => {
         if (ev) ev.preventDefault();
         if (!this.state.credentials.username) return;
+    console.log('login');
         this.props.onLogin(this.state.credentials);
         this.clearState()
+        const user = userService.getLoggedinUser()
+        if (user.isHost) {
+            const stays = await stayService.query()
+            console.log('ishost', stays);
+            socketService.setup()
+
+            stays.forEach((stay) => {
+                if (stay.host._id === user._id) socketService.emit('setStay', stay._id)
+
+            })
+            socketService.on('getNotif', async (notif) => {
+                user.notifications = [notif, ...user.notifications]
+                console.log(user, 'userrrrr');
+                this.props.updateUser(user)
+            })
+        }
         this.props.history.push('/')
     }
 
 
     onSignup = async (ev = null) => {
+        console.log('sign-up');
         if (ev) ev.preventDefault();
         if (!this.state.credentials.username || !this.state.credentials.password || !this.state.credentials.fullname) return;
         await this.props.onSignup(this.state.credentials);
@@ -98,7 +118,8 @@ function mapStateToProps(state) {
 const mapDispatchToProps = {
     onLogin,
     onLogout,
-    onSignup
+    onSignup,
+    updateUser
 }
 
 export const LoginPage = withRouter(connect(mapStateToProps, mapDispatchToProps)(_LoginPage))

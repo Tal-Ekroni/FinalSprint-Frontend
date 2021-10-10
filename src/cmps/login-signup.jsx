@@ -3,7 +3,9 @@ import GoogleLogin from 'react-google-login';
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 import { LoginPage } from '../pages/login'
-import { onLogin, onLogout, onSignup, loadUsers } from '../store/user.actions'
+import { socketService } from '../services/socket.service';
+import { stayService } from '../services/stay.service';
+import { onLogin, onLogout, onSignup, loadUsers, updateUser } from '../store/user.actions'
 import { GoogleLoginCmp } from './google-login';
 class _LoginSignup extends React.Component {
     state = {
@@ -41,10 +43,26 @@ class _LoginSignup extends React.Component {
         this.setState({ credentials: { ...this.state.credentials, [field]: value } });
     }
 
-    onLogin = (ev = null) => {
+    onLogin = async (ev = null) => {
         if (ev) ev.preventDefault();
         if (!this.state.credentials.username) return;
-        this.props.onLogin(this.state.credentials);
+        await this.props.onLogin(this.state.credentials);
+        const {user} = this.props
+        if (user.isHost) {
+            const stays = await stayService.query()
+            console.log('ishost', stays);
+            socketService.setup()
+            socketService.emit('setStay', user._id)
+            // stays.forEach((stay) => {
+            //     if (stay.host._id === user._id) socketService.emit('setStay', stay._id)
+
+            // })
+            socketService.on('getNotif', async (notif) => {
+                user.notifications = [notif, ...user.notifications]
+                console.log(user, 'userrrrr');
+                this.props.updateUser(user)
+            })
+        }
         this.clearState()
     }
 
@@ -148,7 +166,8 @@ const mapDispatchToProps = {
     onLogin,
     onLogout,
     onSignup,
-    loadUsers
+    loadUsers,
+    updateUser
 }
 
 export const LoginSignup = withRouter(connect(mapStateToProps, mapDispatchToProps)(_LoginSignup))
