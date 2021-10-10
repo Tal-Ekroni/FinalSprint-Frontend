@@ -47,10 +47,9 @@ export function updateUser(userToSave) {
     return async (dispatch) => {
         try {
             const updatedUser = await userService.update(userToSave)
-            console.log('userrr', updatedUser);
             dispatch({
                 type: 'UPDATE_USER',
-                stay: updatedUser
+                user: updatedUser
             })
             showSuccessMsg('User updated')
         } catch (err) {
@@ -136,7 +135,6 @@ export function onBecomeHost(userId) {
 
 }
 export function onToggleLikedStay(savedStayId, isLiked, userId) {
-    console.log('action', savedStayId, isLiked, userId);
     return async (dispatch, getState) => {
         try {
             const user = await userService.getById(userId)
@@ -174,8 +172,6 @@ export function onBookTrip(trip) {
 
             const updatedUser = await userService.update(user)
             const updatedHost = await userService.update(hostUser)
-            console.log('host', hostUser);
-            console.log('user', user);
             dispatch({ type: 'UPDATE_USER', user: updatedUser })
             dispatch({ type: 'UPDATE_USER', user: updatedHost })
 

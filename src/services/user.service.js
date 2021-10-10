@@ -37,7 +37,6 @@ async function update(user) {
     // await storageService.put('user', user)
     // Handle case in which admin updates other user's details
     const updatedUser = await httpService.put(`user/${user._id}`, user)
-    console.log(updatedUser);
     if (getLoggedinUser()._id === user._id) _saveLocalUser(updatedUser)
 
     return updatedUser;

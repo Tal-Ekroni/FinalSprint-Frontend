@@ -3,6 +3,7 @@ import { withRouter } from 'react-router'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { onLogout, loadUser } from '../store/user.actions'
+import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 class _UserMenu extends React.Component {
     state = {
         isLoginModalOn: false
@@ -40,7 +41,7 @@ class _UserMenu extends React.Component {
             <div className="user-menu-container flex column" >
                 <section className="user-menu top-section ">
                     <div >
-                        {user && <NavLink onClick={() => this.props.onToggleSearchModals('menuModal')} className="user-menu-line" to="/notifications"><p>Notifications</p><span>{user.notifications.length ? user.notifications.length : ''}</span></NavLink>}
+                        {user && <NavLink onClick={() => this.props.onToggleSearchModals('menuModal')} className="user-menu-line flex space-between" to="/notifications"><p>Notifications</p><span className={user.notifications.length?'user-notifications-icon':'user-notifications-icon hide'}>{user.notifications.length ? <NotificationsNoneIcon/> : ''}</span></NavLink>}
                     </div>
                     <div  >
                         {user && <NavLink onClick={() => this.props.onToggleSearchModals('menuModal')} className="user-menu-line" to="/trips"><p >Trips</p></NavLink>}

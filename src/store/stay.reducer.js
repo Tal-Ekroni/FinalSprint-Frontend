@@ -48,7 +48,6 @@ export function stayReducer(state = initialState, action) {
             break;
         case 'UPDATE_STAY':
             stays = state.stays.map(stay => (stay._id === action.stay._id) ? action.stay : stay)
-            console.log('reducer', action.stay);
             newState = { ...state, stays, stay: action.stay }
             break
 

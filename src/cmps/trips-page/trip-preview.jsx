@@ -20,7 +20,6 @@ class _TripPreview extends React.Component {
     }
     onCancelTrip = (trip) => {
         trip.status = "canceled"
-console.log('trip', trip);
         this.props.onUpdateOrder(trip)
     }
     onRemoveTrip = (tripId) => {
