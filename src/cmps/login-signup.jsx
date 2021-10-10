@@ -52,9 +52,8 @@ class _LoginSignup extends React.Component {
         if (ev) ev.preventDefault();
         if (!this.state.credentials.username || !this.state.credentials.password || !this.state.credentials.fullname) return;
         this.props.onSignup(this.state.credentials);
-        this.clearState()
+        this.clearState()  
         this.props.history.push('/')
-
     }
 
     toggleSignup = () => {
