@@ -9,14 +9,14 @@ class _NotificationsPage extends Component {
         user: null,
     }
 
-    // componentWillUnmount() {
-    //     const { user } = this.props
-    //     if (user?.notifications?.length) {
-    //         const userUnreadNotifs = user.notifications.map(notif => { notif.isRead = true })
-    //         this.props.updateUser({ ...user, notifications: userUnreadNotifs })
-    //     }
-    // }
-  
+    componentWillUnmount() {
+        const { user } = this.props
+        if (user?.notifications?.length) {
+            const userUnreadNotifs = user.notifications.map(notif => ({ ...notif, isRead: true }))
+            this.props.updateUser({ ...user, notifications: userUnreadNotifs })
+        }
+    }
+
     render() {
         const { user } = this.props
         const columns = [
@@ -51,7 +51,7 @@ class _NotificationsPage extends Component {
             filterType: "dropdown",
         };
 
-        console.log(user.notifications,'uset notif');
+        console.log(user.notifications, 'uset notif');
         return (
             <main className="notifications-page-container  main-container">
                 <section className="page-padding">
