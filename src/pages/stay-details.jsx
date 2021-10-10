@@ -37,7 +37,7 @@ class _StayDetails extends React.Component {
         window.scrollTo(0, 0)
         if (this.props.stay) {
             socketService.setup()
-            socketService.emit('setStay', this.props.stay._id)
+            socketService.emit('setStay', this.props.stay.host._id)
             // socketService.on('getNotif', (ev) => { console.log(ev); })
         }
         if (user) this.props.loadUser(user._id)

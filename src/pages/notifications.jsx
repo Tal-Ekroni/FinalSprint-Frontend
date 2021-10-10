@@ -12,7 +12,7 @@ class _NotificationsPage extends Component {
 
     async componentDidMount() {
         const { user } = this.props
-        console.log('loggggg',user);
+        console.log('loggggg', user);
         if (user) {
             try {
                 await this.props.loadUser(user._id)
@@ -23,7 +23,7 @@ class _NotificationsPage extends Component {
     }
     componentWillUnmount() {
         const { user } = this.props
-        if (user.notifications.length) {
+        if (user?.notifications?.length) {
             const userUnreadNotifs = user.notifications.map(notif => { notif.isRead = true })
             this.props.updateUser({ ...user, notifications: userUnreadNotifs })
         }
@@ -38,27 +38,30 @@ class _NotificationsPage extends Component {
         // const { orders: notifications } = this.props
         console.log('notifications', notifications);
         const dataOrders = []
-        let editedNotif;
+        let editedNotif
         if (notifications.length) {
             notifications.map((notif, idx) => {
-                editedNotif = {
-                    notifTxt: `${notif?.txt} at ${notif.stay.name}`,
-                    byUser: notif.byUser.fullname,
-                    byUserImg: <div className="user-order-img-container flex align-center" >
-                        <div>
-                            <img src={`https://i.pravatar.cc/100?u=${notif.byUser._id.substr(notif.byUser._id.length - 9)}`} alt="user-icon" />
+                if (notif) {
+
+                    editedNotif = {
+                        notifTxt: `${notif?.txt} at ${notif.stay.name}`,
+                        byUser: notif.byUser.fullname,
+                        byUserImg: <div className="user-order-img-container flex align-center" >
+                            <div>
+                                <img src={`https://i.pravatar.cc/100?u=${notif.byUser._id.substr(notif.byUser._id.length - 9)}`} alt="user-icon" />
+                            </div>
+                            <p>{notif.byUser.fullname}</p>
+                        </div>,
+                        createdAt: <p>{notif.createdAt}</p>,
+                        approveBtn: <div className="host-action-btns flex align-center">
+                            <button onClick={() => { this.onToggleIsRead(idx) }} className={`"${notif.isRead ? 'unread' : 'read'} order-btn"`}>{notif.isRead ? 'Unread' : 'Read'}</button>
+                            <button className="approve-order-btn">Remove</button>
+                            <NavLink to={`stay/${notif.stay._id}`} className="approve-order-btn">Go to stay</NavLink>
                         </div>
-                        <p>{notif.byUser.fullname}</p>
-                    </div>,
-                    createdAt: <p>{notif.createdAt}</p>,
-                    approveBtn: <div className="host-action-btns flex align-center">
-                        <button onClick={() => { this.onToggleIsRead(idx) }} className={`"${notif.isRead ? 'unread' : 'read'} order-btn"`}>{notif.isRead ? 'Unread' : 'Read'}</button>
-                        <button className="approve-order-btn">Remove</button>
-                        <NavLink to={`stay/${notif.stay._id}`} className="approve-order-btn">Go to stay</NavLink>
-                    </div>
+                    }
+                    dataOrders.unshift(editedNotif)
+                    editedNotif=null
                 }
-                dataOrders.unshift(editedNotif)
-                editedNotif = null
             })
             console.log('data', dataOrders);
             return dataOrders

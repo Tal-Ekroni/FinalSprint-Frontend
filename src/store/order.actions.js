@@ -49,6 +49,7 @@ export function onRemoveOrder(orderId) {
 
 export function onAddOrder(orderToAdd) {
     const { buyer } = orderToAdd
+    console.log('orderrrr', orderToAdd);
     return async (dispatch) => {
         try {
             const notif = {
