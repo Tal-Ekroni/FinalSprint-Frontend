@@ -8,7 +8,9 @@ class _NotificationsPage extends Component {
     state = {
         user: null,
     }
-
+componentDidMount(){
+    window.scrollTo(0, 0)
+}
     componentWillUnmount() {
         const { user } = this.props
         if (user?.notifications?.length) {
