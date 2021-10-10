@@ -144,24 +144,14 @@ class _AddStay extends React.Component {
             })
             .catch(err => console.error(err))
     }
-
-    onChangeTab = (ev, value) => {
-        this.setState({ selectedTab: value })
-    }
-    onNextPage = () => {
-        const { selectedTab } = this.state
-        const tabs = ['get-start', 'floor-plan', 'stay-profile', 'finish-page']
-        const idx = tabs.findIndex(tab => tab === selectedTab)
-        this.setState(prevState => ({ ...prevState, selectedTab: tabs[idx + 1] }))
-    }
     render() {
-        const { imgUrls, name, assetSpace, assetType, capacity, summary } = this.state
+        const { imgUrls, name, assetSpace, assetType, capacity, summary, price, amenities } = this.state
         const spaceOptions = [
             { name: 'assetSpace', value: 'An entire place', label: 'An entire place' },
             { name: 'assetSpace', value: 'A private room', label: 'A private room' },
             { name: 'assetSpace', value: 'A shared room', label: 'A shared room' },
         ];
-        
+
         const assetTypeOptions = [
             { name: 'assetType', value: 'Duplex', label: 'Duplex' },
             { name: 'assetType', value: 'Villa', label: 'Villa' },
@@ -169,7 +159,16 @@ class _AddStay extends React.Component {
             { name: 'assetType', value: 'Farm', label: 'Farm' },
             { name: 'assetType', value: 'Cabin', label: 'Cabin' },
         ];
-        
+
+        const ameintiesOptions = [
+            { name: 'amenities', value: 'TV', label: 'TV' },
+            { name: 'amenities', value: 'Wifi', label: 'Wifi' },
+            { name: 'amenities', value: 'Kitchen', label: 'Kitchen' },
+            { name: 'amenities', value: 'Smoking allowed', label: 'Smoking allowedarm' },
+            { name: 'amenities', value: 'Cooking basics', label: 'Cooking basics' },
+
+
+        ];
         const style = {
             margin: '20px 0',
             padding: '20px',
@@ -190,10 +189,6 @@ class _AddStay extends React.Component {
 
                 <div className="add-stay-form-container flex" onSubmit={this.onAddsStay}>
                     <form className="add-stay-form">
-                        {/* {selectedTab === 'get-start' && <AddStayBasicInfo handleChange={this.handleChange} handleSelectChange={this.handleSelectChange} state={this.state} />}
-                        {selectedTab === 'floor-plan' && <AddStayFloorPlan handleChange={this.handleChange} handleMultiSelectChange={this.handleMultiSelectChange} state={this.state} />}
-                        {selectedTab === 'stay-profile' && <AddStayProfile handleAddressChange={this.handleAddressChange} onUploadImg={this.onUploadImg} handleChange={this.handleChange} handleMultiSelectChange={this.handleMultiSelectChange} state={this.state} />}
-                        {selectedTab === 'finish-page' && <AddStayProfile handleAddressChange={this.handleAddressChange} onUploadImg={this.onUploadImg} handleChange={this.handleChange} handleMultiSelectChange={this.handleMultiSelectChange} state={this.state} />} */}
                         <section className="add-basic-info-container flex align-center">
                             <div className="add-stay-name-container">
                                 <label className="add-line" htmlFor="">Stay name</label>
@@ -203,10 +198,11 @@ class _AddStay extends React.Component {
                             <div className="add-stay-location-container">
                                 <AddStayMap handleAddressChange={this.handleAddressChange} />
                             </div>
+
                         </section>
                         <section className="add-stay-imgs-container flex">
                             <div className="add-stay-imgs flex">
-                                <div className="primary-img square-ratio"><input type="file" value={imgUrls} name="imgUrls" onChange={this.onUploadImg} /></div>
+                                <div className="primary-img square-ratio"><input type="file" placeholder="Upload Image" value={imgUrls} name="imgUrls" onChange={this.onUploadImg} /></div>
                                 <div className="add-small-imgs-container flex column space-between">
                                     <div className="new-stay-img square-ratio"><input type="file" value={imgUrls} name="imgUrls" onChange={this.onUploadImg} /></div>
                                     <div className="new-stay-img square-ratio"><input type="file" value={imgUrls} name="imgUrls" onChange={this.onUploadImg} /></div>
@@ -219,10 +215,14 @@ class _AddStay extends React.Component {
                         </section>
                         <section className="add-stay-details-container flex ">
                             <div className="add-form-line flex align-center space-between">
+                                <label className="add-line" htmlFor="">Capacity</label>
+                                <TextField required type="number" value={capacity} name="capacity" placeholder="Capacity..." onChange={this.handleChange} />
+                            </div>
+                            <div className="add-form-line flex align-center space-between">
                                 <label className="add-line" htmlFor="">Asset space</label>
                                 <Select
                                     required
-                                    placeholder="Choose your space type"
+                                    placeholder="Space type"
                                     onChange={this.handleSelectChange}
                                     name="assetSpace"
                                     className="add-stay-select"
@@ -234,12 +234,47 @@ class _AddStay extends React.Component {
                                 <label className="add-line" htmlFor="">What is your asset type?</label>
                                 <Select
                                     required
-                                    placeholder="Choose your asset type"
+                                    placeholder="Asset type"
                                     onChange={this.handleSelectChange}
                                     name="assetType"
                                     className="add-stay-select"
                                     value={assetType}
                                     options={assetTypeOptions}
+                                />
+                            </div>
+                            <div className="add-form-line flex align-center space-between">
+                                <TextField required type="number" value={price} name="price" placeholder="Price" onChange={this.handleChange} />
+                                <label className="add-line" htmlFor="">/per night</label>
+                            </div>
+
+                        </section>
+                        <section className="add-stay-summary">
+                            <div className="add-desc-line flex column  space-between">
+                                <label className="add-line" htmlFor="">Describe your asset</label>
+                                <TextareaAutosize
+                                    required
+                                    style={style}
+                                    value={summary}
+                                    placeholder="Describe your asset..."
+                                    className="asset-desc-input"
+                                    onChange={this.handleChange}
+                                    name="summary"
+                                    autoComplete="off" />
+                            </div>
+                        </section>
+                        <section className="add-amenities-line-container ">
+
+                            <div className="add-amenities-line flex align-center space-between">
+                                <label className="add-amenities-label" htmlFor="">Choose your asset amenities</label>
+                                <Select
+                                    required
+                                    onChange={this.handleMultiSelectChange}
+                                    placeholder="Select amenities"
+                                    name="amenities"
+                                    isMulti
+                                    className="add-stay-select"
+                                    value={amenities}
+                                    options={ameintiesOptions}
                                 />
                             </div>
                         </section>

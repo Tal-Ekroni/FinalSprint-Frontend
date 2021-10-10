@@ -42,6 +42,18 @@
         .add-stay-details-container {
             width: 100%;
         }
+        .add-stay-summary {
+            width: 100%;
+            .add-desc-line {
+                width: 80%;
+            }
+        }
+        .add-amenities-line-container {
+            width: 100%;
+            .add-amenities-line {
+                width: 50%;
+            }
+        }
         .MuiInput-root {
             width: 300px;
             & input {
