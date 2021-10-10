@@ -116,6 +116,7 @@ class _AddStay extends React.Component {
                 const state = this.state
                 const ImgUrl = res.url
                 state.newStay.imgUrls.push(ImgUrl)
+                state.newStay.imgUrls.shift()
                 this.setState((state))
             })
             .catch(err => console.error(err))
