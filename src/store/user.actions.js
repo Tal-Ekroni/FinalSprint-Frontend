@@ -77,7 +77,6 @@ export function onLogin(credentials) {
 
                 })
                 socketService.on('getNotif', async(notif) => {
-                    console.log(notif, 'check')
                     user.notifications = [notif, ...user.notifications]
                     const userToSave = await userService.update(user)
                     dispatch({ type: 'UPDATE_USER', user: userToSave })

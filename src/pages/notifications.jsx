@@ -54,7 +54,7 @@ class _NotificationsPage extends Component {
                     approveBtn: <div className="host-action-btns flex align-center">
                         <button onClick={() => { this.onToggleIsRead(idx) }} className={`"${notif.isRead ? 'unread' : 'read'} order-btn"`}>{notif.isRead ? 'Unread' : 'Read'}</button>
                         <button className="approve-order-btn">Remove</button>
-                        <NavLink to={`stay/${notif.stayId}`} className="approve-order-btn">Go to stay</NavLink>
+                        <NavLink to={`stay/${notif.stay._id}`} className="approve-order-btn">Go to stay</NavLink>
                     </div>
                 }
                 dataOrders.unshift(editedNotif)
@@ -103,8 +103,8 @@ class _NotificationsPage extends Component {
         };
 
 
-        let data = [];
-        // let data = this.props.user.notifications.length ? this.getData(this.props.user.notifications) : [];
+        // let data = [];
+        let data = this.props.user.notifications.length ? this.getData(this.props.user.notifications) : [];
         return (
             <main className="notifications-page-container  main-container">
                 <section className="page-padding">
