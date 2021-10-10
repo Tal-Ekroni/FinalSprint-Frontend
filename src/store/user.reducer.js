@@ -11,15 +11,7 @@ export function userReducer(state = initialState, action) {
     var newState = state;
     var users
     switch (action.type) {
-        case 'INCREMENT':
-            newState = { ...state, count: state.count + 1 }
-            break;
-        case 'DECREMENT':
-            newState = { ...state, count: state.count - 1 }
-            break;
-        case 'CHANGE_COUNT':
-            newState = { ...state, count: state.count + action.diff }
-            break;
+      
         case 'SET_USER':
             newState = { ...state, user: action.user }
             break;
@@ -36,6 +28,7 @@ export function userReducer(state = initialState, action) {
             newState = { ...state, users: action.users }
             break;
         case 'UPDATE_USER':
+            console.log(action.user, 'actionss');
             users = state.users.map(user => (user._id === action.user._id) ? action.user : user)
             newState = { ...state, users,user:action.user }
             break
