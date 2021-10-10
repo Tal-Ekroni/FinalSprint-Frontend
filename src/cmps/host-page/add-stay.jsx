@@ -11,7 +11,7 @@ import { AddStayMap } from './add-stay-map';
 import { TextField } from '@material-ui/core';
 import { TextareaAutosize } from "@material-ui/core";
 import Select from 'react-select';
-
+import noImg from '../../assets/img/no-img.png'
 class _AddStay extends React.Component {
     state = {
         newStay: {
@@ -20,46 +20,22 @@ class _AddStay extends React.Component {
             assetSpace: '',
             summary: '',
             uniqueStay: false,
-            imgUrls: [],
-            price: null,
-            capacity: null,
+            imgUrls: [noImg, noImg, noImg, noImg, noImg],
+            price: '',
+            capacity: '',
             amenities: [],
             labels: [],
             loc: {
-                country: null,
-                countryCode: null,
-                address: null,
-                lat: null,
-                lng: null
+                country: '',
+                countryCode: '',
+                address: '',
+                lat: '',
+                lng: ''
             },
+            host: '',
             reviews: []
         },
         selectedTab: 'get-start'
-
-    }
-    componentDidMount() {
-        this.setState({
-            newStay: {
-                name: '',
-                assetType: '',
-                assetSpace: '',
-                summary: '',
-                uniqueStay: false,
-                imgUrls: [],
-                price: null,
-                capacity: null,
-                amenities: [],
-                loc: {
-                    country: null,
-                    countryCode: null,
-                    address: null,
-                    lat: null,
-                    lng: null
-                },
-                reviews: []
-            },
-            selectedTab: 'get-start'
-        })
 
     }
     handleChange = ({ target }) => {
@@ -99,29 +75,29 @@ class _AddStay extends React.Component {
         newStay.host = { fullname, _id, ImgUrl }
         this.props.onAddStay(newStay)
 
-        this.setState(prevState => ({
-            ...prevState, newStay: {
+        this.setState({
+            newStay: {
                 name: '',
                 assetType: '',
                 assetSpace: '',
                 summary: '',
                 uniqueStay: false,
-                imgUrls: [],
-                price: null,
-                capacity: null,
+                imgUrls: [noImg, noImg, noImg, noImg, noImg],
+                price: '',
+                capacity: '',
                 amenities: [],
                 labels: [],
                 loc: {
-                    country: null,
-                    countryCode: null,
-                    address: null,
-                    lat: null,
-                    lng: null
+                    country: '',
+                    countryCode: '',
+                    address: '',
+                    lat: '',
+                    lng: ''
                 },
                 host: '',
                 reviews: []
             }
-        }))
+        })
         this.props.history.push('/explore')
     }
     onUploadImg = (ev) => {
@@ -145,7 +121,8 @@ class _AddStay extends React.Component {
             .catch(err => console.error(err))
     }
     render() {
-        const { imgUrls, name, assetSpace, assetType, capacity, summary, price, amenities } = this.state
+        const { imgUrls, name, assetSpace, assetType, capacity, summary, price, amenities } = this.state.newStay
+        console.log('imgUrls', imgUrls);
         const spaceOptions = [
             { name: 'assetSpace', value: 'An entire place', label: 'An entire place' },
             { name: 'assetSpace', value: 'A private room', label: 'A private room' },
@@ -180,6 +157,7 @@ class _AddStay extends React.Component {
             fontFamily: "circular-book",
             fontSize: "1rem"
         }
+        if (!imgUrls) return (<div>Loading</div>)
         return (
             <div className="add-stay-container">
                 <div>
@@ -191,6 +169,7 @@ class _AddStay extends React.Component {
                     <form className="add-stay-form">
                         <section className="add-basic-info-container flex align-center">
                             <div className="add-stay-name-container">
+                                <img src="" alt="" />
                                 <label className="add-line" htmlFor="">Stay name</label>
                                 <TextField required type="text" autoComplete="off" value={name} name="name" placeholder="Asset name..." onChange={this.handleChange} />
 
@@ -202,16 +181,18 @@ class _AddStay extends React.Component {
                         </section>
                         <section className="add-stay-imgs-container flex">
                             <div className="add-stay-imgs flex">
-                                <div className="primary-img square-ratio"><input type="file" placeholder="Upload Image" value={imgUrls} name="imgUrls" onChange={this.onUploadImg} /></div>
-                                <div className="add-small-imgs-container flex column space-between">
-                                    <div className="new-stay-img square-ratio"><input type="file" value={imgUrls} name="imgUrls" onChange={this.onUploadImg} /></div>
-                                    <div className="new-stay-img square-ratio"><input type="file" value={imgUrls} name="imgUrls" onChange={this.onUploadImg} /></div>
+                                <div className="primary-img square-ratio" style={{ backgroundImage: `url(${imgUrls[0]})` }}>
+                                    <input type="file" placeholder="Upload Image" name="imgUrls" onChange={this.onUploadImg} /></div>
+                                {/* <div className="add-small-imgs-container flex column space-between">
+                                    <div className="new-stay-img square-ratio"><input type="file" value={imgUrls[1]} name="imgUrls" onChange={this.onUploadImg} /></div>
+                                    <div className="new-stay-img square-ratio"><input type="file" value={imgUrls[2]} name="imgUrls" onChange={this.onUploadImg} /></div>
                                 </div>
                                 <div className="add-small-imgs-container flex column space-between">
-                                    <div className="new-stay-img square-ratio"><input type="file" value={imgUrls} name="imgUrls" onChange={this.onUploadImg} /></div>
-                                    <div className="new-stay-img square-ratio"><input type="file" value={imgUrls} name="imgUrls" onChange={this.onUploadImg} /></div>
-                                </div>
+                                    <div className="new-stay-img square-ratio"><input type="file" value={imgUrls[3]} name="imgUrls" onChange={this.onUploadImg} /></div>
+                                    <div className="new-stay-img square-ratio"><input type="file" value={imgUrls[4]} name="imgUrls" onChange={this.onUploadImg} /></div>
+                                </div> */}
                             </div>
+
                         </section>
                         <section className="add-stay-details-container flex ">
                             <div className="add-form-line flex align-center space-between">
