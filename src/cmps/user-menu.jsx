@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { onLogout, loadUser } from '../store/user.actions'
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
+import { socketService } from '../services/socket.service'
 class _UserMenu extends React.Component {
     state = {
         isLoginModalOn: false
@@ -17,8 +18,9 @@ class _UserMenu extends React.Component {
     onLogout = () => {
         this.props.onLogout()
         this.props.onToggleSearchModals('menuModal')
+        socketService.off('getNotif')
+        socketService.terminate()
         this.props.history.push('/')
-
     }
 
     onCloseLogin = () => {

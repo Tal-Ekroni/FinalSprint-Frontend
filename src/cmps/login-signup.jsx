@@ -2,6 +2,7 @@ import React from 'react'
 import GoogleLogin from 'react-google-login';
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
+import { NavLink } from 'react-router-dom';
 import { LoginPage } from '../pages/login'
 import { socketService } from '../services/socket.service';
 import { stayService } from '../services/stay.service';
@@ -47,23 +48,47 @@ class _LoginSignup extends React.Component {
         if (ev) ev.preventDefault();
         if (!this.state.credentials.username) return;
         await this.props.onLogin(this.state.credentials);
-        const {user} = this.props
+        const { user } = this.props
         if (user.isHost) {
             const stays = await stayService.query()
-            console.log('ishost', stays);
             socketService.setup()
             socketService.emit('setHost', user._id)
-            // stays.forEach((stay) => {
-            //     if (stay.host._id === user._id) socketService.emit('setStay', stay._id)
+            socketService.on('getNotif', async (notif) => {
 
-            // })
-            // socketService.on('getNotif', async (notif) => {
-            //     user.notifications = [notif, ...user.notifications]
-            //     console.log(user, 'userrrrr');
-            //     this.props.updateUser(user)
-            // })
+                // {
+                //     "byUser": {
+                //         "fullName": "Houston Anderson",
+                //         "imgUrl": "/img/img1.jpg",
+                //         "_id": "615856f7cb4c045b46874e45"
+                //     },
+                //     "createdAt": 1633891364304,
+                //     "stay": {
+                //         "_id": "61585943cb4c045b46874e50",
+                //         "name": "New York, United States"
+                //     },
+                //     "txt": "Reserved your stay",
+                //     "isRead": false
+                // }
+
+                const editedNotif = {
+                    notifTxt: `${notif.txt} at ${notif.stay.name}`,
+                    byUser: notif.byUser.fullName,
+                    // byUserImg: <div className="user-order-img-container flex align-center" >
+                    //     <div>
+                    //         <img src={`https://i.pravatar.cc/100?u=${notif.byUser._id.substr(notif.byUser._id.length - 9)}`} alt="user-icon" />
+                    //     </div>
+                    //     <p>{notif.byUser.fullName}</p>
+                    // </div>,
+                    isRead: notif.isRead,
+                    createdAt: notif.createdAt,
+                    // approveBtn: <div className="host-action-btns flex align-center">
+                    //     <NavLink to={`host`} className="approve-order-btn">Go to order</NavLink>
+                    // </div>
+                }
+                user.notifications = [editedNotif, ...user.notifications]
+                await this.props.updateUser(user)
+            })
         }
-        // console.log('check user', user);
         this.clearState()
     }
 
@@ -71,7 +96,7 @@ class _LoginSignup extends React.Component {
         if (ev) ev.preventDefault();
         if (!this.state.credentials.username || !this.state.credentials.password || !this.state.credentials.fullname) return;
         this.props.onSignup(this.state.credentials);
-        this.clearState()  
+        this.clearState()
         this.props.history.push('/')
     }
 
@@ -80,7 +105,7 @@ class _LoginSignup extends React.Component {
     }
     responseGoogle = (response) => {
         console.log(response);
-      }
+    }
     render() {
         const { username, password, fullname } = this.state.credentials;
         const { isSignup } = this.state;
@@ -151,7 +176,7 @@ class _LoginSignup extends React.Component {
                 </div>
                 <LoginPage />
 
-               <GoogleLoginCmp/>
+                <GoogleLoginCmp />
             </div>
         )
     }

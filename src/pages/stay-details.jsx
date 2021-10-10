@@ -29,15 +29,15 @@ class _StayDetails extends React.Component {
         isReadMoreOn: false,
         isLiked: null,
     }
-    componentDidMount() {
+    async componentDidMount() {
         const { user } = this.props
         const { stayId } = this.props.match.params
         if (!stayId) this.props.history.push('/')
-        else this.props.loadStay(stayId)
+        else await this.props.loadStay(stayId)
         window.scrollTo(0, 0)
         if (this.props.stay) {
             socketService.setup()
-            socketService.emit('setStay', this.props.stay.host._id)
+            socketService.emit('setHost', this.props.stay.host._id)
             // socketService.on('getNotif', (ev) => { console.log(ev); })
         }
         if (user) this.props.loadUser(user._id)
@@ -137,7 +137,7 @@ class _StayDetails extends React.Component {
                     <section className="page-bottom-container">
                         <div className="reviews-section-container" >
                             <ReviewAvg reviews={stay.reviews} setReviewsAvg={this.setReviewsAvg} />
-                            <ReviewsList  isReadMoreOn={isReadMoreOn} onToogleReadModal={this.onToogleReadModal} />
+                            <ReviewsList isReadMoreOn={isReadMoreOn} onToogleReadModal={this.onToogleReadModal} />
                             {user && <div className="add-review">
                                 <AddReview stay={stay} />
                             </div>}

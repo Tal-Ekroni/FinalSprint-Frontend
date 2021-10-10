@@ -44,7 +44,6 @@ export function removeUser(userId) {
     }
 }
 export function updateUser(userToSave) {
-    console.log('usert', userToSave);
     return async (dispatch) => {
         try {
             const updatedUser = await userService.update(userToSave)
@@ -58,7 +57,6 @@ export function updateUser(userToSave) {
             console.log('Cannot save user', err)
         }
     }
-
 }
 
 
