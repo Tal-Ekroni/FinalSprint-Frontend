@@ -29,13 +29,6 @@ class _UserMenu extends React.Component {
         this.props.history.push('/login')
         this.props.onOpenBotLogin()
         this.props.onToggleSearchModals('menuModal')
-        const noti = {
-            byUser: { fullName: 'Davit Pok' },
-            onUser: { fullName: 'Joe James' },
-            createdAt: Date.now(),
-            stayId: '',
-            txt: 'Reservd you stay'
-        }
     }
 
     render() {

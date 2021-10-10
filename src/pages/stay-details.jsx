@@ -54,13 +54,6 @@ class _StayDetails extends React.Component {
             this.isStayLiked()
             if (user) this.props.loadUser(user._id)
         }
-        // if (stay) {
-        //     if (prevProps.stay !== prevState.stay && prevProps.stay) {
-        //         this.props.onEditStay(stay)
-        //         this.props.loadStay(stay._id)
-        //         console.log(this.props.stay);
-        //     }
-        // }
     }
 
     onToogleLikeStay = () => {
