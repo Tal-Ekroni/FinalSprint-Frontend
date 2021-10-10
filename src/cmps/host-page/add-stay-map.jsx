@@ -22,7 +22,8 @@ class _AddStayMap extends Component {
     handleSelect = async (address) => {
         const results = await geocodeByAddress(address)
         const latLng = await getLatLng(results[0])
-        await this.setState({ selectedPlace: address, loc: { lat: latLng.lng, lng: latLng.lng, address: address } }, () => {
+        this.setState({ selectedPlace: address, loc: { lat: latLng.lat, lng: latLng.lng, address: address } }, () => {
+            console.log(this.state.loc);
             this.props.handleAddressChange(this.state.loc)
         })
     }
