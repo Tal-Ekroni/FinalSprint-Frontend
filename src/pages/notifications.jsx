@@ -9,13 +9,11 @@ class _NotificationsPage extends Component {
         user: null,
     }
 
-    // componentWillUnmount() {
-    //     const { user } = this.props
-    //     if (user?.notifications?.length) {
-    //         const userUnreadNotifs = user.notifications.map(notif => { notif.isRead = true })
-    //         this.props.updateUser({ ...user, notifications: userUnreadNotifs })
-    //     }
-    // }
+    componentWillUnmount() {
+        const { user } = this.props
+            const userUnreadNotifs = user.notifications.forEach(notif => { notif.isRead = true })
+            this.props.updateUser({ ...user, notifications: userUnreadNotifs })
+    }
   
     render() {
         const { user } = this.props
