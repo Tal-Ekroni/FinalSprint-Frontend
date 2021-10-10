@@ -52,17 +52,18 @@ class _LoginSignup extends React.Component {
             const stays = await stayService.query()
             console.log('ishost', stays);
             socketService.setup()
-            socketService.emit('setStay', user._id)
+            socketService.emit('setHost', user._id)
             // stays.forEach((stay) => {
             //     if (stay.host._id === user._id) socketService.emit('setStay', stay._id)
 
             // })
-            socketService.on('getNotif', async (notif) => {
-                user.notifications = [notif, ...user.notifications]
-                console.log(user, 'userrrrr');
-                this.props.updateUser(user)
-            })
+            // socketService.on('getNotif', async (notif) => {
+            //     user.notifications = [notif, ...user.notifications]
+            //     console.log(user, 'userrrrr');
+            //     this.props.updateUser(user)
+            // })
         }
+        // console.log('check user', user);
         this.clearState()
     }
 
