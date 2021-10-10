@@ -25,8 +25,10 @@ class _HostPage extends React.Component {
         this.onGetHostStays()
         if (user) {
             try {
-                await this.props.loadOrders(this.props.user._id, 'host')
+                await this.props.loadOrders(user._id, 'host')
                 await this.props.loadStays(this.props.filterBy)
+                // await this.props.loadUser(user._id)
+                console.log(user);
             } catch (err) {
                 console.log('Error', err);
             }
