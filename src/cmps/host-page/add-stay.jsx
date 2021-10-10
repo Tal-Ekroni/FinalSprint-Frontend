@@ -256,7 +256,7 @@ class _AddStay extends React.Component {
                                     className="add-stay-select"
                                     value={amenities}
                                     options={ameintiesOptions}
-                                />
+                                  />
                             </div>
                         </section>
                         <button className=" add-page-btn add-stay-btn">

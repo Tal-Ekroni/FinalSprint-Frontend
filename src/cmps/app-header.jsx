@@ -21,8 +21,6 @@ class _AppHeader extends React.Component {
     componentDidMount() {
         window.scrollTo(0, 0)
         window.addEventListener('scroll', this.onScrollCloseModals)
-        // console.log(this.props.user);
-
     }
     componentDidUpdate(prevProps, prevState) {
         const { isNotifRead } = this.state
@@ -34,11 +32,9 @@ class _AppHeader extends React.Component {
             if (prevState.isNotifRead !== isNotifRead && !isNotifRead) {
                 console.log('prev', prevState.isNotifRead);
                 console.log('curr', isNotifRead);
-                // this.onCheckRead()
                 console.log('helooooo');
             }
         }
-
     }
     componentWillUnmount() {
         window.removeEventListener('scroll', this.onScrollCloseModals)
@@ -50,16 +46,6 @@ class _AppHeader extends React.Component {
             this.setState({ isMiniInput: false })
         }
     }
-    // onLogin = (credentials) => {
-    //     this.props.onLogin(credentials)
-    // }
-    // onSignup = (credentials) => {
-    //     this.props.onSignup(credentials)
-    // }
-    // onLogout = () => {
-    //     this.props.onLogout()
-    // }
-
     onOpenBotLogin = () => {
         this.setState({ isLoginBotmodal: true })
     }
@@ -126,7 +112,7 @@ class _AppHeader extends React.Component {
                                 </div>
 
                             </button>
-                            {user?.notifications.some(notif => notif?.isRead) && <div className="notif-icon-container">
+                            {user?.notifications.some(notif =>!notif?.isRead) && <div className="notif-icon-container">
                                 <div className="notif-icon flex align-center justify-center">4</div>
                             </div>}
                         </div>
