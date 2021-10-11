@@ -81,7 +81,7 @@ export default function PriceRangeSlider({ onSetPageFilter, allStaysPriceAvg }) 
   return (
     <div className="price-range-container flex ">
       <Box sx={{ width: 320 }}>
-        <p className="stays-price-avg">{`The average nightly price is  $${allStaysPriceAvg.toFixed(0)}`}</p>
+        <p className="stays-price-avg">{`The average nightly price is  $${allStaysPriceAvg.toFixed(0)?allStaysPriceAvg.toFixed(0):''}`}</p>
         <Box sx={{ m: 3 }} />
         <div className="price-slider-container flex justify-center align-center">
 
