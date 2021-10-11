@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import { onAddOrder } from '../../store/order.actions'
 import { FaStar, FaAngleDown, FaAngleUp } from 'react-icons/fa'
 import 'react-dates/lib/css/_datepicker.css';
-import { showErrorMsg } from '../../services/event-bus.service.js';
 import { DatesPicker2 } from '../dates-picker2.jsx';
 import { GuestsCheckoutModal } from './_guests-modal';
 
@@ -121,7 +120,6 @@ class _CheckoutForm extends React.Component {
     onBookTrip = (stay, trip) => {
 
         if (!this.props.user) {
-            showErrorMsg('login first')
         } else {
             const { _id, fullname, imgUrl, username } = this.props.user
             trip.buyer = { _id, fullname, imgUrl, username }

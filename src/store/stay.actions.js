@@ -1,5 +1,4 @@
 import { stayService } from "../services/stay.service.js";
-import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { userService } from "../services/user.service.js";
 export function loadStays(filterBy = null) {
     return async (dispatch) => {
@@ -10,7 +9,6 @@ export function loadStays(filterBy = null) {
                 stays
             })
         } catch (err) {
-            showErrorMsg('Cannot load stays')
         }
     }
 }
@@ -37,11 +35,7 @@ export function onRemoveStay(stayId) {
                 type: 'REMOVE_STAY',
                 stayId
             })
-            showSuccessMsg('Stay removed')
-            console.log('Deleted Succesfully!');
         } catch (err) {
-            showErrorMsg('Cannot remove stay')
-            console.log('Cannot remove stay', err)
         }
     }
 }
@@ -55,11 +49,8 @@ export function onAddStay(stayToAdd) {
                 type: 'ADD_STAY',
                 stay: savedStay
             })
-            showSuccessMsg('Stay added')
         }
         catch (err) {
-            showErrorMsg('Cannot add stay')
-            console.log('Cannot add stay', err)
         }
     }
 }
@@ -97,10 +88,7 @@ export function onEditStay(stayToSave) {
                 type: 'UPDATE_STAY',
                 stay: updatedStay
             })
-            showSuccessMsg('Stay updated')
         } catch (err) {
-            showErrorMsg('Cannot update stay')
-            console.log('Cannot save stay', err)
         }
     }
 
@@ -127,12 +115,7 @@ export function checkout() {
             const score = await userService.changeScore(-total)
             dispatch({ type: 'SET_SCORE', score })
             dispatch({ type: 'CLEAR_CART' })
-            showSuccessMsg('Charged you: $' + total.toLocaleString())
-
-
         } catch (err) {
-            showErrorMsg('Cannot checkout, login first')
-            console.log('CarActions: err in checkout', err)
         }
     }
 }

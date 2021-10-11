@@ -1,5 +1,4 @@
 import { userService } from "../services/user.service.js";
-import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
 import { utilService } from "../services/util.service.js";
 import { socketService } from "../services/socket.service.js";
 import { stayService } from '../services/stay.service.js'
@@ -51,10 +50,7 @@ export function updateUser(userToSave) {
                 type: 'UPDATE_USER',
                 user: updatedUser
             })
-            showSuccessMsg('User updated')
         } catch (err) {
-            showErrorMsg('Cannot update user')
-            console.log('Cannot save user', err)
         }
     }
 }
@@ -70,8 +66,6 @@ export function onLogin(credentials) {
                 user
             })
         } catch (err) {
-            showErrorMsg('Cannot login')
-            console.log('Cannot login', err)
         }
     }
 }
@@ -87,8 +81,6 @@ export function onSignup(credentials) {
                 })
             })
             .catch(err => {
-                showErrorMsg('Cannot signup')
-                console.log('Cannot signup', err)
             })
 
     }
@@ -102,8 +94,6 @@ export function onLogout() {
                 user: null
             }))
             .catch(err => {
-                showErrorMsg('Cannot logout')
-                console.log('Cannot logout', err)
             })
     }
 }
@@ -134,10 +124,7 @@ export function onToggleLikedStay(savedStayId, isLiked, userId) {
             }
             const savedUser = await userService.update(user)
             dispatch({ type: 'UPDATE_USER', savedUser })
-            showSuccessMsg('User updated')
-
         } catch (err) {
-            console.log(err);
         }
     }
 }
@@ -162,11 +149,8 @@ export function onBookTrip(trip) {
             const updatedHost = await userService.update(hostUser)
             dispatch({ type: 'UPDATE_USER', user: updatedUser })
             dispatch({ type: 'UPDATE_USER', user: updatedHost })
-
-            showSuccessMsg('Stay Rserved ')
         } catch (err) {
-            showErrorMsg('Cannot reserve stay')
-            console.log('Cannot reserve stay', err)
+
         }
     }
 }
@@ -183,8 +167,6 @@ export function loadAndWatchUser(userId) {
             //     dispatch({ type: 'SET_WATCHED_USER', user })
             // })
         } catch (err) {
-            showErrorMsg('Cannot load user')
-            console.log('Cannot load user', err)
         }
     }
 }

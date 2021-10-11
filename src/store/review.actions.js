@@ -1,5 +1,5 @@
 // import { socketService, SOCKET_EVENT_REVIEW_ADDED } from '../services/socket.service'
-import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service';
+
 import { stayService } from '../services/stay.service'
 
 
@@ -29,10 +29,9 @@ export function onAddReview(review, stayId) {
         type: 'UPDATE_STAY',
         stay: updatedStay
       })
-      showSuccessMsg('Stay updated')
+
     } catch (err) {
-      showErrorMsg('Cannot update stay')
-      console.log('Cannot save stay', err)
+
     }
   }
 }
