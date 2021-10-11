@@ -4,6 +4,7 @@
 // }
 .notifications-page-container {
     .dashboard-header-container {
+        gap: 20px;
         height: 120px;
         width: 100%;
         > div {
@@ -15,11 +16,10 @@
             margin-inline-end: 10px;
             padding: 5px;
             border-radius: 8px;
-        } 
-        & :nth-child(3){
+        }
+        & :nth-child(3) {
             min-width: 200px;
             min-width: 250px;
-
         }
         .dashboard-value p {
             font-family: circular-book;
@@ -63,15 +63,43 @@
             text-align: center;
         }
     }
-    .MUIDataTable-responsiveBase-9{
+    .MUIDataTable-responsiveBase-9 {
         max-height: 500px;
     }
+
     th:last-child span,
     td:last-child span {
         justify-content: center;
     }
     .MUIDataTableBodyCell-stackedCommon-80:last-child {
         width: 100%;
+    }
+    td:nth-child(2),
+    th:nth-child(2) {
+        width: 200px;
+    }
+    td:nth-child(3),
+    th:nth-child(3) {
+        width: 300px;
+    }
+
+    .stat-arrow {
+        height: 100%;
+        font-size: 1.6rem;
+        &.down {
+            transform: rotate(90deg);
+            color: red;
+        }
+        &.up {
+            color: green;
+            transform: rotate(-90deg);
+        }
+    }
+    .dash-review-stat {
+        font-size: 0.1rem;
+    }
+    .dashboard-label {
+        font-family: circular-book;
     }
     .host-action-btns {
         justify-content: center;

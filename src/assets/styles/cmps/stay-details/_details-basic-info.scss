@@ -39,10 +39,8 @@
                             font-size: 1rem;
                         }
                     }
-                    .details-like.liked .MuiSvgIcon-root {
-                    
-                            color: $clr6;
-                        
+                    .liked > * {
+                        color: $clr6;
                     }
                 }
             }

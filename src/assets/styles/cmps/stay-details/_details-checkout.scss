@@ -98,7 +98,7 @@
             display: none;
         }
     }
-    
+
     .date-pick {
         position: absolute;
         bottom: -310px;
@@ -118,7 +118,16 @@
             }
         }
     }
-    
+    .stay-msg-container {
+        height: 50px;
+        font-family: circular-book;
+        width: 100%;
+        text-align: center;
+        padding-top: 30px;
+        h1 {
+            font-size: 1rem;
+        }
+    }
 }
 .summed-trip-info {
     & .sum-line {

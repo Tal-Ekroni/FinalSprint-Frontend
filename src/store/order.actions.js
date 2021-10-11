@@ -55,7 +55,7 @@ export function onAddOrder(orderToAdd) {
             const notif = {
                 byUser: { fullName: buyer.fullname, imgUrl: buyer.imgUrl, _id: buyer._id },
                 createdAt: Date.now(),
-                stay: { _id: orderToAdd.stay._id, name: orderToAdd.loc.address },
+                stay: { _id: orderToAdd.stay._id, name: orderToAdd.loc.address, reviewsAvg: orderToAdd.stay.reviewsAvg },
                 txt: `Reserved your stay`,
                 isRead: false
             }

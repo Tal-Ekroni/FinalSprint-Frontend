@@ -28,7 +28,7 @@ export function BasicInfo({ stay, isLiked, onToogleLikeStay, reviewsAvg }) {
                             <p>Share</p>
                         </div>
                         <div className="save-btn-container flex align-center" onClick={() => { onToogleLikeStay() }}>
-                            <p className={`details-like ${isLiked ? 'liked' : ''} `} >{!isLiked ? <FavoriteBorderIcon /> : <FavoriteIcon />}</p>
+                            <p className={`details-like ${isLiked ? 'liked' : ''} `} >{!isLiked ? <FavoriteBorderIcon /> : <FavoriteIcon  />}</p>
                             <p>Save</p>
                         </div>
                     </div>

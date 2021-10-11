@@ -111,7 +111,7 @@ class _StayDetails extends React.Component {
                                     </div>
                                 </div>
                                 <div className="host-img-container">
-                                    <img src={`https://i.pravatar.cc/100?u=${stay.host._id.substr(stay.host._id.length - 9)}`} alt="" />
+                                    <img src={`https://i.pravatar.cc/100?u=${stay.host._id.substr(stay.host._id.length - 10)}`} alt="" />
                                 </div>
                             </section>
                             <AssetSum />
