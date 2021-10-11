@@ -27,21 +27,22 @@
             .save-btn-container {
                 width: 60px;
                 p {
-                    font-size: 1rem;
+                    font-size: 0.875rem;
                     font-family: circular-bold;
                     text-decoration: underline;
                     &.details-like,
                     &.details-share {
                         height: 1rem;
-                       
+
                         svg {
+                            font-size: 1rem;
                             font-size: 1rem;
                         }
                     }
-                    .details.like{
-                         &.liked .MuiSvgIcon-root {
-                                color: $clr6;
-                        }
+                    .details-like.liked .MuiSvgIcon-root {
+                    
+                            color: $clr6;
+                        
                     }
                 }
             }
