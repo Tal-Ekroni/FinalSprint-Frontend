@@ -21,7 +21,7 @@ export class ExploreFilter extends React.Component {
     render() {
         const { placeTypeIsOpen, PropertyTypeIsOpen, PriceIsOpen, AmenitiesTypeIsOpen } = this.props.modals
         const { amenities, allStaysPriceAvg, ameintiesOptions } = this.props
-        const types = ['Loft', 'Studio', 'Penthouse', 'Appartment', 'Hotel', 'Villa', 'Duplex', 'Home']
+        const propertyTypes = ['Loft', 'Studio', 'Penthouse', 'Appartment', 'Hotel', 'Villa', 'Duplex', 'Home']
         return (
             <div className="explore-filter flex">
                 <div className="sort-type type-of-place">
@@ -40,8 +40,14 @@ export class ExploreFilter extends React.Component {
                 <div className="sort-type property-type">
                     <button onClick={() => { this.props.onToggleModals('PropertyTypeIsOpen') }}>Property Type</button>
                     {PropertyTypeIsOpen && <DynamicModal >
-
-                        <div className="property-type" onClick={(ev) => { this.props.onSetPageFilter('PropertyType', 'Loft') }}>
+                        {propertyTypes.map((type, idx) => {
+                            return (<div key={idx} className='property-type' onClick={(ev) => { this.props.onSetPageFilter('PropertyType', type) }}>
+                                <h1>
+                                    {type}
+                                </h1>
+                            </div>)
+                        })}
+                        {/* <div className="property-type" onClick={(ev) => { this.props.onSetPageFilter('PropertyType', 'Loft') }}>
                             <h1>Loft</h1>
                         </div>
                         <div className="property-type" className="property-type" onClick={(ev) => { this.props.onSetPageFilter('PropertyType', 'Studio', ev) }}>
@@ -64,7 +70,7 @@ export class ExploreFilter extends React.Component {
                         </div>
                         <div className="property-type" className="property-type" onClick={(ev) => { this.props.onSetPageFilter('PropertyType', 'Home', ev) }}>
                             <h1>Home</h1>
-                        </div>
+                        </div> */}
                     </DynamicModal>}
                 </div>
                 <div className="sort-type price">
