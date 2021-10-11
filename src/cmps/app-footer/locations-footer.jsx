@@ -2,6 +2,7 @@ const locations = [{ city: 'Porto', country: 'Portugal' }, { city: 'Barcelona', 
 export function FooterLocations({onClickLoc}) {
     return (
         <div className='flex column footer-locations'>
+            <h4>Locations</h4>
             {
                 locations.map((loc,idx) =><p key={idx} onClick={()=>onClickLoc(loc.city,'location')}>{loc.city},{loc.country}</p>)
             }

@@ -2,13 +2,12 @@
     background-color: $clr4;
     color: $clr2;
     border-top: 1px lightgray solid;
-    h2,
-    h4 {
+    h2 ,h4{
         margin-top: 30px;
         font-family: circular-bold;
     }
-    .footer-link-headers {
-        gap: 407px;
+    h4{
+        margin-bottom:15px;
     }
     .footer-links {
         gap: 300px;
@@ -19,10 +18,9 @@
         a {
             color: $clr2;
         }
-        .footer-first{
-            :not(:last-child){
-                padding-right:10px;
-
+        .footer-first {
+            :not(:last-child) {
+                padding-right: 10px;
             }
         }
         .footer-second {

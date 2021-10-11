@@ -8,18 +8,25 @@ import { removeFromCart, checkout, setFilter } from '../store/stay.actions'
 import { onBookTrip, loadUser } from '../store/user.actions'
 import { UserMsg } from './user-msg.jsx'
 import { FooterLocations } from './app-footer/locations-footer'
+import { NearbyStays } from './app-footer/nearby-stays'
 class _AppFooter extends React.Component {
 
     state = {
         isCartShown: false,
-        topRatedStays: []
+        topRatedStays: [],
+        nearbyStays: []
     }
 
     async componentDidMount() {
         await this.props.loadStays(this.props.filterBy)
         await this.props.loadUser()
-        const topRatedStays = this.props.stays.slice(1,9)
+        const topRatedStays = this.props.stays.slice(0, 8)
         this.setState({ topRatedStays })
+        const newFilter = this.props.filterBy;
+        newFilter.location = 'Paris';
+        await this.props.loadStays(newFilter)
+        const nearbyStays = this.props.stays.slice(0, 8)
+        this.setState({ nearbyStays })
 
     }
 
@@ -45,12 +52,13 @@ class _AppFooter extends React.Component {
             <footer className="app-footer main-container full">
                 <h2>Insparation for future getaways</h2>
                 <div className='flex footer-link-headers'>
-                    <h4>Top rated stays</h4>
-                    <h4>Locations</h4>
+
+
                 </div>
                 <div className="flex footer-links align-center">
                     <TopRatedStays stays={this.state.topRatedStays} />
                     <FooterLocations locations={this.locations} onClickLoc={this.onClickLoc} />
+                    <NearbyStays stays={this.state.nearbyStays} />
 
                 </div>
                 <div className="footer-info flex space-between align-center">
@@ -58,11 +66,11 @@ class _AppFooter extends React.Component {
                         <p>
                             © 2021 AnyGo ,Inc.,
                         </p>
-                        <Link to='/login'>· Login</Link>
-                        {user && <Link to={user.isHost ? '/host' : '/become-a-host'}>{user.isHost ? '· Host page' : '· Become a host'}</Link>}
+                        <Link to='/login'>Login</Link>
+                        {user && <Link to={user.isHost ? '/host' : '/become-a-host'}>{user.isHost ? ' Host page' : ' Become a host'}</Link>}
                     </div>
                     <div className="footer-second flex">
-                        <p>US$</p>
+                        <p>$US</p>
                         <p>English(US)</p>
                     </div>
                 </div>
