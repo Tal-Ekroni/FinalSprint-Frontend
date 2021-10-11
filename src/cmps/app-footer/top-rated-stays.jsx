@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom"
 
-export function TopRatedStays({ stays, history }) {
+export function TopRatedStays({ stays}) {
     return (
         <section className="flex column top-rated-stays ">
+            <h4>Top rated stays</h4>
             {
                 stays.map(stay =>
                     <div  key={stay._id} className="flex column stay-links">
