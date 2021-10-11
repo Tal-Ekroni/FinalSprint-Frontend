@@ -14,22 +14,26 @@ class _AppFooter extends React.Component {
     state = {
         isCartShown: false,
         topRatedStays: [],
-        nearbyStays: []
+        nearbyStays: [],
+        stays: []
     }
 
     async componentDidMount() {
         await this.props.loadStays(this.props.filterBy)
+        this.setState({ stays: this.props.stays })
         await this.props.loadUser()
-        const topRatedStays = this.props.stays.slice(0, 8)
+        const topRatedStays = this.state.stays.slice(0, 8)
         this.setState({ topRatedStays })
-        const newFilter = this.props.filterBy;
-        newFilter.location = 'Paris';
-        await this.props.loadStays(newFilter)
+        this.filterLocs(this.state.stays)
         const nearbyStays = this.props.stays.slice(0, 8)
         this.setState({ nearbyStays })
 
     }
-
+    filterLocs =  (stays) => {
+        stays = stays.filter(stay => stay.loc.address.toLowerCase().includes('paris'))
+        stays = stays.slice(0, 8)
+         this.setState({ nearbyStays: stays })
+    }
     removeFromCart = (stayId) => {
         this.props.removeFromCart(stayId)
     }

@@ -53,7 +53,6 @@ function filterPageStays(filterBy, stays) {
             })
             return isStay
         })
-        console.log('filterrrr', filterdStays);
     }
 
     if (filterBy.placeType) {
@@ -63,7 +62,6 @@ function filterPageStays(filterBy, stays) {
         filterdStays = filterdStays.filter(stay => stay.assetType.toLowerCase().split(' ')[1] === filterBy.PropertyType.toLowerCase())
     }
     filterdStays = filterdStays.filter(stay => stay.price >= filterBy.priceRange[0] && stay.price <= filterBy.priceRange[1])
-
     return filterdStays
 }
 function subscribe(listener) {
