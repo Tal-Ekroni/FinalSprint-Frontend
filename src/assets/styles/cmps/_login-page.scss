@@ -1,6 +1,7 @@
 .login {
     height: 500px;
-    width: 420px;
+    width: 100%;
+    max-width: 400px;
     text-align: center;
     border: 1px lightgray solid;
     position: relative;
@@ -31,15 +32,15 @@
         margin-right: 10px;
         margin-left: 10px;
         margin-bottom: 15px;
-        width: 400px;
+        width: 95%;
         border-radius:10px;
         .login-input{
             border-bottom:1px solid lightgray;
-            width:400px;
+            width:100%;
         }
         .fullname-input,.password-input{
             // margin-left:10px;
-            width:400px;
+            width:100%;
         }
     }
     h1 {
@@ -48,7 +49,7 @@
     }
     .login-btn {
         background-color: $clr8;
-        width: 400px;
+        width: 95%;
         height: 50px;
         font-family:circular-bold;
         border-radius:3px;

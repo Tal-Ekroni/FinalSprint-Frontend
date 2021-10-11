@@ -56,7 +56,7 @@ class _AppFooter extends React.Component {
 
 
                 </div>
-                <div className="flex footer-links align-center">
+                <div className="flex footer-links align-center space-between">
                     <TopRatedStays stays={this.state.topRatedStays} />
                     <FooterLocations locations={this.locations} onClickLoc={this.onClickLoc} />
                     <NearbyStays stays={this.state.nearbyStays} />

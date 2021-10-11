@@ -20,7 +20,7 @@ class _Explore extends React.Component {
         frontFilter: {
             placeType: '',
             PropertyType: '',
-            priceRange: [20, 1500],
+            priceRange: [20, 600],
             amenities: []
         },
         ameintiesOptions: [
@@ -91,7 +91,7 @@ class _Explore extends React.Component {
             frontFilter: {
                 placeType: '',
                 PropertyType: '',
-                priceRange: [20, 1500],
+                priceRange: [20, 600],
                 amenities: []
             },
             ameintiesOptions: [
