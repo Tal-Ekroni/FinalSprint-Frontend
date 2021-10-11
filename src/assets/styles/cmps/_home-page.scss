@@ -9,7 +9,7 @@
         position: relative;
         justify-content: center;
         align-items: center;
-        width: 100vw;
+        width: 100%;
         box-shadow: inset 0px 1px 20px 0px #5a5a5a;
         .where-to-go {
             position: relative;
@@ -80,7 +80,7 @@
                 gap: 24px;
             }
             @include for-wide-layout {
-                gap: 24px 60px;
+                // gap: 24px 60px;
 
             }
             @include for-extra-wide-layout {
@@ -159,8 +159,8 @@
             @include for-wide-layout {
                 .live-card {
                     .live-img {
-                        height: 20vw;
-                        width: 20vw;
+                        height: 18vw;
+                        width: 18vw;
                     }
                 }
             }

@@ -16,7 +16,6 @@ export class ExploreFilter extends React.Component {
 
             }
         })
-
     }
     render() {
         const { placeTypeIsOpen, PropertyTypeIsOpen, PriceIsOpen, AmenitiesTypeIsOpen } = this.props.modals
@@ -47,30 +46,6 @@ export class ExploreFilter extends React.Component {
                                 </h1>
                             </div>)
                         })}
-                        {/* <div className="property-type" onClick={(ev) => { this.props.onSetPageFilter('PropertyType', 'Loft') }}>
-                            <h1>Loft</h1>
-                        </div>
-                        <div className="property-type" className="property-type" onClick={(ev) => { this.props.onSetPageFilter('PropertyType', 'Studio', ev) }}>
-                            <h1>Studio</h1>
-                        </div>
-                        <div className="property-type" className="property-type" onClick={(ev) => { this.props.onSetPageFilter('PropertyType', 'Penthouse', ev) }}>
-                            <h1>Penthouse</h1>
-                        </div>
-                        <div className="property-type" className="property-type" onClick={(ev) => { this.props.onSetPageFilter('PropertyType', 'Appartment', ev) }}>
-                            <h1>Appartment</h1>
-                        </div>
-                        <div className="property-type" className="property-type" onClick={(ev) => { this.props.onSetPageFilter('PropertyType', 'Hotel', ev) }}>
-                            <h1>Hotel</h1>
-                        </div>
-                        <div className="property-type" className="property-type" onClick={(ev) => { this.props.onSetPageFilter('PropertyType', 'Villa', ev) }}>
-                            <h1>Villa</h1>
-                        </div>
-                        <div className="property-type" className="property-type" onClick={(ev) => { this.props.onSetPageFilter('PropertyType', 'Duplex', ev) }}>
-                            <h1>Duplex</h1>
-                        </div>
-                        <div className="property-type" className="property-type" onClick={(ev) => { this.props.onSetPageFilter('PropertyType', 'Home', ev) }}>
-                            <h1>Home</h1>
-                        </div> */}
                     </DynamicModal>}
                 </div>
                 <div className="sort-type price">
@@ -91,7 +66,6 @@ export class ExploreFilter extends React.Component {
                                 </h1>
                             </div>)
                         })}
-
                     </DynamicModal>}
                 </div>
                 <div className="sort-type type-of-place">
