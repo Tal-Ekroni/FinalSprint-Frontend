@@ -77,18 +77,13 @@ class _HostPage extends React.Component {
                     {user && <section className="host-container">
 
                         {selectedTab === 'orders' && <div>
-                            <h4>Here you can review and edit your orders...</h4>
                             <div className="orders-container">
                                 <OrdersDashboard orders={orders} />
                                 {/* <OrdersList orders={orders} /> */}
                             </div>
                         </div>}
-                        {selectedTab === 'my-stays' && <div>
-                            <h2>My Stays!</h2>
-                            <div className="orders-container">
+                        {selectedTab === 'my-stays' && <div className="orders-container">
                                 {stays && <HostStaysList orders={orders} stays={stays} />}
-
-                            </div>
                         </div>}
                         {/* {selectedTab === 'stats' && <div>
                             <HostChart />
