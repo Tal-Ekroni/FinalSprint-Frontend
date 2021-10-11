@@ -3,11 +3,18 @@
   border: 0.5px solid rgba(118, 118, 118, 0.28);
   border-radius: 12px;
   width: 320px;
-  height: 200px;
+  height: 170px;
   z-index: 8;
   justify-content: center;
+  .price-slider-container {
+    width: 100%;
+    > span {
+      width: 95%;
+      text-align: center;
+    }
+  }
   .stays-price-avg {
-    padding-top: 9px;
+    padding-top: 15px;
     text-align: center;
     font-family: circular-book;
   }
@@ -20,7 +27,7 @@
     width: 90%;
     z-index: 8;
     .MuiSlider-root {
-      padding: 47px 0px;
+      padding: 35px 0px;
     }
     .MuiSlider-track,
     .MuiSlider-thumb {

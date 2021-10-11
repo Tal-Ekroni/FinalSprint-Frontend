@@ -82,11 +82,21 @@
                 flex-direction: column;
                 padding: 0 5px;
             }
+            .stay-info-conatiner{
+                flex-direction: column;
+            }
+            .dot{
+                display: none;
+            }
+            
         }
         @include for-narrow-layout {
             .stay-info {
                 flex-direction: row;
                 padding: 0;
+            }
+            .stay-info-conatiner{
+                flex-direction: row;
             }
         }
         @include for-normal-layout {

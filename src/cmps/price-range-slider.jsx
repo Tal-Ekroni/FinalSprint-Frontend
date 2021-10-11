@@ -84,13 +84,16 @@ export default function PriceRangeSlider({ onSetPageFilter, allStaysPriceAvg }) 
       <Box sx={{ width: 320 }}>
         <p className="stays-price-avg">{`The average nightly price is  $${allStaysPriceAvg.toFixed(0)}`}</p>
         <Box sx={{ m: 3 }} />
+        <div className="price-slider-container flex justify-center align-center">
+
         <AirbnbSlider
           components={{ Thumb: AirbnbThumbComponent }}
           getAriaLabel={(index) => (index === 0 ? 'Minimum price' : 'Maximum price')}
           defaultValue={[20, 600]}
           onChange={handleChange}
           max={600}
-        />
+          />
+          </div>
         <div className="picks-container ">
           <div className="min-price flex column ">
             <span className="price-range-span" htmlFor="minPrice">Min price</span>

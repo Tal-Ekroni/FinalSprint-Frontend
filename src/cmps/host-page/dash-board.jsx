@@ -32,7 +32,7 @@ class _OrdersDashboard extends Component {
         const dataOrders = [];
         let editedOrder;
         if (orders) {
-            orders.map(order => {
+            orders.forEach(order => {
                 editedOrder = {
                     stayName: order.stay.name,
                     // address: order.loc.address,

@@ -28,13 +28,6 @@ class _AppHeader extends React.Component {
         if (prevProps.isMiniHeader !== this.props.isMiniHeader && !this.props.isMiniHeader) {
             this.closeAllModals()
         }
-        if (user) {
-            if (prevState.isNotifRead !== isNotifRead && !isNotifRead) {
-                console.log('prev', prevState.isNotifRead);
-                console.log('curr', isNotifRead);
-                console.log('helooooo');
-            }
-        }
     }
     componentWillUnmount() {
         window.removeEventListener('scroll', this.onScrollCloseModals)
