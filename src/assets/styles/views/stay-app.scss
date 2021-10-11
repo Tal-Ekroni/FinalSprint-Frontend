@@ -32,3 +32,8 @@
 .explore-mega-container {
     max-width: calc(100vw - 80px);
 }
+@include for-mobile-layout{
+    .explore-mega-container{
+        max-width:unset;
+    }
+}
