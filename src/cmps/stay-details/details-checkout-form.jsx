@@ -197,7 +197,7 @@ class _CheckoutForm extends React.Component {
                                 <div className="guests-check-container flex space-between" onClick={() => { this.toggleGuestsModal() }}>
                                     <div className="guests-input flex column"  >
                                         <label className="title" htmlFor="" >GUESTS </label>
-                                        <label htmlFor="" ><span>{this.calcGuestNum()} guest</span></label>
+                                        <label htmlFor="" ><span>{this.calcGuestNum()===1?`${this.calcGuestNum()} guest`:`${this.calcGuestNum()} guests`}</span></label>
                                     </div>
                                     <div className="guest-select-arrow flex">
                                         {isGuestPopupOn ? <FaAngleUp /> : <FaAngleDown />}
