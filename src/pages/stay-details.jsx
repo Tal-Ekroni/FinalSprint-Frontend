@@ -95,7 +95,7 @@ class _StayDetails extends React.Component {
         const { isReadMoreOn, isLiked } = this.state
         const { stay, user } = this.props
         return (
-            <section className="stay-details-section main-layout">
+            <section className="stay-details-section main-container">
                 {(!stay) && <div className="loader-container flex align-center justify-center"><img src={loader} alt="loader" /></div>}
                 {stay && <div className="stay-details-container">
                     <BasicInfo user={user} stay={stay} isLiked={isLiked} reviewsAvg={stay.reviewsAvg} onToogleLikeStay={this.onToogleLikeStay} />

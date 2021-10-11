@@ -54,11 +54,13 @@ class _StayPreview extends React.Component {
                             <LazyLoad imgs={this.props.stay.imgUrls} />
                         </div>
                         <div className="preview-details ">
-                            <span className="preview-rating flex align-center">
+                            <div className="preview-rating flex align-center">
+                              <span className="rating-star">
                                 <FaStar size={13} color="#FF5A5F" />
+                              </span>
                                 <p className="preview-rating-amount">{this.props.stay.reviewsAvg ? this.props.stay.reviewsAvg : 0}</p>
                                 <span className="preview-review-count flex"><span>(</span>{this.props.stay.reviews.length} {this.props.stay.reviews.length === 1 ? 'review' : 'reviews'}<span>)</span></span>
-                            </span>
+                            </div>
                             <div className="stay-style flex">
                                 <h3><span>{this.props.stay.assetType}</span> &#183; <span>{this.props.stay.loc.address.split(',')[0]}</span></h3>
                             </div>

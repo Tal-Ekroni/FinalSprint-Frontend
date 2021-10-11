@@ -8,7 +8,7 @@
 }
 .explore-page-container {
     min-height: 90vh;
-    margin-bottom:45px;
+    margin-bottom: 45px;
     .screen {
         pointer-events: none;
         position: fixed;
@@ -20,20 +20,12 @@
         &.screen-open {
             pointer-events: all;
             // background-color: beige;
-        z-index: 0;
+            z-index: 0;
         }
     }
     ::-webkit-scrollbar {
         width: 0;
         background-color: transparent;
         display: none;
-    }
-}
-.explore-mega-container {
-    max-width: calc(100vw - 80px);
-}
-@include for-mobile-layout{
-    .explore-mega-container{
-        max-width:unset;
     }
 }

@@ -93,7 +93,7 @@
     .main-layout {
         min-width: 580px;
         max-width: 888px;
-        width: 90%;
+        width: 80%;
         margin: 0 auto;
         padding: 0 20px;
     }
@@ -103,7 +103,7 @@
         min-width: 888px;
         max-width: 1200px;
         margin: 0 auto;
-        width: 90%;
+        width: 80%;
         padding: 0 20px;
     }
 }
@@ -112,18 +112,18 @@
         min-width: 1200px;
         max-width: 1360px;
         margin: 0 auto;
-        width: 90%;
+        width: 80%;
         padding: 0 20px;
     }
 }
-@media (min-width: $wide-breakpoint) {
-    .main-layout {
-        min-width: 1360px;
-        margin: 0 auto;
-        width: 90%;
-        padding: 0 20px;
-    }
-}
+// @media (min-width: $wide-breakpoint) {
+//     .main-layout {
+//         min-width: 1360px;
+//         margin: 0 auto;
+//         width: 90%;
+//         padding: 0 20px;
+//     }
+// }
 .DateRangePickerInput_arrow {
     display: none;
 }

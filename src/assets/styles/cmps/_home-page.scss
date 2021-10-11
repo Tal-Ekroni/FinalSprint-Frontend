@@ -9,7 +9,7 @@
         position: relative;
         justify-content: center;
         align-items: center;
-        width: 100vw;
+        width: 100%;
         box-shadow: inset 0px 1px 20px 0px #5a5a5a;
         .where-to-go {
             position: relative;
@@ -79,7 +79,10 @@
                 overflow-x: unset;
                 gap: 24px;
             }
+            @include for-wide-layout {
+                // gap: 24px 60px;
 
+            }
             @include for-extra-wide-layout {
                 grid-template-columns: repeat(4, minmax(150px, 1fr));
                 max-width: unset;
@@ -88,8 +91,8 @@
             }
 
             & .loc-section {
-                max-width: 100px;
-                .loc-img {
+                    min-width: 20vw;
+                    .loc-img {
                     height: 60px;
                     width: 60px;
                     margin-right: 10px;
@@ -104,6 +107,9 @@
                     color: $clr5;
                     width: 130px;
                 }
+                // @include for-wide-layout{
+                    // min-width: 20vw;
+                // }
             }
         }
     }
@@ -153,8 +159,8 @@
             @include for-wide-layout {
                 .live-card {
                     .live-img {
-                        height: 20vw;
-                        width: 20vw;
+                        height: 18vw;
+                        width: 18vw;
                     }
                 }
             }

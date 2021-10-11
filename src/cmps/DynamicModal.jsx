@@ -6,8 +6,8 @@ export class DynamicModal extends React.Component {
 
         return (
             <div className={`dynamic-sort-modal ${styleClass}`}>
-                {this.props.children}
-                {/* {this.props.children.map((child, index) => (<div key={index}>{child}</div>))} */}
+                {/* {this.props.children} */}
+                {this.props.children.length ? this.props.children.map((child, index) => (<div key={index}>{child}</div>)) : this.props.children}
 
             </div>
         )
