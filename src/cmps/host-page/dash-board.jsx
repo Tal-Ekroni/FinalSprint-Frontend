@@ -2,12 +2,7 @@ import { Component } from "react";
 import { connect } from 'react-redux'
 import { loadUser } from '../../store/user.actions'
 import { onUpdateOrder, onRemoveOrder } from '../../store/order.actions'
-import ReactDOM from "react-dom";
 import MUIDataTable from "mui-datatables";
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
 import { FaStar } from 'react-icons/fa'
 
 class _OrdersDashboard extends Component {
@@ -19,9 +14,11 @@ class _OrdersDashboard extends Component {
         const { user, orders } = this.props
         this.setState({ orders })
         if (user) this.props.loadUser(user._id)
+        window.scrollTo(0, 0)
+
     }
-    getTime = (timeStamp) => {
-        var time = new Date(timeStamp);
+    getTime = (timestamp) => {
+        var time = new Date(timestamp * 1000);
         var day = "0" + time.getDate();
         var month = "0" + (time.getMonth() + 1);
         var year = "0" + time.getFullYear();
@@ -34,19 +31,23 @@ class _OrdersDashboard extends Component {
         let editedOrder;
         if (orders) {
             orders.map(order => {
+                console.log(order);
                 editedOrder = {
                     stayName: order.stay.name,
                     // address: order.loc.address,
                     buyerName: order.buyer.fullname,
-                    buyerImg: <div className="user-order-img-container">
+                    buyerImg: <div className="user-order-img-container flex align-center">
                         <img src={`https://i.pravatar.cc/100?u=${order.buyer._id.substr(order.buyer._id.length - 9)}`} alt="" />
+                        <p>{order.buyer.fullname}</p>
                     </div>,
-                    price:`$${order.totalPrice}`,
-                    status: order.status,
+                    price: `$${order.totalPrice}`,
+                    status: `${order.status.charAt(0).toUpperCase()}${order.status.substr(1)}`,
+                    checkIn: this.getTime(order.startDate),
+                    checkOut: this.getTime(order.endDate),
                     approveBtn: <div className="host-action-btns flex">
-                        <button className="approve-order-btn" onClick={() => { this.onApproveOrder(order._id) }}>Approve</button>
-                        <button className="approve-order-btn" onClick={() => { (order.status === "pending") ? this.onDeclinelOrder(order._id) : this.onRemoveOrder(order._id) }}>
-                            {(order.status === "pending") ? 'Decline' : 'Remove'}</button>
+                        {order.status === 'pending' && <button className="approve-order-btn" onClick={() => { this.onApproveOrder(order._id) }}>Approve</button>}
+                        <button className="approve-order-btn" onClick={() => { (order.status === "declined") ? this.onRemoveOrder(order._id) : this.onDeclinelOrder(order._id) }}>
+                            {(order.status === "pending") ? 'Decline' : (order.status === "approved") ? 'Cancel' : 'Remove'}</button>
                     </div>
 
                 }
@@ -92,19 +93,27 @@ class _OrdersDashboard extends Component {
         const columns = [
             {
                 name: 'buyerImg',
-                label: " ",
+                label: "Name",
             },
             {
-                name: 'buyerName',
-                label: "Name",
+                name: "stayName",
+                label: "Address",
                 options: {
                     filter: true,
                     sort: true
                 }
             },
             {
-                name: "stayName",
-                label: "Address",
+                name: "checkIn",
+                label: "Check in",
+                options: {
+                    filter: true,
+                    sort: true
+                }
+            },
+            {
+                name: "checkOut",
+                label: "Check out",
                 options: {
                     filter: true,
                     sort: true
@@ -146,7 +155,7 @@ class _OrdersDashboard extends Component {
                         </div>
                         <div className="dashboard-value flex ">
                             <p className="checkout-star"><FaStar size={13} color="#FF5A5F" /></p>
-                            <p className="dash-avg-score">{this.getTotalRate(orders).toFixed(1)}</p>
+                            <p className="dash-avg-score">{(!this.getTotalRate(orders)) ? 0 : this.getTotalRate(orders).toFixed(1)}</p>
                         </div>
                     </div>
                     <div className="dash-stat-container flex column space-between">

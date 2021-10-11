@@ -14,9 +14,6 @@ import { AddReview } from '../cmps/stay-details/add-review'
 import { ReviewAvg } from '../cmps/stay-details/_reviews-avg'
 import loader from '../assets/img/three-dots.svg'
 import { socketService } from '../services/socket.service'
-import { ReadMore } from '../cmps/_read-more.jsx'
-// import { ReadMore } from '../cmps/_read-more'
-// import { eventBusService } from '../services/event-bus.service'
 class _StayDetails extends React.Component {
     state = {
         stayReviews: [],

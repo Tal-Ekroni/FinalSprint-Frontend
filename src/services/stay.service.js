@@ -37,14 +37,25 @@ async function update(stay) {
 
 function filterPageStays(filterBy, stays) {
     var filterdStays = stays
-    if (!Object.values(filterBy.amenities).includes(true)) {
-        filterdStays = stays
-    } else {
+    // if (!Object.values(filterBy.amenities).includes(true)) {
+    //     filterdStays = stays
+    // } else {
 
+    //     filterdStays = filterdStays.filter(stay => {
+    //         console.log(stay.amenities.includes('Hot tub'))
+    //     })
+    // }
+    if (filterBy.amenities.length) {
         filterdStays = filterdStays.filter(stay => {
-            console.log(stay.amenities.includes('Hot tub'))
+            let isStay = true
+            filterBy.amenities.forEach(amenity => {
+                if (!stay.amenities.includes(amenity)) isStay = false
+            })
+            return isStay
         })
+        console.log('filterrrr', filterdStays);
     }
+
     if (filterBy.placeType) {
         filterdStays = filterdStays.filter(stay => stay.assetType.split(' ')[0] === filterBy.placeType.split(' ')[0])
     }

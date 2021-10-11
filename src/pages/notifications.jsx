@@ -8,13 +8,17 @@ class _NotificationsPage extends Component {
     state = {
         user: null,
     }
-
-    componentWillUnmount() {
+    componentDidMount() {
+        window.scrollTo(0, 0)
+    }
+    async componentWillUnmount() {
         const { user } = this.props
         if (user?.notifications?.length) {
             const userUnreadNotifs = user.notifications.map(notif => ({ ...notif, isRead: true }))
-            this.props.updateUser({ ...user, notifications: userUnreadNotifs })
+            await this.props.updateUser({ ...user, notifications: userUnreadNotifs })
+        
         }
+        console.log('user', user);
     }
 
     render() {

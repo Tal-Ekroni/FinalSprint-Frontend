@@ -1,7 +1,3 @@
-// import { FaStar } from "react-icons/fa";
-// import Rating from "react-rating";
-// import { ReadMore } from "./_read-more";
-
 import { Component } from "react";
 import { utilService } from "../../services/util.service";
 import { ReadMore } from "../_read-more";
@@ -15,7 +11,7 @@ export class ReviewsPreview extends Component {
     }
     render() {
         const { review } = this.props
-        
+
         const { isReadMoreOn } = this.state
         return (
             <div className="review-card-container">

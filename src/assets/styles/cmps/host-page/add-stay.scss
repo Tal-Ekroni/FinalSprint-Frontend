@@ -48,10 +48,13 @@
                 width: 80%;
             }
         }
-        .add-amenities-line-container {
+        .add-amenities-container {
+            height: 400px;
             width: 100%;
+
             .add-amenities-line {
-                width: 50%;
+                color: black;
+                width: 200px;
             }
         }
         .MuiInput-root {
