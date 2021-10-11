@@ -39,10 +39,12 @@
                             font-size: 1rem;
                         }
                     }
-                    .details-like.liked .MuiSvgIcon-root {
-                    
-                            color: $clr6;
-                        
+                    .liked > * {
+                        color: $clr6;
+                    }
+                    &.details-like .liked {
+                        fill: $clr6;
+                        stroke: white;
                     }
                 }
             }

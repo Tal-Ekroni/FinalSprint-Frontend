@@ -15,7 +15,7 @@ export function BasicInfo({ stay, isLiked, onToogleLikeStay, reviewsAvg }) {
                         <div className="stay-avg-info flex align-end">
                             <p className="info-star"><FaStar size={14} color="#FF5A5F" /></p>
                             <p className="info-line-score">{reviewsAvg ? reviewsAvg : 0}</p>
-                            <p className="info-line-reviews">{`(${stay.reviews.length} reviews)`}</p>
+                            <p className="info-line-reviews">{`(${stay.demoReviews} reviews)`}</p>
                         </div>
                         <p className="dot">•</p>
                         <div className="host-location-container flex align-end">
@@ -28,7 +28,7 @@ export function BasicInfo({ stay, isLiked, onToogleLikeStay, reviewsAvg }) {
                             <p>Share</p>
                         </div>
                         <div className="save-btn-container flex align-center" onClick={() => { onToogleLikeStay() }}>
-                            <p className={`details-like ${isLiked ? 'liked' : ''} `} >{!isLiked ? <FavoriteBorderIcon /> : <FavoriteIcon />}</p>
+                            <p className="details-like" >{!isLiked ? <FavoriteBorderIcon /> : <FavoriteIcon  className="liked" />}</p>
                             <p>Save</p>
                         </div>
                     </div>

@@ -108,7 +108,7 @@ class _AppHeader extends React.Component {
                             <button className="user-btn flex align-center btn-section  ">
                                 <FaBars className="menu-btn" />
                                 <div className="user-logo-container">
-                                    {user && <img src={`https://i.pravatar.cc/100?u=${user._id.substr(user._id.length - 9)}`} alt="" />}
+                                    {user && <img src={`https://i.pravatar.cc/100?u=${user._id.substr(user._id.length - 10)}`} alt="" />}
                                 </div>
 
                             </button>

@@ -55,7 +55,6 @@ class _LoginSignup extends React.Component {
             socketService.setup()
             socketService.emit('setHost', user._id)
             socketService.on('getNotif', async (notif) => {
-
                 // {
                 //     "byUser": {
                 //         "fullName": "Houston Anderson",
@@ -70,13 +69,12 @@ class _LoginSignup extends React.Component {
                 //     "txt": "Reserved your stay",
                 //     "isRead": false
                 // }
-
                 const editedNotif = {
                     notifTxt: `${notif.txt} at ${notif.stay.name}`,
                     byUser: notif.byUser.fullName,
                     // byUserImg: <div className="user-order-img-container flex align-center" >
                     //     <div>
-                    //         <img src={`https://i.pravatar.cc/100?u=${notif.byUser._id.substr(notif.byUser._id.length - 9)}`} alt="user-icon" />
+                    //         <img src={`https://i.pravatar.cc/100?u=${notif.byUser._id.substr(notif.byUser._id.length - 10)}`} alt="user-icon" />
                     //     </div>
                     //     <p>{notif.byUser.fullName}</p>
                     // </div>,
@@ -114,9 +112,6 @@ class _LoginSignup extends React.Component {
         const { user, users } = this.props
         return (
             <div className="login-page">
-                {/* <p>
-                    <button className="btn-link" onClick={this.toggleSignup}>{!isSignup ? 'Signup' : 'Login'}</button>
-                </p> */}
                 {!isSignup && !user && <form className="login-form" onSubmit={this.onLogin}>
                     {users && <select
                         name="username"
@@ -126,59 +121,9 @@ class _LoginSignup extends React.Component {
                         <option value="">Select User</option>
                         {users.map(user => <option key={user._id} value={user.username}>{user.fullname}</option>)}
                     </select>}
-
-                    {/* <input
-                        type="text"
-                        name="username"
-                        value={username}
-                        placeholder="Username"
-                        onChange={this.handleChange}
-                        required
-                        autoFocus
-                    />
-                    <input
-                        type="password"
-                        name="password"
-                        value={password}
-                        placeholder="Password"
-                        onChange={this.handleChange}
-                        required
-                    /> */}
                     <button>Login!</button>
                 </form>}
-
-                <div className="signup-section">
-                    {isSignup && <form className="signup-form" onSubmit={this.onSignup}>
-                        <input
-                            type="text"
-                            name="fullname"
-                            value={fullname}
-                            placeholder="Fullname"
-                            onChange={this.handleChange}
-                            required
-                        />
-                        <input
-                            type="text"
-                            name="username"
-                            value={username}
-                            placeholder="Username"
-                            onChange={this.handleChange}
-                            required
-                        />
-                        <input
-                            type="password"
-                            name="password"
-                            value={password}
-                            placeholder="Password"
-                            onChange={this.handleChange}
-                            required
-                        />
-                        <button >Signup!</button>
-                    </form>}
-                </div>
-                <LoginPage />
-
-                <GoogleLoginCmp />
+                {/* <GoogleLoginCmp /> */}
             </div>
         )
     }

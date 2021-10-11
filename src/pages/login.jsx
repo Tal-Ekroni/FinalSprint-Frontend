@@ -1,10 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
+import { LoginSignup } from '../cmps/login-signup'
 import { socketService } from '../services/socket.service'
 import { stayService } from '../services/stay.service'
 import { userService } from '../services/user.service'
-import { onLogin, onLogout, onSignup, updateUser } from '../store/user.actions'
+import { onLogin, onLogout, onSignup, updateUser, loadUser } from '../store/user.actions'
 class _LoginPage extends React.Component {
     state = {
         credentials: {
@@ -39,31 +40,79 @@ class _LoginPage extends React.Component {
         this.setState({ credentials: { ...this.state.credentials, [field]: value } });
     }
 
+    // onLogin = async (ev = null) => {
+    //     if (ev) ev.preventDefault();
+    //     if (!this.state.credentials.username) return;
+    // console.log('login');
+    //     this.props.onLogin(this.state.credentials);
+    //     this.clearState()
+    //     const user = userService.getLoggedinUser()
+    //     if (user.isHost) {
+    //         const stays = await stayService.query()
+    //         console.log('ishost', stays);
+    //         socketService.setup()
+
+    //         stays.forEach((stay) => {
+    //             if (stay.host._id === user._id) socketService.emit('setStay', stay._id)
+
+    //         })
+    //         socketService.on('getNotif', async (notif) => {
+    //             user.notifications = [notif, ...user.notifications]
+    //             console.log(user, 'userrrrr');
+    //             this.props.updateUser(user)
+    //         })
+    //     }
+    //     this.props.history.push('/')
+    // }
     onLogin = async (ev = null) => {
         if (ev) ev.preventDefault();
         if (!this.state.credentials.username) return;
-    console.log('login');
-        this.props.onLogin(this.state.credentials);
-        this.clearState()
-        const user = userService.getLoggedinUser()
+        await this.props.onLogin(this.state.credentials);
+        await this.props.loadUser(this.props.user._id)
+        const { user } = this.props
         if (user.isHost) {
             const stays = await stayService.query()
-            console.log('ishost', stays);
             socketService.setup()
-
-            stays.forEach((stay) => {
-                if (stay.host._id === user._id) socketService.emit('setStay', stay._id)
-
-            })
+            socketService.emit('setHost', user._id)
             socketService.on('getNotif', async (notif) => {
-                user.notifications = [notif, ...user.notifications]
-                console.log(user, 'userrrrr');
-                this.props.updateUser(user)
+                // {
+                //     "byUser": {
+                //         "fullName": "Houston Anderson",
+                //         "imgUrl": "/img/img1.jpg",
+                //         "_id": "615856f7cb4c045b46874e45"
+                //     },
+                //     "createdAt": 1633891364304,
+                //     "stay": {
+                //         "_id": "61585943cb4c045b46874e50",
+                //         "name": "New York, United States"
+                //     },
+                //     "txt": "Reserved your stay",
+                //     "isRead": false
+                // }
+                const editedNotif = {
+                    notifTxt: `${notif.txt} at ${notif.stay.name}`,
+                    byUser: notif.byUser.fullName,
+                    // byUserImg: <div className="user-order-img-container flex align-center" >
+                    //     <div>
+                    //         <img src={`https://i.pravatar.cc/100?u=${notif.byUser._id.substr(notif.byUser._id.length - 10)}`} alt="user-icon" />
+                    //     </div>
+                    //     <p>{notif.byUser.fullName}</p>
+                    // </div>,
+                    isRead: notif.isRead,
+                    createdAt: notif.createdAt,
+                    // approveBtn: <div className="host-action-btns flex align-center">
+                    //     <NavLink to={`host`} className="approve-order-btn">Go to order</NavLink>
+                    // </div>
+                }
+                console.log('userrrr', user.notifications);
+                user.notifications = [editedNotif, ...user.notifications]
+                await this.props.updateUser(user)
             })
-        }
-        this.props.history.push('/')
-    }
 
+        }
+        this.clearState()
+        this.props.history.goBack()
+    }
 
     onSignup = async (ev = null) => {
         console.log('sign-up');
@@ -84,7 +133,7 @@ class _LoginPage extends React.Component {
         const { isSignUp, users } = this.state;
         if (!users) return <div>loading...</div>
         return (
-            <section className="flex justify-center page-padding">
+            <section className="flex  justify-center page-padding">
                 <form className="login flex column justify-center align-center">
                     <h1>{isSignUp ? 'Sign Up' : 'Login'}</h1>
                     <h2>{isSignUp ? 'Welcome to AnyGo' : 'Welcome back'}</h2>
@@ -104,6 +153,7 @@ class _LoginPage extends React.Component {
                         <button className="new-user-btn" onClick={this.toggleSignUp}>{isSignUp ? 'Already have an account ?' : 'New user ?'}</button>
                     </div>
                 </form>
+                <div><LoginSignup /></div>
             </section>
 
         )
@@ -119,7 +169,8 @@ const mapDispatchToProps = {
     onLogin,
     onLogout,
     onSignup,
-    updateUser
+    updateUser,
+    loadUser
 }
 
 export const LoginPage = withRouter(connect(mapStateToProps, mapDispatchToProps)(_LoginPage))

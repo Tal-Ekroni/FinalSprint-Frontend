@@ -20,7 +20,7 @@ class _UserMenu extends React.Component {
         this.props.onToggleSearchModals('menuModal')
         socketService.off('getNotif')
         socketService.terminate()
-        this.props.history.push('/')
+        // this.props.history.push('/')
     }
 
     onCloseLogin = () => {

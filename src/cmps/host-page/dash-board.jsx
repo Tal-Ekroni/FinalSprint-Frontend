@@ -4,6 +4,7 @@ import { loadUser } from '../../store/user.actions'
 import { onUpdateOrder, onRemoveOrder } from '../../store/order.actions'
 import MUIDataTable from "mui-datatables";
 import { FaStar } from 'react-icons/fa'
+import ArrowRightAltRoundedIcon from '@mui/icons-material/ArrowRightAltRounded';
 
 class _OrdersDashboard extends Component {
     state = {
@@ -13,6 +14,7 @@ class _OrdersDashboard extends Component {
     componentDidMount() {
         const { user, orders } = this.props
         this.setState({ orders })
+
         if (user) this.props.loadUser(user._id)
         window.scrollTo(0, 0)
 
@@ -31,13 +33,12 @@ class _OrdersDashboard extends Component {
         let editedOrder;
         if (orders) {
             orders.map(order => {
-                console.log(order);
                 editedOrder = {
                     stayName: order.stay.name,
                     // address: order.loc.address,
                     buyerName: order.buyer.fullname,
                     buyerImg: <div className="user-order-img-container flex align-center">
-                        <img src={`https://i.pravatar.cc/100?u=${order.buyer._id.substr(order.buyer._id.length - 9)}`} alt="" />
+                        <img src={`https://i.pravatar.cc/100?u=${order.buyer._id.substr(order.buyer._id.length - 10)}`} alt="" />
                         <p>{order.buyer.fullname}</p>
                     </div>,
                     price: `$${order.totalPrice}`,
@@ -59,8 +60,9 @@ class _OrdersDashboard extends Component {
     }
     getTotalRate = (orders) => {
         let totalRate = 0;
-        orders.map(order => { totalRate += +order.stay.reviewsAvg })
+        orders.map(order => { totalRate += order.stay.reviewsAvg })
         totalRate = totalRate / orders.length
+        console.log(totalRate, 'totall');
         return totalRate
     }
     getTotalPrice = (orders) => {
@@ -154,18 +156,19 @@ class _OrdersDashboard extends Component {
                             <p className="dashboard-label">Total Rate</p>
                         </div>
                         <div className="dashboard-value flex space-between align-center ">
-                            <div  className="flex  align-center ">
-                            <p className="checkout-star"><FaStar size={13} color="#FF5A5F" /></p>
-                            <p className="dash-avg-score">{(!this.getTotalRate(orders)) ? 0 : this.getTotalRate(orders).toFixed(1)}</p>
+                            <div className="flex  align-center ">
+                                <p className="checkout-star"><FaStar size={13} color="#FF5A5F" /></p>
+                                <p className="dash-avg-score">{(!this.getTotalRate(orders)) ? 0 : this.getTotalRate(orders).toFixed(1)}</p>
                             </div>
-                        <div className="">
-                            <p className="dash-avg-score">{5}%</p>
-                        </div>
+                            <div className="dash-stats-arrow-container flex">
+                                <p>{<ArrowRightAltRoundedIcon className={`stat-arrow ${(Math.random() >= 0.5) ? 'down' : 'up'}`} />}</p>
+                                <p className="dash-review-stat">{Math.floor(Math.random() * 7) + 1}%</p>
+                            </div>
                         </div>
                     </div>
                     <div className="dash-earning-container flex column space-between">
                         <div>
-                            <p className="dashboard-label">monthly earning</p>
+                            <p className="dashboard-label">Monthly earnings</p>
                         </div>
                         <div className="dashboard-value">
                             <p className="dash-avg-earning">{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(this.getTotalPrice(orders))}</p>
@@ -177,12 +180,12 @@ class _OrdersDashboard extends Component {
                         </div>
                         <div className="orders-sec-dash flex ">
                             <div className="dashboard-value flex align-center">
-                                <div className="dash-orders-circle pending"></div>
-                                <p className="dash-avg-order">{this.getOrdersStatus('pending')}/{orders.length}</p>
-                            </div>
-                            <div className="dashboard-value flex align-center">
                                 <div className="dash-orders-circle approved"></div>
                                 <p className="dash-avg-order">{this.getOrdersStatus('approved')}/{orders.length}</p>
+                            </div>
+                            <div className="dashboard-value flex align-center">
+                                <div className="dash-orders-circle pending"></div>
+                                <p className="dash-avg-order">{this.getOrdersStatus('pending')}/{orders.length}</p>
                             </div>
                             <div className="dashboard-value flex align-center">
                                 <div className="dash-orders-circle declined"></div>

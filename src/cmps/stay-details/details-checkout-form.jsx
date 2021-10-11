@@ -18,6 +18,7 @@ class _CheckoutForm extends React.Component {
         },
         isGuestPopupOn: false,
         isCheckoutToReserve: false,
+        isStayReserved: false,
         datesModal: false
 
     }
@@ -118,6 +119,7 @@ class _CheckoutForm extends React.Component {
     }
 
     onBookTrip = (stay, trip) => {
+
         if (!this.props.user) {
             showErrorMsg('login first')
         } else {
@@ -141,8 +143,12 @@ class _CheckoutForm extends React.Component {
                     guests: { adults: 1, kids: 0, infants: 0 }
                 },
                 isGuestPopupOn: false,
-                isCheckoutToReserve: false
+                isCheckoutToReserve: false,
+                isStayReserved: true
             })
+            setTimeout(() => {
+                this.setState({ isStayReserved: false })
+            }, 2000);
         }
 
     }
@@ -162,7 +168,7 @@ class _CheckoutForm extends React.Component {
     }
     render() {
         const { stay } = this.props
-        const { trip, isCheckoutToReserve, isGuestPopupOn, datesModal } = this.state
+        const { trip, isCheckoutToReserve, isGuestPopupOn, datesModal, isStayReserved } = this.state
         const { price } = stay
         const { startDate, endDate } = trip
         return (
@@ -234,13 +240,17 @@ class _CheckoutForm extends React.Component {
                                     </div>
                                 </div>
                             }
+                            {isStayReserved && <div className="stay-msg-container"><h1>Your order is waiting for approval</h1></div>}
                             <div className="checkout-btn-container" onClick={() => { (isCheckoutToReserve) ? this.onBookTrip(stay, trip) : this.getTripPrice(startDate, endDate, price) }}>
                                 {this.getBtnDivs()}
                                 <div className="content">
-                                    {!isCheckoutToReserve &&
+                                    {!isCheckoutToReserve && !isStayReserved && 
                                         <button className="checkout-btn" ><span>Check availabilty</span> </button>}
-                                    {isCheckoutToReserve &&
+                                    {isCheckoutToReserve && 
                                         <button className="checkout-btn" ><span>Reserve</span> </button>
+                                    }
+                                    {isStayReserved &&
+                                        <button className="checkout-btn" ><span>Order pending</span> </button>
                                     }
                                 </div>
 

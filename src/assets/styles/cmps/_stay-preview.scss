@@ -76,7 +76,7 @@
             padding-bottom: 4px;
             padding-top: 4px;
             align-items: center;
-            .preview-rating-amount{
+            .preview-rating-amount {
                 font-weight: bolder;
             }
             .preview-review-count {
@@ -87,9 +87,9 @@
                 font-size: 14px;
             }
 
-             .rating-star{
-                 padding-top: 0.9px;
-             }
+            .rating-star {
+                padding-top: 0.9px;
+            }
         }
         .stay-style {
             gap: 4px;
@@ -104,6 +104,7 @@
         height: calc(100% - 100px);
         margin-bottom: 8px;
     }
+
     .preview-price {
         color: $clr10;
         padding-top: 4px;
@@ -119,6 +120,11 @@
         left: 87%;
         color: $clr6;
         width: 30px;
+    }
+    .unliked {
+        fill: #222;
+        fill-opacity: 0.7;
+        stroke: white;
     }
     @include for-narrow-layout {
         .slick-slider {
