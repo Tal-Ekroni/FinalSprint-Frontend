@@ -12,7 +12,7 @@ export function loadUsers() {
             const users = await userService.getUsers()
             dispatch({ type: 'SET_USERS', users })
         } catch (err) {
-            console.log('UserActions: err in loadUsers', err)
+
         } finally {
             dispatch({ type: 'LOADING_DONE' })
         }
@@ -25,7 +25,7 @@ export function loadUser(userId) {
             const user = await userService.getById(userId)
             dispatch({ type: 'SET_USER', user })
         } catch (err) {
-            console.log('UserActions: err in loadUser', err)
+
         } finally {
             dispatch({ type: 'LOADING_DONE' })
         }
@@ -38,7 +38,7 @@ export function removeUser(userId) {
             await userService.remove(userId)
             dispatch({ type: 'REMOVE_USER', userId })
         } catch (err) {
-            console.log('UserActions: err in removeUser', err)
+
         }
     }
 }
@@ -107,7 +107,7 @@ export function onBecomeHost(userId) {
                 type: 'UPDATE_USER', user: updatedUser
             })
         } catch (err) {
-            console.log(err);
+
         }
     }
 
@@ -117,7 +117,6 @@ export function onToggleLikedStay(savedStayId, isLiked, userId) {
         try {
             const user = await userService.getById(userId)
             if (isLiked) {
-                console.log(user);
                 user.mySaves.push(savedStayId)
             } else {
                 user.mySaves = user.mySaves.filter(saved => saved !== savedStayId)
@@ -163,7 +162,6 @@ export function loadAndWatchUser(userId) {
             // socketService.emit(SOCKET_EMIT_USER_WATCH, userId)
             // socketService.off(SOCKET_EVENT_USER_UPDATED)
             // socketService.on(SOCKET_EVENT_USER_UPDATED, user => {
-            //     console.log('USER UPADTED FROM SOCKET');
             //     dispatch({ type: 'SET_WATCHED_USER', user })
             // })
         } catch (err) {

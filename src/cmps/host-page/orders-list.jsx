@@ -1,7 +1,6 @@
 import { OrderPreview } from "./order-preview";
 
 export function OrdersList({ orders }) {
-    // console.log('orderspage',orders,isHost);
     return (
         <div className="order-list flex">
             {orders.map((order, idx) =>

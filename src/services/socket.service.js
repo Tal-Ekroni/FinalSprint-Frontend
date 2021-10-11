@@ -75,7 +75,6 @@ function createDummySocketService() {
 
 
 // Basic Tests
-// function cb(x) {console.log('Socket Test - Expected Puk, Actual:', x)}
 // socketService.on('baba', cb)
 // socketService.on('baba', cb)
 // socketService.on('baba', cb)
@@ -85,7 +84,6 @@ function createDummySocketService() {
 
 
 socketService.on(SOCKET_EVENT_REVIEW_ABOUT_YOU, review => {
-  console.log('Review about me!', review);
   
 })
 

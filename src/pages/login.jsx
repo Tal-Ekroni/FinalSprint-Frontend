@@ -65,7 +65,6 @@ class _LoginPage extends React.Component {
         this.props.history.goBack()
     }
     onSignup = async (ev = null) => {
-        console.log('sign-up');
         if (ev) ev.preventDefault();
         if (!this.state.credentials.username || !this.state.credentials.password || !this.state.credentials.fullname) return;
         await this.props.onSignup(this.state.credentials);

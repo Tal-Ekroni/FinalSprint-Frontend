@@ -86,7 +86,7 @@ class _AddStay extends React.Component {
             });
         }
 
-        // this.setState(prevState => ({ ...prevState, newStay: { ...this.state.newStay, [field]: value } }), () => { console.log(this.state); })
+        // this.setState(prevState => ({ ...prevState, newStay: { ...this.state.newStay, [field]: value } }))
     }
     onAddsStay = (ev) => {
         ev.preventDefault()

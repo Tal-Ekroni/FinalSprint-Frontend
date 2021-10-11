@@ -13,7 +13,7 @@ import { stayService } from '../services/stay.service'
 //       // })
 
 //     } catch (err) {
-//       console.log('ReviewActions: err in loadReviews', err)
+
 //     }
 //   }
 // }
@@ -21,7 +21,7 @@ import { stayService } from '../services/stay.service'
 export function onAddReview(review, stayId) {
   return async dispatch => {
     try {
-      console.log('add');
+
       const currStay = await stayService.getById(stayId)
        currStay.reviews.unshift(review)
       const updatedStay = await stayService.update(currStay)
@@ -42,7 +42,7 @@ export function onAddReview(review, stayId) {
 //       await reviewService.remove(reviewId)
 //       dispatch({ type: 'REMOVE_REVIEW', reviewId })
 //     } catch (err) {
-//       console.log('ReviewActions: err in removeReview', err)
+
 //     }
 //   }
 // }

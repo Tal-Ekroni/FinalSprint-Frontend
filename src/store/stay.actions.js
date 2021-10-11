@@ -20,7 +20,7 @@ export function loadStay(stayId) {
             const stay = await stayService.getById(stayId)
             dispatch({ type: 'SET_STAY', stay })
         } catch (err) {
-            console.log('UserActions: err in loadStay', err)
+
         } finally {
             dispatch({ type: 'LOADING_DONE' })
         }
@@ -44,7 +44,7 @@ export function onAddStay(stayToAdd) {
     return async (dispatch) => {
         try {
             const savedStay = await stayService.save(stayToAdd)
-            console.log('Added Stay', savedStay);
+
             dispatch({
                 type: 'ADD_STAY',
                 stay: savedStay
@@ -63,7 +63,7 @@ export function setFilter(filterBy) {
                 filter: filterBy
             })
         } catch (err) {
-            console.log(err);
+
         }
     }
 }
@@ -75,12 +75,12 @@ export function setMiniHeader(isMiniHeader) {
                 isMiniHeader
             })
         } catch (err) {
-            console.log(err);
+
         }
     }
 }
 export function onEditStay(stayToSave) {
-    // console.log('stay to ', stayToSave);
+
     return async (dispatch) => {
         try {
             const updatedStay = await stayService.update(stayToSave)

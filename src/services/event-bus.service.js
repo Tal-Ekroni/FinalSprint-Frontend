@@ -30,8 +30,8 @@ export function showErrorMsg(txt) {
 window.myBus = eventBusService;
 window.showUserMsg = showUserMsg;
 
-// eventBusService.on('baba', (x)=>console.log('Hi Baba', x))
-// eventBusService.on('baba', (x)=>console.log('Hello Baba Ji', x))
+
+
 // eventBusService.emit('baba', [5, 8, 11])
 // setTimeout(()=>{
 //     eventBusService.emit('baba', 17)

@@ -62,7 +62,6 @@ class _OrdersDashboard extends Component {
         let totalRate = 0;
         orders.map(order => { totalRate += order.stay.reviewsAvg })
         totalRate = totalRate / orders.length
-        console.log(totalRate, 'totall');
         return totalRate
     }
     getTotalPrice = (orders) => {

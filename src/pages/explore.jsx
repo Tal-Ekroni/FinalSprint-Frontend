@@ -44,7 +44,6 @@ class _Explore extends React.Component {
             })
             if (user) this.props.loadUser(this.props.user._id)
         } catch (err) {
-            console.log(err);
         }
     }
 

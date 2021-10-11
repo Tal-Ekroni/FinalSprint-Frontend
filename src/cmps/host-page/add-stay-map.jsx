@@ -17,13 +17,12 @@ class _AddStayMap extends Component {
 
     }
     handleChange = (address) => {
-        this.setState({ selectedPlace: address }, () => { console.log(this.state); });
+        this.setState({ selectedPlace: address });
     }
     handleSelect = async (address) => {
         const results = await geocodeByAddress(address)
         const latLng = await getLatLng(results[0])
         this.setState({ selectedPlace: address, loc: { lat: latLng.lat, lng: latLng.lng, address: address } }, () => {
-            console.log(this.state.loc);
             this.props.handleAddressChange(this.state.loc)
         })
     }

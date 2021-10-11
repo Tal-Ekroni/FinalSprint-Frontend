@@ -75,7 +75,6 @@ class _AddStay extends React.Component {
         const { newStay } = this.state
         const { _id, fullname, ImgUrl } = this.props.user
         newStay.assetType=`${newStay.assetSpace.split(' ')[1]} ${newStay.assetType}`
-        console.log(newStay.assetType);
         newStay.host = { fullname, _id, ImgUrl }
         this.props.onAddStay(newStay)
         this.setState({
@@ -126,7 +125,6 @@ class _AddStay extends React.Component {
     render() {
         const { imgUrls, name, assetSpace, assetType, capacity, summary, price, amenities } = this.state.newStay
         const { ameintiesOptions } = this.state
-        console.log('imgUrls', imgUrls);
         const spaceOptions = [
             { name: 'assetSpace', value: 'An Entire place', label: 'An Entire place' },
             { name: 'assetSpace', value: 'A Private room', label: 'A Private room' },

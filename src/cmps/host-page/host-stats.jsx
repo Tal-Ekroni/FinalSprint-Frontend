@@ -14,7 +14,7 @@ class _HostChart extends React.Component {
         var pendingOrders = orders.filter(order => { return order.status === 'pending' })
         var approvedOrders = orders.filter(order => { return order.status === 'approved' })
         var declinedOrders = orders.filter(order => { return order.status === 'declined' })
-        this.setState({ staysStatus: [declinedOrders.length, pendingOrders.length, approvedOrders.length] }, () => { console.log(this.state); })
+        this.setState({ staysStatus: [declinedOrders.length, pendingOrders.length, approvedOrders.length] })
     }
     render() {
         const { staysStatus } = this.state

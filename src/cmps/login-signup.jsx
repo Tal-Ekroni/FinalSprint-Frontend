@@ -23,7 +23,7 @@ class _LoginSignup extends React.Component {
         try {
             await this.props.loadUsers()
         } catch (err) {
-            console.log('error', err)
+
         }
     }
     clearState = () => {
@@ -84,7 +84,6 @@ class _LoginSignup extends React.Component {
                     //     <NavLink to={`host`} className="approve-order-btn">Go to order</NavLink>
                     // </div>
                 }
-                console.log('userrrr', user.notifications);
                 user.notifications = [editedNotif, ...user.notifications]
                 await this.props.updateUser(user)
             })
@@ -104,7 +103,6 @@ class _LoginSignup extends React.Component {
         this.setState({ isSignup: !this.state.isSignup })
     }
     responseGoogle = (response) => {
-        console.log(response);
     }
     render() {
         const { username, password, fullname } = this.state.credentials;

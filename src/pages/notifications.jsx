@@ -10,7 +10,6 @@ class _NotificationsPage extends Component {
     }
     componentDidMount() {
         const { user } = this.props
-        console.log(user);
         window.scrollTo(0, 0)
     }
     async componentWillUnmount() {

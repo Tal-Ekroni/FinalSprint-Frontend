@@ -42,7 +42,6 @@ function filterPageStays(filterBy, stays) {
     // } else {
 
     //     filterdStays = filterdStays.filter(stay => {
-    //         console.log(stay.amenities.includes('Hot tub'))
     //     })
     // }
     if (filterBy.amenities.length) {
@@ -69,20 +68,17 @@ function subscribe(listener) {
 }
 
 function _notifySubscribersStaysChanged(stays) {
-    console.log('Notifying Listeners');
     listeners.forEach(listener => listener(stays))
 }
 
 window.addEventListener('storage', () => {
-    console.log('Storage Changed from another Browser!');
     query()
         .then(stays => {
             _notifySubscribersStaysChanged(stays)
         })
 })
 
-// TEST DATA
-// storageService.post(STORAGE_KEY, {vendor: 'Subali Rahok 2', price: 980}).then(x => console.log(x))
+
 
 
 
