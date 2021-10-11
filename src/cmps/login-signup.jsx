@@ -1,13 +1,8 @@
 import React from 'react'
-import GoogleLogin from 'react-google-login';
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
-import { NavLink } from 'react-router-dom';
-import { LoginPage } from '../pages/login'
 import { socketService } from '../services/socket.service';
-import { stayService } from '../services/stay.service';
 import { onLogin, onLogout, onSignup, loadUsers, updateUser, loadUser } from '../store/user.actions'
-import { GoogleLoginCmp } from './google-login';
 class _LoginSignup extends React.Component {
     state = {
         credentials: {
@@ -51,7 +46,6 @@ class _LoginSignup extends React.Component {
         await this.props.loadUser(this.props.user._id)
         const { user } = this.props
         if (user.isHost) {
-            const stays = await stayService.query()
             socketService.setup()
             socketService.emit('setHost', user._id)
             socketService.on('getNotif', async (notif) => {
@@ -105,7 +99,7 @@ class _LoginSignup extends React.Component {
     responseGoogle = (response) => {
     }
     render() {
-        const { username, password, fullname } = this.state.credentials;
+        const { username} = this.state.credentials;
         const { isSignup } = this.state;
         const { user, users } = this.props
         return (

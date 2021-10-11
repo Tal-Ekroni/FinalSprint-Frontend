@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 import { LoginSignup } from '../cmps/login-signup'
 import { socketService } from '../services/socket.service'
-import { stayService } from '../services/stay.service'
 import { userService } from '../services/user.service'
 import { onLogin, onLogout, onSignup, updateUser, loadUser } from '../store/user.actions'
 class _LoginPage extends React.Component {
@@ -46,7 +45,6 @@ class _LoginPage extends React.Component {
         await this.props.loadUser(this.props.user._id)
         const { user } = this.props
         if (user.isHost) {
-            const stays = await stayService.query()
             socketService.setup()
             socketService.emit('setHost', user._id)
             socketService.on('getNotif', async (notif) => {

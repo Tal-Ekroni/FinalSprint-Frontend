@@ -4,7 +4,6 @@ import { FaStar, } from "react-icons/fa";
 import { onToggleLikedStay, updateUser } from '../store/user.actions.js'
 
 import LazyLoad from "./preview-slider"
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 class _StayPreview extends React.Component {
     state = {

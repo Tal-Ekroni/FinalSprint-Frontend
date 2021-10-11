@@ -1,4 +1,3 @@
-import { showUserMsg } from './event-bus.service.js';
 import { httpService } from './http.service.js'
 
 const listeners = []

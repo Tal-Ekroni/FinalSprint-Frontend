@@ -46,7 +46,7 @@ class _StayDetails extends React.Component {
     // }
 
     componentDidUpdate(prevProps, prevState) {
-        const { user, stay } = this.props
+        const { user} = this.props
         if (prevState.isLiked !== this.state.isLiked) {
             this.isStayLiked()
             if (user) this.props.loadUser(user._id)

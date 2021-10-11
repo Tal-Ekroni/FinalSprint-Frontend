@@ -1,14 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import { AddStayBasicInfo } from './add-stay-basic-info';
-import { AddStayFloorPlan } from './add-stay-floor-plan';
-import { AddStayProfile } from './add-stay-profile';
 import { onAddStay } from '../../store/stay.actions'
 import { AddStayMap } from './add-stay-map';
-import { Checkbox, TextField } from '@material-ui/core';
+import { TextField } from '@material-ui/core';
 import { TextareaAutosize } from "@material-ui/core";
 import Select from 'react-select';
 import noImg from '../../assets/img/no-img.png'
@@ -123,7 +118,7 @@ class _AddStay extends React.Component {
             .catch(err => console.error(err))
     }
     render() {
-        const { imgUrls, name, assetSpace, assetType, capacity, summary, price, amenities } = this.state.newStay
+        const { imgUrls, name, assetSpace, assetType, capacity, summary, price} = this.state.newStay
         const { ameintiesOptions } = this.state
         const spaceOptions = [
             { name: 'assetSpace', value: 'An Entire place', label: 'An Entire place' },

@@ -9,7 +9,6 @@ class _NotificationsPage extends Component {
         user: null,
     }
     componentDidMount() {
-        const { user } = this.props
         window.scrollTo(0, 0)
     }
     async componentWillUnmount() {
@@ -33,7 +32,7 @@ class _NotificationsPage extends Component {
         const dataNotifications = [];
         let editedNotification;
         if (notifications) {
-            notifications.map(notification => {
+            notifications.forEach(notification => {
                 editedNotification = {
                     ...notification,
                     byUserImg: <div className="user-order-img-container flex align-center">

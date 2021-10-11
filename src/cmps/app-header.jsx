@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
-import { FaAirbnb, FaBars, FaCircle, FaFonticonsFi } from 'react-icons/fa'
+import { FaAirbnb, FaBars} from 'react-icons/fa'
 import { onLogin, onLogout, onSignup, loadUsers, removeUser, } from '../store/user.actions.js'
 import { setFilter, setMiniHeader, loadStays } from '../store/stay.actions';
 import { SearchBar } from './search-bar';
@@ -23,8 +23,6 @@ class _AppHeader extends React.Component {
         window.addEventListener('scroll', this.onScrollCloseModals)
     }
     componentDidUpdate(prevProps, prevState) {
-        const { isNotifRead } = this.state
-        const { user } = this.props
         if (prevProps.isMiniHeader !== this.props.isMiniHeader && !this.props.isMiniHeader) {
             this.closeAllModals()
         }
@@ -80,7 +78,7 @@ class _AppHeader extends React.Component {
     }
     render() {
         const { user, setFilter, filterBy, isMiniHeader } = this.props
-        const { isUserMenuOpen, isLoginBotmodal, isScreenOpen, locModal, datesModal, guestModal, isMiniInput, isNotifRead } = this.state
+        const { isUserMenuOpen, isLoginBotmodal, isScreenOpen, locModal, datesModal, guestModal, isMiniInput} = this.state
         return (
             <header className={isMiniInput ? `app-header-conatiner main-container mini-header-with-input` : isMiniHeader ? `app-header-conatiner main-container mini-header full` : `app-header-conatiner main-container `}>
                 <div className={isScreenOpen ? "screen screen-open full" : "screen full"} onClick={() => { this.closeAllModals() }}></div>

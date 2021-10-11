@@ -13,7 +13,7 @@ export class ReviewAvg extends React.Component {
     }
     componentDidMount() {
         const types = ["cleanliness", "communication", "checkIn", "accuracy", "location", "value"]
-        types.map(type => {
+        types.forEach(type => {
             this.setState(prevState => ({ ...prevState, [type]: this.getAvrage(type) }), () => {
                 this.getTotalAvg()
             })
@@ -30,7 +30,7 @@ export class ReviewAvg extends React.Component {
     }
     getTotalAvg = () => {
         let totalReviewAvg = 0;
-        Object.keys(this.state).map((key, index) => {
+        Object.keys(this.state).forEach((key, index) => {
             totalReviewAvg += +this.state[key]
         })
         totalReviewAvg = (totalReviewAvg / 6).toFixed(1)

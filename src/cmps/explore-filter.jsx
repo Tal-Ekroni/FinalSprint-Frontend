@@ -19,7 +19,7 @@ export class ExploreFilter extends React.Component {
     }
     render() {
         const { placeTypeIsOpen, PropertyTypeIsOpen, PriceIsOpen, AmenitiesTypeIsOpen } = this.props.modals
-        const { amenities, allStaysPriceAvg, ameintiesOptions } = this.props
+        const {allStaysPriceAvg, ameintiesOptions } = this.props
         const propertyTypes = ['Loft', 'Studio', 'Penthouse', 'Appartment', 'Hotel', 'Villa', 'Duplex', 'Home']
         return (
             <div className="explore-filter flex">
