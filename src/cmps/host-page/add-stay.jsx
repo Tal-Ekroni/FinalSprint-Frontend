@@ -8,7 +8,7 @@ import { AddStayFloorPlan } from './add-stay-floor-plan';
 import { AddStayProfile } from './add-stay-profile';
 import { onAddStay } from '../../store/stay.actions'
 import { AddStayMap } from './add-stay-map';
-import { TextField } from '@material-ui/core';
+import { Checkbox, TextField } from '@material-ui/core';
 import { TextareaAutosize } from "@material-ui/core";
 import Select from 'react-select';
 import noImg from '../../assets/img/no-img.png'
@@ -20,7 +20,7 @@ class _AddStay extends React.Component {
             assetSpace: '',
             summary: '',
             uniqueStay: false,
-            imgUrls: [noImg, noImg, noImg, noImg, noImg],
+            imgUrls: [],
             price: '',
             capacity: '',
             amenities: [],
@@ -35,13 +35,31 @@ class _AddStay extends React.Component {
             host: '',
             reviews: []
         },
-        selectedTab: 'get-start'
-
+        ameintiesOptions: [
+            { name: 'TV', isChecked: false },
+            { name: 'Wifi', isChecked: false },
+            { name: 'Kitchen', isChecked: false },
+            { name: 'Smoking allowed', isChecked: false },
+            { name: 'Cooking basics', isChecked: false }
+        ],
     }
     handleChange = ({ target }) => {
         const field = target.name;
         const value = target.type === 'number' ? +target.value : target.value;
         this.setState(prevState => ({ ...prevState, newStay: { ...this.state.newStay, [field]: value } }))
+    }
+    handleAmenityChange = ({ target }) => {
+        const name = target.name
+        const checked = target.checked
+        const { ameintiesOptions } = this.state
+        const { amenities } = this.state.newStay
+        const updatedAmeintiesOpts = ameintiesOptions.map(amenity => (amenity.name === name) ? { name, isChecked: checked } : amenity)
+        if (checked) amenities.push(name)
+        else {
+            const idx = amenities.findIndex(amenity => amenity === name)
+            amenities.splice(idx, 1)
+        }
+        this.setState(prevState => ({ ...prevState, newStay: { ...this.state.newStay, amenities }, ameintiesOptions: updatedAmeintiesOpts }))
     }
     handleAddressChange = (address) => {
         this.setState(prevState => ({ ...prevState, newStay: { ...this.state.newStay, loc: address } }))
@@ -51,30 +69,13 @@ class _AddStay extends React.Component {
         const value = target.value
         this.setState(prevState => ({ ...prevState, newStay: { ...this.state.newStay, [field]: value } }))
     }
-    handleMultiSelectChange = (target) => {
-        var lastName = null
-        if (target.length > 0) {
-            const field = target[0].name
-            lastName = field
-            const labels = target.map(label => {
-                return label.value;
-            }) || [];
-            this.setState({ newStay: { ...this.state.newStay, [field]: labels } }, () => {
-            });
-        } else {
-            this.setState({ newStay: { ...this.state.newStay, [lastName]: [] } }, () => {
-            });
-        }
 
-        // this.setState(prevState => ({ ...prevState, newStay: { ...this.state.newStay, [field]: value } }), () => { console.log(this.state); })
-    }
     onAddsStay = (ev) => {
         ev.preventDefault()
         const { newStay } = this.state
         const { _id, fullname, ImgUrl } = this.props.user
         newStay.host = { fullname, _id, ImgUrl }
         this.props.onAddStay(newStay)
-
         this.setState({
             newStay: {
                 name: '',
@@ -116,13 +117,13 @@ class _AddStay extends React.Component {
                 const state = this.state
                 const ImgUrl = res.url
                 state.newStay.imgUrls.push(ImgUrl)
-                state.newStay.imgUrls.shift()
                 this.setState((state))
             })
             .catch(err => console.error(err))
     }
     render() {
         const { imgUrls, name, assetSpace, assetType, capacity, summary, price, amenities } = this.state.newStay
+        const { ameintiesOptions } = this.state
         console.log('imgUrls', imgUrls);
         const spaceOptions = [
             { name: 'assetSpace', value: 'An entire place', label: 'An entire place' },
@@ -138,15 +139,14 @@ class _AddStay extends React.Component {
             { name: 'assetType', value: 'Cabin', label: 'Cabin' },
         ];
 
-        const ameintiesOptions = [
-            { name: 'amenities', value: 'TV', label: 'TV' },
-            { name: 'amenities', value: 'Wifi', label: 'Wifi' },
-            { name: 'amenities', value: 'Kitchen', label: 'Kitchen' },
-            { name: 'amenities', value: 'Smoking allowed', label: 'Smoking allowedarm' },
-            { name: 'amenities', value: 'Cooking basics', label: 'Cooking basics' },
+        // const ameintiesOptions = [
+        //     'TV',
+        //     'Wifi',
+        //     'Kitchen',
+        //     'Smoking allowedarm',
+        //     'Cooking basics',
 
-
-        ];
+        // ];
         const style = {
             margin: '20px 0',
             padding: '20px',
@@ -170,7 +170,6 @@ class _AddStay extends React.Component {
                     <form className="add-stay-form">
                         <section className="add-basic-info-container flex align-center">
                             <div className="add-stay-name-container">
-                                <img src="" alt="" />
                                 <label className="add-line" htmlFor="">Stay name</label>
                                 <TextField required type="text" autoComplete="off" value={name} name="name" placeholder="Asset name..." onChange={this.handleChange} />
 
@@ -182,16 +181,31 @@ class _AddStay extends React.Component {
                         </section>
                         <section className="add-stay-imgs-container flex">
                             <div className="add-stay-imgs flex">
-                                <div className="primary-img square-ratio" style={{ backgroundImage: `url(${imgUrls[0]})` }}>
-                                    <input type="file" placeholder="Upload Image" name="imgUrls" onChange={this.onUploadImg} /></div>
-                                {/* <div className="add-small-imgs-container flex column space-between">
-                                    <div className="new-stay-img square-ratio"><input type="file" value={imgUrls[1]} name="imgUrls" onChange={this.onUploadImg} /></div>
-                                    <div className="new-stay-img square-ratio"><input type="file" value={imgUrls[2]} name="imgUrls" onChange={this.onUploadImg} /></div>
+                                <div className="primary-img square-ratio" >
+
+                                    {imgUrls[0] ? <img src={imgUrls[0]} alt="" /> : <input type="file" placeholder="Upload Image" name="imgUrls" onChange={this.onUploadImg} />}
+
                                 </div>
                                 <div className="add-small-imgs-container flex column space-between">
-                                    <div className="new-stay-img square-ratio"><input type="file" value={imgUrls[3]} name="imgUrls" onChange={this.onUploadImg} /></div>
-                                    <div className="new-stay-img square-ratio"><input type="file" value={imgUrls[4]} name="imgUrls" onChange={this.onUploadImg} /></div>
-                                </div> */}
+                                    <div className="new-stay-img square-ratio">
+                                        {imgUrls[1] ? <img src={imgUrls[1]} alt="" /> : <input type="file" placeholder="Upload Image" name="imgUrls" onChange={this.onUploadImg} />}
+
+                                    </div>
+                                    <div className="new-stay-img square-ratio">
+                                        {imgUrls[2] ? <img src={imgUrls[2]} alt="" /> : <input type="file" placeholder="Upload Image" name="imgUrls" onChange={this.onUploadImg} />}
+
+                                    </div>
+                                </div>
+                                <div className="add-small-imgs-container flex column space-between">
+                                    <div className="new-stay-img square-ratio">
+                                        {imgUrls[3] ? <img src={imgUrls[3]} alt="" /> : <input type="file" placeholder="Upload Image" name="imgUrls" onChange={this.onUploadImg} />}
+
+                                    </div>
+                                    <div className="new-stay-img square-ratio">
+                                        {imgUrls[4] ? <img src={imgUrls[4]} alt="" /> : <input type="file" placeholder="Upload Image" name="imgUrls" onChange={this.onUploadImg} />}
+
+                                    </div>
+                                </div>
                             </div>
 
                         </section>
@@ -244,21 +258,13 @@ class _AddStay extends React.Component {
                                     autoComplete="off" />
                             </div>
                         </section>
-                        <section className="add-amenities-line-container ">
-
-                            <div className="add-amenities-line flex align-center space-between">
-                                <label className="add-amenities-label" htmlFor="">Choose your asset amenities</label>
-                                <Select
-                                    required
-                                    onChange={this.handleMultiSelectChange}
-                                    placeholder="Select amenities"
-                                    name="amenities"
-                                    isMulti
-                                    className="add-stay-select"
-                                    value={amenities}
-                                    options={ameintiesOptions}
-                                  />
-                            </div>
+                        <section className="add-amenities-container ">
+                            {ameintiesOptions.map((amenity, idx) => {
+                                return <div key={idx} className="add-amenities-line flex align-center space-between">
+                                    <input type="checkbox" checked={amenity.isChecked} name={amenity.name} onChange={this.handleAmenityChange} />
+                                    <label variant="h5">{amenity.name}</label>
+                                </div>
+                            })}
                         </section>
                         <button className=" add-page-btn add-stay-btn">
                             Add Stay
