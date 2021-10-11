@@ -27,7 +27,6 @@
 @import "cmps/user-msg";
 @import "cmps/home-page";
 @import "cmps/stay-list";
-@import "cmps/stay-preview";
 @import "cmps/stay-details/_details-amenities.scss";
 @import "cmps/stay-details/_details-asset-sum.scss";
 @import "cmps/stay-details/_details-basic-info.scss";
@@ -50,4 +49,5 @@
 @import "cmps/host-page/host-orders-list.scss";
 @import"cmps/date-picker-2.scss";
 @import"cmps/price-range-picker";
-@import "cmps/_read-more.scss"
+@import "cmps/_read-more.scss";
+@import "cmps/stay-preview";

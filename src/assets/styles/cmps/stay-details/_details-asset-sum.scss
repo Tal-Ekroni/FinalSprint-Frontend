@@ -14,14 +14,19 @@
         margin-inline-end: 15px;
     }
     & .sum-icon {
-        height: 23px;
-        width: 23px;
+        height: 30px;
+        width: 30px;
+        color: black;
+        font-size: 30px;
+        svg {
+            font-size: 30px;
+        }
     }
     .sum-txt h4 {
         font-size: 1rem;
-        font-family: circular-bold;
+        font-family: circular-book;
     }
-    .sum-txt h {
+    .sum-txt p {
         font-size: 0.875rem;
     }
 }

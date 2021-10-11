@@ -18,6 +18,9 @@
                 opacity: 1;
             }
         }
+        div {
+            max-height: 350px;
+        }
         .slick-prev:before,
         .slick-next:before {
             font-size: 30px !important;
@@ -57,17 +60,16 @@
     .preview-details {
         height: 100px;
         gap: 5px;
-        font-size: .875rem;
+        font-size: 0.875rem;
         line-height: 1.0625rem;
         h3 {
-            font-size: .875rem;
+            font-size: 0.875rem;
             line-height: 1.0625rem;
-            font-family: circular-light,sans-serif;
+            font-family: circular-light, sans-serif;
             color: #484848;
             text-overflow: ellipsis;
             white-space: nowrap;
             overflow: hidden;
-        
         }
         .preview-rating {
             gap: 4px;
@@ -110,5 +112,11 @@
         color: $clr6;
         width: 30px;
     }
-  
+    @include for-narrow-layout {
+        .slick-slider {
+            div {
+                max-height: 170px;
+            }
+        }
+    }
 }

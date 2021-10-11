@@ -47,7 +47,8 @@ class _StayPreview extends React.Component {
                     this.props.history.push(`/stay/${this.props.stay._id}`)
                 }} >
                     <div className="preview-wrapper flex column">
-                        <div className="preview-img   ">
+                        <div className="
+                           ">
                             {!this.state.isLiked && <FavoriteBorderIcon  onClick={(ev) => this.onToggleLikeStay(ev, this.props.stay)} />}
                             {this.state.isLiked && <FavoriteIcon size={13} onClick={(ev) => this.onToggleLikeStay(ev, this.props.stay)} />}
                             <LazyLoad imgs={this.props.stay.imgUrls} />

@@ -1,7 +1,7 @@
-import { FaStar, FaUpload, FaHeart, FaShare, FaShareAlt, FaFileUpload } from 'react-icons/fa'
+import { FaStar, FaHeart, FaShare, FaShareAlt, FaFileUpload } from 'react-icons/fa'
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-
+import IosShareIcon from '@mui/icons-material/IosShare';
 
 export function BasicInfo({ stay, isLiked, onToogleLikeStay, reviewsAvg }) {
     return (
@@ -24,11 +24,11 @@ export function BasicInfo({ stay, isLiked, onToogleLikeStay, reviewsAvg }) {
                     </div>
                     <div className="user-btns-container flex">
                         <div className="share-btn-container flex align-center">
-                            <p ><FaUpload className="icon share" /></p>
+                            <p className="details-share"  ><IosShareIcon /></p>
                             <p>Share</p>
                         </div>
                         <div className="save-btn-container flex align-center" onClick={() => { onToogleLikeStay() }}>
-                            <p className="details-like" >{isLiked ? <FavoriteBorderIcon   /> : <FavoriteIcon  color="#FF5A5F"/>}</p>
+                            <p className={`details-like ${isLiked ? 'liked' : ''} `} >{!isLiked ? <FavoriteBorderIcon /> : <FavoriteIcon />}</p>
                             <p>Save</p>
                         </div>
                     </div>

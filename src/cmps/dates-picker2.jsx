@@ -6,8 +6,8 @@ import { DateRangePicker } from 'react-date-range';
 
 export class DatesPicker2 extends React.Component {
     state = {
-        startDate: null,
-        endDate: null
+        startDate: new Date(),
+        endDate: new Date()
     }
     handleSelect = ({ selection }) => {
         var { startDate, endDate } = selection
@@ -25,18 +25,15 @@ export class DatesPicker2 extends React.Component {
             key: 'selection',
         }
         return (
-            <div className="">
-                <DateRangePicker
-                    classNames="date-picker-2"
-                    rangeColors={"black"}
-                    color={"black"}
-                    startDatePlaceholder="Check In"
-                    endDatePlaceholder="Check Out"
-                    className="date-pick"
-                    ranges={[selectionRange]}
-                    onChange={this.handleSelect}
-                />
-            </div>
+            <DateRangePicker
+                classNames="date-picker-2"
+                rangeColors={"black"}
+                color={"black"}
+                className="date-pick"
+                ranges={[selectionRange]}
+                onChange={this.handleSelect}
+            />
+
         )
     }
 }

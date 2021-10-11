@@ -33,7 +33,8 @@ class _CheckoutForm extends React.Component {
             },
             isGuestPopupOn: false,
             isCheckoutToReserve: false,
-            datesModal: false
+            datesModal: false,
+            datesModalPos: {}
         })
     }
     componentWillUnmount() {
@@ -180,15 +181,24 @@ class _CheckoutForm extends React.Component {
                             </div>
                         </div>
                         <div className="form-container">
+                            {datesModal && <DatesPicker2 onSelectDates={this.onSelectDates} handleChange={this.handleChange} />}
                             <div className="select-form">
                                 <div className="dates-check-container">
 
                                     <div className="dates-container flex  ">
-                                        <div className="checkin-input flex column" onClick={() => { this.toggleDatesModal(true) }}>
+                                        <div className="checkin-input flex column" onClick={(ev) => {
+                                            const { bottom, left } = ev.target.getBoundingClientRect()
+                                            this.setState({ datesModalPos: { bottom, left } })
+                                            this.toggleDatesModal(true)
+                                        }}>
+
                                             <label className="title" htmlFor="">CHECK-IN</label>
                                             <label htmlFor="" ><span>{startDate ? this.timeToShow(startDate, 'startDate') : 'Add date'}</span></label>
                                         </div>
-                                        <div className="checkout-input flex column" onClick={() => { this.toggleDatesModal(true) }} >
+                                        <div className="checkout-input flex column" onClick={(ev) => {
+                                            ev.target.getBoundingClientRect()
+                                            this.toggleDatesModal(true)
+                                        }} >
                                             <label className="title" htmlFor="" >CHECK-OUT</label>
                                             <label htmlFor="" ><span>{endDate ? this.timeToShow(endDate, 'startDate') : 'Add date'}</span></label>
                                         </div>
@@ -197,7 +207,7 @@ class _CheckoutForm extends React.Component {
                                 <div className="guests-check-container flex space-between" onClick={() => { this.toggleGuestsModal() }}>
                                     <div className="guests-input flex column"  >
                                         <label className="title" htmlFor="" >GUESTS </label>
-                                        <label htmlFor="" ><span>{this.calcGuestNum()===1?`${this.calcGuestNum()} guest`:`${this.calcGuestNum()} guests`}</span></label>
+                                        <label htmlFor="" ><span>{this.calcGuestNum() === 1 ? `${this.calcGuestNum()} guest` : `${this.calcGuestNum()} guests`}</span></label>
                                     </div>
                                     <div className="guest-select-arrow flex">
                                         {isGuestPopupOn ? <FaAngleUp /> : <FaAngleDown />}
@@ -237,8 +247,6 @@ class _CheckoutForm extends React.Component {
                             </div>
                         </div>
                     </div >
-                {datesModal &&<DatesPicker2 onSelectDates={this.onSelectDates} handleChange={this.handleChange} /> }
-
                 </section>
                 {/* <div className="report-container flex ">
                     <FaFlag />
