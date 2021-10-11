@@ -138,7 +138,7 @@ class _Explore extends React.Component {
         this.setState({ allStaysPriceAvg: (staysAvg / stays.length) })
     }
     onCalcAllStaysPriceAvg=()=>{
-        calcAllStaysPriceAvg(this.state.stays)
+        this.calcAllStaysPriceAvg(this.state.stays)
     }
     render() {
         const { stays, filterBy } = this.props
