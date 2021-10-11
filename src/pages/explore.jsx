@@ -21,17 +21,18 @@ class _Explore extends React.Component {
             placeType: '',
             PropertyType: '',
             priceRange: [20, 1500],
-            amenities: {
-                TV: false,
-                Wifi: false,
-                Kitchen: false,
-                AC: false,
-                "Smoking allowed": false,
-                "Pets allowed": false,
-                "Cooking basics": false,
-                "Hot tub": false,
-            }
-        }
+            amenities: []
+        },
+        ameintiesOptions: [
+            { name: 'TV', isChecked: false },
+            { name: 'Wifi', isChecked: false },
+            { name: 'Kitchen', isChecked: false },
+            { name: 'Smoking allowed', isChecked: false },
+            { name: 'Cooking basics', isChecked: false },
+            { name: 'Pets Allowed', isChecked: false },
+            { name: 'Hot tub', isChecked: false }
+        ]
+
     }
     async componentDidMount() {
         try {
@@ -52,9 +53,23 @@ class _Explore extends React.Component {
             this.props.loadStays(this.props.filterBy);
         }
     }
-    onSetAmenity = (key) => {
-        this.setState({ frontFilter: { ...this.state.frontFilter, amenities: { ...this.state.frontFilter.amenities, [key]: !this.state.frontFilter.amenities[key] } } }, () => { this.onSetPageFilter('ameneties', this.state.frontFilter.amenities) })
+    onSetAmenity = (amenity) => {
+        const name = amenity.name
+        const isChecked = amenity.isChecked
+        const { ameintiesOptions } = this.state
+        const { amenities } = this.state.frontFilter
+
+        const updatedAmeintiesOpts = ameintiesOptions.map(amenity => (amenity.name === name) ? { name, isChecked } : amenity)
+        if (isChecked) amenities.push(name)
+        else {
+            const idx = amenities.findIndex(amenity => amenity === name)
+            amenities.splice(idx, 1)
+        }
+        this.setState(prevState => ({ ...prevState, frontFilter: { ...this.state.frontFilter, amenities }, ameintiesOptions: updatedAmeintiesOpts }), () => { this.onSetPageFilter('ameneties', this.state.frontFilter.amenities) })
     }
+    // onSetAmenity = (key) => {
+    //     this.setState({ frontFilter: { ...this.state.frontFilter, amenities: { ...this.state.frontFilter.amenities, [key]: !this.state.frontFilter.amenities[key] } } }, () => { this.onSetPageFilter('ameneties', this.state.frontFilter.amenities) })
+    // }
     onSetPageFilter = (filterType, val, ev) => {
         this.setState({ frontFilter: { ...this.state.frontFilter, [filterType]: val } }, () => {
             const newStays = stayService.filterPageStays(this.state.frontFilter, this.props.stays)
@@ -119,7 +134,7 @@ class _Explore extends React.Component {
     }
     render() {
         const { stays, filterBy } = this.props
-        const { isScreenOpen } = this.state
+        const { isScreenOpen, ameintiesOptions } = this.state
         if (!stays.length) return <div className="loader-container flex align-center justify-center page-padding"><img src={loader} alt="loader" /></div>
         return (
             <main className="explore-mega-container main-container page-padding">
@@ -129,7 +144,7 @@ class _Explore extends React.Component {
                         <p>{this.state.stays.length === 1 ? `1 stay` : `${this.state.stays.length} stays`}</p>
                         <h1>{filterBy.location ? `Places to stay at ${filterBy.location}` : 'Find places to stay'}</h1>
                     </div>
-                    <ExploreFilter stays={stays} closeAllModals={this.closeAllModals}onSetAmenity={this.onSetAmenity} onSetPageFilter={this.onSetPageFilter} onClearPageFilter={this.onClearPageFilter} modals={this.state.modals} onToggleModals={this.onToggleModals} allStaysPriceAvg={this.state.allStaysPriceAvg} amenities={this.state.frontFilter.amenities} />
+                    <ExploreFilter ameintiesOptions={ameintiesOptions} stays={stays} closeAllModals={this.closeAllModals} onSetAmenity={this.onSetAmenity} onSetPageFilter={this.onSetPageFilter} onClearPageFilter={this.onClearPageFilter} modals={this.state.modals} onToggleModals={this.onToggleModals} allStaysPriceAvg={this.state.allStaysPriceAvg} amenities={this.state.frontFilter.amenities} />
                     {stays.length && <StaysList stays={this.state.stays} history={this.props.history} />}
                 </div>
             </main>

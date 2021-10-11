@@ -41,7 +41,7 @@ class _AddStay extends React.Component {
             { name: 'Kitchen', isChecked: false },
             { name: 'Smoking allowed', isChecked: false },
             { name: 'Cooking basics', isChecked: false }
-        ],
+        ]
     }
     handleChange = ({ target }) => {
         const field = target.name;

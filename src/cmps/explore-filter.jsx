@@ -13,14 +13,15 @@ export class ExploreFilter extends React.Component {
         window.removeEventListener('scroll', (ev) => {
             if (ev.target.scrollingElement.scrollTop > 150) {
                 this.props.closeAllModals()
+
             }
         })
 
     }
     render() {
         const { placeTypeIsOpen, PropertyTypeIsOpen, PriceIsOpen, AmenitiesTypeIsOpen } = this.props.modals
-        const { amenities, allStaysPriceAvg } = this.props
-        const types=['Loft','Studio','Penthouse','Appartment','Hotel','Villa','Duplex','Home']
+        const { amenities, allStaysPriceAvg, ameintiesOptions } = this.props
+        const types = ['Loft', 'Studio', 'Penthouse', 'Appartment', 'Hotel', 'Villa', 'Duplex', 'Home']
         return (
             <div className="explore-filter flex">
                 <div className="sort-type type-of-place">
@@ -39,7 +40,7 @@ export class ExploreFilter extends React.Component {
                 <div className="sort-type property-type">
                     <button onClick={() => { this.props.onToggleModals('PropertyTypeIsOpen') }}>Property Type</button>
                     {PropertyTypeIsOpen && <DynamicModal >
-                        
+
                         <div className="property-type" onClick={(ev) => { this.props.onSetPageFilter('PropertyType', 'Loft') }}>
                             <h1>Loft</h1>
                         </div>
@@ -77,41 +78,14 @@ export class ExploreFilter extends React.Component {
                 <div className="sort-type amenities-type">
                     <button onClick={() => { this.props.onToggleModals('AmenitiesTypeIsOpen') }}>Amenities</button>
                     {AmenitiesTypeIsOpen && <DynamicModal >
-                        <div className={amenities['TV'] ? 'amenities-type active' : 'amenities-type'} onClick={() => { this.props.onSetAmenity('TV') }}>
-                            <h1>
-                                TV
-                            </h1>
-                        </div>
-                        <div className={amenities['Wifi'] ? 'amenities-type active' : 'amenities-type'} onClick={() => { this.props.onSetAmenity('Wifi') }}>
-                            <h1>
-                                Wifi
-                            </h1>
-                        </div>
-                        <div className={amenities['AC'] ? 'amenities-type active' : 'amenities-type'} onClick={() => { this.props.onSetAmenity('AC') }}>
-                            <h1>
-                                AC
-                            </h1>
-                        </div>
-                        <div className={amenities['Smoking allowed'] ? 'amenities-type active' : 'amenities-type'} onClick={() => { this.props.onSetAmenity('Smoking allowed') }}>
-                            <h1>
-                                Smoking Allowed
-                            </h1>
-                        </div>
-                        <div className={amenities['Pets allowed'] ? 'amenities-type active' : 'amenities-type'} onClick={() => { this.props.onSetAmenity('Pets allowed') }}>
-                            <h1>
-                                Pets Allowed
-                            </h1>
-                        </div>
-                        <div className={amenities['Cooking basics'] ? 'amenities-type active' : 'amenities-type'} onClick={() => { this.props.onSetAmenity('Cooking basics') }}>
-                            <h1>
-                                Cooking Basics
-                            </h1>
-                        </div>
-                        <div className={amenities['Hot tub'] ? 'amenities-type active' : 'amenities-type'} onClick={() => { this.props.onSetAmenity('Hot tub') }}>
-                            <h1>
-                                Hot tub
-                            </h1>
-                        </div>
+                        {ameintiesOptions.map((amenity, idx) => {
+                            return (<div key={idx} className={amenity.isChecked ? 'amenities-type active' : 'amenities-type'} onClick={() => { this.props.onSetAmenity({ name: amenity.name, isChecked: !amenity.isChecked }) }}>
+                                <h1>
+                                    {amenity.name}
+                                </h1>
+                            </div>)
+                        })}
+
                     </DynamicModal>}
                 </div>
                 <div className="sort-type type-of-place">

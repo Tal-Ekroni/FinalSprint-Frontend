@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom';
 import { LoginPage } from '../pages/login'
 import { socketService } from '../services/socket.service';
 import { stayService } from '../services/stay.service';
-import { onLogin, onLogout, onSignup, loadUsers, updateUser } from '../store/user.actions'
+import { onLogin, onLogout, onSignup, loadUsers, updateUser, loadUser } from '../store/user.actions'
 import { GoogleLoginCmp } from './google-login';
 class _LoginSignup extends React.Component {
     state = {
@@ -48,6 +48,7 @@ class _LoginSignup extends React.Component {
         if (ev) ev.preventDefault();
         if (!this.state.credentials.username) return;
         await this.props.onLogin(this.state.credentials);
+        await this.props.loadUser(this.props.user._id)
         const { user } = this.props
         if (user.isHost) {
             const stays = await stayService.query()
@@ -85,6 +86,7 @@ class _LoginSignup extends React.Component {
                     //     <NavLink to={`host`} className="approve-order-btn">Go to order</NavLink>
                     // </div>
                 }
+                console.log('userrrr', user.notifications);
                 user.notifications = [editedNotif, ...user.notifications]
                 await this.props.updateUser(user)
             })
@@ -192,6 +194,7 @@ const mapDispatchToProps = {
     onLogout,
     onSignup,
     loadUsers,
+    loadUser,
     updateUser
 }
 

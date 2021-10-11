@@ -2,12 +2,7 @@ import { Component } from "react";
 import { connect } from 'react-redux'
 import { loadUser } from '../../store/user.actions'
 import { onUpdateOrder, onRemoveOrder } from '../../store/order.actions'
-import ReactDOM from "react-dom";
 import MUIDataTable from "mui-datatables";
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
 import { FaStar } from 'react-icons/fa'
 
 class _OrdersDashboard extends Component {
@@ -19,6 +14,8 @@ class _OrdersDashboard extends Component {
         const { user, orders } = this.props
         this.setState({ orders })
         if (user) this.props.loadUser(user._id)
+        window.scrollTo(0, 0)
+
     }
     getTime = (timestamp) => {
         var time = new Date(timestamp * 1000);
@@ -48,9 +45,9 @@ class _OrdersDashboard extends Component {
                     checkIn: this.getTime(order.startDate),
                     checkOut: this.getTime(order.endDate),
                     approveBtn: <div className="host-action-btns flex">
-                        <button className="approve-order-btn" onClick={() => { this.onApproveOrder(order._id) }}>Approve</button>
-                        <button className="approve-order-btn" onClick={() => { (order.status === "pending") ? this.onDeclinelOrder(order._id) : this.onRemoveOrder(order._id) }}>
-                            {(order.status === "pending") ? 'Decline' : 'Remove'}</button>
+                        {order.status === 'pending' && <button className="approve-order-btn" onClick={() => { this.onApproveOrder(order._id) }}>Approve</button>}
+                        <button className="approve-order-btn" onClick={() => { (order.status === "declined") ? this.onRemoveOrder(order._id) : this.onDeclinelOrder(order._id) }}>
+                            {(order.status === "pending") ? 'Decline' : (order.status === "approved") ? 'Cancel' : 'Remove'}</button>
                     </div>
 
                 }
@@ -158,7 +155,7 @@ class _OrdersDashboard extends Component {
                         </div>
                         <div className="dashboard-value flex ">
                             <p className="checkout-star"><FaStar size={13} color="#FF5A5F" /></p>
-                            <p className="dash-avg-score">{this.getTotalRate(orders).toFixed(1)}</p>
+                            <p className="dash-avg-score">{(!this.getTotalRate(orders)) ? 0 : this.getTotalRate(orders).toFixed(1)}</p>
                         </div>
                     </div>
                     <div className="dash-stat-container flex column space-between">

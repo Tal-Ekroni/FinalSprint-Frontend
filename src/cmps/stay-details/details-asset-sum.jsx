@@ -1,3 +1,5 @@
+import { faHome } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { FaHome, FaBroom, FaDoorClosed, FaKey } from 'react-icons/fa'
 
 export function AssetSum(stay) {
@@ -6,7 +8,8 @@ export function AssetSum(stay) {
         <div className="asset-sum">
             <div className="asset-sum-item flex">
                 <div className="sum-icon-container">
-                    <FaHome className="sum-icon" />
+                    {/* <FaHome style={{ color: '#fff' }} strokeLinecap="000" className="sum-icon" /> */}
+                    <FontAwesomeIcon icon={['far', 'home']} className="sum-icon" />
                 </div>
                 <div className="sum-txt">
                     <h4>Entire Home</h4>
