@@ -2,12 +2,13 @@
     background-color: $clr4;
     color: $clr2;
     border-top: 1px lightgray solid;
-    h2 ,h4{
+    h2,
+    h4 {
         margin-top: 30px;
         font-family: circular-bold;
     }
-    h4{
-        margin-bottom:15px;
+    h4 {
+        margin-bottom: 15px;
     }
     .footer-links {
         gap: 300px;
@@ -30,6 +31,16 @@
         }
     }
     @include for-mobile-layout {
-        display: none;
+        h2,
+        h4 {
+            display: none;
+        }
+        .footer-links{
+            display:none;
+        }
+        .footer-second{
+            display:none;
+        }
+        
     }
 }

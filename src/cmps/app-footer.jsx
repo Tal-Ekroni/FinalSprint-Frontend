@@ -25,9 +25,6 @@ class _AppFooter extends React.Component {
         const topRatedStays = this.state.stays.slice(0, 8)
         this.setState({ topRatedStays })
         this.filterLocs(this.state.stays)
-        const nearbyStays = this.props.stays.slice(0, 8)
-        this.setState({ nearbyStays })
-
     }
     filterLocs =  (stays) => {
         stays = stays.filter(stay => stay.loc.address.toLowerCase().includes('paris'))

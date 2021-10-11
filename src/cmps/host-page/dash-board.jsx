@@ -168,7 +168,7 @@ class _OrdersDashboard extends Component {
                             <p className="dashboard-label">monthly earning</p>
                         </div>
                         <div className="dashboard-value">
-                            <p className="dash-avg-earning">${this.getTotalPrice(orders)}</p>
+                            <p className="dash-avg-earning">{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(this.getTotalPrice(orders))}</p>
                         </div>
                     </div>
                     <div className="dash-earning-container flex column space-between">
