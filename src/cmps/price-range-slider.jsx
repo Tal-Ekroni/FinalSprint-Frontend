@@ -70,9 +70,9 @@ AirbnbThumbComponent.propTypes = {
   children: PropTypes.node,
 };
 
-export default function PriceRangeSlider({ onSetPageFilter, allStaysPriceAvg }) {
+export default function PriceRangeSlider({ onCalcAllStaysPriceAvg, onSetPageFilter, allStaysPriceAvg }) {
   const [value, setValue] = React.useState([20, 600])
-
+  onCalcAllStaysPriceAvg()
   const handleChange = (event, newValue) => {
     setValue(newValue)
     onSetPageFilter('priceRange', newValue)
@@ -81,18 +81,18 @@ export default function PriceRangeSlider({ onSetPageFilter, allStaysPriceAvg }) 
   return (
     <div className="price-range-container flex ">
       <Box sx={{ width: 320 }}>
-        <p className="stays-price-avg">{`The average nightly price is  $${allStaysPriceAvg.toFixed(0)?allStaysPriceAvg.toFixed(0):''}`}</p>
+        <p className="stays-price-avg">{`The average nightly price is  $${allStaysPriceAvg.toFixed(0) ? allStaysPriceAvg.toFixed(0) : ''}`}</p>
         <Box sx={{ m: 3 }} />
         <div className="price-slider-container flex justify-center align-center">
 
-        <AirbnbSlider
-          components={{ Thumb: AirbnbThumbComponent }}
-          getAriaLabel={(index) => (index === 0 ? 'Minimum price' : 'Maximum price')}
-          defaultValue={[20, 600]}
-          onChange={handleChange}
-          max={600}
+          <AirbnbSlider
+            components={{ Thumb: AirbnbThumbComponent }}
+            getAriaLabel={(index) => (index === 0 ? 'Minimum price' : 'Maximum price')}
+            defaultValue={[20, 600]}
+            onChange={handleChange}
+            max={600}
           />
-          </div>
+        </div>
         <div className="picks-container ">
           <div className="min-price flex column ">
             <span className="price-range-span" htmlFor="minPrice">Min price</span>
@@ -104,8 +104,8 @@ export default function PriceRangeSlider({ onSetPageFilter, allStaysPriceAvg }) 
           <div className="max-price flex column ">
             <span className="price-range-span" htmlFor="maxPrice">Max price</span>
             <div>
-            <span className="price-range-span">$</span>
-            <input className="max-input" type="number" value={value[1]} />
+              <span className="price-range-span">$</span>
+              <input className="max-input" type="number" value={value[1]} />
             </div>
           </div>
         </div>
