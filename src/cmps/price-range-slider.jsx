@@ -72,7 +72,7 @@ AirbnbThumbComponent.propTypes = {
 };
 
 export default function PriceRangeSlider({ onSetPageFilter, allStaysPriceAvg }) {
-  const [value, setValue] = React.useState([20, 1500])
+  const [value, setValue] = React.useState([20, 600])
 
   const handleChange = (event, newValue) => {
     setValue(newValue)
@@ -82,14 +82,14 @@ export default function PriceRangeSlider({ onSetPageFilter, allStaysPriceAvg }) 
   return (
     <div className="price-range-container flex ">
       <Box sx={{ width: 320 }}>
-        <p style={{ textAlign: 'center' }}>{`The average nightly price is  $${allStaysPriceAvg.toFixed(0)}`}</p>
+        <p className="stays-price-avg">{`The average nightly price is  $${allStaysPriceAvg.toFixed(0)}`}</p>
         <Box sx={{ m: 3 }} />
         <AirbnbSlider
           components={{ Thumb: AirbnbThumbComponent }}
           getAriaLabel={(index) => (index === 0 ? 'Minimum price' : 'Maximum price')}
-          defaultValue={[20, 1500]}
+          defaultValue={[20, 600]}
           onChange={handleChange}
-          max={1500}
+          max={600}
         />
         <div className="picks-container ">
           <div className="min-price flex column ">
