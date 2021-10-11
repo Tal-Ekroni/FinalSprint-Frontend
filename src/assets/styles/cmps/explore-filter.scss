@@ -68,6 +68,10 @@
           }
         }
       }
+      @include for-mobile-layout {
+        left: 50%;
+        transform: translateX(-50%);
+      }
 
       &.property-type {
         overflow: hidden;

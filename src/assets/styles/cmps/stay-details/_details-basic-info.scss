@@ -42,6 +42,10 @@
                     .liked > * {
                         color: $clr6;
                     }
+                    &.details-like .liked {
+                        fill: $clr6;
+                        stroke: white;
+                    }
                 }
             }
         }

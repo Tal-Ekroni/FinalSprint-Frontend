@@ -37,7 +37,7 @@ const routes = [
     },
     {
         path: '/login',
-        component: LoginSignup
+        component: LoginPage
     },
     {
         path: '/become-a-host',
