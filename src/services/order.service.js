@@ -40,12 +40,10 @@ function subscribe(listener) {
 }
 
 function _notifySubscribersOrdersChanged(orders) {
-    console.log('Notifying Listeners');
     listeners.forEach(listener => listener(orders))
 }
 
 window.addEventListener('storage', () => {
-    console.log('Storage Changed from another Browser!');
     query()
         .then(orders => {
             _notifySubscribersOrdersChanged(orders)

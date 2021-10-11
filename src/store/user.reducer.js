@@ -30,7 +30,6 @@ export function userReducer(state = initialState, action) {
         case 'UPDATE_USER':
             users = state.users.map(user => (user._id === action.user._id) ? action.user : user)
             newState = { ...state, users,user:action.user }
-            console.log(action.user, 'actionss');
             break
         case 'SET_SCORE':
             newState = { ...state, user: { ...state.user, score: action.score } }
@@ -39,7 +38,7 @@ export function userReducer(state = initialState, action) {
     }
     // For debug:
     // window.userState = newState;
-    // console.log('State:', newState);
+
     return newState;
 
 }

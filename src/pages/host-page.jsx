@@ -2,8 +2,6 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import React from 'react'
 import { connect } from 'react-redux'
-import { HostChart } from '../cmps/host-page/host-stats';
-import { OrdersList } from '../cmps/host-page/orders-list';
 import { loadUser } from '../store/user.actions'
 import { AddStay } from '../cmps/host-page/add-stay';
 import { loadOrders } from '../store/order.actions'
@@ -28,9 +26,7 @@ class _HostPage extends React.Component {
                 await this.props.loadOrders(user._id, 'host')
                 await this.props.loadStays(this.props.filterBy)
                 // await this.props.loadUser(user._id)
-                console.log(user);
             } catch (err) {
-                console.log('Error', err);
             }
         }
     }

@@ -32,8 +32,8 @@ class _OrdersDashboard extends Component {
         const dataOrders = [];
         let editedOrder;
         if (orders) {
-            orders.forEach(order => {
-                editedOrder = {
+            orders.forEach(order =>{
+                 editedOrder = {
                     stayName: order.stay.name,
                     // address: order.loc.address,
                     buyerName: order.buyer.fullname,
@@ -60,14 +60,13 @@ class _OrdersDashboard extends Component {
     }
     getTotalRate = (orders) => {
         let totalRate = 0;
-        orders.map(order => { totalRate += order.stay.reviewsAvg })
+        orders.forEach(order => { totalRate += order.stay.reviewsAvg })
         totalRate = totalRate / orders.length
-        console.log(totalRate, 'totall');
         return totalRate
     }
     getTotalPrice = (orders) => {
         let totalPrice = 0;
-        orders.map(order => { totalPrice += +order.totalPrice })
+        orders.forEach(order => { totalPrice += +order.totalPrice })
         return totalPrice
     }
     onApproveOrder = (orderId) => {

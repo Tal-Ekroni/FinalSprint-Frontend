@@ -3,8 +3,6 @@ import GoogleLogin from  'react-google-login'
 import { withRouter } from "react-router";
  class _GoogleLoginCmp extends React.Component{
     responseGoogle=(response)=>{
-        console.log(response);
-        console.log(response.profileObj);
         this.props.history.push('/')
     }
     render(){

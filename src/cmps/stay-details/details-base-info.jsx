@@ -1,4 +1,4 @@
-import { FaStar, FaHeart, FaShare, FaShareAlt, FaFileUpload } from 'react-icons/fa'
+import { FaStar} from 'react-icons/fa'
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import IosShareIcon from '@mui/icons-material/IosShare';

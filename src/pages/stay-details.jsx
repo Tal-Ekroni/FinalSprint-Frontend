@@ -35,18 +35,18 @@ class _StayDetails extends React.Component {
         if (this.props.stay) {
             socketService.setup()
             socketService.emit('setHost', this.props.stay.host._id)
-            // socketService.on('getNotif', (ev) => { console.log(ev); })
+            // socketService.on('getNotif', (ev) => {})
         }
         if (user) this.props.loadUser(user._id)
 
         this.isStayLiked()
     }
     // componentWillUnmount() {
-    //     socketService.off('getNotif', (ev) => { console.log(ev); })
+    //     socketService.off('getNotif', (ev) => {})
     // }
 
     componentDidUpdate(prevProps, prevState) {
-        const { user, stay } = this.props
+        const { user} = this.props
         if (prevState.isLiked !== this.state.isLiked) {
             this.isStayLiked()
             if (user) this.props.loadUser(user._id)
@@ -69,7 +69,7 @@ class _StayDetails extends React.Component {
             if (user.mySaves) {
                 const isLiked = user.mySaves.filter(saved => saved === stay._id)
                 if (isLiked.length) {
-                    this.setState({ isLiked: true }, () => { console.log('thi', this.state) })
+                    this.setState({ isLiked: true })
                 }
             }
         }

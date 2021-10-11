@@ -1,5 +1,4 @@
 import { orderService } from "../services/order.service.js";
-import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { userService } from "../services/user.service.js";
 import { socketService } from "../services/socket.service.js";
 
@@ -12,7 +11,6 @@ export function loadOrders(userId, type) {
                 orders
             })
         } catch (err) {
-            showErrorMsg('Cannot load orders')
         }
     }
 }
@@ -25,7 +23,6 @@ export function loadOrder(orderId) {
                 order
             })
         } catch (err) {
-            showErrorMsg('Cannot load orders')
         }
     }
 }
@@ -38,18 +35,15 @@ export function onRemoveOrder(orderId) {
                 type: 'REMOVE_ORDER',
                 orderId
             })
-            showSuccessMsg('Order removed')
-            console.log('Deleted Succesfully!');
         } catch (err) {
-            showErrorMsg('Cannot remove order')
-            console.log('Cannot remove order', err)
+
         }
     }
 }
 
 export function onAddOrder(orderToAdd) {
     const { buyer } = orderToAdd
-    console.log('orderrrr', orderToAdd);
+
     return async (dispatch) => {
         try {
             const notif = {
@@ -61,19 +55,17 @@ export function onAddOrder(orderToAdd) {
             }
             const savedOrder = await orderService.save(orderToAdd)
             dispatch({ type: 'ADD_ORDER', order: savedOrder })
-            showSuccessMsg('Order added')
             socketService.emit('setNotif', notif)
         }
         catch (err) {
-            showErrorMsg('Cannot add order')
-            console.log('Cannot add order', err)
+
         }
     }
 }
 export function onCancelOrder(tripId, buyerId, hostId) {
     return async (dispatch) => {
         try {
-            console.log('trip cancel', tripId, buyerId, hostId);
+
             const buyer = await userService.getById(buyerId)
             const hostUser = await userService.getById(hostId)
             buyer.myTrips = buyer.myTrips.filter(trip => { return trip._id !== tripId })
@@ -82,11 +74,9 @@ export function onCancelOrder(tripId, buyerId, hostId) {
             const updatedHost = await userService.update(hostUser)
             dispatch({ type: 'UPDATE_USER', user: updatedUser })
             dispatch({ type: 'UPDATE_USER', user: updatedHost })
-            showSuccessMsg('Order canceled')
+
         }
         catch (err) {
-            showErrorMsg('Cannot Cancel order')
-            console.log('Cannot Cancel order', err)
         }
     }
 }
@@ -95,12 +85,10 @@ export function onApproveOrder(order) {
         try {
             const updatedOrder = await orderService.update(order)
             dispatch({ type: 'UPDATE_ORDER', order: updatedOrder })
-            showSuccessMsg('Order Approved')
+
 
         }
         catch (err) {
-            showErrorMsg('Cannot approve order')
-            console.log('Cannot approve order', err)
         }
     }
 }
@@ -109,12 +97,10 @@ export function onUpdateOrder(order) {
         try {
             const updatedOrder = await orderService.update(order)
             dispatch({ type: 'UPDATE_ORDER', order: updatedOrder })
-            showSuccessMsg('Order Updated')
+
 
         }
         catch (err) {
-            showErrorMsg('Cannot approve order')
-            console.log('Cannot approve order', err)
         }
     }
 }
@@ -126,7 +112,7 @@ export function setFilter(filterBy) {
                 filter: filterBy
             })
         } catch (err) {
-            console.log(err);
+
         }
     }
 }
@@ -134,15 +120,12 @@ export function onEditOrder(orderToSave) {
     return async (dispatch) => {
         try {
             const updatedOrder = await orderService.update(orderToSave)
-            console.log('Updated Order:', updatedOrder);
             dispatch({
                 type: 'UPDATE_ORDER',
                 order: updatedOrder
             })
-            showSuccessMsg('Order updated')
+
         } catch (err) {
-            showErrorMsg('Cannot update order')
-            console.log('Cannot save order', err)
         }
     }
 }
@@ -154,10 +137,7 @@ export function checkout() {
             const score = await userService.changeScore(-total)
             dispatch({ type: 'SET_SCORE', score })
             dispatch({ type: 'CLEAR_CART' })
-            showSuccessMsg('Charged you: $' + total.toLocaleString())
         } catch (err) {
-            showErrorMsg('Cannot checkout, login first')
-            console.log('CarActions: err in checkout', err)
         }
     }
 }

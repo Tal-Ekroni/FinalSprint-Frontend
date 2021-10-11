@@ -10,7 +10,7 @@ export class HostStaysList extends Component {
         const dataStays = [];
         let editedOrder;
         if (stays) {
-            stays.map(stay => {
+            stays.forEach(stay => {
                 editedOrder = {
                     stayName: stay.name,
                     address: stay.loc.address,

@@ -30,9 +30,7 @@ export function orderReducer(state = initialState, action) {
 
     // For debug:
     window.orderState = newState
-    // console.log('Prev State:', state)
-    // console.log('Action:', action)
-    // console.log('New State:', newState)
+
     return newState
 
 }

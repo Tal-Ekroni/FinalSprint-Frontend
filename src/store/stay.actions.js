@@ -1,5 +1,4 @@
 import { stayService } from "../services/stay.service.js";
-import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { userService } from "../services/user.service.js";
 export function loadStays(filterBy = null) {
     return async (dispatch) => {
@@ -10,7 +9,6 @@ export function loadStays(filterBy = null) {
                 stays
             })
         } catch (err) {
-            showErrorMsg('Cannot load stays')
         }
     }
 }
@@ -22,7 +20,7 @@ export function loadStay(stayId) {
             const stay = await stayService.getById(stayId)
             dispatch({ type: 'SET_STAY', stay })
         } catch (err) {
-            console.log('UserActions: err in loadStay', err)
+
         } finally {
             dispatch({ type: 'LOADING_DONE' })
         }
@@ -37,11 +35,7 @@ export function onRemoveStay(stayId) {
                 type: 'REMOVE_STAY',
                 stayId
             })
-            showSuccessMsg('Stay removed')
-            console.log('Deleted Succesfully!');
         } catch (err) {
-            showErrorMsg('Cannot remove stay')
-            console.log('Cannot remove stay', err)
         }
     }
 }
@@ -50,16 +44,13 @@ export function onAddStay(stayToAdd) {
     return async (dispatch) => {
         try {
             const savedStay = await stayService.save(stayToAdd)
-            console.log('Added Stay', savedStay);
+
             dispatch({
                 type: 'ADD_STAY',
                 stay: savedStay
             })
-            showSuccessMsg('Stay added')
         }
         catch (err) {
-            showErrorMsg('Cannot add stay')
-            console.log('Cannot add stay', err)
         }
     }
 }
@@ -72,7 +63,7 @@ export function setFilter(filterBy) {
                 filter: filterBy
             })
         } catch (err) {
-            console.log(err);
+
         }
     }
 }
@@ -84,12 +75,12 @@ export function setMiniHeader(isMiniHeader) {
                 isMiniHeader
             })
         } catch (err) {
-            console.log(err);
+
         }
     }
 }
 export function onEditStay(stayToSave) {
-    // console.log('stay to ', stayToSave);
+
     return async (dispatch) => {
         try {
             const updatedStay = await stayService.update(stayToSave)
@@ -97,10 +88,7 @@ export function onEditStay(stayToSave) {
                 type: 'UPDATE_STAY',
                 stay: updatedStay
             })
-            showSuccessMsg('Stay updated')
         } catch (err) {
-            showErrorMsg('Cannot update stay')
-            console.log('Cannot save stay', err)
         }
     }
 
@@ -127,12 +115,7 @@ export function checkout() {
             const score = await userService.changeScore(-total)
             dispatch({ type: 'SET_SCORE', score })
             dispatch({ type: 'CLEAR_CART' })
-            showSuccessMsg('Charged you: $' + total.toLocaleString())
-
-
         } catch (err) {
-            showErrorMsg('Cannot checkout, login first')
-            console.log('CarActions: err in checkout', err)
         }
     }
 }

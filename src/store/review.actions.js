@@ -1,5 +1,5 @@
 // import { socketService, SOCKET_EVENT_REVIEW_ADDED } from '../services/socket.service'
-import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service';
+
 import { stayService } from '../services/stay.service'
 
 
@@ -13,7 +13,7 @@ import { stayService } from '../services/stay.service'
 //       // })
 
 //     } catch (err) {
-//       console.log('ReviewActions: err in loadReviews', err)
+
 //     }
 //   }
 // }
@@ -21,7 +21,7 @@ import { stayService } from '../services/stay.service'
 export function onAddReview(review, stayId) {
   return async dispatch => {
     try {
-      console.log('add');
+
       const currStay = await stayService.getById(stayId)
        currStay.reviews.unshift(review)
       const updatedStay = await stayService.update(currStay)
@@ -29,10 +29,9 @@ export function onAddReview(review, stayId) {
         type: 'UPDATE_STAY',
         stay: updatedStay
       })
-      showSuccessMsg('Stay updated')
+
     } catch (err) {
-      showErrorMsg('Cannot update stay')
-      console.log('Cannot save stay', err)
+
     }
   }
 }
@@ -43,7 +42,7 @@ export function onAddReview(review, stayId) {
 //       await reviewService.remove(reviewId)
 //       dispatch({ type: 'REMOVE_REVIEW', reviewId })
 //     } catch (err) {
-//       console.log('ReviewActions: err in removeReview', err)
+
 //     }
 //   }
 // }

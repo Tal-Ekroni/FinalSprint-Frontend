@@ -4,9 +4,7 @@ import { FaStar, } from "react-icons/fa";
 import { onToggleLikedStay, updateUser } from '../store/user.actions.js'
 
 import LazyLoad from "./preview-slider"
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-import { showErrorMsg } from "../services/event-bus.service.js";
 class _StayPreview extends React.Component {
     state = {
         isLiked: false
@@ -24,7 +22,7 @@ class _StayPreview extends React.Component {
             })
         }
         else {
-            showErrorMsg('Login First')
+           
         }
     }
     isStayLiked = () => {
