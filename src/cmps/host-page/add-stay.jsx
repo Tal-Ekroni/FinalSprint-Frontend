@@ -7,6 +7,7 @@ import { TextField } from '@material-ui/core';
 import { TextareaAutosize } from "@material-ui/core";
 import Select from 'react-select';
 import noImg from '../../assets/img/no-img.png'
+import { utilService } from '../../services/util.service';
 class _AddStay extends React.Component {
     state = {
         newStay: {
@@ -71,6 +72,7 @@ class _AddStay extends React.Component {
         const { _id, fullname, ImgUrl } = this.props.user
         newStay.assetType = `${newStay.assetSpace.split(' ')[1]} ${newStay.assetType}`
         newStay.host = { fullname, _id, ImgUrl }
+        newStay.demoReviews = utilService.getRandomIntInclusive(50, 300)
         this.props.onAddStay(newStay)
         this.setState({
             newStay: {
@@ -168,8 +170,8 @@ class _AddStay extends React.Component {
                 </div>
 
 
-                <div className="add-stay-form-container flex" onSubmit={this.onAddsStay}>
-                    <form className="add-stay-form">
+                <div className="add-stay-form-container flex">
+                    <form className="add-stay-form" onSubmit={this.onAddsStay}>
                         <section className="add-basic-info-container flex align-center">
                             <div className="add-stay-name-container">
                                 <label className="add-line" htmlFor="">Stay name</label>
@@ -270,7 +272,7 @@ class _AddStay extends React.Component {
                         </section>
                         <section className="add-stay-container">
 
-                            <div className="checkout-btn-container">
+                            <div className="checkout-btn-container" onClick={this.onAddsStay}>
                                 {this.getBtnDivs()}
                                 <div className="content">
                                     <button className="checkout-btn" ><span>Add stay</span> </button>
