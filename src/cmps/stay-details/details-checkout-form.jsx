@@ -6,6 +6,7 @@ import { FaStar, FaAngleDown, FaAngleUp } from 'react-icons/fa'
 import 'react-dates/lib/css/_datepicker.css';
 import { DatesPicker2 } from '../dates-picker2.jsx';
 import { GuestsCheckoutModal } from './_guests-modal';
+import { utilService } from '../../services/util.service';
 
 class _CheckoutForm extends React.Component {
 
@@ -133,6 +134,7 @@ class _CheckoutForm extends React.Component {
                 reviewsAvg: stay.reviewsAvg
             }
             trip.status = 'pending'
+            trip.demoReviews = utilService.getRandomIntInclusive(50,300)
             this.props.onAddOrder(trip)
             this.setState({
                 trip: {
