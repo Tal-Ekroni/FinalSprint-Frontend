@@ -45,7 +45,7 @@ class _OrderPreview extends React.Component {
                         <div className="order-preview-details">
                             <div className="order-user-info flex space-between" >
                                 <div className="user-img-container">
-                                    <img src={`https://i.pravatar.cc/100?u=${order.buyer._id.substr(order.buyer._id.length - 10)}`} alt="" />
+                                    <img src={`https://i.pravatar.cc/100?u=${order.buyer._id.substr(order.buyer._id.length - 8)}`} alt="" />
                                 </div>
                                 <div className="txt-info-container flex column">
                                     <div className="order-username-container">

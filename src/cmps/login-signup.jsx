@@ -68,7 +68,7 @@ class _LoginSignup extends React.Component {
                     byUser: notif.byUser.fullName,
                     // byUserImg: <div className="user-order-img-container flex align-center" >
                     //     <div>
-                    //         <img src={`https://i.pravatar.cc/100?u=${notif.byUser._id.substr(notif.byUser._id.length - 10)}`} alt="user-icon" />
+                    //         <img src={`https://i.pravatar.cc/100?u=${notif.byUser._id.substr(notif.byUser._id.length - 8)}`} alt="user-icon" />
                     //     </div>
                     //     <p>{notif.byUser.fullName}</p>
                     // </div>,

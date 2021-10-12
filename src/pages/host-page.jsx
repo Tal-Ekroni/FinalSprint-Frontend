@@ -29,6 +29,9 @@ class _HostPage extends React.Component {
             } catch (err) {
             }
         }
+        else {
+            this.props.history.push('/')
+        }
     }
     componentWillUnmount() {
         this.onClearFilter()

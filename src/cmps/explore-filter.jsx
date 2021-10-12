@@ -51,7 +51,7 @@ export class ExploreFilter extends React.Component {
                 <div className="sort-type price">
                     <button onClick={() => { this.props.onToggleModals('PriceIsOpen') }}>Price</button>
                     {PriceIsOpen && <DynamicModal >
-                        <PriceRangeSlider onSetPageFilter={this.props.onSetPageFilter} allStaysPriceAvg={allStaysPriceAvg} />
+                        <PriceRangeSlider  onSetPageFilter={this.props.onSetPageFilter} allStaysPriceAvg={allStaysPriceAvg} />
                     </DynamicModal>}
                 </div>
                 <div className="">

@@ -104,7 +104,9 @@ class _Explore extends React.Component {
             ]
     
         }
-        this.setState({ ...clearState })
+        this.setState({ ...clearState },()=>{
+            this.calcAllStaysPriceAvg(this.state.stays)
+        })
         this.closeAllModals()
     }
 
@@ -137,6 +139,7 @@ class _Explore extends React.Component {
         }, 0)
         this.setState({ allStaysPriceAvg: (staysAvg / stays.length) })
     }
+  
     render() {
         const { stays, filterBy } = this.props
         const { isScreenOpen, ameintiesOptions } = this.state

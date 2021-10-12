@@ -12,11 +12,11 @@ class _OrdersDashboard extends Component {
         orders: null
     }
     componentDidMount() {
+        window.scrollTo(0, 0)
         const { user, orders } = this.props
         this.setState({ orders })
 
         if (user) this.props.loadUser(user._id)
-        window.scrollTo(0, 0)
 
     }
     getTime = (timestamp) => {
@@ -32,13 +32,13 @@ class _OrdersDashboard extends Component {
         const dataOrders = [];
         let editedOrder;
         if (orders) {
-            orders.forEach(order =>{
-                 editedOrder = {
+            orders.forEach(order => {
+                editedOrder = {
                     stayName: order.stay.name,
                     // address: order.loc.address,
                     buyerName: order.buyer.fullname,
                     buyerImg: <div className="user-order-img-container flex align-center">
-                        <img src={`https://i.pravatar.cc/100?u=${order.buyer._id.substr(order.buyer._id.length - 10)}`} alt="" />
+                        <img src={`https://i.pravatar.cc/100?u=${order.buyer._id.substr(order.buyer._id.length - 8)}`} alt="" />
                         <p>{order.buyer.fullname}</p>
                     </div>,
                     price: `$${order.totalPrice}`,

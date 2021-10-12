@@ -69,7 +69,7 @@ class _AddStay extends React.Component {
         ev.preventDefault()
         const { newStay } = this.state
         const { _id, fullname, ImgUrl } = this.props.user
-        newStay.assetType=`${newStay.assetSpace.split(' ')[1]} ${newStay.assetType}`
+        newStay.assetType = `${newStay.assetSpace.split(' ')[1]} ${newStay.assetType}`
         newStay.host = { fullname, _id, ImgUrl }
         this.props.onAddStay(newStay)
         this.setState({
@@ -117,8 +117,15 @@ class _AddStay extends React.Component {
             })
             .catch(err => console.error(err))
     }
+    getBtnDivs = () => {
+        let divStr = []
+        for (let i = 0; i < 100; i++) {
+            divStr.push(<div key={i + 1} className="cell" ></div >)
+        }
+        return divStr
+    }
     render() {
-        const { imgUrls, name, assetSpace, assetType, capacity, summary, price} = this.state.newStay
+        const { imgUrls, name, assetSpace, assetType, capacity, summary, price } = this.state.newStay
         const { ameintiesOptions } = this.state
         const spaceOptions = [
             { name: 'assetSpace', value: 'An Entire place', label: 'An Entire place' },
@@ -261,9 +268,15 @@ class _AddStay extends React.Component {
                                 </div>
                             })}
                         </section>
-                        <button className=" add-page-btn add-stay-btn">
-                            Add Stay
-                        </button>
+                        <section className="add-stay-container">
+
+                            <div className="checkout-btn-container">
+                                {this.getBtnDivs()}
+                                <div className="content">
+                                    <button className="checkout-btn" ><span>Add stay</span> </button>
+                                </div>
+                            </div>
+                        </section>
                     </form>
 
                 </div>
