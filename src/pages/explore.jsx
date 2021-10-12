@@ -104,7 +104,9 @@ class _Explore extends React.Component {
             ]
     
         }
-        this.setState({ ...clearState })
+        this.setState({ ...clearState },()=>{
+            this.calcAllStaysPriceAvg(this.state.stays)
+        })
         this.closeAllModals()
     }
 
@@ -137,9 +139,7 @@ class _Explore extends React.Component {
         }, 0)
         this.setState({ allStaysPriceAvg: (staysAvg / stays.length) })
     }
-    onCalcAllStaysPriceAvg=()=>{
-        this.calcAllStaysPriceAvg(this.state.stays)
-    }
+  
     render() {
         const { stays, filterBy } = this.props
         const { isScreenOpen, ameintiesOptions } = this.state
@@ -152,7 +152,7 @@ class _Explore extends React.Component {
                         <p>{this.state.stays.length === 1 ? `1 stay` : `${this.state.stays.length} stays`}</p>
                         <h1>{filterBy.location ? `Places to stay at ${filterBy.location}` : 'Find places to stay'}</h1>
                     </div>
-                    <ExploreFilter onCalcAllStaysPriceAvg={this.onCalcAllStaysPriceAvg}ameintiesOptions={ameintiesOptions} stays={this.state.stays} closeAllModals={this.closeAllModals} onSetAmenity={this.onSetAmenity} onSetPageFilter={this.onSetPageFilter} onClearPageFilter={this.onClearPageFilter} modals={this.state.modals} onToggleModals={this.onToggleModals} allStaysPriceAvg={this.state.allStaysPriceAvg} amenities={this.state.frontFilter.amenities} />
+                    <ExploreFilter ameintiesOptions={ameintiesOptions} stays={this.state.stays} closeAllModals={this.closeAllModals} onSetAmenity={this.onSetAmenity} onSetPageFilter={this.onSetPageFilter} onClearPageFilter={this.onClearPageFilter} modals={this.state.modals} onToggleModals={this.onToggleModals} allStaysPriceAvg={this.state.allStaysPriceAvg} amenities={this.state.frontFilter.amenities} />
                     {stays.length && <StaysList stays={this.state.stays} history={this.props.history} />}
                 </div>
             </main>

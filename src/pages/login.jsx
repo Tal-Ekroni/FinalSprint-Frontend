@@ -98,9 +98,6 @@ class _LoginPage extends React.Component {
                         <button className="new-user-btn" onClick={this.toggleSignUp}>{isSignUp ? 'Already have an account ?' : 'New user ?'}</button>
                     </div>
                 </form>
-                <div className="test-login">
-                    <LoginSignup />
-                </div>
             </section>
 
         )
