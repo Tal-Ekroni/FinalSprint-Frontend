@@ -40,7 +40,7 @@ export class ReviewAvg extends React.Component {
 
     }
     render() {
-        const { reviews } = this.props
+        const { reviews,demoReviews } = this.props
         const types = this.state
         return (
             <section>
@@ -48,7 +48,7 @@ export class ReviewAvg extends React.Component {
                     <h1 className="reviews-section-title flex" ><FaStar
                         size={15}
 
-                        color="#FF5A5F" /> <span>{this.state.totalAvg}</span> <span>Reviews</span> <span>•</span>{reviews.length} Reviews</h1>
+                        color="#FF5A5F" /> <span>{this.state.totalAvg}</span> <span>Reviews</span> <span>•</span>{demoReviews} Reviews</h1>
                 </div>
                 <div className="review-avg-container flex space-between" >
                     <div className="left-review">

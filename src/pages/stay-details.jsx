@@ -144,7 +144,7 @@ class _StayDetails extends React.Component {
                     </section>
                     <section className="page-bottom-container">
                         <div className="reviews-section-container" >
-                            <ReviewAvg reviews={stay.reviews} setReviewsAvg={this.setReviewsAvg} />
+                            <ReviewAvg demoReviews={stay.demoReviews} reviews={stay.reviews} setReviewsAvg={this.setReviewsAvg} />
                             <ReviewsList isReadMoreOn={isReadMoreOn} onToogleReadModal={this.onToogleReadModal} />
                             {user && <div className="add-review">
                                 <AddReview stay={stay} />
