@@ -70,9 +70,8 @@ AirbnbThumbComponent.propTypes = {
   children: PropTypes.node,
 };
 
-export default function PriceRangeSlider({ onCalcAllStaysPriceAvg, onSetPageFilter, allStaysPriceAvg }) {
+export default function PriceRangeSlider({ onSetPageFilter, allStaysPriceAvg }) {
   const [value, setValue] = React.useState([20, 600])
-  onCalcAllStaysPriceAvg()
   const handleChange = (event, newValue) => {
     setValue(newValue)
     onSetPageFilter('priceRange', newValue)
