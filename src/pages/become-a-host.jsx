@@ -1,16 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
-// import { stayService } from '../services/stay.service'
 import { onBecomeHost, loadUser } from '../store/user.actions.js'
 import { FaAirbnb } from 'react-icons/fa'
 
 
 class _BecomeAHost extends React.Component {
-    async componentDidMount() {
-        await this.props.loadUser(this.props.user._id)
-    }
+   
     onBecomeHost = () => {
         if (this.props.user) {
+            console.log('loloa');
             const userId = this.props.user._id
             this.props.onBecomeHost(userId)
             this.props.history.push('/host')

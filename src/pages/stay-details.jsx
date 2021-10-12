@@ -25,8 +25,17 @@ class _StayDetails extends React.Component {
         },
         isReadMoreOn: false,
         isLiked: null,
+        isMobilePics: false
+    }
+    setMobliePicsDisplay = () => {
+        if (window.innerWidth <= 780) {
+            this.setState({ isMobilePics: true })
+        } else {
+            this.setState({ isMobilePics: false })
+        }
     }
     async componentDidMount() {
+        this.setMobliePicsDisplay()
         const { user } = this.props
         const { stayId } = this.props.match.params
         if (!stayId) this.props.history.push('/')
@@ -46,7 +55,7 @@ class _StayDetails extends React.Component {
     // }
 
     componentDidUpdate(prevProps, prevState) {
-        const { user} = this.props
+        const { user } = this.props
         if (prevState.isLiked !== this.state.isLiked) {
             this.isStayLiked()
             if (user) this.props.loadUser(user._id)
@@ -92,13 +101,13 @@ class _StayDetails extends React.Component {
 
     }
     render() {
-        const { isReadMoreOn, isLiked } = this.state
+        const { isReadMoreOn, isLiked ,isMobilePics} = this.state
         const { stay, user } = this.props
         return (
             <section className="stay-details-section main-container">
                 {(!stay) && <div className="loader-container flex align-center justify-center"><img src={loader} alt="loader" /></div>}
                 {stay && <div className="stay-details-container">
-                    <BasicInfo user={user} stay={stay} isLiked={isLiked} reviewsAvg={stay.reviewsAvg} onToogleLikeStay={this.onToogleLikeStay} />
+                    <BasicInfo isMobilePics={isMobilePics} user={user} stay={stay} isLiked={isLiked} reviewsAvg={stay.reviewsAvg} onToogleLikeStay={this.onToogleLikeStay} />
                     <section className=" details-main-conatiner flex">
                         <div className="details-left-container">
                             <section className="host-info-container flex align-center space-between">

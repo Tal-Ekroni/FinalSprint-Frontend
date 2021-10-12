@@ -3,7 +3,7 @@ import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import IosShareIcon from '@mui/icons-material/IosShare';
 
-export function BasicInfo({ stay, isLiked, onToogleLikeStay, reviewsAvg }) {
+export function BasicInfo({ stay, isLiked, onToogleLikeStay, reviewsAvg,isMobilePics }) {
     return (
         <section className="info-imgs-container">
             <section className="stay-info">
@@ -35,6 +35,7 @@ export function BasicInfo({ stay, isLiked, onToogleLikeStay, reviewsAvg }) {
                 </section>
             </section>
             <section className="asset-imgs-container flex  ">
+               
                 <div className="asset-imgs flex">
                     <div className="primary-img square-ratio"><img src={stay.imgUrls[0]} alt="" /></div>
                     <div className="imgs-container flex">
