@@ -67,7 +67,6 @@
         width: 100%;
     }
     @include for-mobile-layout {
-
         .details-main-conatiner {
             display: flex;
             flex-direction: column-reverse;
@@ -108,11 +107,11 @@
         }
         .details-left-container {
             margin-top: 0;
-
             min-height: 850px;
             max-height: 1000px;
             width: 58%;
             padding: 0;
+            padding-top: 20px;
         }
         .details-right-container {
             min-height: 850px;

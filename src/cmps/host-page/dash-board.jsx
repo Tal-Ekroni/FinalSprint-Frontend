@@ -38,7 +38,7 @@ class _OrdersDashboard extends Component {
                     // address: order.loc.address,
                     buyerName: order.buyer.fullname,
                     buyerImg: <div className="user-order-img-container flex align-center">
-                        <img src={`https://i.pravatar.cc/100?u=${order.buyer._id.substr(order.buyer._id.length - 10)}`} alt="" />
+                        <img src={`https://i.pravatar.cc/100?u=${order.buyer._id.substr(order.buyer._id.length - 8)}`} alt="" />
                         <p>{order.buyer.fullname}</p>
                     </div>,
                     price: `$${order.totalPrice}`,

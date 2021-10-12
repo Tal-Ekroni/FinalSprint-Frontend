@@ -51,7 +51,7 @@ class _LoginPage extends React.Component {
                 const editedNotif = {
                     notifTxt: `${notif.txt} at ${notif.stay.name}`,
                     byUser: notif.byUser.fullName,
-                    byUserImg: `https://i.pravatar.cc/100?u=${notif.byUser._id.substr(notif.byUser._id.length - 10)}`,
+                    byUserImg: `https://i.pravatar.cc/100?u=${notif.byUser._id.substr(notif.byUser._id.length - 8)}`,
                     isRead: notif.isRead,
                     createdAt: notif.createdAt,
                 }

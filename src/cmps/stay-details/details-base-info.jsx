@@ -1,9 +1,10 @@
-import { FaStar} from 'react-icons/fa'
+import { FaStar } from 'react-icons/fa'
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import IosShareIcon from '@mui/icons-material/IosShare';
+import LazyLoad from '../preview-slider';
 
-export function BasicInfo({ stay, isLiked, onToogleLikeStay, reviewsAvg,isMobilePics }) {
+export function BasicInfo({ stay, isLiked, onToogleLikeStay, reviewsAvg, isMobilePics }) {
     return (
         <section className="info-imgs-container">
             <section className="stay-info">
@@ -28,15 +29,15 @@ export function BasicInfo({ stay, isLiked, onToogleLikeStay, reviewsAvg,isMobile
                             <p>Share</p>
                         </div>
                         <div className="save-btn-container flex align-center" onClick={() => { onToogleLikeStay() }}>
-                            <p className="details-like" >{!isLiked ? <FavoriteBorderIcon /> : <FavoriteIcon  className="liked" />}</p>
+                            <p className="details-like" >{!isLiked ? <FavoriteBorderIcon /> : <FavoriteIcon className="liked" />}</p>
                             <p>Save</p>
                         </div>
                     </div>
                 </section>
             </section>
             <section className="asset-imgs-container flex  ">
-               
-                <div className="asset-imgs flex">
+
+                {!isMobilePics ? <div className="asset-imgs flex">
                     <div className="primary-img square-ratio"><img src={stay.imgUrls[0]} alt="" /></div>
                     <div className="imgs-container flex">
                         <div className="asset-img square-ratio"><img src={stay.imgUrls[1]} alt="" /></div>
@@ -46,7 +47,9 @@ export function BasicInfo({ stay, isLiked, onToogleLikeStay, reviewsAvg,isMobile
                         <div className="asset-img square-ratio"><img src={stay.imgUrls[3]} alt="" /></div>
                         <div className="asset-img square-ratio"><img src={stay.imgUrls[4]} alt="" /></div>
                     </div>
-                </div>
+                </div> : <div className="asset-imgs flex">
+                    <div className="primary-img square-ratio"> <LazyLoad imgs={stay.imgUrls} /></div>
+                </div>}
             </section>
         </section>
     )

@@ -38,6 +38,7 @@ class _StayDetails extends React.Component {
         this.setMobliePicsDisplay()
         const { user } = this.props
         const { stayId } = this.props.match.params
+        window.addEventListener('resize', this.setMobliePicsDisplay)
         if (!stayId) this.props.history.push('/')
         else await this.props.loadStay(stayId)
         window.scrollTo(0, 0)
@@ -50,9 +51,10 @@ class _StayDetails extends React.Component {
 
         this.isStayLiked()
     }
-    // componentWillUnmount() {
-    //     socketService.off('getNotif', (ev) => {})
-    // }
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.setMobliePicsDisplay)
+        // socketService.off('getNotif', (ev) => {})
+    }
 
     componentDidUpdate(prevProps, prevState) {
         const { user } = this.props
@@ -101,7 +103,7 @@ class _StayDetails extends React.Component {
 
     }
     render() {
-        const { isReadMoreOn, isLiked ,isMobilePics} = this.state
+        const { isReadMoreOn, isLiked, isMobilePics } = this.state
         const { stay, user } = this.props
         return (
             <section className="stay-details-section main-container">
@@ -120,7 +122,7 @@ class _StayDetails extends React.Component {
                                     </div>
                                 </div>
                                 <div className="host-img-container">
-                                    <img src={`https://i.pravatar.cc/100?u=${stay.host._id.substr(stay.host._id.length - 10)}`} alt="" />
+                                    <img src={`https://i.pravatar.cc/100?u=${stay.host._id.substr(stay.host._id.length - 8)}`} alt="" />
                                 </div>
                             </section>
                             <AssetSum />
