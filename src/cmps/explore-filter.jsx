@@ -9,6 +9,7 @@ export class ExploreFilter extends React.Component {
             }
         })
     }
+  
     componentWillUnmount() {
         window.removeEventListener('scroll', (ev) => {
             if (ev.target.scrollingElement.scrollTop > 150) {

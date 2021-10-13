@@ -18,7 +18,6 @@ const routes = [
         path: '/',
         component: HomePage,
     },
-
     {
         path: '/explore/',
         component: Explore,

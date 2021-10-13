@@ -51,6 +51,9 @@ class _Explore extends React.Component {
         if (prevProps.filterBy !== this.props.filterBy) {
             this.props.loadStays(this.props.filterBy);
         }
+        if (prevProps.stays !== this.props.stays) {
+            this.setState({ stays: this.props.stays })
+        }
     }
     onSetAmenity = (amenity) => {
         const name = amenity.name
@@ -66,7 +69,7 @@ class _Explore extends React.Component {
         }
         this.setState(prevState => ({ ...prevState, frontFilter: { ...this.state.frontFilter, amenities }, ameintiesOptions: updatedAmeintiesOpts }), () => { this.onSetPageFilter('ameneties', this.state.frontFilter.amenities) })
     }
- 
+
     onSetPageFilter = (filterType, val, ev) => {
         this.setState({ frontFilter: { ...this.state.frontFilter, [filterType]: val } }, () => {
             const newStays = stayService.filterPageStays(this.state.frontFilter, this.props.stays)
@@ -102,9 +105,9 @@ class _Explore extends React.Component {
                 { name: 'Pets Allowed', isChecked: false },
                 { name: 'Hot tub', isChecked: false }
             ]
-    
+
         }
-        this.setState({ ...clearState },()=>{
+        this.setState({ ...clearState }, () => {
             this.calcAllStaysPriceAvg(this.state.stays)
         })
         this.closeAllModals()
@@ -139,7 +142,7 @@ class _Explore extends React.Component {
         }, 0)
         this.setState({ allStaysPriceAvg: (staysAvg / stays.length) })
     }
-  
+
     render() {
         const { stays, filterBy } = this.props
         const { isScreenOpen, ameintiesOptions } = this.state
