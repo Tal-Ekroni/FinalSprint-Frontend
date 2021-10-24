@@ -9,7 +9,6 @@ export class ExploreFilter extends React.Component {
             }
         })
     }
-  
     componentWillUnmount() {
         window.removeEventListener('scroll', (ev) => {
             if (ev.target.scrollingElement.scrollTop > 150) {
@@ -20,7 +19,7 @@ export class ExploreFilter extends React.Component {
     }
     render() {
         const { placeTypeIsOpen, PropertyTypeIsOpen, PriceIsOpen, AmenitiesTypeIsOpen } = this.props.modals
-        const {allStaysPriceAvg, ameintiesOptions } = this.props
+        const { allStaysPriceAvg, ameintiesOptions } = this.props
         const propertyTypes = ['Loft', 'Studio', 'Penthouse', 'Appartment', 'Hotel', 'Villa', 'Duplex', 'Home']
         return (
             <div className="explore-filter flex">
@@ -52,7 +51,7 @@ export class ExploreFilter extends React.Component {
                 <div className="sort-type price">
                     <button onClick={() => { this.props.onToggleModals('PriceIsOpen') }}>Price</button>
                     {PriceIsOpen && <DynamicModal >
-                        <PriceRangeSlider  onSetPageFilter={this.props.onSetPageFilter} allStaysPriceAvg={allStaysPriceAvg} />
+                        <PriceRangeSlider onSetPageFilter={this.props.onSetPageFilter} allStaysPriceAvg={allStaysPriceAvg} />
                     </DynamicModal>}
                 </div>
                 <div className="">

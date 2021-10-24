@@ -12,7 +12,6 @@ export function loadStays(filterBy = null) {
         }
     }
 }
-
 export function loadStay(stayId) {
     return async dispatch => {
         try {
@@ -26,7 +25,6 @@ export function loadStay(stayId) {
         }
     }
 }
-
 export function onRemoveStay(stayId) {
     return async (dispatch, getState) => {
         try {
@@ -39,7 +37,6 @@ export function onRemoveStay(stayId) {
         }
     }
 }
-
 export function onAddStay(stayToAdd) {
     return async (dispatch) => {
         try {

@@ -72,7 +72,6 @@ class _SearchBar extends React.Component {
     onSelectDates = ({ startDate, endDate }) => {
         this.setState({ startDate, endDate }, () => { this.props.setFilter(this.state) })
     }
-
     onSelectAmount = (guestType, diff) => {
         switch (guestType) {
             case 'adultNumber':
@@ -148,7 +147,7 @@ class _SearchBar extends React.Component {
                         <div className="guests-label align-center flex" onClick={(ev) => { onToggleSearchModals('guestModal',) }}>
                             <label htmlFor="" className="flex column" >
                                 <span>Guests</span>
-                                <span className="guest-placeholder">{(adultNumber+kidsNumber+infantsNumber)<=1?'Add guests':(adultNumber+kidsNumber+infantsNumber)}</span>
+                                <span className="guest-placeholder">{(adultNumber + kidsNumber + infantsNumber) <= 1 ? 'Add guests' : (adultNumber + kidsNumber + infantsNumber)}</span>
                             </label>
                         </div>
                         {guestModal && <GuestsModal adultNumber={adultNumber} kidsNumber={kidsNumber} infantsNumber={infantsNumber} onSelectAmount={this.onSelectAmount} />}
@@ -168,4 +167,3 @@ class _SearchBar extends React.Component {
 }
 export const SearchBar = withRouter(_SearchBar)
 
-// export const SearchBar = withRouter(connect(mapStateToProps, mapDispatchToProps)(_SearchBar))

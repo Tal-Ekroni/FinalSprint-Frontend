@@ -2,7 +2,6 @@ import React from "react";
 import { connect } from 'react-redux'
 import { FaStar, } from "react-icons/fa";
 import { onToggleLikedStay, updateUser } from '../store/user.actions.js'
-
 import LazyLoad from "./preview-slider"
 import FavoriteIcon from '@material-ui/icons/Favorite';
 class _StayPreview extends React.Component {
@@ -22,7 +21,7 @@ class _StayPreview extends React.Component {
             })
         }
         else {
-           
+
         }
     }
     isStayLiked = () => {
@@ -39,7 +38,6 @@ class _StayPreview extends React.Component {
     render() {
         return (
             <div>
-
                 {this.props.stay.name && <div className="stay-preview square-ratio" onClick={(ev) => {
                     if (ev.target.className === 'slick-arrow slick-prev' || ev.target.className === 'slick-arrow slick-next' || ev.target.className.baseVal === 'MuiSvgIcon-root') return
                     this.props.history.push(`/stay/${this.props.stay._id}`)
@@ -50,7 +48,6 @@ class _StayPreview extends React.Component {
                             {!this.state.isLiked ? <FavoriteIcon className="unliked" onClick={(ev) => this.onToggleLikeStay(ev, this.props.stay)} /> :
                                 <FavoriteIcon size={13} onClick={(ev) => this.onToggleLikeStay(ev, this.props.stay)} />
                             }
-                            {/* {this.state.isLiked && <FavoriteIcon size={13} onClick={(ev) => this.onToggleLikeStay(ev, this.props.stay)} />} */}
                             <LazyLoad imgs={this.props.stay.imgUrls} />
                         </div>
                         <div className="preview-details ">

@@ -14,13 +14,11 @@ class _UserMenu extends React.Component {
             this.props.loadUser(this.props.user._id)
         }
     }
-
     onLogout = () => {
         this.props.onLogout()
         this.props.onToggleSearchModals('menuModal')
         socketService.off('getNotif')
         socketService.terminate()
-        // this.props.history.push('/')
     }
 
     onCloseLogin = () => {
@@ -66,7 +64,6 @@ class _UserMenu extends React.Component {
                     </div>}
                     {!user && <div className="user-menu-line" onClick={this.onOpenLogin}>
                         <p>Login</p>
-                        {/* <Link to='/login'>Login</Link> */}
                     </div>}
                     {!user && <div className="user-menu-line">
                         <p>Signup</p>
