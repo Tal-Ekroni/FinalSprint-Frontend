@@ -1,0 +1,23 @@
+.read-more-popup-container {
+    // position: fixed;
+    position: relative;
+    // transform: translateX(-50%);
+    background-color: white;
+    border-radius: 13px;
+    border: 1px solid $clr11;
+    height: 150px;
+    width: unset;
+    width: 45ch;
+    .read-more-popup {
+        width: 250px;
+        color: $clr10;
+        padding: 15px;
+        .read-more-container {
+            width: 40ch;
+            font-family: circular-book;
+        }
+        .close-btn {
+            text-align: end;
+        }
+    }
+}
