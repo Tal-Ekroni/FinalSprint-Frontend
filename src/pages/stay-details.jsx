@@ -95,10 +95,10 @@ class _StayDetails extends React.Component {
         }
     }
 
-
     setReviewsAvg = (avgScore) => {
         const { stay } = this.props
         stay.reviewsAvg = avgScore
+        this.props.onEditStay(stay)
         this.setState(prevState => ({ stay: { ...prevState.stay, reviewsAvg: avgScore } }))
 
     }
@@ -154,7 +154,6 @@ class _StayDetails extends React.Component {
                     </section>
                 </div >}
                 {/* {isReadMoreOn && <ReadMore txt={this.state.txt} onCloseReadModal={this.onCloseReadModal} />} */}
-
             </section>
         )
     }

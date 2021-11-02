@@ -94,10 +94,6 @@ export function onEditStay(stayToSave) {
 
 }
 
-
-
-
-
 export function removeFromCart(carId) {
     return (dispatch) => {
         dispatch({
@@ -112,8 +108,6 @@ export function checkout() {
         try {
             const state = getState()
             const total = state.stayModule.cart.reduce((acc, stay) => acc + stay.price, 0)
-            const score = await userService.changeScore(-total)
-            dispatch({ type: 'SET_SCORE', score })
             dispatch({ type: 'CLEAR_CART' })
         } catch (err) {
         }

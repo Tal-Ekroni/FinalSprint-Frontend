@@ -8,6 +8,10 @@
         width: 300px;
         height: 300px;
     }
+    .trips-img-container {
+        height: calc(100vh - 170px);
+        width: 100%;
+    }
     .trip-preview-details {
         padding: 10px 0;
     }

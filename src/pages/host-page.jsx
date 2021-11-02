@@ -25,7 +25,6 @@ class _HostPage extends React.Component {
             try {
                 await this.props.loadOrders(user._id, 'host')
                 await this.props.loadStays(this.props.filterBy)
-                // await this.props.loadUser(user._id)
             } catch (err) {
             }
         }
@@ -82,7 +81,7 @@ class _HostPage extends React.Component {
                             </div>
                         </div>}
                         {selectedTab === 'my-stays' && <div className="orders-container">
-                                {stays && <HostStaysList orders={orders} stays={stays} />}
+                            {stays && <HostStaysList orders={orders} stays={stays} />}
                         </div>}
                         {/* {selectedTab === 'stats' && <div>
                             <HostChart />

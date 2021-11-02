@@ -1,10 +1,12 @@
 import MUIDataTable from "mui-datatables";
+import { connect } from 'react-redux'
 import { Component } from "react";
 import { FaStar } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
+import {onRemoveStay} from '../../store/stay.actions'
 // import { HoststayPreview } from "./host-stay-preview";
 
-export class HostStaysList extends Component {
+ class _HostStaysList extends Component {
     getData = () => {
         const { stays, orders } = this.props
         const dataStays = [];
@@ -23,13 +25,19 @@ export class HostStaysList extends Component {
                     // reviews: stay.reviews.length,
                     // reviewsAvg: stay.reviewsAvg,
                     orders: orders.filter(order => order.stay._id === stay._id).length,
-                    link: <NavLink to={`/stay/${stay._id}`}>Go to stay</NavLink>
+                    link: <div className="flex align-center">
+                        <button className="remove-stay-btn" onClick={()=>this.onRemoveStay(stay._id)}>Remove stay</button>
+                        <NavLink className="stay-link" to={`/stay/${stay._id}`}>Go to stay</NavLink>
+                    </div>
                 }
                 dataStays.unshift(editedOrder)
                 editedOrder = null
             })
             return dataStays
         }
+    }
+    onRemoveStay = (id) => {
+        this.props.onRemoveStay(id)
     }
     render() {
         const columns = [
@@ -99,3 +107,16 @@ export class HostStaysList extends Component {
             </div>)
     }
 }
+function mapStateToProps(state) {
+    return {
+        user: state.userModule.user,
+        orders: state.orderModule.orders,
+        stays: state.stayModule.stays,
+    }
+}
+const mapDispatchToProps = {
+onRemoveStay
+}
+
+
+export const HostStaysList = connect(mapStateToProps, mapDispatchToProps)(_HostStaysList)

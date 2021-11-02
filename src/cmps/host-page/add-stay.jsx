@@ -35,7 +35,35 @@ class _AddStay extends React.Component {
             { name: 'Wifi', isChecked: false },
             { name: 'Kitchen', isChecked: false },
             { name: 'Smoking allowed', isChecked: false },
-            { name: 'Cooking basics', isChecked: false }
+            { name: 'Hot tub', isChecked: false },
+            { name: 'Pets allowed', isChecked: false },
+            { name: 'No smoking', isChecked: false },
+            { name: 'Cooking basics', isChecked: false },
+            { name: 'Air conditioning', isChecked: false },
+            { name: 'Heating', isChecked: false },
+            { name: 'Pool', isChecked: false },
+            { name: 'Indoor fireplace', isChecked: false },
+            { name: 'Refrigerator', isChecked: false },
+            { name: 'Dishwasher', isChecked: false },
+            { name: 'Backyard', isChecked: false },
+            { name: 'BBQ grill', isChecked: false },
+            { name: 'Crib', isChecked: false },
+            { name: 'Private entrance', isChecked: false },
+            { name: 'Lockbox', isChecked: false },
+            { name: 'Beachfront', isChecked: false },
+            { name: 'Hangers', isChecked: false },
+            { name: 'Wine glasses', isChecked: false },
+            { name: 'Free parking', isChecked: false },
+            { name: 'Accessible', isChecked: false },
+            { name: 'King size bed', isChecked: false },
+            { name: 'Bathub', isChecked: false },
+            { name: 'Balcony', isChecked: false },
+            { name: 'Iron', isChecked: false },
+            { name: 'Room service', isChecked: false },
+            { name: 'Coffee machine', isChecked: false },
+            { name: 'Laundry machine', isChecked: false },
+            { name: 'Speakers', isChecked: false },
+            { name: 'Gaming console', isChecked: false }
         ]
     }
     handleChange = ({ target }) => {
@@ -43,11 +71,11 @@ class _AddStay extends React.Component {
         const value = target.type === 'number' ? +target.value : target.value;
         this.setState(prevState => ({ ...prevState, newStay: { ...this.state.newStay, [field]: value } }))
     }
-    handleAmenityChange = ({ target }) => {
-        const name = target.name
-        const checked = target.checked
-        const { ameintiesOptions } = this.state
+    handleAmenityChange = (name) => {
         const { amenities } = this.state.newStay
+        const { ameintiesOptions } = this.state
+        const nameIdx = ameintiesOptions.findIndex(amenity => amenity.name === name)
+        const checked = !ameintiesOptions[nameIdx].isChecked
         const updatedAmeintiesOpts = ameintiesOptions.map(amenity => (amenity.name === name) ? { name, isChecked: checked } : amenity)
         if (checked) amenities.push(name)
         else {
@@ -140,15 +168,6 @@ class _AddStay extends React.Component {
             { name: 'assetType', value: 'Farm', label: 'Farm' },
             { name: 'assetType', value: 'Cabin', label: 'Cabin' },
         ];
-
-        // const ameintiesOptions = [
-        //     'TV',
-        //     'Wifi',
-        //     'Kitchen',
-        //     'Smoking allowedarm',
-        //     'Cooking basics',
-
-        // ];
         const style = {
             margin: '20px 0',
             padding: '20px',
@@ -162,62 +181,85 @@ class _AddStay extends React.Component {
         }
         if (!imgUrls) return (<div>Loading</div>)
         return (
-            <div className="add-stay-container">
-                <div>
-                    <h1>Add stay!</h1>
-                </div>
-
-
+            <section className="add-stay-container">
                 <div className="add-stay-form-container flex" onSubmit={this.onAddsStay}>
                     <form className="add-stay-form">
                         <section className="add-basic-info-container flex align-center">
-                            <div className="add-stay-name-container">
-                                <label className="add-line" htmlFor="">Stay name</label>
-                                <TextField required type="text" autoComplete="off" value={name} name="name" placeholder="Asset name..." onChange={this.handleChange} />
-
+                            <div className="add-form-line flex align-center">
+                                <label className="add-line">Name</label>
+                                <TextField className="stay-name-input" required type="text" autoComplete="off" value={name} name="name" placeholder="Asset name..." onChange={this.handleChange} />
                             </div>
-                            <div className="add-stay-location-container">
+                            <div className="add-stay-location-wrapper">
                                 <AddStayMap handleAddressChange={this.handleAddressChange} />
                             </div>
-
+                            <div className="add-form-line flex align-center">
+                                <label className="add-line">Price</label>
+                                <TextField required type="number" value={price} name="price" placeholder="Price" onChange={this.handleChange} />
+                                <label className="add-line">/per night</label>
+                            </div>
                         </section>
                         <section className="add-stay-imgs-container flex">
                             <div className="add-stay-imgs flex">
                                 <div className="primary-img square-ratio" >
 
-                                    {imgUrls[0] ? <img src={imgUrls[0]} alt="" /> : <input type="file" placeholder="Upload Image" name="imgUrls" onChange={this.onUploadImg} />}
+                                    {imgUrls[0] ? <img src={imgUrls[0]} alt="" /> : <div>
+                                        <div className="upload-img-txt flex align-center">
+                                            <label>Upload image</label>
+                                        </div>
+                                        <input type="file" placeholder="Upload Image" name="imgUrls" onChange={this.onUploadImg} />
+                                    </div>}
 
                                 </div>
                                 <div className="add-small-imgs-container flex column space-between">
                                     <div className="new-stay-img square-ratio">
-                                        {imgUrls[1] ? <img src={imgUrls[1]} alt="" /> : <input type="file" placeholder="Upload Image" name="imgUrls" onChange={this.onUploadImg} />}
+                                        {imgUrls[1] ? <img src={imgUrls[1]} alt="" /> : <div>
+                                            <div className="upload-img-txt flex align-center">
+                                                <label>Upload image</label>
+                                            </div>
+                                            <input type="file" placeholder="Upload Image" name="imgUrls" onChange={this.onUploadImg} />
+                                        </div>}
 
                                     </div>
                                     <div className="new-stay-img square-ratio">
-                                        {imgUrls[2] ? <img src={imgUrls[2]} alt="" /> : <input type="file" placeholder="Upload Image" name="imgUrls" onChange={this.onUploadImg} />}
+                                        {imgUrls[2] ? <img src={imgUrls[2]} alt="" /> : <div>
+                                            <div className="upload-img-txt flex align-center">
+                                                <label >Upload image</label>
+                                            </div>
+                                            <input type="file" placeholder="Upload Image" name="imgUrls" onChange={this.onUploadImg} />
+                                        </div>}
 
                                     </div>
                                 </div>
                                 <div className="add-small-imgs-container flex column space-between">
                                     <div className="new-stay-img square-ratio">
-                                        {imgUrls[3] ? <img src={imgUrls[3]} alt="" /> : <input type="file" placeholder="Upload Image" name="imgUrls" onChange={this.onUploadImg} />}
+                                        {imgUrls[3] ? <img src={imgUrls[3]} alt="" /> : <div>
+                                            <div className="upload-img-txt flex align-center">
+                                                <label>Upload image</label>
+                                            </div>
+                                            <input type="file" placeholder="Upload Image" name="imgUrls" onChange={this.onUploadImg} />
+                                        </div>}
 
                                     </div>
                                     <div className="new-stay-img square-ratio">
-                                        {imgUrls[4] ? <img src={imgUrls[4]} alt="" /> : <input type="file" placeholder="Upload Image" name="imgUrls" onChange={this.onUploadImg} />}
+                                        {imgUrls[4] ? <img src={imgUrls[4]} alt="" /> : <div>
+                                            <div className="upload-img-txt flex align-center">
+                                                <label>Upload image</label>
+                                            </div>
+                                            <input type="file" placeholder="Upload Image" name="imgUrls" onChange={this.onUploadImg} />
+                                        </div>}
 
                                     </div>
                                 </div>
                             </div>
 
                         </section>
-                        <section className="add-stay-details-container flex ">
-                            <div className="add-form-line flex align-center space-between">
-                                <label className="add-line" htmlFor="">Capacity</label>
+                        <section className="add-stay-details-container flex space-between">
+                            <div className="add-form-line flex align-center">
+                                <label className="add-line">Capacity</label>
                                 <TextField required type="number" value={capacity} name="capacity" placeholder="Capacity..." onChange={this.handleChange} />
                             </div>
-                            <div className="add-form-line flex align-center space-between">
-                                <label className="add-line" htmlFor="">Asset space</label>
+                            <div className="add-form-line flex align-center">
+                                <label className="add-line">What is your asset space?</label>
                                 <Select
                                     required
                                     placeholder="Space type"
@@ -228,8 +270,8 @@ class _AddStay extends React.Component {
                                     options={spaceOptions}
                                 />
                             </div>
-                            <div className="add-form-line flex align-center space-between">
-                                <label className="add-line" htmlFor="">What is your asset type?</label>
+                            <div className="add-form-line flex align-center">
+                                <label className="add-line">What is your asset type?</label>
                                 <Select
                                     required
                                     placeholder="Asset type"
@@ -240,15 +282,12 @@ class _AddStay extends React.Component {
                                     options={assetTypeOptions}
                                 />
                             </div>
-                            <div className="add-form-line flex align-center space-between">
-                                <TextField required type="number" value={price} name="price" placeholder="Price" onChange={this.handleChange} />
-                                <label className="add-line" htmlFor="">/per night</label>
-                            </div>
 
                         </section>
+
                         <section className="add-stay-summary">
-                            <div className="add-desc-line flex column  space-between">
-                                <label className="add-line" htmlFor="">Describe your asset</label>
+                            <div className="add-desc-line flex column">
+                                <label className="add-line">Describe your asset</label>
                                 <TextareaAutosize
                                     required
                                     style={style}
@@ -260,17 +299,20 @@ class _AddStay extends React.Component {
                                     autoComplete="off" />
                             </div>
                         </section>
-                        <section className="add-amenities-container ">
-                            {ameintiesOptions.map((amenity, idx) => {
-                                return <div key={idx} className="add-amenities-line flex align-center space-between">
-                                    <input type="checkbox" checked={amenity.isChecked} name={amenity.name} onChange={this.handleAmenityChange} />
-                                    <label variant="h5">{amenity.name}</label>
-                                </div>
-                            })}
+                        <section className="add-amenities-container flex align-center">
+                            <ul className="amenities-list flex column">
+                                {ameintiesOptions.map((amenity, idx) => {
+                                    if (idx <= 31) {
+                                        return <li key={idx} className="add-amenities-line flex align-center" onClick={() => this.handleAmenityChange(amenity.name)}>
+                                            <label variant="h5">{amenity.name}</label>
+                                            <input type="checkbox" checked={amenity.isChecked} />
+                                        </li>
+                                    }
+                                })}
+                            </ul>
                         </section>
-                        <section className="add-stay-container">
-
-                            <div className="checkout-btn-container" onClick={this.onAddsStay}>
+                        <section className="add-stay-btn-container flex">
+                            <div className="checkout-btn-container " onClick={this.onAddsStay}>
                                 {this.getBtnDivs()}
                                 <div className="content">
                                     <button className="checkout-btn" ><span>Add stay</span> </button>
@@ -280,7 +322,7 @@ class _AddStay extends React.Component {
                     </form>
 
                 </div>
-            </div>
+            </section>
         )
     }
 }

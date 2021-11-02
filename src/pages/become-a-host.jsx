@@ -5,7 +5,7 @@ import { FaAirbnb } from 'react-icons/fa'
 
 
 class _BecomeAHost extends React.Component {
-   
+
     onBecomeHost = () => {
         if (this.props.user) {
             console.log('loloa');
@@ -15,7 +15,13 @@ class _BecomeAHost extends React.Component {
         }
         else this.props.history.push('/')
     }
-
+    getBtnDivs = () => {
+        let divStr = []
+        for (let i = 0; i < 100; i++) {
+            divStr.push(<div key={i + 1} className="cell" ></div >)
+        }
+        return divStr
+    }
     render() {
         return (
             <section className="be-host-container">
@@ -26,9 +32,17 @@ class _BecomeAHost extends React.Component {
                         <div><h1>makes AnyGo,</h1></div>
                         <div><h1>AnyGo</h1></div>
                     </div>
-                    <div className="be-host-btn-container flex  align-center">
-                        <button onClick={this.onBecomeHost} className="be-host-btn">Try hosting</button>
-                    </div>
+                    <section className="be-host-btn-container flex align-center">
+                        <div className="checkout-btn-container " onClick={this.onBecomeHost}>
+                            {this.getBtnDivs()}
+                            <div className="content">
+                                {/* <button className="checkout-btn" ><span>Add stay</span> </button> */}
+                                <button  className="checkout-btn">Try hosting</button>
+                            </div>
+                        </div>
+                    </section>
+                    {/* <div className="be-host-btn-container flex  align-center"> */}
+                    {/* </div> */}
                 </div>
                 <div className="be-host-img-container">
                     <img src="https://res.cloudinary.com/dkbfdybze/image/upload/v1633436197/become-host_ufwcx6.jpg" alt="" />

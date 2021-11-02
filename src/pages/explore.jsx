@@ -28,9 +28,35 @@ class _Explore extends React.Component {
             { name: 'Wifi', isChecked: false },
             { name: 'Kitchen', isChecked: false },
             { name: 'Smoking allowed', isChecked: false },
+            { name: 'Hot tub', isChecked: false },
+            { name: 'Pets allowed', isChecked: false },
+            { name: 'No smoking', isChecked: false },
             { name: 'Cooking basics', isChecked: false },
-            { name: 'Pets Allowed', isChecked: false },
-            { name: 'Hot tub', isChecked: false }
+            { name: 'Air conditioning', isChecked: false },
+            { name: 'Heating', isChecked: false },
+            { name: 'Pool', isChecked: false },
+            { name: 'Indoor fireplace', isChecked: false },
+            { name: 'Refrigerator', isChecked: false },
+            { name: 'Dishwasher', isChecked: false },
+            { name: 'Backyard', isChecked: false },
+            { name: 'BBQ grill', isChecked: false },
+            { name: 'Crib', isChecked: false },
+            { name: 'Private entrance', isChecked: false },
+            { name: 'Lockbox', isChecked: false },
+            { name: 'Beachfront', isChecked: false },
+            { name: 'Hangers', isChecked: false },
+            { name: 'Wine glasses', isChecked: false },
+            { name: 'Free parking', isChecked: false },
+            { name: 'Accessible', isChecked: false },
+            { name: 'King size bed', isChecked: false },
+            { name: 'Bathub', isChecked: false },
+            { name: 'Balcony', isChecked: false },
+            { name: 'Iron', isChecked: false },
+            { name: 'Room service', isChecked: false },
+            { name: 'Coffee machine', isChecked: false },
+            { name: 'Laundry machine', isChecked: false },
+            { name: 'Speakers', isChecked: false },
+            { name: 'Gaming console', isChecked: false }
         ]
 
     }
@@ -66,7 +92,7 @@ class _Explore extends React.Component {
         }
         this.setState(prevState => ({ ...prevState, frontFilter: { ...this.state.frontFilter, amenities }, ameintiesOptions: updatedAmeintiesOpts }), () => { this.onSetPageFilter('ameneties', this.state.frontFilter.amenities) })
     }
- 
+
     onSetPageFilter = (filterType, val, ev) => {
         this.setState({ frontFilter: { ...this.state.frontFilter, [filterType]: val } }, () => {
             const newStays = stayService.filterPageStays(this.state.frontFilter, this.props.stays)
@@ -102,9 +128,9 @@ class _Explore extends React.Component {
                 { name: 'Pets Allowed', isChecked: false },
                 { name: 'Hot tub', isChecked: false }
             ]
-    
+
         }
-        this.setState({ ...clearState },()=>{
+        this.setState({ ...clearState }, () => {
             this.calcAllStaysPriceAvg(this.state.stays)
         })
         this.closeAllModals()
@@ -139,7 +165,7 @@ class _Explore extends React.Component {
         }, 0)
         this.setState({ allStaysPriceAvg: (staysAvg / stays.length) })
     }
-  
+
     render() {
         const { stays, filterBy } = this.props
         const { isScreenOpen, ameintiesOptions } = this.state

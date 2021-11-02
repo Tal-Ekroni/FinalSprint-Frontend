@@ -4,7 +4,8 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import IosShareIcon from '@mui/icons-material/IosShare';
 import LazyLoad from '../preview-slider';
 
-export function BasicInfo({ stay, isLiked, onToogleLikeStay, reviewsAvg, isMobilePics }) {
+export function BasicInfo({ stay, isLiked, onToogleLikeStay, isMobilePics }) {
+    console.log(stay.reviewsAvg);
     return (
         <section className="info-imgs-container">
             <section className="stay-info">
@@ -15,8 +16,8 @@ export function BasicInfo({ stay, isLiked, onToogleLikeStay, reviewsAvg, isMobil
                     <div className="stay-info-conatiner flex">
                         <div className="stay-avg-info flex align-end">
                             <p className="info-star"><FaStar size={14} color="#FF5A5F" /></p>
-                            <p className="info-line-score">{reviewsAvg ? reviewsAvg : 0}</p>
-                            <p className="info-line-reviews">{`(${stay.demoReviews} reviews)`}</p>
+                            <p className="info-line-score">{stay.reviewsAvg ? stay.reviewsAvg : 0}</p>
+                            <p className="info-line-reviews">{`(${stay.reviews.length} reviews)`}</p>
                         </div>
                         <p className="dot">•</p>
                         <div className="host-location-container flex align-end">

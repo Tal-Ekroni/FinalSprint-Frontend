@@ -11,7 +11,10 @@ html {
     font-family: circular;
     color: $clr2;
 }
-
+ul{
+    margin: 0;
+    padding: 0;
+}
 body {
     font-size: rem(16px);
     font-family: circular, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell,

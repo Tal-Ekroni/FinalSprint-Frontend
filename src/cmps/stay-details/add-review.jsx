@@ -191,7 +191,7 @@ class _AddReview extends Component {
                             name="txt"
                             autoComplete="off" />
                     </div>
-                    <div className="add-review-btn">
+                    <div className="add-review-btn flex">
 
                         <div className="checkout-btn-container" onClick={this.formSubmited}>
                             {this.getBtnDivs()}
