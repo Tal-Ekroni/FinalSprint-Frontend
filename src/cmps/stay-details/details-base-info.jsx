@@ -5,7 +5,6 @@ import IosShareIcon from '@mui/icons-material/IosShare';
 import LazyLoad from '../preview-slider';
 
 export function BasicInfo({ stay, isLiked, onToogleLikeStay, isMobilePics }) {
-    console.log(stay.reviewsAvg);
     return (
         <section className="info-imgs-container">
             <section className="stay-info">

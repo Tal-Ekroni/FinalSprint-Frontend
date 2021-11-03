@@ -14,6 +14,7 @@ import { AddReview } from '../cmps/stay-details/add-review'
 import { ReviewAvg } from '../cmps/stay-details/_reviews-avg'
 import loader from '../assets/img/three-dots.svg'
 import { socketService } from '../services/socket.service'
+import { AmenitiesModal } from '../cmps/amenities-modal.jsx'
 class _StayDetails extends React.Component {
     state = {
         stayReviews: [],
@@ -25,7 +26,8 @@ class _StayDetails extends React.Component {
         },
         isReadMoreOn: false,
         isLiked: null,
-        isMobilePics: false
+        isMobilePics: false,
+        isAmenitiesModalOpen: false
     }
     setMobliePicsDisplay = () => {
         if (window.innerWidth <= 780) {
@@ -102,8 +104,12 @@ class _StayDetails extends React.Component {
         this.setState(prevState => ({ stay: { ...prevState.stay, reviewsAvg: avgScore } }))
 
     }
+    onToggleAmenitiesModal = () => {
+        this.setState({ isAmenitiesModalOpen: !this.state.isAmenitiesModalOpen })
+
+    }
     render() {
-        const { isReadMoreOn, isLiked, isMobilePics } = this.state
+        const { isReadMoreOn, isLiked, isMobilePics, isAmenitiesModalOpen } = this.state
         const { stay, user } = this.props
         return (
             <section className="stay-details-section main-container">
@@ -136,6 +142,9 @@ class _StayDetails extends React.Component {
                                 <div >
                                     <AssetAmenities amenities={stay.amenities} />
                                 </div>
+                                {stay.amenities.length > 10 && <div>
+                                    <button className="amenities-btn" onClick={this.onToggleAmenitiesModal}>Show all {stay.amenities.length} amenities</button>
+                                </div>}
                             </section>
                         </div>
                         <div className="details-right-container">
@@ -153,6 +162,8 @@ class _StayDetails extends React.Component {
                         <StayMap location={stay.loc} />
                     </section>
                 </div >}
+                {isAmenitiesModalOpen ? <div className={"screen screen-open "} onClick={this.onToggleAmenitiesModal}></div>  :''}
+                {stay ? isAmenitiesModalOpen && <AmenitiesModal onToggleAmenitiesModal={this.onToggleAmenitiesModal} amenities={stay.amenities} /> : ''}
                 {/* {isReadMoreOn && <ReadMore txt={this.state.txt} onCloseReadModal={this.onCloseReadModal} />} */}
             </section>
         )
