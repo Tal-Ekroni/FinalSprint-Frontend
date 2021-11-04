@@ -8,6 +8,7 @@ class _LoginSignup extends React.Component {
         credentials: {
             username: '',
             password: '',
+            email: '',
             fullname: ''
         },
         isSignup: false,
@@ -26,6 +27,7 @@ class _LoginSignup extends React.Component {
             credentials: {
                 username: '',
                 password: '',
+                email: '',
                 fullname: ''
             },
             isSignup: false
@@ -52,7 +54,7 @@ class _LoginSignup extends React.Component {
                 // {
                 //     "byUser": {
                 //         "fullName": "Houston Anderson",
-                //         "imgUrl": "/img/img1.jpg",
+                //         "": " ",
                 //         "_id": "615856f7cb4c045b46874e45"
                 //     },
                 //     "createdAt": 1633891364304,
@@ -99,7 +101,7 @@ class _LoginSignup extends React.Component {
     responseGoogle = (response) => {
     }
     render() {
-        const { username} = this.state.credentials;
+        const { username , email} = this.state.credentials;
         const { isSignup } = this.state;
         const { user, users } = this.props
         return (

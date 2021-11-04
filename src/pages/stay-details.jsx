@@ -15,6 +15,7 @@ import { ReviewAvg } from '../cmps/stay-details/_reviews-avg'
 import loader from '../assets/img/three-dots.svg'
 import { socketService } from '../services/socket.service'
 import { AmenitiesModal } from '../cmps/amenities-modal.jsx'
+import { FaUserAlt } from 'react-icons/fa'
 class _StayDetails extends React.Component {
     state = {
         stayReviews: [],
@@ -127,9 +128,11 @@ class _StayDetails extends React.Component {
                                         <p><span>{`${stay.capacity} guests`}</span> • <span >{`${stay.host.fullname} is Superhost!`}</span> •  <span>{`${stay.capacity} beds`}</span> </p>
                                     </div>
                                 </div>
-                                <div className="host-img-container">
-                                    <img src={`https://i.pravatar.cc/100?u=${stay.host._id.substr(stay.host._id.length - 8)}`} alt="" />
-                                </div>
+                                {!stay.host.imgUrl ? <div className="host-img-container">
+                                    <FaUserAlt />
+                                </div> : <div className="host-img-container">
+                                    <img src={stay.host.imgUrl} alt="" />
+                                </div>}
                             </section>
                             <AssetSum />
                             <section className="asset-desc-container">
@@ -162,7 +165,8 @@ class _StayDetails extends React.Component {
                         <StayMap location={stay.loc} />
                     </section>
                 </div >}
-                {isAmenitiesModalOpen ? <div className={"screen screen-open "} onClick={this.onToggleAmenitiesModal}></div>  :''}
+                {isAmenitiesModalOpen ? <div className={"amenities-screen screen-open "} onClick={this.onToggleAmenitiesModal}></div> : ''}
+
                 {stay ? isAmenitiesModalOpen && <AmenitiesModal onToggleAmenitiesModal={this.onToggleAmenitiesModal} amenities={stay.amenities} /> : ''}
                 {/* {isReadMoreOn && <ReadMore txt={this.state.txt} onCloseReadModal={this.onCloseReadModal} />} */}
             </section>

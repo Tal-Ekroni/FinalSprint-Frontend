@@ -51,7 +51,7 @@ async function login(userCred) {
 }
 async function signup(userCred) {
     userCred.isHost = false;
-    userCred.imgUrl = '/img/img1.jpg';
+    userCred.imgUrl = '';
     userCred.myStays = [];
     userCred.notifications = [];
     userCred.mySaves = []

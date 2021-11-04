@@ -53,7 +53,7 @@ class _UserMenu extends React.Component {
                         </div>
                     }
                     <div >
-                        {user ? <NavLink className="user-menu-line" onClick={() => this.props.onToggleSearchModals('menuModal')}  to="/wishlist"> <p>Wishlist</p> </NavLink> : <p className="user-menu-line">Wishlist</p>}
+                        {user ? <NavLink className="user-menu-line" onClick={() => this.props.onToggleSearchModals('menuModal')} to="/wishlist"> <p>Wishlist</p> </NavLink> : <p className="user-menu-line">Wishlist</p>}
                     </div>
                     <div >
                         {user ? user.isHost ? '' : <NavLink onClick={() => this.props.onToggleSearchModals('menuModal')} className="user-menu-line" to="/become-a-host"><p >Host a expirience</p></NavLink> : <p className="user-menu-line">Host a expirience</p>}
@@ -61,6 +61,9 @@ class _UserMenu extends React.Component {
                     </div>
                 </section >
                 <section className="user-menu bottom-section">
+                    {user && <NavLink className="user-menu-line" to="/profile">
+                        <p>Profile</p>
+                    </NavLink>}
                     {user && <div className="user-menu-line" onClick={this.onLogout}>
                         <p>Logout</p>
                     </div>}

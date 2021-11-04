@@ -25,9 +25,11 @@ class _WishList extends Component {
         const { userSavedStays } = this.state
         return (
             <main className="wishlist-page-container page-padding main-container">
-                <div>
-                    <h1>wishlistttt</h1>
-                    {userSavedStays.length && <StaysList stays={userSavedStays} history={this.props.history} />}
+                <div className="wishlist-page">
+                    <h1>Wishlist</h1>
+                    {userSavedStays.length ? <StaysList stays={userSavedStays} history={this.props.history} /> : <div>
+                        <h4>There are no saved stays yet...</h4>
+                    </div>}
                 </div>
             </main>
         )

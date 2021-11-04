@@ -11,6 +11,7 @@ import { BecomeAHost } from './pages/become-a-host.jsx'
 import { NotificationsPage } from './pages/notifications.jsx'
 import { LoginSignup } from './cmps/login-signup.jsx'
 import { WishList } from './pages/wishlist.jsx'
+import { UserProfile } from './pages/user-profile.jsx'
 // import { Login } from './pages/'
 
 // Routes accesible from the main navigation (in AppHeader)
@@ -52,6 +53,11 @@ const routes = [
     {
         path: '/about',
         component: AboutUs,
+
+    },
+    {
+        path: '/profile',
+        component: UserProfile,
 
     },
     {

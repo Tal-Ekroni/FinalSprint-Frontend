@@ -94,7 +94,7 @@ function getAmenitiesIcons(amenity) {
         case 'Refrigerator':
             return <FontAwesomeIcon icon="refrigerator" />
         case 'Dishwasher':
-            return <FontAwesomeIcon icon="washer" />
+            return <LocalLaundryService />
         case 'Backyard':
             return <Deck />
         case 'BBQ grill':

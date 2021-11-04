@@ -300,7 +300,7 @@ class _AddStay extends React.Component {
                             </div>
                         </section>
                         <section className="add-amenities-container flex align-center">
-                            <ul className="amenities-list flex column">
+                            <ul className="amenities-list flex column align-center">
                                 {ameintiesOptions.map((amenity, idx) => {
                                     if (idx <= 31) {
                                         return <li key={idx} className="add-amenities-line flex align-center" onClick={() => this.handleAmenityChange(amenity.name)}>

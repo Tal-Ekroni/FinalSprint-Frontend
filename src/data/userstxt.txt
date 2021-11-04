@@ -45,7 +45,7 @@
     {
         "_id": "u103",
         "fullname": "Dianna Mathers",
-        "imgUrl": "/img/img1.jpg",
+        "imgUrl": " ",
         "isHost": false,
         "username": "Dianna",
         "password": "secret",
@@ -71,7 +71,7 @@
     {
         "_id": "u102",
         "fullname": "Houston Anderson",
-        "imgUrl": "/img/img1.jpg",
+        "imgUrl": " ",
         "isHost": false,
         "username": "Houston",
         "password": "secret",

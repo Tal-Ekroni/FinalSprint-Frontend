@@ -18,8 +18,8 @@ class _HostPage extends React.Component {
         selectedTab: 'orders'
     }
     async componentDidMount() {
-        const { user } = this.props
         window.scrollTo(0, 0)
+        const { user } = this.props
         this.onGetHostStays()
         if (user) {
             try {

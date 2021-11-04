@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
-import { FaAirbnb, FaBars} from 'react-icons/fa'
+import { FaAirbnb, FaBars, FaUserAlt } from 'react-icons/fa'
 import { onLogin, onLogout, onSignup, loadUsers, removeUser, } from '../store/user.actions.js'
 import { setFilter, setMiniHeader, loadStays } from '../store/stay.actions';
 import { SearchBar } from './search-bar';
@@ -26,7 +26,7 @@ class _AppHeader extends React.Component {
         if (prevProps.isMiniHeader !== this.props.isMiniHeader && !this.props.isMiniHeader) {
             this.closeAllModals()
         }
-    
+
     }
     componentWillUnmount() {
         window.removeEventListener('scroll', this.onScrollCloseModals)
@@ -78,7 +78,7 @@ class _AppHeader extends React.Component {
     }
     render() {
         const { user, setFilter, filterBy, isMiniHeader } = this.props
-        const { isUserMenuOpen, isLoginBotmodal, isScreenOpen, locModal, datesModal, guestModal, isMiniInput} = this.state
+        const { isUserMenuOpen, isLoginBotmodal, isScreenOpen, locModal, datesModal, guestModal, isMiniInput } = this.state
         return (
             <header className={isMiniInput ? `app-header-conatiner main-container mini-header-with-input` : isMiniHeader ? `app-header-conatiner main-container mini-header full` : `app-header-conatiner main-container `}>
                 <div className={isScreenOpen ? "screen screen-open full" : "screen full"} onClick={() => { this.closeAllModals() }}></div>
@@ -99,10 +99,13 @@ class _AppHeader extends React.Component {
                         <div className="user-img-container " onClick={() => { this.onToggleSearchModals('menuModal') }}>
                             <button className="user-btn flex align-center btn-section  ">
                                 <FaBars className="menu-btn" />
-                                <div className="user-logo-container">
-                                    {user && <img src={`https://i.pravatar.cc/100?u=${user._id.substr(user._id.length - 8)}`} alt="" />}
-                                </div>
-
+                                {!user?.imgUrl ? <div className="user-logo-container">
+                                <div className=" user-icon flex align-end justify-center">
+                                    <FaUserAlt  />
+                                    </div>
+                                </div> : <div className="user-logo-container">
+                                    <img src={user.imgUrl} alt="" />
+                                </div>}
                             </button>
                             {(user?.notifications?.length && user.notifications.some(notif => !notif.isRead)) ? <div className="notif-icon-container">
                                 <div className="notif-icon flex align-center justify-center">{user.notifications.filter(notif => !notif.isRead).length}</div>

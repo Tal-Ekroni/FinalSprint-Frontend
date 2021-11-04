@@ -1,4 +1,5 @@
 import { utilService } from "../services/util.service"
+import { CloseRounded } from '@material-ui/icons';
 
 export function AmenitiesModal({ amenities, onToggleAmenitiesModal }) {
     return (
@@ -6,7 +7,7 @@ export function AmenitiesModal({ amenities, onToggleAmenitiesModal }) {
             <section className="amenities-modal-container ">
                 <div className="close-modal-btn-container flex align-center">
                     <div className="close-btn">
-                        <p onClick={() => { onToggleAmenitiesModal() }}>X</p>
+                        <p onClick={() => { onToggleAmenitiesModal() }}> <CloseRounded /> </p>
                     </div>
                 </div>
 

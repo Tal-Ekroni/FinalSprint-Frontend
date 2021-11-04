@@ -129,7 +129,6 @@ class _CheckoutForm extends React.Component {
     }
 
     onBookTrip = (stay, trip) => {
-
         if (!this.props.user) {
         } else {
             const { _id, fullname, imgUrl, username } = this.props.user
