@@ -84,6 +84,8 @@ export function onEditStay(stayToSave) {
     return async (dispatch) => {
         try {
             const updatedStay = await stayService.update(stayToSave)
+            console.log('after send', updatedStay);
+
             dispatch({
                 type: 'UPDATE_STAY',
                 stay: updatedStay

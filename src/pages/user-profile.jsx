@@ -31,6 +31,12 @@ class _UserProfile extends React.Component {
             this.props.history.push('/')
         }
     }
+    componentDidUpdate(prevProps, prevState) {
+        const { user } = this.props
+        if (prevProps.user !== user) {
+            if (!user) this.props.history.push('/')
+        }
+    }
     onToggleEditMode = () => {
         const { user } = this.props
         const { isEditMode } = this.state
@@ -96,7 +102,7 @@ class _UserProfile extends React.Component {
                     <h1>Profile</h1>
                     <section className="user-card-container flex align-center justify-center">
 
-                        <div className="user-card">
+                        {user && <div className="user-card">
 
                             {!isEditMode ? <div className="profile-pic-wrapper flex justify-center align-center">
 
@@ -178,7 +184,7 @@ class _UserProfile extends React.Component {
                                     </div>
                                 </div>
                             </div>}
-                        </div>
+                        </div>}
                     </section>
 
                 </div>

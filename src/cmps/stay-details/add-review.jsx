@@ -80,6 +80,7 @@ class _AddReview extends Component {
                 }
 
                 stay.reviews = [review , ...stay.reviews]
+                console.log('before send', stay);
                 this.props.onEditStay(stay)
                 this.clearReview()
             })

@@ -91,8 +91,8 @@ class _AddStay extends React.Component {
     onAddsStay = (ev) => {
         ev.preventDefault()
         const { newStay } = this.state
-        const { _id, fullname, ImgUrl } = this.props.user
-        newStay.host = { fullname, _id, ImgUrl }
+        const { _id, fullname, imgUrl } = this.props.user
+        newStay.host = { fullname, _id, imgUrl }
         this.props.onAddStay(newStay)
         
         this.setState(prevState => ({

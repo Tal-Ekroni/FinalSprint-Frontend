@@ -26,7 +26,7 @@ export class ReviewAvg extends React.Component {
         let avgScore = 0;
         reviews.map(review => avgScore += +review[type])
         avgScore = ((avgScore / reviews.length)).toFixed(1)
-        // if (typeof avgScore !== typeof Number) avgScore = 0
+        // if (typeof +avgScore === NaN) avgScore = 0
         return avgScore
     }
     getTotalAvg = () => {
@@ -35,8 +35,8 @@ export class ReviewAvg extends React.Component {
             totalReviewAvg += +this.state[key]
         })
         totalReviewAvg = (totalReviewAvg / 6).toFixed(1)
-        // if (typeof totalReviewAvg !== typeof Number) totalReviewAvg = 0
-        this.setState(prevState => ({ ...prevState, totalAvg: +totalReviewAvg }), () => {
+        // if (typeof +totalReviewAvg === NaN) totalReviewAvg = 0
+        this.setState(prevState => ({ ...prevState, totalAvg: totalReviewAvg }), () => {
             this.props.setReviewsAvg(+totalReviewAvg)
         })
 

@@ -100,7 +100,7 @@ class _AppHeader extends React.Component {
                             <button className="user-btn flex align-center btn-section  ">
                                 <FaBars className="menu-btn" />
                                 {!user?.imgUrl ? <div className="user-logo-container">
-                                <div className=" user-icon flex align-end justify-center">
+                                <div className=" user-icon flex align-center justify-center">
                                     <FaUserAlt  />
                                     </div>
                                 </div> : <div className="user-logo-container">
