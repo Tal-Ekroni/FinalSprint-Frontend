@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from 'react-redux'
 import { FaStar, } from "react-icons/fa";
-import { onToggleLikedStay, updateUser } from '../store/user.actions.js'
+import { updateUser } from '../store/user.actions.js'
 
 import LazyLoad from "./preview-slider"
 import FavoriteIcon from '@material-ui/icons/Favorite';
@@ -14,15 +14,15 @@ class _StayPreview extends React.Component {
     }
     onToggleLikeStay = (ev, stay) => {
         ev.stopPropagation()
-        const { user,onToggleLikedStay } = this.props
+        const { user, onToggleLikedStay } = this.props
         const { isLiked } = this.state
         if (user) {
             this.setState({ isLiked: !isLiked }, () => {
-                onToggleLikedStay(stay._id, isLiked)
+                onToggleLikedStay(stay._id, this.state.isLiked)
             })
         }
         else {
-           
+
         }
     }
     isStayLiked = () => {
@@ -85,7 +85,6 @@ function mapStateToProps(state) {
     }
 }
 const mapDispatchToProps = {
-    onToggleLikedStay,
     updateUser
 }
 
