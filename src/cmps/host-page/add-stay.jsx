@@ -125,6 +125,7 @@ class _AddStay extends React.Component {
         })
         this.props.history.push('/explore')
     }
+
     onUploadImg = (ev) => {
         const CLOUD_NAME = 'dkbfdybze'
         const UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`
@@ -145,6 +146,7 @@ class _AddStay extends React.Component {
             })
             .catch(err => console.error(err))
     }
+
     getBtnDivs = () => {
         let divStr = []
         for (let i = 0; i < 100; i++) {
@@ -152,6 +154,7 @@ class _AddStay extends React.Component {
         }
         return divStr
     }
+
     render() {
         const { imgUrls, name, assetSpace, assetType, capacity, summary, price } = this.state.newStay
         const { ameintiesOptions } = this.state
@@ -167,6 +170,7 @@ class _AddStay extends React.Component {
             { name: 'assetType', value: 'Loft', label: 'Loft' },
             { name: 'assetType', value: 'Farm', label: 'Farm' },
             { name: 'assetType', value: 'Cabin', label: 'Cabin' },
+            { name: 'assetType', value: 'Home', label: 'Home' },
         ];
         const style = {
             margin: '20px 0',
@@ -218,7 +222,6 @@ class _AddStay extends React.Component {
                                             </div>
                                             <input type="file" placeholder="Upload Image" name="imgUrls" onChange={this.onUploadImg} />
                                         </div>}
-
                                     </div>
                                     <div className="new-stay-img square-ratio">
                                         {imgUrls[2] ? <img src={imgUrls[2]} alt="" /> : <div>
@@ -227,7 +230,6 @@ class _AddStay extends React.Component {
                                             </div>
                                             <input type="file" placeholder="Upload Image" name="imgUrls" onChange={this.onUploadImg} />
                                         </div>}
-
                                     </div>
                                 </div>
                                 <div className="add-small-imgs-container flex column space-between">
@@ -238,7 +240,6 @@ class _AddStay extends React.Component {
                                             </div>
                                             <input type="file" placeholder="Upload Image" name="imgUrls" onChange={this.onUploadImg} />
                                         </div>}
-
                                     </div>
                                     <div className="new-stay-img square-ratio">
                                         {imgUrls[4] ? <img src={imgUrls[4]} alt="" /> : <div>
@@ -247,11 +248,9 @@ class _AddStay extends React.Component {
                                             </div>
                                             <input type="file" placeholder="Upload Image" name="imgUrls" onChange={this.onUploadImg} />
                                         </div>}
-
                                     </div>
                                 </div>
                             </div>
-
                         </section>
                         <section className="add-stay-details-container flex space-between">
                             <div className="add-form-line flex align-center">
@@ -282,9 +281,7 @@ class _AddStay extends React.Component {
                                     options={assetTypeOptions}
                                 />
                             </div>
-
                         </section>
-
                         <section className="add-stay-summary">
                             <div className="add-desc-line flex column">
                                 <label className="add-line">Describe your asset</label>
@@ -320,7 +317,6 @@ class _AddStay extends React.Component {
                             </div>
                         </section>
                     </form>
-
                 </div>
             </section>
         )
@@ -332,9 +328,9 @@ function mapStateToProps(state) {
         stays: state.stayModule.stays
     }
 }
+
 const mapDispatchToProps = {
     onAddStay
 }
-
 
 export const AddStay = withRouter(connect(mapStateToProps, mapDispatchToProps)(_AddStay))
