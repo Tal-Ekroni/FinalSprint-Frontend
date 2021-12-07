@@ -1,11 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { loadStays, setFilter } from '../store/stay.actions.js'
-import { onBookTrip, loadUser } from '../store/user.actions.js'
+import { loadStays, onAddStay, onEditStay, onRemoveStay, setFilter } from '../store/stay.actions.js'
+import { onBookTrip, loadUser, updateUser } from '../store/user.actions.js'
 import { StaysList } from '../cmps/stays-list.jsx'
 import { ExploreFilter } from '../cmps/explore-filter.jsx'
 import loader from '../assets/img/three-dots.svg'
 import { stayService } from '../services/stay.service.js'
+import { userService } from '../services/user.service.js'
 class _Explore extends React.Component {
     state = {
         stays: [],
@@ -77,6 +78,16 @@ class _Explore extends React.Component {
         if (prevProps.filterBy !== this.props.filterBy) {
             this.props.loadStays(this.props.filterBy);
         }
+    }
+
+    onToggleLikedStay=(savedStayId, isLiked)=> {
+        const { user } = this.props
+        if (isLiked) {
+            user.mySaves.push(savedStayId)
+        } else {
+            user.mySaves = user.mySaves.filter(saved => saved !== savedStayId)
+        }
+        this.props.updateUser(user)
     }
     onSetAmenity = (amenity) => {
         const name = amenity.name
@@ -170,7 +181,7 @@ class _Explore extends React.Component {
                         <h1>{filterBy.location ? `Places to stay at ${filterBy.location}` : 'Find places to stay'}</h1>
                     </div>
                     <ExploreFilter ameintiesOptions={ameintiesOptions} stays={this.state.stays} closeAllModals={this.closeAllModals} onSetAmenity={this.onSetAmenity} onSetPageFilter={this.onSetPageFilter} onClearPageFilter={this.onClearPageFilter} modals={this.state.modals} onToggleModals={this.onToggleModals} allStaysPriceAvg={this.state.allStaysPriceAvg} amenities={this.state.frontFilter.amenities} />
-                    {stays.length && <StaysList stays={this.state.stays} history={this.props.history} />}
+                    {stays.length && <StaysList stays={this.state.stays} history={this.props.history} onToggleLikedStay={this.onToggleLikedStay} />}
                 </div>
             </main>
         )
@@ -187,7 +198,8 @@ const mapDispatchToProps = {
     loadStays,
     onBookTrip,
     setFilter,
-    loadUser
+    loadUser,
+    updateUser
 }
 
 
