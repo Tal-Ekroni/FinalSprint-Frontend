@@ -22,7 +22,6 @@ class _StayPreview extends React.Component {
             })
         }
         else {
-
         }
     }
     isStayLiked = () => {
@@ -39,7 +38,6 @@ class _StayPreview extends React.Component {
     render() {
         return (
             <div>
-
                 {this.props.stay.name && <div className="stay-preview square-ratio" onClick={(ev) => {
                     if (ev.target.className === 'slick-arrow slick-prev' || ev.target.className === 'slick-arrow slick-next' || ev.target.className.baseVal === 'MuiSvgIcon-root') return
                     this.props.history.push(`/stay/${this.props.stay._id}`)

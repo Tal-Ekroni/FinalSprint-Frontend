@@ -57,14 +57,17 @@ class _StayDetails extends React.Component {
     componentWillUnmount() {
         window.removeEventListener('resize', this.setMobliePicsDisplay)
         // socketService.off('getNotif', (ev) => {})
+             this.props.loadStay()
     }
 
-    componentDidUpdate(prevProps, prevState) {
+     componentDidUpdate(prevProps, prevState) {
         const { user } = this.props
+        const { stayId } = this.props.match.params
         if (prevState.isLiked !== this.state.isLiked) {
             this.isStayLiked()
             if (user) this.props.loadUser(user._id)
         }
+      
     }
 
     onToogleLikeStay = () => {

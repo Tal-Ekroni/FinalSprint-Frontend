@@ -16,9 +16,14 @@ export function loadStays(filterBy = null) {
 export function loadStay(stayId) {
     return async dispatch => {
         try {
-            dispatch({ type: 'LOADING_START' })
-            const stay = await stayService.getById(stayId)
-            dispatch({ type: 'SET_STAY', stay })
+            if (stayId) {
+                dispatch({ type: 'LOADING_START' })
+                const stay = await stayService.getById(stayId)
+                dispatch({ type: 'SET_STAY', stay })
+            } else {
+                const clearStay = null
+                dispatch({ type: 'SET_STAY', stay: clearStay })
+            }
         } catch (err) {
 
         } finally {

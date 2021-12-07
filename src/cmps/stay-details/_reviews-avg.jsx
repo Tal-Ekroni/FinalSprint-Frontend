@@ -18,16 +18,16 @@ export class ReviewAvg extends React.Component {
                 this.getTotalAvg()
             })
         })
-
-
     }
     getAvrage = (type) => {
         const { reviews } = this.props
         let avgScore = 0;
         reviews.map(review => avgScore += +review[type])
-        avgScore = ((avgScore / reviews.length)).toFixed(1)
-        // if (typeof +avgScore === NaN) avgScore = 0
-        return avgScore
+        avgScore = ((avgScore / reviews.length))
+        console.log(avgScore);
+        // if (typeof avgScore !== Number) avgScore = 0
+        // avgScore = avgScore.toFixed(1)
+        return avgScore.toFixed(1)
     }
     getTotalAvg = () => {
         let totalReviewAvg = 0;
