@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { loadStays, onAddStay, onEditStay, onRemoveStay, setFilter } from '../store/stay.actions.js'
+import { loadStays, setFilter } from '../store/stay.actions.js'
 import { onBookTrip, loadUser } from '../store/user.actions.js'
 import { StaysList } from '../cmps/stays-list.jsx'
 import { ExploreFilter } from '../cmps/explore-filter.jsx'
@@ -99,9 +99,11 @@ class _Explore extends React.Component {
             this.setState({ stays: newStays })
         })
     }
+
     onToggleScreen = (val) => {
         this.setState({ isScreenOpen: val })
     }
+
     onClearPageFilter = () => {
         const clearState = {
             stays: this.props.stays,
@@ -136,17 +138,6 @@ class _Explore extends React.Component {
         this.closeAllModals()
     }
 
-    onRemoveStay = (stayId) => {
-        this.props.onRemoveStay(stayId)
-    }
-    onAddStay = () => {
-        this.props.onAddStay()
-    }
-    onEditStay = (stay) => {
-        const price = +prompt('New price?')
-        const stayToSave = { ...stay, price }
-        this.props.onEditStay(stayToSave)
-    }
     onToggleModals = (modal) => {
         this.setState({ modals: { placeTypeIsOpen: false, PropertyTypeIsOpen: false, PriceIsOpen: false, AmenitiesTypeIsOpen: false } }, () => {
             this.onToggleScreen(!this.state.modals[modal])
@@ -194,9 +185,6 @@ function mapStateToProps(state) {
 }
 const mapDispatchToProps = {
     loadStays,
-    onRemoveStay,
-    onAddStay,
-    onEditStay,
     onBookTrip,
     setFilter,
     loadUser

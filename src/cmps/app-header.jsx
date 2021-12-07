@@ -73,12 +73,15 @@ class _AppHeader extends React.Component {
         this.onToggleScreen(false)
         this.setState({ locModal: false, guestModal: false, datesModal: false, isUserMenuOpen: false })
     }
+
     onToggleMiniSearchBar = () => {
         this.setState({ isMiniInput: !this.state.isMiniInput })
     }
+    
     render() {
         const { user, setFilter, filterBy, isMiniHeader } = this.props
         const { isUserMenuOpen, isLoginBotmodal, isScreenOpen, locModal, datesModal, guestModal, isMiniInput } = this.state
+        console.log('header userrrrr' ,  user);
         return (
             <header className={isMiniInput ? `app-header-conatiner main-container mini-header-with-input` : isMiniHeader ? `app-header-conatiner main-container mini-header full` : `app-header-conatiner main-container `}>
                 <div className={isScreenOpen ? "screen screen-open full" : "screen full"} onClick={() => { this.closeAllModals() }}></div>

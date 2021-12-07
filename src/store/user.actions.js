@@ -108,12 +108,13 @@ export function onBecomeHost(userId) {
 
         }
     }
-
 }
+
 export function onToggleLikedStay(savedStayId, isLiked, userId) {
     return async (dispatch, getState) => {
         try {
             const user = await userService.getById(userId)
+            console.log('ido user check ', user , savedStayId , isLiked );
             if (isLiked) {
                 user.mySaves.push(savedStayId)
             } else {
@@ -125,6 +126,7 @@ export function onToggleLikedStay(savedStayId, isLiked, userId) {
         }
     }
 }
+
 export function onBookTrip(trip) {
     return async (dispatch, getState) => {
         try {
