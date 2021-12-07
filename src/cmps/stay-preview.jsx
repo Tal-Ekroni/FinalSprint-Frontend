@@ -14,11 +14,11 @@ class _StayPreview extends React.Component {
     }
     onToggleLikeStay = (ev, stay) => {
         ev.stopPropagation()
-        const { user } = this.props
+        const { user,onToggleLikedStay } = this.props
         const { isLiked } = this.state
         if (user) {
             this.setState({ isLiked: !isLiked }, () => {
-                this.props.onToggleLikedStay(stay._id, !isLiked, user._id)
+                onToggleLikedStay(stay._id, isLiked)
             })
         }
         else {
@@ -92,3 +92,4 @@ const mapDispatchToProps = {
 
 
 export const StayPreview = connect(mapStateToProps, mapDispatchToProps)(_StayPreview)
+
