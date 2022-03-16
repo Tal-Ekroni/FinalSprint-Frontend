@@ -10,7 +10,6 @@ class _LoginPage extends React.Component {
         credentials: {
             username: '',
             password: '',
-            email: '',
             fullname: ''
         },
         isSignUp: false,
@@ -27,7 +26,6 @@ class _LoginPage extends React.Component {
             credentials: {
                 username: '',
                 password: '',
-                email: '',
                 fullname: ''
             },
             isSignUp: false
@@ -76,7 +74,7 @@ class _LoginPage extends React.Component {
         this.setState({ isSignUp: !this.state.isSignUp })
     }
     render() {
-        const { username, password, fullname, email } = this.state.credentials;
+        const { username, password, fullname } = this.state.credentials;
         const { isSignUp, users } = this.state;
         if (!users) return <div>loading...</div>
         return (
@@ -91,9 +89,6 @@ class _LoginPage extends React.Component {
                         <div className={isSignUp ? 'login-input border-top' : 'login-input'}>
                             <input className='flex' type="text" name="username" placeholder="Username" value={username} onChange={this.handleChange} required />
                         </div>
-                        {isSignUp && <div className='fullname-input'>
-                            <input className='flex' type="email" name="email" placeholder="Email" value={email} onChange={this.handleChange} required />
-                        </div>}
                         <div className='password-input'>
                             <input className='flex' type="password" name="password" placeholder="Password" value={password} onChange={this.handleChange} required />
                         </div>

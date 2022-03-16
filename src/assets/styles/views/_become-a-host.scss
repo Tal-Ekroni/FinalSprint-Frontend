@@ -45,16 +45,25 @@
     }
     .be-host-btn-container {
         justify-content: center;
-        width: 100%;
-        .checkout-btn-container {
-            width: 200px;
-            background-color: transparent;
+        .be-host-btn {
+            width: 132px;
+            height: 50px;
+            margin-top: 25px;
+            text-align: center;
+            justify-content: center;
+            background-image: radial-gradient(
+                circle at center,
+                #ff385c 0%,
+                #e61e4d 27.5%,
+                #e31c5f 40%,
+                #d70466 57.5%,
+                #bd1e59 75%,
+                #bd1e59 100%
+            );
+            font-size: 1rem;
+            font-family: circular-bold;
+            color: $clr1;
             border-radius: 8px;
-            & * {
-                font-size: 1rem;
-                font-family: circular-bold;
-                color: $clr1;
-            }
         }
     }
 }

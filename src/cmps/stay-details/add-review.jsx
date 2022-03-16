@@ -80,7 +80,6 @@ class _AddReview extends Component {
                 }
 
                 stay.reviews = [review , ...stay.reviews]
-                console.log('before send', stay);
                 this.props.onEditStay(stay)
                 this.clearReview()
             })
@@ -192,7 +191,7 @@ class _AddReview extends Component {
                             name="txt"
                             autoComplete="off" />
                     </div>
-                    <div className="add-review-btn flex">
+                    <div className="add-review-btn">
 
                         <div className="checkout-btn-container" onClick={this.formSubmited}>
                             {this.getBtnDivs()}

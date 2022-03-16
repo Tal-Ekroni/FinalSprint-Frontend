@@ -300,14 +300,3 @@
     height: 9999px;
     width: 9999px;
 }
-.checkout-popup-container {
-    position: absolute;
-    top: 110%;
-    height: 30px;
-    width: 100%;
-    background-color: lighten($color: yellow, $amount: 20%);
-    border-radius: 8px;
-    padding: 0 10px;
-    font-family: circular-book;
-    font-size: 1rem;
-}

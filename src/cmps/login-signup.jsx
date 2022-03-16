@@ -8,14 +8,12 @@ class _LoginSignup extends React.Component {
         credentials: {
             username: '',
             password: '',
-            email: '',
             fullname: ''
         },
         isSignup: false,
         users: []
     }
     async componentDidMount() {
-
         try {
             await this.props.loadUsers()
         } catch (err) {
@@ -27,7 +25,6 @@ class _LoginSignup extends React.Component {
             credentials: {
                 username: '',
                 password: '',
-                email: '',
                 fullname: ''
             },
             isSignup: false
@@ -51,34 +48,11 @@ class _LoginSignup extends React.Component {
             socketService.setup()
             socketService.emit('setHost', user._id)
             socketService.on('getNotif', async (notif) => {
-                // {
-                //     "byUser": {
-                //         "fullName": "Houston Anderson",
-                //         "": " ",
-                //         "_id": "615856f7cb4c045b46874e45"
-                //     },
-                //     "createdAt": 1633891364304,
-                //     "stay": {
-                //         "_id": "61585943cb4c045b46874e50",
-                //         "name": "New York, United States"
-                //     },
-                //     "txt": "Reserved your stay",
-                //     "isRead": false
-                // }
                 const editedNotif = {
                     notifTxt: `${notif.txt} at ${notif.stay.name}`,
                     byUser: notif.byUser.fullName,
-                    // byUserImg: <div className="user-order-img-container flex align-center" >
-                    //     <div>
-                    //         <img src={`https://i.pravatar.cc/100?u=${notif.byUser._id.substr(notif.byUser._id.length - 8)}`} alt="user-icon" />
-                    //     </div>
-                    //     <p>{notif.byUser.fullName}</p>
-                    // </div>,
                     isRead: notif.isRead,
                     createdAt: notif.createdAt,
-                    // approveBtn: <div className="host-action-btns flex align-center">
-                    //     <NavLink to={`host`} className="approve-order-btn">Go to order</NavLink>
-                    // </div>
                 }
                 user.notifications = [editedNotif, ...user.notifications]
                 await this.props.updateUser(user)
@@ -86,7 +60,6 @@ class _LoginSignup extends React.Component {
         }
         this.clearState()
     }
-
     onSignup = (ev = null) => {
         if (ev) ev.preventDefault();
         if (!this.state.credentials.username || !this.state.credentials.password || !this.state.credentials.fullname) return;
@@ -94,14 +67,13 @@ class _LoginSignup extends React.Component {
         this.clearState()
         this.props.history.push('/')
     }
-
     toggleSignup = () => {
         this.setState({ isSignup: !this.state.isSignup })
     }
     responseGoogle = (response) => {
     }
     render() {
-        const { username , email} = this.state.credentials;
+        const { username } = this.state.credentials;
         const { isSignup } = this.state;
         const { user, users } = this.props
         return (
@@ -117,7 +89,6 @@ class _LoginSignup extends React.Component {
                     </select>}
                     <button>Login!</button>
                 </form>}
-                {/* <GoogleLoginCmp /> */}
             </div>
         )
     }
@@ -136,5 +107,4 @@ const mapDispatchToProps = {
     loadUser,
     updateUser
 }
-
 export const LoginSignup = withRouter(connect(mapStateToProps, mapDispatchToProps)(_LoginSignup))

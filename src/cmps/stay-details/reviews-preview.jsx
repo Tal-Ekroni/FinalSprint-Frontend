@@ -1,5 +1,4 @@
 import { Component } from "react";
-import { FaUserAlt } from "react-icons/fa";
 import { utilService } from "../../services/util.service";
 import { ReadMore } from "../_read-more";
 
@@ -19,11 +18,9 @@ export class ReviewsPreview extends Component {
                 <li >
                     <div className="review-card flex column align-center" >
                         <div className="review-user-info flex">
-                            {!review.by.imgUrl ? <div className="user-review-img-container flex align-center justify-content">
-                                <FaUserAlt />
-                            </div> : <div className="user-review-img-container">
-                                <img src={review.by.imgUrl} alt="" />
-                            </div>}
+                            <div className="user-review-img-container">
+                                <img src={`https://i.pravatar.cc/100?u=${review.by._id.substr(review.by._id.length - 8)}`} alt="" />
+                            </div>
                             <div className="txt-info-container flex column">
                                 <div className="review-username-container">
                                     <p className="review-username">{review.by.fullname} </p>

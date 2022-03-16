@@ -13,6 +13,10 @@ class _HostStayPreview extends React.Component {
         if (stay.status === 'pending') this.setState({ stay, isApproved: false })
         if (stay.status === 'approved') this.setState({ stay, isApproved: true })
     }
+
+
+
+
     onRemoveStay = (stayId) => {
         this.props.onRemoveStay(stayId)
     }

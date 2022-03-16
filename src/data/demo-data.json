@@ -296,7 +296,7 @@
         "host": {
             "_id": "u102",
             "fullname": "Houston Anderson",
-            "imgUrl": " "
+            "imgUrl": "/img/img1.jpg"
         },
         "loc": {
             "country": "Netherlands",

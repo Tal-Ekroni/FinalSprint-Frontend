@@ -100,10 +100,6 @@
         .menu-btn {
             font-size: 14px;
         }
-        .user-icon {
-            height: 100%;
-            color: rgba(128, 128, 128, 0.575);
-        }
     }
     &.mini-header-with-input {
         align-items: flex-start;
@@ -219,7 +215,7 @@
         }
         .user-header-section {
             padding: unset;
-            .user-btn {
+            .user-btn{
                 margin-right: unset;
             }
         }
@@ -292,6 +288,7 @@
                 left: 50%;
                 transform: translate(-50%, -50%);
             }
+            
         }
         @include for-wide-layout {
             .search-bar-container {

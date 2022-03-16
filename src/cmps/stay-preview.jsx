@@ -1,8 +1,7 @@
 import React from "react";
 import { connect } from 'react-redux'
 import { FaStar, } from "react-icons/fa";
-import { updateUser } from '../store/user.actions.js'
-
+import { onToggleLikedStay, updateUser } from '../store/user.actions.js'
 import LazyLoad from "./preview-slider"
 import FavoriteIcon from '@material-ui/icons/Favorite';
 class _StayPreview extends React.Component {
@@ -14,14 +13,15 @@ class _StayPreview extends React.Component {
     }
     onToggleLikeStay = (ev, stay) => {
         ev.stopPropagation()
-        const { user, onToggleLikedStay } = this.props
+        const { user } = this.props
         const { isLiked } = this.state
         if (user) {
             this.setState({ isLiked: !isLiked }, () => {
-                onToggleLikedStay(stay._id, this.state.isLiked)
+                this.props.onToggleLikedStay(stay._id, !isLiked, user._id)
             })
         }
         else {
+
         }
     }
     isStayLiked = () => {
@@ -48,7 +48,6 @@ class _StayPreview extends React.Component {
                             {!this.state.isLiked ? <FavoriteIcon className="unliked" onClick={(ev) => this.onToggleLikeStay(ev, this.props.stay)} /> :
                                 <FavoriteIcon size={13} onClick={(ev) => this.onToggleLikeStay(ev, this.props.stay)} />
                             }
-                            {/* {this.state.isLiked && <FavoriteIcon size={13} onClick={(ev) => this.onToggleLikeStay(ev, this.props.stay)} />} */}
                             <LazyLoad imgs={this.props.stay.imgUrls} />
                         </div>
                         <div className="preview-details ">
@@ -83,10 +82,10 @@ function mapStateToProps(state) {
     }
 }
 const mapDispatchToProps = {
+    onToggleLikedStay,
     updateUser
 }
 
 
 
 export const StayPreview = connect(mapStateToProps, mapDispatchToProps)(_StayPreview)
-

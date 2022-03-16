@@ -12,18 +12,12 @@ export function loadStays(filterBy = null) {
         }
     }
 }
-
 export function loadStay(stayId) {
     return async dispatch => {
         try {
-            if (stayId) {
-                dispatch({ type: 'LOADING_START' })
-                const stay = await stayService.getById(stayId)
-                dispatch({ type: 'SET_STAY', stay })
-            } else {
-                const clearStay = null
-                dispatch({ type: 'SET_STAY', stay: clearStay })
-            }
+            dispatch({ type: 'LOADING_START' })
+            const stay = await stayService.getById(stayId)
+            dispatch({ type: 'SET_STAY', stay })
         } catch (err) {
 
         } finally {
@@ -31,7 +25,6 @@ export function loadStay(stayId) {
         }
     }
 }
-
 export function onRemoveStay(stayId) {
     return async (dispatch, getState) => {
         try {
@@ -44,7 +37,6 @@ export function onRemoveStay(stayId) {
         }
     }
 }
-
 export function onAddStay(stayToAdd) {
     return async (dispatch) => {
         try {
@@ -89,8 +81,6 @@ export function onEditStay(stayToSave) {
     return async (dispatch) => {
         try {
             const updatedStay = await stayService.update(stayToSave)
-            console.log('after send', updatedStay);
-
             dispatch({
                 type: 'UPDATE_STAY',
                 stay: updatedStay
@@ -100,6 +90,10 @@ export function onEditStay(stayToSave) {
     }
 
 }
+
+
+
+
 
 export function removeFromCart(carId) {
     return (dispatch) => {
@@ -115,6 +109,8 @@ export function checkout() {
         try {
             const state = getState()
             const total = state.stayModule.cart.reduce((acc, stay) => acc + stay.price, 0)
+            const score = await userService.changeScore(-total)
+            dispatch({ type: 'SET_SCORE', score })
             dispatch({ type: 'CLEAR_CART' })
         } catch (err) {
         }

@@ -8,16 +8,12 @@
         width: 300px;
         height: 300px;
     }
-    .trips-img-container {
-        height: calc(100vh - 170px);
-        width: 100%;
-    }
     .trip-preview-details {
         padding: 10px 0;
     }
     & .trips-title-container {
         height: 36px;
-        margin: 22px 0;
+        margin-bottom: 24px;
         font-family: circular-bold;
         & p {
             line-height: 1.2rem;

@@ -19,7 +19,6 @@ class _CheckoutForm extends React.Component {
         isGuestPopupOn: false,
         isCheckoutToReserve: false,
         isStayReserved: false,
-        isReqModalOpen: false,
         datesModal: false
 
     }
@@ -71,15 +70,6 @@ class _CheckoutForm extends React.Component {
     }
 
     getTripPrice = (startDate, endDate, price) => {
-        if (!startDate || !endDate) {
-            this.setState(prevState => ({ isReqModalOpen: true }), () => {
-                setTimeout(() => {
-                    this.setState(prevState => ({ isReqModalOpen: false }))
-                }, 2000);
-
-            })
-            return
-        }
         const start = this.toTimestamp(startDate)
         const end = this.toTimestamp(endDate)
         const timeDiff = (end - start)
@@ -143,7 +133,7 @@ class _CheckoutForm extends React.Component {
                 reviewsAvg: stay.reviewsAvg
             }
             trip.status = 'pending'
-            trip.demoReviews = utilService.getRandomIntInclusive(50, 300)
+            trip.demoReviews = utilService.getRandomIntInclusive(50,300)
             this.props.onAddOrder(trip)
             this.setState({
                 trip: {
@@ -177,7 +167,7 @@ class _CheckoutForm extends React.Component {
     }
     render() {
         const { stay } = this.props
-        const { trip, isCheckoutToReserve, isGuestPopupOn, datesModal, isStayReserved, isReqModalOpen } = this.state
+        const { trip, isCheckoutToReserve, isGuestPopupOn, datesModal, isStayReserved } = this.state
         const { price } = stay
         const { startDate, endDate } = trip
         return (
@@ -192,7 +182,7 @@ class _CheckoutForm extends React.Component {
                             <div className="check-rating-container flex align-center">
                                 <p className="checkout-star"><FaStar size={13} color="#FF5A5F" /></p>
                                 <p className="order-avg-score">{stay.reviewsAvg}</p>
-                                <p className="order-reviews">{`(${stay.reviews.length} reviews)`}</p>
+                                <p className="order-reviews">{`(${stay.demoReviews} reviews)`}</p>
                             </div>
                         </div>
                         <div className="form-container">
@@ -253,9 +243,9 @@ class _CheckoutForm extends React.Component {
                             <div className="checkout-btn-container" onClick={() => { (isCheckoutToReserve) ? this.onBookTrip(stay, trip) : this.getTripPrice(startDate, endDate, price) }}>
                                 {this.getBtnDivs()}
                                 <div className="content">
-                                    {!isCheckoutToReserve && !isStayReserved &&
+                                    {!isCheckoutToReserve && !isStayReserved && 
                                         <button className="checkout-btn" ><span>Check availabilty</span> </button>}
-                                    {isCheckoutToReserve &&
+                                    {isCheckoutToReserve && 
                                         <button className="checkout-btn" ><span>Reserve</span> </button>
                                     }
                                     {isStayReserved &&
@@ -266,9 +256,6 @@ class _CheckoutForm extends React.Component {
                             </div>
                         </div>
                     </div >
-                    {isReqModalOpen && <section className="checkout-popup-container flex align-center">
-                        <p>Enter trip dates</p>
-                    </section>}
                 </section>
                 {/* <div className="report-container flex ">
                     <FaFlag />
@@ -276,7 +263,6 @@ class _CheckoutForm extends React.Component {
                 </div> */}
                 {isGuestPopupOn && <GuestsCheckoutModal toggleGuestsModal={this.toggleGuestsModal} onSelectGuests={this.onSelectGuests} trip={trip} stay={stay} />}
                 {/* {isGuestPopupOn && } */}
-
             </section>
         )
     }

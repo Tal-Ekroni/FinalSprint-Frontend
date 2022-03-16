@@ -1,6 +1,5 @@
 .amenities-container {
-    min-height: 340px;
-    max-height: 420px;
+    height: 340px;
     width: 100%;
     // border-bottom: 0.5px solid lightgray;
     & h4 {
@@ -41,7 +40,7 @@
         line-height: 1.43rem;
         font-weight: 600;
         border-radius: 8px;
-        margin:20px 0;
+        margin: 0;
         background-color: $clr1;
         &:hover {
             text-decoration: underline;

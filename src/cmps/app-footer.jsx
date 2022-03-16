@@ -10,14 +10,12 @@ import { UserMsg } from './user-msg.jsx'
 import { FooterLocations } from './app-footer/locations-footer'
 import { NearbyStays } from './app-footer/nearby-stays'
 class _AppFooter extends React.Component {
-
     state = {
         isCartShown: false,
         topRatedStays: [],
         nearbyStays: [],
         stays: []
     }
-
     async componentDidMount() {
         await this.props.loadStays(this.props.filterBy)
         this.setState({ stays: this.props.stays })
@@ -46,21 +44,17 @@ class _AppFooter extends React.Component {
         this.props.setFilter(newFilter)
         this.props.history.push('/explore')
     }
-
     render() {
         const { user } = this.props
         return (
             <footer className="app-footer main-container full">
                 <h2>Insparation for future getaways</h2>
                 <div className='flex footer-link-headers'>
-
-
                 </div>
                 <div className="flex footer-links align-center space-between">
                     <TopRatedStays stays={this.state.topRatedStays} />
                     <FooterLocations locations={this.locations} onClickLoc={this.onClickLoc} />
                     <NearbyStays stays={this.state.nearbyStays} />
-
                 </div>
                 <div className="footer-info flex space-between align-center">
                     <div className="footer-first flex">
@@ -80,8 +74,6 @@ class _AppFooter extends React.Component {
         )
     }
 }
-
-
 function mapStateToProps(state) {
     return {
         count: state.userModule.count,
@@ -91,7 +83,6 @@ function mapStateToProps(state) {
         filterBy: state.stayModule.filterBy,
     }
 }
-
 const mapDispatchToProps = {
     checkout,
     onBookTrip,
@@ -100,6 +91,4 @@ const mapDispatchToProps = {
     loadUser,
     setFilter
 }
-
-// export const AppFooter = connect(mapStateToProps, mapDispatchToProps)(_AppFooter)
 export const AppFooter = withRouter(connect(mapStateToProps, mapDispatchToProps)(_AppFooter))

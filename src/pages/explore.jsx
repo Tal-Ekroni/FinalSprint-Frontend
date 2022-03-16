@@ -1,12 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { loadStays, onAddStay, onEditStay, onRemoveStay, setFilter } from '../store/stay.actions.js'
-import { onBookTrip, loadUser, updateUser } from '../store/user.actions.js'
+import { onBookTrip, loadUser } from '../store/user.actions.js'
 import { StaysList } from '../cmps/stays-list.jsx'
 import { ExploreFilter } from '../cmps/explore-filter.jsx'
 import loader from '../assets/img/three-dots.svg'
 import { stayService } from '../services/stay.service.js'
-import { userService } from '../services/user.service.js'
 class _Explore extends React.Component {
     state = {
         stays: [],
@@ -29,35 +28,9 @@ class _Explore extends React.Component {
             { name: 'Wifi', isChecked: false },
             { name: 'Kitchen', isChecked: false },
             { name: 'Smoking allowed', isChecked: false },
-            { name: 'Hot tub', isChecked: false },
-            { name: 'Pets allowed', isChecked: false },
-            { name: 'No smoking', isChecked: false },
             { name: 'Cooking basics', isChecked: false },
-            { name: 'Air conditioning', isChecked: false },
-            { name: 'Heating', isChecked: false },
-            { name: 'Pool', isChecked: false },
-            { name: 'Indoor fireplace', isChecked: false },
-            { name: 'Refrigerator', isChecked: false },
-            { name: 'Dishwasher', isChecked: false },
-            { name: 'Backyard', isChecked: false },
-            { name: 'BBQ grill', isChecked: false },
-            { name: 'Crib', isChecked: false },
-            { name: 'Private entrance', isChecked: false },
-            { name: 'Lockbox', isChecked: false },
-            { name: 'Beachfront', isChecked: false },
-            { name: 'Hangers', isChecked: false },
-            { name: 'Wine glasses', isChecked: false },
-            { name: 'Free parking', isChecked: false },
-            { name: 'Accessible', isChecked: false },
-            { name: 'King size bed', isChecked: false },
-            { name: 'Bathub', isChecked: false },
-            { name: 'Balcony', isChecked: false },
-            { name: 'Iron', isChecked: false },
-            { name: 'Room service', isChecked: false },
-            { name: 'Coffee machine', isChecked: false },
-            { name: 'Laundry machine', isChecked: false },
-            { name: 'Speakers', isChecked: false },
-            { name: 'Gaming console', isChecked: false }
+            { name: 'Pets Allowed', isChecked: false },
+            { name: 'Hot tub', isChecked: false }
         ]
 
     }
@@ -78,16 +51,9 @@ class _Explore extends React.Component {
         if (prevProps.filterBy !== this.props.filterBy) {
             this.props.loadStays(this.props.filterBy);
         }
-    }
-
-    onToggleLikedStay=(savedStayId, isLiked)=> {
-        const { user } = this.props
-        if (isLiked) {
-            user.mySaves.push(savedStayId)
-        } else {
-            user.mySaves = user.mySaves.filter(saved => saved !== savedStayId)
+        if (prevProps.stays !== this.props.stays) {
+            this.setState({ stays: this.props.stays })
         }
-        this.props.updateUser(user)
     }
     onSetAmenity = (amenity) => {
         const name = amenity.name
@@ -110,11 +76,9 @@ class _Explore extends React.Component {
             this.setState({ stays: newStays })
         })
     }
-
     onToggleScreen = (val) => {
         this.setState({ isScreenOpen: val })
     }
-
     onClearPageFilter = () => {
         const clearState = {
             stays: this.props.stays,
@@ -149,6 +113,17 @@ class _Explore extends React.Component {
         this.closeAllModals()
     }
 
+    onRemoveStay = (stayId) => {
+        this.props.onRemoveStay(stayId)
+    }
+    onAddStay = () => {
+        this.props.onAddStay()
+    }
+    onEditStay = (stay) => {
+        const price = +prompt('New price?')
+        const stayToSave = { ...stay, price }
+        this.props.onEditStay(stayToSave)
+    }
     onToggleModals = (modal) => {
         this.setState({ modals: { placeTypeIsOpen: false, PropertyTypeIsOpen: false, PriceIsOpen: false, AmenitiesTypeIsOpen: false } }, () => {
             this.onToggleScreen(!this.state.modals[modal])
@@ -181,7 +156,7 @@ class _Explore extends React.Component {
                         <h1>{filterBy.location ? `Places to stay at ${filterBy.location}` : 'Find places to stay'}</h1>
                     </div>
                     <ExploreFilter ameintiesOptions={ameintiesOptions} stays={this.state.stays} closeAllModals={this.closeAllModals} onSetAmenity={this.onSetAmenity} onSetPageFilter={this.onSetPageFilter} onClearPageFilter={this.onClearPageFilter} modals={this.state.modals} onToggleModals={this.onToggleModals} allStaysPriceAvg={this.state.allStaysPriceAvg} amenities={this.state.frontFilter.amenities} />
-                    {stays.length && <StaysList stays={this.state.stays} history={this.props.history} onToggleLikedStay={this.onToggleLikedStay} />}
+                    {stays.length && <StaysList stays={this.state.stays} history={this.props.history} />}
                 </div>
             </main>
         )
@@ -196,10 +171,12 @@ function mapStateToProps(state) {
 }
 const mapDispatchToProps = {
     loadStays,
+    onRemoveStay,
+    onAddStay,
+    onEditStay,
     onBookTrip,
     setFilter,
-    loadUser,
-    updateUser
+    loadUser
 }
 
 

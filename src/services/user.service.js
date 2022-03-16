@@ -51,8 +51,8 @@ async function login(userCred) {
 }
 async function signup(userCred) {
     userCred.isHost = false;
-    userCred.imgUrl = '';
-    userCred.myStays = [];
+    userCred.imgUrl = '/img/img1.jpg';
+    // userCred.myStays = [];
     userCred.notifications = [];
     userCred.mySaves = []
     const user = await httpService.post('auth/signup', userCred)
@@ -72,7 +72,10 @@ function _saveLocalUser(user) {
 
 function getLoggedinUser() {
     return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER) || 'null')
+    
 }
+
+
 
 // This IIFE functions for Dev purposes 
 // It allows testing of real time updates (such as sockets) by listening to storage events
