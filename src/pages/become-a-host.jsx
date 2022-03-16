@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { onBecomeHost, loadUser } from '../store/user.actions.js'
 import { FaAirbnb } from 'react-icons/fa'
-
+console.log('check');
 
 class _BecomeAHost extends React.Component {
    
