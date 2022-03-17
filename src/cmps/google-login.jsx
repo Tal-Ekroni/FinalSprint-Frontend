@@ -17,4 +17,5 @@ import { withRouter } from "react-router";
         )
     }
 }
+
 export const GoogleLoginCmp = withRouter(_GoogleLoginCmp)

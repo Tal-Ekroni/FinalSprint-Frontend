@@ -10,6 +10,8 @@ import { HostPage } from './pages/host-page.jsx'
 import { BecomeAHost } from './pages/become-a-host.jsx'
 import { NotificationsPage } from './pages/notifications.jsx'
 import { LoginSignup } from './cmps/login-signup.jsx'
+import { WishList } from './pages/wishlist.jsx'
+import { UserProfile } from './pages/user-profile.jsx'
 // import { Login } from './pages/'
 
 // Routes accesible from the main navigation (in AppHeader)
@@ -18,6 +20,7 @@ const routes = [
         path: '/',
         component: HomePage,
     },
+
     {
         path: '/explore/',
         component: Explore,
@@ -50,6 +53,16 @@ const routes = [
     {
         path: '/about',
         component: AboutUs,
+
+    },
+    {
+        path: '/profile',
+        component: UserProfile,
+
+    },
+    {
+        path: '/wishlist',
+        component: WishList,
 
     },
     {

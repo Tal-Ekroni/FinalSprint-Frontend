@@ -6,8 +6,8 @@ import { DatesPicker2 } from "./dates-picker2"
 import { LocationsPopUp } from './locations-popup';
 class _SearchBar extends React.Component {
     state = {
-        startDate: '',
-        endDate: '',
+        startDate: null,
+        endDate: null,
         location: '',
         adultNumber: 0,
         kidsNumber: 0,
@@ -28,8 +28,8 @@ class _SearchBar extends React.Component {
     onGetQueryParams = () => {
         const urlParams = new URLSearchParams(this.props.location.search);
         const location = urlParams.get('location') || '';
-        const startDate = urlParams.get('startDate') || '';
-        const endDate = urlParams.get('endDate') || '';
+        const startDate = urlParams.get('startDate') || null;
+        const endDate = urlParams.get('endDate') || null;
         const adultNumber = +urlParams.get('adults') || 1;
         const kidsNumber = +urlParams.get('kids') || 0;
         const infantsNumber = +urlParams.get('infants') || 0;
@@ -72,6 +72,7 @@ class _SearchBar extends React.Component {
     onSelectDates = ({ startDate, endDate }) => {
         this.setState({ startDate, endDate }, () => { this.props.setFilter(this.state) })
     }
+
     onSelectAmount = (guestType, diff) => {
         switch (guestType) {
             case 'adultNumber':
@@ -96,13 +97,13 @@ class _SearchBar extends React.Component {
     onSetFilter = async () => {
         await this.props.setFilter(this.state)
         const { location, startDate, endDate, adultNumber, kidsNumber, infantsNumber } = this.state
-        const urlQuery = `/explore/?location=${location}&startDate=${startDate}&endDate=${endDate}&adults=${adultNumber}&kids=${kidsNumber}&infants=${infantsNumber}`
+        const urlQuery = `explore/?location=${location}&startDate=${startDate}&endDate=${endDate}&adults=${adultNumber}&kids=${kidsNumber}&infants=${infantsNumber}`
         this.props.closeAllModals()
         await this.props.loadStays(this.props.filterBy)
         this.props.history.push(urlQuery)
     }
     onSetLocationPopUp = (val) => {
-        this.setState({ location: val }, () => { this.onSetFilter() })
+        this.setState({ location: val },()=>{this.onSetFilter()})
     }
 
     timeToShow = (date, val) => {
@@ -127,7 +128,7 @@ class _SearchBar extends React.Component {
                             <input type="text" name="location" autoComplete="off" value={location} onChange={this.handleChange} placeholder="Where are you going?" />
                         </label>
                     </div>
-                    {locModal && <LocationsPopUp onSetLocationPopUp={this.onSetLocationPopUp} closeAllModals={closeAllModals} />}
+                    {locModal && <LocationsPopUp onSetLocationPopUp={this.onSetLocationPopUp}  closeAllModals={closeAllModals}  />}
                     <div className="mini-search-input" onClick={onToggleMiniSearchBar}>
                         <p >
                             {filterBy.location ? filterBy.location : 'Start your search'}
@@ -147,7 +148,7 @@ class _SearchBar extends React.Component {
                         <div className="guests-label align-center flex" onClick={(ev) => { onToggleSearchModals('guestModal',) }}>
                             <label htmlFor="" className="flex column" >
                                 <span>Guests</span>
-                                <span className="guest-placeholder">{(adultNumber + kidsNumber + infantsNumber) <= 1 ? 'Add guests' : (adultNumber + kidsNumber + infantsNumber)}</span>
+                                <span className="guest-placeholder">Add guests</span>
                             </label>
                         </div>
                         {guestModal && <GuestsModal adultNumber={adultNumber} kidsNumber={kidsNumber} infantsNumber={infantsNumber} onSelectAmount={this.onSelectAmount} />}
@@ -167,3 +168,4 @@ class _SearchBar extends React.Component {
 }
 export const SearchBar = withRouter(_SearchBar)
 
+// export const SearchBar = withRouter(connect(mapStateToProps, mapDispatchToProps)(_SearchBar))

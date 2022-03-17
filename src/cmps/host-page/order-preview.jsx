@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { onRemoveOrder, onApproveOrder, onUpdateOrder } from '../../store/order.actions'
 import { loadUser } from '../../store/user.actions'
 import { utilService } from "../../services/util.service";
+import { FaUserAlt } from "react-icons/fa";
 
 class _OrderPreview extends React.Component {
     state = {
@@ -44,9 +45,12 @@ class _OrderPreview extends React.Component {
                     <section>
                         <div className="order-preview-details">
                             <div className="order-user-info flex space-between" >
-                                <div className="user-img-container">
-                                    <img src={`https://i.pravatar.cc/100?u=${order.buyer._id.substr(order.buyer._id.length - 8)}`} alt="" />
-                                </div>
+                                {!order.buyer.imgUrl ? <div className="user-img-container flex align-center justify-content">
+
+                                    <FaUserAlt />
+                                </div> : <div className="user-img-container">
+                                    <img src={order.buyer.imgUrl} alt="" />
+                                </div>}
                                 <div className="txt-info-container flex column">
                                     <div className="order-username-container">
                                         <p className="order-username">{order.buyer.fullname} </p>

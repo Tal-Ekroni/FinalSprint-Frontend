@@ -27,6 +27,7 @@ class _OrdersDashboard extends Component {
         var formattedTime = day.substr(-2) + '.' + month.substr(-2) + '.' + year.substr(-2);
         return formattedTime
     }
+
     getData = () => {
         const { orders } = this.props
         const dataOrders = [];
@@ -35,10 +36,9 @@ class _OrdersDashboard extends Component {
             orders.forEach(order => {
                 editedOrder = {
                     stayName: order.stay.name,
-                    // address: order.loc.address,
                     buyerName: order.buyer.fullname,
                     buyerImg: <div className="user-order-img-container flex align-center">
-                        <img src={`https://i.pravatar.cc/100?u=${order.buyer._id.substr(order.buyer._id.length - 8)}`} alt="" />
+                        <img src={order.buyer.imgUrl} alt="" />
                         <p>{order.buyer.fullname}</p>
                     </div>,
                     price: `$${order.totalPrice}`,

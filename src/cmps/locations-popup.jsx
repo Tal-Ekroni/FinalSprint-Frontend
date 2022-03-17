@@ -5,6 +5,7 @@ export function LocationsPopUp({ closeAllModals, onSetLocationPopUp }) {
         closeAllModals()
         onSetLocationPopUp(loc)
     }
+
     return (
         <div className="location-modal flex column">
             {locations.map((location, idx) => <div key={idx} className="location-card flex align-center" onClick={() => { onPushTo(location.city) }}>

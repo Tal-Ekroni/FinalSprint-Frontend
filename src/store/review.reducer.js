@@ -1,6 +1,7 @@
 const initialState = {
   reviews: [],
 }
+
 export function reviewReducer(state = initialState, action = {}) {
   switch (action.type) {
     case 'SET_REVIEWS':

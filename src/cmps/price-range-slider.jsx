@@ -14,10 +14,16 @@ function ValueLabelComponent(props) {
     </Tooltip>
   );
 }
+
 ValueLabelComponent.propTypes = {
   children: PropTypes.element.isRequired,
   value: PropTypes.number.isRequired,
 };
+
+
+
+
+
 const AirbnbSlider = styled(Slider)(({ theme }) => ({
   color: '#3a8589',
   height: 3,

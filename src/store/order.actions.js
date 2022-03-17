@@ -1,6 +1,7 @@
 import { orderService } from "../services/order.service.js";
 import { userService } from "../services/user.service.js";
 import { socketService } from "../services/socket.service.js";
+
 export function loadOrders(userId, type) {
     return async (dispatch) => {
         try {
@@ -25,6 +26,7 @@ export function loadOrder(orderId) {
         }
     }
 }
+
 export function onRemoveOrder(orderId) {
     return async (dispatch, getState) => {
         try {
@@ -38,6 +40,7 @@ export function onRemoveOrder(orderId) {
         }
     }
 }
+
 export function onAddOrder(orderToAdd) {
     const { buyer } = orderToAdd
 
@@ -55,6 +58,7 @@ export function onAddOrder(orderToAdd) {
             socketService.emit('setNotif', notif)
         }
         catch (err) {
+
         }
     }
 }
@@ -70,6 +74,7 @@ export function onCancelOrder(tripId, buyerId, hostId) {
             const updatedHost = await userService.update(hostUser)
             dispatch({ type: 'UPDATE_USER', user: updatedUser })
             dispatch({ type: 'UPDATE_USER', user: updatedHost })
+
         }
         catch (err) {
         }
@@ -80,6 +85,8 @@ export function onApproveOrder(order) {
         try {
             const updatedOrder = await orderService.update(order)
             dispatch({ type: 'UPDATE_ORDER', order: updatedOrder })
+
+
         }
         catch (err) {
         }
@@ -90,6 +97,8 @@ export function onUpdateOrder(order) {
         try {
             const updatedOrder = await orderService.update(order)
             dispatch({ type: 'UPDATE_ORDER', order: updatedOrder })
+
+
         }
         catch (err) {
         }

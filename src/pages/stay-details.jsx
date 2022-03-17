@@ -14,6 +14,8 @@ import { AddReview } from '../cmps/stay-details/add-review'
 import { ReviewAvg } from '../cmps/stay-details/_reviews-avg'
 import loader from '../assets/img/three-dots.svg'
 import { socketService } from '../services/socket.service'
+import { AmenitiesModal } from '../cmps/amenities-modal.jsx'
+import { FaUserAlt } from 'react-icons/fa'
 class _StayDetails extends React.Component {
     state = {
         stayReviews: [],
@@ -25,7 +27,8 @@ class _StayDetails extends React.Component {
         },
         isReadMoreOn: false,
         isLiked: null,
-        isMobilePics: false
+        isMobilePics: false,
+        isAmenitiesModalOpen: false
     }
     setMobliePicsDisplay = () => {
         if (window.innerWidth <= 780) {
@@ -54,14 +57,17 @@ class _StayDetails extends React.Component {
     componentWillUnmount() {
         window.removeEventListener('resize', this.setMobliePicsDisplay)
         // socketService.off('getNotif', (ev) => {})
+             this.props.loadStay()
     }
 
-    componentDidUpdate(prevProps, prevState) {
+     componentDidUpdate(prevProps, prevState) {
         const { user } = this.props
+        const { stayId } = this.props.match.params
         if (prevState.isLiked !== this.state.isLiked) {
             this.isStayLiked()
             if (user) this.props.loadUser(user._id)
         }
+      
     }
 
     onToogleLikeStay = () => {
@@ -95,15 +101,19 @@ class _StayDetails extends React.Component {
         }
     }
 
-
     setReviewsAvg = (avgScore) => {
         const { stay } = this.props
         stay.reviewsAvg = avgScore
+        this.props.onEditStay(stay)
         this.setState(prevState => ({ stay: { ...prevState.stay, reviewsAvg: avgScore } }))
 
     }
+    onToggleAmenitiesModal = () => {
+        this.setState({ isAmenitiesModalOpen: !this.state.isAmenitiesModalOpen })
+
+    }
     render() {
-        const { isReadMoreOn, isLiked, isMobilePics } = this.state
+        const { isReadMoreOn, isLiked, isMobilePics, isAmenitiesModalOpen } = this.state
         const { stay, user } = this.props
         return (
             <section className="stay-details-section main-container">
@@ -121,9 +131,11 @@ class _StayDetails extends React.Component {
                                         <p><span>{`${stay.capacity} guests`}</span> • <span >{`${stay.host.fullname} is Superhost!`}</span> •  <span>{`${stay.capacity} beds`}</span> </p>
                                     </div>
                                 </div>
-                                <div className="host-img-container">
-                                    <img src={`https://i.pravatar.cc/100?u=${stay.host._id.substr(stay.host._id.length - 8)}`} alt="" />
-                                </div>
+                                {!stay.host.imgUrl ? <div className="host-img-container">
+                                    <FaUserAlt />
+                                </div> : <div className="host-img-container">
+                                    <img src={stay.host.imgUrl} alt="" />
+                                </div>}
                             </section>
                             <AssetSum />
                             <section className="asset-desc-container">
@@ -136,6 +148,9 @@ class _StayDetails extends React.Component {
                                 <div >
                                     <AssetAmenities amenities={stay.amenities} />
                                 </div>
+                                {stay.amenities.length > 10 && <div>
+                                    <button className="amenities-btn" onClick={this.onToggleAmenitiesModal}>Show all {stay.amenities.length} amenities</button>
+                                </div>}
                             </section>
                         </div>
                         <div className="details-right-container">
@@ -144,7 +159,7 @@ class _StayDetails extends React.Component {
                     </section>
                     <section className="page-bottom-container">
                         <div className="reviews-section-container" >
-                            <ReviewAvg demoReviews={stay.demoReviews} reviews={stay.reviews} setReviewsAvg={this.setReviewsAvg} />
+                            <ReviewAvg reviews={stay.reviews} setReviewsAvg={this.setReviewsAvg} />
                             <ReviewsList isReadMoreOn={isReadMoreOn} onToogleReadModal={this.onToogleReadModal} />
                             {user && <div className="add-review">
                                 <AddReview stay={stay} />
@@ -153,8 +168,10 @@ class _StayDetails extends React.Component {
                         <StayMap location={stay.loc} />
                     </section>
                 </div >}
-                {/* {isReadMoreOn && <ReadMore txt={this.state.txt} onCloseReadModal={this.onCloseReadModal} />} */}
+                {isAmenitiesModalOpen ? <div className={"amenities-screen screen-open "} onClick={this.onToggleAmenitiesModal}></div> : ''}
 
+                {stay ? isAmenitiesModalOpen && <AmenitiesModal onToggleAmenitiesModal={this.onToggleAmenitiesModal} amenities={stay.amenities} /> : ''}
+                {/* {isReadMoreOn && <ReadMore txt={this.state.txt} onCloseReadModal={this.onCloseReadModal} />} */}
             </section>
         )
     }

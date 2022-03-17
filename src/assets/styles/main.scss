@@ -20,6 +20,8 @@
 @import "views/host-page";
 @import "views/become-a-host";
 @import "views/notifications-page";
+@import "views/wishlist-page";
+@import "views/user-profile";
 // Components
 @import "cmps/app-header";
 @import "cmps/app-footer";
@@ -42,7 +44,6 @@
 @import "cmps/explore-filter.scss";
 @import "cmps/search-bar.scss";
 @import "cmps/guest-modal.scss";
-@import "cmps/dates";
 @import "cmps/user-menu";
 @import "cmps/locations-popup";
 @import "cmps/host-page/add-stay.scss";
@@ -51,3 +52,4 @@
 @import "cmps/price-range-picker";
 @import "cmps/read-more";
 @import "cmps/stay-preview";
+@import "cmps/amenities-modal.scss";

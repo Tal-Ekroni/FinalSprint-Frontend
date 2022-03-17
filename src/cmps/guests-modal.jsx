@@ -1,6 +1,8 @@
 import React from 'react'
 import { FaPlus, FaMinus } from 'react-icons/fa'
 export class GuestsModal extends React.Component {
+
+
     render() {
         const { adultNumber, kidsNumber, infantsNumber, onSelectAmount } = this.props
         return (
@@ -41,6 +43,7 @@ export class GuestsModal extends React.Component {
                         </p>
                     </div>
                 </div>
+
             </div>
         )
     }

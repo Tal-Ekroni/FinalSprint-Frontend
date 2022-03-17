@@ -30,8 +30,8 @@ class _AddStayMap extends Component {
     render() {
         const { selectedPlace } = this.state
         return (
-            <section >
-                <div className="add-form-line flex align-center ">
+            <section className="add-stay-location-container" >
+                <div className="add-form-line flex align-center">
                     <label className="add-line" htmlFor="">Address</label>
 
                     <PlacesAutocomplete
@@ -75,31 +75,11 @@ class _AddStayMap extends Component {
                         )}
                     </PlacesAutocomplete>
                 </div>
-                {/* <div className="main-add-map-container">
-
-                    <Map
-                        containerStyle={style}
-                        google={this.props.google}
-                        zoom={15}
-                        initialCenter={center}
-                        onClick={this.onMapClicked}
-                        center={center}
-                    >
-                        <Marker
-                            position={center}
-                            name={'Current location'}
-                            onClick={this.onMarkerClicked}
-                        />
-                    </Map>
-                </div>
-                <div>
-                    {this.state.loc.address && <h1 className="address-title">{this.state.loc.address.split(',')[0]} , {this.state.loc.address.split(',')[1]}</h1>}
-                </div> */}
             </section>
         );
     }
 }
 
 export const AddStayMap = GoogleApiWrapper({
-    apiKey: ('AIzaSyC4nnRlZ8NjJzwvd5SZMk3ukykZTfqRKNU')
+    apiKey: ('AIzaSyCUGOKMnw7Uk2ksGmOSmUZKdpOyeWxg27Y')
 })(_AddStayMap)

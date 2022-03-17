@@ -18,15 +18,16 @@ export class ReviewAvg extends React.Component {
                 this.getTotalAvg()
             })
         })
-
-
     }
     getAvrage = (type) => {
         const { reviews } = this.props
         let avgScore = 0;
         reviews.map(review => avgScore += +review[type])
-        avgScore = ((avgScore / reviews.length)).toFixed(1)
-        return avgScore
+        avgScore = ((avgScore / reviews.length))
+        console.log(avgScore);
+        // if (typeof avgScore !== Number) avgScore = 0
+        // avgScore = avgScore.toFixed(1)
+        return avgScore.toFixed(1)
     }
     getTotalAvg = () => {
         let totalReviewAvg = 0;
@@ -34,13 +35,14 @@ export class ReviewAvg extends React.Component {
             totalReviewAvg += +this.state[key]
         })
         totalReviewAvg = (totalReviewAvg / 6).toFixed(1)
-        this.setState(prevState => ({ ...prevState, totalAvg: +totalReviewAvg }), () => {
+        // if (typeof +totalReviewAvg === NaN) totalReviewAvg = 0
+        this.setState(prevState => ({ ...prevState, totalAvg: totalReviewAvg }), () => {
             this.props.setReviewsAvg(+totalReviewAvg)
         })
 
     }
     render() {
-        const { reviews,demoReviews } = this.props
+        const { reviews } = this.props
         const types = this.state
         return (
             <section>
@@ -48,7 +50,7 @@ export class ReviewAvg extends React.Component {
                     <h1 className="reviews-section-title flex" ><FaStar
                         size={15}
 
-                        color="#FF5A5F" /> <span>{this.state.totalAvg}</span> <span>Reviews</span> <span>•</span>{demoReviews} Reviews</h1>
+                        color="#FF5A5F" /> <span>{this.state.totalAvg}</span> <span>Reviews</span> <span>•</span>{reviews.length} Reviews</h1>
                 </div>
                 <div className="review-avg-container flex space-between" >
                     <div className="left-review">

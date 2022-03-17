@@ -72,7 +72,7 @@
                 "buyer": {
                     "_id": "u101",
                     "fullname": "User 1",
-                    "imgUrl": "/img/img1.jpg"
+                    "imgUrl": " "
                 },
                 "totalPrice": 160,
                 "startDate": "2025/10/15",
@@ -93,7 +93,7 @@
             {
                 "_id": "u101",
                 "fullname": "User 1",
-                "imgUrl": "/img/img1.jpg",
+                "imgUrl": " ",
                 "isAdmin": false,
                 "username": "user1",
                 "password": "secret"

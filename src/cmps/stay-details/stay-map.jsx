@@ -80,5 +80,5 @@ class _StayMap extends Component {
 }
 
 export const StayMap = GoogleApiWrapper({
-    apiKey: ('AIzaSyC4nnRlZ8NjJzwvd5SZMk3ukykZTfqRKNU')
+    apiKey: ('AIzaSyCUGOKMnw7Uk2ksGmOSmUZKdpOyeWxg27Y')
 })(_StayMap)

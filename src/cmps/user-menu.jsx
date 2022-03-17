@@ -14,11 +14,13 @@ class _UserMenu extends React.Component {
             this.props.loadUser(this.props.user._id)
         }
     }
+
     onLogout = () => {
         this.props.onLogout()
         this.props.onToggleSearchModals('menuModal')
         socketService.off('getNotif')
         socketService.terminate()
+        // this.props.history.push('/')
     }
 
     onCloseLogin = () => {
@@ -50,22 +52,26 @@ class _UserMenu extends React.Component {
 
                         </div>
                     }
-                    <div className="user-menu-line">
-                        <p>Wishlist</p>
+                    <div >
+                        {user ? <NavLink className="user-menu-line" onClick={() => this.props.onToggleSearchModals('menuModal')} to="/wishlist"> <p>Wishlist</p> </NavLink> : <p className="user-menu-line">Wishlist</p>}
                     </div>
                     <div >
-                        {user ? <NavLink onClick={() => this.props.onToggleSearchModals('menuModal')} className="user-menu-line" to="/become-a-host"><p >Host a expirience</p></NavLink> : <p className="user-menu-line">Host a expirience</p>}
+                        {user ? user.isHost ? '' : <NavLink onClick={() => this.props.onToggleSearchModals('menuModal')} className="user-menu-line" to="/become-a-host"><p >Host a expirience</p></NavLink> : <p className="user-menu-line">Host a expirience</p>}
 
                     </div>
                 </section >
                 <section className="user-menu bottom-section">
+                    {user && <NavLink className="user-menu-line" to="/profile">
+                        <p>Profile</p>
+                    </NavLink>}
                     {user && <div className="user-menu-line" onClick={this.onLogout}>
                         <p>Logout</p>
                     </div>}
                     {!user && <div className="user-menu-line" onClick={this.onOpenLogin}>
                         <p>Login</p>
+                        {/* <Link to='/login'>Login</Link> */}
                     </div>}
-                    {!user && <div className="user-menu-line">
+                    {!user && <div className="user-menu-line" onClick={this.onOpenLogin}>
                         <p>Signup</p>
                     </div>}
 
